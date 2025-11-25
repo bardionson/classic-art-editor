@@ -2,7 +2,7 @@ import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
 import { Modal } from '@/components/common/modal';
 import Spinner from '@/components/common/spinner';
-import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
+import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { LayerArtNFTMetadata } from '@/types/shared';
 import { getErrorMessage } from '@/utils/common';
 import {
@@ -13,9 +13,14 @@ import {
 import dynamic from 'next/dynamic';
 import { FormEvent, useEffect, useState } from 'react';
 import { CheckCircle } from 'react-feather';
-import { Address } from 'viem';
+import { Address, createPublicClient, getContract, http } from 'viem';
 import { useWalletClient } from 'wagmi';
-import { getContract } from 'wagmi/actions';
+import { mainnet, goerli } from 'wagmi/chains';
+
+const publicClient = createPublicClient({
+  chain: __PROD__ ? mainnet : goerli,
+  transport: http(),
+});
 
 const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
 
@@ -72,6 +77,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     const contract = getContract({
       address: tokenAddress,
       abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      client: publicClient,
     });
 
     try {
@@ -206,9 +212,14 @@ function ChangeModal({
     if (changedControlsLeverIds.length === 0)
       return setState({ error: "Values haven't been changed." });
 
+    if (!walletClient) {
+      return setState({ error: 'Wallet not connected.' });
+    }
+
     const contract = getContract({
       address: tokenAddress,
       abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      client: walletClient,
     });
 
     try {
@@ -240,6 +251,7 @@ function ChangeModal({
     const contract = getContract({
       address: tokenAddress,
       abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      client: publicClient,
     });
 
     const controlTokenValues = await contract.read.getControlToken([
