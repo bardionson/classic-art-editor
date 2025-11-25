@@ -7,7 +7,13 @@ import {
 } from '@/types/shared';
 import { fetchIpfs } from '@/utils/ipfs';
 import seedrandom from 'seedrandom';
-import { getContract } from 'wagmi/actions';
+import { createPublicClient, getContract, http } from 'viem';
+import { mainnet, goerli } from 'wagmi/chains';
+
+const publicClient = createPublicClient({
+  chain: __PROD__ ? mainnet : goerli,
+  transport: http(),
+});
 
 export async function getMasterArtSize(uri: string) {
   const imageResponse = await fetchIpfs(uri);
@@ -175,6 +181,7 @@ export function createGetLayerControlTokenValueFn(
     const v2contract = getContract({
       address: V2_CONTRACT_ADDRESS,
       abi: v2Abi,
+      client: publicClient,
     });
 
     const v2LayerControlTokens = await v2contract.read
@@ -192,6 +199,7 @@ export function createGetLayerControlTokenValueFn(
       const v1contract = getContract({
         address: V1_CONTRACT_ADDRESS,
         abi: v1Abi,
+        client: publicClient,
       });
 
       const v1LayerControlTokens = await v1contract.read

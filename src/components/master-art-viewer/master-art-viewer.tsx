@@ -10,7 +10,7 @@ import {
   getLayersFromMetadata,
   getMasterArtSize,
 } from '@/components/master-art-viewer/utils';
-import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
+import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { MasterArtNFTMetadata } from '@/types/shared';
 import { getErrorMessage, sleep } from '@/utils/common';
 import {
@@ -21,8 +21,13 @@ import {
 import { toBlob } from 'html-to-image';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { ChevronsLeft, Info, X, XCircle } from 'react-feather';
-import { Address } from 'viem';
-import { getContract } from 'wagmi/actions';
+import { Address, createPublicClient, getContract, http } from 'viem';
+import { mainnet, goerli } from 'wagmi/chains';
+
+const publicClient = createPublicClient({
+  chain: __PROD__ ? mainnet : goerli,
+  transport: http(),
+});
 
 type MasterArtInfo = {
   tokenAddress: Address;
@@ -118,6 +123,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     const contract = getContract({
       address: tokenAddress,
       abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      client: publicClient,
     });
 
     try {
