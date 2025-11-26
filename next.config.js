@@ -4,7 +4,6 @@ const withBundleAnalyzer = require('next-bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   /**
    * React in strict mode runs effects twice.
    * This is an issue because we make 2x requests to RPC provider + IPFS and also download 2x bandwith which makes development very slow.
@@ -14,6 +13,7 @@ const nextConfig = {
   webpack: (config) => {
     // https://github.com/WalletConnect/walletconnect-monorepo/issues/1908
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
+    config.resolve.alias['@react-native-async-storage/async-storage'] = false;
     return config;
   },
 };

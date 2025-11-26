@@ -1,53 +1,40 @@
 import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
 import { Modal, ModalSkeleton } from '@/components/common/modal';
-import Spinner from '@/components/common/spinner';
-import LayerImageBuilder, {
-  LayerImageElement,
-} from '@/components/master-art-viewer/layer-image-builder';
-import {
-  createGetLayerControlTokenValueFn,
-  getLayersFromMetadata,
-  getMasterArtSize,
-} from '@/components/master-art-viewer/utils';
-import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
-import { MasterArtNFTMetadata } from '@/types/shared';
-import { getErrorMessage, sleep } from '@/utils/common';
-import {
-  fetchIpfs,
-  getCustomIPFSGateway,
-  setCustomIPFSGateway,
-} from '@/utils/ipfs';
-import { toBlob } from 'html-to-image';
-import { FormEvent, useEffect, useRef, useState } from 'react';
-import { ChevronsLeft, Info, X, XCircle } from 'react-feather';
-import { Address } from 'viem';
-import { getContract } from 'wagmi/actions';
+import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
+import { getErrorMessage } from '@/utils/common';
+import { getCustomIPFSGateway, setCustomIPFSGateway } from '@/utils/ipfs';
+import { FormEvent, useEffect, useState } from 'react';
+import { X } from 'react-feather';
+import { Address, createPublicClient, getContract, http } from 'viem';
+import { mainnet, goerli } from 'wagmi/chains';
+import ArtworkViewer from '../artwork/artwork-viewer';
+import { useSearchParams } from 'next/navigation';
+
+const publicClient = createPublicClient({
+  chain: __PROD__ ? mainnet : goerli,
+  transport: http(),
+});
 
 type MasterArtInfo = {
   tokenAddress: Address;
   tokenId: number;
-  tokenURI: string;
-};
-
-type InfoPanelData = {
-  title: string;
-  artists: string[];
-  masterArtSize: Awaited<ReturnType<typeof getMasterArtSize>>;
-  layers: { id: string; activeStateURI: string }[];
-  stems?: { id: string; activeStateURI: string }[];
-  audioFilters?: string[];
-  audioBitrate?: string;
 };
 
 export default function MasterArtViewer({
   onClose,
+  tokenAddress: initialTokenAddress,
+  tokenId: initialTokenId,
 }: {
   onClose: VoidFunction;
+  tokenAddress?: Address;
+  tokenId?: number;
 }) {
-  const [artInfo, setArtInfo] = useState<MasterArtInfo>();
-  const [infoPanelData, setInfoPanelData] = useState<InfoPanelData>();
-  const [isInfoPanelOpen, setIsInfoPanelOpen] = useState(false);
+  const [artInfo, setArtInfo] = useState<MasterArtInfo | undefined>(
+    initialTokenAddress && initialTokenId
+      ? { tokenAddress: initialTokenAddress, tokenId: initialTokenId }
+      : undefined,
+  );
 
   if (!artInfo)
     return (
@@ -59,38 +46,14 @@ export default function MasterArtViewer({
   return (
     <ModalSkeleton className="overflow-auto !px-0" onClose={onClose}>
       <div className="fixed top-0 right-0 z-20 w-full flex justify-between p-6 md:p-8">
-        {infoPanelData && (
-          <button
-            aria-label="Artwork details"
-            onClick={() => setIsInfoPanelOpen(true)}
-          >
-            <Info size={28} className="text-white" />
-          </button>
-        )}
         <button onClick={onClose} aria-label="Close" className="ml-auto -mr-1">
           <X size={36} className="text-white" />
         </button>
       </div>
-      <MasterArtScreen
-        artInfo={artInfo}
-        setInfoPanelData={(panelData) => {
-          setInfoPanelData(panelData);
-          setIsInfoPanelOpen(true);
-        }}
+      <ArtworkViewer
+        tokenAddress={artInfo.tokenAddress}
+        tokenId={artInfo.tokenId}
       />
-      {isInfoPanelOpen && infoPanelData && (
-        <InfoPanel
-          title={infoPanelData.title}
-          artists={infoPanelData.artists}
-          tokenURI={artInfo.tokenURI}
-          masterArtSize={infoPanelData.masterArtSize}
-          layers={infoPanelData.layers}
-          stems={infoPanelData.stems}
-          audioFilters={infoPanelData.audioFilters}
-          audioBitrate={infoPanelData.audioBitrate}
-          onClose={() => setIsInfoPanelOpen(false)}
-        />
-      )}
     </ModalSkeleton>
   );
 }
@@ -118,6 +81,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     const contract = getContract({
       address: tokenAddress,
       abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      client: publicClient,
     });
 
     try {
@@ -131,7 +95,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
         .catch(() => null);
 
       if (controlTokens) throw new Error('URI query for nonexistent token');
-      onSubmit({ tokenAddress, tokenId, tokenURI });
+      onSubmit({ tokenAddress, tokenId });
     } catch (error) {
       const message = getErrorMessage(error);
       const is404 = message.includes('URI query for nonexistent token');
@@ -199,333 +163,5 @@ function FormScreen({ onSubmit }: FormScreenProps) {
         </p>
       )}
     </form>
-  );
-}
-
-type MasterArtScreenProps = {
-  artInfo: MasterArtInfo;
-  setInfoPanelData: (infoPanelData: InfoPanelData) => void;
-};
-
-const ART_ELEMENT_ID = 'master-art';
-const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
-
-function MasterArtScreen({ artInfo, setInfoPanelData }: MasterArtScreenProps) {
-  // If the user closes the modal during rendering process, we want to stop further operations.
-  const isComponentMountedRef = useRef(true);
-  const artElementRef = useRef<HTMLDivElement>(null);
-  const [statusMessage, setStatusMessage] = useState<
-    string | React.JSX.Element
-  >('Loading NFT metadata...');
-
-  const renderArtwork = async () => {
-    try {
-      const response = await fetchIpfs(artInfo.tokenURI);
-      const metadata = (await response.json()) as MasterArtNFTMetadata;
-      const masterArtSize = await getMasterArtSize(metadata.image);
-
-      const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
-        artInfo.tokenId,
-        metadata['async-attributes']?.['unminted-token-values'],
-      );
-
-      if (!isComponentMountedRef.current) return;
-      const stems = metadata['audio-layout']
-        ? await getLayersFromMetadata(
-            metadata['audio-layout'].layers,
-            getLayerControlTokenValue,
-          )
-        : undefined;
-
-      const layers = await getLayersFromMetadata(
-        metadata.layout.layers,
-        getLayerControlTokenValue,
-      );
-
-      const artElement = artElementRef.current!;
-      const { width, height, resizeToFitScreenRatio } = masterArtSize;
-      const marginTop =
-        (window.innerHeight - height * resizeToFitScreenRatio) / 2;
-
-      artElement.style.marginTop = marginTop > 0 ? `${marginTop}px` : `0px`;
-      artElement.style.width = `${width * resizeToFitScreenRatio}px`;
-      artElement.style.height = `${height * resizeToFitScreenRatio}px`;
-
-      for (const layer of layers) {
-        if (!isComponentMountedRef.current) return;
-
-        const layerImageBuilder = new LayerImageBuilder(
-          layer.id,
-          layer.transformationProperties,
-          getLayerControlTokenValue,
-        );
-
-        layerImageBuilder.setLayoutVersion(metadata.layout.version || 1);
-        if (layer.anchor) {
-          const anchorImageEl = Array.from(artElement.children).find(
-            (el) => el.id === layer.anchor,
-          ) as LayerImageElement;
-          layerImageBuilder.setAnchorLayer(anchorImageEl);
-        }
-
-        await layerImageBuilder.loadImage(layer.activeStateURI, (domain) =>
-          setStatusMessage(
-            <>
-              Loading layers {artElement.children.length + 1}/{layers.length}
-              ...
-              <br />
-              Loading {layer.activeStateURI} from{' '}
-              <a target="_blank" href={`https://${domain}`}>
-                {domain}
-              </a>
-            </>,
-          ),
-        );
-
-        const layerImageElement = await layerImageBuilder.build();
-        layerImageElement.resize(resizeToFitScreenRatio);
-        artElement.appendChild(layerImageElement);
-      }
-
-      artElement.classList.remove('-z-20');
-      setStatusMessage('');
-      setInfoPanelData({
-        title: metadata.name,
-        artists: metadata['async-attributes']?.artists || [],
-        layers,
-        masterArtSize,
-        stems,
-        audioFilters: metadata['audio-layout']?.mastering.filters,
-        audioBitrate: metadata['audio-layout']?.mastering.bitrate,
-      });
-    } catch (error) {
-      console.error(error);
-      setStatusMessage(ERROR_MESSAGE);
-    }
-  };
-
-  useEffect(() => {
-    renderArtwork();
-
-    return () => {
-      isComponentMountedRef.current = false;
-    };
-  }, []);
-
-  return (
-    <>
-      {statusMessage && (
-        <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
-          {statusMessage === ERROR_MESSAGE ? (
-            <>
-              <XCircle size={80} className="text-red mx-auto mb-8" />
-              <p className="text-white text-center">
-                {ERROR_MESSAGE.split('\n')[0]}
-                <br />
-                {ERROR_MESSAGE.split('\n')[1]}
-              </p>
-            </>
-          ) : (
-            <>
-              <Spinner size={80} className="text-purple mx-auto mt-12 mb-8" />
-              <p className="text-white text-center break-all">
-                {statusMessage}
-                <br />
-                The process can take several minutes.
-              </p>
-            </>
-          )}
-        </div>
-      )}
-      <div
-        id={ART_ELEMENT_ID}
-        ref={artElementRef}
-        className="relative mx-auto -z-20"
-      />
-    </>
-  );
-}
-
-type InfoPanelProps = InfoPanelData & {
-  tokenURI: string;
-  onClose: VoidFunction;
-};
-
-function InfoPanel({
-  title,
-  artists,
-  layers,
-  tokenURI,
-  masterArtSize,
-  stems,
-  audioFilters,
-  audioBitrate,
-  onClose,
-}: InfoPanelProps) {
-  const panelRef = useRef<HTMLElement>(null);
-  const [isImageDownloading, setIsImageDownloading] = useState(false);
-  const [downloadErrorMessage, setDownloadErrorMessage] = useState<string>();
-
-  const handleClosePanel = async () => {
-    panelRef.current?.classList.add('-translate-x-full');
-    await sleep(300);
-    onClose();
-  };
-
-  // We scale the image to original/full dimensions to download it
-  // Then we return it to the "fit the screen" dimensions
-  const handleDownloadArtwork = async () => {
-    setIsImageDownloading(true);
-    const { width, height, resizeToFitScreenRatio } = masterArtSize;
-    const artElement = document.querySelector<HTMLDivElement>(
-      `#${ART_ELEMENT_ID}`,
-    )!;
-    const layerImageElements = document.querySelectorAll<LayerImageElement>(
-      `#${ART_ELEMENT_ID} img`,
-    )!;
-
-    try {
-      // html-to-image library produces wrong result with margin
-      // https://github.com/bubkoo/html-to-image/issues/189
-      artElement.classList.remove('mx-auto');
-      artElement.style.width = `${width}px`;
-      artElement.style.height = `${height}px`;
-      layerImageElements.forEach((el) => el.resize(1));
-
-      const blob = await toBlob(artElement);
-      if (!blob) throw new Error();
-      const blobUrl = URL.createObjectURL(blob);
-
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = `${title}.png`;
-      link.click();
-    } catch (error) {
-      console.error(error);
-      setDownloadErrorMessage(ERROR_MESSAGE);
-    } finally {
-      artElement.classList.add('mx-auto');
-      artElement.style.width = `${width * resizeToFitScreenRatio}px`;
-      artElement.style.height = `${height * resizeToFitScreenRatio}px`;
-      layerImageElements.forEach((el) => el.resize(resizeToFitScreenRatio));
-      setIsImageDownloading(false);
-    }
-  };
-
-  useEffect(() => {
-    sleep(0).then(() => {
-      panelRef.current?.classList.remove('-translate-x-full');
-    });
-  }, []);
-
-  return (
-    <article
-      ref={panelRef}
-      className="fixed top-0 left-0 z-50 bg-white w-full h-screen sm:max-w-sm transition -translate-x-full overflow-y-auto"
-    >
-      <header className="flex justify-between items-center p-4">
-        <h2 className="text-2xl font-bold">Details</h2>
-        <button
-          aria-label="Close sidebar"
-          onClick={handleClosePanel}
-          className="hover:bg-gray-100 rounded p-0.5 transition"
-        >
-          <ChevronsLeft size={28} className="opacity-50" />
-        </button>
-      </header>
-      <hr />
-      <section className="px-4 mt-6 pb-6">
-        <h3 className="text-lg font-bold">Title</h3>
-        <p>{title}</p>
-        <h3 className="text-lg font-bold mt-4">
-          {artists.length === 1 ? 'Artist' : 'Artists'}
-        </h3>
-        {artists.length === 0 && <p>N/A</p>}
-        {artists.length === 1 && (
-          <p className="overflow-x-auto">{artists[0]}</p>
-        )}
-        {artists.length > 1 && (
-          <ul className="list-disc list-inside overflow-x-auto">
-            {artists.map((artist) => (
-              <li key={artist} className="whitespace-nowrap">
-                {artist}
-              </li>
-            ))}
-          </ul>
-        )}
-        <h3 className="text-lg font-bold mt-4">Metadata</h3>
-        <a
-          href={`https://ipfs.io/ipfs/${tokenURI}`}
-          target="_blank"
-          className="underline"
-        >
-          View on IPFS
-        </a>
-        <h3 className="text-lg font-bold mt-4">Layers</h3>
-        <ol className="list-decimal list-inside">
-          {layers.map((layer) => (
-            <li key={layer.id}>
-              <a
-                href={`https://ipfs.io/ipfs/${layer.activeStateURI}`}
-                target="_blank"
-                className="underline"
-              >
-                {layer.id}
-              </a>
-            </li>
-          ))}
-        </ol>
-        {stems && (
-          <>
-            <h3 className="text-lg font-bold mt-4">Stems</h3>
-            <ol className="list-decimal list-inside">
-              {stems.map((stem) => (
-                <li key={stem.id}>
-                  <a
-                    href={`https://ipfs.io/ipfs/${stem.activeStateURI}`}
-                    target="_blank"
-                    className="underline"
-                  >
-                    {stem.id}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </>
-        )}
-        {audioFilters && (
-          <>
-            <h3 className="text-lg font-bold mt-4">Mastering Steps (FFmpeg)</h3>
-            <ol className="list-decimal list-inside">
-              {audioFilters.map((audioFilter) => (
-                <li key={audioFilter}>
-                  <p className="inline-flex w-[19rem] overflow-x-auto">
-                    {audioFilter}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </>
-        )}
-        {audioBitrate && (
-          <>
-            <h3 className="text-lg font-bold mt-4">Bitrate</h3>
-            <p>{audioBitrate}</p>
-          </>
-        )}
-        <button
-          onClick={handleDownloadArtwork}
-          className="btn btn-black w-full mt-4"
-          disabled={isImageDownloading}
-        >
-          Download Artwork
-        </button>
-        {downloadErrorMessage && (
-          <p className="text-red text-sm text-center mt-2">
-            {downloadErrorMessage}
-          </p>
-        )}
-      </section>
-    </article>
   );
 }
