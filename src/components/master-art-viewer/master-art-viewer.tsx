@@ -50,10 +50,14 @@ export default function MasterArtViewer({
           <X size={36} className="text-white" />
         </button>
       </div>
-      <ArtworkViewer
-        tokenAddress={artInfo.tokenAddress}
-        tokenId={artInfo.tokenId}
-      />
+      <div className="flex flex-col md:flex-row h-screen">
+        <ArtworkViewer
+          tokenAddress={artInfo.tokenAddress}
+          tokenId={artInfo.tokenId}
+          artContainerClassName="flex-grow"
+          detailsContainerClassName="md:w-1/4 bg-gray-100 p-4 overflow-y-auto"
+        />
+      </div>
     </ModalSkeleton>
   );
 }
