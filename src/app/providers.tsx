@@ -1,35 +1,28 @@
 'use client';
 
 import { __PROD__ } from '@/config';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import { goerli, mainnet } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const { chains, publicClient } = configureChains(
-  [__PROD__ ? mainnet : goerli],
-  [publicProvider()],
-);
+const projectId = __PROD__
+  ? 'fe5ade2ca72bf579c0f012ed91b1ddc4'
+  : '515550cbf8f0d8aa47b342421d167450';
 
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'Async Classic Art Editor',
-  projectId: __PROD__
-    ? 'fe5ade2ca72bf579c0f012ed91b1ddc4'
-    : '515550cbf8f0d8aa47b342421d167450',
-  chains,
+  projectId,
+  chains: [__PROD__ ? mainnet : goerli],
 });
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-});
+const queryClient = new QueryClient();
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </WagmiProvider>
   );
 }

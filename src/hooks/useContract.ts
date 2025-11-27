@@ -2,9 +2,8 @@ import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
 import { V1_CONTRACT_ADDRESS } from '@/config';
 import { useMemo } from 'react';
-import { isAddress } from 'viem';
-import { Address, useWalletClient } from 'wagmi';
-import { getContract } from 'wagmi/actions';
+import { isAddress, getContract, Address } from 'viem';
+import { useWalletClient } from 'wagmi';
 
 export default function useContract(address: Address) {
   const { data: walletClient } = useWalletClient();
@@ -13,7 +12,7 @@ export default function useContract(address: Address) {
   return useMemo(
     () =>
       isAddress(address) && !!abi && !!walletClient
-        ? getContract({ address, abi, walletClient })
+        ? getContract({ address, abi, client: walletClient })
         : undefined,
     [address, abi, walletClient],
   );

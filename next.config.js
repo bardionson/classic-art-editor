@@ -13,6 +13,7 @@ const nextConfig = {
   webpack: (config) => {
     // https://github.com/WalletConnect/walletconnect-monorepo/issues/1908
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
+    config.resolve.alias['@react-native-async-storage/async-storage'] = false;
     return config;
   },
 };

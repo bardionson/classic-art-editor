@@ -6,9 +6,13 @@ import updateLayerArtIcon from '../../public/icons/scrollreveal.svg';
 import MasterArtViewer from '@/components/master-art-viewer/master-art-viewer';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import ToolBox from '@/components/tool-box';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LayerArtChanger from '@/components/layer-art-updater/layer-art-changer';
 import FAQ from '@/components/faq';
+import { useSearchParams } from 'next/navigation';
+import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
+import { Address } from 'viem';
+import WalletProvider from '@/app/wallet-provider';
 
 enum MODAL {
   NONE,
@@ -18,6 +22,22 @@ enum MODAL {
 
 export default function Home() {
   const [modal, setModal] = useState(MODAL.NONE);
+  const searchParams = useSearchParams();
+  const version = searchParams.get('version');
+  const id = searchParams.get('id');
+  const tokenId = id ? Number(id) : undefined;
+  const tokenAddress =
+    version === 'v1'
+      ? V1_CONTRACT_ADDRESS
+      : version === 'v2'
+      ? V2_CONTRACT_ADDRESS
+      : undefined;
+
+  useEffect(() => {
+    if (version && id) {
+      setModal(MODAL.VIEW_MASTER_ARTWORK);
+    }
+  }, [version, id]);
 
   return (
     <div className="flex min-h-screen flex-col items-center">
@@ -32,7 +52,9 @@ export default function Home() {
           <h1 className="hidden sm:block text-2xl font-bold ml-3">
             Classic Art Editor
           </h1>
-          <ConnectButton accountStatus="address" showBalance={false} />
+          <WalletProvider>
+            <ConnectButton accountStatus="address" showBalance={false} />
+          </WalletProvider>
         </nav>
       </header>
       <main className="container px-4">
@@ -147,10 +169,16 @@ export default function Home() {
         </section>
       </main>
       {modal === MODAL.VIEW_MASTER_ARTWORK && (
-        <MasterArtViewer onClose={() => setModal(MODAL.NONE)} />
+        <MasterArtViewer
+          onClose={() => setModal(MODAL.NONE)}
+          tokenAddress={tokenAddress as Address}
+          tokenId={tokenId}
+        />
       )}
       {modal === MODAL.UPDATE_LAYER_ARTWORK && (
-        <LayerArtChanger onClose={() => setModal(MODAL.NONE)} />
+        <WalletProvider>
+          <LayerArtChanger onClose={() => setModal(MODAL.NONE)} />
+        </WalletProvider>
       )}
     </div>
   );
