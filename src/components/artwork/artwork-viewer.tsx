@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { XCircle, X, Maximize, Layers } from 'react-feather';
+import {
+  XCircle,
+  X,
+  Maximize,
+  Layers,
+  ChevronLeft,
+  Info,
+} from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import Spinner from '@/components/common/spinner';
@@ -25,6 +32,7 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
+  const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
   const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
     useArtwork(tokenAddress, tokenId);
 
@@ -89,14 +97,34 @@ export default function ArtworkViewer({
           </button>
         </div>
       </div>
-      {!isFullscreen && metadata && (
+      {!isFullscreen &&
+        isLandscape &&
+        !isDescriptionPanelOpen && (
+          <button
+            onClick={() => setIsDescriptionPanelOpen(true)}
+            className="absolute top-1/2 right-4 bg-gray-800 text-white p-2 rounded-full"
+          >
+            <Info />
+          </button>
+        )}
+      {!isFullscreen &&
+        metadata &&
+        (isDescriptionPanelOpen || !isLandscape) && (
         <div
           className={`${
             isLandscape
-              ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-50 p-4 overflow-y-auto'
+              ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 p-4 overflow-y-auto text-white'
               : detailsContainerClassName
           }`}
         >
+          {isLandscape && (
+            <button
+              onClick={() => setIsDescriptionPanelOpen(false)}
+              className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
+            >
+              <ChevronLeft />
+            </button>
+          )}
           <h1 className="text-2xl font-bold">{metadata.name}</h1>
           <p className="mt-2">{metadata.description}</p>
           <h2 className="text-lg font-bold mt-4">Artists</h2>
