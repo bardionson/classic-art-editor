@@ -24,6 +24,8 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
   const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
   const [collector, setCollector] = useState<Address>();
   const [error, setError] = useState<string>();
+  const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const renderArtwork = async () => {
@@ -54,6 +56,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         setMetadata(metadata);
 
         const masterArtSize = await getMasterArtSize(metadata.image);
+        setIsLandscape(masterArtSize.width > masterArtSize.height);
 
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
           tokenId,
@@ -110,6 +113,10 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
           const layerImageElement = await layerImageBuilder.build();
           layerImageElement.resize(resizeToFitScreenRatio);
           artElement.appendChild(layerImageElement);
+          setLayerHashes((prevHashes) => ({
+            ...prevHashes,
+            [layer.id]: layer.activeStateURI,
+          }));
         }
 
         artElement.classList.remove('-z-20');
@@ -130,5 +137,5 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
     };
   }, [tokenAddress, tokenId]);
 
-  return { artElementRef, statusMessage, metadata, collector, error };
+  return { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape };
 };

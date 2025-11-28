@@ -25,7 +25,7 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
-  const { artElementRef, statusMessage, metadata, collector, error } =
+  const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
     useArtwork(tokenAddress, tokenId);
 
   if (error) {
@@ -40,7 +40,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <>
+    <div className={`flex ${isLandscape ? 'flex-row' : 'flex-col'}`}>
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
@@ -107,11 +107,13 @@ export default function ArtworkViewer({
         <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
           <ul>
             {metadata?.layout.layers.map((layer) => (
-              <li key={layer.id}>{layer.id}</li>
+              <li key={layer.id} className="break-all">
+                {layer.id}: {layerHashes[layer.id]}
+              </li>
             ))}
           </ul>
         </Modal>
       )}
-    </>
+    </div>
   );
 }
