@@ -25,7 +25,7 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
-  const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
+  const { artElementRef, statusMessage, metadata, collector, error, layerHashes } =
     useArtwork(tokenAddress, tokenId);
 
   if (error) {
@@ -40,7 +40,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <div className={`flex ${isLandscape ? 'flex-row' : 'flex-col'}`}>
+    <>
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
@@ -106,14 +106,30 @@ export default function ArtworkViewer({
       {isLayersModalOpen && (
         <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
           <ul>
-            {metadata?.layout.layers.map((layer) => (
-              <li key={layer.id} className="break-all">
-                {layer.id}: {layerHashes[layer.id]}
-              </li>
-            ))}
+            {metadata?.layout.layers.map((layer) => {
+              const hash = layerHashes[layer.id];
+              if (!hash) return <li key={layer.id}>{layer.id}: Not Available</li>;
+
+              const sanitizedHash = hash.startsWith('ipfs://')
+                ? hash.slice(7)
+                : hash;
+
+              return (
+                <li key={layer.id} className="break-all">
+                  {layer.id}:{' '}
+                  <a
+                    href={`https://ipfs.io/ipfs/${sanitizedHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ipfs
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </Modal>
       )}
-    </div>
+    </>
   );
 }

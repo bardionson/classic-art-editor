@@ -25,7 +25,6 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
   const [collector, setCollector] = useState<Address>();
   const [error, setError] = useState<string>();
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
-  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const renderArtwork = async () => {
@@ -56,7 +55,6 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         setMetadata(metadata);
 
         const masterArtSize = await getMasterArtSize(metadata.image);
-        setIsLandscape(masterArtSize.width > masterArtSize.height);
 
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
           tokenId,
@@ -79,6 +77,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         artElement.style.width = `${width * resizeToFitScreenRatio}px`;
         artElement.style.height = `${height * resizeToFitScreenRatio}px`;
 
+        const newLayerHashes: Record<string, string> = {};
         for (const layer of layers) {
           if (!isComponentMountedRef.current) return;
 
@@ -113,11 +112,9 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
           const layerImageElement = await layerImageBuilder.build();
           layerImageElement.resize(resizeToFitScreenRatio);
           artElement.appendChild(layerImageElement);
-          setLayerHashes((prevHashes) => ({
-            ...prevHashes,
-            [layer.id]: layer.activeStateURI,
-          }));
+          newLayerHashes[layer.id] = layer.activeStateURI;
         }
+        setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
         setStatusMessage('');
@@ -137,5 +134,5 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
     };
   }, [tokenAddress, tokenId]);
 
-  return { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape };
+  return { artElementRef, statusMessage, metadata, collector, error, layerHashes };
 };
