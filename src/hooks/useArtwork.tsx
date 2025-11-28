@@ -15,8 +15,6 @@ import LayerImageBuilder, {
   LayerImageElement,
 } from '@/components/master-art-viewer/layer-image-builder';
 
-const ART_ELEMENT_ID = 'master-art';
-
 export const useArtwork = (tokenAddress: Address, tokenId: number) => {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);

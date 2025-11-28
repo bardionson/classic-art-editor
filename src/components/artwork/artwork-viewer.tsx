@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { XCircle, X, Maximize } from 'react-feather';
+import { XCircle, X, Maximize, Layers } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import Spinner from '@/components/common/spinner';
+import { Modal } from '@/components/common/modal';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -23,6 +24,7 @@ export default function ArtworkViewer({
   detailsContainerClassName,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const { artElementRef, statusMessage, metadata, collector, error } =
     useArtwork(tokenAddress, tokenId);
 
@@ -41,8 +43,8 @@ export default function ArtworkViewer({
     <>
       <div
         className={`flex items-center justify-center ${
-          isFullscreen ? 'w-full h-full' : ''
-        } ${artContainerClassName}`}
+          isFullscreen ? 'w-full h-full' : artContainerClassName || ''
+        }`}
       >
         {statusMessage && (
           <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
@@ -72,12 +74,20 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
-        <button
-          onClick={() => setIsFullscreen(!isFullscreen)}
-          className="absolute bottom-4 right-4 bg-gray-800 text-white p-2 rounded-full"
-        >
-          {isFullscreen ? <X /> : <Maximize />}
-        </button>
+        <div className="absolute bottom-4 right-4 flex space-x-2">
+          <button
+            onClick={() => setIsLayersModalOpen(true)}
+            className="bg-gray-800 text-white p-2 rounded-full"
+          >
+            <Layers />
+          </button>
+          <button
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            className="bg-gray-800 text-white p-2 rounded-full"
+          >
+            {isFullscreen ? <X /> : <Maximize />}
+          </button>
+        </div>
       </div>
       {!isFullscreen && metadata && (
         <div className={detailsContainerClassName}>
@@ -92,6 +102,15 @@ export default function ArtworkViewer({
           <h2 className="text-lg font-bold mt-4">Collector</h2>
           <p className="break-all">{collector}</p>
         </div>
+      )}
+      {isLayersModalOpen && (
+        <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
+          <ul>
+            {metadata?.layout.layers.map((layer) => (
+              <li key={layer.id}>{layer.id}</li>
+            ))}
+          </ul>
+        </Modal>
       )}
     </>
   );
