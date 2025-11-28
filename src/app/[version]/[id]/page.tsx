@@ -18,5 +18,14 @@ export default function ArtworkPage({
     return <div>Invalid version</div>;
   }
 
-  return <ArtworkViewer tokenAddress={tokenAddress as Address} tokenId={tokenId} />;
+  return (
+    <div className="flex flex-row h-screen">
+      <ArtworkViewer
+        tokenAddress={tokenAddress as Address}
+        tokenId={tokenId}
+        artContainerClassName="w-3/4"
+        detailsContainerClassName="w-1/4 bg-gray-100 p-4 overflow-y-auto"
+      />
+    </div>
+  );
 }

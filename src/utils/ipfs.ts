@@ -46,3 +46,9 @@ export async function fetchIpfs(
 
   throw new Error(`Unable to load IPFS resource at URI: ${uri}`);
 }
+
+export function getIpfsUrl(uri: string) {
+  const customGateway = getCustomIPFSGateway();
+  const gatewayURL = customGateway || 'https://ipfs.io';
+  return `${gatewayURL}/ipfs/${uri}`;
+}
