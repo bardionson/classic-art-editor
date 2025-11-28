@@ -25,7 +25,7 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
-  const { artElementRef, statusMessage, metadata, collector, error, layerHashes } =
+  const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
     useArtwork(tokenAddress, tokenId);
 
   if (error) {
@@ -40,7 +40,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <>
+    <div className="relative">
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
@@ -74,7 +74,7 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
-        <div className="absolute bottom-4 right-4 flex space-x-2">
+        <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
           <button
             onClick={() => setIsLayersModalOpen(true)}
             className="bg-gray-800 text-white p-2 rounded-full"
@@ -90,7 +90,13 @@ export default function ArtworkViewer({
         </div>
       </div>
       {!isFullscreen && metadata && (
-        <div className={detailsContainerClassName}>
+        <div
+          className={`${
+            isLandscape
+              ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-50 p-4 overflow-y-auto'
+              : detailsContainerClassName
+          }`}
+        >
           <h1 className="text-2xl font-bold">{metadata.name}</h1>
           <p className="mt-2">{metadata.description}</p>
           <h2 className="text-lg font-bold mt-4">Artists</h2>
@@ -130,6 +136,6 @@ export default function ArtworkViewer({
           </ul>
         </Modal>
       )}
-    </>
+    </div>
   );
 }
