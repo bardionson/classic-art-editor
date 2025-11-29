@@ -24,6 +24,8 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
   const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
   const [collector, setCollector] = useState<Address>();
   const [error, setError] = useState<string>();
+  const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
+  const [isLandscape, setIsLandscape] = useState(false);
 
   useEffect(() => {
     const renderArtwork = async () => {
@@ -45,8 +47,15 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
           if (!tokenURI) throw new Error('URI query for nonexistent token');
           const owner = await contract.read.ownerOf([BigInt(tokenId)]);
           setCollector(owner);
-        } catch (e) {
-          throw new Error('Token not found. Please check the version and ID.');
+        } catch (e: any) {
+          if (e.message.includes('owner query for nonexistent token')) {
+            throw new Error(
+              'Token not found. Please check the version and ID.',
+            );
+          }
+          throw new Error(
+            'Could not connect to the network. Please try again or use a custom RPC.',
+          );
         }
 
         const response = await fetchIpfs(tokenURI);
@@ -54,6 +63,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         setMetadata(metadata);
 
         const masterArtSize = await getMasterArtSize(metadata.image);
+        setIsLandscape(masterArtSize.width > masterArtSize.height);
 
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
           tokenId,
@@ -76,6 +86,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         artElement.style.width = `${width * resizeToFitScreenRatio}px`;
         artElement.style.height = `${height * resizeToFitScreenRatio}px`;
 
+        const newLayerHashes: Record<string, string> = {};
         for (const layer of layers) {
           if (!isComponentMountedRef.current) return;
 
@@ -110,7 +121,9 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
           const layerImageElement = await layerImageBuilder.build();
           layerImageElement.resize(resizeToFitScreenRatio);
           artElement.appendChild(layerImageElement);
+          newLayerHashes[layer.id] = layer.activeStateURI;
         }
+        setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
         setStatusMessage('');
@@ -130,5 +143,5 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
     };
   }, [tokenAddress, tokenId]);
 
-  return { artElementRef, statusMessage, metadata, collector, error };
+  return { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape };
 };
