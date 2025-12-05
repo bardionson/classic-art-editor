@@ -15,7 +15,7 @@ import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { MasterArtNFTMetadata } from '@/types/shared';
 import { fetchIpfs } from '@/utils/ipfs';
 import { useEffect, useRef, useState } from 'react';
-import { XCircle } from 'react-feather';
+import { XCircle, X, Maximize } from 'react-feather';
 import { Address, createPublicClient, getContract, http } from 'viem';
 import { mainnet, goerli } from 'wagmi/chains';
 
@@ -25,11 +25,13 @@ const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
 type ArtworkViewerProps = {
   tokenAddress: Address;
   tokenId: number;
+  initialFullscreen?: boolean;
 };
 
 export default function ArtworkViewer({
   tokenAddress,
   tokenId,
+  initialFullscreen,
 }: ArtworkViewerProps) {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);
@@ -39,6 +41,7 @@ export default function ArtworkViewer({
   const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
   const [collector, setCollector] = useState<Address>();
   const [error, setError] = useState<string>();
+  const [isFullscreen, setIsFullscreen] = useState(!!initialFullscreen);
 
   const renderArtwork = async () => {
     try {
@@ -157,7 +160,7 @@ export default function ArtworkViewer({
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
-      <div className="flex-grow flex items-center justify-center">
+      <div className="flex-grow flex items-center justify-center relative">
         {statusMessage && (
           <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
             {statusMessage === ERROR_MESSAGE ? (
@@ -186,23 +189,31 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
+        <button
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          className="absolute bottom-4 right-4 bg-gray-800 text-white p-2 rounded-full"
+        >
+          {isFullscreen ? <X /> : <Maximize />}
+        </button>
       </div>
-      <div className="md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
-        {metadata && (
-          <>
-            <h1 className="text-2xl font-bold">{metadata.name}</h1>
-            <p className="mt-2">{metadata.description}</p>
-            <h2 className="text-lg font-bold mt-4">Artists</h2>
-            <ul>
-              {metadata['async-attributes']?.artists.map((artist) => (
-                <li key={artist}>{artist}</li>
-              ))}
-            </ul>
-            <h2 className="text-lg font-bold mt-4">Collector</h2>
-            <p className="break-all">{collector}</p>
-          </>
-        )}
-      </div>
+      {!isFullscreen && (
+        <div className="md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
+          {metadata && (
+            <>
+              <h1 className="text-2xl font-bold">{metadata.name}</h1>
+              <p className="mt-2">{metadata.description}</p>
+              <h2 className="text-lg font-bold mt-4">Artists</h2>
+              <ul>
+                {metadata['async-attributes']?.artists.map((artist) => (
+                  <li key={artist}>{artist}</li>
+                ))}
+              </ul>
+              <h2 className="text-lg font-bold mt-4">Collector</h2>
+              <p className="break-all">{collector}</p>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
