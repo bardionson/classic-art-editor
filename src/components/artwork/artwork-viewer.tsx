@@ -15,7 +15,7 @@ import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { MasterArtNFTMetadata } from '@/types/shared';
 import { fetchIpfs } from '@/utils/ipfs';
 import { useEffect, useRef, useState } from 'react';
-import { XCircle } from 'react-feather';
+import { XCircle, X, Maximize } from 'react-feather';
 import { Address, createPublicClient, getContract, http } from 'viem';
 import { mainnet, goerli } from 'wagmi/chains';
 
@@ -25,11 +25,13 @@ const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
 type ArtworkViewerProps = {
   tokenAddress: Address;
   tokenId: number;
+  initialFullscreen?: boolean;
 };
 
 export default function ArtworkViewer({
   tokenAddress,
   tokenId,
+  initialFullscreen,
 }: ArtworkViewerProps) {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);
@@ -39,6 +41,7 @@ export default function ArtworkViewer({
   const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
   const [collector, setCollector] = useState<Address>();
   const [error, setError] = useState<string>();
+  const [isFullscreen, setIsFullscreen] = useState(!!initialFullscreen);
 
   const renderArtwork = async () => {
     try {
@@ -186,11 +189,18 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
+        <button
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          className="absolute bottom-4 right-4 bg-gray-800 text-white p-2 rounded-full"
+        >
+          {isFullscreen ? <X /> : <Maximize />}
+        </button>
       </div>
-      <div className="md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
-        {metadata && (
-          <>
-            <h1 className="text-2xl font-bold">{metadata.name}</h1>
+      {!isFullscreen && (
+        <div className="md:w-1/4 bg-gray-100 p-4 overflow-y-auto">
+          {metadata && (
+            <>
+              <h1 className="text-2xl font-bold">{metadata.name}</h1>
             <p className="mt-2">{metadata.description}</p>
             <h2 className="text-lg font-bold mt-4">Artists</h2>
             <ul>

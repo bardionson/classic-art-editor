@@ -6,11 +6,14 @@ export const dynamic = 'force-dynamic';
 
 export default function ArtworkPage({
   params,
+  searchParams,
 }: {
   params: { version: string; id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { version, id } = params;
   const tokenId = Number(id);
+  const initialFullscreen = searchParams.full_screen === 'true';
   const tokenAddress =
     version === 'v1' ? V1_CONTRACT_ADDRESS : V2_CONTRACT_ADDRESS;
 
@@ -18,5 +21,11 @@ export default function ArtworkPage({
     return <div>Invalid version</div>;
   }
 
-  return <ArtworkViewer tokenAddress={tokenAddress as Address} tokenId={tokenId} />;
+  return (
+    <ArtworkViewer
+      tokenAddress={tokenAddress as Address}
+      tokenId={tokenId}
+      initialFullscreen={initialFullscreen}
+    />
+  );
 }
