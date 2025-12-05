@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { XCircle, X, Maximize, Layers } from 'react-feather';
+import {
+  XCircle,
+  X,
+  Maximize,
+  Layers,
+  ChevronLeft,
+  Info,
+} from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import Spinner from '@/components/common/spinner';
@@ -25,7 +32,8 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
-  const { artElementRef, statusMessage, metadata, collector, error } =
+  const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
+  const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
     useArtwork(tokenAddress, tokenId);
 
   if (error) {
@@ -40,7 +48,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <>
+    <div className="relative">
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
@@ -74,7 +82,7 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
-        <div className="absolute bottom-4 right-4 flex space-x-2">
+        <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
           <button
             onClick={() => setIsLayersModalOpen(true)}
             className="bg-gray-800 text-white p-2 rounded-full"
@@ -89,8 +97,34 @@ export default function ArtworkViewer({
           </button>
         </div>
       </div>
-      {!isFullscreen && metadata && (
-        <div className={detailsContainerClassName}>
+      {!isFullscreen &&
+        isLandscape &&
+        !isDescriptionPanelOpen && (
+          <button
+            onClick={() => setIsDescriptionPanelOpen(true)}
+            className="absolute top-1/2 right-4 bg-gray-800 text-white p-2 rounded-full"
+          >
+            <Info />
+          </button>
+        )}
+      {!isFullscreen &&
+        metadata &&
+        (isDescriptionPanelOpen || !isLandscape) && (
+        <div
+          className={`${
+            isLandscape
+              ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 p-4 overflow-y-auto text-white'
+              : detailsContainerClassName
+          }`}
+        >
+          {isLandscape && (
+            <button
+              onClick={() => setIsDescriptionPanelOpen(false)}
+              className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
+            >
+              <ChevronLeft />
+            </button>
+          )}
           <h1 className="text-2xl font-bold">{metadata.name}</h1>
           <p className="mt-2">{metadata.description}</p>
           <h2 className="text-lg font-bold mt-4">Artists</h2>
@@ -106,12 +140,30 @@ export default function ArtworkViewer({
       {isLayersModalOpen && (
         <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
           <ul>
-            {metadata?.layout.layers.map((layer) => (
-              <li key={layer.id}>{layer.id}</li>
-            ))}
+            {metadata?.layout.layers.map((layer) => {
+              const hash = layerHashes[layer.id];
+              if (!hash) return <li key={layer.id}>{layer.id}: Not Available</li>;
+
+              const sanitizedHash = hash.startsWith('ipfs://')
+                ? hash.slice(7)
+                : hash;
+
+              return (
+                <li key={layer.id} className="break-all">
+                  {layer.id}:{' '}
+                  <a
+                    href={`https://ipfs.io/ipfs/${sanitizedHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ipfs
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </Modal>
       )}
-    </>
+    </div>
   );
 }
