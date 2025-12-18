@@ -16,6 +16,7 @@ import { CheckCircle } from 'react-feather';
 import { Address, createPublicClient, getContract, http } from 'viem';
 import { useWalletClient } from 'wagmi';
 import { mainnet, goerli } from 'wagmi/chains';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const publicClient = createPublicClient({
   chain: __PROD__ ? mainnet : goerli,
@@ -313,6 +314,11 @@ function ChangeModal({
         <img src={imageSrc} alt={title} className="max-w-72 max-h-48 mx-auto" />
       ) : (
         <div className="size-48 bg-grey2 mx-auto rounded animate-pulse" />
+      )}
+      {!walletClient && (
+        <div className="flex justify-center my-4">
+          <ConnectButton />
+        </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-3 mt-5">
         {controls.map((control, index) =>

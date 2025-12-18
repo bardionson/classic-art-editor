@@ -53,9 +53,6 @@ export default function Home() {
           <h1 className="hidden sm:block text-2xl font-bold ml-3">
             Classic Art Editor - Bård Ionson Version 2
           </h1>
-          <WalletProvider>
-            <ConnectButton accountStatus="address" showBalance={false} />
-          </WalletProvider>
         </nav>
       </header>
       <main className="container px-4">
