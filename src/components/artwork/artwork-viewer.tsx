@@ -54,7 +54,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-row h-full w-full">
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
