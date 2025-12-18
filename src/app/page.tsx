@@ -9,7 +9,7 @@ import ToolBox from '@/components/tool-box';
 import { useEffect, useState } from 'react';
 import LayerArtChanger from '@/components/layer-art-updater/layer-art-changer';
 import FAQ from '@/components/faq';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
 import { Address } from 'viem';
 import WalletProvider from '@/app/wallet-provider';
@@ -23,6 +23,7 @@ enum MODAL {
 export default function Home() {
   const [modal, setModal] = useState(MODAL.NONE);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const version = searchParams.get('version');
   const id = searchParams.get('id');
   const tokenId = id ? Number(id) : undefined;
@@ -107,6 +108,18 @@ export default function Home() {
               title="Update Layer"
               description="Update the values for a Layer token that you own."
               onClick={() => setModal(MODAL.UPDATE_LAYER_ARTWORK)}
+            />
+            <ToolBox
+              icon={viewMasterArtIcon}
+              title="Masters Gallery"
+              description="Browse and search all Master Artworks."
+              onClick={() => router.push('/gallery/masters')}
+            />
+            <ToolBox
+              icon={updateLayerArtIcon}
+              title="Layers Gallery"
+              description="Browse and search all Layer Artworks."
+              onClick={() => router.push('/gallery/layers')}
             />
           </div>
         </section>
