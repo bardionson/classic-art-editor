@@ -43,7 +43,7 @@ const getGalleryItems = (): GalleryItem[] => {
         description: master.description,
         imageUrl: master.imageUrl,
         artistName: '',
-        link: `/${version}/${master.tokenId}`,
+        link: `/${version}/${master.tokenId}?referrer=masters`,
         date: parseInt(master.tokenId, 10),
       });
     });

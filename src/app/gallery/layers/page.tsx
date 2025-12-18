@@ -65,7 +65,7 @@ const getGalleryItems = (): GalleryItem[] => {
       const masterId = cidToMasterTokenId[layer.masterTokenId];
 
       // If we found a master token ID, link to it.
-      const link = masterId ? `/${version}/${masterId}` : '#';
+      const link = masterId ? `/${version}/${masterId}?referrer=layers` : '#';
 
       items.push({
         id: `${contractAddress}-${layer.tokenId}`,
