@@ -1,4 +1,5 @@
 import { ArrowRightCircle } from 'react-feather';
+import Image from 'next/image';
 
 type Props = {
   title: string;
@@ -14,7 +15,7 @@ export default function ToolBox({ title, description, icon, onClick }: Props) {
       className="cursor-pointer rounded-lg p-5 shadow-soft-drop md:hover:scale-[103%] transition"
     >
       <div className="flex items-center justify-between">
-        <img src={icon.src} width={icon.width} height={icon.height} />
+        <Image src={icon.src} width={icon.width} height={icon.height} alt={title} />
         <ArrowRightCircle size={24} className="opacity-50" />
       </div>
       <h3 className="text-lg font-bold mt-4 mb-2">{title}</h3>
