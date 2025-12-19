@@ -8,11 +8,13 @@ import {
   Layers,
   ChevronLeft,
   Info,
+  ArrowLeft,
 } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import Spinner from '@/components/common/spinner';
 import { Modal } from '@/components/common/modal';
+import Link from 'next/link';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -22,6 +24,8 @@ type ArtworkViewerProps = {
   tokenId: number;
   artContainerClassName?: string;
   detailsContainerClassName?: string;
+  backLink?: string;
+  backLabel?: string;
 };
 
 export default function ArtworkViewer({
@@ -29,6 +33,8 @@ export default function ArtworkViewer({
   tokenId,
   artContainerClassName,
   detailsContainerClassName,
+  backLink,
+  backLabel,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
@@ -48,7 +54,7 @@ export default function ArtworkViewer({
   }
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-row h-full w-full">
       <div
         className={`flex items-center justify-center ${
           isFullscreen ? 'w-full h-full' : artContainerClassName || ''
@@ -124,6 +130,15 @@ export default function ArtworkViewer({
             >
               <ChevronLeft />
             </button>
+          )}
+          {backLink && (
+            <Link
+              href={backLink}
+              className="flex items-center text-sm text-gray-500 mb-4 hover:text-black transition-colors"
+            >
+              <ArrowLeft size={16} className="mr-1" />
+              {backLabel || 'Back'}
+            </Link>
           )}
           <h1 className="text-2xl font-bold">{metadata.name}</h1>
           <p className="mt-2">{metadata.description}</p>
