@@ -13,6 +13,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
 import { Address } from 'viem';
 import WalletProvider from '@/app/wallet-provider';
+import Image from 'next/image';
 
 enum MODAL {
   NONE,
@@ -44,10 +45,11 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center">
       <header className="container pt-8 mb-12 px-4">
         <nav className="flex items-center justify-between">
-          <img
+          <Image
             src={logo.src}
             width={logo.width}
             height={logo.height}
+            alt="Async Art Logo"
             className="w-24"
           />
           <h1 className="hidden sm:block text-2xl font-bold ml-3">

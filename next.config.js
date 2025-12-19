@@ -16,6 +16,26 @@ const nextConfig = {
     config.resolve.alias['@react-native-async-storage/async-storage'] = false;
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'nft-cdn.alchemy.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ipfs.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'alchemy.mypinata.cloud',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i2c.seadn.io',
+      },
+    ],
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
