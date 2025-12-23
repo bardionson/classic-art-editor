@@ -15,7 +15,11 @@ import LayerImageBuilder, {
   LayerImageElement,
 } from '@/components/master-art-viewer/layer-image-builder';
 
-export const useArtwork = (tokenAddress: Address, tokenId: number) => {
+export const useArtwork = (
+  tokenAddress: Address,
+  tokenId: number,
+  controlOverrides: Record<string, number> = {},
+) => {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);
   const [statusMessage, setStatusMessage] = useState<
@@ -26,6 +30,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
   const [error, setError] = useState<string>();
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
   const [isLandscape, setIsLandscape] = useState(false);
+  const [fetchedTokenURI, setFetchedTokenURI] = useState<string>();
 
   useEffect(() => {
     const renderArtwork = async () => {
@@ -44,6 +49,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         let tokenURI;
         try {
           tokenURI = await contract.read.tokenURI([BigInt(tokenId)]);
+          setFetchedTokenURI(tokenURI);
           if (!tokenURI) throw new Error('URI query for nonexistent token');
           const owner = await contract.read.ownerOf([BigInt(tokenId)]);
           setCollector(owner);
@@ -61,6 +67,7 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
           tokenId,
           metadata['async-attributes']?.['unminted-token-values'],
+          controlOverrides,
         );
 
         if (!isComponentMountedRef.current) return;
@@ -134,7 +141,16 @@ export const useArtwork = (tokenAddress: Address, tokenId: number) => {
     return () => {
       isComponentMountedRef.current = false;
     };
-  }, [tokenAddress, tokenId]);
+  }, [tokenAddress, tokenId, controlOverrides]);
 
-  return { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape };
+  return {
+    artElementRef,
+    statusMessage,
+    metadata,
+    collector,
+    error,
+    layerHashes,
+    isLandscape,
+    tokenURI: fetchedTokenURI,
+  };
 };
