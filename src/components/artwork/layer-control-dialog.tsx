@@ -78,14 +78,17 @@ export default function LayerControlDialog({
   const handleChange = (index: number, value: number) => {
     const newValues = { ...localValues, [index]: value };
     setLocalValues(newValues);
+  };
 
+  const handlePreview = () => {
     // Send preview update
     const previewValues: Record<string, number> = {};
-    Object.keys(newValues).forEach((k) => {
+    Object.keys(localValues).forEach((k) => {
       // @ts-ignore
-      previewValues[`${layer.tokenId}-${k}`] = newValues[k];
+      previewValues[`${layer.tokenId}-${k}`] = localValues[k];
     });
     onPreview(layer.tokenId, previewValues);
+    onClose();
   };
 
   const handleUpdateChain = () => {
@@ -152,6 +155,12 @@ export default function LayerControlDialog({
           >
             Close
           </button>
+          <button
+            onClick={handlePreview}
+            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+          >
+            Preview
+          </button>
           {isOwner ? (
             <button
               onClick={handleUpdateChain}
@@ -161,9 +170,9 @@ export default function LayerControlDialog({
               {isPending ? 'Updating...' : 'Update on Chain'}
             </button>
           ) : (
-             <div className="text-xs text-gray-500 flex items-center">
-                 Only owner can update on-chain
-             </div>
+            <div className="text-xs text-gray-500 flex items-center">
+              Only owner can update on-chain
+            </div>
           )}
         </div>
         {isSuccess && (
