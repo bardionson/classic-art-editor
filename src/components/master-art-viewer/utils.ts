@@ -171,10 +171,18 @@ export function createGetLayerControlTokenValueFn(
   unmintedTokenValuesMap: NonNullable<
     MasterArtNFTMetadata['async-attributes']
   >['unminted-token-values'],
+  controlOverrides: Record<string, number> = {},
 ) {
   const cache: { [layerTokenId: string]: readonly bigint[] } = {};
   return async (relativeLayerTokenId: number, leverId: number) => {
     const layerTokenId = masterTokenId + relativeLayerTokenId;
+
+    if (
+      controlOverrides[`${layerTokenId}-${leverId}`] !== undefined
+    ) {
+      return controlOverrides[`${layerTokenId}-${leverId}`];
+    }
+
     if (cache[layerTokenId])
       return Number(cache[layerTokenId][2 + leverId * 3]);
 

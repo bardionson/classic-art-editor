@@ -15,6 +15,9 @@ import { useArtwork } from '@/hooks/useArtwork';
 import Spinner from '@/components/common/spinner';
 import { Modal } from '@/components/common/modal';
 import Link from 'next/link';
+import LayerControlList from '@/components/artwork/layer-control-list';
+import LayerControlDialog from '@/components/artwork/layer-control-dialog';
+import layersData from '@/layers.json';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -39,8 +42,30 @@ export default function ArtworkViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
-  const { artElementRef, statusMessage, metadata, collector, error, layerHashes, isLandscape } =
-    useArtwork(tokenAddress, tokenId);
+  const [controlOverrides, setControlOverrides] = useState<
+    Record<string, number>
+  >({});
+  const [selectedLayer, setSelectedLayer] = useState<any>(null);
+
+  const {
+    artElementRef,
+    statusMessage,
+    metadata,
+    collector,
+    error,
+    layerHashes,
+    isLandscape,
+    tokenURI,
+  } = useArtwork(tokenAddress, tokenId, controlOverrides);
+
+  const layers = (
+    layersData[tokenAddress as keyof typeof layersData] || []
+  ).filter((l: any) => {
+    if (!tokenURI) return false;
+    // Normalize logic: check if tokenURI contains the masterTokenId (CID)
+    // tokenURI might be "ipfs://CID" or "https://.../CID"
+    return tokenURI.includes(l.masterTokenId);
+  });
 
   if (error) {
     return (
@@ -54,12 +79,13 @@ export default function ArtworkViewer({
   }
 
   return (
-    <div className="relative flex flex-row h-full w-full">
-      <div
-        className={`flex items-center justify-center ${
-          isFullscreen ? 'w-full h-full' : artContainerClassName || ''
-        }`}
-      >
+    <div className="flex flex-col w-full h-full">
+      <div className="relative flex flex-row h-full w-full">
+        <div
+          className={`flex items-center justify-center ${
+            isFullscreen ? 'w-full h-full' : artContainerClassName || ''
+          }`}
+        >
         {statusMessage && (
           <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
             {statusMessage === ERROR_MESSAGE ? (
@@ -88,22 +114,22 @@ export default function ArtworkViewer({
           ref={artElementRef}
           className="relative mx-auto -z-20"
         />
-        <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
-          <button
-            onClick={() => setIsLayersModalOpen(true)}
-            className="bg-gray-800 text-white p-2 rounded-full"
-          >
-            <Layers />
-          </button>
-          <button
-            onClick={() => setIsFullscreen(!isFullscreen)}
-            className="bg-gray-800 text-white p-2 rounded-full"
-          >
-            {isFullscreen ? <X /> : <Maximize />}
-          </button>
+          <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+            <button
+              onClick={() => setIsLayersModalOpen(true)}
+              className="bg-gray-800 text-white p-2 rounded-full"
+            >
+              <Layers />
+            </button>
+            <button
+              onClick={() => setIsFullscreen(!isFullscreen)}
+              className="bg-gray-800 text-white p-2 rounded-full"
+            >
+              {isFullscreen ? <X /> : <Maximize />}
+            </button>
+          </div>
         </div>
-      </div>
-      {!isFullscreen &&
+        {!isFullscreen &&
         isLandscape &&
         !isDescriptionPanelOpen && (
           <button
@@ -114,15 +140,15 @@ export default function ArtworkViewer({
           </button>
         )}
       {!isFullscreen &&
-        metadata &&
-        (isDescriptionPanelOpen || !isLandscape) && (
-        <div
-          className={`${
-            isLandscape
-              ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 p-4 overflow-y-auto text-white'
-              : detailsContainerClassName
-          }`}
-        >
+          metadata &&
+          (isDescriptionPanelOpen || !isLandscape) && (
+            <div
+              className={`${
+                isLandscape
+                  ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 p-4 overflow-y-auto text-white'
+                  : detailsContainerClassName
+              }`}
+            >
           {isLandscape && (
             <button
               onClick={() => setIsDescriptionPanelOpen(false)}
@@ -140,45 +166,62 @@ export default function ArtworkViewer({
               {backLabel || 'Back'}
             </Link>
           )}
-          <h1 className="text-2xl font-bold">{metadata.name}</h1>
-          <p className="mt-2">{metadata.description}</p>
-          <h2 className="text-lg font-bold mt-4">Artists</h2>
-          <ul>
-            {metadata['async-attributes']?.artists.map((artist) => (
-              <li key={artist}>{artist}</li>
-            ))}
-          </ul>
-          <h2 className="text-lg font-bold mt-4">Collector</h2>
-          <p className="break-all">{collector}</p>
-        </div>
-      )}
-      {isLayersModalOpen && (
-        <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
-          <ul>
-            {metadata?.layout.layers.map((layer) => {
-              const hash = layerHashes[layer.id];
-              if (!hash) return <li key={layer.id}>{layer.id}: Not Available</li>;
+              <h1 className="text-2xl font-bold">{metadata.name}</h1>
+              <p className="mt-2">{metadata.description}</p>
+              <h2 className="text-lg font-bold mt-4">Artists</h2>
+              <ul>
+                {metadata['async-attributes']?.artists.map((artist) => (
+                  <li key={artist}>{artist}</li>
+                ))}
+              </ul>
+              <h2 className="text-lg font-bold mt-4">Collector</h2>
+              <p className="break-all">{collector}</p>
+            </div>
+          )}
+        {isLayersModalOpen && (
+          <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
+            <ul>
+              {metadata?.layout.layers.map((layer) => {
+                const hash = layerHashes[layer.id];
+                if (!hash)
+                  return <li key={layer.id}>{layer.id}: Not Available</li>;
 
-              const sanitizedHash = hash.startsWith('ipfs://')
-                ? hash.slice(7)
-                : hash;
+                const sanitizedHash = hash.startsWith('ipfs://')
+                  ? hash.slice(7)
+                  : hash;
 
-              return (
-                <li key={layer.id} className="break-all">
-                  {layer.id}:{' '}
-                  <a
-                    href={`https://ipfs.io/ipfs/${sanitizedHash}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ipfs
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </Modal>
+                return (
+                  <li key={layer.id} className="break-all">
+                    {layer.id}:{' '}
+                    <a
+                      href={`https://ipfs.io/ipfs/${sanitizedHash}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      ipfs
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </Modal>
+        )}
+      </div>
+      {!isFullscreen && (
+        <LayerControlList
+          layers={layers}
+          onLayerClick={(layer) => setSelectedLayer(layer)}
+        />
       )}
+      <LayerControlDialog
+        layer={selectedLayer}
+        isOpen={!!selectedLayer}
+        onClose={() => setSelectedLayer(null)}
+        onPreview={(controlTokenId, values) =>
+          setControlOverrides((prev) => ({ ...prev, ...values }))
+        }
+        currentValues={controlOverrides}
+      />
     </div>
   );
 }
