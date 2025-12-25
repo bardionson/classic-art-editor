@@ -91,30 +91,23 @@ export const useArtwork = (
         artElement.innerHTML = '';
 
         const newLayerHashes: Record<string, string> = {};
-        for (const layer of layers) {
-          try {
-            if (!isComponentMountedRef.current) return;
 
-            const layerImageBuilder = new LayerImageBuilder(
-              layer.id,
-              layer.transformationProperties,
-              getLayerControlTokenValue,
-            );
+        // Initiate parallel loading
+        const layerBuilders = layers.map((layer) => {
+          const builder = new LayerImageBuilder(
+            layer.id,
+            layer.transformationProperties,
+            getLayerControlTokenValue,
+          );
+          builder.setLayoutVersion(metadata.layout.version || 1);
 
-            layerImageBuilder.setLayoutVersion(metadata.layout.version || 1);
-            if (layer.anchor) {
-              const anchorImageEl = Array.from(artElement.children).find(
-                (el) => el.id === layer.anchor,
-              ) as LayerImageElement;
-              layerImageBuilder.setAnchorLayer(anchorImageEl);
-            }
-
-            await layerImageBuilder.loadImage(layer.activeStateURI, (domain) =>
+          return {
+            layer,
+            builder,
+            loadPromise: builder.loadImage(layer.activeStateURI, (domain) =>
               setStatusMessage(
                 <>
-                  Loading layers {artElement.children.length + 1}/
-                  {layers.length}
-                  ...
+                  Loading layers...
                   <br />
                   Loading {layer.activeStateURI} from{' '}
                   <a target="_blank" href={`https://${domain}`}>
@@ -122,9 +115,28 @@ export const useArtwork = (
                   </a>
                 </>,
               ),
-            );
+            ),
+          };
+        });
 
-            const layerImageElement = await layerImageBuilder.build();
+        // Build and append in strict order
+        for (const { layer, builder, loadPromise } of layerBuilders) {
+          try {
+            if (!isComponentMountedRef.current) return;
+
+            // Wait for this specific layer's image to load
+            await loadPromise;
+
+            if (layer.anchor) {
+              const anchorImageEl = Array.from(artElement.children).find(
+                (el) => el.id === layer.anchor,
+              ) as LayerImageElement;
+              // If anchor failed to load, it won't be in DOM, so anchorImageEl will be undefined.
+              // setAnchorLayer handles undefined by setting anchorLayer to null.
+              builder.setAnchorLayer(anchorImageEl);
+            }
+
+            const layerImageElement = await builder.build();
             layerImageElement.resize(resizeToFitScreenRatio);
             artElement.appendChild(layerImageElement);
             newLayerHashes[layer.id] = layer.activeStateURI;
