@@ -33,6 +33,8 @@ export const useArtwork = (
   const [fetchedTokenURI, setFetchedTokenURI] = useState<string>();
 
   useEffect(() => {
+    isComponentMountedRef.current = true;
+
     const renderArtwork = async () => {
       try {
         const publicClient = createPublicClient({
