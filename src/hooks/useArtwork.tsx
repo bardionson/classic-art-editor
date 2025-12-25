@@ -37,6 +37,8 @@ export const useArtwork = (
     resizeToFitScreenRatio: number;
   }>();
 
+  const layerBlobUrlsRef = useRef<Record<string, string>>({});
+
   // 1. Fetch Metadata (only re-runs if token changes)
   useEffect(() => {
     isComponentMountedRef.current = true;
@@ -139,21 +141,34 @@ export const useArtwork = (
           );
           builder.setLayoutVersion(metadata.layout.version || 1);
 
+          const loadTask = async () => {
+            const cachedUrl = layerBlobUrlsRef.current[layer.activeStateURI];
+
+            const blobUrl = await builder.loadImage(
+              layer.activeStateURI,
+              (domain) =>
+                setStatusMessage(
+                  <>
+                    Loading layers...
+                    <br />
+                    Loading {layer.activeStateURI} from{' '}
+                    <a target="_blank" href={`https://${domain}`}>
+                      {domain}
+                    </a>
+                  </>,
+                ),
+              cachedUrl,
+            );
+
+            if (blobUrl) {
+                layerBlobUrlsRef.current[layer.activeStateURI] = blobUrl;
+            }
+          };
+
           return {
             layer,
             builder,
-            loadPromise: builder.loadImage(layer.activeStateURI, (domain) =>
-              setStatusMessage(
-                <>
-                  Loading layers...
-                  <br />
-                  Loading {layer.activeStateURI} from{' '}
-                  <a target="_blank" href={`https://${domain}`}>
-                    {domain}
-                  </a>
-                </>,
-              ),
-            ),
+            loadPromise: loadTask(),
           };
         });
 
@@ -209,5 +224,6 @@ export const useArtwork = (
     layerHashes,
     isLandscape,
     tokenURI: fetchedTokenURI,
+    masterArtSize,
   };
 };

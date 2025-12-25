@@ -15,6 +15,7 @@ import seedrandom from 'seedrandom';
 export interface LayerImageElement extends HTMLImageElement {
   naturalTop: number;
   naturalLeft: number;
+  transformationProperties: LayerTransformationProperties;
   resize: (ratio: number) => void;
 }
 
@@ -52,17 +53,22 @@ export default class LayerImageBuilder {
     this.layoutVersion = layoutVersion;
   }
 
-  async loadImage(uri: string, reportGateway: Parameters<typeof fetchIpfs>[1]) {
-    const imageResponse = await fetchIpfs(uri, reportGateway);
-    const imageBlob = await imageResponse.blob();
-
-    this.image.src = URL.createObjectURL(imageBlob);
+  async loadImage(uri: string, reportGateway: Parameters<typeof fetchIpfs>[1], cachedBlobUrl?: string) {
+    if (cachedBlobUrl) {
+      this.image.src = cachedBlobUrl;
+    } else {
+      const imageResponse = await fetchIpfs(uri, reportGateway);
+      const imageBlob = await imageResponse.blob();
+      this.image.src = URL.createObjectURL(imageBlob);
+    }
 
     // Ensures that naturalWidth, naturalHeight, width and height properties are populated
     await new Promise((resolve) => {
       if (this.image.complete) return resolve(undefined);
       this.image.onload = () => resolve(undefined);
     });
+
+    return this.image.src;
   }
 
   async build(): Promise<LayerImageElement> {
@@ -78,6 +84,7 @@ export default class LayerImageBuilder {
     return Object.assign(this.image, {
       naturalTop,
       naturalLeft,
+      transformationProperties: this.transformationProperties,
       resize: (ratio: number) => {
         this.image.style.maxWidth = `${this.image.naturalWidth * ratio}px`;
         this.image.style.maxHeight = `${this.image.naturalHeight * ratio}px`;

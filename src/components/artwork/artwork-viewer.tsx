@@ -42,6 +42,7 @@ export default function ArtworkViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
   const [controlOverrides, setControlOverrides] = useState<
     Record<string, number>
   >({});
@@ -56,6 +57,7 @@ export default function ArtworkViewer({
     layerHashes,
     isLandscape,
     tokenURI,
+    masterArtSize,
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layers = (
@@ -112,9 +114,126 @@ export default function ArtworkViewer({
         <div
           id={ART_ELEMENT_ID}
           ref={artElementRef}
-          className="relative mx-auto -z-20"
+          className={`relative mx-auto -z-20 ${
+            isEditMode ? 'cursor-move' : ''
+          }`}
+          onMouseDown={(e) => {
+            if (!isEditMode || !artElementRef.current || !masterArtSize) return;
+
+            const target = e.target as HTMLImageElement;
+            // Check if target is a layer image (has id)
+            if (!target.id || !target.classList.contains('absolute')) return;
+
+            // Access custom properties we attached in LayerImageBuilder
+            // @ts-ignore
+            const transformProps = target.transformationProperties;
+            if (!transformProps) return;
+
+            // Determine if layer has positioning controls
+            let xControl: any = null;
+            let yControl: any = null;
+
+            if (transformProps['fixed-position']) {
+              xControl = transformProps['fixed-position'].x;
+              yControl = transformProps['fixed-position'].y;
+            } else if (transformProps['relative-position']) {
+              xControl = transformProps['relative-position'].x;
+              yControl = transformProps['relative-position'].y;
+            }
+
+            // Must be controllable (object with token-id), not static number
+            if (
+              !xControl ||
+              typeof xControl === 'number' ||
+              !yControl ||
+              typeof yControl === 'number'
+            ) {
+              return;
+            }
+
+            e.preventDefault(); // Prevent text selection/drag image ghost
+
+            const startX = e.clientX;
+            const startY = e.clientY;
+
+            // Get current control values (or default to 0/center if missing)
+            // Note: We need the CURRENT value, which might be in controlOverrides or default.
+            // Since we don't have easy access to the resolved value here without recalculating,
+            // we can infer it from screen position? No, screen position includes scaling.
+            // Better: We rely on what's in controlOverrides if present, else we need the "base" value.
+            // Problem: If it's not in overrides, we don't know the starting value (on-chain).
+            // Solution: We should probably store the *resolved* values in the DOM element too?
+            // Or simpler: Just track Delta. But we need to know the ABSOLUTE value to set in overrides.
+
+            // Let's use the element's current rendered position to reverse-engineer the "current" value?
+            // currentPixels = (ControlValue - naturalWidth/2) * scale
+            // ControlValue = (currentPixels / scale) + naturalWidth/2
+            // "currentPixels" is style.left (parsed)
+
+            const currentLeftPixels = parseFloat(target.style.left || '0');
+            const currentTopPixels = parseFloat(target.style.top || '0');
+            const scale = masterArtSize.resizeToFitScreenRatio;
+
+            // Calculate implied current control value based on position
+            // Formula from Builder: left = (ControlValue - width/2) * scale
+            // => ControlValue = (left / scale) + width/2
+            const startControlX = Math.round(
+              currentLeftPixels / scale + target.naturalWidth / 2,
+            );
+            const startControlY = Math.round(
+              currentTopPixels / scale + target.naturalHeight / 2,
+            );
+
+            const handleMouseMove = (moveEvent: MouseEvent) => {
+              const dx = moveEvent.clientX - startX;
+              const dy = moveEvent.clientY - startY;
+
+              // Convert pixel delta to control value delta
+              // DeltaControl = DeltaPixels / scale
+              const dControlX = Math.round(dx / scale);
+              const dControlY = Math.round(dy / scale);
+
+              const newControlX = startControlX + dControlX;
+              const newControlY = startControlY + dControlY;
+
+              // Correct key construction based on logic in useArtwork/createGetLayerControlTokenValueFn:
+              // layerTokenId = masterTokenId + relativeLayerTokenId
+              // key = `${layerTokenId}-${leverId}`
+              const xKey = `${tokenId + xControl['token-id']}-${
+                xControl['lever-id']
+              }`;
+              const yKey = `${tokenId + yControl['token-id']}-${
+                yControl['lever-id']
+              }`;
+
+              setControlOverrides((prev) => ({
+                ...prev,
+                [xKey]: newControlX,
+                [yKey]: newControlY,
+              }));
+            };
+
+            const handleMouseUp = () => {
+              document.removeEventListener('mousemove', handleMouseMove);
+              document.removeEventListener('mouseup', handleMouseUp);
+            };
+
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+          }}
         />
           <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+            <button
+              onClick={() => setIsEditMode(!isEditMode)}
+              className={`p-2 rounded-full ${
+                isEditMode
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-800 text-white'
+              }`}
+              title={isEditMode ? 'Exit Edit Mode' : 'Enter Edit Mode'}
+            >
+              Edit
+            </button>
             <button
               onClick={() => setIsLayersModalOpen(true)}
               className="bg-gray-800 text-white p-2 rounded-full"
