@@ -67,7 +67,10 @@ export default function ArtworkViewer({
     // Normalize logic: check if tokenURI contains the masterTokenId (CID)
     // tokenURI might be "ipfs://CID" or "https://.../CID"
     return tokenURI.includes(l.masterTokenId);
-  });
+  }).map((l: any) => ({
+    ...l,
+    tokenId: tokenId + parseInt(l.tokenId, 10) // Convert relative ID to absolute ID
+  }));
 
   if (error) {
     return (
@@ -127,7 +130,10 @@ export default function ArtworkViewer({
             // Access custom properties we attached in LayerImageBuilder
             // @ts-ignore
             const transformProps = target.transformationProperties;
-            if (!transformProps) return;
+            if (!transformProps) {
+                console.log("Drag Error: No transformationProperties found on target", target.id);
+                return;
+            }
 
             // Determine if layer has positioning controls
             let xControl: any = null;
@@ -148,6 +154,7 @@ export default function ArtworkViewer({
               !yControl ||
               typeof yControl === 'number'
             ) {
+              console.log("Drag Error: Layer position is static or missing X/Y controls", target.id);
               return;
             }
 
@@ -156,49 +163,50 @@ export default function ArtworkViewer({
             const startX = e.clientX;
             const startY = e.clientY;
 
-            // Get current control values (or default to 0/center if missing)
-            // Note: We need the CURRENT value, which might be in controlOverrides or default.
-            // Since we don't have easy access to the resolved value here without recalculating,
-            // we can infer it from screen position? No, screen position includes scaling.
-            // Better: We rely on what's in controlOverrides if present, else we need the "base" value.
-            // Problem: If it's not in overrides, we don't know the starting value (on-chain).
-            // Solution: We should probably store the *resolved* values in the DOM element too?
-            // Or simpler: Just track Delta. But we need to know the ABSOLUTE value to set in overrides.
+            // Access current resolved control values attached in LayerImageBuilder
+            // @ts-ignore
+            const startControlX = target.currentControlX;
+            // @ts-ignore
+            const startControlY = target.currentControlY;
 
-            // Let's use the element's current rendered position to reverse-engineer the "current" value?
-            // currentPixels = (ControlValue - naturalWidth/2) * scale
-            // ControlValue = (currentPixels / scale) + naturalWidth/2
-            // "currentPixels" is style.left (parsed)
+            if (startControlX === undefined || startControlY === undefined) {
+               console.log("Drag Error: Missing currentControlX/Y on element", target.id);
+               return;
+            }
 
-            const currentLeftPixels = parseFloat(target.style.left || '0');
-            const currentTopPixels = parseFloat(target.style.top || '0');
             const scale = masterArtSize.resizeToFitScreenRatio;
 
-            // Calculate implied current control value based on position
-            // Formula from Builder: left = (ControlValue - width/2) * scale
-            // => ControlValue = (left / scale) + width/2
-            const startControlX = Math.round(
-              currentLeftPixels / scale + target.naturalWidth / 2,
-            );
-            const startControlY = Math.round(
-              currentTopPixels / scale + target.naturalHeight / 2,
-            );
+            // Read initial DOM positions once
+            const startPixelLeft = parseFloat(target.style.left || '0');
+            const startPixelTop = parseFloat(target.style.top || '0');
+
+            // Store delta to apply at end
+            let finalControlX = startControlX;
+            let finalControlY = startControlY;
 
             const handleMouseMove = (moveEvent: MouseEvent) => {
               const dx = moveEvent.clientX - startX;
               const dy = moveEvent.clientY - startY;
 
-              // Convert pixel delta to control value delta
+              // Update DOM directly for performance (visual preview only)
+              target.style.left = `${startPixelLeft + dx}px`;
+              target.style.top = `${startPixelTop + dy}px`;
+
+              // Calculate control values for eventual commit
               // DeltaControl = DeltaPixels / scale
               const dControlX = Math.round(dx / scale);
               const dControlY = Math.round(dy / scale);
 
-              const newControlX = startControlX + dControlX;
-              const newControlY = startControlY + dControlY;
+              finalControlX = startControlX + dControlX;
+              finalControlY = startControlY + dControlY;
+            };
 
-              // Correct key construction based on logic in useArtwork/createGetLayerControlTokenValueFn:
+            const handleMouseUp = () => {
+              document.removeEventListener('mousemove', handleMouseMove);
+              document.removeEventListener('mouseup', handleMouseUp);
+
+              // Commit changes to React state
               // layerTokenId = masterTokenId + relativeLayerTokenId
-              // key = `${layerTokenId}-${leverId}`
               const xKey = `${tokenId + xControl['token-id']}-${
                 xControl['lever-id']
               }`;
@@ -208,21 +216,16 @@ export default function ArtworkViewer({
 
               setControlOverrides((prev) => ({
                 ...prev,
-                [xKey]: newControlX,
-                [yKey]: newControlY,
+                [xKey]: finalControlX,
+                [yKey]: finalControlY,
               }));
-            };
-
-            const handleMouseUp = () => {
-              document.removeEventListener('mousemove', handleMouseMove);
-              document.removeEventListener('mouseup', handleMouseUp);
             };
 
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseup', handleMouseUp);
           }}
         />
-          <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+          <div className="absolute top-4 right-4 flex space-x-2 z-10">
             <button
               onClick={() => setIsEditMode(!isEditMode)}
               className={`p-2 rounded-full ${
@@ -234,6 +237,8 @@ export default function ArtworkViewer({
             >
               Edit
             </button>
+          </div>
+          <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
             <button
               onClick={() => setIsLayersModalOpen(true)}
               className="bg-gray-800 text-white p-2 rounded-full"
