@@ -92,40 +92,45 @@ export const useArtwork = (
 
         const newLayerHashes: Record<string, string> = {};
         for (const layer of layers) {
-          if (!isComponentMountedRef.current) return;
+          try {
+            if (!isComponentMountedRef.current) return;
 
-          const layerImageBuilder = new LayerImageBuilder(
-            layer.id,
-            layer.transformationProperties,
-            getLayerControlTokenValue,
-          );
+            const layerImageBuilder = new LayerImageBuilder(
+              layer.id,
+              layer.transformationProperties,
+              getLayerControlTokenValue,
+            );
 
-          layerImageBuilder.setLayoutVersion(metadata.layout.version || 1);
-          if (layer.anchor) {
-            const anchorImageEl = Array.from(artElement.children).find(
-              (el) => el.id === layer.anchor,
-            ) as LayerImageElement;
-            layerImageBuilder.setAnchorLayer(anchorImageEl);
+            layerImageBuilder.setLayoutVersion(metadata.layout.version || 1);
+            if (layer.anchor) {
+              const anchorImageEl = Array.from(artElement.children).find(
+                (el) => el.id === layer.anchor,
+              ) as LayerImageElement;
+              layerImageBuilder.setAnchorLayer(anchorImageEl);
+            }
+
+            await layerImageBuilder.loadImage(layer.activeStateURI, (domain) =>
+              setStatusMessage(
+                <>
+                  Loading layers {artElement.children.length + 1}/
+                  {layers.length}
+                  ...
+                  <br />
+                  Loading {layer.activeStateURI} from{' '}
+                  <a target="_blank" href={`https://${domain}`}>
+                    {domain}
+                  </a>
+                </>,
+              ),
+            );
+
+            const layerImageElement = await layerImageBuilder.build();
+            layerImageElement.resize(resizeToFitScreenRatio);
+            artElement.appendChild(layerImageElement);
+            newLayerHashes[layer.id] = layer.activeStateURI;
+          } catch (e: any) {
+            console.error(`Failed to load layer ${layer.id}:`, e);
           }
-
-          await layerImageBuilder.loadImage(layer.activeStateURI, (domain) =>
-            setStatusMessage(
-              <>
-                Loading layers {artElement.children.length + 1}/{layers.length}
-                ...
-                <br />
-                Loading {layer.activeStateURI} from{' '}
-                <a target="_blank" href={`https://${domain}`}>
-                  {domain}
-                </a>
-              </>,
-            ),
-          );
-
-          const layerImageElement = await layerImageBuilder.build();
-          layerImageElement.resize(resizeToFitScreenRatio);
-          artElement.appendChild(layerImageElement);
-          newLayerHashes[layer.id] = layer.activeStateURI;
         }
         setLayerHashes(newLayerHashes);
 
