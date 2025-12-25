@@ -86,6 +86,8 @@ export const useArtwork = (
         artElement.style.width = `${width * resizeToFitScreenRatio}px`;
         artElement.style.height = `${height * resizeToFitScreenRatio}px`;
 
+        artElement.innerHTML = '';
+
         const newLayerHashes: Record<string, string> = {};
         for (const layer of layers) {
           if (!isComponentMountedRef.current) return;
