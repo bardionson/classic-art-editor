@@ -31,11 +31,18 @@ export const useArtwork = (
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
   const [isLandscape, setIsLandscape] = useState(false);
   const [fetchedTokenURI, setFetchedTokenURI] = useState<string>();
+  const [masterArtSize, setMasterArtSize] = useState<{
+    width: number;
+    height: number;
+    resizeToFitScreenRatio: number;
+  }>();
 
+  // 1. Fetch Metadata (only re-runs if token changes)
   useEffect(() => {
     isComponentMountedRef.current = true;
-
-    const renderArtwork = async () => {
+    const fetchMetadata = async () => {
+      setStatusMessage('Loading NFT metadata...');
+      setError(undefined);
       try {
         const publicClient = createPublicClient({
           chain: __PROD__ ? mainnet : goerli,
@@ -51,9 +58,12 @@ export const useArtwork = (
         let tokenURI;
         try {
           tokenURI = await contract.read.tokenURI([BigInt(tokenId)]);
+          if (!isComponentMountedRef.current) return;
           setFetchedTokenURI(tokenURI);
           if (!tokenURI) throw new Error('URI query for nonexistent token');
+
           const owner = await contract.read.ownerOf([BigInt(tokenId)]);
+          if (!isComponentMountedRef.current) return;
           setCollector(owner);
         } catch (e) {
           throw new Error('Token not found. Please check the version and ID.');
@@ -61,11 +71,39 @@ export const useArtwork = (
 
         const response = await fetchIpfs(tokenURI);
         const metadata = (await response.json()) as MasterArtNFTMetadata;
+        if (!isComponentMountedRef.current) return;
         setMetadata(metadata);
 
-        const masterArtSize = await getMasterArtSize(metadata.image);
-        setIsLandscape(masterArtSize.width > masterArtSize.height);
+        const size = await getMasterArtSize(metadata.image);
+        if (!isComponentMountedRef.current) return;
+        setMasterArtSize(size);
+        setIsLandscape(size.width > size.height);
+      } catch (e: any) {
+        console.error(e);
+        if (isComponentMountedRef.current) {
+          setError(e.message);
+          setStatusMessage('');
+        }
+      }
+    };
 
+    if (tokenAddress && !isNaN(tokenId)) {
+      fetchMetadata();
+    }
+
+    return () => {
+      isComponentMountedRef.current = false;
+    };
+  }, [tokenAddress, tokenId]);
+
+  // 2. Render Layers (re-runs if metadata or overrides change)
+  useEffect(() => {
+    const renderLayers = async () => {
+      if (!metadata || !masterArtSize || !artElementRef.current) return;
+      // If we have an error from metadata fetch, don't try to render
+      if (error) return;
+
+      try {
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
           tokenId,
           metadata['async-attributes']?.['unminted-token-values'],
@@ -79,7 +117,7 @@ export const useArtwork = (
           getLayerControlTokenValue,
         );
 
-        const artElement = artElementRef.current!;
+        const artElement = artElementRef.current;
         const { width, height, resizeToFitScreenRatio } = masterArtSize;
         const marginTop =
           (window.innerHeight - height * resizeToFitScreenRatio) / 2;
@@ -144,25 +182,23 @@ export const useArtwork = (
             console.error(`Failed to load layer ${layer.id}:`, e);
           }
         }
+
+        if (!isComponentMountedRef.current) return;
         setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
         setStatusMessage('');
       } catch (e: any) {
         console.error(e);
-        setError(e.message);
-        setStatusMessage('');
+        if (isComponentMountedRef.current) {
+          setError(e.message);
+          setStatusMessage('');
+        }
       }
     };
 
-    if (tokenAddress && !isNaN(tokenId)) {
-        renderArtwork();
-    }
-
-    return () => {
-      isComponentMountedRef.current = false;
-    };
-  }, [tokenAddress, tokenId, controlOverrides]);
+    renderLayers();
+  }, [metadata, masterArtSize, controlOverrides, tokenId, error]);
 
   return {
     artElementRef,
