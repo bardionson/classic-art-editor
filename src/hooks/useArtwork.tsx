@@ -36,6 +36,7 @@ export const useArtwork = (
     height: number;
     resizeToFitScreenRatio: number;
   }>();
+  const [artists, setArtists] = useState<string[]>([]);
 
   // 1. Fetch Metadata (only re-runs if token changes)
   useEffect(() => {
@@ -73,6 +74,17 @@ export const useArtwork = (
         const metadata = (await response.json()) as MasterArtNFTMetadata;
         if (!isComponentMountedRef.current) return;
         setMetadata(metadata);
+
+        // Extract artists from attributes
+        if (metadata.attributes) {
+          const extractedArtists = metadata.attributes
+            .filter(
+              (attr: any) =>
+                attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
+            )
+            .map((attr: any) => attr.value);
+          setArtists(extractedArtists);
+        }
 
         const size = await getMasterArtSize(metadata.image);
         if (!isComponentMountedRef.current) return;
@@ -209,5 +221,6 @@ export const useArtwork = (
     layerHashes,
     isLandscape,
     tokenURI: fetchedTokenURI,
+    artists,
   };
 };
