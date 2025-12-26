@@ -118,14 +118,19 @@ export default function ArtworkViewer({
 
           if (!metadataUri) return;
 
-          const res = await fetchIpfs(metadataUri);
+          // Sanitize URI: remove ipfs:// prefix if present
+          const sanitizedUri = metadataUri.startsWith('ipfs://')
+            ? metadataUri.replace('ipfs://', '')
+            : metadataUri;
+
+          const res = await fetchIpfs(sanitizedUri);
           const data = await res.json();
           // Look for Artist in attributes
           const artistAttr = data.attributes?.find(
             (attr: any) =>
               attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
           );
-          if (artistAttr) {
+          if (artistAttr && artistAttr.value && artistAttr.value.trim() !== '') {
             newLayerArtists[layer.tokenId] = artistAttr.value;
           }
         } catch (err) {
