@@ -73,14 +73,47 @@ export default function ArtworkViewer({
   // Fetch layer metadata to get artist names
   useEffect(() => {
     const fetchLayerArtists = async () => {
+      // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
+      const { createPublicClient, http, getContract } = await import('viem');
+      const { mainnet, goerli } = await import('wagmi/chains');
+      const { V1_CONTRACT_ADDRESS, __PROD__ } = await import('@/config');
+      const v1Abi = (await import('@/abis/v1Abi')).default;
+      const v2Abi = (await import('@/abis/v2Abi')).default;
+
+      const publicClient = createPublicClient({
+        chain: __PROD__ ? mainnet : goerli,
+        transport: http(),
+      });
+
+      const contract = getContract({
+        address: tokenAddress,
+        abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+        client: publicClient,
+      });
+
       const newLayerArtists: Record<string, string> = {};
       const promises = layers.map(async (layer) => {
-        if (!layer.metadataUri) return;
         // Skip if already fetched
         if (layerArtists[layer.tokenId]) return;
 
         try {
-          const res = await fetchIpfs(layer.metadataUri);
+          // Fallback to fetching URI from contract if not in JSON (which it isn't)
+          let metadataUri = (layer as any).metadataUri;
+          if (!metadataUri) {
+            try {
+              metadataUri = await contract.read.tokenURI([BigInt(layer.tokenId)]);
+            } catch (e) {
+              console.error(
+                `Failed to fetch tokenURI from contract for layer ${layer.tokenId}`,
+                e,
+              );
+              return;
+            }
+          }
+
+          if (!metadataUri) return;
+
+          const res = await fetchIpfs(metadataUri);
           const data = await res.json();
           // Look for Artist in attributes
           const artistAttr = data.attributes?.find(
@@ -91,7 +124,10 @@ export default function ArtworkViewer({
             newLayerArtists[layer.tokenId] = artistAttr.value;
           }
         } catch (err) {
-          console.error(`Failed to fetch metadata for layer ${layer.tokenId}`, err);
+          console.error(
+            `Failed to fetch metadata for layer ${layer.tokenId}`,
+            err,
+          );
         }
       });
 
@@ -104,7 +140,7 @@ export default function ArtworkViewer({
     if (layers.length > 0) {
       fetchLayerArtists();
     }
-  }, [layers]); // re-run if layers change (which happens when tokenURI loads)
+  }, [layers, tokenAddress, layerArtists]); // re-run if layers change (which happens when tokenURI loads)
 
   // Merge fetched artists into layers prop
   const layersWithArtists = layers.map((layer) => ({
