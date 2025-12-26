@@ -98,8 +98,8 @@ export default function ArtworkViewer({
 
       const newLayerArtists: Record<string, string> = {};
       const promises = layers.map(async (layer) => {
-        // Skip if already fetched
-        if (layerArtists[layer.tokenId]) return;
+        // Skip if already fetched or if we already have the artist name from layers.json
+        if (layerArtists[layer.tokenId] || layer.artistName) return;
 
         try {
           // Fallback to fetching URI from contract if not in JSON (which it isn't)
@@ -155,7 +155,7 @@ export default function ArtworkViewer({
   // Merge fetched artists into layers prop
   const layersWithArtists = layers.map((layer) => ({
     ...layer,
-    artistName: layerArtists[layer.tokenId] || layer.artistName,
+    artistName: layer.artistName || layerArtists[layer.tokenId],
   }));
 
   if (error) {
