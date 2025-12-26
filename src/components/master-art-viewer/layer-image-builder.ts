@@ -15,6 +15,9 @@ import seedrandom from 'seedrandom';
 export interface LayerImageElement extends HTMLImageElement {
   naturalTop: number;
   naturalLeft: number;
+  currentControlX?: number;
+  currentControlY?: number;
+  transformationProperties: LayerTransformationProperties;
   resize: (ratio: number) => void;
 }
 
@@ -52,17 +55,22 @@ export default class LayerImageBuilder {
     this.layoutVersion = layoutVersion;
   }
 
-  async loadImage(uri: string, reportGateway: Parameters<typeof fetchIpfs>[1]) {
-    const imageResponse = await fetchIpfs(uri, reportGateway);
-    const imageBlob = await imageResponse.blob();
-
-    this.image.src = URL.createObjectURL(imageBlob);
+  async loadImage(uri: string, reportGateway: Parameters<typeof fetchIpfs>[1], cachedBlobUrl?: string) {
+    if (cachedBlobUrl) {
+      this.image.src = cachedBlobUrl;
+    } else {
+      const imageResponse = await fetchIpfs(uri, reportGateway);
+      const imageBlob = await imageResponse.blob();
+      this.image.src = URL.createObjectURL(imageBlob);
+    }
 
     // Ensures that naturalWidth, naturalHeight, width and height properties are populated
     await new Promise((resolve) => {
       if (this.image.complete) return resolve(undefined);
       this.image.onload = () => resolve(undefined);
     });
+
+    return this.image.src;
   }
 
   async build(): Promise<LayerImageElement> {
@@ -78,6 +86,7 @@ export default class LayerImageBuilder {
     return Object.assign(this.image, {
       naturalTop,
       naturalLeft,
+      transformationProperties: this.transformationProperties,
       resize: (ratio: number) => {
         this.image.style.maxWidth = `${this.image.naturalWidth * ratio}px`;
         this.image.style.maxHeight = `${this.image.naturalHeight * ratio}px`;
@@ -193,6 +202,9 @@ export default class LayerImageBuilder {
   }
 
   private async addPosition() {
+    let currentControlX: number | undefined;
+    let currentControlY: number | undefined;
+
     // anchor doesn't exist for fixed position layers
     const isPositionFixed =
       this.transformationProperties['fixed-position'] ||
@@ -204,56 +216,65 @@ export default class LayerImageBuilder {
         this.transformationProperties['relative-position']!;
       const fixedX = await this.readTransformationProperty(x);
       const fixedY = await this.readTransformationProperty(y);
+
+      // Capture resolved control values if they are controllable (not static numbers)
+      if (typeof x !== 'number') currentControlX = fixedX;
+      if (typeof y !== 'number') currentControlY = fixedY;
+
       this.image.style.top = `${Math.floor(
         fixedY - this.image.naturalHeight / 2,
       )}px`;
       this.image.style.left = `${Math.floor(
         fixedX - this.image.naturalWidth / 2,
       )}px`;
-      return;
+    } else if (this.anchorLayer) {
+        let baseX =
+        this.anchorLayer.naturalLeft + this.anchorLayer.naturalWidth / 2;
+
+        let baseY =
+        this.anchorLayer.naturalTop + this.anchorLayer.naturalHeight / 2;
+
+        if (this.transformationProperties['relative-position']) {
+        const { x, y } = this.transformationProperties['relative-position'];
+        let relativeX = await this.readTransformationProperty(x);
+        let relativeY = await this.readTransformationProperty(y);
+
+        // Capture resolved control values
+        if (typeof x !== 'number') currentControlX = relativeX;
+        if (typeof y !== 'number') currentControlY = relativeY;
+
+        if (this.transformationProperties['orbit-rotation']) {
+            const relativeRotation = await this.readTransformationProperty(
+            this.transformationProperties['orbit-rotation'],
+            );
+            const unrotatedRelativeX = relativeX;
+            const rad = (-relativeRotation * Math.PI) / 180;
+
+            relativeX = Math.round(
+            relativeX * Math.cos(rad) - relativeY * Math.sin(rad),
+            );
+
+            relativeY =
+            this.layoutVersion === 1
+                ? Math.round(relativeY * Math.cos(rad) + relativeX * Math.sin(rad))
+                : Math.round(
+                    relativeY * Math.cos(rad) + unrotatedRelativeX * Math.sin(rad),
+                );
+        }
+
+        baseX += relativeX;
+        baseY += relativeY;
+        }
+
+        this.image.style.top = `${Math.floor(
+        baseY - this.image.naturalHeight / 2,
+        )}px`;
+        this.image.style.left = `${Math.floor(
+        baseX - this.image.naturalWidth / 2,
+        )}px`;
     }
 
-    if (!this.anchorLayer) return;
-
-    let baseX =
-      this.anchorLayer.naturalLeft + this.anchorLayer.naturalWidth / 2;
-
-    let baseY =
-      this.anchorLayer.naturalTop + this.anchorLayer.naturalHeight / 2;
-
-    if (this.transformationProperties['relative-position']) {
-      const { x, y } = this.transformationProperties['relative-position'];
-      let relativeX = await this.readTransformationProperty(x);
-      let relativeY = await this.readTransformationProperty(y);
-
-      if (this.transformationProperties['orbit-rotation']) {
-        const relativeRotation = await this.readTransformationProperty(
-          this.transformationProperties['orbit-rotation'],
-        );
-        const unrotatedRelativeX = relativeX;
-        const rad = (-relativeRotation * Math.PI) / 180;
-
-        relativeX = Math.round(
-          relativeX * Math.cos(rad) - relativeY * Math.sin(rad),
-        );
-
-        relativeY =
-          this.layoutVersion === 1
-            ? Math.round(relativeY * Math.cos(rad) + relativeX * Math.sin(rad))
-            : Math.round(
-                relativeY * Math.cos(rad) + unrotatedRelativeX * Math.sin(rad),
-              );
-      }
-
-      baseX += relativeX;
-      baseY += relativeY;
-    }
-
-    this.image.style.top = `${Math.floor(
-      baseY - this.image.naturalHeight / 2,
-    )}px`;
-    this.image.style.left = `${Math.floor(
-      baseX - this.image.naturalWidth / 2,
-    )}px`;
+    // Attach values to image object for builder
+    Object.assign(this.image, { currentControlX, currentControlY });
   }
 }
