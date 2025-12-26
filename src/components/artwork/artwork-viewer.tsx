@@ -60,6 +60,7 @@ export default function ArtworkViewer({
     isLandscape,
     tokenURI,
     masterArtSize,
+    artists,
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layers = (
