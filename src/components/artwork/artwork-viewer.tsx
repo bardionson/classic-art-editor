@@ -43,7 +43,6 @@ export default function ArtworkViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
-  const [isEditMode, setIsEditMode] = useState(false);
   const [controlOverrides, setControlOverrides] = useState<
     Record<string, number>
   >({});
@@ -98,8 +97,8 @@ export default function ArtworkViewer({
 
       const newLayerArtists: Record<string, string> = {};
       const promises = layers.map(async (layer) => {
-        // Skip if already fetched
-        if (layerArtists[layer.tokenId]) return;
+        // Skip if already fetched or if we already have the artist name from layers.json
+        if (layerArtists[layer.tokenId] || layer.artistName) return;
 
         try {
           // Fallback to fetching URI from contract if not in JSON (which it isn't)
@@ -118,14 +117,19 @@ export default function ArtworkViewer({
 
           if (!metadataUri) return;
 
-          const res = await fetchIpfs(metadataUri);
+          // Sanitize URI: remove ipfs:// prefix if present
+          const sanitizedUri = metadataUri.startsWith('ipfs://')
+            ? metadataUri.replace('ipfs://', '')
+            : metadataUri;
+
+          const res = await fetchIpfs(sanitizedUri);
           const data = await res.json();
           // Look for Artist in attributes
           const artistAttr = data.attributes?.find(
             (attr: any) =>
               attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
           );
-          if (artistAttr) {
+          if (artistAttr && artistAttr.value && artistAttr.value.trim() !== '') {
             newLayerArtists[layer.tokenId] = artistAttr.value;
           }
         } catch (err) {
@@ -150,7 +154,7 @@ export default function ArtworkViewer({
   // Merge fetched artists into layers prop
   const layersWithArtists = layers.map((layer) => ({
     ...layer,
-    artistName: layerArtists[layer.tokenId] || layer.artistName,
+    artistName: layer.artistName || layerArtists[layer.tokenId],
   }));
 
   if (error) {
@@ -198,126 +202,9 @@ export default function ArtworkViewer({
         <div
           id={ART_ELEMENT_ID}
           ref={artElementRef}
-          className={`relative mx-auto -z-20 ${
-            isEditMode ? 'cursor-move' : ''
-          }`}
-          onMouseDown={(e) => {
-            if (!isEditMode || !artElementRef.current || !masterArtSize) return;
-
-            const target = e.target as HTMLImageElement;
-            // Check if target is a layer image (has id)
-            if (!target.id || !target.classList.contains('absolute')) return;
-
-            // Access custom properties we attached in LayerImageBuilder
-            // @ts-ignore
-            const transformProps = target.transformationProperties;
-            if (!transformProps) {
-                console.log("Drag Error: No transformationProperties found on target", target.id);
-                return;
-            }
-
-            // Determine if layer has positioning controls
-            let xControl: any = null;
-            let yControl: any = null;
-
-            if (transformProps['fixed-position']) {
-              xControl = transformProps['fixed-position'].x;
-              yControl = transformProps['fixed-position'].y;
-            } else if (transformProps['relative-position']) {
-              xControl = transformProps['relative-position'].x;
-              yControl = transformProps['relative-position'].y;
-            }
-
-            // Must be controllable (object with token-id), not static number
-            if (
-              !xControl ||
-              typeof xControl === 'number' ||
-              !yControl ||
-              typeof yControl === 'number'
-            ) {
-              console.log("Drag Error: Layer position is static or missing X/Y controls", target.id);
-              return;
-            }
-
-            e.preventDefault(); // Prevent text selection/drag image ghost
-
-            const startX = e.clientX;
-            const startY = e.clientY;
-
-            // Access current resolved control values attached in LayerImageBuilder
-            // @ts-ignore
-            const startControlX = target.currentControlX;
-            // @ts-ignore
-            const startControlY = target.currentControlY;
-
-            if (startControlX === undefined || startControlY === undefined) {
-               console.log("Drag Error: Missing currentControlX/Y on element", target.id);
-               return;
-            }
-
-            const scale = masterArtSize.resizeToFitScreenRatio;
-
-            // Read initial DOM positions once
-            const startPixelLeft = parseFloat(target.style.left || '0');
-            const startPixelTop = parseFloat(target.style.top || '0');
-
-            // Store delta to apply at end
-            let finalControlX = startControlX;
-            let finalControlY = startControlY;
-
-            const handleMouseMove = (moveEvent: MouseEvent) => {
-              const dx = moveEvent.clientX - startX;
-              const dy = moveEvent.clientY - startY;
-
-              // Update DOM directly for performance (visual preview only)
-              target.style.left = `${startPixelLeft + dx}px`;
-              target.style.top = `${startPixelTop + dy}px`;
-
-              // Calculate control values for eventual commit
-              // DeltaControl = DeltaPixels / scale
-              const dControlX = Math.round(dx / scale);
-              const dControlY = Math.round(dy / scale);
-
-              finalControlX = startControlX + dControlX;
-              finalControlY = startControlY + dControlY;
-            };
-
-            const handleMouseUp = () => {
-              document.removeEventListener('mousemove', handleMouseMove);
-              document.removeEventListener('mouseup', handleMouseUp);
-
-              // Commit changes to React state
-              // layerTokenId = masterTokenId + relativeLayerTokenId
-              const xKey = `${tokenId + xControl['token-id']}-${
-                xControl['lever-id']
-              }`;
-              const yKey = `${tokenId + yControl['token-id']}-${
-                yControl['lever-id']
-              }`;
-
-              setControlOverrides((prev) => ({
-                ...prev,
-                [xKey]: finalControlX,
-                [yKey]: finalControlY,
-              }));
-            };
-
-            document.addEventListener('mousemove', handleMouseMove);
-            document.addEventListener('mouseup', handleMouseUp);
-          }}
+          className="relative mx-auto -z-20"
         />
           <div className="absolute top-4 right-4 flex space-x-2 z-10">
-            <button
-              onClick={() => setIsEditMode(!isEditMode)}
-              className={`p-2 rounded-full ${
-                isEditMode
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-800 text-white'
-              }`}
-              title={isEditMode ? 'Exit Edit Mode' : 'Enter Edit Mode'}
-            >
-              Edit
-            </button>
           </div>
           <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
             <button
