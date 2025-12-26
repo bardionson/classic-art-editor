@@ -33,12 +33,14 @@ export default function LayerControlList({
                     <div className="w-12 h-12 bg-gray-300 rounded-md inline-block mr-4"></div>
                 )}
                 <div className="inline-block align-middle">
-                    <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-gray-900">
                     {layer.name}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                    {layer.artistName && `by ${layer.artistName}`}
-                    </p>
+                    {layer.artistName && (
+                      <span className="text-sm text-gray-500 font-normal ml-2">
+                        (by {layer.artistName})
+                      </span>
+                    )}
+                  </h3>
                 </div>
               </div>
             </div>

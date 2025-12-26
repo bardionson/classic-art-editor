@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   XCircle,
   X,
@@ -18,6 +18,7 @@ import Link from 'next/link';
 import LayerControlList from '@/components/artwork/layer-control-list';
 import LayerControlDialog from '@/components/artwork/layer-control-dialog';
 import layersData from '@/layers.json';
+import { fetchIpfs } from '@/utils/ipfs';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -46,6 +47,7 @@ export default function ArtworkViewer({
     Record<string, number>
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
+  const [layerArtists, setLayerArtists] = useState<Record<string, string>>({});
 
   const {
     artElementRef,
@@ -56,6 +58,7 @@ export default function ArtworkViewer({
     layerHashes,
     isLandscape,
     tokenURI,
+    artists,
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layers = (
@@ -66,6 +69,84 @@ export default function ArtworkViewer({
     // tokenURI might be "ipfs://CID" or "https://.../CID"
     return tokenURI.includes(l.masterTokenId);
   });
+
+  // Fetch layer metadata to get artist names
+  useEffect(() => {
+    const fetchLayerArtists = async () => {
+      // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
+      const { createPublicClient, http, getContract } = await import('viem');
+      const { mainnet, goerli } = await import('wagmi/chains');
+      const { V1_CONTRACT_ADDRESS, __PROD__ } = await import('@/config');
+      const v1Abi = (await import('@/abis/v1Abi')).default;
+      const v2Abi = (await import('@/abis/v2Abi')).default;
+
+      const publicClient = createPublicClient({
+        chain: __PROD__ ? mainnet : goerli,
+        transport: http(),
+      });
+
+      const contract = getContract({
+        address: tokenAddress,
+        abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+        client: publicClient,
+      });
+
+      const newLayerArtists: Record<string, string> = {};
+      const promises = layers.map(async (layer) => {
+        // Skip if already fetched
+        if (layerArtists[layer.tokenId]) return;
+
+        try {
+          // Fallback to fetching URI from contract if not in JSON (which it isn't)
+          let metadataUri = (layer as any).metadataUri;
+          if (!metadataUri) {
+            try {
+              metadataUri = await contract.read.tokenURI([BigInt(layer.tokenId)]);
+            } catch (e) {
+              console.error(
+                `Failed to fetch tokenURI from contract for layer ${layer.tokenId}`,
+                e,
+              );
+              return;
+            }
+          }
+
+          if (!metadataUri) return;
+
+          const res = await fetchIpfs(metadataUri);
+          const data = await res.json();
+          // Look for Artist in attributes
+          const artistAttr = data.attributes?.find(
+            (attr: any) =>
+              attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
+          );
+          if (artistAttr) {
+            newLayerArtists[layer.tokenId] = artistAttr.value;
+          }
+        } catch (err) {
+          console.error(
+            `Failed to fetch metadata for layer ${layer.tokenId}`,
+            err,
+          );
+        }
+      });
+
+      await Promise.all(promises);
+      if (Object.keys(newLayerArtists).length > 0) {
+        setLayerArtists((prev) => ({ ...prev, ...newLayerArtists }));
+      }
+    };
+
+    if (layers.length > 0) {
+      fetchLayerArtists();
+    }
+  }, [layers, tokenAddress, layerArtists]); // re-run if layers change (which happens when tokenURI loads)
+
+  // Merge fetched artists into layers prop
+  const layersWithArtists = layers.map((layer) => ({
+    ...layer,
+    artistName: layerArtists[layer.tokenId] || layer.artistName,
+  }));
 
   if (error) {
     return (
@@ -170,9 +251,11 @@ export default function ArtworkViewer({
               <p className="mt-2">{metadata.description}</p>
               <h2 className="text-lg font-bold mt-4">Artists</h2>
               <ul>
-                {metadata['async-attributes']?.artists.map((artist) => (
-                  <li key={artist}>{artist}</li>
-                ))}
+                {artists.length > 0
+                  ? artists.map((artist) => <li key={artist}>{artist}</li>)
+                  : metadata['async-attributes']?.artists?.map((artist) => (
+                      <li key={artist}>{artist}</li>
+                    ))}
               </ul>
               <h2 className="text-lg font-bold mt-4">Collector</h2>
               <p className="break-all">{collector}</p>
@@ -209,7 +292,7 @@ export default function ArtworkViewer({
       </div>
       {!isFullscreen && (
         <LayerControlList
-          layers={layers}
+          layers={layersWithArtists}
           onLayerClick={(layer) => setSelectedLayer(layer)}
         />
       )}
