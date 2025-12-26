@@ -11515,6 +11515,87 @@
           "controlType": "VISIBILITY"
         }
       ]
+    },
+    {
+      "tokenId": "1179",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Resting Place",
+      "description": "A little green bug has chosen where to sit for the day or to hide away as its world changes.",
+      "imageUrl": "https://ipfs.io/ipfs/QmY1kky7HsnFRD82BztQAL3ZmGxa2WGAh9ysupzRVgSi91",
+      "artistName": "Bård Ionson",
+      "masterTokenId": "QmdJzQosbtJAormyZ6GR9skcPemAZbdG9rJzLM5tr7XQHc",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 10,
+          "startValue": 0,
+          "label": "Resting Place",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Dark Leaf 501",
+            "Gray Matrix 14",
+            "Watering Hole 18",
+            "Emerald Pond 85",
+            "Stormy Sea 110",
+            "Glitter And Gold 113",
+            "Ink Scape 163",
+            "Fluorescent Leaf 178",
+            "Green Three 294",
+            "UFO 402",
+            "Red Pad 501"
+          ]
+        }
+      ]
+    },
+    {
+      "tokenId": "1180",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Happy Bug",
+      "description": "The Happy Green Bug.",
+      "imageUrl": "https://ipfs.io/ipfs/QmRUESnqThoyhE2Cb3MGTFo4rEDg3FtaR3uBAYDQyVMYve",
+      "artistName": "Bård Ionson",
+      "masterTokenId": "QmdJzQosbtJAormyZ6GR9skcPemAZbdG9rJzLM5tr7XQHc",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Happy Bug",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Big Mouth",
+            "Bug Gone",
+            "Closed",
+            "Small Mouth"
+          ]
+        }
+      ]
+    },
+    {
+      "tokenId": "1181",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Small Bug",
+      "description": "Sometimes a friend who is less happy joins in.",
+      "imageUrl": "https://ipfs.io/ipfs/QmWdMRpsA9SPAQqxMRSHYTVXq747wFAHMbRM1hXuo8xL74",
+      "artistName": "Bård Ionson",
+      "masterTokenId": "QmdJzQosbtJAormyZ6GR9skcPemAZbdG9rJzLM5tr7XQHc",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 5,
+          "startValue": 0,
+          "label": "Small Bug",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Tiny Sad Bug",
+            "Tiny Open Mouth",
+            "Gone",
+            "Angry Bug",
+            "Tiny Closed Mouth",
+            "Tiny Small Mouth"
+          ]
+        }
+      ]
     }
   ]
 }
