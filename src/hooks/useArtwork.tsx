@@ -236,6 +236,7 @@ export const useArtwork = (
     layerHashes,
     isLandscape,
     tokenURI: fetchedTokenURI,
+    artists,
     masterArtSize,
   };
 };
