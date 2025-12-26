@@ -72,7 +72,7 @@ export default function ArtworkViewer({
     return tokenURI.includes(l.masterTokenId);
   }).map((l: any) => ({
     ...l,
-    tokenId: tokenId + parseInt(l.tokenId, 10) // Convert relative ID to absolute ID
+    tokenId: parseInt(l.tokenId, 10),
   }));
 
   // Fetch layer metadata to get artist names
