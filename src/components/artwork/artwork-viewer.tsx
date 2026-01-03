@@ -30,6 +30,7 @@ type ArtworkViewerProps = {
   detailsContainerClassName?: string;
   backLink?: string;
   backLabel?: string;
+  initialFullscreen?: boolean;
 };
 
 export default function ArtworkViewer({
@@ -39,8 +40,9 @@ export default function ArtworkViewer({
   detailsContainerClassName,
   backLink,
   backLabel,
+  initialFullscreen = false,
 }: ArtworkViewerProps) {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
   const [controlOverrides, setControlOverrides] = useState<
