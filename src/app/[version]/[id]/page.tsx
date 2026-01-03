@@ -32,6 +32,8 @@ export default function ArtworkPage({
     backLabel = 'Back to Layers Gallery';
   }
 
+  const initialFullscreen = searchParams?.fullscreen === 'true';
+
   return (
     <div className="flex flex-row h-screen">
       <ArtworkViewer
@@ -41,6 +43,7 @@ export default function ArtworkPage({
         detailsContainerClassName="w-1/4 bg-gray-100 p-4 overflow-y-auto"
         backLink={backLink}
         backLabel={backLabel}
+        initialFullscreen={initialFullscreen}
       />
     </div>
   );
