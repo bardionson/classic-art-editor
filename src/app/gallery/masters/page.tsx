@@ -55,5 +55,5 @@ const getGalleryItems = (): GalleryItem[] => {
 export default function MastersGalleryPage() {
   const items = getGalleryItems();
 
-  return <Gallery title="Masters Gallery" items={items} />;
+  return <Gallery title="Async Art Restored Masters Gallery" items={items} />;
 }
