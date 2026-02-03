@@ -65,8 +65,9 @@ export default function Home() {
           <p>
             <span>
               What a ride it’s been. The Digital Rescue Lab is bringing Async Art back to life. Using the legacy Async Code we have
-              restored the ability to again control the classic Async Art. Be aware that color changes are not working properly yet, Async Music
-              pieces will not play music and pieces where the layers are missing from IPFS will not be able to be controlled.
+              restored the ability to again control the classic Async Art. By searching for art in the gallery you can view it and every layer it contains.
+              Now you can change the layers in a preview draft mode even if you do not own the layer.
+              Be aware that color changes are not working properly yet, Async Music pieces will not play music and pieces where the layers are missing from IPFS will not be able to be controlled.
               We are constantly working on additional steps to restore the art.
             </span>
             <br />
@@ -104,6 +105,7 @@ export default function Home() {
             >
               https://github.com/bardionson/classic-art-editor
             </a>
+            <br />
             <span>Old Repository: </span>
             <a
               target="_blank"
