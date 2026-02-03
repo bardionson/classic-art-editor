@@ -92,7 +92,7 @@ export default function Home() {
             </span>
             <br />
             <br />
-            <span>Thank you from all of us at Digital Rescue Lab ❤️</span>
+            <span>Thank you from all of us at Digital Rescue Lab ❤️ and thank you to Async Art for the redirect of www.async.art</span>
             <br />
             <br />
             <span>New Repository: </span>
