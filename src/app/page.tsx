@@ -53,7 +53,7 @@ export default function Home() {
             className="w-24"
           />
           <h1 className="hidden sm:block text-2xl font-bold ml-3">
-            Classic Art Editor - Bård Ionson Version 2
+            Classic Art Editor Revival Version 2 by Bård Ionson
           </h1>
           <WalletProvider>
             <ConnectButton accountStatus="address" showBalance={false} />
@@ -64,31 +64,47 @@ export default function Home() {
         <section>
           <p>
             <span>
-              What a ride it’s been. Thank you to everyone who used Async over
-              the years. We were surprised over and over by the unique
-              creativity this platform attracted from artists, musicians and
-              collectors. We started Async with the mission to create something
-              wholly new for artists, a concept that fundamentally couldn’t
-              exist without the blockchain. And in doing so, hoped it would
-              spark new ideas, build communities, and inspire people to do more
-              with NFTs than just own them. Looking back, we can confidently say
-              we’ve achieved all those goals and will miss the community and
-              artists that helped get us there. And although we’re saying
-              goodbye, your art lives on as a testament to that.
+              What a ride it’s been. The Digital Rescue Lab is bringing Async Art back to life. Using the legacy Async Code we have
+              restored the ability to again control the classic Async Art. Be aware that color changes are not working properly yet, Async Music
+              pieces will not play music and pieces where the layers are missing from IPFS will not be able to be controlled.
+              We are constantly working on additional steps to restore the art.
             </span>
             <br />
             <br />
             <span>
-              We created this portal to allow anyone to continue to interact
-              with Master/Layer based classic artworks. You can look up both
-              Master and Layers by finding their token ID.
+              In this app you no longer need to search for the id of your art as there is a gallery view.
             </span>
             <br />
             <br />
-            <span>Thank you again from all of us at Async ❤️</span>
+            <span>
+              To help with restoration take a look at our pages on <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://artizen.fund/index/p/digital-rescue-lab?season=6&scroll=no"
+              className="underline"
+            >Artizen</a> and <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://github.com/bardionson/classic-art-editor"
+              className="underline"
+            >Juicebox</a>
+              
+            </span>
             <br />
             <br />
-            <span>Repository: </span>
+            <span>Thank you again from all of us at Digital Rescue Lab ❤️</span>
+            <br />
+            <br />
+            <span>New Repository: </span>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://github.com/bardionson/classic-art-editor"
+              className="underline"
+            >
+              https://github.com/bardionson/classic-art-editor
+            </a>
+            <span>Old Repository: </span>
             <a
               target="_blank"
               rel="noreferrer noopener"
@@ -101,18 +117,6 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12">
             <ToolBox
               icon={viewMasterArtIcon}
-              title="View Master Artwork"
-              description="View the current state for any Async Art Master token."
-              onClick={() => setModal(MODAL.VIEW_MASTER_ARTWORK)}
-            />
-            <ToolBox
-              icon={updateLayerArtIcon}
-              title="Update Layer"
-              description="Update the values for a Layer token that you own."
-              onClick={() => setModal(MODAL.UPDATE_LAYER_ARTWORK)}
-            />
-            <ToolBox
-              icon={viewMasterArtIcon}
               title="Masters Gallery"
               description="Browse and search all Master Artworks."
               onClick={() => router.push('/gallery/masters')}
@@ -123,47 +127,23 @@ export default function Home() {
               description="Browse and search all Layer Artworks."
               onClick={() => router.push('/gallery/layers')}
             />
+            <ToolBox
+              icon={viewMasterArtIcon}
+              title="View Master Artwork"
+              description="View the current state for any Async Art Master token."
+              onClick={() => setModal(MODAL.VIEW_MASTER_ARTWORK)}
+            />
+            <ToolBox
+              icon={updateLayerArtIcon}
+              title="Update Layer"
+              description="Update the values for a Layer token that you own."
+              onClick={() => setModal(MODAL.UPDATE_LAYER_ARTWORK)}
+            />
           </div>
         </section>
         <section className="mt-12">
           <h2 className="text-2xl font-bold mb-2.5">FAQs</h2>
-          <FAQ title="How do I find the Token ID for an artwork?">
-            <p className="break-words pl-3 p-2">
-              Find OpenSea page for the NFT you want to pull up. The last number
-              in the URL is Token ID:
-              <br />
-              https://opensea.io/assets/ethereum/0xb6dae651468e9593e4581705a09c10a76ac1e0c8/
-              <b className="text-purple">175</b>
-            </p>
-          </FAQ>
-          <FAQ title="Where can I browse Master Artworks?" className="mt-4">
-            <p className="pl-3 p-2">
-              View all Masters on OpenSea{' '}
-              <a
-                href="https://opensea.io/collection/async-art?search[stringTraits][0][name]=Asset%20Type&search[stringTraits][0][values][0]=Master%20%28Art%29&search[stringTraits][0][values][1]=Master%20%28Music%29"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-purple underline"
-              >
-                here
-              </a>
-              .
-            </p>
-          </FAQ>
-          <FAQ title="Where can I browse Layer Artworks?" className="mt-4">
-            <p className="pl-3 p-2">
-              View all Layers on OpenSea{' '}
-              <a
-                href="https://opensea.io/collection/async-art?search[stringTraits][0][name]=Asset%20Type&search[stringTraits][0][values][0]=Stem%20%28Music%29&search[stringTraits][0][values][1]=Layer%20%28Art%29"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-purple underline"
-              >
-                here
-              </a>
-              .
-            </p>
-          </FAQ>
+          
           <FAQ
             title="How Can I Locate and Repin Content to IPFS?"
             className="mt-4"
