@@ -88,12 +88,11 @@ export default function Home() {
               rel="noreferrer noopener"
               href="https://x.com/ArtRescueLab"
               className="underline"
-            >X Art Rescue Lab</a
-              
+            >X Art Rescue Lab</a>
             </span>
             <br />
             <br />
-            <span>Thank you again from all of us at Digital Rescue Lab ❤️</span>
+            <span>Thank you from all of us at Digital Rescue Lab ❤️</span>
             <br />
             <br />
             <span>New Repository: </span>
