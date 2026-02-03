@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Address, createPublicClient, getContract, http } from 'viem';
+import { Address, createPublicClient, getContract, http, isAddressEqual } from 'viem';
 import { mainnet, goerli } from 'wagmi/chains';
 import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
@@ -52,9 +52,13 @@ export const useArtwork = (
           transport: http(),
         });
 
+        const isV1 =
+          V1_CONTRACT_ADDRESS &&
+          isAddressEqual(tokenAddress, V1_CONTRACT_ADDRESS as Address);
+
         const contract = getContract({
           address: tokenAddress,
-          abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+          abi: isV1 ? v1Abi : v2Abi,
           client: publicClient,
         });
 

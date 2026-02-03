@@ -6,7 +6,7 @@ import { getErrorMessage } from '@/utils/common';
 import { getCustomIPFSGateway, setCustomIPFSGateway } from '@/utils/ipfs';
 import { FormEvent, useEffect, useState } from 'react';
 import { X } from 'react-feather';
-import { Address, createPublicClient, getContract, http } from 'viem';
+import { Address, createPublicClient, getContract, http, isAddressEqual } from 'viem';
 import { mainnet, goerli } from 'wagmi/chains';
 import ArtworkViewer from '../artwork/artwork-viewer';
 import { useSearchParams } from 'next/navigation';
@@ -82,9 +82,13 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     // @ts-ignore
     setCustomIPFSGateway(e.target.ipfsGatewayURL.value);
 
+    const isV1 =
+      V1_CONTRACT_ADDRESS &&
+      isAddressEqual(tokenAddress, V1_CONTRACT_ADDRESS as Address);
+
     const contract = getContract({
       address: tokenAddress,
-      abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      abi: isV1 ? v1Abi : v2Abi,
       client: publicClient,
     });
 

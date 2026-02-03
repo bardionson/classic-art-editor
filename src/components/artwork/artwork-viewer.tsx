@@ -64,23 +64,26 @@ export default function ArtworkViewer({
     artists,
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
-  const layers = (
-    layersData[tokenAddress as keyof typeof layersData] || []
-  ).filter((l: any) => {
-    if (!tokenURI) return false;
-    // Normalize logic: check if tokenURI contains the masterTokenId (CID)
-    // tokenURI might be "ipfs://CID" or "https://.../CID"
-    return tokenURI.includes(l.masterTokenId);
-  }).map((l: any) => ({
-    ...l,
-    tokenId: parseInt(l.tokenId, 10),
-  }));
+  const lowerCaseAddress =
+    tokenAddress.toLowerCase() as keyof typeof layersData;
+  const layers = (layersData[lowerCaseAddress] || [])
+    .filter((l: any) => {
+      if (!tokenURI) return false;
+      // Normalize logic: check if tokenURI contains the masterTokenId (CID)
+      // tokenURI might be "ipfs://CID" or "https://.../CID"
+      return tokenURI.includes(l.masterTokenId);
+    })
+    .map((l: any) => ({
+      ...l,
+      tokenId: parseInt(l.tokenId, 10),
+    }));
 
   // Fetch layer metadata to get artist names
   useEffect(() => {
     const fetchLayerArtists = async () => {
       // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
-      const { createPublicClient, http, getContract } = await import('viem');
+      const { createPublicClient, http, getContract, isAddressEqual } =
+        await import('viem');
       const { mainnet, goerli } = await import('wagmi/chains');
       const { V1_CONTRACT_ADDRESS, __PROD__ } = await import('@/config');
       const v1Abi = (await import('@/abis/v1Abi')).default;
@@ -91,9 +94,13 @@ export default function ArtworkViewer({
         transport: http(),
       });
 
+      const isV1 =
+        V1_CONTRACT_ADDRESS &&
+        isAddressEqual(tokenAddress, V1_CONTRACT_ADDRESS as Address);
+
       const contract = getContract({
         address: tokenAddress,
-        abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+        abi: isV1 ? v1Abi : v2Abi,
         client: publicClient,
       });
 
@@ -107,7 +114,9 @@ export default function ArtworkViewer({
           let metadataUri = (layer as any).metadataUri;
           if (!metadataUri) {
             try {
-              metadataUri = await contract.read.tokenURI([BigInt(layer.tokenId)]);
+              metadataUri = await contract.read.tokenURI([
+                BigInt(layer.tokenId),
+              ]);
             } catch (e) {
               console.error(
                 `Failed to fetch tokenURI from contract for layer ${layer.tokenId}`,
@@ -173,34 +182,37 @@ export default function ArtworkViewer({
             isFullscreen ? 'w-full h-full' : artContainerClassName || ''
           }`}
         >
-        {statusMessage && (
-          <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
-            {statusMessage === ERROR_MESSAGE ? (
-              <>
-                <XCircle size={80} className="text-red mx-auto mb-8" />
-                <p className="text-white text-center">
-                  {ERROR_MESSAGE.split('\n')[0]}
-                  <br />
-                  {ERROR_MESSAGE.split('\n')[1]}
-                </p>
-              </>
-            ) : (
-              <>
-                <Spinner size={80} className="text-purple mx-auto mt-12 mb-8" />
-                <p className="text-white text-center break-all">
-                  {statusMessage}
-                  <br />
-                  The process can take several minutes.
-                </p>
-              </>
-            )}
-          </div>
-        )}
-        <div
-          id={ART_ELEMENT_ID}
-          ref={artElementRef}
-          className="relative mx-auto -z-20"
-        />
+          {statusMessage && (
+            <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
+              {statusMessage === ERROR_MESSAGE ? (
+                <>
+                  <XCircle size={80} className="text-red mx-auto mb-8" />
+                  <p className="text-white text-center">
+                    {ERROR_MESSAGE.split('\n')[0]}
+                    <br />
+                    {ERROR_MESSAGE.split('\n')[1]}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <Spinner
+                    size={80}
+                    className="text-purple mx-auto mt-12 mb-8"
+                  />
+                  <p className="text-white text-center break-all">
+                    {statusMessage}
+                    <br />
+                    The process can take several minutes.
+                  </p>
+                </>
+              )}
+            </div>
+          )}
+          <div
+            id={ART_ELEMENT_ID}
+            ref={artElementRef}
+            className="relative mx-auto -z-20"
+          />
           <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
             <button
               onClick={() => setIsLayersModalOpen(true)}
@@ -216,9 +228,7 @@ export default function ArtworkViewer({
             </button>
           </div>
         </div>
-        {!isFullscreen &&
-        isLandscape &&
-        !isDescriptionPanelOpen && (
+        {!isFullscreen && isLandscape && !isDescriptionPanelOpen && (
           <button
             onClick={() => setIsDescriptionPanelOpen(true)}
             className="absolute top-1/2 right-4 bg-gray-800 text-white p-2 rounded-full"
@@ -226,7 +236,7 @@ export default function ArtworkViewer({
             <Info />
           </button>
         )}
-      {!isFullscreen &&
+        {!isFullscreen &&
           metadata &&
           (isDescriptionPanelOpen || !isLandscape) && (
             <div
@@ -236,23 +246,23 @@ export default function ArtworkViewer({
                   : detailsContainerClassName
               }`}
             >
-          {isLandscape && (
-            <button
-              onClick={() => setIsDescriptionPanelOpen(false)}
-              className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
-            >
-              <ChevronLeft />
-            </button>
-          )}
-          {backLink && (
-            <Link
-              href={backLink}
-              className="flex items-center text-sm text-gray-500 mb-4 hover:text-black transition-colors"
-            >
-              <ArrowLeft size={16} className="mr-1" />
-              {backLabel || 'Back'}
-            </Link>
-          )}
+              {isLandscape && (
+                <button
+                  onClick={() => setIsDescriptionPanelOpen(false)}
+                  className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
+                >
+                  <ChevronLeft />
+                </button>
+              )}
+              {backLink && (
+                <Link
+                  href={backLink}
+                  className="flex items-center text-sm text-gray-500 mb-4 hover:text-black transition-colors"
+                >
+                  <ArrowLeft size={16} className="mr-1" />
+                  {backLabel || 'Back'}
+                </Link>
+              )}
               <h1 className="text-2xl font-bold">{metadata.name}</h1>
               <p className="mt-2">{metadata.description}</p>
               <h2 className="text-lg font-bold mt-4">Artists</h2>
