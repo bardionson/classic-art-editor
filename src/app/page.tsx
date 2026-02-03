@@ -82,12 +82,12 @@ export default function Home() {
               rel="noreferrer noopener"
               href="https://artizen.fund/index/p/digital-rescue-lab?season=6&scroll=no"
               className="underline"
-            >Artizen</a> and <a
+            >Artizen</a> and soon Juicebox and <a
               target="_blank"
               rel="noreferrer noopener"
-              href="https://github.com/bardionson/classic-art-editor"
+              href="https://x.com/ArtRescueLab"
               className="underline"
-            >Juicebox</a>
+            >X Art Rescue Lab</a
               
             </span>
             <br />
