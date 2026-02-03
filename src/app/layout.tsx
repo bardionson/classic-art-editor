@@ -3,6 +3,7 @@ import { Chivo } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import { PreloadResources } from '@/app/preload-resources';
+import { Analytics } from '@vercel/analytics/next';
 
 const chivo = Chivo({
   weight: ['400', '600'],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <PreloadResources />
       <body>
         <App children={children} />
+        <Analytics />
       </body>
     </html>
   );
