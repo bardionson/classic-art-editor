@@ -86,5 +86,5 @@ const getGalleryItems = (): GalleryItem[] => {
 export default function LayersGalleryPage() {
   const items = getGalleryItems();
 
-  return <Gallery title="Layers Gallery" items={items} />;
+  return <Gallery title="Async Art Layers Gallery (incomplete)" items={items} />;
 }
