@@ -444,6 +444,24 @@
       ]
     },
     {
+      "tokenId": "18",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "I AM THE TABLE",
+      "description": "What maggots?!?",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/QmThY8TsFrd2Wyugyk3QwAuxeqKXuiLLGivQ2U7h4dxVX7",
+      "masterTokenId" : "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
+      "artistName" : "MLIBTY"
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "stateLabels": ["After DaVinci", "Blue Diamonds", "Maggots"],
+          "controlType": "STATE",
+          "label": "State"
+        }
+      ]
+    },
+    {
       "tokenId": "19",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "Pass me your Apple or I'll blow up this dinner",
@@ -466,7 +484,7 @@
     },
     {
       "tokenId": "20",
-      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
       "name": "Visionary Spirit of Creation",
       "artistName": "Matt Kane",
       "description": "This is a metaphorical self portrait centering on my spirit of creation, a distinctly female persona who has appeared in my work with green skin and purple hair since 2001. She patiently gestates ideas for long periods of time, refusing to let them go before they're fully developed. Although a man, I have anxious dreams I am pregnant when creative work is ready to finally come into the world and be shared.  She appears naked because I am one of few artists in the #cryptoart space who makes their identity no secret. It feels naked to interact with pseudonyms while as much of my life history is on display as one is interested in learning. Additionally, she resides in the placement of Bartholomew, who was stripped of his skin. Although naked, she appears comfortable, confident, and busy at task.  State 1 : Holding a digital tablet, from which the layers of a dimensional painting spring forward. State 2 : Holding a digital tablet, which features a Processing.org console. \"void setup(){} void draw(){}\" represents a blank canvas. She pushes a paintbrush over the interface, a literal representation of \"painting with code,\" part of a philosophical approach I take with my work. State 3 : An offset rendering State 4 - 8: Various Wireframe visualizations of the database the figure was saved as.  When she shrinks, you may hardly notice her and forget she is there. But when is full, she is not to be missed.  Exclusive experiences await the token holder: https://collect.mattkane.com/minted-works/first-supper-visionary-spirit-of-creation/",
