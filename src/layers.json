@@ -23,57 +23,6 @@
       ]
     },
     {
-      "tokenId": "20",
-      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
-      "name": "Visionary Spirit of Creation",
-      "artistName": "Matt Kane",
-      "description": "This is a metaphorical self portrait centering on my spirit of creation, a distinctly female persona who has appeared in my work with green skin and purple hair since 2001. She patiently gestates ideas for long periods of time, refusing to let them go before they're fully developed. Although a man, I have anxious dreams I am pregnant when creative work is ready to finally come into the world and be shared.  She appears naked because I am one of few artists in the #cryptoart space who makes their identity no secret. It feels naked to interact with pseudonyms while as much of my life history is on display as one is interested in learning. Additionally, she resides in the placement of Bartholomew, who was stripped of his skin. Although naked, she appears comfortable, confident, and busy at task.  State 1 : Holding a digital tablet, from which the layers of a dimensional painting spring forward. State 2 : Holding a digital tablet, which features a Processing.org console. \"void setup(){} void draw(){}\" represents a blank canvas. She pushes a paintbrush over the interface, a literal representation of \"painting with code,\" part of a philosophical approach I take with my work. State 3 : An offset rendering State 4 - 8: Various Wireframe visualizations of the database the figure was saved as.  When she shrinks, you may hardly notice her and forget she is there. But when is full, she is not to be missed.  Exclusive experiences await the token holder: https://collect.mattkane.com/minted-works/first-supper-visionary-spirit-of-creation/",
-      "imageUrl": "https://ipfs.io/ipfs/QmWVkGGWmqBJ9GNxNTxEQFaZUFyA11opNsABMkrBxzSG9M",
-      "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
-      "controls": [
-        {
-          "controlType": "STATE",
-          "label": "State",
-          "minValue": 0,
-          "maxValue": 7,
-          "stateLabels": [
-            "Dimensional Painting",
-            "Processing.org Console",
-            "Offset Layers",
-            "Blueprint Wireframe",
-            "Blueprint Fill",
-            "Paper Wireframe",
-            "Clear Black Wireframe",
-            "Clear White Wireframe"
-          ]
-        },
-        {
-          "controlType": "SCALE",
-          "label": "Scale",
-          "minValue": 10,
-          "maxValue": 200
-        },
-        {
-          "controlType": "ALPHA",
-          "label": "Alpha",
-          "minValue": 0,
-          "maxValue": 100
-        },
-        {
-          "controlType": "HUE",
-          "label": "Hue",
-          "minValue": -359,
-          "maxValue": 359
-        },
-        {
-          "controlType": "RGB",
-          "label": "RGB",
-          "minValue": -255,
-          "maxValue": 255
-        }
-      ]
-    },
-    {
       "tokenId": "2",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "Onward",
@@ -512,6 +461,57 @@
           "label": "State",
           "minValue": 0,
           "maxValue": 2
+        }
+      ]
+    },
+    {
+      "tokenId": "20",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Visionary Spirit of Creation",
+      "artistName": "Matt Kane",
+      "description": "This is a metaphorical self portrait centering on my spirit of creation, a distinctly female persona who has appeared in my work with green skin and purple hair since 2001. She patiently gestates ideas for long periods of time, refusing to let them go before they're fully developed. Although a man, I have anxious dreams I am pregnant when creative work is ready to finally come into the world and be shared.  She appears naked because I am one of few artists in the #cryptoart space who makes their identity no secret. It feels naked to interact with pseudonyms while as much of my life history is on display as one is interested in learning. Additionally, she resides in the placement of Bartholomew, who was stripped of his skin. Although naked, she appears comfortable, confident, and busy at task.  State 1 : Holding a digital tablet, from which the layers of a dimensional painting spring forward. State 2 : Holding a digital tablet, which features a Processing.org console. \"void setup(){} void draw(){}\" represents a blank canvas. She pushes a paintbrush over the interface, a literal representation of \"painting with code,\" part of a philosophical approach I take with my work. State 3 : An offset rendering State 4 - 8: Various Wireframe visualizations of the database the figure was saved as.  When she shrinks, you may hardly notice her and forget she is there. But when is full, she is not to be missed.  Exclusive experiences await the token holder: https://collect.mattkane.com/minted-works/first-supper-visionary-spirit-of-creation/",
+      "imageUrl": "https://ipfs.io/ipfs/QmWVkGGWmqBJ9GNxNTxEQFaZUFyA11opNsABMkrBxzSG9M",
+      "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "label": "State",
+          "minValue": 0,
+          "maxValue": 7,
+          "stateLabels": [
+            "Dimensional Painting",
+            "Processing.org Console",
+            "Offset Layers",
+            "Blueprint Wireframe",
+            "Blueprint Fill",
+            "Paper Wireframe",
+            "Clear Black Wireframe",
+            "Clear White Wireframe"
+          ]
+        },
+        {
+          "controlType": "SCALE",
+          "label": "Scale",
+          "minValue": 10,
+          "maxValue": 200
+        },
+        {
+          "controlType": "ALPHA",
+          "label": "Alpha",
+          "minValue": 0,
+          "maxValue": 100
+        },
+        {
+          "controlType": "HUE",
+          "label": "Hue",
+          "minValue": -359,
+          "maxValue": 359
+        },
+        {
+          "controlType": "RGB",
+          "label": "RGB",
+          "minValue": -255,
+          "maxValue": 255
         }
       ]
     },
