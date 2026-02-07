@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Modal } from '@/components/common/modal';
-import { Address, createPublicClient, getContract, http } from 'viem';
+import { getContract } from 'viem';
 import { useAccount, useWriteContract } from 'wagmi';
 import v2Abi from '@/abis/v2Abi';
-import { V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
-import { mainnet, goerli } from 'wagmi/chains';
+import { V2_CONTRACT_ADDRESS } from '@/config';
+import { publicClient } from '@/utils/rpcClient';
 
 type Control = {
   minValue: number;
@@ -40,10 +40,6 @@ export default function LayerControlDialog({
     async function checkOwnership() {
       if (!address || !layer?.tokenId) return;
       try {
-        const publicClient = createPublicClient({
-          chain: __PROD__ ? mainnet : goerli,
-          transport: http(),
-        });
         const contract = getContract({
           address: V2_CONTRACT_ADDRESS,
           abi: v2Abi,

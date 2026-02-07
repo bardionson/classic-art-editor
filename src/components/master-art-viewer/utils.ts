@@ -6,14 +6,9 @@ import {
   LayerTransformationProperties,
 } from '@/types/shared';
 import { fetchIpfs } from '@/utils/ipfs';
+import { publicClient } from '@/utils/rpcClient';
 import seedrandom from 'seedrandom';
-import { createPublicClient, getContract, http } from 'viem';
-import { mainnet, goerli } from 'wagmi/chains';
-
-const publicClient = createPublicClient({
-  chain: __PROD__ ? mainnet : goerli,
-  transport: http(),
-});
+import { getContract } from 'viem';
 
 export async function getMasterArtSize(uri: string) {
   const imageResponse = await fetchIpfs(uri);

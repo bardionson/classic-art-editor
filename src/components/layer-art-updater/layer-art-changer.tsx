@@ -13,15 +13,10 @@ import {
 import dynamic from 'next/dynamic';
 import { FormEvent, useEffect, useState } from 'react';
 import { CheckCircle } from 'react-feather';
-import { Address, createPublicClient, getContract, http } from 'viem';
+import { Address, getContract } from 'viem';
 import { useWalletClient } from 'wagmi';
-import { mainnet, goerli } from 'wagmi/chains';
 import Image from 'next/image';
-
-const publicClient = createPublicClient({
-  chain: __PROD__ ? mainnet : goerli,
-  transport: http(),
-});
+import { publicClient } from '@/utils/rpcClient';
 
 const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
 
