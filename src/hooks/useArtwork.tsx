@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Address, createPublicClient, getContract, http } from 'viem';
-import { mainnet, goerli } from 'wagmi/chains';
+import { Address, getContract } from 'viem';
 import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
-import { V1_CONTRACT_ADDRESS, __PROD__ } from '@/config';
+import { V1_CONTRACT_ADDRESS } from '@/config';
 import { MasterArtNFTMetadata } from '@/types/shared';
 import { fetchIpfs } from '@/utils/ipfs';
 import {
@@ -47,10 +46,7 @@ export const useArtwork = (
       setStatusMessage('Loading NFT metadata...');
       setError(undefined);
       try {
-        const publicClient = createPublicClient({
-          chain: __PROD__ ? mainnet : goerli,
-          transport: http(),
-        });
+        const { publicClient } = await import('@/utils/rpcClient');
 
         const contract = getContract({
           address: tokenAddress,
@@ -68,8 +64,21 @@ export const useArtwork = (
           const owner = await contract.read.ownerOf([BigInt(tokenId)]);
           if (!isComponentMountedRef.current) return;
           setCollector(owner);
-        } catch (e) {
-          throw new Error('Token not found. Please check the version and ID.');
+        } catch (e: any) {
+          console.error('Contract read error:', e);
+          const errorMessage = e?.message?.toLowerCase() || '';
+
+          if (
+            errorMessage.includes('query for nonexistent token') ||
+            errorMessage.includes('execution reverted') ||
+            errorMessage.includes('invalid token id')
+          ) {
+            throw new Error('Token not found. Please check the version and ID.');
+          } else {
+             // Re-throw other errors (network, etc) so the outer catch can handle them,
+             // or provide a more specific network error message
+             throw new Error(`Failed to load token data: ${e.message || 'Unknown error'}`);
+          }
         }
 
         const response = await fetchIpfs(tokenURI);

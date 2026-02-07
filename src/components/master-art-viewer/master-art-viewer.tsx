@@ -6,15 +6,10 @@ import { getErrorMessage } from '@/utils/common';
 import { getCustomIPFSGateway, setCustomIPFSGateway } from '@/utils/ipfs';
 import { FormEvent, useEffect, useState } from 'react';
 import { X } from 'react-feather';
-import { Address, createPublicClient, getContract, http } from 'viem';
-import { mainnet, goerli } from 'wagmi/chains';
+import { Address, getContract } from 'viem';
 import ArtworkViewer from '../artwork/artwork-viewer';
 import { useSearchParams } from 'next/navigation';
-
-const publicClient = createPublicClient({
-  chain: __PROD__ ? mainnet : goerli,
-  transport: http(),
-});
+import { publicClient } from '@/utils/rpcClient';
 
 type MasterArtInfo = {
   tokenAddress: Address;

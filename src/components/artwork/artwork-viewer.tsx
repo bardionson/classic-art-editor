@@ -80,16 +80,11 @@ export default function ArtworkViewer({
   useEffect(() => {
     const fetchLayerArtists = async () => {
       // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
-      const { createPublicClient, http, getContract } = await import('viem');
-      const { mainnet, goerli } = await import('wagmi/chains');
-      const { V1_CONTRACT_ADDRESS, __PROD__ } = await import('@/config');
+      const { getContract } = await import('viem');
+      const { publicClient } = await import('@/utils/rpcClient');
+      const { V1_CONTRACT_ADDRESS } = await import('@/config');
       const v1Abi = (await import('@/abis/v1Abi')).default;
       const v2Abi = (await import('@/abis/v2Abi')).default;
-
-      const publicClient = createPublicClient({
-        chain: __PROD__ ? mainnet : goerli,
-        transport: http(),
-      });
 
       const contract = getContract({
         address: tokenAddress,
