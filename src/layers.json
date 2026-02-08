@@ -3005,6 +3005,28 @@
       ]
     },
     {
+      "tokenId": "127",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "7th Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/7b42da31a8ec399907d5bd9c68a10f9f",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "startValue": 0,
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0
+        }
+      ]
+    },
+    {
       "tokenId": "128",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "9th Man",
@@ -3050,8 +3072,52 @@
     },
     {
       "tokenId": "130",
-      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
       "name": "11th Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/5390bb3bafc63529eb7f771a17e4db30",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "startValue": 0,
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0
+        }
+      ]
+    },
+    {
+      "tokenId": "131",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "12th Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/5390bb3bafc63529eb7f771a17e4db30",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "startValue": 0,
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0
+        }
+      ]
+    },
+    {
+      "tokenId": "132",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "13th Man",
       "description": null,
       "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/5390bb3bafc63529eb7f771a17e4db30",
       "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
@@ -3118,6 +3184,28 @@
       "tokenId": "135",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "16th Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/1bebc5d4c9cef5f814eaea97fe9b3550",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "startValue": 0,
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0
+        }
+      ]
+    },
+    {
+      "tokenId": "136",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "17th Man",
       "description": null,
       "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/1bebc5d4c9cef5f814eaea97fe9b3550",
       "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
@@ -3225,6 +3313,28 @@
       ]
     },
     {
+      "tokenId": "141",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "22st Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/47c05a9fd79c3fa2fdfe7e259c546901",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "controlType": "STATE",
+          "startValue": 0,
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0
+        }
+      ]
+    },
+    {
       "tokenId": "142",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "23rd Man",
@@ -3272,6 +3382,28 @@
       "tokenId": "144",
       "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
       "name": "25th Man",
+      "description": null,
+      "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/de96510f40aad7d5d5c9292a02891310",
+      "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
+      "controls": [
+        {
+          "label": "State",
+          "stateLabels": [
+            "Normal",
+            "Dyed Hair",
+            "Silhouette"
+          ],
+          "maxValue": 2,
+          "minValue": 0,
+          "controlType": "STATE",
+          "startValue": 0
+        }
+      ]
+    },
+    {
+      "tokenId": "145",
+      "contractAddress": "0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad",
+      "name": "26th Man",
       "description": null,
       "imageUrl": "https://nft-cdn.alchemy.com/eth-mainnet/de96510f40aad7d5d5c9292a02891310",
       "masterTokenId": "QmWfqSR7KYuvJqgp22dyQvuFLtmcHGpKERUANULLzANALs",
