@@ -19,6 +19,7 @@ import LayerControlList from '@/components/artwork/layer-control-list';
 import LayerControlDialog from '@/components/artwork/layer-control-dialog';
 import layersData from '@/layers.json';
 import { fetchIpfs } from '@/utils/ipfs';
+import { resolveLayerContract } from '@/utils/contract-helpers';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -50,6 +51,7 @@ export default function ArtworkViewer({
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
   const [layerArtists, setLayerArtists] = useState<Record<string, string>>({});
+  const [layerContracts, setLayerContracts] = useState<Record<string, Address>>({});
 
   const {
     artElementRef,
@@ -80,19 +82,11 @@ export default function ArtworkViewer({
   useEffect(() => {
     const fetchLayerArtists = async () => {
       // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
-      const { getContract } = await import('viem');
       const { publicClient } = await import('@/utils/rpcClient');
-      const { V1_CONTRACT_ADDRESS } = await import('@/config');
-      const v1Abi = (await import('@/abis/v1Abi')).default;
-      const v2Abi = (await import('@/abis/v2Abi')).default;
-
-      const contract = getContract({
-        address: tokenAddress,
-        abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
-        client: publicClient,
-      });
 
       const newLayerArtists: Record<string, string> = {};
+      const newLayerContracts: Record<string, Address> = {};
+
       const promises = layers.map(async (layer) => {
         // Skip if already fetched
         if (layerArtists[layer.tokenId]) return;
@@ -100,9 +94,16 @@ export default function ArtworkViewer({
         try {
           // Fallback to fetching URI from contract if not in JSON (which it isn't)
           let metadataUri = (layer as any).metadataUri;
+
+          let contractAddress: Address | undefined;
+
           if (!metadataUri) {
             try {
-              metadataUri = await contract.read.tokenURI([BigInt(layer.tokenId)]);
+              const result = await resolveLayerContract(layer.tokenId, publicClient);
+              if (result) {
+                metadataUri = result.tokenURI;
+                contractAddress = result.contractAddress;
+              }
             } catch (e) {
               console.error(
                 `Failed to fetch tokenURI from contract for layer ${layer.tokenId}`,
@@ -113,6 +114,10 @@ export default function ArtworkViewer({
           }
 
           if (!metadataUri) return;
+
+          if (contractAddress) {
+            newLayerContracts[layer.tokenId] = contractAddress;
+          }
 
           const res = await fetchIpfs(metadataUri);
           const data = await res.json();
@@ -135,6 +140,9 @@ export default function ArtworkViewer({
       await Promise.all(promises);
       if (Object.keys(newLayerArtists).length > 0) {
         setLayerArtists((prev) => ({ ...prev, ...newLayerArtists }));
+      }
+      if (Object.keys(newLayerContracts).length > 0) {
+        setLayerContracts((prev) => ({ ...prev, ...newLayerContracts }));
       }
     };
 
@@ -305,6 +313,7 @@ export default function ArtworkViewer({
           setControlOverrides((prev) => ({ ...prev, ...values }))
         }
         currentValues={controlOverrides}
+        contractAddress={selectedLayer ? layerContracts[selectedLayer.tokenId] : undefined}
       />
     </div>
   );
