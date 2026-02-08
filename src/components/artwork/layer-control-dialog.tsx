@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Modal } from '@/components/common/modal';
-import { getContract } from 'viem';
+import { Address, getContract } from 'viem';
 import { useAccount, useWriteContract } from 'wagmi';
 import { publicClient } from '@/utils/rpcClient';
-import { getContractInfo } from '@/utils/contract-helpers';
+import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
+import v1Abi from '@/abis/v1Abi';
+import v2Abi from '@/abis/v2Abi';
 
 type Control = {
   minValue: number;
@@ -39,7 +41,12 @@ export default function LayerControlDialog({
     async function checkOwnership() {
       if (!address || !layer?.tokenId) return;
 
-      const { address: contractAddress, abi } = getContractInfo(Number(layer.tokenId));
+      const contractAddress =
+        Number(layer.tokenId) <= 347
+          ? (V1_CONTRACT_ADDRESS as Address)
+          : (V2_CONTRACT_ADDRESS as Address);
+      const abi = Number(layer.tokenId) <= 347 ? v1Abi : v2Abi;
+
       if (!contractAddress) return;
 
       try {
@@ -93,7 +100,12 @@ export default function LayerControlDialog({
   const handleUpdateChain = () => {
     if (!writeContract || !layer?.tokenId) return;
 
-    const { address: contractAddress, abi } = getContractInfo(Number(layer.tokenId));
+    const contractAddress =
+      Number(layer.tokenId) <= 347
+        ? (V1_CONTRACT_ADDRESS as Address)
+        : (V2_CONTRACT_ADDRESS as Address);
+    const abi = Number(layer.tokenId) <= 347 ? v1Abi : v2Abi;
+
     if (!contractAddress) return;
 
     const leverIds = Object.keys(localValues).map(k => BigInt(k));

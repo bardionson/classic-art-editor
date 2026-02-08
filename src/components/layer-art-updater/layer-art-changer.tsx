@@ -5,7 +5,6 @@ import Spinner from '@/components/common/spinner';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { LayerArtNFTMetadata } from '@/types/shared';
 import { getErrorMessage } from '@/utils/common';
-import { getContractInfo } from '@/utils/contract-helpers';
 import {
   fetchIpfs,
   getCustomIPFSGateway,
@@ -66,10 +65,12 @@ function FormScreen({ onSubmit }: FormScreenProps) {
 
     // @ts-ignore
     const tokenId = Number(e.target.tokenId.value);
-    // @ts-ignore
-    setCustomIPFSGateway(e.target.ipfsGatewayURL.value);
 
-    const { address: tokenAddress, abi } = getContractInfo(tokenId);
+    const tokenAddress =
+      tokenId <= 347
+        ? (V1_CONTRACT_ADDRESS as Address)
+        : (V2_CONTRACT_ADDRESS as Address);
+    const abi = tokenId <= 347 ? v1Abi : v2Abi;
 
     if (!tokenAddress) {
       console.error('Contract address not found for this token ID');
@@ -117,19 +118,6 @@ function FormScreen({ onSubmit }: FormScreenProps) {
           name="tokenId"
           className="mt-1"
           placeholder="289"
-        />
-      </div>
-      <div className="mt-2">
-        <label htmlFor="ipfsGatewayURL" className="text-sm font-bold">
-          IPFS Gateway (Optional)
-        </label>
-        <input
-          type="url"
-          id="ipfsGatewayURL"
-          name="ipfsGatewayURL"
-          className="mt-1"
-          placeholder="https://ipfs.io"
-          defaultValue={getCustomIPFSGateway()}
         />
       </div>
       <button
