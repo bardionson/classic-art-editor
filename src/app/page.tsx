@@ -78,12 +78,7 @@ export default function Home() {
             <br />
             <br />
             <span>
-              To help with restoration take a look at our pages on <a
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://artizen.fund/index/p/digital-rescue-lab?season=6&scroll=no"
-              className="underline"
-            >Artizen</a> and soon Juicebox and <a
+              To help with restoration take a look at our pages soon on Juicebox and <a
               target="_blank"
               rel="noreferrer noopener"
               href="https://x.com/ArtRescueLab"
