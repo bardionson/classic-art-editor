@@ -181,21 +181,6 @@ export function createGetLayerControlTokenValueFn(
     if (cache[layerTokenId])
       return Number(cache[layerTokenId][2 + leverId * 3]);
 
-    const v2contract = getContract({
-      address: V2_CONTRACT_ADDRESS,
-      abi: v2Abi,
-      client: publicClient,
-    });
-
-    const v2LayerControlTokens = await v2contract.read
-      .getControlToken([BigInt(layerTokenId)])
-      .catch(() => null);
-
-    if (v2LayerControlTokens) {
-      cache[layerTokenId] = v2LayerControlTokens;
-      return Number(v2LayerControlTokens[2 + leverId * 3]);
-    }
-
     // There are only 348 tokens [0 - 347] on the v1 contract and it only exists in production
     // Also V2 master pieces can have layers on v1 contract (e.g. master tokenId 23)
     if (V1_CONTRACT_ADDRESS && layerTokenId <= 347) {
@@ -213,6 +198,21 @@ export function createGetLayerControlTokenValueFn(
         cache[layerTokenId] = v1LayerControlTokens;
         return Number(v1LayerControlTokens[2 + leverId * 3]);
       }
+    }
+
+    const v2contract = getContract({
+      address: V2_CONTRACT_ADDRESS,
+      abi: v2Abi,
+      client: publicClient,
+    });
+
+    const v2LayerControlTokens = await v2contract.read
+      .getControlToken([BigInt(layerTokenId)])
+      .catch(() => null);
+
+    if (v2LayerControlTokens) {
+      cache[layerTokenId] = v2LayerControlTokens;
+      return Number(v2LayerControlTokens[2 + leverId * 3]);
     }
 
     // If the layer wasn't minted, take the default/static value.
