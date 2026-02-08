@@ -5,6 +5,7 @@ import Spinner from '@/components/common/spinner';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { LayerArtNFTMetadata } from '@/types/shared';
 import { getErrorMessage } from '@/utils/common';
+import { getContractInfo } from '@/utils/contract-helpers';
 import {
   fetchIpfs,
   getCustomIPFSGateway,
@@ -66,13 +67,19 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     // @ts-ignore
     const tokenId = Number(e.target.tokenId.value);
     // @ts-ignore
-    const tokenAddress = e.target.tokenAddress.value as Address;
-    // @ts-ignore
     setCustomIPFSGateway(e.target.ipfsGatewayURL.value);
+
+    const { address: tokenAddress, abi } = getContractInfo(tokenId);
+
+    if (!tokenAddress) {
+      console.error('Contract address not found for this token ID');
+      setState('error');
+      return;
+    }
 
     const contract = getContract({
       address: tokenAddress,
-      abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      abi,
       client: publicClient,
     });
 
@@ -97,22 +104,6 @@ function FormScreen({ onSubmit }: FormScreenProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="tokenAddress" className="text-sm font-bold">
-          Token Address
-        </label>
-        <select
-          required
-          className="mt-1"
-          name="tokenAddress"
-          defaultValue={V2_CONTRACT_ADDRESS}
-        >
-          {V1_CONTRACT_ADDRESS && (
-            <option value={V1_CONTRACT_ADDRESS}>V1 Artwork</option>
-          )}
-          <option value={V2_CONTRACT_ADDRESS}>V2 Artwork</option>
-        </select>
-      </div>
       <div className="mt-2">
         <label htmlFor="tokenId" className="text-sm font-bold">
           Layer Token ID

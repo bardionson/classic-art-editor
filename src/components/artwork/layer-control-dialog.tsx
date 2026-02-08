@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { Modal } from '@/components/common/modal';
 import { getContract } from 'viem';
 import { useAccount, useWriteContract } from 'wagmi';
-import v2Abi from '@/abis/v2Abi';
-import { V2_CONTRACT_ADDRESS } from '@/config';
 import { publicClient } from '@/utils/rpcClient';
+import { getContractInfo } from '@/utils/contract-helpers';
 
 type Control = {
   minValue: number;
@@ -39,13 +38,17 @@ export default function LayerControlDialog({
   useEffect(() => {
     async function checkOwnership() {
       if (!address || !layer?.tokenId) return;
+
+      const { address: contractAddress, abi } = getContractInfo(Number(layer.tokenId));
+      if (!contractAddress) return;
+
       try {
         const contract = getContract({
-          address: V2_CONTRACT_ADDRESS,
-          abi: v2Abi,
+          address: contractAddress,
+          abi,
           client: publicClient,
         });
-        // Try V2 ownerOf
+        // Try ownerOf
         try {
             const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
             if (owner === address) {
@@ -90,12 +93,15 @@ export default function LayerControlDialog({
   const handleUpdateChain = () => {
     if (!writeContract || !layer?.tokenId) return;
 
+    const { address: contractAddress, abi } = getContractInfo(Number(layer.tokenId));
+    if (!contractAddress) return;
+
     const leverIds = Object.keys(localValues).map(k => BigInt(k));
     const newValues = Object.values(localValues).map(v => BigInt(v));
 
     writeContract({
-        address: V2_CONTRACT_ADDRESS,
-        abi: v2Abi,
+        address: contractAddress,
+        abi,
         functionName: 'useControlToken',
         args: [BigInt(layer.tokenId), leverIds, newValues],
     });
