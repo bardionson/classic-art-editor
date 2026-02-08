@@ -2,7 +2,7 @@ import v1Abi from '@/abis/v1Abi';
 import v2Abi from '@/abis/v2Abi';
 import { Modal } from '@/components/common/modal';
 import Spinner from '@/components/common/spinner';
-import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS, __PROD__ } from '@/config';
+import { V1_CONTRACT_ADDRESS, __PROD__ } from '@/config';
 import { LayerArtNFTMetadata } from '@/types/shared';
 import { getErrorMessage } from '@/utils/common';
 import {
@@ -17,6 +17,7 @@ import { Address, getContract } from 'viem';
 import { useWalletClient } from 'wagmi';
 import Image from 'next/image';
 import { publicClient } from '@/utils/rpcClient';
+import { resolveLayerContract, getAbiForAddress } from '@/utils/contract-helpers';
 
 const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
 
@@ -66,20 +67,23 @@ function FormScreen({ onSubmit }: FormScreenProps) {
     // @ts-ignore
     const tokenId = Number(e.target.tokenId.value);
     // @ts-ignore
-    const tokenAddress = e.target.tokenAddress.value as Address;
-    // @ts-ignore
     setCustomIPFSGateway(e.target.ipfsGatewayURL.value);
 
-    const contract = getContract({
-      address: tokenAddress,
-      abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
-      client: publicClient,
-    });
-
     try {
-      const tokenURI = await contract.read.tokenURI([BigInt(tokenId)]);
-      // V1 contract won't fail for non existent token, it will just return an empty string.
-      if (!tokenURI) throw new Error('URI query for nonexistent token');
+      const result = await resolveLayerContract(tokenId, publicClient);
+
+      if (!result) {
+         // Force error flow
+         throw new Error('URI query for nonexistent token');
+      }
+
+      const { contractAddress, tokenURI } = result;
+
+      const contract = getContract({
+        address: contractAddress,
+        abi: getAbiForAddress(contractAddress),
+        client: publicClient,
+      });
 
       // controlTokens exist for layers, this means it's layer token
       const controlTokens = await contract.read
@@ -87,7 +91,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
         .catch(() => null);
 
       if (!controlTokens) throw new Error('URI query for nonexistent token');
-      onSubmit({ tokenAddress, tokenId, tokenURI });
+      onSubmit({ tokenAddress: contractAddress, tokenId, tokenURI });
     } catch (error) {
       const message = getErrorMessage(error);
       const is404 = message.includes('URI query for nonexistent token');
@@ -97,22 +101,6 @@ function FormScreen({ onSubmit }: FormScreenProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="tokenAddress" className="text-sm font-bold">
-          Token Address
-        </label>
-        <select
-          required
-          className="mt-1"
-          name="tokenAddress"
-          defaultValue={V2_CONTRACT_ADDRESS}
-        >
-          {V1_CONTRACT_ADDRESS && (
-            <option value={V1_CONTRACT_ADDRESS}>V1 Artwork</option>
-          )}
-          <option value={V2_CONTRACT_ADDRESS}>V2 Artwork</option>
-        </select>
-      </div>
       <div className="mt-2">
         <label htmlFor="tokenId" className="text-sm font-bold">
           Layer Token ID
@@ -214,7 +202,7 @@ function ChangeModal({
 
     const contract = getContract({
       address: tokenAddress,
-      abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      abi: getAbiForAddress(tokenAddress),
       client: walletClient,
     });
 
@@ -246,7 +234,7 @@ function ChangeModal({
 
     const contract = getContract({
       address: tokenAddress,
-      abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
+      abi: getAbiForAddress(tokenAddress),
       client: publicClient,
     });
 

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Modal } from '@/components/common/modal';
-import { getContract } from 'viem';
+import { Address, getContract } from 'viem';
 import { useAccount, useWriteContract } from 'wagmi';
-import v2Abi from '@/abis/v2Abi';
-import { V2_CONTRACT_ADDRESS } from '@/config';
 import { publicClient } from '@/utils/rpcClient';
+import { getAbiForAddress } from '@/utils/contract-helpers';
 
 type Control = {
   minValue: number;
@@ -21,6 +20,7 @@ type LayerControlDialogProps = {
   onClose: () => void;
   onPreview: (controlTokenId: string, values: Record<string, number>) => void;
   currentValues: Record<string, number>;
+  contractAddress?: Address;
 };
 
 export default function LayerControlDialog({
@@ -29,6 +29,7 @@ export default function LayerControlDialog({
   onClose,
   onPreview,
   currentValues,
+  contractAddress,
 }: LayerControlDialogProps) {
   const { address } = useAccount();
   const { writeContract, isPending, isSuccess } = useWriteContract();
@@ -38,16 +39,17 @@ export default function LayerControlDialog({
   // Check ownership
   useEffect(() => {
     async function checkOwnership() {
-      if (!address || !layer?.tokenId) return;
+      if (!address || !layer?.tokenId || !contractAddress) return;
       try {
         const contract = getContract({
-          address: V2_CONTRACT_ADDRESS,
-          abi: v2Abi,
+          address: contractAddress,
+          abi: getAbiForAddress(contractAddress),
           client: publicClient,
         });
-        // Try V2 ownerOf
+
         try {
             const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
+            // @ts-ignore
             if (owner === address) {
                 setIsOwner(true);
                 return;
@@ -58,7 +60,7 @@ export default function LayerControlDialog({
       }
     }
     checkOwnership();
-  }, [address, layer]);
+  }, [address, layer, contractAddress]);
 
   useEffect(() => {
       if (layer?.controls) {
@@ -88,14 +90,14 @@ export default function LayerControlDialog({
   };
 
   const handleUpdateChain = () => {
-    if (!writeContract || !layer?.tokenId) return;
+    if (!writeContract || !layer?.tokenId || !contractAddress) return;
 
     const leverIds = Object.keys(localValues).map(k => BigInt(k));
     const newValues = Object.values(localValues).map(v => BigInt(v));
 
     writeContract({
-        address: V2_CONTRACT_ADDRESS,
-        abi: v2Abi,
+        address: contractAddress,
+        abi: getAbiForAddress(contractAddress),
         functionName: 'useControlToken',
         args: [BigInt(layer.tokenId), leverIds, newValues],
     });
@@ -168,6 +170,7 @@ export default function LayerControlDialog({
           ) : (
             <div className="text-xs text-gray-500 flex items-center">
               Only owner can update on-chain
+              {!contractAddress && ' (Contract not resolved)'}
             </div>
           )}
         </div>
