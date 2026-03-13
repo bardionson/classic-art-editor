@@ -135,6 +135,12 @@ export default function Home() {
               description="Update the values for a Layer token that you own."
               onClick={() => setModal(MODAL.UPDATE_LAYER_ARTWORK)}
             />
+            <ToolBox
+              icon={viewMasterArtIcon}
+              title="Report an Issue"
+              description="Submit an issue report about a specific artwork."
+              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform', '_blank')}
+            />
           </div>
         </section>
         <section className="mt-12">
