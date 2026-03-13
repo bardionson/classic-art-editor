@@ -268,6 +268,15 @@ export default function ArtworkViewer({
               </ul>
               <h2 className="text-lg font-bold mt-4">Collector</h2>
               <p className="break-all">{collector}</p>
+              <button
+                className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                onClick={() => {
+                  const url = 'https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform?entry.1408621877=' + encodeURIComponent(window.location.href);
+                  window.open(url, '_blank');
+                }}
+              >
+                Report an Issue
+              </button>
             </div>
           )}
         {isLayersModalOpen && (
