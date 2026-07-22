@@ -30,6 +30,10 @@ mirror:{code} -> {
 - TTL is refreshed (sliding window, e.g. 60 min) on every read/write, giving automatic expiry for abandoned sessions.
 - Liveness for role negotiation uses a shorter staleness threshold on `displayLastSeenAt` (e.g. 20s of no polling) independent of the outer TTL.
 
+## Mirror Entry Point
+
+The "Mirror" button is added to `ArtworkViewer`'s existing floating button cluster (`src/components/artwork/artwork-viewer.tsx`, alongside the Layers/Fullscreen buttons around lines 207–220), so it's available from both the standalone art page and the gallery modal viewer. Clicking it opens a `Modal` (reusing `src/components/common/modal.tsx`) containing a code-word text input and a submit button. On submit, `ArtworkViewer` POSTs to `/api/mirror/[code]` with its own `tokenAddress`/`tokenId`, reads the returned `{ role }`, and calls `router.push` to `/mirror/[code]/display` or `/mirror/[code]/control` accordingly. This dialog and its submit handler are net-new — no existing button/hook covers it.
+
 ## Routes
 
 - `src/app/mirror/[code]/display/page.tsx` — fullscreen display.
@@ -49,18 +53,23 @@ mirror:{code} -> {
 Single dynamic route `src/app/api/mirror/[code]/route.ts`:
 
 - `POST` (join): body `{ tokenAddress, tokenId }`.
-  - If no session exists, or the existing session's display is stale, claim as display: write session with these values, `displayLastSeenAt = now`. Response: `{ role: 'display' }`.
-  - Otherwise, join as control: update `controlLastSeenAt = now`. Response: `{ role: 'control', tokenAddress, tokenId }` (from the existing session — the joining device's own token selection is ignored).
-- `GET ?role=display|control`: returns current session state; touches the corresponding `lastSeenAt` field and refreshes TTL. 404 if the session doesn't exist.
-- `PATCH`: body is a partial `controlOverrides` object, merged into the session's `controlOverrides`; touches `controlLastSeenAt` and refreshes TTL.
-- `DELETE`: removes the session immediately ("Stop Mirroring").
+  - Claim/stale-check and write must be atomic (a single Lua script executed via `EVAL`, or Redis `SET ... NX` plus a follow-up check) so two near-simultaneous joins for the same code can't both win as display or clobber each other. The script: read existing session; if absent or `displayLastSeenAt` older than the staleness threshold, write a **fresh** session — `{ tokenAddress, tokenId, controlOverrides: {} }` (overrides always reset on a new display claim, never inherited from a stale prior session) — with `displayLastSeenAt = now`, and return `display`. Otherwise, update `controlLastSeenAt = now` on the existing session and return `control`.
+  - Response: `{ role: 'display' }`, or `{ role: 'control', tokenAddress, tokenId }` (from the existing session — the joining device's own token selection is ignored in the control case).
+  - No cap on the number of simultaneous control joins — a third or fourth device joining an active code also becomes another control, each able to push overrides. Acceptable for casual gallery use; not enforced.
+- `GET ?role=display|control`: returns current session state; touches the corresponding `lastSeenAt` field and refreshes TTL. 404 if the session doesn't exist (including if it expired).
+- `PATCH`: body is a partial `controlOverrides` object, merged (additive union — existing keys are overwritten by new values, no key is ever removed by a merge) into the session's `controlOverrides`; touches `controlLastSeenAt` and refreshes TTL. 404 if the session doesn't exist or has expired.
+- `DELETE`: removes the session immediately ("Stop Mirroring"). 404 if the session doesn't exist or has already expired.
 
 ## Component/Hook Changes
 
 - `ArtworkViewer` (`src/components/artwork/artwork-viewer.tsx`): add an optional `controlOverrides` prop. When provided, it's merged into the existing internal `controlOverrides` state (existing local-preview behavior is unchanged when the prop is omitted).
 - Extract the layer-list derivation currently inlined in `ArtworkViewer` (filtering `layersData` by `tokenURI`, fetching artist names and layer contract addresses) into a `useLayersWithArtists(tokenAddress, tokenURI)` hook. Reused by both `ArtworkViewer` and the new control page.
-- Split `useArtwork`'s metadata/tokenURI fetch (its current "step 1") out into a `useTokenMetadata(tokenAddress, tokenId)` hook. The control page uses only this lighter hook plus `useLayersWithArtists` — it must not trigger the per-layer image compositing (`useArtwork`'s "step 2"), since that's unnecessary network/CPU load on a tablet. `useArtwork` continues to use `useTokenMetadata` internally for its own step 1.
+- Split `useArtwork`'s metadata/tokenURI fetch (its current "step 1") out into a `useTokenMetadata(tokenAddress, tokenId)` hook. The control page uses only this lighter hook plus `useLayersWithArtists` — it must not trigger the per-layer image compositing (`useArtwork`'s "step 2"), since that's unnecessary network/CPU load on a tablet. `useTokenMetadata` owns `error`, `metadata`, `tokenURI`, `collector`, `masterArtSize`, `artists`, and the `isComponentMountedRef` guard for its own fetch. `useArtwork` calls `useTokenMetadata` internally and passes its `error`/`metadata` through unchanged to callers — the step-2 effect keeps depending on the same `error` value, just sourced from the sub-hook instead of local state.
 - `LayerControlDialog`'s existing `onPreview` callback contract is unchanged; only the caller differs (server PATCH vs. local `setState`).
+
+## New Dependency
+
+This feature introduces Redis (Upstash) as a new runtime dependency — nothing in this codebase talks to Redis or any KV store today (no `redis`/`@upstash/redis` in `package.json`, no existing env vars for it). Implementation must include: adding the `@upstash/redis` package, provisioning an Upstash Redis instance, and adding `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` env vars (local `.env` and Vercel project settings).
 
 ## Known Limitations (accepted for v1)
 
