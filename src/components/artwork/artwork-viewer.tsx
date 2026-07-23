@@ -33,6 +33,7 @@ type ArtworkViewerProps = {
   backLabel?: string;
   initialFullscreen?: boolean;
   externalControlOverrides?: Record<string, number>;
+  readOnly?: boolean;
 };
 
 export default function ArtworkViewer({
@@ -44,6 +45,7 @@ export default function ArtworkViewer({
   backLabel,
   initialFullscreen = false,
   externalControlOverrides,
+  readOnly = false,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
@@ -125,27 +127,29 @@ export default function ArtworkViewer({
             ref={artElementRef}
             className="relative mx-auto -z-20"
           />
-          <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
-            <button
-              onClick={() => setIsLayersModalOpen(true)}
-              className="bg-gray-800 text-white p-2 rounded-full"
-            >
-              <Layers />
-            </button>
-            <button
-              onClick={() => setIsFullscreen(!isFullscreen)}
-              className="bg-gray-800 text-white p-2 rounded-full"
-            >
-              {isFullscreen ? <X /> : <Maximize />}
-            </button>
-            <button
-              onClick={() => setIsMirrorDialogOpen(true)}
-              className="bg-gray-800 text-white p-2 rounded-full"
-              aria-label="Mirror to another device"
-            >
-              <Cast />
-            </button>
-          </div>
+          {!readOnly && (
+            <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+              <button
+                onClick={() => setIsLayersModalOpen(true)}
+                className="bg-gray-800 text-white p-2 rounded-full"
+              >
+                <Layers />
+              </button>
+              <button
+                onClick={() => setIsFullscreen(!isFullscreen)}
+                className="bg-gray-800 text-white p-2 rounded-full"
+              >
+                {isFullscreen ? <X /> : <Maximize />}
+              </button>
+              <button
+                onClick={() => setIsMirrorDialogOpen(true)}
+                className="bg-gray-800 text-white p-2 rounded-full"
+                aria-label="Mirror to another device"
+              >
+                <Cast />
+              </button>
+            </div>
+          )}
         </div>
         {!isFullscreen && isLandscape && !isDescriptionPanelOpen && (
           <button
@@ -207,7 +211,7 @@ export default function ArtworkViewer({
               </button>
             </div>
           )}
-        {isLayersModalOpen && (
+        {!readOnly && isLayersModalOpen && (
           <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
             <ul>
               {metadata?.layout.layers.map((layer) => {
@@ -235,7 +239,7 @@ export default function ArtworkViewer({
             </ul>
           </Modal>
         )}
-        {isMirrorDialogOpen && (
+        {!readOnly && isMirrorDialogOpen && (
           <MirrorDialog
             tokenAddress={tokenAddress}
             tokenId={tokenId}
@@ -243,22 +247,24 @@ export default function ArtworkViewer({
           />
         )}
       </div>
-      {!isFullscreen && (
+      {!isFullscreen && !readOnly && (
         <LayerControlList
           layers={layersWithArtists}
           onLayerClick={(layer) => setSelectedLayer(layer)}
         />
       )}
-      <LayerControlDialog
-        layer={selectedLayer}
-        isOpen={!!selectedLayer}
-        onClose={() => setSelectedLayer(null)}
-        onPreview={(controlTokenId, values) =>
-          setControlOverrides((prev) => ({ ...prev, ...values }))
-        }
-        currentValues={controlOverrides}
-        contractAddress={selectedLayer?.contractAddress}
-      />
+      {!readOnly && (
+        <LayerControlDialog
+          layer={selectedLayer}
+          isOpen={!!selectedLayer}
+          onClose={() => setSelectedLayer(null)}
+          onPreview={(controlTokenId, values) =>
+            setControlOverrides((prev) => ({ ...prev, ...values }))
+          }
+          currentValues={controlOverrides}
+          contractAddress={selectedLayer?.contractAddress}
+        />
+      )}
     </div>
   );
 }
