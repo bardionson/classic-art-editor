@@ -4,21 +4,26 @@
 
 **Goal:** Let one device show an artwork fullscreen (the "display") while a second device (e.g. a tablet) adjusts its layer controls remotely (the "control"), paired by a shared code word, per `docs/superpowers/specs/2026-07-22-mirror-display-control-design.md`.
 
-**Architecture:** A Vercel KV (Redis) session keyed by the code word holds the token being shown and the current layer-control overrides. A single API route (`/api/mirror/[code]`) handles joining (atomic claim-as-display-or-control via a Lua script), polling reads, patching overrides, and ending the session. Two new pages poll that route once a second: `/mirror/[code]/display` (renders the existing `ArtworkViewer` fullscreen with overrides fed in from the server) and `/mirror/[code]/control` (renders the existing layer-control UI, but pushes changes to the server instead of local state). A new "Mirror" button + code-word dialog on the existing art page is the entry point into both.
+**Architecture:** A Redis (Upstash, free tier) session keyed by the code word holds the token being shown and the current layer-control overrides. A single API route (`/api/mirror/[code]`) handles joining (atomic claim-as-display-or-control via a Lua script), polling reads, patching overrides, and ending the session. Two new pages poll that route once a second: `/mirror/[code]/display` (renders the existing `ArtworkViewer` fullscreen with overrides fed in from the server) and `/mirror/[code]/control` (renders the existing layer-control UI, but pushes changes to the server instead of local state). A new "Mirror" button + code-word dialog on the existing art page is the entry point into both.
 
-**Tech Stack:** Next.js 14 (App Router), TypeScript, `@vercel/kv`, existing `viem`/`wagmi` stack (unchanged).
+**Tech Stack:** Next.js 14 (App Router), TypeScript, `@upstash/redis`, existing `viem`/`wagmi` stack (unchanged).
 
 ---
 
 ## Prerequisite (human action — do this before Task 3)
 
-Vercel KV must be provisioned before the API route can be tested against a real store (Tasks 1-2 don't need it; Task 3 onward does):
+An Upstash Redis database must be provisioned before the API route can be tested against a real store (Tasks 1-2 don't need it; Task 3 onward does). Vercel's own KV/Marketplace storage no longer has a free tier, so provision Upstash directly instead:
 
-1. In the Vercel dashboard, open the `classic-art-editor` project → **Storage** tab → **Create Database** → choose the Upstash-backed **KV** option.
-2. Connect it to the project (this auto-adds `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN` to the project's env vars for all environments).
-3. Locally, run `vercel link` (if not already linked) then `vercel env pull .env.local` to pull those vars down for local dev.
+1. Sign up (or log in) at upstash.com and create a new **Redis** database on the free tier.
+2. From the database's dashboard, copy the **REST URL** and **REST TOKEN**.
+3. Add them to `.env.local` in the project root:
+   ```
+   UPSTASH_REDIS_REST_URL=https://...
+   UPSTASH_REDIS_REST_TOKEN=...
+   ```
+4. If/when this gets deployed to Vercel, add the same two vars to the Vercel project's env vars (Project Settings → Environment Variables) — Upstash isn't auto-linked the way Vercel Marketplace storage is, so this step is manual.
 
-If this hasn't been done yet when you reach Task 3, stop and ask the user to complete it — the KV client will throw on import without these env vars.
+If this hasn't been done yet when you reach Task 3, stop and ask the user to complete it — the Redis client will throw on import without these env vars.
 
 ---
 
@@ -58,7 +63,7 @@ git commit -m "Add MirrorSession/MirrorRole types"
 
 ---
 
-## Task 2: KV-backed session store
+## Task 2: Redis-backed session store
 
 **Files:**
 - Create: `src/utils/mirror-store.ts`
@@ -67,15 +72,18 @@ This is the only module that talks to Redis. It owns the atomic claim-or-join lo
 
 - [ ] **Step 1: Add the dependency**
 
-Run: `npm install @vercel/kv`
+Run: `npm install @upstash/redis`
 
 - [ ] **Step 2: Write the store module**
 
 ```ts
 // src/utils/mirror-store.ts
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 import { Address } from 'viem';
 import { MirrorRole, MirrorSession } from '@/types/mirror';
+
+// Reads UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN from the environment.
+const kv = Redis.fromEnv();
 
 export const MIRROR_DISPLAY_STALE_MS = 20_000; // no display heartbeat in this long => code is up for grabs again
 export const MIRROR_SESSION_TTL_SECONDS = 60 * 60; // sliding 1-hour expiry, refreshed on every touch
@@ -187,7 +195,7 @@ Expected: no new errors.
 
 ```bash
 git add package.json package-lock.json src/utils/mirror-store.ts
-git commit -m "Add Vercel KV-backed mirror session store"
+git commit -m "Add Upstash Redis-backed mirror session store"
 ```
 
 ---
@@ -197,7 +205,7 @@ git commit -m "Add Vercel KV-backed mirror session store"
 **Files:**
 - Create: `src/app/api/mirror/[code]/route.ts`
 
-Requires the Prerequisite above to be done (real `KV_REST_API_URL`/`KV_REST_API_TOKEN` in `.env.local`) to test end-to-end.
+Requires the Prerequisite above to be done (real `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` in `.env.local`) to test end-to-end.
 
 - [ ] **Step 1: Write the route**
 
@@ -288,7 +296,7 @@ export async function DELETE(
 }
 ```
 
-- [ ] **Step 2: Manually verify against a real KV store**
+- [ ] **Step 2: Manually verify against a real Redis store**
 
 Run: `npm run dev`, then in another terminal:
 
@@ -1072,7 +1080,7 @@ export default function MirrorDisplayPage({
 
 - [ ] **Step 2: Manually verify**
 
-With the Prerequisite KV store in place: open the art page for a known token, click Mirror, submit a code word (say `sunset`). Confirm you land on `/mirror/sunset/display` showing the artwork fullscreen.
+With the Prerequisite Redis store in place: open the art page for a known token, click Mirror, submit a code word (say `sunset`). Confirm you land on `/mirror/sunset/display` showing the artwork fullscreen.
 
 - [ ] **Step 3: Commit**
 

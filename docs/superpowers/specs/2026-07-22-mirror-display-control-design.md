@@ -15,7 +15,7 @@ Artwork rendered by classic-art-editor is currently only viewable/adjustable in 
 
 ## Data Model
 
-A Redis-backed (Vercel KV) session keyed by the code word:
+A Redis-backed (Upstash, free tier) session keyed by the code word:
 
 ```
 mirror:{code} -> {
@@ -69,7 +69,7 @@ Single dynamic route `src/app/api/mirror/[code]/route.ts`:
 
 ## New Dependency
 
-This feature introduces Vercel KV (Upstash-backed Redis, provisioned through the Vercel dashboard's Storage tab rather than directly on upstash.com) as a new runtime dependency — nothing in this codebase talks to Redis or any KV store today (no `@vercel/kv` in `package.json`, no existing env vars for it). Implementation must include: creating the KV store from the Vercel project's Storage tab (auto-injects `KV_REST_API_URL` / `KV_REST_API_TOKEN` / `KV_REST_API_READ_ONLY_TOKEN` into the Vercel project's env vars), pulling those into local `.env` via `vercel env pull`, and adding the `@vercel/kv` package. `@vercel/kv`'s client supports the same `eval`/scripting primitives needed for the atomic claim-as-display check in the API section below.
+This feature introduces Redis (Upstash, provisioned directly at upstash.com rather than through Vercel's Marketplace, which dropped its free KV tier) as a new runtime dependency — nothing in this codebase talks to Redis or any KV store today (no `@upstash/redis` in `package.json`, no existing env vars for it). Implementation must include: creating a free-tier Redis database at upstash.com, copying its REST URL/token into `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` (local `.env.local` and the Vercel project's env vars for deployment), and adding the `@upstash/redis` package. `@upstash/redis`'s client supports the same `eval`/scripting primitives needed for the atomic claim-as-display check in the API section below.
 
 ## Known Limitations (accepted for v1)
 
