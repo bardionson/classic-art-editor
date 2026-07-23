@@ -33,7 +33,7 @@ type ArtworkViewerProps = {
   backLabel?: string;
   initialFullscreen?: boolean;
   externalControlOverrides?: Record<string, number>;
-  readOnly?: boolean;
+  hideControls?: boolean;
 };
 
 export default function ArtworkViewer({
@@ -45,7 +45,7 @@ export default function ArtworkViewer({
   backLabel,
   initialFullscreen = false,
   externalControlOverrides,
-  readOnly = false,
+  hideControls = false,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
@@ -127,7 +127,7 @@ export default function ArtworkViewer({
             ref={artElementRef}
             className="relative mx-auto -z-20"
           />
-          {!readOnly && (
+          {!hideControls && (
             <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
               <button
                 onClick={() => setIsLayersModalOpen(true)}
@@ -211,7 +211,7 @@ export default function ArtworkViewer({
               </button>
             </div>
           )}
-        {!readOnly && isLayersModalOpen && (
+        {!hideControls && isLayersModalOpen && (
           <Modal title="Layers" onClose={() => setIsLayersModalOpen(false)}>
             <ul>
               {metadata?.layout.layers.map((layer) => {
@@ -239,7 +239,7 @@ export default function ArtworkViewer({
             </ul>
           </Modal>
         )}
-        {!readOnly && isMirrorDialogOpen && (
+        {!hideControls && isMirrorDialogOpen && (
           <MirrorDialog
             tokenAddress={tokenAddress}
             tokenId={tokenId}
@@ -247,13 +247,13 @@ export default function ArtworkViewer({
           />
         )}
       </div>
-      {!isFullscreen && !readOnly && (
+      {!isFullscreen && !hideControls && (
         <LayerControlList
           layers={layersWithArtists}
           onLayerClick={(layer) => setSelectedLayer(layer)}
         />
       )}
-      {!readOnly && (
+      {!hideControls && (
         <LayerControlDialog
           layer={selectedLayer}
           isOpen={!!selectedLayer}

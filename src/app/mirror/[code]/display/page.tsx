@@ -94,7 +94,7 @@ export default function MirrorDisplayPage({
       tokenId={token.tokenId}
       artContainerClassName="w-full"
       initialFullscreen
-      readOnly
+      hideControls
       externalControlOverrides={overrides}
     />
   );
