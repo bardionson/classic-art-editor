@@ -37,6 +37,14 @@ local function encodeOverrides(t)
   return cjson.encode(t)
 end
 
+local function encodeSession(tokenAddress, tokenId, controlOverrides, displayLastSeenAt, controlLastSeenAt)
+  local controlPart = controlLastSeenAt and tostring(controlLastSeenAt) or 'null'
+  return string.format(
+    '{"tokenAddress":%s,"tokenId":%d,"controlOverrides":%s,"displayLastSeenAt":%d,"controlLastSeenAt":%s}',
+    cjson.encode(tokenAddress), tokenId, encodeOverrides(controlOverrides), displayLastSeenAt, controlPart
+  )
+end
+
 local existing = redis.call('GET', key)
 local session
 
@@ -45,25 +53,14 @@ if existing then
 end
 
 if (not session) or (now - session.displayLastSeenAt > staleMs) then
-  session = {
-    tokenAddress = tokenAddress,
-    tokenId = tokenId,
-    controlOverrides = {},
-    displayLastSeenAt = now,
-    controlLastSeenAt = cjson.null,
-  }
-  local sessionJson = string.format(
-    '{"tokenAddress":%s,"tokenId":%d,"controlOverrides":%s,"displayLastSeenAt":%d,"controlLastSeenAt":null}',
-    cjson.encode(tokenAddress), tokenId, encodeOverrides(session.controlOverrides), now
-  )
+  local sessionJson = encodeSession(tokenAddress, tokenId, {}, now, nil)
   redis.call('SET', key, sessionJson, 'EX', ttl)
   return {'display', sessionJson}
 end
 
 session.controlLastSeenAt = now
-local sessionJson = string.format(
-  '{"tokenAddress":%s,"tokenId":%d,"controlOverrides":%s,"displayLastSeenAt":%d,"controlLastSeenAt":%d}',
-  cjson.encode(session.tokenAddress), session.tokenId, encodeOverrides(session.controlOverrides),
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
   session.displayLastSeenAt, session.controlLastSeenAt
 )
 redis.call('SET', key, sessionJson, 'EX', ttl)
@@ -75,11 +72,13 @@ export async function claimOrJoinMirrorSession(
   tokenAddress: Address,
   tokenId: number,
 ): Promise<{ role: MirrorRole; session: MirrorSession }> {
-  // The Redis client's automatic (default-on) deserialization recursively
-  // JSON.parses any array element that looks like valid JSON, so the second
-  // element — the Lua script's cjson-encoded session — usually arrives
-  // already parsed into an object rather than as a raw string. Handle both
-  // shapes rather than assuming it's always a string.
+  // The Redis client's automatic (default-on) deserialization deterministically
+  // JSON.parses any array element from `eval` that looks like valid JSON, so
+  // the second element — the Lua script's cjson-encoded session — always
+  // arrives already parsed into an object under that behavior, never as a raw
+  // string. This isn't a "sometimes" thing at runtime, but it isn't visible
+  // from the TS types alone which shape a given SDK version/config will
+  // produce, so both shapes are handled defensively.
   const [role, rawSession] = (await kv.eval(
     CLAIM_OR_JOIN_SCRIPT,
     [keyFor(code)],
