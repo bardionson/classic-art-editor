@@ -33,26 +33,35 @@ export default function MirrorDisplayPage({
 
   useEffect(() => {
     const poll = async () => {
-      const res = await fetch(
-        `/api/mirror/${encodeURIComponent(params.code)}?role=display`,
-      );
+      try {
+        const res = await fetch(
+          `/api/mirror/${encodeURIComponent(params.code)}?role=display`,
+        );
 
-      if (res.status === 404) {
-        setEnded(true);
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        return;
-      }
+        if (res.status === 404) {
+          setEnded(true);
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          return;
+        }
 
-      const data = (await res.json()) as MirrorSession;
-      setToken(
-        (prev) =>
-          prev ?? { tokenAddress: data.tokenAddress, tokenId: data.tokenId },
-      );
+        if (!res.ok) {
+          console.error(`Mirror poll failed: ${res.status}`);
+          return;
+        }
 
-      const overridesJson = JSON.stringify(data.controlOverrides);
-      if (overridesJson !== lastOverridesJsonRef.current) {
-        lastOverridesJsonRef.current = overridesJson;
-        setOverrides(data.controlOverrides);
+        const data = (await res.json()) as MirrorSession;
+        setToken(
+          (prev) =>
+            prev ?? { tokenAddress: data.tokenAddress, tokenId: data.tokenId },
+        );
+
+        const overridesJson = JSON.stringify(data.controlOverrides);
+        if (overridesJson !== lastOverridesJsonRef.current) {
+          lastOverridesJsonRef.current = overridesJson;
+          setOverrides(data.controlOverrides);
+        }
+      } catch (err) {
+        console.error('Mirror poll error:', err);
       }
     };
 
