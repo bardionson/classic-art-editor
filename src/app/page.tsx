@@ -1,7 +1,7 @@
 'use client';
 
 import logo from '../../public/logo/async-logo.svg';
-import firstSupperHero from '../../public/first-supper-0.png';
+import firstSupperHero from '../../public/first-supper-0.jpg';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import FAQ from '@/components/faq';
 import Gallery from '@/components/gallery/Gallery';
