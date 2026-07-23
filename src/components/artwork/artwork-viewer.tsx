@@ -196,14 +196,14 @@ export default function ArtworkViewer({
             <div
               className={`${
                 isLandscape
-                  ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 p-4 overflow-y-auto text-white'
+                  ? 'absolute top-0 right-0 h-full w-1/3 bg-black bg-opacity-75 pl-10 pr-4 py-4 overflow-y-auto text-white'
                   : detailsContainerClassName
               }`}
             >
               {isLandscape && (
                 <button
                   onClick={() => setIsDescriptionPanelOpen(false)}
-                  className="absolute top-1/2 left-[-1.25rem] bg-gray-800 text-white p-2 rounded-full shadow-soft-drop border-2 border-white hover:bg-black transition"
+                  className="absolute top-1/2 left-2 bg-gray-800 text-white p-2 rounded-full shadow-soft-drop border-2 border-white hover:bg-black transition"
                   aria-label="Hide description panel"
                 >
                   <ChevronLeft size={20} />
