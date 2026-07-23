@@ -1,6 +1,7 @@
 'use client';
 
 import logo from '../../public/logo/async-logo.svg';
+import firstSupperHero from '../../public/first-supper-0.png';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import FAQ from '@/components/faq';
 import Gallery from '@/components/gallery/Gallery';
@@ -38,7 +39,7 @@ export default function Home() {
             <Link href={featured.link} className="group block">
               <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-lg shadow-soft-drop bg-alabaster">
                 <Image
-                  src={featured.imageUrl}
+                  src={firstSupperHero}
                   alt={featured.name}
                   fill
                   sizes="100vw"
