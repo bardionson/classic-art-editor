@@ -22,14 +22,7 @@ const keyFor = (code: string) => `mirror:${code.trim().toLowerCase()}`;
 // instance: the metatable is silently ignored and the latter function
 // doesn't exist here) has any effect — both still emit \`[]\`. So the empty
 // case is special-cased with plain string formatting instead of cjson.
-const CLAIM_OR_JOIN_SCRIPT = `
-local key = KEYS[1]
-local now = tonumber(ARGV[1])
-local staleMs = tonumber(ARGV[2])
-local ttl = tonumber(ARGV[3])
-local tokenAddress = ARGV[4]
-local tokenId = tonumber(ARGV[5])
-
+const LUA_ENCODE_HELPERS = `
 local function encodeOverrides(t)
   if next(t) == nil then
     return '{}'
@@ -44,6 +37,15 @@ local function encodeSession(tokenAddress, tokenId, controlOverrides, displayLas
     cjson.encode(tokenAddress), tokenId, encodeOverrides(controlOverrides), displayLastSeenAt, controlPart
   )
 end
+`;
+
+const CLAIM_OR_JOIN_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local now = tonumber(ARGV[1])
+local staleMs = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+local tokenAddress = ARGV[4]
+local tokenId = tonumber(ARGV[5])
 
 local existing = redis.call('GET', key)
 local session
@@ -96,37 +98,92 @@ export async function claimOrJoinMirrorSession(
   return { role, session };
 }
 
+// Runs as a single Redis-side script so a display's heartbeat touch can't
+// race with a concurrent control patch (see patchMirrorControlOverrides):
+// without this, a client-side GET-then-SET here could read a session,
+// have a control patch land in between, then overwrite it with the stale
+// controlOverrides this GET saw, silently reverting the patch.
+const TOUCH_SESSION_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local role = ARGV[1]
+local now = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+
+local existing = redis.call('GET', key)
+if not existing then
+  return false
+end
+
+local session = cjson.decode(existing)
+if role == 'display' then
+  session.displayLastSeenAt = now
+else
+  session.controlLastSeenAt = now
+end
+
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
+  session.displayLastSeenAt, session.controlLastSeenAt
+)
+redis.call('SET', key, sessionJson, 'EX', ttl)
+return sessionJson
+`;
+
+// Runs as a single Redis-side script for the same reason as
+// TOUCH_SESSION_SCRIPT above: a client-side GET-then-SET here could clobber
+// a displayLastSeenAt bump (or another patch's overrides) that landed
+// concurrently.
+const PATCH_OVERRIDES_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local newOverrides = cjson.decode(ARGV[1])
+local now = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+
+local existing = redis.call('GET', key)
+if not existing then
+  return false
+end
+
+local session = cjson.decode(existing)
+for k, v in pairs(newOverrides) do
+  session.controlOverrides[k] = v
+end
+session.controlLastSeenAt = now
+
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
+  session.displayLastSeenAt, session.controlLastSeenAt
+)
+redis.call('SET', key, sessionJson, 'EX', ttl)
+return sessionJson
+`;
+
 export async function getMirrorSession(
   code: string,
   role: MirrorRole,
 ): Promise<MirrorSession | null> {
-  const session = await kv.get<MirrorSession>(keyFor(code));
-  if (!session) return null;
+  const rawSession = (await kv.eval(
+    TOUCH_SESSION_SCRIPT,
+    [keyFor(code)],
+    [role, Date.now(), MIRROR_SESSION_TTL_SECONDS],
+  )) as string | MirrorSession | null;
 
-  const touched: MirrorSession = {
-    ...session,
-    ...(role === 'display'
-      ? { displayLastSeenAt: Date.now() }
-      : { controlLastSeenAt: Date.now() }),
-  };
-  await kv.set(keyFor(code), touched, { ex: MIRROR_SESSION_TTL_SECONDS });
-  return touched;
+  if (rawSession === null) return null;
+  return typeof rawSession === 'string' ? JSON.parse(rawSession) : rawSession;
 }
 
 export async function patchMirrorControlOverrides(
   code: string,
   overrides: Record<string, number>,
 ): Promise<MirrorSession | null> {
-  const session = await kv.get<MirrorSession>(keyFor(code));
-  if (!session) return null;
+  const rawSession = (await kv.eval(
+    PATCH_OVERRIDES_SCRIPT,
+    [keyFor(code)],
+    [JSON.stringify(overrides), Date.now(), MIRROR_SESSION_TTL_SECONDS],
+  )) as string | MirrorSession | null;
 
-  const updated: MirrorSession = {
-    ...session,
-    controlOverrides: { ...session.controlOverrides, ...overrides },
-    controlLastSeenAt: Date.now(),
-  };
-  await kv.set(keyFor(code), updated, { ex: MIRROR_SESSION_TTL_SECONDS });
-  return updated;
+  if (rawSession === null) return null;
+  return typeof rawSession === 'string' ? JSON.parse(rawSession) : rawSession;
 }
 
 export async function deleteMirrorSession(code: string): Promise<boolean> {
