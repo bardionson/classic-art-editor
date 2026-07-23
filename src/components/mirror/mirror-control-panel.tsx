@@ -11,12 +11,27 @@ import { MirrorSession } from '@/types/mirror';
 const POLL_INTERVAL_MS = 1000;
 
 export default function MirrorControlPanel({ code }: { code: string }) {
-  const [session, setSession] = useState<MirrorSession | null>();
+  // tokenAddress/tokenId are set once and never change for the life of a
+  // session, so they're kept separate from `controlOverrides`. Only
+  // `controlOverrides` should become a new object reference on a poll tick
+  // that actually changes something — LayerControlDialog resets its local,
+  // not-yet-submitted edits whenever its `currentValues` prop changes
+  // reference (see that component's own effect), so replacing this object
+  // unconditionally every ~1s would reset whatever the user just selected
+  // before they can hit Preview.
+  const [token, setToken] = useState<{
+    tokenAddress: Address;
+    tokenId: number;
+  } | null>();
+  const [controlOverrides, setControlOverrides] = useState<
+    Record<string, number>
+  >({});
   const [ended, setEnded] = useState(false);
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>(
     undefined,
   );
+  const lastOverridesJsonRef = useRef<string>('{}');
 
   useEffect(() => {
     const poll = async () => {
@@ -37,7 +52,16 @@ export default function MirrorControlPanel({ code }: { code: string }) {
         }
 
         const data = (await res.json()) as MirrorSession;
-        setSession(data);
+        setToken(
+          (prev) =>
+            prev ?? { tokenAddress: data.tokenAddress, tokenId: data.tokenId },
+        );
+
+        const overridesJson = JSON.stringify(data.controlOverrides);
+        if (overridesJson !== lastOverridesJsonRef.current) {
+          lastOverridesJsonRef.current = overridesJson;
+          setControlOverrides(data.controlOverrides);
+        }
       } catch (err) {
         console.error('Mirror poll error:', err);
       }
@@ -52,10 +76,10 @@ export default function MirrorControlPanel({ code }: { code: string }) {
   }, [code]);
 
   const { metadata, tokenURI } = useTokenMetadata(
-    session?.tokenAddress as Address,
-    session?.tokenId as number,
+    token?.tokenAddress as Address,
+    token?.tokenId as number,
   );
-  const layers = useLayersWithArtists(session?.tokenAddress, tokenURI);
+  const layers = useLayersWithArtists(token?.tokenAddress, tokenURI);
 
   const handleStopMirroring = async () => {
     try {
@@ -73,7 +97,7 @@ export default function MirrorControlPanel({ code }: { code: string }) {
     return <p className="text-center mt-12">Mirror session ended.</p>;
   }
 
-  if (!session) {
+  if (!token) {
     return <p className="text-center mt-12">Connecting...</p>;
   }
 
@@ -102,7 +126,7 @@ export default function MirrorControlPanel({ code }: { code: string }) {
             body: JSON.stringify(values),
           }).catch((err) => console.error('Mirror PATCH failed:', err));
         }}
-        currentValues={session.controlOverrides}
+        currentValues={controlOverrides}
         contractAddress={selectedLayer?.contractAddress}
       />
     </div>
