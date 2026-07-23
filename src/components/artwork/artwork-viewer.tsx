@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   XCircle,
   X,
@@ -12,14 +12,12 @@ import {
 } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
+import { useLayersWithArtists } from '@/hooks/useLayersWithArtists';
 import Spinner from '@/components/common/spinner';
 import { Modal } from '@/components/common/modal';
 import Link from 'next/link';
 import LayerControlList from '@/components/artwork/layer-control-list';
 import LayerControlDialog from '@/components/artwork/layer-control-dialog';
-import layersData from '@/layers.json';
-import { fetchIpfs } from '@/utils/ipfs';
-import { resolveLayerContract } from '@/utils/contract-helpers';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -50,8 +48,6 @@ export default function ArtworkViewer({
     Record<string, number>
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
-  const [layerArtists, setLayerArtists] = useState<Record<string, string>>({});
-  const [layerContracts, setLayerContracts] = useState<Record<string, Address>>({});
 
   const {
     artElementRef,
@@ -66,96 +62,7 @@ export default function ArtworkViewer({
     artists,
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
-  const layers = (
-    layersData[tokenAddress as keyof typeof layersData] || []
-  ).filter((l: any) => {
-    if (!tokenURI) return false;
-    // Normalize logic: check if tokenURI contains the masterTokenId (CID)
-    // tokenURI might be "ipfs://CID" or "https://.../CID"
-    return tokenURI.includes(l.masterTokenId);
-  }).map((l: any) => ({
-    ...l,
-    tokenId: parseInt(l.tokenId, 10),
-  }));
-
-  // Fetch layer metadata to get artist names
-  useEffect(() => {
-    const fetchLayerArtists = async () => {
-      // Create public client dynamically to avoid hook rules issues or refactoring useArtwork
-      const { publicClient } = await import('@/utils/rpcClient');
-
-      const newLayerArtists: Record<string, string> = {};
-      const newLayerContracts: Record<string, Address> = {};
-
-      const promises = layers.map(async (layer) => {
-        // Skip if already fetched
-        if (layerArtists[layer.tokenId]) return;
-
-        try {
-          // Fallback to fetching URI from contract if not in JSON (which it isn't)
-          let metadataUri = (layer as any).metadataUri;
-
-          let contractAddress: Address | undefined;
-
-          if (!metadataUri) {
-            try {
-              const result = await resolveLayerContract(layer.tokenId, publicClient);
-              if (result) {
-                metadataUri = result.tokenURI;
-                contractAddress = result.contractAddress;
-              }
-            } catch (e) {
-              console.error(
-                `Failed to fetch tokenURI from contract for layer ${layer.tokenId}`,
-                e,
-              );
-              return;
-            }
-          }
-
-          if (!metadataUri) return;
-
-          if (contractAddress) {
-            newLayerContracts[layer.tokenId] = contractAddress;
-          }
-
-          const res = await fetchIpfs(metadataUri);
-          const data = await res.json();
-          // Look for Artist in attributes
-          const artistAttr = data.attributes?.find(
-            (attr: any) =>
-              attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
-          );
-          if (artistAttr) {
-            newLayerArtists[layer.tokenId] = artistAttr.value;
-          }
-        } catch (err) {
-          console.error(
-            `Failed to fetch metadata for layer ${layer.tokenId}`,
-            err,
-          );
-        }
-      });
-
-      await Promise.all(promises);
-      if (Object.keys(newLayerArtists).length > 0) {
-        setLayerArtists((prev) => ({ ...prev, ...newLayerArtists }));
-      }
-      if (Object.keys(newLayerContracts).length > 0) {
-        setLayerContracts((prev) => ({ ...prev, ...newLayerContracts }));
-      }
-    };
-
-    if (layers.length > 0) {
-      fetchLayerArtists();
-    }
-  }, [layers, tokenAddress, layerArtists]); // re-run if layers change (which happens when tokenURI loads)
-
-  // Merge fetched artists into layers prop
-  const layersWithArtists = layers.map((layer) => ({
-    ...layer,
-    artistName: layerArtists[layer.tokenId] || layer.artistName,
-  }));
+  const layersWithArtists = useLayersWithArtists(tokenAddress, tokenURI);
 
   if (error) {
     return (
@@ -176,34 +83,37 @@ export default function ArtworkViewer({
             isFullscreen ? 'w-full h-full' : artContainerClassName || ''
           }`}
         >
-        {statusMessage && (
-          <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
-            {statusMessage === ERROR_MESSAGE ? (
-              <>
-                <XCircle size={80} className="text-red mx-auto mb-8" />
-                <p className="text-white text-center">
-                  {ERROR_MESSAGE.split('\n')[0]}
-                  <br />
-                  {ERROR_MESSAGE.split('\n')[1]}
-                </p>
-              </>
-            ) : (
-              <>
-                <Spinner size={80} className="text-purple mx-auto mt-12 mb-8" />
-                <p className="text-white text-center break-all">
-                  {statusMessage}
-                  <br />
-                  The process can take several minutes.
-                </p>
-              </>
-            )}
-          </div>
-        )}
-        <div
-          id={ART_ELEMENT_ID}
-          ref={artElementRef}
-          className="relative mx-auto -z-20"
-        />
+          {statusMessage && (
+            <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
+              {statusMessage === ERROR_MESSAGE ? (
+                <>
+                  <XCircle size={80} className="text-red mx-auto mb-8" />
+                  <p className="text-white text-center">
+                    {ERROR_MESSAGE.split('\n')[0]}
+                    <br />
+                    {ERROR_MESSAGE.split('\n')[1]}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <Spinner
+                    size={80}
+                    className="text-purple mx-auto mt-12 mb-8"
+                  />
+                  <p className="text-white text-center break-all">
+                    {statusMessage}
+                    <br />
+                    The process can take several minutes.
+                  </p>
+                </>
+              )}
+            </div>
+          )}
+          <div
+            id={ART_ELEMENT_ID}
+            ref={artElementRef}
+            className="relative mx-auto -z-20"
+          />
           <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
             <button
               onClick={() => setIsLayersModalOpen(true)}
@@ -219,9 +129,7 @@ export default function ArtworkViewer({
             </button>
           </div>
         </div>
-        {!isFullscreen &&
-        isLandscape &&
-        !isDescriptionPanelOpen && (
+        {!isFullscreen && isLandscape && !isDescriptionPanelOpen && (
           <button
             onClick={() => setIsDescriptionPanelOpen(true)}
             className="absolute top-1/2 right-4 bg-gray-800 text-white p-2 rounded-full"
@@ -229,7 +137,7 @@ export default function ArtworkViewer({
             <Info />
           </button>
         )}
-      {!isFullscreen &&
+        {!isFullscreen &&
           metadata &&
           (isDescriptionPanelOpen || !isLandscape) && (
             <div
@@ -239,23 +147,23 @@ export default function ArtworkViewer({
                   : detailsContainerClassName
               }`}
             >
-          {isLandscape && (
-            <button
-              onClick={() => setIsDescriptionPanelOpen(false)}
-              className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
-            >
-              <ChevronLeft />
-            </button>
-          )}
-          {backLink && (
-            <Link
-              href={backLink}
-              className="flex items-center text-sm text-gray-500 mb-4 hover:text-black transition-colors"
-            >
-              <ArrowLeft size={16} className="mr-1" />
-              {backLabel || 'Back'}
-            </Link>
-          )}
+              {isLandscape && (
+                <button
+                  onClick={() => setIsDescriptionPanelOpen(false)}
+                  className="absolute top-1/2 left-[-1rem] bg-gray-800 text-white p-1 rounded-full"
+                >
+                  <ChevronLeft />
+                </button>
+              )}
+              {backLink && (
+                <Link
+                  href={backLink}
+                  className="flex items-center text-sm text-gray-500 mb-4 hover:text-black transition-colors"
+                >
+                  <ArrowLeft size={16} className="mr-1" />
+                  {backLabel || 'Back'}
+                </Link>
+              )}
               <h1 className="text-2xl font-bold">{metadata.name}</h1>
               <p className="mt-2">{metadata.description}</p>
               <h2 className="text-lg font-bold mt-4">Artists</h2>
@@ -271,7 +179,9 @@ export default function ArtworkViewer({
               <button
                 className="mt-6 w-full bg-red hover:bg-red/80 text-white font-bold py-2 px-4 rounded transition-colors"
                 onClick={() => {
-                  const url = 'https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform?entry.1408621877=' + encodeURIComponent(window.location.href);
+                  const url =
+                    'https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform?entry.1408621877=' +
+                    encodeURIComponent(window.location.href);
                   window.open(url, '_blank');
                 }}
               >
@@ -322,7 +232,7 @@ export default function ArtworkViewer({
           setControlOverrides((prev) => ({ ...prev, ...values }))
         }
         currentValues={controlOverrides}
-        contractAddress={selectedLayer ? layerContracts[selectedLayer.tokenId] : undefined}
+        contractAddress={selectedLayer?.contractAddress}
       />
     </div>
   );
