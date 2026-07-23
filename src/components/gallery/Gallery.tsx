@@ -19,12 +19,17 @@ export interface GalleryItem {
 interface GalleryProps {
   title: string;
   items: GalleryItem[];
+  embedded?: boolean;
 }
 
 type SortOption = 'name' | 'date';
 type SortDirection = 'asc' | 'desc';
 
-export default function Gallery({ title, items }: GalleryProps) {
+export default function Gallery({
+  title,
+  items,
+  embedded = false,
+}: GalleryProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState<SortOption>('name');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
@@ -60,10 +65,18 @@ export default function Gallery({ title, items }: GalleryProps) {
     setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
   };
 
+  const Heading = embedded ? 'h2' : 'h1';
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className={embedded ? '' : 'container mx-auto px-4 py-8'}>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">{title}</h1>
+        <Heading
+          className={
+            embedded ? 'text-2xl font-bold mb-4' : 'text-3xl font-bold mb-4'
+          }
+        >
+          {title}
+        </Heading>
 
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
           {/* Search */}
@@ -96,7 +109,11 @@ export default function Gallery({ title, items }: GalleryProps) {
               className="p-2 border border-gray-300 rounded-md hover:bg-gray-100"
               title={sortDirection === 'asc' ? 'Ascending' : 'Descending'}
             >
-              {sortDirection === 'asc' ? <ArrowUp size={20} /> : <ArrowDown size={20} />}
+              {sortDirection === 'asc' ? (
+                <ArrowUp size={20} />
+              ) : (
+                <ArrowDown size={20} />
+              )}
             </button>
           </div>
         </div>
@@ -126,7 +143,9 @@ export default function Gallery({ title, items }: GalleryProps) {
                     {item.name}
                   </h3>
                   {item.artistName && (
-                    <p className="text-sm text-gray-500 mb-2">{item.artistName}</p>
+                    <p className="text-sm text-gray-500 mb-2">
+                      {item.artistName}
+                    </p>
                   )}
                   {item.description && (
                     <p className="text-sm text-gray-600 line-clamp-3 mb-4 flex-1">

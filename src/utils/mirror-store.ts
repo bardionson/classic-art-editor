@@ -1,0 +1,192 @@
+// src/utils/mirror-store.ts
+import { Redis } from '@upstash/redis';
+import { Address } from 'viem';
+import { MirrorRole, MirrorSession } from '@/types/mirror';
+
+// Reads UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN from the environment.
+const kv = Redis.fromEnv();
+
+export const MIRROR_DISPLAY_STALE_MS = 20_000; // no display heartbeat in this long => code is up for grabs again
+export const MIRROR_SESSION_TTL_SECONDS = 60 * 60; // sliding 1-hour expiry, refreshed on every touch
+
+const keyFor = (code: string) => `mirror:${code.trim().toLowerCase()}`;
+
+// Runs as a single Redis-side script so two near-simultaneous joins for the
+// same code can't both become "display" or clobber each other's write.
+// NOTE: cjson.encode({}) on a genuinely empty Lua table produces JSON `[]`,
+// not `{}`, and there is no reliable way to tag a table as "definitely an
+// object" for Redis's bundled cjson — it's the stock lua-cjson (Mark
+// Pulford's), not the OpenResty/Kong fork, so neither the
+// `setmetatable(t, { __jsontype = 'object' })` trick nor
+// `cjson.encode_empty_table_as_object` (verified against the live Upstash
+// instance: the metatable is silently ignored and the latter function
+// doesn't exist here) has any effect — both still emit \`[]\`. So the empty
+// case is special-cased with plain string formatting instead of cjson.
+const LUA_ENCODE_HELPERS = `
+local function encodeOverrides(t)
+  if next(t) == nil then
+    return '{}'
+  end
+  return cjson.encode(t)
+end
+
+local function encodeSession(tokenAddress, tokenId, controlOverrides, displayLastSeenAt, controlLastSeenAt)
+  local controlPart = controlLastSeenAt and tostring(controlLastSeenAt) or 'null'
+  return string.format(
+    '{"tokenAddress":%s,"tokenId":%d,"controlOverrides":%s,"displayLastSeenAt":%d,"controlLastSeenAt":%s}',
+    cjson.encode(tokenAddress), tokenId, encodeOverrides(controlOverrides), displayLastSeenAt, controlPart
+  )
+end
+`;
+
+const CLAIM_OR_JOIN_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local now = tonumber(ARGV[1])
+local staleMs = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+local tokenAddress = ARGV[4]
+local tokenId = tonumber(ARGV[5])
+
+local existing = redis.call('GET', key)
+local session
+
+if existing then
+  session = cjson.decode(existing)
+end
+
+if (not session) or (now - session.displayLastSeenAt > staleMs) then
+  local sessionJson = encodeSession(tokenAddress, tokenId, {}, now, nil)
+  redis.call('SET', key, sessionJson, 'EX', ttl)
+  return {'display', sessionJson}
+end
+
+session.controlLastSeenAt = now
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
+  session.displayLastSeenAt, session.controlLastSeenAt
+)
+redis.call('SET', key, sessionJson, 'EX', ttl)
+return {'control', sessionJson}
+`;
+
+export async function claimOrJoinMirrorSession(
+  code: string,
+  tokenAddress: Address,
+  tokenId: number,
+): Promise<{ role: MirrorRole; session: MirrorSession }> {
+  // The Redis client's automatic (default-on) deserialization deterministically
+  // JSON.parses any array element from `eval` that looks like valid JSON, so
+  // the second element — the Lua script's cjson-encoded session — always
+  // arrives already parsed into an object under that behavior, never as a raw
+  // string. This isn't a "sometimes" thing at runtime, but it isn't visible
+  // from the TS types alone which shape a given SDK version/config will
+  // produce, so both shapes are handled defensively.
+  const [role, rawSession] = (await kv.eval(
+    CLAIM_OR_JOIN_SCRIPT,
+    [keyFor(code)],
+    [
+      Date.now(),
+      MIRROR_DISPLAY_STALE_MS,
+      MIRROR_SESSION_TTL_SECONDS,
+      tokenAddress,
+      tokenId,
+    ],
+  )) as [MirrorRole, string | MirrorSession];
+
+  const session =
+    typeof rawSession === 'string' ? JSON.parse(rawSession) : rawSession;
+  return { role, session };
+}
+
+// Runs as a single Redis-side script so a display's heartbeat touch can't
+// race with a concurrent control patch (see patchMirrorControlOverrides):
+// without this, a client-side GET-then-SET here could read a session,
+// have a control patch land in between, then overwrite it with the stale
+// controlOverrides this GET saw, silently reverting the patch.
+const TOUCH_SESSION_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local role = ARGV[1]
+local now = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+
+local existing = redis.call('GET', key)
+if not existing then
+  return false
+end
+
+local session = cjson.decode(existing)
+if role == 'display' then
+  session.displayLastSeenAt = now
+else
+  session.controlLastSeenAt = now
+end
+
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
+  session.displayLastSeenAt, session.controlLastSeenAt
+)
+redis.call('SET', key, sessionJson, 'EX', ttl)
+return sessionJson
+`;
+
+// Runs as a single Redis-side script for the same reason as
+// TOUCH_SESSION_SCRIPT above: a client-side GET-then-SET here could clobber
+// a displayLastSeenAt bump (or another patch's overrides) that landed
+// concurrently.
+const PATCH_OVERRIDES_SCRIPT = `${LUA_ENCODE_HELPERS}
+local key = KEYS[1]
+local newOverrides = cjson.decode(ARGV[1])
+local now = tonumber(ARGV[2])
+local ttl = tonumber(ARGV[3])
+
+local existing = redis.call('GET', key)
+if not existing then
+  return false
+end
+
+local session = cjson.decode(existing)
+for k, v in pairs(newOverrides) do
+  session.controlOverrides[k] = v
+end
+session.controlLastSeenAt = now
+
+local sessionJson = encodeSession(
+  session.tokenAddress, session.tokenId, session.controlOverrides,
+  session.displayLastSeenAt, session.controlLastSeenAt
+)
+redis.call('SET', key, sessionJson, 'EX', ttl)
+return sessionJson
+`;
+
+export async function getMirrorSession(
+  code: string,
+  role: MirrorRole,
+): Promise<MirrorSession | null> {
+  const rawSession = (await kv.eval(
+    TOUCH_SESSION_SCRIPT,
+    [keyFor(code)],
+    [role, Date.now(), MIRROR_SESSION_TTL_SECONDS],
+  )) as string | MirrorSession | null;
+
+  if (rawSession === null) return null;
+  return typeof rawSession === 'string' ? JSON.parse(rawSession) : rawSession;
+}
+
+export async function patchMirrorControlOverrides(
+  code: string,
+  overrides: Record<string, number>,
+): Promise<MirrorSession | null> {
+  const rawSession = (await kv.eval(
+    PATCH_OVERRIDES_SCRIPT,
+    [keyFor(code)],
+    [JSON.stringify(overrides), Date.now(), MIRROR_SESSION_TTL_SECONDS],
+  )) as string | MirrorSession | null;
+
+  if (rawSession === null) return null;
+  return typeof rawSession === 'string' ? JSON.parse(rawSession) : rawSession;
+}
+
+export async function deleteMirrorSession(code: string): Promise<boolean> {
+  const deletedCount = await kv.del(keyFor(code));
+  return deletedCount > 0;
+}

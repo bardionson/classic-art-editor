@@ -1,14 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Address, getContract } from 'viem';
-import v1Abi from '@/abis/v1Abi';
-import v2Abi from '@/abis/v2Abi';
-import { V1_CONTRACT_ADDRESS } from '@/config';
-import { MasterArtNFTMetadata } from '@/types/shared';
-import { fetchIpfs } from '@/utils/ipfs';
+import { Address } from 'viem';
+import { useTokenMetadata } from '@/hooks/useTokenMetadata';
 import {
   createGetLayerControlTokenValueFn,
   getLayersFromMetadata,
-  getMasterArtSize,
 } from '@/components/master-art-viewer/utils';
 import LayerImageBuilder, {
   LayerImageElement,
@@ -21,110 +16,51 @@ export const useArtwork = (
 ) => {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);
-  const [statusMessage, setStatusMessage] = useState<
+  const [layerStatusMessage, setLayerStatusMessage] = useState<
     string | React.JSX.Element
-  >('Loading NFT metadata...');
-  const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
-  const [collector, setCollector] = useState<Address>();
-  const [error, setError] = useState<string>();
+  >('');
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
-  const [isLandscape, setIsLandscape] = useState(false);
-  const [fetchedTokenURI, setFetchedTokenURI] = useState<string>();
-  const [masterArtSize, setMasterArtSize] = useState<{
-    width: number;
-    height: number;
-    resizeToFitScreenRatio: number;
-  }>();
-  const [artists, setArtists] = useState<string[]>([]);
+  const [layerError, setLayerError] = useState<string>();
 
   const layerBlobUrlsRef = useRef<Record<string, string>>({});
+  // Bumped at the start of every renderLayers() run. Layer image loads and
+  // on-chain control reads are async and have no fixed ordering guarantee
+  // (IPFS gateway fallbacks, RPC calls), so if controlOverrides changes
+  // again before an in-flight run finishes, that older run must detect it's
+  // been superseded and stop touching the DOM/state — otherwise it can
+  // "win the race" and silently overwrite a newer, correct composite with
+  // stale layer values once it finally resolves.
+  const renderGenerationRef = useRef(0);
 
-  // 1. Fetch Metadata (only re-runs if token changes)
+  const {
+    statusMessage: metadataStatusMessage,
+    metadata,
+    collector,
+    error: metadataError,
+    isLandscape,
+    tokenURI,
+    masterArtSize,
+    artists,
+  } = useTokenMetadata(tokenAddress, tokenId);
+
   useEffect(() => {
     isComponentMountedRef.current = true;
-    const fetchMetadata = async () => {
-      setStatusMessage('Loading NFT metadata...');
-      setError(undefined);
-      try {
-        const { publicClient } = await import('@/utils/rpcClient');
-
-        const contract = getContract({
-          address: tokenAddress,
-          abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
-          client: publicClient,
-        });
-
-        let tokenURI;
-        try {
-          tokenURI = await contract.read.tokenURI([BigInt(tokenId)]);
-          if (!isComponentMountedRef.current) return;
-          setFetchedTokenURI(tokenURI);
-          if (!tokenURI) throw new Error('URI query for nonexistent token');
-
-          const owner = await contract.read.ownerOf([BigInt(tokenId)]);
-          if (!isComponentMountedRef.current) return;
-          setCollector(owner);
-        } catch (e: any) {
-          console.error('Contract read error:', e);
-          const errorMessage = e?.message?.toLowerCase() || '';
-
-          if (
-            errorMessage.includes('query for nonexistent token') ||
-            errorMessage.includes('execution reverted') ||
-            errorMessage.includes('invalid token id')
-          ) {
-            throw new Error('Token not found. Please check the version and ID.');
-          } else {
-             // Re-throw other errors (network, etc) so the outer catch can handle them,
-             // or provide a more specific network error message
-             throw new Error(`Failed to load token data: ${e.message || 'Unknown error'}`);
-          }
-        }
-
-        const response = await fetchIpfs(tokenURI);
-        const metadata = (await response.json()) as MasterArtNFTMetadata;
-        if (!isComponentMountedRef.current) return;
-        setMetadata(metadata);
-
-        // Extract artists from attributes
-        if (metadata.attributes) {
-          const extractedArtists = metadata.attributes
-            .filter(
-              (attr: any) =>
-                attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
-            )
-            .map((attr: any) => attr.value);
-          setArtists(extractedArtists);
-        }
-
-        const size = await getMasterArtSize(metadata.image);
-        if (!isComponentMountedRef.current) return;
-        setMasterArtSize(size);
-        setIsLandscape(size.width > size.height);
-      } catch (e: any) {
-        console.error(e);
-        if (isComponentMountedRef.current) {
-          setError(e.message);
-          setStatusMessage('');
-        }
-      }
-    };
-
-    if (tokenAddress && !isNaN(tokenId)) {
-      fetchMetadata();
-    }
-
     return () => {
       isComponentMountedRef.current = false;
     };
-  }, [tokenAddress, tokenId]);
+  }, []);
 
-  // 2. Render Layers (re-runs if metadata or overrides change)
+  // Render Layers (re-runs if metadata or overrides change)
   useEffect(() => {
     const renderLayers = async () => {
       if (!metadata || !masterArtSize || !artElementRef.current) return;
       // If we have an error from metadata fetch, don't try to render
-      if (error) return;
+      if (metadataError) return;
+
+      const generation = ++renderGenerationRef.current;
+      const isStale = () => generation !== renderGenerationRef.current;
+
+      setLayerError(undefined);
 
       try {
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
@@ -133,12 +69,14 @@ export const useArtwork = (
           controlOverrides,
         );
 
-        if (!isComponentMountedRef.current) return;
+        if (!isComponentMountedRef.current || isStale()) return;
 
         const layers = await getLayersFromMetadata(
           metadata.layout.layers,
           getLayerControlTokenValue,
         );
+
+        if (!isComponentMountedRef.current || isStale()) return;
 
         const artElement = artElementRef.current;
         const { width, height, resizeToFitScreenRatio } = masterArtSize;
@@ -167,8 +105,9 @@ export const useArtwork = (
 
             const blobUrl = await builder.loadImage(
               layer.activeStateURI,
-              (domain) =>
-                setStatusMessage(
+              (domain) => {
+                if (isStale()) return;
+                setLayerStatusMessage(
                   <>
                     Loading layers...
                     <br />
@@ -177,12 +116,13 @@ export const useArtwork = (
                       {domain}
                     </a>
                   </>,
-                ),
+                );
+              },
               cachedUrl,
             );
 
             if (blobUrl) {
-                layerBlobUrlsRef.current[layer.activeStateURI] = blobUrl;
+              layerBlobUrlsRef.current[layer.activeStateURI] = blobUrl;
             }
           };
 
@@ -196,10 +136,12 @@ export const useArtwork = (
         // Build and append in strict order
         for (const { layer, builder, loadPromise } of layerBuilders) {
           try {
-            if (!isComponentMountedRef.current) return;
+            if (!isComponentMountedRef.current || isStale()) return;
 
             // Wait for this specific layer's image to load
             await loadPromise;
+
+            if (!isComponentMountedRef.current || isStale()) return;
 
             if (layer.anchor) {
               const anchorImageEl = Array.from(artElement.children).find(
@@ -211,6 +153,9 @@ export const useArtwork = (
             }
 
             const layerImageElement = await builder.build();
+
+            if (!isComponentMountedRef.current || isStale()) return;
+
             layerImageElement.resize(resizeToFitScreenRatio);
             artElement.appendChild(layerImageElement);
             newLayerHashes[layer.id] = layer.activeStateURI;
@@ -219,32 +164,33 @@ export const useArtwork = (
           }
         }
 
-        if (!isComponentMountedRef.current) return;
+        if (!isComponentMountedRef.current || isStale()) return;
         setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
-        setStatusMessage('');
+        setLayerStatusMessage('');
       } catch (e: any) {
         console.error(e);
-        if (isComponentMountedRef.current) {
-          setError(e.message);
-          setStatusMessage('');
+        if (isComponentMountedRef.current && !isStale()) {
+          setLayerStatusMessage('');
+          setLayerError(e.message);
         }
       }
     };
 
     renderLayers();
-  }, [metadata, masterArtSize, controlOverrides, tokenId, error]);
+  }, [metadata, masterArtSize, controlOverrides, tokenId, metadataError]); // metadataError (not layerError/combined error): re-check after a metadata fetch failure so we don't composite stale layers for what might be a new token; depending on layerError here would re-trigger this same effect every time it sets its own error
 
+  // error/statusMessage combine both metadata-fetch and layer-compositing outcomes — only one domain is ever active at a time given the guard above
   return {
     artElementRef,
-    statusMessage,
+    statusMessage: metadataStatusMessage || layerStatusMessage,
     metadata,
     collector,
-    error,
+    error: metadataError || layerError,
     layerHashes,
     isLandscape,
-    tokenURI: fetchedTokenURI,
+    tokenURI,
     artists,
     masterArtSize,
   };
