@@ -23,6 +23,14 @@ export const useArtwork = (
   const [layerError, setLayerError] = useState<string>();
 
   const layerBlobUrlsRef = useRef<Record<string, string>>({});
+  // Bumped at the start of every renderLayers() run. Layer image loads and
+  // on-chain control reads are async and have no fixed ordering guarantee
+  // (IPFS gateway fallbacks, RPC calls), so if controlOverrides changes
+  // again before an in-flight run finishes, that older run must detect it's
+  // been superseded and stop touching the DOM/state — otherwise it can
+  // "win the race" and silently overwrite a newer, correct composite with
+  // stale layer values once it finally resolves.
+  const renderGenerationRef = useRef(0);
 
   const {
     statusMessage: metadataStatusMessage,
@@ -49,6 +57,9 @@ export const useArtwork = (
       // If we have an error from metadata fetch, don't try to render
       if (metadataError) return;
 
+      const generation = ++renderGenerationRef.current;
+      const isStale = () => generation !== renderGenerationRef.current;
+
       setLayerError(undefined);
 
       try {
@@ -58,12 +69,14 @@ export const useArtwork = (
           controlOverrides,
         );
 
-        if (!isComponentMountedRef.current) return;
+        if (!isComponentMountedRef.current || isStale()) return;
 
         const layers = await getLayersFromMetadata(
           metadata.layout.layers,
           getLayerControlTokenValue,
         );
+
+        if (!isComponentMountedRef.current || isStale()) return;
 
         const artElement = artElementRef.current;
         const { width, height, resizeToFitScreenRatio } = masterArtSize;
@@ -92,7 +105,8 @@ export const useArtwork = (
 
             const blobUrl = await builder.loadImage(
               layer.activeStateURI,
-              (domain) =>
+              (domain) => {
+                if (isStale()) return;
                 setLayerStatusMessage(
                   <>
                     Loading layers...
@@ -102,7 +116,8 @@ export const useArtwork = (
                       {domain}
                     </a>
                   </>,
-                ),
+                );
+              },
               cachedUrl,
             );
 
@@ -121,10 +136,12 @@ export const useArtwork = (
         // Build and append in strict order
         for (const { layer, builder, loadPromise } of layerBuilders) {
           try {
-            if (!isComponentMountedRef.current) return;
+            if (!isComponentMountedRef.current || isStale()) return;
 
             // Wait for this specific layer's image to load
             await loadPromise;
+
+            if (!isComponentMountedRef.current || isStale()) return;
 
             if (layer.anchor) {
               const anchorImageEl = Array.from(artElement.children).find(
@@ -136,6 +153,9 @@ export const useArtwork = (
             }
 
             const layerImageElement = await builder.build();
+
+            if (!isComponentMountedRef.current || isStale()) return;
+
             layerImageElement.resize(resizeToFitScreenRatio);
             artElement.appendChild(layerImageElement);
             newLayerHashes[layer.id] = layer.activeStateURI;
@@ -144,14 +164,14 @@ export const useArtwork = (
           }
         }
 
-        if (!isComponentMountedRef.current) return;
+        if (!isComponentMountedRef.current || isStale()) return;
         setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
         setLayerStatusMessage('');
       } catch (e: any) {
         console.error(e);
-        if (isComponentMountedRef.current) {
+        if (isComponentMountedRef.current && !isStale()) {
           setLayerStatusMessage('');
           setLayerError(e.message);
         }
