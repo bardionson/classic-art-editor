@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   Info,
   ArrowLeft,
+  Cast,
 } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
@@ -18,6 +19,7 @@ import { Modal } from '@/components/common/modal';
 import Link from 'next/link';
 import LayerControlList from '@/components/artwork/layer-control-list';
 import LayerControlDialog from '@/components/artwork/layer-control-dialog';
+import MirrorDialog from '@/components/artwork/mirror-dialog';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -45,6 +47,7 @@ export default function ArtworkViewer({
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
+  const [isMirrorDialogOpen, setIsMirrorDialogOpen] = useState(false);
   const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
   const [controlOverrides, setControlOverrides] = useState<
     Record<string, number>
@@ -135,6 +138,13 @@ export default function ArtworkViewer({
             >
               {isFullscreen ? <X /> : <Maximize />}
             </button>
+            <button
+              onClick={() => setIsMirrorDialogOpen(true)}
+              className="bg-gray-800 text-white p-2 rounded-full"
+              aria-label="Mirror to another device"
+            >
+              <Cast />
+            </button>
           </div>
         </div>
         {!isFullscreen && isLandscape && !isDescriptionPanelOpen && (
@@ -224,6 +234,13 @@ export default function ArtworkViewer({
               })}
             </ul>
           </Modal>
+        )}
+        {isMirrorDialogOpen && (
+          <MirrorDialog
+            tokenAddress={tokenAddress}
+            tokenId={tokenId}
+            onClose={() => setIsMirrorDialogOpen(false)}
+          />
         )}
       </div>
       {!isFullscreen && (
