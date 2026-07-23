@@ -159,8 +159,9 @@ export const useArtwork = (
     };
 
     renderLayers();
-  }, [metadata, masterArtSize, controlOverrides, tokenId, metadataError]);
+  }, [metadata, masterArtSize, controlOverrides, tokenId, metadataError]); // metadataError (not layerError/combined error): re-check after a metadata fetch failure so we don't composite stale layers for what might be a new token; depending on layerError here would re-trigger this same effect every time it sets its own error
 
+  // error/statusMessage combine both metadata-fetch and layer-compositing outcomes — only one domain is ever active at a time given the guard above
   return {
     artElementRef,
     statusMessage: metadataStatusMessage || layerStatusMessage,
