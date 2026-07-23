@@ -1,6 +1,31 @@
 import { toBlob } from 'html-to-image';
 
 /**
+ * html-to-image clips its capture to the node's own declared
+ * clientWidth/clientHeight, ignoring any child that's positioned or sized
+ * beyond that box. Layers are absolutely positioned from the NFT's layout
+ * metadata and aren't guaranteed to stay within the container's own
+ * width/height (which comes from a separate reference master image), so a
+ * layer that extends past the right/bottom edge gets silently cut off
+ * unless we tell html-to-image the true content bounds explicitly.
+ */
+function getContentBounds(node: HTMLElement): {
+  width: number;
+  height: number;
+} {
+  let maxRight = node.clientWidth;
+  let maxBottom = node.clientHeight;
+
+  for (const child of Array.from(node.children)) {
+    const el = child as HTMLElement;
+    maxRight = Math.max(maxRight, el.offsetLeft + el.offsetWidth);
+    maxBottom = Math.max(maxBottom, el.offsetTop + el.offsetHeight);
+  }
+
+  return { width: maxRight, height: maxBottom };
+}
+
+/**
  * Captures the given DOM node (the composited artwork stack) as a PNG blob
  * at native artwork resolution and triggers a browser download.
  *
@@ -13,8 +38,12 @@ export async function downloadFlattenedArtwork(
   pixelRatio: number,
   filename: string,
 ): Promise<void> {
+  const { width, height } = getContentBounds(node);
+
   const blob = await toBlob(node, {
     pixelRatio,
+    width,
+    height,
     backgroundColor: '#ffffff', // composited layers can have partial opacity/holes
     cacheBust: false, // layer <img> srcs are blob: URLs, already same-origin
   });
