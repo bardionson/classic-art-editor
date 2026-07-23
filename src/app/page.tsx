@@ -56,21 +56,7 @@ export default function Home() {
           <p>
             <span>
               What a ride it’s been. The Digital Rescue Lab is bringing Async
-              Art back to life. Using the legacy Async Code we have restored the
-              ability to again control the classic Async Art. By searching for
-              art in the gallery you can view it and every layer it contains.
-              Now you can change the layers in a preview draft mode even if you
-              do not own the layer. Be aware that color changes are not working
-              properly yet, Async Music pieces will not play music and pieces
-              where the layers are missing from IPFS will not be able to be
-              controlled. We are constantly working on additional steps to
-              restore the art.
-            </span>
-            <br />
-            <br />
-            <span>
-              In this app you no longer need to search for the id of your art as
-              there is a gallery view.
+              Art back to life.
             </span>
             <br />
             <br />
@@ -142,6 +128,26 @@ export default function Home() {
               .
             </p>
           </FAQ>
+        </section>
+        <section className="mt-12">
+          <p>
+            <span>
+              Using the legacy Async Code we have restored the ability to again
+              control the classic Async Art. By searching for art in the gallery
+              you can view it and every layer it contains. Now you can change
+              the layers in a preview draft mode even if you do not own the
+              layer. Be aware that color changes are not working properly yet,
+              Async Music pieces will not play music and pieces where the layers
+              are missing from IPFS will not be able to be controlled. We are
+              constantly working on additional steps to restore the art.
+            </span>
+            <br />
+            <br />
+            <span>
+              In this app you no longer need to search for the id of your art as
+              there is a gallery view.
+            </span>
+          </p>
         </section>
       </main>
     </div>
