@@ -1,14 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Address, getContract } from 'viem';
-import v1Abi from '@/abis/v1Abi';
-import v2Abi from '@/abis/v2Abi';
-import { V1_CONTRACT_ADDRESS } from '@/config';
-import { MasterArtNFTMetadata } from '@/types/shared';
-import { fetchIpfs } from '@/utils/ipfs';
+import { Address } from 'viem';
+import { useTokenMetadata } from '@/hooks/useTokenMetadata';
 import {
   createGetLayerControlTokenValueFn,
   getLayersFromMetadata,
-  getMasterArtSize,
 } from '@/components/master-art-viewer/utils';
 import LayerImageBuilder, {
   LayerImageElement,
@@ -21,105 +16,32 @@ export const useArtwork = (
 ) => {
   const isComponentMountedRef = useRef(true);
   const artElementRef = useRef<HTMLDivElement>(null);
-  const [statusMessage, setStatusMessage] = useState<
+  const [layerStatusMessage, setLayerStatusMessage] = useState<
     string | React.JSX.Element
-  >('Loading NFT metadata...');
-  const [metadata, setMetadata] = useState<MasterArtNFTMetadata>();
-  const [collector, setCollector] = useState<Address>();
-  const [error, setError] = useState<string>();
+  >('');
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
-  const [isLandscape, setIsLandscape] = useState(false);
-  const [fetchedTokenURI, setFetchedTokenURI] = useState<string>();
-  const [masterArtSize, setMasterArtSize] = useState<{
-    width: number;
-    height: number;
-    resizeToFitScreenRatio: number;
-  }>();
-  const [artists, setArtists] = useState<string[]>([]);
 
   const layerBlobUrlsRef = useRef<Record<string, string>>({});
 
-  // 1. Fetch Metadata (only re-runs if token changes)
+  const {
+    statusMessage: metadataStatusMessage,
+    metadata,
+    collector,
+    error,
+    isLandscape,
+    tokenURI,
+    masterArtSize,
+    artists,
+  } = useTokenMetadata(tokenAddress, tokenId);
+
   useEffect(() => {
     isComponentMountedRef.current = true;
-    const fetchMetadata = async () => {
-      setStatusMessage('Loading NFT metadata...');
-      setError(undefined);
-      try {
-        const { publicClient } = await import('@/utils/rpcClient');
-
-        const contract = getContract({
-          address: tokenAddress,
-          abi: tokenAddress === V1_CONTRACT_ADDRESS ? v1Abi : v2Abi,
-          client: publicClient,
-        });
-
-        let tokenURI;
-        try {
-          tokenURI = await contract.read.tokenURI([BigInt(tokenId)]);
-          if (!isComponentMountedRef.current) return;
-          setFetchedTokenURI(tokenURI);
-          if (!tokenURI) throw new Error('URI query for nonexistent token');
-
-          const owner = await contract.read.ownerOf([BigInt(tokenId)]);
-          if (!isComponentMountedRef.current) return;
-          setCollector(owner);
-        } catch (e: any) {
-          console.error('Contract read error:', e);
-          const errorMessage = e?.message?.toLowerCase() || '';
-
-          if (
-            errorMessage.includes('query for nonexistent token') ||
-            errorMessage.includes('execution reverted') ||
-            errorMessage.includes('invalid token id')
-          ) {
-            throw new Error('Token not found. Please check the version and ID.');
-          } else {
-             // Re-throw other errors (network, etc) so the outer catch can handle them,
-             // or provide a more specific network error message
-             throw new Error(`Failed to load token data: ${e.message || 'Unknown error'}`);
-          }
-        }
-
-        const response = await fetchIpfs(tokenURI);
-        const metadata = (await response.json()) as MasterArtNFTMetadata;
-        if (!isComponentMountedRef.current) return;
-        setMetadata(metadata);
-
-        // Extract artists from attributes
-        if (metadata.attributes) {
-          const extractedArtists = metadata.attributes
-            .filter(
-              (attr: any) =>
-                attr.trait_type === 'Artist' || attr.trait_type === 'Creator',
-            )
-            .map((attr: any) => attr.value);
-          setArtists(extractedArtists);
-        }
-
-        const size = await getMasterArtSize(metadata.image);
-        if (!isComponentMountedRef.current) return;
-        setMasterArtSize(size);
-        setIsLandscape(size.width > size.height);
-      } catch (e: any) {
-        console.error(e);
-        if (isComponentMountedRef.current) {
-          setError(e.message);
-          setStatusMessage('');
-        }
-      }
-    };
-
-    if (tokenAddress && !isNaN(tokenId)) {
-      fetchMetadata();
-    }
-
     return () => {
       isComponentMountedRef.current = false;
     };
-  }, [tokenAddress, tokenId]);
+  }, []);
 
-  // 2. Render Layers (re-runs if metadata or overrides change)
+  // Render Layers (re-runs if metadata or overrides change)
   useEffect(() => {
     const renderLayers = async () => {
       if (!metadata || !masterArtSize || !artElementRef.current) return;
@@ -168,7 +90,7 @@ export const useArtwork = (
             const blobUrl = await builder.loadImage(
               layer.activeStateURI,
               (domain) =>
-                setStatusMessage(
+                setLayerStatusMessage(
                   <>
                     Loading layers...
                     <br />
@@ -182,7 +104,7 @@ export const useArtwork = (
             );
 
             if (blobUrl) {
-                layerBlobUrlsRef.current[layer.activeStateURI] = blobUrl;
+              layerBlobUrlsRef.current[layer.activeStateURI] = blobUrl;
             }
           };
 
@@ -223,12 +145,11 @@ export const useArtwork = (
         setLayerHashes(newLayerHashes);
 
         artElement.classList.remove('-z-20');
-        setStatusMessage('');
+        setLayerStatusMessage('');
       } catch (e: any) {
         console.error(e);
         if (isComponentMountedRef.current) {
-          setError(e.message);
-          setStatusMessage('');
+          setLayerStatusMessage('');
         }
       }
     };
@@ -238,13 +159,13 @@ export const useArtwork = (
 
   return {
     artElementRef,
-    statusMessage,
+    statusMessage: metadataStatusMessage || layerStatusMessage,
     metadata,
     collector,
     error,
     layerHashes,
     isLandscape,
-    tokenURI: fetchedTokenURI,
+    tokenURI,
     artists,
     masterArtSize,
   };
