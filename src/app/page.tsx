@@ -37,14 +37,13 @@ export default function Home() {
         {featured && (
           <section className="mb-12">
             <Link href={featured.link} className="group block">
-              <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-lg shadow-soft-drop bg-alabaster">
+              <div className="relative w-full overflow-hidden rounded-lg shadow-soft-drop bg-alabaster">
                 <Image
                   src={firstSupperHero}
                   alt={featured.name}
-                  fill
                   sizes="100vw"
                   priority
-                  className="object-cover group-hover:scale-[102%] transition"
+                  className="w-full h-auto group-hover:scale-[102%] transition"
                 />
               </div>
               <h2 className="text-2xl font-bold mt-4 group-hover:text-purple transition">
