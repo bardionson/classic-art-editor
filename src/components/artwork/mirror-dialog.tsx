@@ -73,7 +73,7 @@ export default function MirrorDialog({
           {state === 'loading' ? 'Connecting...' : 'Go'}
         </button>
         {state === 'error' && (
-          <p className="text-red text-sm text-center mt-3">
+          <p className="text-red text-sm text-center mt-3" role="alert">
             Unexpected error occured. Please try again.
           </p>
         )}
