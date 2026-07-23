@@ -203,7 +203,7 @@ export default function ArtworkViewer({
               {isLandscape && (
                 <button
                   onClick={() => setIsDescriptionPanelOpen(false)}
-                  className="absolute top-1/2 left-2 bg-gray-800 text-white p-2 rounded-full shadow-soft-drop border-2 border-white hover:bg-black transition"
+                  className="absolute top-1/2 left-2 bg-gray-800 text-white p-2 rounded-full shadow-soft-drop hover:bg-black transition"
                   aria-label="Hide description panel"
                 >
                   <ChevronLeft size={20} />
