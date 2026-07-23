@@ -10,6 +10,7 @@ import {
   Info,
   ArrowLeft,
   Cast,
+  Download,
 } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
@@ -20,6 +21,10 @@ import Link from 'next/link';
 import LayerControlList from '@/components/artwork/layer-control-list';
 import LayerControlDialog from '@/components/artwork/layer-control-dialog';
 import MirrorDialog from '@/components/artwork/mirror-dialog';
+import {
+  downloadFlattenedArtwork,
+  buildArtworkFilename,
+} from '@/utils/download-artwork';
 
 const ART_ELEMENT_ID = 'master-art';
 const ERROR_MESSAGE = 'Unexpected issue occured.\nPlease try again.';
@@ -55,6 +60,7 @@ export default function ArtworkViewer({
     Record<string, number>
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     if (externalControlOverrides) {
@@ -76,6 +82,23 @@ export default function ArtworkViewer({
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layersWithArtists = useLayersWithArtists(tokenAddress, tokenURI);
+
+  const handleDownload = async () => {
+    if (!artElementRef.current || !masterArtSize) return;
+    setIsDownloading(true);
+    try {
+      await downloadFlattenedArtwork(
+        artElementRef.current,
+        1 / masterArtSize.resizeToFitScreenRatio,
+        buildArtworkFilename(metadata?.name, tokenId),
+      );
+    } catch (err) {
+      console.error('Failed to download artwork image:', err);
+      alert('Failed to download artwork image. Please try again.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   if (error) {
     return (
@@ -147,6 +170,14 @@ export default function ArtworkViewer({
                 aria-label="Mirror to another device"
               >
                 <Cast />
+              </button>
+              <button
+                onClick={handleDownload}
+                disabled={!!statusMessage || isDownloading}
+                className="bg-gray-800 text-white p-2 rounded-full disabled:opacity-50"
+                aria-label="Download artwork image"
+              >
+                {isDownloading ? <Spinner size={24} /> : <Download />}
               </button>
             </div>
           )}
