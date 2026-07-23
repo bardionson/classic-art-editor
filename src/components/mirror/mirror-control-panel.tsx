@@ -58,9 +58,13 @@ export default function MirrorControlPanel({ code }: { code: string }) {
   const layers = useLayersWithArtists(session?.tokenAddress, tokenURI);
 
   const handleStopMirroring = async () => {
-    await fetch(`/api/mirror/${encodeURIComponent(code)}`, {
-      method: 'DELETE',
-    });
+    try {
+      await fetch(`/api/mirror/${encodeURIComponent(code)}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.error('Mirror DELETE failed:', err);
+    }
     setEnded(true);
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
@@ -96,7 +100,7 @@ export default function MirrorControlPanel({ code }: { code: string }) {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values),
-          });
+          }).catch((err) => console.error('Mirror PATCH failed:', err));
         }}
         currentValues={session.controlOverrides}
         contractAddress={selectedLayer?.contractAddress}
