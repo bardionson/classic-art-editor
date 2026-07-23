@@ -20,6 +20,7 @@ export const useArtwork = (
     string | React.JSX.Element
   >('');
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
+  const [layerError, setLayerError] = useState<string>();
 
   const layerBlobUrlsRef = useRef<Record<string, string>>({});
 
@@ -27,7 +28,7 @@ export const useArtwork = (
     statusMessage: metadataStatusMessage,
     metadata,
     collector,
-    error,
+    error: metadataError,
     isLandscape,
     tokenURI,
     masterArtSize,
@@ -46,7 +47,9 @@ export const useArtwork = (
     const renderLayers = async () => {
       if (!metadata || !masterArtSize || !artElementRef.current) return;
       // If we have an error from metadata fetch, don't try to render
-      if (error) return;
+      if (metadataError) return;
+
+      setLayerError(undefined);
 
       try {
         const getLayerControlTokenValue = createGetLayerControlTokenValueFn(
@@ -150,19 +153,20 @@ export const useArtwork = (
         console.error(e);
         if (isComponentMountedRef.current) {
           setLayerStatusMessage('');
+          setLayerError(e.message);
         }
       }
     };
 
     renderLayers();
-  }, [metadata, masterArtSize, controlOverrides, tokenId, error]);
+  }, [metadata, masterArtSize, controlOverrides, tokenId, metadataError]);
 
   return {
     artElementRef,
     statusMessage: metadataStatusMessage || layerStatusMessage,
     metadata,
     collector,
-    error,
+    error: metadataError || layerError,
     layerHashes,
     isLandscape,
     tokenURI,
