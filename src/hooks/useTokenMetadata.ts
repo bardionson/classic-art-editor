@@ -89,6 +89,7 @@ export const useTokenMetadata = (tokenAddress: Address, tokenId: number) => {
         if (!isComponentMountedRef.current) return;
         setMasterArtSize(size);
         setIsLandscape(size.width > size.height);
+        setStatusMessage('');
       } catch (e: any) {
         console.error(e);
         if (isComponentMountedRef.current) {
