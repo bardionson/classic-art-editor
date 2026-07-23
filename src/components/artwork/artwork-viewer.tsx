@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   XCircle,
   X,
@@ -30,6 +30,7 @@ type ArtworkViewerProps = {
   backLink?: string;
   backLabel?: string;
   initialFullscreen?: boolean;
+  externalControlOverrides?: Record<string, number>;
 };
 
 export default function ArtworkViewer({
@@ -40,6 +41,7 @@ export default function ArtworkViewer({
   backLink,
   backLabel,
   initialFullscreen = false,
+  externalControlOverrides,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
@@ -48,6 +50,12 @@ export default function ArtworkViewer({
     Record<string, number>
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
+
+  useEffect(() => {
+    if (externalControlOverrides) {
+      setControlOverrides((prev) => ({ ...prev, ...externalControlOverrides }));
+    }
+  }, [externalControlOverrides]);
 
   const {
     artElementRef,
