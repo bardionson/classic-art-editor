@@ -89,7 +89,7 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
                 width={logo.width}
                 height={logo.height}
                 alt="Async Art Logo"
-                className="h-6 md:h-7 w-auto"
+                className="h-6 md:h-7 w-auto dark:invert"
               />
             </Link>
             <nav className="hidden md:flex items-center gap-6">

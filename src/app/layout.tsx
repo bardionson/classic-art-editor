@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={chivo.className}>
       <PreloadResources />
-      <body>
+      <body className="bg-surface text-text transition-colors">
         <Script
           id="theme-init"
           strategy="beforeInteractive"

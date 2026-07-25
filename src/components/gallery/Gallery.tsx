@@ -130,13 +130,19 @@ export default function Gallery({
             <Link key={item.id} href={item.link} className="group">
               <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                 <div className="aspect-square overflow-hidden bg-gray-100 relative">
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.name}
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                  {item.imageUrl ? (
+                    <Image
+                      src={item.imageUrl}
+                      alt={item.name}
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                      No image
+                    </div>
+                  )}
                 </div>
                 <div className="p-4 flex-1 flex flex-col">
                   <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 mb-1 group-hover:text-accent transition-colors">
