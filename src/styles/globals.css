@@ -56,3 +56,29 @@ details summary::marker {
 .btn-black {
   @apply text-white hover:text-black bg-black hover:bg-transparent border border-black;
 }
+
+/* Indeterminate progress bar used by ArtworkLoader (Stage 4) and the
+   pre-provider static loading shell in app.tsx. Pure CSS so it can run
+   before React/hook state exists. */
+@keyframes artwork-loader-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.artwork-loader-progress-track {
+  position: relative;
+  overflow: hidden;
+}
+
+.artwork-loader-progress-track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: rgba(255, 255, 255, 0.6);
+  animation: artwork-loader-progress 1.6s ease-in-out infinite;
+}

@@ -17,6 +17,7 @@ import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import { useLayersWithArtists } from '@/hooks/useLayersWithArtists';
 import Spinner from '@/components/common/spinner';
+import ArtworkLoader from '@/components/artwork/artwork-loader';
 import { Modal } from '@/components/common/modal';
 import Link from 'next/link';
 import LayerControlList from '@/components/artwork/layer-control-list';
@@ -114,27 +115,23 @@ export default function ArtworkViewer({
       {/* Full-bleed art viewport */}
       <div className="absolute inset-0 flex items-center justify-center">
         {statusMessage && (
-          <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
+          <>
             {statusMessage === ERROR_MESSAGE ? (
-              <>
+              <div className="w-full fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4">
                 <XCircle size={80} className="text-red mx-auto mb-8" />
                 <p className="text-white text-center">
                   {ERROR_MESSAGE.split('\n')[0]}
                   <br />
                   {ERROR_MESSAGE.split('\n')[1]}
                 </p>
-              </>
+              </div>
             ) : (
-              <>
-                <Spinner size={80} className="text-purple mx-auto mt-12 mb-8" />
-                <p className="text-white text-center break-all">
-                  {statusMessage}
-                  <br />
-                  The process can take several minutes.
-                </p>
-              </>
+              <ArtworkLoader
+                statusMessage={statusMessage}
+                metadata={metadata}
+              />
             )}
-          </div>
+          </>
         )}
         <div
           id={ART_ELEMENT_ID}
