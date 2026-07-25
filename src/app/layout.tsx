@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import { PreloadResources } from '@/app/preload-resources';
 import { Analytics } from '@vercel/analytics/next';
 import Script from 'next/script';
+import SiteHeader from '@/components/site-header';
 
 const chivo = Chivo({
   weight: ['400', '600'],
@@ -40,7 +41,10 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
         />
-        <App children={children} />
+        <App>
+          <SiteHeader />
+          {children}
+        </App>
         <Analytics />
       </body>
     </html>
