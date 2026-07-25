@@ -8,7 +8,7 @@ import Script from 'next/script';
 import SiteHeader from '@/components/site-header';
 
 const chivo = Chivo({
-  weight: ['400', '600'],
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
