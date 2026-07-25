@@ -64,7 +64,12 @@ export default function Home() {
           </p>
         </section>
         <section className="mt-12">
-          <Gallery title="Masters Gallery" items={mastersItems} embedded />
+          <Gallery
+            title="Masters Gallery"
+            items={mastersItems}
+            embedded
+            limit={8}
+          />
         </section>
         <section className="mt-12">
           <p className="text-grey">
