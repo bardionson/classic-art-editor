@@ -87,7 +87,7 @@ export default function Gallery({
             <input
               type="text"
               placeholder="Search by name, artist, description..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-accent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -97,7 +97,7 @@ export default function Gallery({
           <div className="flex items-center gap-2">
             <span className="text-gray-600">Sort by:</span>
             <select
-              className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+              className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-accent bg-white"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value as SortOption)}
             >
@@ -139,7 +139,7 @@ export default function Gallery({
                   />
                 </div>
                 <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 mb-1 group-hover:text-purple-600 transition-colors">
+                  <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 mb-1 group-hover:text-accent transition-colors">
                     {item.name}
                   </h3>
                   {item.artistName && (

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import '../styles/globals.css';
 import { PreloadResources } from '@/app/preload-resources';
 import { Analytics } from '@vercel/analytics/next';
+import Script from 'next/script';
 
 const chivo = Chivo({
   weight: ['400', '600'],
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
@@ -32,6 +35,11 @@ export default function RootLayout({
     <html lang="en" className={chivo.className}>
       <PreloadResources />
       <body>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <App children={children} />
         <Analytics />
       </body>

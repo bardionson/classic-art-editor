@@ -48,12 +48,12 @@ export default function LayerControlDialog({
         });
 
         try {
-            const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
-            // @ts-ignore
-            if (owner === address) {
-                setIsOwner(true);
-                return;
-            }
+          const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
+          // @ts-ignore
+          if (owner === address) {
+            setIsOwner(true);
+            return;
+          }
         } catch (e) {}
       } catch (e) {
         console.error('Error checking ownership', e);
@@ -63,14 +63,17 @@ export default function LayerControlDialog({
   }, [address, layer, contractAddress]);
 
   useEffect(() => {
-      if (layer?.controls) {
-          const defaults: Record<number, number> = {};
-          layer.controls.forEach((c: any, i: number) => {
-             const key = `${layer.tokenId}-${i}`;
-             defaults[i] = currentValues[key] !== undefined ? currentValues[key] : (c.startValue || c.minValue);
-          });
-          setLocalValues(defaults);
-      }
+    if (layer?.controls) {
+      const defaults: Record<number, number> = {};
+      layer.controls.forEach((c: any, i: number) => {
+        const key = `${layer.tokenId}-${i}`;
+        defaults[i] =
+          currentValues[key] !== undefined
+            ? currentValues[key]
+            : c.startValue || c.minValue;
+      });
+      setLocalValues(defaults);
+    }
   }, [layer, currentValues]);
 
   const handleChange = (index: number, value: number) => {
@@ -92,14 +95,14 @@ export default function LayerControlDialog({
   const handleUpdateChain = () => {
     if (!writeContract || !layer?.tokenId || !contractAddress) return;
 
-    const leverIds = Object.keys(localValues).map(k => BigInt(k));
-    const newValues = Object.values(localValues).map(v => BigInt(v));
+    const leverIds = Object.keys(localValues).map((k) => BigInt(k));
+    const newValues = Object.values(localValues).map((v) => BigInt(v));
 
     writeContract({
-        address: contractAddress,
-        abi: getAbiForAddress(contractAddress),
-        functionName: 'useControlToken',
-        args: [BigInt(layer.tokenId), leverIds, newValues],
+      address: contractAddress,
+      abi: getAbiForAddress(contractAddress),
+      functionName: 'useControlToken',
+      args: [BigInt(layer.tokenId), leverIds, newValues],
     });
   };
 
@@ -118,7 +121,9 @@ export default function LayerControlDialog({
               {control.controlType === 'STATE' && control.stateLabels ? (
                 <select
                   value={localValues[index]}
-                  onChange={(e) => handleChange(index, parseInt(e.target.value))}
+                  onChange={(e) =>
+                    handleChange(index, parseInt(e.target.value))
+                  }
                   className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                 >
                   {control.stateLabels.map((label, i) => (
@@ -134,7 +139,9 @@ export default function LayerControlDialog({
                     min={control.minValue}
                     max={control.maxValue}
                     value={localValues[index]}
-                    onChange={(e) => handleChange(index, parseInt(e.target.value))}
+                    onChange={(e) =>
+                      handleChange(index, parseInt(e.target.value))
+                    }
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                   />
                   <span className="text-sm text-gray-500 w-12 text-right">
@@ -175,7 +182,9 @@ export default function LayerControlDialog({
           )}
         </div>
         {isSuccess && (
-            <p className="text-green-600 text-sm mt-2">Transaction submitted successfully!</p>
+          <p className="text-success text-sm mt-2">
+            Transaction submitted successfully!
+          </p>
         )}
       </div>
     </Modal>

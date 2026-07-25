@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --surface: 250 250 250;
+  --surface-raised: 255 255 255;
+  --surface-sunken: 240 240 241;
+  --border: 228 228 231;
+  --border-strong: 208 208 213;
+  --text: 17 17 19;
+  --text-muted: 104 104 111;
+  --text-inverse: 255 255 255;
+  --accent: 73 57 255;
+  --accent-hover: 55 43 209;
+  --danger: 197 53 53;
+  --success: 31 157 110;
+}
+
+.dark {
+  --surface: 11 11 14;
+  --surface-raised: 23 23 28;
+  --surface-sunken: 10 10 13;
+  --border: 42 42 49;
+  --border-strong: 60 60 69;
+  --text: 242 242 244;
+  --text-muted: 156 156 166;
+  --text-inverse: 11 11 14;
+  --accent: 139 127 255;
+  --accent-hover: 167 156 255;
+  --danger: 224 96 90;
+  --success: 95 206 158;
+}
+
+/* Note: box-shadows (e.g. shadow-soft-drop) barely read on near-black dark
+   surfaces. The `border` token above is available for components to pair
+   with `border-border` in dark mode as needed — this is a component-level
+   concern handled in later restyle stages, not solved globally here. */
+
 input {
   @apply block w-full h-10 text-sm bg-transparent rounded-md transition px-3 border shadow-sm;
 }
