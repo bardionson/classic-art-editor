@@ -140,9 +140,14 @@ export default function ArtworkViewer({
         />
       </div>
 
-      {/* Consolidated floating control pill */}
+      {/* Consolidated floating control pill. Anchored bottom-LEFT (not
+          right) and given a high z-index so it stays visible and clickable
+          even when the description panel (anchored right, z-30, default
+          open) is showing — a right-anchored pill previously sat entirely
+          underneath the panel on both desktop (420px width) and mobile
+          (full width). */}
       {!hideControls && (
-        <div className="absolute bottom-4 right-4 z-20 flex gap-1 bg-black/40 backdrop-blur-md rounded-full p-1">
+        <div className="absolute bottom-4 left-4 z-40 flex gap-1 bg-black/40 backdrop-blur-md rounded-full p-1">
           <button
             onClick={() => setIsLayersModalOpen(true)}
             className="bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition border border-white/10"
@@ -178,7 +183,7 @@ export default function ArtworkViewer({
       {/* Description slide-in overlay */}
       {!isFullscreen && !hideControls && (
         <div
-          className={`fixed inset-y-0 right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto p-6 transition-transform duration-300 ease-out ${
+          className={`fixed inset-y-0 right-0 z-30 w-full sm:w-[420px] bg-surface-raised/75 backdrop-blur-xl border-l border-border overflow-y-auto pt-24 px-6 pb-6 transition-transform duration-300 ease-out ${
             isDescriptionPanelOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -199,7 +204,7 @@ export default function ArtworkViewer({
           */}
           <button
             onClick={() => setIsDescriptionPanelOpen(!isDescriptionPanelOpen)}
-            className={`absolute top-1/2 -left-10 -translate-y-1/2 flex-col items-center gap-2 max-h-[70vh] bg-surface-raised/95 backdrop-blur-xl border border-border border-r-0 rounded-l-lg py-4 px-2 shadow-soft-drop ${
+            className={`absolute top-1/2 -left-10 -translate-y-1/2 flex-col items-center gap-2 max-h-[70vh] bg-surface-raised/75 backdrop-blur-xl border border-border border-r-0 rounded-l-lg py-4 px-2 shadow-soft-drop ${
               isDescriptionPanelOpen ? 'hidden sm:flex' : 'flex'
             }`}
             aria-label={
@@ -233,7 +238,7 @@ export default function ArtworkViewer({
           {isDescriptionPanelOpen && (
             <button
               onClick={() => setIsDescriptionPanelOpen(false)}
-              className="sm:hidden absolute top-4 right-4 z-10 bg-surface-sunken hover:bg-border rounded-full p-2 transition"
+              className="sm:hidden absolute top-20 right-4 z-10 bg-surface-sunken hover:bg-border rounded-full p-2 transition"
               aria-label="Hide artwork details"
             >
               <ChevronRight size={20} className="text-text-muted" />
