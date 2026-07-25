@@ -86,7 +86,7 @@ export default function Home() {
         <section className="mt-12">
           <Link
             href="/gallery/layers"
-            className="btn btn-black inline-block px-6"
+            className="btn-primary inline-block px-6"
           >
             Browse Layers Gallery
           </Link>

@@ -57,10 +57,10 @@ export const Modal = ({
   titleClassName = 'text-xl text-center leading-6 pt-5',
 }: ModalProps) => {
   const classNames = cx(
-    'rounded-xl w-full p-4 sm:p-8',
+    'rounded-2xl w-full p-4 sm:p-8 border border-border',
     className,
     !className.includes('max-w') && 'max-w-lg',
-    !className.includes('bg-') && 'bg-white dark:bg-surface-raised',
+    !className.includes('bg-') && 'bg-surface-raised',
   );
 
   return (
@@ -74,7 +74,7 @@ export const Modal = ({
           <button
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-0 right-0 text-lg text-black focus-visible:shadow-outline leading-none"
+            className="absolute top-0 right-0 text-lg text-text hover:text-text-muted transition-colors focus-visible:shadow-outline leading-none"
           >
             &#10005;
           </button>

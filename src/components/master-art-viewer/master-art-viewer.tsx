@@ -150,7 +150,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
       </div>
       <button
         disabled={state === 'loading'}
-        className="btn btn-black w-full mt-4"
+        className="btn-primary w-full mt-4"
       >
         Render Artwork
       </button>

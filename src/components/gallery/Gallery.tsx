@@ -82,22 +82,24 @@ export default function Gallery({
           {/* Search */}
           <div className="relative w-full md:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-5 w-5 text-text-muted" />
             </div>
             <input
               type="text"
               placeholder="Search by name, artist, description..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-accent"
+              className="pl-10 pr-4 py-2 border-border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-accent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           {/* Sort */}
-          <div className="flex items-center gap-2">
-            <span className="text-gray-600">Sort by:</span>
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-text-muted whitespace-nowrap shrink-0">
+              Sort by:
+            </span>
             <select
-              className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-accent bg-white"
+              className="border-border rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-accent min-w-0"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value as SortOption)}
             >
@@ -106,7 +108,7 @@ export default function Gallery({
             </select>
             <button
               onClick={toggleSortDirection}
-              className="p-2 border border-gray-300 rounded-md hover:bg-gray-100"
+              className="p-2 border border-border rounded-lg hover:bg-surface-sunken shrink-0"
               title={sortDirection === 'asc' ? 'Ascending' : 'Descending'}
             >
               {sortDirection === 'asc' ? (
@@ -121,7 +123,7 @@ export default function Gallery({
 
       {/* Grid */}
       {sortedItems.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-12 text-text-muted">
           No items found matching your search.
         </div>
       ) : (

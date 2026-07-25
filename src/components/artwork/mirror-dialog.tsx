@@ -68,7 +68,7 @@ export default function MirrorDialog({
         </p>
         <button
           disabled={state === 'loading'}
-          className="btn btn-black w-full mt-4"
+          className="btn-primary w-full mt-4"
         >
           {state === 'loading' ? 'Connecting...' : 'Go'}
         </button>

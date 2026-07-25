@@ -112,70 +112,77 @@ export default function LayerControlDialog({
     <Modal title={layer.name} onClose={onClose}>
       <div className="p-4 space-y-6">
         <div className="space-y-4">
-          {layer.controls?.map((control: Control, index: number) => (
-            <div key={index} className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                {control.label}
-              </label>
+          {layer.controls?.map((control: Control, index: number) => {
+            const value = localValues[index];
+            const fillPercent =
+              control.controlType === 'STATE'
+                ? 0
+                : ((value - control.minValue) /
+                    (control.maxValue - control.minValue || 1)) *
+                  100;
 
-              {control.controlType === 'STATE' && control.stateLabels ? (
-                <select
-                  value={localValues[index]}
-                  onChange={(e) =>
-                    handleChange(index, parseInt(e.target.value))
-                  }
-                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                >
-                  {control.stateLabels.map((label, i) => (
-                    <option key={i} value={i}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="range"
-                    min={control.minValue}
-                    max={control.maxValue}
-                    value={localValues[index]}
+            return (
+              <div key={index} className="space-y-2">
+                <label className="block text-sm font-medium text-text-muted">
+                  {control.label}
+                </label>
+
+                {control.controlType === 'STATE' && control.stateLabels ? (
+                  <select
+                    value={value}
                     onChange={(e) =>
                       handleChange(index, parseInt(e.target.value))
                     }
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                  />
-                  <span className="text-sm text-gray-500 w-12 text-right">
-                    {localValues[index]}
-                  </span>
-                </div>
-              )}
-            </div>
-          ))}
+                    className="mt-1 pl-3 pr-10 py-2 text-base border-border focus:outline-none focus:ring-accent focus:border-accent sm:text-sm"
+                  >
+                    {control.stateLabels.map((label, i) => (
+                      <option key={i} value={i}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <div className="flex items-center space-x-4">
+                    <input
+                      type="range"
+                      min={control.minValue}
+                      max={control.maxValue}
+                      value={value}
+                      onChange={(e) =>
+                        handleChange(index, parseInt(e.target.value))
+                      }
+                      style={{
+                        background: `linear-gradient(to right, rgb(var(--accent)) ${fillPercent}%, rgb(var(--surface-sunken)) ${fillPercent}%)`,
+                      }}
+                      className="w-full h-2 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-accent [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+                    />
+                    <span className="text-xs font-medium text-text bg-surface-sunken rounded-full px-2 py-0.5 min-w-[2.5rem] text-center">
+                      {value}
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        <div className="flex justify-end space-x-3 pt-4 border-t border-gray-200">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-          >
+        <div className="flex justify-end space-x-3 pt-4 border-t border-border">
+          <button onClick={onClose} className="btn-secondary">
             Close
           </button>
-          <button
-            onClick={handlePreview}
-            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
-          >
+          <button onClick={handlePreview} className="btn-secondary">
             Preview
           </button>
           {isOwner ? (
             <button
               onClick={handleUpdateChain}
               disabled={isPending}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="btn-primary"
             >
               {isPending ? 'Updating...' : 'Update on Chain'}
             </button>
           ) : (
-            <div className="text-xs text-gray-500 flex items-center">
+            <div className="text-xs text-text-muted flex items-center">
               Only owner can update on-chain
               {!contractAddress && ' (Contract not resolved)'}
             </div>

@@ -17,7 +17,10 @@ import { Address, getContract } from 'viem';
 import { useWalletClient } from 'wagmi';
 import Image from 'next/image';
 import { publicClient } from '@/utils/rpcClient';
-import { resolveLayerContract, getAbiForAddress } from '@/utils/contract-helpers';
+import {
+  resolveLayerContract,
+  getAbiForAddress,
+} from '@/utils/contract-helpers';
 
 const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
 
@@ -73,8 +76,8 @@ function FormScreen({ onSubmit }: FormScreenProps) {
       const result = await resolveLayerContract(tokenId, publicClient);
 
       if (!result) {
-         // Force error flow
-         throw new Error('URI query for nonexistent token');
+        // Force error flow
+        throw new Error('URI query for nonexistent token');
       }
 
       const { contractAddress, tokenURI } = result;
@@ -131,7 +134,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
       </div>
       <button
         disabled={state === 'loading'}
-        className="btn btn-black w-full mt-4"
+        className="btn-primary w-full mt-4"
       >
         Find Token
       </button>
@@ -351,7 +354,7 @@ function ChangeModal({
         )}
         <button
           disabled={state === 'loading'}
-          className="btn btn-black w-full !mt-4"
+          className="btn-primary w-full !mt-4"
         >
           Update Layer
         </button>
