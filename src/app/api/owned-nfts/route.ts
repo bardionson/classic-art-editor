@@ -13,6 +13,12 @@ const MAX_PAGES = 20;
 
 interface AlchemyOwnedNft {
   tokenId?: string;
+  // With `withMetadata=false`, Alchemy's NFT API v3 returns a flat
+  // `contractAddress` field on each entry (confirmed against a live
+  // response) rather than the nested `contract: { address }` shape shown
+  // in some of Alchemy's docs/examples (which apply when metadata is
+  // requested). Support both so this keeps working if that ever changes.
+  contractAddress?: string;
   contract?: {
     address?: string;
   };
@@ -103,7 +109,7 @@ export async function GET(req: NextRequest) {
     // than letting one bad entry crash the whole request.
     const items = ownedNfts
       .map((nft) => {
-        const contractAddress = nft.contract?.address;
+        const contractAddress = nft.contractAddress ?? nft.contract?.address;
         const rawTokenId = nft.tokenId;
         if (!contractAddress || !rawTokenId) return null;
 
