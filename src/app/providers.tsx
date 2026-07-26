@@ -6,6 +6,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { WagmiProvider } from 'wagmi';
 import { goerli, mainnet } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { LayerDetailModalProvider } from '@/components/layer/layer-detail-provider';
 
 const projectId = __PROD__
   ? 'fe5ade2ca72bf579c0f012ed91b1ddc4'
@@ -22,7 +23,9 @@ const queryClient = new QueryClient();
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <LayerDetailModalProvider>{children}</LayerDetailModalProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }

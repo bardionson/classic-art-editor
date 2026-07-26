@@ -1,11 +1,8 @@
 'use client';
 
-import logo from '../../public/logo/async-logo.svg';
 import firstSupperHero from '../../public/first-supper-0.jpg';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import FAQ from '@/components/faq';
 import Gallery from '@/components/gallery/Gallery';
-import WalletProvider from '@/app/wallet-provider';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getMastersGalleryItems } from '@/utils/masters';
@@ -16,24 +13,10 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center">
-      <header className="container pt-8 mb-12 px-4">
-        <nav className="flex items-center justify-between">
-          <Image
-            src={logo.src}
-            width={logo.width}
-            height={logo.height}
-            alt="Async Art Logo"
-            className="w-24"
-          />
-          <h1 className="hidden sm:block text-2xl font-bold ml-3">
-            Classic Art Editor Revival Version 2 by Bård Ionson
-          </h1>
-          <WalletProvider>
-            <ConnectButton accountStatus="address" showBalance={false} />
-          </WalletProvider>
-        </nav>
-      </header>
-      <main className="container px-4">
+      <main className="container px-4 pt-8">
+        <h1 className="hidden sm:block text-2xl font-bold mb-8">
+          Classic Art Editor Revival Version 2 by Bård Ionson
+        </h1>
         {featured && (
           <section className="mb-12">
             <Link href={featured.link} className="group block">
@@ -81,7 +64,12 @@ export default function Home() {
           </p>
         </section>
         <section className="mt-12">
-          <Gallery title="Masters Gallery" items={mastersItems} embedded />
+          <Gallery
+            title="Masters Gallery"
+            items={mastersItems}
+            embedded
+            limit={8}
+          />
         </section>
         <section className="mt-12">
           <p className="text-grey">
@@ -103,7 +91,7 @@ export default function Home() {
         <section className="mt-12">
           <Link
             href="/gallery/layers"
-            className="btn btn-black inline-block px-6"
+            className="btn-primary inline-block px-6"
           >
             Browse Layers Gallery
           </Link>

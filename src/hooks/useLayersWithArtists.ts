@@ -103,6 +103,18 @@ export const useLayersWithArtists = (
   return layers.map((layer) => ({
     ...layer,
     artistName: layerArtists[layer.tokenId] || layer.artistName,
-    contractAddress: layerContracts[layer.tokenId],
+    // Prefer the contractAddress already present in layers.json (known
+    // synchronously, at mount) over the on-chain-resolved fallback below.
+    // layerContracts is only populated by an async tokenURI() probe used to
+    // discover metadata for layers missing a static metadataUri, and that
+    // probe can be mid-flight (leaving this undefined for a window right
+    // after mount) or fail outright (logged and never retried, leaving it
+    // undefined forever) - either way, overwriting an already-known-correct
+    // address with a flakier derived one meant the owner-only "Update on
+    // Chain" control could silently disappear depending on timing/network
+    // conditions, even though the address was available the whole time.
+    contractAddress:
+      (layer as { contractAddress?: string }).contractAddress ||
+      layerContracts[layer.tokenId],
   }));
 };

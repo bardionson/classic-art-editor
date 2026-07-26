@@ -35,16 +35,12 @@ export default function ArtworkPage({
   const initialFullscreen = searchParams?.fullscreen === 'true';
 
   return (
-    <div className="flex flex-row h-screen">
-      <ArtworkViewer
-        tokenAddress={tokenAddress as Address}
-        tokenId={tokenId}
-        artContainerClassName="w-3/4"
-        detailsContainerClassName="w-1/4 bg-gray-100 p-4 overflow-y-auto"
-        backLink={backLink}
-        backLabel={backLabel}
-        initialFullscreen={initialFullscreen}
-      />
-    </div>
+    <ArtworkViewer
+      tokenAddress={tokenAddress as Address}
+      tokenId={tokenId}
+      backLink={backLink}
+      backLabel={backLabel}
+      initialFullscreen={initialFullscreen}
+    />
   );
 }
