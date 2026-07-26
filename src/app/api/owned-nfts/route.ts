@@ -12,9 +12,9 @@ const ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/;
 const MAX_PAGES = 20;
 
 interface AlchemyOwnedNft {
-  tokenId: string;
-  contract: {
-    address: string;
+  tokenId?: string;
+  contract?: {
+    address?: string;
   };
 }
 
@@ -98,17 +98,28 @@ export async function GET(req: NextRequest) {
       pageCount += 1;
     } while (pageKey && pageCount < MAX_PAGES);
 
-    const items = ownedNfts.map((nft) => {
-      const rawTokenId = nft.tokenId;
-      const tokenId = rawTokenId?.startsWith('0x')
-        ? BigInt(rawTokenId).toString()
-        : rawTokenId;
+    // Alchemy's response occasionally includes entries missing `contract` or
+    // `tokenId` (e.g. malformed/spam collection entries) - skip those rather
+    // than letting one bad entry crash the whole request.
+    const items = ownedNfts
+      .map((nft) => {
+        const contractAddress = nft.contract?.address;
+        const rawTokenId = nft.tokenId;
+        if (!contractAddress || !rawTokenId) return null;
 
-      return {
-        contractAddress: nft.contract.address.toLowerCase(),
-        tokenId,
-      };
-    });
+        const tokenId = rawTokenId.startsWith('0x')
+          ? BigInt(rawTokenId).toString()
+          : rawTokenId;
+
+        return {
+          contractAddress: contractAddress.toLowerCase(),
+          tokenId,
+        };
+      })
+      .filter(
+        (item): item is { contractAddress: string; tokenId: string } =>
+          item !== null,
+      );
 
     return NextResponse.json({ items });
   } catch (error: any) {
