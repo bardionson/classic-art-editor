@@ -68,7 +68,8 @@ export default function Home() {
             title="Masters Gallery"
             items={mastersItems}
             embedded
-            limit={8}
+            defaultSortOption="date"
+            defaultSortDirection="asc"
           />
         </section>
         <section className="mt-12">
