@@ -14,6 +14,7 @@ export interface GalleryItem {
   artistName?: string;
   link: string;
   date?: number; // timestamp or simply number for sorting
+  contractAddress?: string;
 }
 
 interface GalleryProps {

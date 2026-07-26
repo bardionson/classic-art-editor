@@ -14,6 +14,7 @@ const MIRROR_DISPLAY_ROUTE = /^\/mirror\/[^/]+\/display$/;
 const NAV_LINKS = [
   { href: '/gallery/masters', label: 'Masters Gallery' },
   { href: '/gallery/layers', label: 'Layers Gallery' },
+  { href: '/wallet', label: 'Async Wallet' },
 ];
 
 function ThemeToggle() {

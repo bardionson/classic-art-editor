@@ -17,7 +17,7 @@ interface MastersData {
   [contractAddress: string]: Master[];
 }
 
-function resolveVersion(contractAddress: string): 'v1' | 'v2' {
+export function resolveVersion(contractAddress: string): 'v1' | 'v2' {
   if (
     V1_CONTRACT_ADDRESS &&
     contractAddress.toLowerCase() === V1_CONTRACT_ADDRESS.toLowerCase()
@@ -51,6 +51,7 @@ export function getMastersGalleryItems(): GalleryItem[] {
         artistName: '',
         link: `/${version}/${master.tokenId}?referrer=masters`,
         date: parseInt(master.tokenId, 10),
+        contractAddress: contractAddress.toLowerCase(),
       });
     });
   });
