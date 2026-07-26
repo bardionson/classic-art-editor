@@ -15,7 +15,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center">
       <main className="container px-4 pt-8">
         <h1 className="hidden sm:block text-2xl font-bold mb-8">
-          Classic Art Editor Revival Version 2 by Bård Ionson
+          Classic Art Editor Revival V.3 Digital Rescue Lab
         </h1>
         {featured && (
           <section className="mb-12">
