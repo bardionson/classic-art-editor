@@ -30,6 +30,9 @@ interface GalleryProps {
    * homepage), not for full gallery pages.
    */
   limit?: number;
+  /** Initial sort control state; defaults preserve prior behavior (Name/asc). */
+  defaultSortOption?: SortOption;
+  defaultSortDirection?: SortDirection;
 }
 
 type SortOption = 'name' | 'date';
@@ -42,10 +45,13 @@ export default function Gallery({
   items,
   embedded = false,
   limit,
+  defaultSortOption = 'name',
+  defaultSortDirection = 'asc',
 }: GalleryProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortOption, setSortOption] = useState<SortOption>('name');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [sortOption, setSortOption] = useState<SortOption>(defaultSortOption);
+  const [sortDirection, setSortDirection] =
+    useState<SortDirection>(defaultSortDirection);
   const [currentPage, setCurrentPage] = useState(1);
   const { openLayer } = useLayerDetailModal();
 

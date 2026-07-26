@@ -26,6 +26,51 @@ function getContentBounds(node: HTMLElement): {
 }
 
 /**
+ * html-to-image's SVG-based capture is sensitive to the target node's own
+ * page-relative (viewport) offset, not just its local coordinate space -
+ * verified empirically: a master art container centered via flex/mx-auto
+ * (e.g. sitting at page x=250 in a wider viewport) produces a download
+ * missing exactly its own left offset in width, with everything from that
+ * x-coordinate on rendering correctly. A node sitting at page (0,0) is
+ * unaffected. Rather than move the live, visible artwork (which would
+ * flash to the top-left corner for the duration of the capture), this
+ * captures a detached CLONE pinned to page (0,0) with a z-index low enough
+ * to render behind all real page content, so it's never visible to the
+ * user, then removes it once the capture finishes (success or failure).
+ */
+async function captureAtZeroOffset(
+  node: HTMLElement,
+  options: Parameters<typeof toBlob>[1],
+): Promise<Blob | null> {
+  const clone = node.cloneNode(true) as HTMLElement;
+  clone.style.position = 'fixed';
+  clone.style.top = '0px';
+  clone.style.left = '0px';
+  clone.style.margin = '0px';
+  clone.style.pointerEvents = 'none';
+  clone.style.zIndex = '-2147483000';
+  document.body.appendChild(clone);
+
+  try {
+    const images = Array.from(clone.querySelectorAll('img'));
+    await Promise.all(
+      images.map(
+        (img) =>
+          img.complete ||
+          new Promise((resolve) => {
+            img.onload = resolve;
+            img.onerror = resolve;
+          }),
+      ),
+    );
+
+    return await toBlob(clone, options);
+  } finally {
+    document.body.removeChild(clone);
+  }
+}
+
+/**
  * Captures the given DOM node (the composited artwork stack) as a PNG blob
  * at native artwork resolution and triggers a browser download.
  *
@@ -40,7 +85,7 @@ export async function downloadFlattenedArtwork(
 ): Promise<void> {
   const { width, height } = getContentBounds(node);
 
-  const blob = await toBlob(node, {
+  const blob = await captureAtZeroOffset(node, {
     pixelRatio,
     width,
     height,
