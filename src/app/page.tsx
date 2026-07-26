@@ -44,8 +44,18 @@ export default function Home() {
             <br />
             <br />
             <span>
-              To help with restoration take a look at our pages soon on Juicebox
-              and{' '}
+              This project runs on volunteer time and hosting costs out of
+              pocket. If you&apos;d like to help keep it running, you can donate
+              on{' '}
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://juicebox.money/v5/eth:70"
+                className="underline"
+              >
+                Juicebox
+              </a>
+              , and follow restoration progress on{' '}
               <a
                 target="_blank"
                 rel="noreferrer noopener"

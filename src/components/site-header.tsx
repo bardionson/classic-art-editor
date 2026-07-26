@@ -15,6 +15,11 @@ const NAV_LINKS = [
   { href: '/gallery/masters', label: 'Masters Gallery' },
   { href: '/gallery/layers', label: 'Layers Gallery' },
   { href: '/wallet', label: 'Async Wallet' },
+  {
+    href: 'https://juicebox.money/v5/eth:70',
+    label: 'Donate',
+    external: true,
+  },
 ];
 
 function ThemeToggle() {
@@ -98,6 +103,8 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
                 <Link
                   key={link.href}
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="text-sm font-medium text-text-muted hover:text-text transition"
                 >
                   {link.label}
@@ -132,6 +139,8 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
             <Link
               key={link.href}
               href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
               onClick={() => setMobileNavOpen(false)}
               className="text-sm font-medium text-text-muted hover:text-text transition"
             >
