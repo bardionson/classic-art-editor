@@ -8,6 +8,7 @@ import {
 } from 'wagmi';
 import { publicClient } from '@/utils/rpcClient';
 import { getAbiForAddress } from '@/utils/contract-helpers';
+import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
 
 type Control = {
   minValue: number;
@@ -36,6 +37,7 @@ export default function LayerControlDialog({
   contractAddress,
 }: LayerControlDialogProps) {
   const { address } = useAccount();
+  const { openLayer } = useLayerDetailModal();
   const {
     writeContract,
     isPending,
@@ -231,6 +233,14 @@ export default function LayerControlDialog({
         </div>
 
         <div className="flex justify-end space-x-3 pt-4 border-t border-border">
+          {contractAddress && (
+            <button
+              onClick={() => openLayer(contractAddress, String(layer.tokenId))}
+              className="btn-ghost"
+            >
+              View Details
+            </button>
+          )}
           <button onClick={onClose} className="btn-secondary">
             Close
           </button>

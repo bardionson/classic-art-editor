@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { ChevronRight } from 'react-feather';
+import { ChevronRight, Info } from 'react-feather';
+import { Address } from 'viem';
+import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
 
 type LayerControlListProps = {
   layers: any[];
@@ -10,6 +12,8 @@ export default function LayerControlList({
   layers,
   onLayerClick,
 }: LayerControlListProps) {
+  const { openLayer } = useLayerDetailModal();
+
   if (!layers || layers.length === 0) return null;
 
   return (
@@ -28,9 +32,13 @@ export default function LayerControlList({
               </div>
               <div>
                 {layer.imageUrl ? (
-                    <img src={layer.imageUrl} alt={layer.name} className="w-12 h-12 object-cover rounded-md inline-block mr-4"/>
+                  <img
+                    src={layer.imageUrl}
+                    alt={layer.name}
+                    className="w-12 h-12 object-cover rounded-md inline-block mr-4"
+                  />
                 ) : (
-                    <div className="w-12 h-12 bg-gray-300 rounded-md inline-block mr-4"></div>
+                  <div className="w-12 h-12 bg-gray-300 rounded-md inline-block mr-4"></div>
                 )}
                 <div className="inline-block align-middle">
                   <h3 className="text-lg font-medium text-gray-900">
@@ -48,6 +56,20 @@ export default function LayerControlList({
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
                 {layer.controls?.length || 0} controls
               </span>
+              <button
+                type="button"
+                aria-label="View layer details"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openLayer(
+                    layer.contractAddress as Address,
+                    String(layer.tokenId),
+                  );
+                }}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <Info size={20} />
+              </button>
               <ChevronRight className="text-gray-400" />
             </div>
           </div>

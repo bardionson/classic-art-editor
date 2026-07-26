@@ -15,7 +15,7 @@ export const getAbiForAddress = (address: Address) => {
 
 export const resolveLayerContract = async (
   tokenId: number,
-  publicClient: PublicClient
+  publicClient: PublicClient,
 ): Promise<ResolvedLayerContractResult | null> => {
   // Try V2 first
   try {
@@ -59,4 +59,17 @@ export const resolveLayerContract = async (
   }
 
   return null;
+};
+
+export const getTokenOwner = async (
+  contractAddress: Address,
+  tokenId: number,
+  publicClient: PublicClient,
+): Promise<Address> => {
+  const contract = getContract({
+    address: contractAddress,
+    abi: getAbiForAddress(contractAddress),
+    client: publicClient,
+  });
+  return contract.read.ownerOf([BigInt(tokenId)]);
 };

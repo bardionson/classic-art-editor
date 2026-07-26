@@ -3,7 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, ArrowDown, ArrowUp } from 'react-feather';
+import { Search, ArrowDown, ArrowUp, Info } from 'react-feather';
+import { Address } from 'viem';
+import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
 
 export interface GalleryItem {
   id: string;
@@ -15,6 +17,7 @@ export interface GalleryItem {
   link: string;
   date?: number; // timestamp or simply number for sorting
   contractAddress?: string;
+  isLayer?: boolean;
 }
 
 interface GalleryProps {
@@ -44,6 +47,7 @@ export default function Gallery({
   const [sortOption, setSortOption] = useState<SortOption>('name');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
   const [currentPage, setCurrentPage] = useState(1);
+  const { openLayer } = useLayerDetailModal();
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
@@ -161,6 +165,23 @@ export default function Gallery({
             <Link key={item.id} href={item.link} className="group">
               <div className="bg-surface-raised border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                 <div className="aspect-square overflow-hidden bg-surface-sunken relative">
+                  {item.isLayer && item.contractAddress && (
+                    <button
+                      type="button"
+                      aria-label="View layer details"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openLayer(
+                          item.contractAddress as Address,
+                          item.tokenId,
+                        );
+                      }}
+                      className="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white p-1.5 rounded-full transition border border-white/10"
+                    >
+                      <Info size={16} />
+                    </button>
+                  )}
                   {item.imageUrl ? (
                     <Image
                       src={item.imageUrl}
