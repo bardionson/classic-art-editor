@@ -173,11 +173,16 @@ export default function LayerControlDialog({
         <div className="space-y-4">
           {layer.controls?.map((control: Control, index: number) => {
             const value = localValues[index];
+            // One real layer-controls.json entry has a typo'd key
+            // ("maxVaue") instead of "maxValue" on a BLUE control - fall
+            // back to a sane default (255, this collection's common max)
+            // rather than rendering that one slider with an undefined max.
+            const maxValue = control.maxValue ?? 255;
             const fillPercent =
               control.controlType === 'STATE'
                 ? 0
                 : ((value - control.minValue) /
-                    (control.maxValue - control.minValue || 1)) *
+                    (maxValue - control.minValue || 1)) *
                   100;
 
             return (
@@ -205,7 +210,7 @@ export default function LayerControlDialog({
                     <input
                       type="range"
                       min={control.minValue}
-                      max={control.maxValue}
+                      max={maxValue}
                       value={value}
                       onChange={(e) =>
                         handleChange(index, parseInt(e.target.value))

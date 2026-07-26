@@ -39,6 +39,14 @@ export type LayerTransformationProperties = {
     red?: LayerRelativeTokenIdAndLever;
     green?: LayerRelativeTokenIdAndLever;
     blue?: LayerRelativeTokenIdAndLever;
+    // Combined single-slider RGB offset, applied equally to all three
+    // channels (distinct from the split red/green/blue controls above -
+    // both patterns exist in this collection's on-chain data).
+    rgb?: LayerRelativeTokenIdAndLever;
+    // Darken/desaturate amount; this collection's data always uses a
+    // non-positive range (e.g. -255..0), read as "how much to darken",
+    // not a literal grey value.
+    greyscale?: LayerRelativeTokenIdAndLever;
     alpha?: LayerRelativeTokenIdAndLever | number;
     hue?: LayerRelativeTokenIdAndLever;
     brightness?: LayerRelativeTokenIdAndLever;
@@ -147,6 +155,7 @@ export type LayerArtNFTMetadata = {
           | 'POSITION'
           | 'RED'
           | 'REFLECT'
+          | 'RGB'
           | 'ROTATION'
           | 'SATURATION'
           | 'SCALE'

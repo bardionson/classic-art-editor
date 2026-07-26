@@ -7,6 +7,41 @@ import { fetchIpfs } from '@/utils/ipfs';
 import seedrandom from 'seedrandom';
 
 /**
+ * Builds a 4x5 SVG feColorMatrix "matrix" (identity, with an additive offset
+ * in the 5th column of each RGB row) from per-channel offsets in this
+ * collection's on-chain range (roughly -255..255). feColorMatrix values are
+ * normalized 0-1, so each offset is divided by 255.
+ */
+export function buildRgbOffsetMatrix(
+  red: number,
+  green: number,
+  blue: number,
+): number[] {
+  return [
+    1,
+    0,
+    0,
+    0,
+    red / 255,
+    0,
+    1,
+    0,
+    0,
+    green / 255,
+    0,
+    0,
+    1,
+    0,
+    blue / 255,
+    0,
+    0,
+    0,
+    1,
+    0,
+  ];
+}
+
+/**
  * LayerImageElement is constructed with Builder design pattern.
  * We can't have our class directly extend HTMLImageElement since it would require us to switch to Web Components. (see TypeError: Illegal constructor)
  * It's also cleaner to separate object construction from representation in this case. (hence builder pattern)
@@ -55,7 +90,11 @@ export default class LayerImageBuilder {
     this.layoutVersion = layoutVersion;
   }
 
-  async loadImage(uri: string, reportGateway: Parameters<typeof fetchIpfs>[1], cachedBlobUrl?: string) {
+  async loadImage(
+    uri: string,
+    reportGateway: Parameters<typeof fetchIpfs>[1],
+    cachedBlobUrl?: string,
+  ) {
     if (cachedBlobUrl) {
       this.image.src = cachedBlobUrl;
     } else {
@@ -160,7 +199,70 @@ export default class LayerImageBuilder {
       if (saturation !== 0) filters.push(`saturate(${saturation}%)`);
     }
 
+    const { red, green, blue, rgb, greyscale } =
+      this.transformationProperties.color || {};
+
+    if (red || green || blue || rgb) {
+      const [redOffset, greenOffset, blueOffset, rgbOffset] = await Promise.all(
+        [
+          red ? this.readTransformationProperty(red) : 0,
+          green ? this.readTransformationProperty(green) : 0,
+          blue ? this.readTransformationProperty(blue) : 0,
+          rgb ? this.readTransformationProperty(rgb) : 0,
+        ],
+      );
+
+      const totalRed = redOffset + rgbOffset;
+      const totalGreen = greenOffset + rgbOffset;
+      const totalBlue = blueOffset + rgbOffset;
+
+      if (totalRed !== 0 || totalGreen !== 0 || totalBlue !== 0) {
+        const matrix = buildRgbOffsetMatrix(totalRed, totalGreen, totalBlue);
+        filters.push(this.applyColorMatrixFilter(matrix));
+      }
+    }
+
+    if (greyscale) {
+      const greyscaleValue = await this.readTransformationProperty(greyscale);
+      if (greyscaleValue !== 0) {
+        filters.push(`brightness(${100 + (greyscaleValue / 255) * 100}%)`);
+      }
+    }
+
     this.image.style.filter = filters.join(' ');
+  }
+
+  /**
+   * CSS `filter` has no native per-channel RGB adjustment (hue-rotate/
+   * saturate/brightness all operate on the whole pixel), so this uses an SVG
+   * feColorMatrix, referenced via `url(#id)` alongside the other chained CSS
+   * filter functions. The filter def is keyed by this image's own (already
+   * unique) id, so rebuilding the same layer updates the existing def's
+   * `values` in place rather than leaking a new hidden <svg> into
+   * document.body on every control change.
+   */
+  private applyColorMatrixFilter(matrix: number[]): string {
+    const filterId = `layer-color-matrix-${this.image.id}`;
+    let svg: Element | null = document.getElementById(`${filterId}-svg`);
+
+    if (!svg) {
+      const newSvg = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'svg',
+      );
+      newSvg.setAttribute('id', `${filterId}-svg`);
+      newSvg.setAttribute('width', '0');
+      newSvg.setAttribute('height', '0');
+      newSvg.style.position = 'absolute';
+      newSvg.innerHTML = `<filter id="${filterId}"><feColorMatrix type="matrix" /></filter>`;
+      document.body.appendChild(newSvg);
+      svg = newSvg;
+    }
+
+    const feColorMatrix = svg.querySelector('feColorMatrix');
+    feColorMatrix?.setAttribute('values', matrix.join(' '));
+
+    return `url(#${filterId})`;
   }
 
   private async addTransforms() {
@@ -228,13 +330,13 @@ export default class LayerImageBuilder {
         fixedX - this.image.naturalWidth / 2,
       )}px`;
     } else if (this.anchorLayer) {
-        let baseX =
+      let baseX =
         this.anchorLayer.naturalLeft + this.anchorLayer.naturalWidth / 2;
 
-        let baseY =
+      let baseY =
         this.anchorLayer.naturalTop + this.anchorLayer.naturalHeight / 2;
 
-        if (this.transformationProperties['relative-position']) {
+      if (this.transformationProperties['relative-position']) {
         const { x, y } = this.transformationProperties['relative-position'];
         let relativeX = await this.readTransformationProperty(x);
         let relativeY = await this.readTransformationProperty(y);
@@ -244,34 +346,37 @@ export default class LayerImageBuilder {
         if (typeof y !== 'number') currentControlY = relativeY;
 
         if (this.transformationProperties['orbit-rotation']) {
-            const relativeRotation = await this.readTransformationProperty(
+          const relativeRotation = await this.readTransformationProperty(
             this.transformationProperties['orbit-rotation'],
-            );
-            const unrotatedRelativeX = relativeX;
-            const rad = (-relativeRotation * Math.PI) / 180;
+          );
+          const unrotatedRelativeX = relativeX;
+          const rad = (-relativeRotation * Math.PI) / 180;
 
-            relativeX = Math.round(
+          relativeX = Math.round(
             relativeX * Math.cos(rad) - relativeY * Math.sin(rad),
-            );
+          );
 
-            relativeY =
+          relativeY =
             this.layoutVersion === 1
-                ? Math.round(relativeY * Math.cos(rad) + relativeX * Math.sin(rad))
-                : Math.round(
-                    relativeY * Math.cos(rad) + unrotatedRelativeX * Math.sin(rad),
+              ? Math.round(
+                  relativeY * Math.cos(rad) + relativeX * Math.sin(rad),
+                )
+              : Math.round(
+                  relativeY * Math.cos(rad) +
+                    unrotatedRelativeX * Math.sin(rad),
                 );
         }
 
         baseX += relativeX;
         baseY += relativeY;
-        }
+      }
 
-        this.image.style.top = `${Math.floor(
+      this.image.style.top = `${Math.floor(
         baseY - this.image.naturalHeight / 2,
-        )}px`;
-        this.image.style.left = `${Math.floor(
+      )}px`;
+      this.image.style.left = `${Math.floor(
         baseX - this.image.naturalWidth / 2,
-        )}px`;
+      )}px`;
     }
 
     // Attach values to image object for builder
