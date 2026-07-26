@@ -1,7 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Modal } from '@/components/common/modal';
 import { Address, getContract } from 'viem';
-import { useAccount, useWriteContract } from 'wagmi';
+import {
+  useAccount,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+} from 'wagmi';
 import { publicClient } from '@/utils/rpcClient';
 import { getAbiForAddress } from '@/utils/contract-helpers';
 
@@ -32,14 +36,40 @@ export default function LayerControlDialog({
   contractAddress,
 }: LayerControlDialogProps) {
   const { address } = useAccount();
-  const { writeContract, isPending, isSuccess } = useWriteContract();
+  const {
+    writeContract,
+    isPending,
+    isSuccess: isSubmitted,
+    isError: isSubmitError,
+    error: submitError,
+    data: txHash,
+    reset: resetWrite,
+  } = useWriteContract();
+  const {
+    isLoading: isConfirming,
+    isSuccess: isConfirmed,
+    isError: isConfirmError,
+  } = useWaitForTransactionReceipt({ hash: txHash });
   const [localValues, setLocalValues] = useState<Record<string, number>>({});
   const [isOwner, setIsOwner] = useState(false);
+  const [ownerCheckFailed, setOwnerCheckFailed] = useState(false);
+  // Snapshot of what was actually submitted on-chain, captured at submit
+  // time. The confirmation effect below reads from this ref rather than the
+  // live `layer`/`localValues` state, since the user closing the dialog (or
+  // selecting a different layer) before the transaction mines would
+  // otherwise leave the effect's closure looking at a null/different layer
+  // when confirmation finally arrives — silently dropping the art update in
+  // exactly the "submit and move on" case users are likely to hit.
+  const pendingUpdateRef = useRef<{
+    tokenId: string;
+    values: Record<string, number>;
+  } | null>(null);
 
   // Check ownership
   useEffect(() => {
     async function checkOwnership() {
       if (!address || !layer?.tokenId || !contractAddress) return;
+      setOwnerCheckFailed(false);
       try {
         const contract = getContract({
           address: contractAddress,
@@ -47,20 +77,32 @@ export default function LayerControlDialog({
           client: publicClient,
         });
 
-        try {
-          const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
-          // @ts-ignore
-          if (owner === address) {
-            setIsOwner(true);
-            return;
-          }
-        } catch (e) {}
+        const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
+        // @ts-ignore
+        setIsOwner(owner === address);
       } catch (e) {
         console.error('Error checking ownership', e);
+        setIsOwner(false);
+        setOwnerCheckFailed(true);
       }
     }
     checkOwnership();
   }, [address, layer, contractAddress]);
+
+  // Once the on-chain write is actually confirmed (not just submitted to the
+  // mempool), apply the same values the user just wrote on-chain to the
+  // client-side preview overrides, so the composited art updates immediately
+  // instead of requiring a full page reload to pick up the new chain state.
+  useEffect(() => {
+    if (isConfirmed && pendingUpdateRef.current) {
+      onPreview(
+        pendingUpdateRef.current.tokenId,
+        pendingUpdateRef.current.values,
+      );
+      pendingUpdateRef.current = null;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isConfirmed]);
 
   useEffect(() => {
     if (layer?.controls) {
@@ -95,8 +137,19 @@ export default function LayerControlDialog({
   const handleUpdateChain = () => {
     if (!writeContract || !layer?.tokenId || !contractAddress) return;
 
+    resetWrite();
     const leverIds = Object.keys(localValues).map((k) => BigInt(k));
     const newValues = Object.values(localValues).map((v) => BigInt(v));
+
+    const confirmedValues: Record<string, number> = {};
+    Object.keys(localValues).forEach((k) => {
+      // @ts-ignore
+      confirmedValues[`${layer.tokenId}-${k}`] = localValues[k];
+    });
+    pendingUpdateRef.current = {
+      tokenId: layer.tokenId,
+      values: confirmedValues,
+    };
 
     writeContract({
       address: contractAddress,
@@ -105,6 +158,12 @@ export default function LayerControlDialog({
       args: [BigInt(layer.tokenId), leverIds, newValues],
     });
   };
+
+  const updateChainLabel = isPending
+    ? 'Confirm in wallet...'
+    : isConfirming
+      ? 'Waiting for confirmation...'
+      : 'Update on Chain';
 
   if (!isOpen || !layer) return null;
 
@@ -176,21 +235,36 @@ export default function LayerControlDialog({
           {isOwner ? (
             <button
               onClick={handleUpdateChain}
-              disabled={isPending}
+              disabled={isPending || isConfirming}
               className="btn-primary"
             >
-              {isPending ? 'Updating...' : 'Update on Chain'}
+              {updateChainLabel}
             </button>
           ) : (
             <div className="text-xs text-text-muted flex items-center">
-              Only owner can update on-chain
+              {ownerCheckFailed
+                ? "Couldn't verify ownership — check your connection and reopen this dialog to retry."
+                : 'Only owner can update on-chain'}
               {!contractAddress && ' (Contract not resolved)'}
             </div>
           )}
         </div>
-        {isSuccess && (
+        {isConfirmed && (
           <p className="text-success text-sm mt-2">
-            Transaction submitted successfully!
+            Change confirmed on-chain — the art has been updated.
+          </p>
+        )}
+        {isSubmitted && !isConfirmed && !isConfirmError && (
+          <p className="text-text-muted text-sm mt-2">
+            Transaction submitted, waiting for it to be mined...
+          </p>
+        )}
+        {(isSubmitError || isConfirmError) && (
+          <p className="text-danger text-sm mt-2">
+            {isSubmitError
+              ? submitError?.message?.split('\n')[0] ||
+                'Transaction failed to submit.'
+              : 'Transaction was mined but reverted — the change was not applied.'}
           </p>
         )}
       </div>
