@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Address } from 'viem';
 import Spinner from '@/components/common/spinner';
+import AddressWithEns from '@/components/common/address-with-ens';
 import { useLayerDetail } from '@/hooks/useLayerDetail';
 import { getMasterLinkForLayer } from '@/utils/layers';
 
@@ -10,10 +11,6 @@ type LayerDetailContentProps = {
   contractAddress: Address;
   tokenId: string;
 };
-
-function truncateAddress(address: string): string {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
 
 export default function LayerDetailContent({
   contractAddress,
@@ -81,14 +78,7 @@ export default function LayerDetailContent({
       <p className="text-sm text-text">
         <span className="text-text-muted">Owner: </span>
         {data.owner ? (
-          <a
-            href={`https://etherscan.io/address/${data.owner}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            {truncateAddress(data.owner)}
-          </a>
+          <AddressWithEns address={data.owner} truncate etherscanLink />
         ) : (
           <span className="text-text-muted">Unknown</span>
         )}
