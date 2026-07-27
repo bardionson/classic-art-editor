@@ -8,6 +8,8 @@
 2. Start dev server `npm run dev`
 3. Branch off of `main` and submit PR
 
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the design system, data flow, contract-interaction conventions, and a full feature inventory from the gallery-redesign work — read this before adding new features.
+
 ## layer-controls.json
 
 Some layers (e.g. layer with token id of 10) don't have `controls` property
