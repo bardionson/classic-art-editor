@@ -17,6 +17,7 @@ import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import { useLayersWithArtists } from '@/hooks/useLayersWithArtists';
 import Spinner from '@/components/common/spinner';
+import AddressWithEns from '@/components/common/address-with-ens';
 import ArtworkLoader from '@/components/artwork/artwork-loader';
 import { Modal } from '@/components/common/modal';
 import Link from 'next/link';
@@ -267,7 +268,9 @@ export default function ArtworkViewer({
                     ))}
               </ul>
               <h2 className="text-lg font-bold mt-4 text-text">Collector</h2>
-              <p className="break-all text-text-muted">{collector}</p>
+              <p className="break-all text-text-muted">
+                {collector && <AddressWithEns address={collector} />}
+              </p>
               <LayerControlList
                 layers={layersWithArtists}
                 onLayerClick={(layer) => setSelectedLayer(layer)}
