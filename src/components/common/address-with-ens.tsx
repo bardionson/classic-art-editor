@@ -17,9 +17,11 @@ function truncateAddress(address: string): string {
 }
 
 /**
- * Renders a wallet address, with its ENS name (if any) shown underneath
- * once resolved. ENS only exists on mainnet, so this resolves there
- * regardless of which network the rest of the app is active on.
+ * Renders a wallet address. Once its ENS name (if any) resolves, the ENS
+ * name takes the primary position (larger, bold) with the address shown
+ * underneath in smaller/muted text. ENS only exists on mainnet, so this
+ * resolves there regardless of which network the rest of the app is
+ * active on.
  */
 export default function AddressWithEns({
   address,
@@ -30,23 +32,29 @@ export default function AddressWithEns({
   const { data: ensName } = useEnsNameLookup(address);
   const display = truncate ? truncateAddress(address) : address;
 
-  return (
-    <span className={className}>
-      {etherscanLink ? (
-        <a
-          href={`https://etherscan.io/address/${address}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent hover:underline"
-        >
-          {display}
-        </a>
-      ) : (
-        display
-      )}
-      {ensName && (
-        <span className="block text-xs text-text-muted mt-0.5">{ensName}</span>
-      )}
-    </span>
+  const addressNode = etherscanLink ? (
+    <a
+      href={`https://etherscan.io/address/${address}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-accent hover:underline"
+    >
+      {display}
+    </a>
+  ) : (
+    display
   );
+
+  if (ensName) {
+    return (
+      <span className={className}>
+        <span className="block text-base font-bold text-text">{ensName}</span>
+        <span className="block text-xs text-text-muted mt-0.5">
+          {addressNode}
+        </span>
+      </span>
+    );
+  }
+
+  return <span className={className}>{addressNode}</span>;
 }
