@@ -11775,7 +11775,8 @@
             "Stain"
           ]
         }
-      ]
+      ],
+      "artist": "OSINACHI"
     },
     {
       "tokenId": "534",
@@ -11799,7 +11800,8 @@
             "India"
           ]
         }
-      ]
+      ],
+      "artist": "OSINACHI"
     },
     {
       "tokenId": "535",
@@ -11823,7 +11825,8 @@
             "Silhouette"
           ]
         }
-      ]
+      ],
+      "artist": "OSINACHI"
     },
     {
       "tokenId": "536",
@@ -11847,7 +11850,8 @@
             "Fire"
           ]
         }
-      ]
+      ],
+      "artist": "OSINACHI"
     },
     {
       "tokenId": "537",
@@ -11871,7 +11875,8 @@
             "Warning"
           ]
         }
-      ]
+      ],
+      "artist": "OSINACHI"
     },
     {
       "tokenId": "539",
@@ -11900,7 +11905,8 @@
           "label": "Puzzle9 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "540",
@@ -11929,7 +11935,8 @@
           "label": "Puzzle8 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "541",
@@ -11958,7 +11965,8 @@
           "label": "Puzzle7 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "542",
@@ -11987,7 +11995,8 @@
           "label": "Puzzle6 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "543",
@@ -12016,7 +12025,8 @@
           "label": "Puzzle5 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "544",
@@ -12045,7 +12055,8 @@
           "label": "Puzzle4 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "545",
@@ -12074,7 +12085,8 @@
           "label": "Puzzle3 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "546",
@@ -12103,7 +12115,8 @@
           "label": "Puzzle2 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "547",
@@ -12132,7 +12145,8 @@
           "label": "Puzzle1 (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "548",
@@ -12150,7 +12164,8 @@
           "label": "BackgroundColor (HUE)",
           "controlType": "HUE"
         }
-      ]
+      ],
+      "artist": "SHORTCUT"
     },
     {
       "tokenId": "550",
@@ -12173,7 +12188,8 @@
             "Lace"
           ]
         }
-      ]
+      ],
+      "artist": "CARLOS_MARCIAL"
     },
     {
       "tokenId": "551",
@@ -12196,7 +12212,8 @@
             "Wild Mushrooms"
           ]
         }
-      ]
+      ],
+      "artist": "CARLOS_MARCIAL"
     },
     {
       "tokenId": "552",
@@ -12219,7 +12236,8 @@
             "Iridescent Klein Bottle"
           ]
         }
-      ]
+      ],
+      "artist": "CARLOS_MARCIAL"
     },
     {
       "tokenId": "553",
@@ -12242,7 +12260,8 @@
             "Listen"
           ]
         }
-      ]
+      ],
+      "artist": "CARLOS_MARCIAL"
     },
     {
       "tokenId": "554",
@@ -12265,7 +12284,8 @@
             "Avocados"
           ]
         }
-      ]
+      ],
+      "artist": "CARLOS_MARCIAL"
     },
     {
       "tokenId": "556",
@@ -12289,7 +12309,8 @@
             "Purple BG"
           ]
         }
-      ]
+      ],
+      "artist": "Cartoon Advisory"
     },
     {
       "tokenId": "557",
@@ -12313,7 +12334,8 @@
             "Yellow Foundation"
           ]
         }
-      ]
+      ],
+      "artist": "Cartoon Advisory"
     },
     {
       "tokenId": "558",
@@ -12353,7 +12375,8 @@
             "Build5Yellow-GreenBodies"
           ]
         }
-      ]
+      ],
+      "artist": "Cartoon Advisory"
     },
     {
       "tokenId": "559",
@@ -12377,7 +12400,8 @@
             "Yellow Vines"
           ]
         }
-      ]
+      ],
+      "artist": "Cartoon Advisory"
     },
     {
       "tokenId": "1179",
@@ -12408,7 +12432,8 @@
             "Red Pad 501"
           ]
         }
-      ]
+      ],
+      "artist": "Bård Ionson"
     },
     {
       "tokenId": "1180",
@@ -12432,7 +12457,8 @@
             "Small Mouth"
           ]
         }
-      ]
+      ],
+      "artist": "Bård Ionson"
     },
     {
       "tokenId": "1181",
@@ -12458,7 +12484,8 @@
             "Tiny Small Mouth"
           ]
         }
-      ]
+      ],
+      "artist": "Bård Ionson"
     },
     {
       "tokenId": "1189",
@@ -12481,7 +12508,8 @@
             "Gde"
           ]
         }
-      ]
+      ],
+      "artist": "Sparrow"
     },
     {
       "tokenId": "1190",
@@ -12504,7 +12532,8 @@
             "Northern Lights"
           ]
         }
-      ]
+      ],
+      "artist": "Silje Thorn"
     },
     {
       "tokenId": "1191",
@@ -12527,7 +12556,8 @@
             "03_NORMAL"
           ]
         }
-      ]
+      ],
+      "artist": "Surreal Serpentine"
     },
     {
       "tokenId": "1192",
@@ -12550,7 +12580,8 @@
             "The Smile"
           ]
         }
-      ]
+      ],
+      "artist": "Moxarra Gonzales"
     },
     {
       "tokenId": "1193",
@@ -12573,7 +12604,8 @@
             " Isis Unveilin"
           ]
         }
-      ]
+      ],
+      "artist": "FtrSaroth"
     },
     {
       "tokenId": "1194",
@@ -12596,7 +12628,8 @@
             "03_NORMAL"
           ]
         }
-      ]
+      ],
+      "artist": "Loudsqueak"
     },
     {
       "tokenId": "1195",
@@ -12619,7 +12652,8 @@
             "Nachtamouille"
           ]
         }
-      ]
+      ],
+      "artist": "Lapin Mignon"
     },
     {
       "tokenId": "1196",
@@ -12642,7 +12676,8 @@
             "Fear me Humans"
           ]
         }
-      ]
+      ],
+      "artist": "Tom Abbink"
     },
     {
       "tokenId": "1197",
@@ -12665,7 +12700,8 @@
             "Drummer Troll #3"
           ]
         }
-      ]
+      ],
+      "artist": "Sarah Zucker"
     },
     {
       "tokenId": "1198",
@@ -12688,7 +12724,8 @@
             "03_NORMAL"
           ]
         }
-      ]
+      ],
+      "artist": "Talos"
     },
     {
       "tokenId": "1199",
@@ -12711,7 +12748,8 @@
             "Tisiphone"
           ]
         }
-      ]
+      ],
+      "artist": "Arvid Hjorth"
     },
     {
       "tokenId": "1200",
@@ -12733,7 +12771,8 @@
             "2"
           ]
         }
-      ]
+      ],
+      "artist": "Nika Danny"
     },
     {
       "tokenId": "1201",
@@ -12755,7 +12794,8 @@
             "Devil"
           ]
         }
-      ]
+      ],
+      "artist": "Shelly Soneja"
     },
     {
       "tokenId": "1202",
@@ -12778,7 +12818,8 @@
             "Alien #3"
           ]
         }
-      ]
+      ],
+      "artist": "Becca Kennedy"
     },
     {
       "tokenId": "1203",
@@ -12800,7 +12841,8 @@
             "Wedgiewoman"
           ]
         }
-      ]
+      ],
+      "artist": "The Guild NFT"
     },
     {
       "tokenId": "1204",
@@ -12824,7 +12866,8 @@
             "New Normal"
           ]
         }
-      ]
+      ],
+      "artist": "Rutger van der Tas"
     },
     {
       "tokenId": "1205",
@@ -12847,7 +12890,8 @@
             "Observer"
           ]
         }
-      ]
+      ],
+      "artist": "Legendary"
     },
     {
       "tokenId": "1206",
@@ -12871,7 +12915,8 @@
             "Very Ape"
           ]
         }
-      ]
+      ],
+      "artist": "The Guild NFT"
     },
     {
       "tokenId": "1207",
@@ -12893,7 +12938,8 @@
             "Actio-Statim"
           ]
         }
-      ]
+      ],
+      "artist": "The Guild NFT"
     },
     {
       "tokenId": "1208",
@@ -12916,7 +12962,8 @@
             "Warrior 3"
           ]
         }
-      ]
+      ],
+      "artist": "Mehak Jain"
     },
     {
       "tokenId": "1209",
@@ -12939,7 +12986,8 @@
             "Harriet Tubman"
           ]
         }
-      ]
+      ],
+      "artist": "Airco Caravan"
     },
     {
       "tokenId": "1210",
@@ -12962,7 +13010,8 @@
             "3"
           ]
         }
-      ]
+      ],
+      "artist": "pplpleasr"
     },
     {
       "tokenId": "1211",
@@ -12985,7 +13034,8 @@
             "Fab3"
           ]
         }
-      ]
+      ],
+      "artist": "Fabin Rasheed"
     },
     {
       "tokenId": "1212",
@@ -13008,7 +13058,8 @@
             "Tomorrow's Daydream"
           ]
         }
-      ]
+      ],
+      "artist": "The Perfesser"
     },
     {
       "tokenId": "1213",
@@ -13031,7 +13082,8 @@
             "Egg Layer"
           ]
         }
-      ]
+      ],
+      "artist": "Stellabelle"
     },
     {
       "tokenId": "1214",
@@ -13064,7 +13116,8 @@
             "Dimension 2"
           ]
         }
-      ]
+      ],
+      "artist": "Matt Kane"
     },
     {
       "tokenId": "1215",
@@ -13086,7 +13139,8 @@
             "Lines"
           ]
         }
-      ]
+      ],
+      "artist": "Coldie 3D"
     },
     {
       "tokenId": "1216",
@@ -13109,7 +13163,8 @@
             "Unravelling"
           ]
         }
-      ]
+      ],
+      "artist": "Shinji Akhirah"
     },
     {
       "tokenId": "1217",
@@ -13132,7 +13187,8 @@
             "Frisian Girl with Chicken"
           ]
         }
-      ]
+      ],
+      "artist": "Ytje Veenstra"
     },
     {
       "tokenId": "1218",
@@ -13154,7 +13210,8 @@
             "Lady Coq"
           ]
         }
-      ]
+      ],
+      "artist": "Orabelart"
     },
     {
       "tokenId": "1219",
@@ -13177,7 +13234,8 @@
             "Solace"
           ]
         }
-      ]
+      ],
+      "artist": "Danil Pan"
     },
     {
       "tokenId": "1220",
@@ -13200,7 +13258,8 @@
             "Red Flower Treasure Vase"
           ]
         }
-      ]
+      ],
+      "artist": "Jetski"
     },
     {
       "tokenId": "1221",
@@ -13223,7 +13282,8 @@
             "Jo Strummer - the she-punk"
           ]
         }
-      ]
+      ],
+      "artist": "Angie Taylor"
     },
     {
       "tokenId": "1222",
@@ -13246,7 +13306,8 @@
             "Tron"
           ]
         }
-      ]
+      ],
+      "artist": "SamJ Studios"
     },
     {
       "tokenId": "1248",
