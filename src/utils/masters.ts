@@ -1,6 +1,7 @@
 import mastersData from '@/masters.json';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
 import type { GalleryItem } from '@/components/gallery/Gallery';
+import { getMasterArtistNames } from '@/utils/layers';
 
 interface Master {
   tokenId: string;
@@ -38,6 +39,7 @@ export function normalizeImageUrl(imageUrl: string): string {
 export function getMastersGalleryItems(): GalleryItem[] {
   const data = mastersData as MastersData;
   const items: GalleryItem[] = [];
+  const masterArtistNames = getMasterArtistNames();
 
   Object.keys(data).forEach((contractAddress) => {
     const version = resolveVersion(contractAddress);
@@ -48,7 +50,7 @@ export function getMastersGalleryItems(): GalleryItem[] {
         name: master.name,
         description: master.description,
         imageUrl: normalizeImageUrl(master.imageUrl),
-        artistName: '',
+        artistName: (masterArtistNames[master.tokenId] || []).join(', '),
         link: `/${version}/${master.tokenId}?referrer=masters`,
         date: parseInt(master.tokenId, 10),
         contractAddress: contractAddress.toLowerCase(),

@@ -3,6 +3,7 @@ import {
   getLayersGalleryItems,
   getStaticLayerData,
   getMasterLinkForLayer,
+  getMasterArtistNames,
 } from './layers';
 import layersData from '@/layers.json';
 import mastersData from '@/masters.json';
@@ -64,5 +65,22 @@ describe('getMasterLinkForLayer', () => {
 
   it('returns null for a CID that matches no master', () => {
     expect(getMasterLinkForLayer('not-a-real-cid')).toBeNull();
+  });
+});
+
+describe('getMasterArtistNames', () => {
+  it('attributes a master to the artists of its layers', () => {
+    // Master 538 ("Mind Puzzle") has 8 layers authored by SHORTCUT in
+    // layers.json but its own name/description never mentions the artist,
+    // so this is only discoverable via the layer data.
+    const result = getMasterArtistNames();
+    expect(result['538']).toContain('SHORTCUT');
+  });
+
+  it('does not attribute a master to an artist who has no layers on it', () => {
+    // Master 5475 ("Mariupol") mentions "Shortcut" in its prose credits but
+    // has no corresponding layer.json entries, so it must not be attributed.
+    const result = getMasterArtistNames();
+    expect(result['5475']).toBeUndefined();
   });
 });

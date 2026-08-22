@@ -52,6 +52,35 @@ function buildCidToMasterTokenId(): { [cid: string]: string } {
   return cidToMasterTokenId;
 }
 
+// Master TokenID -> distinct artist names of that master's layers, built
+// from layers.json via the same CID matching as buildCidToMasterTokenId().
+// Masters composed without the layered system (most of them) simply get no
+// entry here. This is the authoritative source for "who worked on this
+// master" - the master's own name/description text is not, since it may
+// mention an artist's name in passing (or credit collaborators outside the
+// layer system) without that artist having contributed a layer, or may
+// credit a layer artist without ever naming them in prose.
+export function getMasterArtistNames(): { [masterTokenId: string]: string[] } {
+  const lData = layersData as LayersData;
+  const cidToMasterTokenId = buildCidToMasterTokenId();
+  const result: { [masterTokenId: string]: string[] } = {};
+
+  Object.values(lData).forEach((layers) => {
+    layers.forEach((layer) => {
+      if (!layer.artistName) return;
+      const masterId = cidToMasterTokenId[layer.masterTokenId];
+      if (!masterId) return;
+
+      const artists = result[masterId] || (result[masterId] = []);
+      if (!artists.includes(layer.artistName)) {
+        artists.push(layer.artistName);
+      }
+    });
+  });
+
+  return result;
+}
+
 export function getLayersGalleryItems(): GalleryItem[] {
   const lData = layersData as LayersData;
   const items: GalleryItem[] = [];
