@@ -118,6 +118,7 @@ export class MusicTransport {
     if (this.disposed) return;
     ++this.generation;
     this.cancelReadiness();
+    this.pendingPlay = null;
     this.clearSyncTimer();
     this.pauseAll();
     this.state.playing = false;
@@ -162,6 +163,7 @@ export class MusicTransport {
     if (this.disposed) return;
     ++this.generation;
     this.cancelReadiness();
+    this.pendingPlay = null;
     this.clearSyncTimer();
     this.pauseAll();
     for (const element of this.media) this.safeSetTime(element, 0);
@@ -234,7 +236,8 @@ export class MusicTransport {
         active.map((element) => Promise.resolve(element.play())),
       );
       if (!this.isCurrent(token)) {
-        this.pauseAll();
+        // An old play promise must not pause a newer seek/restart operation.
+        if (!this.state.playing && !this.state.loading) this.pauseAll();
         return;
       }
       this.state.playing = true;
@@ -346,6 +349,7 @@ export class MusicTransport {
   private fail(message: string): void {
     ++this.generation;
     this.cancelReadiness();
+    this.pendingPlay = null;
     this.clearSyncTimer();
     this.pauseAll();
     this.state.playing = false;

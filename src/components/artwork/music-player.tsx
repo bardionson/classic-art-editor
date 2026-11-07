@@ -39,6 +39,49 @@ function StemSession({
   const transport = useRef<MusicTransport | null>(null);
   const [state, setState] = useState(initial);
   const [volume, setVolume] = useState(0.8);
+  const [seekPreview, setSeekPreview] = useState<number | null>(null);
+  const seekGesture = useRef<{ position: number; resume: boolean } | null>(
+    null,
+  );
+  const beginSeek = () => {
+    if (seekGesture.current) return;
+    seekGesture.current = {
+      position: state.position,
+      resume: state.playing || state.loading,
+    };
+    setSeekPreview(state.position);
+    transport.current?.pause();
+  };
+  const changeSeek = (position: number) => {
+    if (seekGesture.current) {
+      seekGesture.current.position = position;
+      setSeekPreview(position);
+    } else {
+      // Assistive controls can change a range without pointer/key gestures.
+      const resume = state.playing;
+      transport.current?.seek(position);
+      if (resume) void transport.current?.play();
+    }
+  };
+  const finishSeek = () => {
+    const gesture = seekGesture.current;
+    if (!gesture) return;
+    seekGesture.current = null;
+    setSeekPreview(null);
+    transport.current?.seek(gesture.position);
+    if (gesture.resume) void transport.current?.play();
+  };
+  const seekKeys = [
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowUp',
+    'ArrowDown',
+    'Home',
+    'End',
+    'PageUp',
+    'PageDown',
+  ];
+  const displayedPosition = seekPreview ?? state.position;
 
   useEffect(() => {
     const elements = media.current.filter(
@@ -91,26 +134,42 @@ function StemSession({
         <button className={button} onClick={() => transport.current?.stop()}>
           Stop
         </button>
-        <span className="ml-auto text-xs tabular-nums">
-          {time(state.position)} / {time(state.duration)}
-        </span>
       </div>
-      <label className="block text-xs">
-        Position
+      <div>
+        <label className="sr-only" htmlFor="music-position">
+          Playback position
+        </label>
         <input
-          className="block w-full mt-1"
+          id="music-position"
+          className="block w-full my-2 cursor-pointer accent-accent"
           aria-label="Music position"
+          aria-valuetext={`${time(displayedPosition)} of ${time(state.duration)}`}
           type="range"
           min="0"
           max={state.duration || 1}
           step="0.1"
-          value={state.position}
-          disabled={!state.duration || state.loading}
-          onChange={(event) =>
-            transport.current?.seek(Number(event.target.value))
-          }
+          value={displayedPosition}
+          disabled={!state.duration}
+          onPointerDown={(event) => {
+            event.currentTarget.setPointerCapture(event.pointerId);
+            beginSeek();
+          }}
+          onPointerUp={finishSeek}
+          onPointerCancel={finishSeek}
+          onKeyDown={(event) => {
+            if (seekKeys.includes(event.key)) beginSeek();
+          }}
+          onKeyUp={(event) => {
+            if (seekKeys.includes(event.key)) finishSeek();
+          }}
+          onBlur={finishSeek}
+          onChange={(event) => changeSeek(Number(event.target.value))}
         />
-      </label>
+        <div className="flex justify-between text-xs tabular-nums text-text-muted">
+          <span aria-label="Elapsed time">{time(displayedPosition)}</span>
+          <span aria-label="Total duration">{time(state.duration)}</span>
+        </div>
+      </div>
       <label
         className={`${compact ? 'hidden' : 'flex'} items-center gap-3 text-xs`}
       >
@@ -275,8 +334,8 @@ export default function MusicPlayer({
               Explore {stems.length} stems
             </summary>
             <p className="text-xs text-text-muted mb-3">
-              Variants are local previews. Changing a variant or seeking pauses
-              music; press Play to listen again.
+              Variants are local previews. Changing a variant pauses music;
+              press Play to listen to the new mix.
             </p>
             {stems.map((stem) => (
               <label key={stem.id} className="block mb-3 text-xs">

@@ -377,6 +377,46 @@ describe('MusicTransport', () => {
     transport.dispose();
   });
 
+  it('can immediately seek and restart while an earlier load is cancelling', async () => {
+    const track = new FakeAudio(100, 0);
+    const transport = new MusicTransport(elements(track), vi.fn());
+    const first = transport.play();
+    transport.pause();
+    transport.seek(40);
+    const resumed = transport.play();
+    track.canPlay();
+    await Promise.all([first, resumed]);
+    expect(transport.snapshot().playing).toBe(true);
+    expect(track.currentTime).toBe(40);
+    transport.dispose();
+  });
+
+  it('does not let an older play completion pause a newer seek session', async () => {
+    const track = new FakeAudio(100);
+    let finishOldPlay!: () => void;
+    const originalPlay = track.play.bind(track);
+    let firstCall = true;
+    track.play = () => {
+      if (!firstCall) return originalPlay();
+      firstCall = false;
+      return new Promise<void>((resolve) => {
+        finishOldPlay = resolve;
+      });
+    };
+    const transport = new MusicTransport(elements(track), vi.fn());
+    const first = transport.play();
+    await new Promise<void>((resolve) => queueMicrotask(resolve));
+    transport.pause();
+    transport.seek(30);
+    await transport.play();
+    finishOldPlay();
+    await first;
+    expect(transport.snapshot().playing).toBe(true);
+    expect(track.paused).toBe(false);
+    expect(track.currentTime).toBe(30);
+    transport.dispose();
+  });
+
   it('clears active playback timers and listeners on dispose', async () => {
     vi.useFakeTimers();
     const track = new FakeAudio(50);
