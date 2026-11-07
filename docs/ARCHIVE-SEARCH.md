@@ -2,8 +2,8 @@
 
 The public site preserves existing Async works. The home page leads to Classic,
 Music, Blueprints, and Dynamic Blueprints. Blueprints and Dynamic Blueprints now show illustrated recovery catalogs and
-individual original-media previews. These are previews, not restored generative
-or evolving compositions. The 17 identified Classic Music masters have a browser
+individual original-media previews. Blueprint editions are fixed once minted; their restoration concerns the original
+metadata and media. Dynamic Blueprint core compositions require separate restoration. The 17 identified Classic Music masters have a browser
 stem player; original mastering remains pending.
 
 ## Search snapshot
@@ -96,15 +96,14 @@ the query and both filters. The full index stays on the server.
 Restoration-stage filters deliberately describe evidence in the snapshot:
 
 - Artwork page available: a dedicated viewer route exists; behavior may vary.
-- Preview indexed: an image reference is indexed, but the dedicated viewer is pending.
+- Artwork media indexed: an original media reference is indexed.
 - Metadata indexed: image retrieval is attempted on demand, not yet incorporated
   into the snapshot. A successful on-demand display does not silently rewrite this
   status; rebuilding from recovered original bytes updates the index.
 
 Metadata CID verification, reported token identity, image availability and dynamic
-behavior are independent. Blueprint preview pages explain that unrevealed or
-historical images may survive and that Dynamic Blueprint expansion items are not
-the assembled core. No fabricated metadata, new minting or database is introduced.
+behavior are independent. Blueprint edition pages explain that editions are fixed once minted. Dynamic
+Blueprint expansion items are displayed separately from the assembled core. No fabricated metadata, new minting or database is introduced.
 
 ## Blueprint project browsing
 

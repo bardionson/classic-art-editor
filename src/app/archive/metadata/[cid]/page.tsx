@@ -37,11 +37,11 @@ export default function MetadataArtworkPage({
         large
       />
       <p className="text-sm text-text-muted my-6">
-        Original metadata preview. This media may represent an earlier or
-        unrevealed edition state.
-        {record.family === 'dynamic-blueprints'
-          ? ' Expansion previews are individual items; the evolving core composition is still being restored.'
-          : ' A preview does not confirm that interactive behavior has been restored.'}
+        {record.family === 'blueprints'
+          ? 'Artwork from the edition’s original metadata. Blueprint editions are fixed once minted.'
+          : record.family === 'dynamic-blueprints'
+            ? 'Original expansion item media. The changing core composition is still being restored.'
+            : 'Artwork media from the original metadata.'}
       </p>
       {record.description && (
         <p className="whitespace-pre-line mb-6">{record.description}</p>

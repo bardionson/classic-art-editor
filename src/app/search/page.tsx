@@ -74,9 +74,10 @@ export default function SearchPage({ searchParams }: { searchParams: Params }) {
         {query ? ` for “${query}”` : ''}
       </p>
       <p className="text-sm text-text-muted mb-6">
-        Previews come from catalog images or original metadata. An available
-        page or preview does not mean all behavior is restored. Preview lookups
-        run as you browse; filters reflect the indexed recovery stage.
+        Artwork media comes from catalog images or original metadata. Blueprint
+        editions are fixed once minted. Interactive and changing works have
+        separate restoration needs. Media lookups run as you browse; filters
+        reflect the indexed recovery stage.
       </p>
       {found.results.length === 0 ? (
         <div className="rounded-xl border border-border p-8">

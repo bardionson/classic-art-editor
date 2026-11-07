@@ -15,7 +15,8 @@ export const archiveFamilies = [
   {
     id: 'blueprints',
     title: 'Blueprints',
-    description: 'Generative collections and the editions created from them.',
+    description:
+      'Generative collections with editions that are fixed once minted.',
     status: 'Browse recovered edition previews',
   },
   {

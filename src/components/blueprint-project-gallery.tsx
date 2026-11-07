@@ -117,8 +117,8 @@ export default function BlueprintProjectGallery({
         totalPages={result.totalPages}
       />
       <p className="text-sm text-text-muted mt-8">
-        Project previews use a representative edition. Images may show earlier
-        or unrevealed states.
+        Each project preview shows a representative edition. Blueprint editions
+        are fixed once minted.
       </p>
       <Link
         href="/search?family=blueprints"

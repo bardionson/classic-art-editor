@@ -96,10 +96,9 @@ export default function ArchivePage({
           </h2>
           <p className="text-text-muted mb-6">
             {recovered.total.toLocaleString('en-US')} recovered records.
-            Previews load from original metadata as you browse.
-            {family.id === 'dynamic-blueprints'
-              ? ' These are individual expansion items; restoring the changing core compositions is the next step.'
-              : ' Images may show earlier or unrevealed states. Interactive viewers remain under restoration.'}
+            Previews load from original metadata as you browse. These are
+            individual expansion items; restoring the changing core compositions
+            is the next step.
           </p>
           <ArchiveResults records={recovered.results} />
           <Link

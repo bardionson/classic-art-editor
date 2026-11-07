@@ -46,8 +46,8 @@ export default function BlueprintProjectPage({
       </p>
       <p className="text-text-muted mb-6">
         {project.count.toLocaleString('en-US')} indexed editions in this
-        project. This is the recovered inventory, not total minted supply.
-        Previews may show earlier or unrevealed artwork.
+        project. This is the recovered inventory, not total minted supply. Each
+        Blueprint edition is fixed once minted.
       </p>
       <form
         action={pathname}

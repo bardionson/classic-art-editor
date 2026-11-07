@@ -25,7 +25,7 @@ export interface ArchiveRecord {
 }
 export const displayStatuses = [
   { id: 'artwork', label: 'Artwork page available' },
-  { id: 'preview', label: 'Preview indexed · viewer pending' },
+  { id: 'preview', label: 'Artwork media indexed' },
   { id: 'metadata', label: 'Metadata indexed · preview on demand' },
 ] as const;
 export function displayStatus(record: ArchiveRecord) {
