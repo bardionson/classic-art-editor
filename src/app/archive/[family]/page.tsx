@@ -34,6 +34,8 @@ export default function ArchivePage({
   if (!family) notFound();
   const recovered = searchArchive('', family.id);
   const isMusic = family.id === 'music';
+  const isBlueprint =
+    family.id === 'blueprints' || family.id === 'music-blueprints';
   const items = getMastersGalleryItems()
     .filter((item) => {
       const music = musicIdentities.some(
@@ -60,13 +62,14 @@ export default function ArchivePage({
         {family.description}
       </p>
       <ArchiveNavigation active={family.id} />
-      {family.id !== 'blueprints' && (
+      {!isBlueprint && (
         <div className="rounded-xl border border-border bg-surface-sunken p-5 mb-8">
           <ArchiveSearchForm family={family.id} />
         </div>
       )}
-      {family.id === 'blueprints' ? (
+      {isBlueprint ? (
         <BlueprintProjectGallery
+          family={family.id as 'blueprints' | 'music-blueprints'}
           query={typeof searchParams.q === 'string' ? searchParams.q : ''}
           sort={searchParams.sort === 'name' ? 'name' : 'largest'}
           page={
@@ -82,6 +85,14 @@ export default function ArchivePage({
               ? 'These 17 music masters are identified in the recovery inventory. Open an artwork to play its original stems and preview musical variants. Original server mastering is still being restored, and availability depends on surviving IPFS files. This is a starting catalog, not the complete Async Music collection.'
               : 'Browse the current classic master catalog, including layered and automated works. Restoration varies by piece; missing assets and original behavior remain under review.'}
           </p>
+          {isMusic && (
+            <Link
+              className="text-accent underline inline-block mb-6"
+              href="/archive/music-blueprints"
+            >
+              Explore Music Blueprint projects and editions
+            </Link>
+          )}
           <Gallery
             title={isMusic ? 'Music masters' : 'Classic masters'}
             items={items}

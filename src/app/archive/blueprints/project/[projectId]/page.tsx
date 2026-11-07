@@ -28,15 +28,19 @@ export default function BlueprintProjectPage({
     typeof searchParams.q === 'string' ? searchParams.q.slice(0, 300) : '';
   const page =
     typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
-  const result = searchArchive(query, 'blueprints', page, 'all', project.id);
+  const result = searchArchive(query, project.family, page, 'all', project.id);
   const pathname = `/archive/blueprints/project/${project.id}`;
   return (
     <main className="container mx-auto px-4 py-10 max-w-6xl">
       <Link
         className="text-accent underline text-sm"
-        href="/archive/blueprints"
+        href={`/archive/${project.family}`}
       >
-        Back to Blueprint projects
+        Back to{' '}
+        {project.family === 'music-blueprints'
+          ? 'Music Blueprint'
+          : 'Blueprint'}{' '}
+        projects
       </Link>
       <h1 className="text-3xl sm:text-4xl font-bold mt-6 mb-3 break-words">
         {project.name}
@@ -88,11 +92,26 @@ export default function BlueprintProjectPage({
       />
       <details className="mt-8 text-sm text-text-muted break-words">
         <summary className="cursor-pointer">Project information</summary>
+        {project.evidence && (
+          <p className="mt-2">
+            {project.evidence.basis}{' '}
+            <a
+              href={project.evidence.evidenceUrl}
+              className="text-accent underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Classification source
+            </a>
+          </p>
+        )}
         <p className="mt-2">Blueprint ID: {project.id}</p>
         <p>
-          {project.nameSource === 'metadata'
-            ? 'Project name from recovered collection metadata.'
-            : 'Display name derived from edition titles; original project title may differ.'}{' '}
+          {project.evidence
+            ? 'Project name and category from the reviewed Music Blueprint catalog.'
+            : project.nameSource === 'metadata'
+              ? 'Project name from recovered collection metadata.'
+              : 'Display name derived from edition titles; original project title may differ.'}{' '}
           Editions are grouped by the project ID reported in the recovery
           manifest.
         </p>

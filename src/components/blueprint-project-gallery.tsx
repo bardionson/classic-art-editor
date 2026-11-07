@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
 import ArchivePreview from '@/components/archive-preview';
 import ArchivePagination from '@/components/archive-pagination';
 import { browseBlueprintProjects } from '@/utils/blueprint-projects';
@@ -7,25 +8,36 @@ export default function BlueprintProjectGallery({
   query = '',
   sort = 'largest',
   page = 1,
+  family = 'blueprints',
 }: {
   query?: string;
   sort?: string;
   page?: number;
+  family?: 'blueprints' | 'music-blueprints';
 }) {
-  const result = browseBlueprintProjects(query, sort, page);
+  const result = browseBlueprintProjects(query, sort, page, family);
+  const pathname = `/archive/${family}`;
+  const title = family === 'music-blueprints' ? 'Music Blueprint' : 'Blueprint';
   return (
     <section>
-      <h2 className="text-2xl font-semibold mb-3">Blueprint projects</h2>
+      <h2 className="text-2xl font-semibold mb-3">{title} projects</h2>
       <p className="text-text-muted mb-6">
         {result.allProjects.toLocaleString('en-US')} projects ·{' '}
         {result.editions.toLocaleString('en-US')} indexed editions. Open a
         project to browse its pieces. Counts reflect the recovered inventory,
         not total minted supply.
       </p>
+      {family === 'music-blueprints' && (
+        <p className="text-sm text-text-muted mb-6">
+          Music editions identified from original metadata and historical
+          sources. Artwork and audio recovery are ongoing; inclusion here does
+          not confirm restored playback.
+        </p>
+      )}
       <form
-        action="/archive/blueprints"
+        action={pathname}
         role="search"
-        aria-label="Find Blueprint projects"
+        aria-label={`Find ${title} projects`}
         className="grid gap-4 sm:grid-cols-[1fr_auto_auto] items-end rounded-xl border border-border bg-surface-sunken p-5 mb-6"
       >
         <label className="block text-sm">
@@ -57,10 +69,7 @@ export default function BlueprintProjectGallery({
       {query && (
         <p className="mb-5">
           {result.total} matching projects{' '}
-          <Link
-            href="/archive/blueprints"
-            className="text-accent underline ml-3"
-          >
+          <Link href={pathname} className="text-accent underline ml-3">
             Clear search
           </Link>
         </p>
@@ -111,7 +120,7 @@ export default function BlueprintProjectGallery({
         ))}
       </ul>
       <ArchivePagination
-        pathname="/archive/blueprints"
+        pathname={pathname}
         params={{ q: query, sort }}
         page={result.page}
         totalPages={result.totalPages}
@@ -121,11 +130,40 @@ export default function BlueprintProjectGallery({
         are fixed once minted.
       </p>
       <Link
-        href="/search?family=blueprints"
+        href={`/search?family=${family}`}
         className="text-accent underline inline-block mt-3"
       >
-        Search all Blueprint editions
+        Search all {title} editions
       </Link>
+      {family === 'music-blueprints' && !query && (
+        <section
+          className="mt-10 border-t border-border pt-6"
+          aria-labelledby="awaiting-music"
+        >
+          <h2 id="awaiting-music" className="text-xl font-semibold mb-3">
+            More projects to recover
+          </h2>
+          <p className="text-sm text-text-muted mb-4">
+            These documented Music Blueprints are not yet matched to editions in
+            the recovered inventory.
+          </p>
+          <ul className="space-y-3">
+            {musicBlueprintCatalog.awaitingRecovery.map((project) => (
+              <li key={project.name}>
+                <a
+                  className="text-accent underline"
+                  href={project.evidenceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {project.name}
+                </a>{' '}
+                — {project.artist}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </section>
   );
 }

@@ -16,13 +16,15 @@ export default function MetadataArtworkPage({
       <Link
         className="text-accent underline text-sm"
         href={
-          record.family === 'blueprints' && record.blueprintId
+          ['blueprints', 'music-blueprints'].includes(record.family) &&
+          record.blueprintId
             ? `/archive/blueprints/project/${record.blueprintId}`
             : `/search?${new URLSearchParams({ family: record.family })}`
         }
       >
         Back to{' '}
-        {record.family === 'blueprints' && record.blueprintId
+        {['blueprints', 'music-blueprints'].includes(record.family) &&
+        record.blueprintId
           ? 'project editions'
           : familyTitle(record.family)}
       </Link>
@@ -37,7 +39,7 @@ export default function MetadataArtworkPage({
         large
       />
       <p className="text-sm text-text-muted my-6">
-        {record.family === 'blueprints'
+        {['blueprints', 'music-blueprints'].includes(record.family)
           ? 'Artwork from the edition’s original metadata. Blueprint editions are fixed once minted.'
           : record.family === 'dynamic-blueprints'
             ? 'Original expansion item media. The changing core composition is still being restored.'

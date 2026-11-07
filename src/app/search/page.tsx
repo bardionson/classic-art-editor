@@ -43,7 +43,7 @@ export default function SearchPage({ searchParams }: { searchParams: Params }) {
         Search the Async archive
       </h1>
       <p className="text-text-muted mb-6 max-w-3xl">
-        Explore art, music, layers, and editions across all four collections.{' '}
+        Explore art, music, layers, and editions across all collections.{' '}
         {archiveCoverage.total.toLocaleString('en-US')} records from the
         available catalogs and recovery inventories are indexed. Coverage is
         still growing.

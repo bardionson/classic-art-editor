@@ -13,6 +13,13 @@ export const archiveFamilies = [
     status: 'Listen to restored stems',
   },
   {
+    id: 'music-blueprints',
+    title: 'Music Blueprints',
+    description:
+      'Generative music and audio editions, grouped by their original projects. Each minted mix is fixed.',
+    status: 'Explore recovered music projects',
+  },
+  {
     id: 'blueprints',
     title: 'Blueprints',
     description:

@@ -1,3 +1,4 @@
+import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
 import {
   getBlueprintRecords,
   type ArchiveRecord,
@@ -24,7 +25,11 @@ function mostCommon(values: string[]) {
 export function groupBlueprintProjects(records: ArchiveRecord[]) {
   const groups = new Map<string, ArchiveRecord[]>();
   for (const record of records) {
-    if (record.family !== 'blueprints' || !record.blueprintId) continue;
+    if (
+      !['blueprints', 'music-blueprints'].includes(record.family) ||
+      !record.blueprintId
+    )
+      continue;
     const group = groups.get(record.blueprintId) ?? [];
     group.push(record);
     groups.set(record.blueprintId, group);
@@ -49,6 +54,8 @@ export function groupBlueprintProjects(records: ArchiveRecord[]) {
     );
     return {
       id,
+      family: editions[0].family,
+      evidence: musicBlueprintCatalog.projects.find((p) => p.id === id),
       name,
       artists,
       count: editions.length,
@@ -68,9 +75,13 @@ export function browseBlueprintProjects(
   query = '',
   sort = 'largest',
   page = 1,
+  family = 'all',
 ) {
   const terms = text(query.slice(0, 300)).split(/\s+/).filter(Boolean);
-  const matches = projects.filter((p) =>
+  const familyProjects = projects.filter(
+    (p) => family === 'all' || p.family === family,
+  );
+  const matches = familyProjects.filter((p) =>
     terms.every((term) => p.searchText.includes(term)),
   );
   matches.sort(
@@ -87,8 +98,8 @@ export function browseBlueprintProjects(
   return {
     projects: matches.slice((currentPage - 1) * 24, currentPage * 24),
     total: matches.length,
-    allProjects: projects.length,
-    editions: projects.reduce((sum, p) => sum + p.count, 0),
+    allProjects: familyProjects.length,
+    editions: familyProjects.reduce((sum, p) => sum + p.count, 0),
     page: currentPage,
     totalPages,
   };

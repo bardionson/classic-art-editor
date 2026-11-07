@@ -49,11 +49,14 @@ describe('illustrated unified discovery', () => {
   it('finds indexed image CIDs but never lowercases CIDv0', () => {
     const cid = 'QmccdgxmwtQDbajm6oAeofRAbz4PV6g2upACwA7qjqUm8w';
     expect(searchArchive(cid.toLowerCase()).total).toBe(0);
-    expect(
-      searchArchive(
-        'ipfs://QmYfy2qQBceBghoQGTsLUXpqZibbmoN11eTaDMPAkAAkUe',
-      ).results.some((r) => r.cid === cid),
-    ).toBe(true);
+    const image = 'ipfs://QmYfy2qQBceBghoQGTsLUXpqZibbmoN11eTaDMPAkAAkUe';
+    const found = searchArchive(image);
+    expect(found.total).toBeGreaterThan(0);
+    expect(found.results.every((r) => r.image === image)).toBe(true);
+    // The shared poster is used by many expansions; this particular item need
+    // not sort onto page one after the full expansion inventory is imported.
+    expect(getArchiveRecordByCid(cid)?.image).toBe(image);
+    expect(searchArchive(image.toLowerCase()).total).toBe(0);
     expect(getArchiveRecordByCid(cid)?.metadataVerified).toBe(true);
   });
   it('filters indexed recovery stages without claiming metadata verification restores behavior', () => {

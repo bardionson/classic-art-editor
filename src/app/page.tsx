@@ -1,11 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Layers, Music, Grid, Sliders } from 'react-feather';
+import {
+  ArrowUpRight,
+  Layers,
+  Music,
+  Grid,
+  Sliders,
+  Disc,
+} from 'react-feather';
 import firstSupperHero from '../../public/first-supper-0.jpg';
 import ArchiveSearchForm from '@/components/archive-search-form';
 import { archiveFamilies } from '@/utils/archive-families';
 
-const icons = [Layers, Music, Grid, Sliders];
+const icons = {
+  classic: Layers,
+  music: Music,
+  'music-blueprints': Disc,
+  blueprints: Grid,
+  'dynamic-blueprints': Sliders,
+};
 
 export default function Home() {
   return (
@@ -39,9 +52,9 @@ export default function Home() {
             Search all collections
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {archiveFamilies.map((family, index) => {
-            const Icon = icons[index];
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {archiveFamilies.map((family) => {
+            const Icon = icons[family.id];
             return (
               <Link
                 href={`/archive/${family.id}`}

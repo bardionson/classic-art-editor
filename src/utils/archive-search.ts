@@ -1,4 +1,6 @@
 import snapshot from '@/data/archive-index.json';
+import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
+import musicBlueprintMetadata from '@/data/music-blueprint-metadata.json';
 import { ipfsPath } from '@/utils/archive-media';
 
 export interface ArchiveRecord {
@@ -42,10 +44,36 @@ const normalize = (text: string) =>
     .replace(new RegExp('[^\\p{L}\\p{N}]+', 'gu'), ' ')
     .trim()
     .replace(/\s+/g, ' ');
-const records = snapshot.records as ArchiveRecord[];
+// Keep the raw recovery inventory unchanged. Apply reviewed classifications at
+// this shared boundary so search, facets, project pages and counts stay aligned.
+const musicProjects = new Map(
+  musicBlueprintCatalog.projects.map((p) => [p.id, p]),
+);
+const recoveredMetadata: Record<
+  string,
+  Partial<ArchiveRecord>
+> = musicBlueprintMetadata;
+const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[]).map(
+  (record) => {
+    const project =
+      record.family === 'blueprints' && record.blueprintId
+        ? musicProjects.get(record.blueprintId)
+        : undefined;
+    return project
+      ? {
+          ...record,
+          ...recoveredMetadata[record.cid],
+          family: 'music-blueprints',
+          collection: project.name,
+        }
+      : record;
+  },
+);
 const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
 export function getBlueprintRecords() {
-  return records.filter((r) => r.family === 'blueprints');
+  return records.filter(
+    (r) => r.family === 'blueprints' || r.family === 'music-blueprints',
+  );
 }
 export function getArchiveRecordByCid(cid: string) {
   return byCid.get(cid);
@@ -72,7 +100,10 @@ const contracts = {
 };
 export const archiveCoverage = {
   total: records.length,
-  counts: snapshot.counts,
+  counts: records.reduce<Record<string, number>>((counts, r) => {
+    counts[r.family] = (counts[r.family] ?? 0) + 1;
+    return counts;
+  }, {}),
   generatedOn: snapshot.generatedOn,
 };
 

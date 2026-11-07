@@ -1,0 +1,107 @@
+{
+  "reviewedOn": "2026-11-07",
+  "method": "Explicit project allowlist based on original descriptions, audio-variation traits and historical publisher sources. Animation URLs and artist names alone do not classify a project. Counts reflect available inventory, not supply.",
+  "projects": [
+    {
+      "id": "6299ca161f3e98af7d976a6f",
+      "name": "H0m3w0rk",
+      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html",
+      "basis": "Async Art launch announcement identifies H0m3w0rk as a Music Blueprint; project ID is from the recovery manifest."
+    },
+    {
+      "id": "62ac565ab276182be80cd7cf",
+      "name": "WHATEVER",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmSCGrX2QtJpAD1ZCoB8fmqoGusfJ8w1Y5vGkJ7f5VqhYW",
+      "basis": "Preserved Forever Supper item metadata names Kena Rose’s Music Blueprint and links this exact project ID."
+    },
+    {
+      "id": "62c77539c679226473b4dd29",
+      "name": "Element",
+      "evidenceUrl": "https://www.linkedin.com/pulse/happy-international-womens-day-async-art",
+      "basis": "Async Art identifies Element and links this exact project ID; the artist description documents generative string arrangements."
+    },
+    {
+      "id": "62e76e34b34669d69b4a7772",
+      "name": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmeHGzR7vBMcNtWeQydKatYDtV6gJ5sqQ6eJbCLzoSjZhS",
+      "basis": "Original description and traits preserve independently selected organ performance variants."
+    },
+    {
+      "id": "62f568a93a7b05c8c6d5e2f3",
+      "name": "INTERMINABLE",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmTaaFij9BbQakSTKWLdkwzKzwF9qU6hBvUpmz5SHD4w3n",
+      "basis": "Original description specifies three genres, eight layers and 26 stems combined by Async Blueprints."
+    },
+    {
+      "id": "62fa1f8880395302c7c31bf2",
+      "name": "Victims Of The Global Financial Crisis (2036-1999)",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVrBZr1W58vBY1AGqVv7JnNGchpLhvnUSwHEeipfYCQme",
+      "basis": "Original description specifies four audio layers with five states and generated unique audio loops."
+    },
+    {
+      "id": "6311453f489bfeffacbb0b30",
+      "name": "New Dawn",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/Qmd2WVD7ysHLFmNdRxz1yGvJvtHDz9Noh4aVcioymc5sQj",
+      "basis": "Original metadata preserves melody, percussion and pad variants for this musical collection."
+    },
+    {
+      "id": "6385af01473c10451e42712a",
+      "name": "Alma's Digital Collectibles",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmWHAx6WARKhcBcCi49JbAgo1asw467PyYYmwaoUhzP1zN",
+      "basis": "Original description identifies unique combinations of four music themes; traits preserve orchestral selections."
+    },
+    {
+      "id": "6389a11078c43834597a6d87",
+      "name": "Mignonverse Theme",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmSz4cS6Zi5CdUKpMedbHpwRQxHKnmxNsDAxo9AZadosCy",
+      "basis": "Original metadata lists vocal, lead instrument, arrangement and drum variants."
+    },
+    {
+      "id": "63b714a6599493c0bdda7533",
+      "name": "Pangea Panthalassa",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/Qmb55BmqC7vNbgHoSZpZfWagxh6Pzc2PRgXW2HhRtuoNwY",
+      "basis": "Original description identifies generated musical combinations; traits preserve instrument selections."
+    },
+    {
+      "id": "63bbe0ae601a6248ac031387",
+      "name": "remnants",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmXbUf3Zpaa8RBBQABhaTXwHmyLp9TzPqTxc89ac1D4o46",
+      "basis": "Original description identifies generative lyrics; traits preserve the selected lyrics."
+    },
+    {
+      "id": "63bf3429874e8e6af40f8ed4",
+      "name": "Danktone 001",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVuebjuZF9TdDAyVAZ6YLQxjTL4MYFDvWnesJLHnT9Ukq",
+      "basis": "Recovered music, host, guest and Stella sound variation traits identify generative audio editions."
+    },
+    {
+      "id": "63bf3805874e8e6af40fe80e",
+      "name": "Danktone 002",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmSBDE3drNe9iGPmFq5JyFHFX7F3qTAuj3YtR1apZowrej",
+      "basis": "Recovered music, host, guest and Stella sound variation traits identify generative audio editions."
+    },
+    {
+      "id": "63d6f5db3c0cbf340f528699",
+      "name": "Danktone 003",
+      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVfsWbbJYQ9Hifrkzo21LiU464FNfPJvu1GY1kpPnVFzB",
+      "basis": "Recovered music, host, guest and Stella sound variation traits identify generative audio editions."
+    }
+  ],
+  "awaitingRecovery": [
+    {
+      "name": "JANUS",
+      "artist": "Maelstrom & Ipno",
+      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html"
+    },
+    {
+      "name": "Senses",
+      "artist": "David Bianchi, PLS&TY & Dogan Demir",
+      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html"
+    },
+    {
+      "name": "Binaural BrainWave Machine",
+      "artist": "Daniel Maszkowicz",
+      "evidenceUrl": "https://maszkowicz.art/nfts/"
+    }
+  ]
+}

@@ -55,14 +55,15 @@ export default function ArchiveResults({
                 {record.artist}
               </p>
             )}
-            {record.family === 'blueprints' && record.blueprintId && (
-              <Link
-                className="inline-block mt-2 text-xs text-accent underline"
-                href={`/archive/blueprints/project/${record.blueprintId}`}
-              >
-                Browse this project
-              </Link>
-            )}
+            {['blueprints', 'music-blueprints'].includes(record.family) &&
+              record.blueprintId && (
+                <Link
+                  className="inline-block mt-2 text-xs text-accent underline"
+                  href={`/archive/blueprints/project/${record.blueprintId}`}
+                >
+                  Browse this project
+                </Link>
+              )}
             {record.collection && (
               <p className="text-xs text-text-muted mt-1">
                 {record.collection}
