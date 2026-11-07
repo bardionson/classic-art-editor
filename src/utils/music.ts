@@ -1,6 +1,8 @@
+import { archiveAudioUrl } from './audio-delivery';
 import { MasterArtNFTMetadata } from '@/types/shared';
 
 export const AUDIO_GATEWAYS = [
+  { name: 'Archive audio (R2)', url: 'archive' },
   { name: 'Alchemy IPFS', url: 'https://alchemy.mypinata.cloud' },
   { name: 'Pinata', url: 'https://gateway.pinata.cloud' },
   { name: 'IPFS.io', url: 'https://ipfs.io' },
@@ -18,6 +20,7 @@ export function audioUrl(uri: string, gateway: string): string {
   ) {
     throw new Error('This stem has an unsupported IPFS address.');
   }
+  if (gateway === 'archive') return archiveAudioUrl(path)!;
   return `${gateway}/ipfs/${path}`;
 }
 

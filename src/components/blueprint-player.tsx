@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { archiveAudioUrl } from '@/utils/audio-delivery';
 import ArchivePreview from '@/components/archive-preview';
 import { usePreparedAudio } from '@/components/use-prepared-audio';
 import {
@@ -32,7 +33,11 @@ export default function BlueprintPlayer({
   const [notice, setNotice] = useState('');
   const [art, setArt] = useState(image);
   const element = useRef<HTMLMediaElement | null>(null);
-  const candidates = imageCandidates(media?.source);
+  const originalCandidates = imageCandidates(media?.source);
+  const archive = media ? archiveAudioUrl(media.source) : null;
+  const candidates = archive
+    ? [archive, ...originalCandidates]
+    : originalCandidates;
   const audio = usePreparedAudio(
     media ? [media.source] : [],
     candidates.length ? [candidates[attempt] ?? candidates[0]] : [],
@@ -203,7 +208,7 @@ export default function BlueprintPlayer({
               )}
               <div className="flex flex-wrap gap-4 text-sm mt-4">
                 <a
-                  href={candidates[attempt] ?? candidates[0]}
+                  href={originalCandidates[0]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent underline"

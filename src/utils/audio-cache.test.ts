@@ -1,5 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { audioCacheKey, prepareAudio } from './audio-cache';
+import { sharedAudioUrl } from './audio-delivery';
+
+vi.mock('./audio-delivery', () => ({
+  sharedAudioUrl: vi.fn(async () => null),
+}));
 
 const cid = 'QmPGChtKCG4rFxv3qN1zKRC9zqn8UQvpvJcDUHwVwEAgRL';
 function cacheMock(failWrite = false) {
@@ -113,4 +118,29 @@ describe('complete audio cache', () => {
     await prepareAudio(`ipfs://${cid}`, new AbortController().signal);
     expect(values.has('https://async.art/__audio-cache/old')).toBe(false);
   });
+});
+
+it('falls back to IPFS when the signed R2 download is blocked by CORS or expires', async () => {
+  cacheMock();
+  vi.mocked(sharedAudioUrl).mockResolvedValueOnce(
+    'https://test.r2.cloudflarestorage.com/audio?signature=test',
+  );
+  const fetcher = vi
+    .fn()
+    .mockRejectedValueOnce(new TypeError('Failed to fetch'))
+    .mockResolvedValueOnce(mp3());
+  vi.stubGlobal('fetch', fetcher);
+  const first = await prepareAudio(
+    `ipfs://${cid}`,
+    new AbortController().signal,
+  );
+  expect(first.saved).toBe(true);
+  expect(fetcher.mock.calls[0][0]).toContain('r2.cloudflarestorage.com');
+  expect(fetcher.mock.calls[1][0]).toContain('/ipfs/');
+  const second = await prepareAudio(
+    `ipfs://${cid}`,
+    new AbortController().signal,
+  );
+  expect(second.cached).toBe(true);
+  expect(fetcher).toHaveBeenCalledTimes(2);
 });

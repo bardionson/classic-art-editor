@@ -1,3 +1,4 @@
+import { sharedAudioUrl } from './audio-delivery';
 import { imageCandidates, ipfsPath } from './archive-media';
 
 export const AUDIO_CACHE = 'async-original-audio-v1';
@@ -76,11 +77,15 @@ export async function prepareAudio(
       signal.throwIfAborted();
     }
   }
+  const shared = await sharedAudioUrl(source, signal);
+  signal.throwIfAborted();
   const urls = Array.from(
     new Set(
-      [preferred, ...imageCandidates(source)].filter(
-        (url): url is string => !!url,
-      ),
+      [
+        shared,
+        preferred?.startsWith('/api/audio/') ? undefined : preferred,
+        ...imageCandidates(source),
+      ].filter((url): url is string => !!url),
     ),
   );
   for (const url of urls) {
