@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from 'node:crypto';
+import { createHash } from 'node:crypto';
 import {
   S3Client,
   HeadObjectCommand,
@@ -6,7 +6,7 @@ import {
   PutObjectCommand,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { Redis } from '@upstash/redis';
+import { acquireR2Import } from './r2-import-limit';
 import sources from '@/data/archive-audio-sources.json';
 
 export const MAX_AUDIO_BYTES = 96 * 1024 * 1024;
@@ -122,45 +122,6 @@ export async function downloadOriginal(path: string, signal: AbortSignal) {
   throw new Error('Original audio unavailable');
 }
 
-// Shared limits survive Vercel instance scaling. Imports fail closed if Redis is
-// unavailable; existing R2 copies and the IPFS fallback remain usable.
-async function acquireImport(
-  path: string,
-): Promise<(() => Promise<void>) | null> {
-  if (
-    !process.env.UPSTASH_REDIS_REST_URL ||
-    !process.env.UPSTASH_REDIS_REST_TOKEN
-  )
-    return null;
-  const redis = Redis.fromEnv();
-  const id = randomUUID();
-  const digest = createHash('sha256').update(path).digest('hex');
-  const now = Date.now();
-  const slots = 'archive-audio:imports';
-  const result = await redis.eval(
-    `
-    redis.call('ZREMRANGEBYSCORE', KEYS[1], '-inf', ARGV[1])
-    if redis.call('ZCARD', KEYS[1]) >= 2 or redis.call('EXISTS', KEYS[2]) == 1 then return 0 end
-    if tonumber(redis.call('GET', KEYS[3]) or '0') >= 120 then return 0 end
-    redis.call('INCR', KEYS[3]); redis.call('EXPIRE', KEYS[3], 3600)
-    redis.call('SET', KEYS[2], '1', 'EX', 120)
-    redis.call('ZADD', KEYS[1], ARGV[2], ARGV[3]); redis.call('EXPIRE', KEYS[1], 90)
-    return 1
-  `,
-    [
-      slots,
-      `archive-audio:attempt:${digest}`,
-      `archive-audio:budget:${Math.floor(now / 3600000)}`,
-    ],
-    [now, now + 65000, id],
-  );
-  return result === 1
-    ? async () => {
-        await redis.zrem(slots, id);
-      }
-    : null;
-}
-
 export class AudioDeliveryError extends Error {
   constructor(
     public stage: string,
@@ -204,7 +165,7 @@ export async function resolveR2Audio(
     if (!exists) {
       if (!importMissing) return { status: 'missing' };
       stage = 'import-limiter';
-      const release = await acquireImport(path);
+      const release = await acquireR2Import(client, bucket, path, signal);
       if (!release) return { status: 'busy' };
       try {
         stage = 'ipfs-download';

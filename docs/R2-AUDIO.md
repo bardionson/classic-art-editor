@@ -11,7 +11,7 @@ Server-only Vercel environment variables:
 - `R2_ACCESS_KEY_ID`
 - `R2_SECRET_ACCESS_KEY`
 
-The R2 token needs Object Read & Write scoped to this bucket. Never use NEXT_PUBLIC variables for credentials. Existing `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` provide shared import limits; if Redis is unavailable, existing R2 copies still play but new imports fall back to IPFS. Redeploy after changing environment variables.
+The R2 token needs Object Read & Write scoped to this bucket. Never use NEXT_PUBLIC variables for credentials. Small control objects under `archive-audio/control/v1/` provide shared import limits using atomic conditional R2 writes. No Redis or additional database is required. If coordination is unavailable, existing R2 copies still play and new imports fall back to IPFS. Redeploy after changing environment variables.
 
 The bucket CORS policy must permit GET/HEAD from https://async.art and https://www.async.art, allow the Range header, and expose Content-Length, Content-Range, Accept-Ranges, and ETag. Include https://asyncart-revival.bardionson.com if that app uses these files.
 

@@ -26,9 +26,7 @@ vi.mock('@aws-sdk/client-s3', () => ({
   },
 }));
 vi.mock('@aws-sdk/s3-request-presigner', () => ({ getSignedUrl: mocks.sign }));
-vi.mock('@upstash/redis', () => ({
-  Redis: { fromEnv: () => ({ eval: mocks.eval, zrem: mocks.zrem }) },
-}));
+vi.mock('./r2-import-limit', () => ({ acquireR2Import: mocks.eval }));
 import {
   allowedAudio,
   audioMime,
@@ -56,7 +54,7 @@ beforeEach(() => {
   mocks.sign.mockResolvedValue(
     'https://example.r2.cloudflarestorage.com/signed',
   );
-  mocks.eval.mockResolvedValue(1);
+  mocks.eval.mockResolvedValue(mocks.zrem);
   mocks.zrem.mockResolvedValue(1);
 });
 afterEach(() => {
@@ -123,13 +121,11 @@ describe('R2 archive audio', () => {
     await expect(resolveR2Audio(path, true)).rejects.toBeDefined();
     expect(mocks.eval).not.toHaveBeenCalled();
   });
-  it('bounds imports with a shared limiter and fails closed without Redis', async () => {
+  it('bounds imports with the shared R2 limiter', async () => {
     mocks.send.mockRejectedValue(missing);
-    mocks.eval.mockResolvedValue(0);
+    mocks.eval.mockResolvedValue(null);
     expect(await resolveR2Audio(path, true)).toEqual({ status: 'busy' });
-    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
-    expect(await resolveR2Audio(path, true)).toEqual({ status: 'busy' });
-    expect(mocks.send).toHaveBeenCalledTimes(2);
+    expect(mocks.send).toHaveBeenCalledTimes(1);
     expect(mocks.sign).not.toHaveBeenCalled();
   });
   it('rejects partial audio, disguised HTML, and oversized responses', async () => {
