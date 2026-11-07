@@ -1,4 +1,5 @@
 import snapshot from '@/data/archive-index.json';
+import { ipfsPath } from '@/utils/archive-media';
 
 export interface ArchiveRecord {
   id: string;
@@ -15,15 +16,35 @@ export interface ArchiveRecord {
   source: string;
   identityStatus: string;
   metadataVerified: boolean;
+  image?: string;
+  imageSource?: string;
+  collection?: string;
+  blueprintId?: string;
+}
+export const displayStatuses = [
+  { id: 'artwork', label: 'Artwork page available' },
+  { id: 'preview', label: 'Preview indexed · viewer pending' },
+  { id: 'metadata', label: 'Metadata indexed · preview on demand' },
+] as const;
+export function displayStatus(record: ArchiveRecord) {
+  return record.link ? 'artwork' : record.image ? 'preview' : 'metadata';
+}
+export function displayStatusLabel(status: string) {
+  return displayStatuses.find((s) => s.id === status)?.label ?? '';
 }
 const normalize = (text: string) =>
   text
     .normalize('NFKD')
     .replace(new RegExp('\\p{M}', 'gu'), '')
     .toLowerCase()
+    .replace(new RegExp('[^\\p{L}\\p{N}]+', 'gu'), ' ')
     .trim()
     .replace(/\s+/g, ' ');
 const records = snapshot.records as ArchiveRecord[];
+const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
+export function getArchiveRecordByCid(cid: string) {
+  return byCid.get(cid);
+}
 const prepared = records.map((record) => ({
   record,
   name: normalize(record.name),
@@ -33,12 +54,11 @@ const prepared = records.map((record) => ({
       record.name,
       record.artist,
       record.description,
-      record.tokenId,
-      record.contractAddress,
-      record.coreAddress,
-      record.cid,
+      record.collection,
+      record.blueprintId,
     ].join(' '),
   ),
+  imageCid: record.image ? ipfsPath(record.image)?.split('/')[0] : undefined,
 }));
 const contracts = {
   v1: '0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad',
@@ -50,28 +70,44 @@ export const archiveCoverage = {
   generatedOn: snapshot.generatedOn,
 };
 
-export function searchArchive(query: string, family = 'all', page = 1) {
+export function searchArchive(
+  query: string,
+  family = 'all',
+  page = 1,
+  status = 'all',
+) {
   const raw = query.trim().slice(0, 300);
   const q = normalize(raw);
-  const route = q.match(
-    /^(?:https?:\/\/(?:www\.)?async\.art)?\/(v[12])\/(\d+)(?:[?#].*)?$/,
+  const lower = raw.toLowerCase();
+  const route = lower.match(
+    /^(?:https?:\/\/(?:www\.)?async\.art)?\/(v[12])\/(\d+)\/?(?:[?#].*)?$/,
   );
-  const qualified = q.match(/^(0x[0-9a-f]{40})[:/](\d+)$/);
-  const token = route?.[2] ?? qualified?.[2] ?? q.match(/^#?(\d+)$/)?.[1];
+  const layerRoute = lower.match(
+    /^(?:https?:\/\/(?:www\.)?async\.art)?\/layer\/(0x[0-9a-f]{40})\/(\d+)\/?(?:[?#].*)?$/,
+  );
+  const qualified = lower.match(/^(0x[0-9a-f]{40})[:/](\d+)\/?$/);
+  const token =
+    route?.[2] ??
+    layerRoute?.[2] ??
+    qualified?.[2] ??
+    lower.match(/^#?(\d+)$/)?.[1];
   const canonicalToken = token?.replace(/^0+(?=\d)/, '');
   const contract = route
     ? contracts[route[1] as keyof typeof contracts]
-    : qualified?.[1];
-  const isAddress = /^0x[0-9a-f]{40}$/.test(q);
-  // CIDv0 is case-sensitive. Never normalize a content identifier into a false match.
-  const cid = raw.match(/(?:^|\/)(Qm[1-9A-HJ-NP-Za-km-z]{44})(?:$|[/?#])/)?.[1];
-  const terms = q.split(' ');
-  const hits = prepared.flatMap(({ record, name, artist, text }) => {
-    if (family !== 'all' && record.family !== family) return [];
+    : (layerRoute?.[1] ?? qualified?.[1]);
+  const isAddress = /^0x[0-9a-f]{40}$/.test(lower);
+  // Treat identifier-shaped queries as exact identifiers, including malformed case,
+  // so CIDv0 can never accidentally fall through to case-insensitive text search.
+  const cid =
+    raw.match(
+      /(?:^|\/)((?:[Qq][Mm][a-zA-Z0-9]{44}|b[a-z2-7]{20,}))(?:$|[/?#])/,
+    )?.[1] ?? ipfsPath(raw)?.split('/')[0];
+  const terms = q.split(' ').filter(Boolean);
+  const hits = prepared.flatMap(({ record, name, artist, text, imageCid }) => {
     let score = 0;
     if (cid) {
-      if (record.cid !== cid) return [];
-      score = 120;
+      if (record.cid !== cid && imageCid !== cid) return [];
+      score = record.cid === cid ? 120 : 115;
     } else if (canonicalToken !== undefined) {
       if (
         record.tokenId !== canonicalToken ||
@@ -81,8 +117,8 @@ export function searchArchive(query: string, family = 'all', page = 1) {
       score = 110;
     } else if (isAddress) {
       if (
-        record.contractAddress.toLowerCase() !== q &&
-        record.coreAddress?.toLowerCase() !== q
+        record.contractAddress.toLowerCase() !== lower &&
+        record.coreAddress?.toLowerCase() !== lower
       )
         return [];
       score = 100;
@@ -98,23 +134,32 @@ export function searchArchive(query: string, family = 'all', page = 1) {
     }
     return [{ record, score }];
   });
-  hits.sort(
+  const familyCounts: Record<string, number> = {};
+  for (const { record } of hits)
+    familyCounts[record.family] = (familyCounts[record.family] ?? 0) + 1;
+  const filtered = hits.filter(
+    ({ record }) =>
+      (family === 'all' || record.family === family) &&
+      (status === 'all' || displayStatus(record) === status),
+  );
+  filtered.sort(
     (a, b) =>
       b.score - a.score ||
-      a.record.name.localeCompare(b.record.name) ||
+      a.record.name.localeCompare(b.record.name, 'en', { numeric: true }) ||
       a.record.id.localeCompare(b.record.id),
   );
-  const totalPages = Math.max(1, Math.ceil(hits.length / 24));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / 24));
   const currentPage = Math.min(
     Math.max(Number.isFinite(page) ? Math.floor(page) : 1, 1),
     totalPages,
   );
   return {
-    results: hits
+    results: filtered
       .slice((currentPage - 1) * 24, currentPage * 24)
       .map((h) => h.record),
-    total: hits.length,
+    total: filtered.length,
     totalPages,
     page: currentPage,
+    familyCounts,
   };
 }

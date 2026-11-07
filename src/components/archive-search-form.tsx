@@ -1,12 +1,15 @@
 import { archiveFamilies } from '@/utils/archive-families';
+import { displayStatuses } from '@/utils/archive-search';
 
 export default function ArchiveSearchForm({
   query = '',
   family = 'all',
+  status = 'all',
   id = 'archive-search',
 }: {
   query?: string;
   family?: string;
+  status?: string;
   id?: string;
 }) {
   return (
@@ -15,9 +18,9 @@ export default function ArchiveSearchForm({
       method="get"
       role="search"
       aria-label="Search the Async archive"
-      className="flex flex-col sm:flex-row gap-3"
+      className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(180px,1fr)_180px_220px_auto]"
     >
-      <div className="flex-1">
+      <div className="sm:col-span-2 lg:col-span-1">
         <label
           htmlFor={`${id}-query`}
           className="block text-sm font-medium mb-2"
@@ -30,11 +33,11 @@ export default function ArchiveSearchForm({
           name="q"
           defaultValue={query}
           maxLength={300}
-          placeholder="Title, artist, token ID, contract, or CID"
+          placeholder="Title, artist, token, contract, or CID"
           className="!h-12 !bg-surface-raised focus:outline-none focus:ring-2 focus:ring-accent"
         />
       </div>
-      <div className="sm:w-52">
+      <div>
         <label
           htmlFor={`${id}-family`}
           className="block text-sm font-medium mb-2"
@@ -45,7 +48,7 @@ export default function ArchiveSearchForm({
           id={`${id}-family`}
           name="family"
           defaultValue={family}
-          className="!h-12 !bg-surface-raised focus:outline-none focus:ring-2 focus:ring-accent"
+          className="!h-12 !bg-surface-raised"
         >
           <option value="all">All collections</option>
           {archiveFamilies.map((f) => (
@@ -56,7 +59,28 @@ export default function ArchiveSearchForm({
           <option value="unclassified">Under review</option>
         </select>
       </div>
-      <button className="btn-primary sm:self-end h-12 px-6" type="submit">
+      <div>
+        <label
+          htmlFor={`${id}-status`}
+          className="block text-sm font-medium mb-2"
+        >
+          Restoration stage
+        </label>
+        <select
+          id={`${id}-status`}
+          name="status"
+          defaultValue={status}
+          className="!h-12 !bg-surface-raised"
+        >
+          <option value="all">All stages</option>
+          {displayStatuses.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <button className="btn-primary self-end h-12 px-6" type="submit">
         Search
       </button>
     </form>

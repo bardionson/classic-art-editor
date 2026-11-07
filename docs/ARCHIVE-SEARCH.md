@@ -1,9 +1,10 @@
 # Archive navigation and discovery
 
 The public site preserves existing Async works. The home page leads to Classic,
-Music, Blueprints, and Dynamic Blueprints. The latter two expose recovery records
-before dedicated artwork viewers are ready. Music discovery does not imply audio
-playback has been restored.
+Music, Blueprints, and Dynamic Blueprints. Blueprints and Dynamic Blueprints now show illustrated recovery catalogs and
+individual original-media previews. These are previews, not restored generative
+or evolving compositions. The 17 identified Classic Music masters have a browser
+stem player; original mastering remains pending.
 
 ## Search snapshot
 
@@ -24,8 +25,9 @@ Recovered metadata variants remain distinct when their CIDs differ.
 The supplied manifest classifies 9,065 edition records as Blueprints. The supplied
 Supper pin list classifies 1,418 candidates as Dynamic Blueprints, including test
 and unresolved core deployments. These classifications are reported evidence,
-not a complete on-chain census. Only the 24 successfully retrieved and
-CID-verified documents receive the metadata verification label. This label
+not a complete on-chain census. Successfully retrieved documents that pass the supported original CID check
+receive the metadata verification label. The initial 24 Supper documents are now
+joined by an additional bounded preview recovery batch. This label
 does not imply their media or interactive behavior has been restored.
 
 Known music masters/stems are classified from the community inventory. Its 17
@@ -58,3 +60,48 @@ minting system is separate: artist-authorized layer sources, explicit remix
 attribution, saved composition/state, durable metadata and media, and a new
 mint contract with an agreed proceeds split. Original ownership and archive
 state must remain intact. No minting, payment, or new creation flow ships here.
+
+## Illustrated discovery and Blueprint previews
+
+The index now retains existing catalog image references and image/collection
+fields extracted from preserved metadata in `preview-metadata` and
+`supper-metadata`. No metadata is rewritten or served under a false CID.
+Run `python3 scripts/recover-archive-previews.py /path/to/automation-audit --limit 96`
+to resume bounded metadata recovery, then rebuild the index. Recovery uses four
+workers and stops scheduling new fetches after rate limiting. Unretrieved entries
+remain discoverable. Re-run after gateway cooldown, not in an immediate loop.
+
+The first batch retrieved 33 additional original documents before a gateway rate
+limit; all 33 passed the single-block UnixFS CIDv0 check. Original bytes and a
+SHA-256/source report remain in the local audit directory. Other IPFS import
+layouts require a separate verifier and must not be marked verified automatically.
+
+`/api/archive/preview` accepts only exact metadata CIDs already in the index and
+fetches only fixed HTTPS IPFS gateway URLs. Responses are limited to 2 MB and
+7 seconds per gateway, with a 30-second route limit. Only validated image fields
+are returned; animation HTML, scripts, inline SVG and arbitrary metadata URLs
+are never embedded. Successful metadata fetches/previews have a one-day cache;
+temporary failures are not cached as permanent loss. Browser lookups are lazy,
+limited to four concurrent requests, and memoized with a bounded per-tab cache.
+Images try three gateways with error/timeout fallback; original animations are
+preserved by using ordinary image elements rather than optimized still images.
+
+Search handles titles, artists, collection names, blueprint identifiers,
+token IDs, contract addresses, classic/layer URLs, and exact metadata or indexed
+image CIDs. CIDv0 remains case-sensitive. Punctuation and diacritics are normalized
+for text only. Exact identities rank above names, artists, and description terms.
+Family counts are calculated before family/stage narrowing. Pagination preserves
+the query and both filters. The full index stays on the server.
+
+Restoration-stage filters deliberately describe evidence in the snapshot:
+
+- Artwork page available: a dedicated viewer route exists; behavior may vary.
+- Preview indexed: an image reference is indexed, but the dedicated viewer is pending.
+- Metadata indexed: image retrieval is attempted on demand, not yet incorporated
+  into the snapshot. A successful on-demand display does not silently rewrite this
+  status; rebuilding from recovered original bytes updates the index.
+
+Metadata CID verification, reported token identity, image availability and dynamic
+behavior are independent. Blueprint preview pages explain that unrevealed or
+historical images may survive and that Dynamic Blueprint expansion items are not
+the assembled core. No fabricated metadata, new minting or database is introduced.

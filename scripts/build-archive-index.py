@@ -54,7 +54,8 @@ for filename, kind in [('masters.json', 'Master'), ('layers.json', 'Layer')]:
                      family='classic', kind=kind, tokenId=token,
                      contractAddress=address, cid=cid_of(raw.get('metadataUri')),
                      link=link, source='Existing archive catalog',
-                     identityStatus='catalog', metadataVerified=False))
+                     identityStatus='catalog', metadataVerified=False,
+                     image=raw.get('imageUrl') or '', imageSource='Existing archive catalog'))
 
 sheet = json.loads((AUDIT / 'sheet-inventory.json').read_text())
 music_identities = []
@@ -106,7 +107,34 @@ with (AUDIT / 'sources/project_manifest.csv').open(encoding='utf-8-sig', newline
                  tokenId=edition[2] if edition else '', contractAddress=edition[1].lower() if edition else '',
                  coreAddress=observed.get('coreContract', ''), cid=cid, link=None,
                  source='Supplied project manifest', identityStatus='reported',
-                 metadataVerified=bool(observed)))
+                 metadataVerified=bool(observed), blueprintId=raw['blueprint'] if raw['blueprint'] != 'unknown' else ''))
+
+# Enrich only from preserved original metadata bytes; retain reported identity.
+preview_report_path = AUDIT / 'preview-retrieval.json'
+preview_report = json.loads(preview_report_path.read_text()) if preview_report_path.exists() else {}
+cached_files = {}
+for directory in ('supper-metadata', 'preview-metadata'):
+    for path in (AUDIT / directory).glob('*.json'):
+        cached_files[path.stem] = path
+for record in records:
+    cid = record.get('cid')
+    if not cid:
+        continue
+    for path in ([cached_files[cid]] if cid in cached_files else []):
+        data = json.loads(path.read_text())
+        if not isinstance(data, dict):
+            continue
+        image = data.get('image') or data.get('image_url')
+        if isinstance(image, str) and image.startswith(('ipfs://', 'https://', 'Qm', 'bafy')):
+            record['image'] = image
+            record['imageSource'] = 'Original metadata'
+        if not record['description'] and isinstance(data.get('description'), str):
+            record['description'] = data['description'][:10000]
+        for attribute in data.get('attributes', []):
+            if isinstance(attribute, dict) and attribute.get('trait_type') in ('Collection', 'Core') and isinstance(attribute.get('value'), str):
+                record['collection'] = attribute['value']
+        record['metadataVerified'] = record['metadataVerified'] or bool(preview_report.get(cid, {}).get('cidVerified'))
+        break
 
 # Compact immutable discovery snapshot; original source bytes stay in the recovery archive.
 out = ROOT / 'src/data'
@@ -115,7 +143,7 @@ out.mkdir(exist_ok=True)
     generatedOn='2026-11-07', records=records,
     counts=dict(Counter(r['family'] for r in records)),
     coverage='Known local catalogs and supplied recovery inventories; not a complete on-chain census.',
-), ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+), ensure_ascii=False, indent=2), encoding='utf-8')
 (out / 'music-identities.json').write_text(json.dumps(music_identities, indent=2), encoding='utf-8')
 assert len({r['id'] for r in records}) == len(records)
 print(json.dumps({'records':len(records), 'families':dict(Counter(r['family'] for r in records)), 'musicMasters':len(music_identities), 'catalogConflicts':catalog_conflicts}))

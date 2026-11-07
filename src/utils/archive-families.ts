@@ -16,14 +16,14 @@ export const archiveFamilies = [
     id: 'blueprints',
     title: 'Blueprints',
     description: 'Generative collections and the editions created from them.',
-    status: 'Catalog recovery in progress',
+    status: 'Browse recovered edition previews',
   },
   {
     id: 'dynamic-blueprints',
     title: 'Dynamic Blueprints',
     description:
       'Evolving editions and expansion items, including Forever Supper.',
-    status: 'Display restoration in progress',
+    status: 'Browse expansion previews',
   },
 ] as const;
 

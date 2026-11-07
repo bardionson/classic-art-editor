@@ -6,6 +6,8 @@ import ArchiveNavigation from '@/components/archive-navigation';
 import ArchiveSearchForm from '@/components/archive-search-form';
 import { archiveFamilies } from '@/utils/archive-families';
 import { getMastersGalleryItems } from '@/utils/masters';
+import ArchiveResults from '@/components/archive-results';
+import { searchArchive } from '@/utils/archive-search';
 import musicIdentities from '@/data/music-identities.json';
 
 export function generateStaticParams() {
@@ -27,6 +29,7 @@ export default function ArchivePage({
 }) {
   const family = archiveFamilies.find((f) => f.id === params.family);
   if (!family) notFound();
+  const recovered = searchArchive('', family.id);
   const isMusic = family.id === 'music';
   const items = getMastersGalleryItems()
     .filter((item) => {
@@ -72,42 +75,27 @@ export default function ArchivePage({
           />
         </>
       ) : (
-        <section className="rounded-2xl border border-border bg-surface-raised p-6 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
-            Restoration in progress
-          </p>
-          <h2 className="text-2xl font-semibold mb-4">
+        <section>
+          <h2 className="text-2xl font-semibold mb-3">
             {family.id === 'blueprints'
-              ? 'Rediscover the editions'
-              : 'Rebuilding evolving artworks'}
+              ? 'Blueprint editions'
+              : 'Dynamic Blueprint expansion items'}
           </h2>
-          <p className="text-text-muted max-w-3xl leading-relaxed">
-            {family.id === 'blueprints'
-              ? 'Recovered catalog records are searchable by title, artist, edition token ID, contract, and metadata CID. Original media and edition identities are being checked before dedicated viewers are restored.'
-              : 'Forever Supper and other Dynamic Blueprints combine a core composition with expansion items. We are recovering the original layouts, media, and each edition’s applied items. The searchable inventory includes records whose collection identity is still under review.'}
+          <p className="text-text-muted mb-6">
+            {recovered.total.toLocaleString('en-US')} recovered records.
+            Previews load from original metadata as you browse.
+            {family.id === 'dynamic-blueprints'
+              ? ' These are individual expansion items; restoring the changing core compositions is the next step.'
+              : ' Images may show earlier or unrevealed states. Interactive viewers remain under restoration.'}
           </p>
+          <ArchiveResults records={recovered.results} />
           <Link
-            className="btn-primary inline-block mt-6"
+            className="btn-primary inline-block mt-8"
             href={`/search?family=${family.id}`}
           >
-            Browse recovered records
+            Browse and search all {recovered.total.toLocaleString('en-US')}{' '}
+            records
           </Link>
-          {family.id === 'dynamic-blueprints' && (
-            <div className="border-t border-border mt-8 pt-6">
-              <h3 className="text-xl font-semibold mb-2">Forever Supper</h3>
-              <p className="text-text-muted max-w-3xl">
-                Original metadata has been recovered for First Supper Forever
-                and Forever Supper Remix expansion items. Recovering an item’s
-                metadata is one step toward restoring the complete composition.
-              </p>
-              <Link
-                href="/search?q=supper&family=dynamic-blueprints"
-                className="text-accent underline inline-block mt-4"
-              >
-                Find Supper expansion items
-              </Link>
-            </div>
-          )}
         </section>
       )}
     </main>
