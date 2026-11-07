@@ -134,7 +134,9 @@ export default function ArchiveResults({
                   ? record.family === 'music' && record.kind === 'Master'
                     ? 'Listen & view artwork'
                     : 'Open artwork'
-                  : 'View artwork preview'}
+                  : record.family === 'music-blueprints'
+                    ? 'Listen & view artwork'
+                    : 'View artwork preview'}
               </Link>
             )}
           </li>

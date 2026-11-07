@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ArchivePreview from '@/components/archive-preview';
+import BlueprintPlayer from '@/components/blueprint-player';
 import { getArchiveRecordByCid } from '@/utils/archive-search';
 import { familyTitle } from '@/utils/archive-families';
 
@@ -32,12 +33,22 @@ export default function MetadataArtworkPage({
         {record.name}
       </h1>
       <p className="text-text-muted mb-6">{record.artist}</p>
-      <ArchivePreview
-        name={record.name}
-        cid={record.cid}
-        image={record.image}
-        large
-      />
+      {record.family === 'music-blueprints' ? (
+        <BlueprintPlayer
+          key={record.cid}
+          name={record.name}
+          cid={record.cid}
+          image={record.image}
+          animationUrl={record.animationUrl}
+        />
+      ) : (
+        <ArchivePreview
+          name={record.name}
+          cid={record.cid}
+          image={record.image}
+          large
+        />
+      )}
       <p className="text-sm text-text-muted my-6">
         {['blueprints', 'music-blueprints'].includes(record.family)
           ? 'Artwork from the edition’s original metadata. Blueprint editions are fixed once minted.'

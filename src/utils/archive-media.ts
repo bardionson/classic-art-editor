@@ -81,3 +81,33 @@ export function isArchiveVideo(value: string): boolean {
     evidence?.contentType === 'video/webm'
   );
 }
+
+export type ArchivePlayback = { source: string; kind: 'audio' | 'video' };
+// animation_url may contain audio, video, or an executable web page. Only
+// native media elements consume it; never turn it into an iframe or HTML.
+export function metadataPlayback(data: unknown): ArchivePlayback | null {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+  const row = data as Record<string, unknown>;
+  for (const [field, source] of Object.entries({
+    audio: row.audio,
+    audio_url: row.audio_url,
+    animation_url: row.animation_url,
+  })) {
+    if (typeof source !== 'string' || !imageCandidates(source).length) continue;
+    if (/\.(?:html?|json|svg|png|jpe?g|gif|webp)(?:[?#]|$)/i.test(source))
+      continue;
+    const path = ipfsPath(source);
+    const type = path
+      ? (mediaTypes as Record<string, { contentType: string }>)[path]
+          ?.contentType
+      : undefined;
+    if (type && !/^(audio|video)\//.test(type)) continue;
+    const audio =
+      type?.startsWith('audio/') ||
+      (!type &&
+        (field !== 'animation_url' ||
+          /\.(?:mp3|wav|ogg|oga|m4a|aac|flac)(?:[?#]|$)/i.test(source)));
+    return { source, kind: audio ? 'audio' : 'video' };
+  }
+  return null;
+}

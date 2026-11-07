@@ -30,8 +30,8 @@ export default function BlueprintProjectGallery({
       {family === 'music-blueprints' && (
         <p className="text-sm text-text-muted mb-6">
           Music editions identified from original metadata and historical
-          sources. Artwork and audio recovery are ongoing; inclusion here does
-          not confirm restored playback.
+          sources. Open an edition to listen to its original mix alongside the
+          artwork. Some editions still need their metadata or audio recovered.
         </p>
       )}
       <form
@@ -116,6 +116,14 @@ export default function BlueprintProjectGallery({
             >
               Browse editions
             </Link>
+            {family === 'music-blueprints' && (
+              <Link
+                className="block mt-3 text-accent underline"
+                href={`/archive/metadata/${project.cover.cid}`}
+              >
+                Listen to an edition
+              </Link>
+            )}
           </li>
         ))}
       </ul>

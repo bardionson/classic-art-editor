@@ -21,6 +21,7 @@ export interface ArchiveRecord {
   metadataLocal?: boolean;
   slot?: string;
   image?: string;
+  animationUrl?: string;
   imageSource?: string;
   collection?: string;
   blueprintId?: string;

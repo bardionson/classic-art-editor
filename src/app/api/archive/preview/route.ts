@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getArchiveRecordByCid } from '@/utils/archive-search';
-import { IPFS_CID, metadataImage, MEDIA_GATEWAYS } from '@/utils/archive-media';
+import {
+  IPFS_CID,
+  metadataImage,
+  metadataPlayback,
+  MEDIA_GATEWAYS,
+} from '@/utils/archive-media';
 
 export const maxDuration = 30;
 const MAX_BYTES = 2_000_000;
@@ -12,6 +17,14 @@ export async function GET(request: NextRequest) {
       { error: 'Unknown archive metadata' },
       { status: 404 },
     );
+  }
+  const record = getArchiveRecordByCid(cid)!;
+  const music = record.family === 'music-blueprints';
+  const preserved = music
+    ? metadataPlayback({ animation_url: record.animationUrl })
+    : null;
+  if (preserved) {
+    return NextResponse.json({ image: record.image ?? null, media: preserved });
   }
   for (const gateway of MEDIA_GATEWAYS) {
     try {
@@ -38,7 +51,10 @@ export async function GET(request: NextRequest) {
       const data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
       if (!data || typeof data !== 'object' || Array.isArray(data)) continue;
       return NextResponse.json(
-        { image: metadataImage(data) },
+        {
+          image: metadataImage(data),
+          ...(music ? { media: metadataPlayback(data) } : {}),
+        },
         {
           headers: {
             'Cache-Control':
