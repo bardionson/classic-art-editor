@@ -68,8 +68,7 @@ export class MusicTransport {
       listen('durationchange', () => this.refreshDuration());
       listen('timeupdate', () => this.refreshPosition());
       listen('waiting', () => {
-        if (this.state.playing)
-          this.fail('Audio is buffering. Press play to retry.');
+        if (this.state.playing) void this.rebuffer();
       });
       listen('error', () => {
         if (this.state.playing || this.state.loading) {
@@ -182,10 +181,29 @@ export class MusicTransport {
     for (const cleanup of this.listenerCleanup.splice(0)) cleanup();
   }
 
-  private async startPlayback(token: number): Promise<void> {
+  private async rebuffer(): Promise<void> {
+    this.refreshPosition(false);
+    this.pauseAll();
+    this.clearSyncTimer();
+    this.state.playing = false;
+    this.state.loading = true;
+    this.state.error = null;
+    const token = ++this.generation;
+    this.emit();
+    // Retain already downloaded bytes and resume the complete mix together.
+    const operation = this.startPlayback(token, false).finally(() => {
+      if (this.pendingPlay === operation) this.pendingPlay = null;
+    });
+    this.pendingPlay = operation;
+    await operation;
+  }
+
+  private async startPlayback(token: number, reload = true): Promise<void> {
     try {
       await Promise.all(
-        this.media.map((element) => this.waitUntilReady(element, token)),
+        this.media.map((element) =>
+          this.waitUntilReady(element, token, reload),
+        ),
       );
       if (!this.isCurrent(token)) return;
 
@@ -243,6 +261,7 @@ export class MusicTransport {
   private waitUntilReady(
     element: HTMLAudioElement,
     token: number,
+    reload: boolean,
   ): Promise<void> {
     if (element.readyState >= READY_STATE_FUTURE_DATA) return Promise.resolve();
     return new Promise((resolve, reject) => {
@@ -271,7 +290,7 @@ export class MusicTransport {
       element.addEventListener('error', onError, { once: true });
       try {
         element.preload = 'auto';
-        element.load();
+        if (reload) element.load();
       } catch {
         finish(new Error('Unable to load a stem.'));
       }

@@ -194,21 +194,42 @@ describe('MusicTransport', () => {
     transport.dispose();
   });
 
-  it('pauses every stem on buffering and allows retry', async () => {
+  it('pauses every stem on buffering and automatically resumes without reloading', async () => {
     const first = new FakeAudio(80);
     const second = new FakeAudio(80);
     const transport = new MusicTransport(elements(first, second), vi.fn());
     await transport.play();
+    second.readyState = 2;
+    first.currentTime = 8;
     second.signal('waiting');
 
     expect(first.paused).toBe(true);
     expect(second.paused).toBe(true);
     expect(transport.snapshot().playing).toBe(false);
-    expect(transport.snapshot().error).toMatch(/buffering/i);
+    expect(transport.snapshot().error).toBeNull();
+    expect(transport.snapshot().loading).toBe(true);
+    second.canPlay();
     await transport.play();
+    expect(second.loadCalls).toBe(0);
+    expect(second.currentTime).toBe(8);
     expect(first.playCalls).toBe(2);
     expect(second.playCalls).toBe(2);
     expect(transport.snapshot().playing).toBe(true);
+    transport.dispose();
+  });
+
+  it('does not resume automatically after the listener cancels buffering', async () => {
+    const track = new FakeAudio(80);
+    const transport = new MusicTransport(elements(track), vi.fn());
+    await transport.play();
+    track.readyState = 2;
+    track.signal('waiting');
+    transport.pause();
+    track.canPlay();
+    await Promise.resolve();
+    expect(track.playCalls).toBe(1);
+    expect(transport.snapshot().playing).toBe(false);
+    expect(transport.snapshot().loading).toBe(false);
     transport.dispose();
   });
 

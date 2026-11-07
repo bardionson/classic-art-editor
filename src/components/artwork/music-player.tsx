@@ -10,6 +10,7 @@ import {
   resolveMusicStems,
 } from '@/utils/music';
 import { MusicSnapshot, MusicTransport } from '@/utils/music-transport';
+import { usePreparedAudio } from '@/components/use-prepared-audio';
 
 const initial: MusicSnapshot = {
   playing: false,
@@ -27,7 +28,9 @@ function StemSession({
   stems,
   gateway,
   compact,
+  preparedUrls,
 }: {
+  preparedUrls?: string[];
   stems: MusicStem[];
   gateway: string;
   compact: boolean;
@@ -43,7 +46,8 @@ function StemSession({
     );
     // Restore sources on React Strict Mode's effect replay after cleanup.
     elements.forEach((element, index) => {
-      element.src = audioUrl(stems[index].uri, gateway);
+      element.src =
+        preparedUrls?.[index] ?? audioUrl(stems[index].uri, gateway);
     });
     const player = new MusicTransport(elements, setState);
     player.setVolume(0.8);
@@ -65,7 +69,7 @@ function StemSession({
           ref={(element) => {
             media.current[index] = element;
           }}
-          src={audioUrl(stem.uri, gateway)}
+          src={preparedUrls?.[index] ?? audioUrl(stem.uri, gateway)}
           preload="metadata"
           aria-label={`Audio stem ${stem.id}`}
         />
@@ -128,14 +132,55 @@ function StemSession({
       </label>
       {state.loading && (
         <p role="status" className="text-xs text-text-muted">
-          Loading all {stems.length} stems from IPFS…
+          Preparing all {stems.length} stems for playback…
         </p>
       )}
       {state.error && (
         <p role="alert" className="text-sm text-danger">
-          {state.error} If this continues, choose another audio gateway below.
+          {state.error} Try downloading the audio first or choosing another
+          source.
         </p>
       )}
+    </div>
+  );
+}
+
+function CachedStemSession({
+  stems,
+  gateway,
+  compact,
+}: {
+  stems: MusicStem[];
+  gateway: string;
+  compact: boolean;
+}) {
+  const audio = usePreparedAudio(
+    stems.map((stem) => stem.uri),
+    stems.map((stem) => audioUrl(stem.uri, gateway)),
+  );
+  return (
+    <div className="space-y-3">
+      {audio.urls ? (
+        <StemSession
+          stems={stems}
+          gateway={gateway}
+          compact={compact}
+          preparedUrls={audio.urls}
+        />
+      ) : (
+        <button
+          className={button}
+          onClick={() =>
+            audio.loading ? audio.cancel() : void audio.prepare()
+          }
+        >
+          {audio.loading ? 'Cancel download' : 'Load music'}
+        </button>
+      )}
+      <p role="status" className="text-xs text-text-muted">
+        {audio.message ||
+          'Download the selected stems before playing to avoid network buffering. Repeat listens use this browser’s cache.'}
+      </p>
     </div>
   );
 }
@@ -156,6 +201,7 @@ export default function MusicPlayer({
   const [stems, setStems] = useState<MusicStem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
+  const [delivery, setDelivery] = useState('download');
   const [gateway, setGateway] = useState(AUDIO_GATEWAYS[0].url);
   useEffect(() => {
     let cancelled = false;
@@ -219,12 +265,33 @@ export default function MusicPlayer({
       )}
       {stems && (
         <>
-          <StemSession
-            key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
-            stems={stems}
-            gateway={gateway}
-            compact={compact}
-          />
+          <label className="block text-xs text-text-muted">
+            Playback mode
+            <select
+              aria-label="Playback mode"
+              value={delivery}
+              onChange={(event) => setDelivery(event.target.value)}
+              className="block w-full mt-1 rounded border border-border bg-surface-sunken p-2 text-text"
+            >
+              <option value="download">Download first (recommended)</option>
+              <option value="stream">Stream directly</option>
+            </select>
+          </label>
+          {delivery === 'download' ? (
+            <CachedStemSession
+              key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
+              stems={stems}
+              gateway={gateway}
+              compact={compact}
+            />
+          ) : (
+            <StemSession
+              key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
+              stems={stems}
+              gateway={gateway}
+              compact={compact}
+            />
+          )}
           <details className={`${compact ? 'hidden' : ''} text-sm`}>
             <summary className="cursor-pointer py-2">
               Explore {stems.length} stems

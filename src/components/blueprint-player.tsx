@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import ArchivePreview from '@/components/archive-preview';
+import { usePreparedAudio } from '@/components/use-prepared-audio';
 import {
   imageCandidates,
   metadataPlayback,
@@ -32,7 +33,11 @@ export default function BlueprintPlayer({
   const [art, setArt] = useState(image);
   const element = useRef<HTMLMediaElement | null>(null);
   const candidates = imageCandidates(media?.source);
-  const url = candidates[attempt];
+  const audio = usePreparedAudio(
+    media ? [media.source] : [],
+    candidates.length ? [candidates[attempt] ?? candidates[0]] : [],
+  );
+  const url = audio.urls?.[0] ?? candidates[attempt];
 
   useEffect(() => {
     if (metadataPlayback({ animation_url: animationUrl }) && retry === 0)
@@ -73,16 +78,22 @@ export default function BlueprintPlayer({
 
   // Bound an unresponsive gateway during startup, without interrupting a loaded track.
   useEffect(() => {
-    if (!url || ready) return;
+    if (!url || ready || audio.urls || audio.loading) return;
     const timer = setTimeout(() => {
       setAttempt((value) => value + 1);
       setPlaying(false);
       setNotice('Trying another source. Press play when it is ready.');
     }, 20000);
     return () => clearTimeout(timer);
-  }, [url, ready]);
+  }, [url, ready, audio.urls, audio.loading]);
 
   const failover = () => {
+    if (audio.urls) {
+      setNotice(
+        'The downloaded media could not be played by this browser. Open the original media below.',
+      );
+      return;
+    }
     setReady(false);
     setPlaying(false);
     setAttempt((value) => value + 1);
@@ -170,16 +181,36 @@ export default function BlueprintPlayer({
                   {notice}
                 </p>
               )}
+              {!audio.urls && (
+                <button
+                  type="button"
+                  className="mt-3 min-h-11 text-accent underline"
+                  onClick={() => {
+                    element.current?.pause();
+                    if (audio.loading) audio.cancel();
+                    else void audio.prepare();
+                  }}
+                >
+                  {audio.loading
+                    ? 'Cancel download'
+                    : 'Download audio for smoother playback'}
+                </button>
+              )}
+              {audio.message && (
+                <p role="status" className="text-xs mt-2">
+                  {audio.message}
+                </p>
+              )}
               <div className="flex flex-wrap gap-4 text-sm mt-4">
                 <a
-                  href={url}
+                  href={candidates[attempt] ?? candidates[0]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent underline"
                 >
                   Open original audio / media ↗
                 </a>
-                {attempt + 1 < candidates.length && (
+                {!audio.urls && attempt + 1 < candidates.length && (
                   <button
                     type="button"
                     onClick={failover}
