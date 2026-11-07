@@ -62,14 +62,33 @@ export async function getLayersFromMetadata(
     let state = layer;
 
     while ('states' in state) {
-      const activeStateIndex = await getActiveStateIndex(
+      let activeStateIndex = await getActiveStateIndex(
         state,
         getLayerControlTokenValue,
         timeContext,
       );
 
+      // Match the original backend's correction for early single-layer
+      // sunrise/sunset pieces (models/Art.js:isBrokenSunriseSunset).
+      const options = state.states.options;
+      if (
+        metadataLayers.length === 1 &&
+        state === layer &&
+        'time' in state.states &&
+        state.states.time.type === 'HOUR_OF_DAY' &&
+        (options[2] as { label?: string })?.label === 'Sunset' &&
+        (options[3] as { label?: string })?.label === 'Sunrise'
+      ) {
+        if (activeStateIndex === 2) activeStateIndex = 3;
+        else if (activeStateIndex === 3) activeStateIndex = 2;
+      }
+      if (!options[activeStateIndex]) {
+        throw new Error(
+          `Missing state ${activeStateIndex} in layer ${layer.id}`,
+        );
+      }
       // @ts-ignore
-      state = state.states.options[activeStateIndex];
+      state = options[activeStateIndex];
     }
 
     // @ts-ignore

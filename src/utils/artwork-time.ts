@@ -27,9 +27,11 @@ export function getTimeStateIndex(
   const value = values[rule.type];
   return rule.handler.type === 'MODULO'
     ? value % (rule.handler.max_bound_inclusive + 1)
-    : (rule.handler.rules.find(
-        ([min, max]) => value >= min && value <= max,
-      )?.[2] ?? 0);
+    : rule.handler.rules.reduce(
+        (selected, [min, max, index]) =>
+          value >= min && value <= max ? index : selected,
+        0,
+      );
 }
 
 function collectTimeRules(node: unknown): ArtworkTimeRule[] {
