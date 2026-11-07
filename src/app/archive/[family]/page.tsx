@@ -61,7 +61,7 @@ export default function ArchivePage({
         <>
           <p className="text-text-muted mb-8">
             {isMusic
-              ? 'These 17 music masters are identified in the recovery inventory. Artwork pages are available; audio playback, stems, and musical controls are still being restored. This is a starting catalog, not the complete Async Music collection.'
+              ? 'These 17 music masters are identified in the recovery inventory. Open an artwork to play its original stems and preview musical variants. Original server mastering is still being restored, and availability depends on surviving IPFS files. This is a starting catalog, not the complete Async Music collection.'
               : 'Browse the current classic master catalog, including layered and automated works. Restoration varies by piece; missing assets and original behavior remain under review.'}
           </p>
           <Gallery

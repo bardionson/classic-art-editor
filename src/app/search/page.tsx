@@ -79,8 +79,8 @@ export default function SearchPage({ searchParams }: { searchParams: Params }) {
               )}
               <p className="text-sm mt-3">
                 {record.link
-                  ? record.family === 'music'
-                    ? 'Artwork page available · audio restoration pending'
+                  ? record.family === 'music' && record.kind === 'Master'
+                    ? 'Artwork page available · stem player enabled'
                     : 'Artwork page available · restoration varies by work'
                   : 'Metadata indexed · viewer restoration pending'}
               </p>

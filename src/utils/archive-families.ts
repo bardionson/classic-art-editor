@@ -10,7 +10,7 @@ export const archiveFamilies = [
     id: 'music',
     title: 'Async Music',
     description: 'Programmable compositions, musical masters, and their stems.',
-    status: 'Playback restoration in progress',
+    status: 'Listen to restored stems',
   },
   {
     id: 'blueprints',

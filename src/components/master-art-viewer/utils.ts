@@ -179,6 +179,7 @@ export function createGetLayerControlTokenValueFn(
     MasterArtNFTMetadata['async-attributes']
   >['unminted-token-values'],
   controlOverrides: Record<string, number> = {},
+  options: { strict?: boolean } = {},
 ) {
   const cache: { [layerTokenId: string]: readonly bigint[] } = {};
   return async (relativeLayerTokenId: number, leverId: number) => {
@@ -226,6 +227,13 @@ export function createGetLayerControlTokenValueFn(
     }
 
     // If the layer wasn't minted, take the default/static value.
-    return unmintedTokenValuesMap?.[relativeLayerTokenId][2 + leverId * 3] || 0;
+    const fallback =
+      unmintedTokenValuesMap?.[relativeLayerTokenId]?.[2 + leverId * 3];
+    if (options.strict && fallback === undefined) {
+      throw new Error(
+        'Unable to read the recorded music controls. Please retry.',
+      );
+    }
+    return fallback ?? 0;
   };
 }

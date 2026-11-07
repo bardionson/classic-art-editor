@@ -224,6 +224,8 @@ export type MasterArtNFTMetadata = {
     )[];
   };
   'audio-layout'?: {
+    type?: string;
+    version?: number;
     mastering: {
       filters: string[];
       bitrate: string;

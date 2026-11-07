@@ -12,10 +12,12 @@ import {
   ArrowLeft,
   Cast,
   Download,
+  Music,
 } from 'react-feather';
 import { Address } from 'viem';
 import { useArtwork } from '@/hooks/useArtwork';
 import { useLayersWithArtists } from '@/hooks/useLayersWithArtists';
+import MusicPlayer from '@/components/artwork/music-player';
 import Spinner from '@/components/common/spinner';
 import AddressWithEns from '@/components/common/address-with-ens';
 import ArtworkLoader from '@/components/artwork/artwork-loader';
@@ -149,6 +151,18 @@ export default function ArtworkViewer({
           (full width). */}
       {!hideControls && (
         <div className="absolute bottom-4 left-4 z-40 flex gap-1 bg-black/40 backdrop-blur-md rounded-full p-1">
+          {metadata?.['audio-layout'] && (
+            <button
+              onClick={() => {
+                setIsFullscreen(false);
+                setIsDescriptionPanelOpen(true);
+              }}
+              className="bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition border border-white/10"
+              aria-label="Show music player"
+            >
+              <Music size={20} />
+            </button>
+          )}
           <button
             onClick={() => setIsLayersModalOpen(true)}
             className="bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition border border-white/10"
@@ -182,9 +196,9 @@ export default function ArtworkViewer({
       )}
 
       {/* Description slide-in overlay */}
-      {!isFullscreen && !hideControls && (
+      {!hideControls && (
         <div
-          className={`fixed inset-y-0 right-0 z-30 w-full sm:w-[420px] bg-surface-raised/75 backdrop-blur-xl border-l border-border overflow-y-auto pt-24 px-6 pb-6 transition-transform duration-300 ease-out ${
+          className={`${isFullscreen ? 'hidden' : ''} fixed inset-y-0 right-0 z-30 w-full sm:w-[420px] bg-surface-raised/75 backdrop-blur-xl border-l border-border overflow-y-auto pt-24 px-6 pb-24 transition-transform duration-300 ease-out ${
             isDescriptionPanelOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -258,6 +272,17 @@ export default function ArtworkViewer({
                 </Link>
               )}
               <h1 className="text-2xl font-bold text-text">{metadata.name}</h1>
+              {metadata['audio-layout'] && (
+                <MusicPlayer
+                  key={`${tokenAddress}:${tokenId}`}
+                  metadata={metadata}
+                  tokenId={tokenId}
+                  overrides={controlOverrides}
+                  onPreview={(values) =>
+                    setControlOverrides((prev) => ({ ...prev, ...values }))
+                  }
+                />
+              )}
               <p className="mt-2 text-text-muted">{metadata.description}</p>
               <h2 className="text-lg font-bold mt-4 text-text">Artists</h2>
               <ul className="text-text-muted">
