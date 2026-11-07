@@ -1,154 +1,147 @@
-'use client';
-
-import firstSupperHero from '../../public/first-supper-0.jpg';
-import FAQ from '@/components/faq';
-import Gallery from '@/components/gallery/Gallery';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getMastersGalleryItems } from '@/utils/masters';
+import { ArrowUpRight, Layers, Music, Grid, Sliders } from 'react-feather';
+import firstSupperHero from '../../public/first-supper-0.jpg';
+import ArchiveSearchForm from '@/components/archive-search-form';
+import { archiveFamilies } from '@/utils/archive-families';
+
+const icons = [Layers, Music, Grid, Sliders];
 
 export default function Home() {
-  const mastersItems = getMastersGalleryItems();
-  const featured = mastersItems.find((item) => item.tokenId === '0'); // "First Supper"
-
   return (
-    <div className="flex min-h-screen flex-col items-center">
-      <main className="container px-4 pt-8">
-        <h1 className="hidden sm:block text-2xl font-bold mb-8">
-          Classic Art Editor Revival V.3 Digital Rescue Lab
+    <main className="container mx-auto px-4 py-10 sm:py-16 max-w-6xl">
+      <section className="mb-10">
+        <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-4">
+          Digital Rescue Lab · Archive restoration
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl">
+          Keep the art alive.
         </h1>
-        {featured && (
-          <section className="mb-12">
-            <Link href={featured.link} className="group block">
-              <div className="relative w-full overflow-hidden rounded-lg shadow-soft-drop bg-alabaster">
-                <Image
-                  src={firstSupperHero}
-                  alt={featured.name}
-                  sizes="100vw"
-                  priority
-                  className="w-full h-auto group-hover:scale-[102%] transition"
-                />
-              </div>
-              <h2 className="text-2xl font-bold mt-4 group-hover:text-purple transition">
-                {featured.name}
+        <p className="text-lg text-text-muted max-w-2xl mt-5 leading-relaxed">
+          Explore the Async Art archive. We’re restoring the original artworks,
+          music, layers, and changing compositions so they can be experienced
+          again.
+        </p>
+        <div className="mt-8 rounded-2xl border border-border bg-surface-sunken p-5 sm:p-6">
+          <ArchiveSearchForm />
+        </div>
+      </section>
+      <section
+        aria-labelledby="collections-heading"
+        id="collections"
+        className="mb-12 scroll-mt-28"
+      >
+        <div className="flex flex-wrap justify-between items-end gap-3 mb-5">
+          <h2 id="collections-heading" className="text-2xl font-semibold">
+            Explore the archive
+          </h2>
+          <Link href="/search" className="text-sm text-accent underline">
+            Search all collections
+          </Link>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {archiveFamilies.map((family, index) => {
+            const Icon = icons[index];
+            return (
+              <Link
+                href={`/archive/${family.id}`}
+                key={family.id}
+                className="group rounded-2xl border border-border bg-surface-raised p-5 flex flex-col hover:border-accent transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              >
+                <div className="flex justify-between items-center mb-7">
+                  <Icon className="text-accent" size={25} aria-hidden="true" />
+                  <ArrowUpRight
+                    size={20}
+                    className="text-text-muted group-hover:text-accent"
+                    aria-hidden="true"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{family.title}</h3>
+                <p className="text-sm text-text-muted leading-relaxed flex-1">
+                  {family.description}
+                </p>
+                <p className="text-xs text-accent mt-6 pt-4 border-t border-border">
+                  {family.status}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+      <section className="mb-12">
+        <Link href="/v2/0?referrer=masters" className="group block">
+          <div className="rounded-2xl overflow-hidden bg-surface-sunken">
+            <Image
+              src={firstSupperHero}
+              alt="First Supper, a collaborative Async artwork"
+              priority
+              sizes="(max-width: 1152px) 100vw, 1152px"
+              className="w-full h-auto"
+            />
+          </div>
+          <div className="flex justify-between items-center mt-4">
+            <div>
+              <p className="text-xs text-text-muted uppercase tracking-widest">
+                From the archive
+              </p>
+              <h2 className="text-2xl font-semibold mt-1 group-hover:text-accent">
+                First Supper
               </h2>
-            </Link>
-          </section>
-        )}
-        <section>
-          <p>
-            <span>
-              What a ride it’s been. The Digital Rescue Lab is bringing Async
-              Art back to life.
-            </span>
-            <br />
-            <br />
-            <span>
-              This project runs on volunteer time and hosting costs out of
-              pocket. If you&apos;d like to help keep it running, you can donate
-              on{' '}
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://juicebox.money/v5/eth:70"
-                className="underline"
-              >
-                Juicebox
-              </a>
-              , and follow restoration progress on{' '}
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://x.com/ArtRescueLab"
-                className="underline"
-              >
-                X Art Rescue Lab
-              </a>
-            </span>
-            <br />
-            <br />
-            <span>
-              Thank you from all of us at Digital Rescue Lab ❤️ and thank you to
-              Async Art for the redirect of www.async.art
-            </span>
+            </div>
+            <ArrowUpRight aria-hidden="true" />
+          </div>
+        </Link>
+      </section>
+      <section
+        className="grid md:grid-cols-2 gap-8 border-t border-border pt-8"
+        id="restoration"
+      >
+        <div>
+          <h2 className="text-xl font-semibold mb-3">
+            Restoring the originals
+          </h2>
+          <p className="text-text-muted leading-relaxed">
+            This archive preserves existing Async works and restores their
+            original behavior. You can explore available layers and preview
+            changes. Some assets, controls, and music playback are still being
+            recovered.
           </p>
-        </section>
-        <section className="mt-12">
-          <Gallery
-            title="Masters Gallery"
-            items={mastersItems}
-            embedded
-            defaultSortOption="date"
-            defaultSortDirection="asc"
-          />
-        </section>
-        <section className="mt-12">
-          <p className="text-grey">
-            Async Art let artists build &quot;layered&quot; NFTs — a Master
-            artwork made of individually-owned Layers that anyone holding a
-            Layer could change, shifting a color, a shape, even a shadow, and
-            watch the Master update in real time. When Async Art&apos;s own
-            infrastructure went dark, all of that stopped working: the art was
-            still on-chain, but nobody could view it composited or control the
-            layers they owned. This project is our attempt to bring that back
-            using the original, open-sourced Async Art code, rebuilt to run
-            independently so the art and the ability to control it don&apos;t
-            depend on any one company staying online.
-          </p>
-          <a href="#faq" className="underline text-purple mt-2 inline-block">
-            Read More
-          </a>
-        </section>
-        <section className="mt-12">
           <Link
             href="/gallery/layers"
-            className="btn-primary inline-block px-6"
+            className="text-accent underline inline-block mt-4"
           >
-            Browse Layers Gallery
+            Explore classic layers
           </Link>
-        </section>
-        <section className="mt-12" id="faq">
-          <h2 className="text-2xl font-bold mb-2.5">FAQs</h2>
-
-          <FAQ
-            title="How Can I Locate and Repin Content to IPFS?"
-            className="mt-4"
-          >
-            <p className="pl-3 p-2">
-              See our article on this{' '}
-              <a
-                href="https://medium.com/@AsyncArt/how-to-locate-and-repin-nft-content-ea09e4bd0eaf"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-purple underline"
-              >
-                here
-              </a>
-              .
-            </p>
-          </FAQ>
-        </section>
-        <section className="mt-12">
-          <p>
-            <span>
-              Using the legacy Async Code we have restored the ability to again
-              control the classic Async Art. By searching for art in the gallery
-              you can view it and every layer it contains. Now you can change
-              the layers in a preview draft mode even if you do not own the
-              layer. Be aware that color changes are not working properly yet,
-              Async Music pieces will not play music and pieces where the layers
-              are missing from IPFS will not be able to be controlled. We are
-              constantly working on additional steps to restore the art.
-            </span>
-            <br />
-            <br />
-            <span>
-              In this app you no longer need to search for the id of your art as
-              there is a gallery view.
-            </span>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-3">
+            Support the restoration
+          </h2>
+          <p className="text-text-muted leading-relaxed">
+            Digital Rescue Lab runs on volunteer effort. Contributions help
+            cover hosting, asset preservation, and the work of bringing these
+            pieces back.
           </p>
-        </section>
-      </main>
-    </div>
+          <div className="flex flex-wrap gap-4 mt-4">
+            <a
+              href="https://juicebox.money/v5/eth:70"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline"
+            >
+              Support the archive ↗
+            </a>
+            <a
+              href="https://x.com/ArtRescueLab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline"
+            >
+              Restoration updates ↗
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

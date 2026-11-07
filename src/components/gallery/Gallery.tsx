@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ArrowDown, ArrowUp, Info } from 'react-feather';
+import { gallerySearchScore } from '@/utils/gallery-search';
 import { Address } from 'viem';
 import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
 
@@ -55,19 +56,23 @@ export default function Gallery({
   const [currentPage, setCurrentPage] = useState(1);
   const { openLayer } = useLayerDetailModal();
 
-  const filteredItems = useMemo(() => {
-    return items.filter((item) => {
-      const searchLower = searchTerm.toLowerCase();
-      return (
-        item.name.toLowerCase().includes(searchLower) ||
-        item.artistName?.toLowerCase().includes(searchLower) ||
-        item.description?.toLowerCase().includes(searchLower)
-      );
-    });
-  }, [items, searchTerm]);
+  const searchScores = useMemo(
+    () =>
+      new Map(
+        items.map((item) => [item.id, gallerySearchScore(item, searchTerm)]),
+      ),
+    [items, searchTerm],
+  );
+  const filteredItems = useMemo(
+    () => items.filter((item) => (searchScores.get(item.id) ?? -1) >= 0),
+    [items, searchScores],
+  );
 
   const sortedItems = useMemo(() => {
     return [...filteredItems].sort((a, b) => {
+      const relevance =
+        (searchScores.get(b.id) ?? 0) - (searchScores.get(a.id) ?? 0);
+      if (relevance) return relevance;
       let comparison = 0;
       if (sortOption === 'name') {
         comparison = a.name.localeCompare(b.name);
@@ -80,7 +85,7 @@ export default function Gallery({
 
       return sortDirection === 'asc' ? comparison : -comparison;
     });
-  }, [filteredItems, sortOption, sortDirection]);
+  }, [filteredItems, sortOption, sortDirection, searchScores]);
 
   const totalPages = limit
     ? 1
@@ -124,11 +129,15 @@ export default function Gallery({
               <Search className="h-5 w-5 text-text-muted" />
             </div>
             <input
-              type="text"
-              placeholder="Search by name, artist, description..."
+              type="search"
+              aria-label="Search this gallery"
+              placeholder="Search token ID, artwork URL, name, artist..."
               className="pl-10 pr-4 py-2 border-border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-accent"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
 

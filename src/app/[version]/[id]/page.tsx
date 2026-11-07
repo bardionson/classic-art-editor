@@ -44,6 +44,13 @@ export default function ArtworkPage({
   if (referrer === 'masters') {
     backLink = '/gallery/masters';
     backLabel = 'Back to Masters Gallery';
+  } else if (referrer === 'classic' || referrer === 'music') {
+    backLink = `/archive/${referrer}`;
+    backLabel =
+      referrer === 'music' ? 'Back to Async Music' : 'Back to Async Classic';
+  } else if (referrer === 'search') {
+    backLink = '/search';
+    backLabel = 'Back to archive search';
   } else if (referrer === 'layers') {
     backLink = '/gallery/layers';
     backLabel = 'Back to Layers Gallery';

@@ -12,7 +12,8 @@ import logo from '../../public/logo/async-logo.svg';
 const MIRROR_DISPLAY_ROUTE = /^\/mirror\/[^/]+\/display$/;
 
 const NAV_LINKS = [
-  { href: '/gallery/masters', label: 'Masters Gallery' },
+  { href: '/#collections', label: 'Collections' },
+  { href: '/search', label: 'Search archive' },
   { href: '/gallery/layers', label: 'Layers Gallery' },
   { href: '/wallet', label: 'Async Wallet' },
   {

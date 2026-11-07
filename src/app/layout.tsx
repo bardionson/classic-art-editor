@@ -14,8 +14,9 @@ const chivo = Chivo({
 });
 
 export const metadata: Metadata = {
-  title: 'Async Classic Art Editor',
-  description: 'Async Classic Art Editor',
+  title: 'Async Art Archive | Digital Rescue Lab',
+  description:
+    'Explore and help restore the Async Art archive: classic layered art, programmable music, Blueprints, and Dynamic Blueprints.',
   icons: {
     icon: [
       { url: '/logo/favicon.ico' },
