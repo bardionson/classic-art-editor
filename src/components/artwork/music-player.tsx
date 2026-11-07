@@ -92,7 +92,12 @@ function StemSession({
       element.src =
         preparedUrls?.[index] ?? audioUrl(stems[index].uri, gateway);
     });
-    const player = new MusicTransport(elements, setState);
+    const isiOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const player = new MusicTransport(elements, setState, {
+      startWithPlay: isiOS,
+    });
     player.setVolume(0.8);
     transport.current = player;
     return () => {
@@ -114,6 +119,7 @@ function StemSession({
           }}
           src={preparedUrls?.[index] ?? audioUrl(stem.uri, gateway)}
           preload="metadata"
+          playsInline
           aria-label={`Audio stem ${stem.id}`}
         />
       ))}

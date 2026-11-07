@@ -18,6 +18,7 @@ class FakeAudio extends EventTarget {
     return { length: 1, start: () => 0, end: () => this.bufferEnd };
   }
   volume = 1;
+  muted = false;
   ended = false;
   playCalls = 0;
   loadCalls = 0;
@@ -414,6 +415,106 @@ describe('MusicTransport', () => {
     expect(transport.snapshot().playing).toBe(true);
     expect(track.paused).toBe(false);
     expect(track.currentTime).toBe(30);
+    transport.dispose();
+  });
+
+  it('requests all iOS stems synchronously before preload or a promise boundary', async () => {
+    const first = new FakeAudio(90, 0);
+    const second = new FakeAudio(90, 0);
+    let finishSecond!: () => void;
+    let tapped = true;
+    first.play = () => {
+      expect(tapped || first.playCalls > 0).toBe(true);
+      first.playCalls++;
+      first.paused = false;
+      return Promise.resolve();
+    };
+    second.play = () => {
+      expect(tapped || second.playCalls > 0).toBe(true);
+      second.playCalls++;
+      second.paused = false;
+      return second.playCalls === 1
+        ? new Promise<void>((resolve) => {
+            finishSecond = resolve;
+          })
+        : Promise.resolve();
+    };
+    const transport = new MusicTransport(elements(first, second), vi.fn(), {
+      startWithPlay: true,
+    });
+    const playback = transport.play();
+    tapped = false;
+    expect(first.playCalls).toBe(1);
+    expect(second.playCalls).toBe(1);
+    expect(first.muted).toBe(true);
+    expect(second.muted).toBe(true);
+    expect(transport.snapshot().loading).toBe(true);
+    first.currentTime = 2;
+    finishSecond();
+    await playback;
+    expect(first.currentTime).toBe(0);
+    expect(second.currentTime).toBe(0);
+    expect(first.muted).toBe(false);
+    expect(second.muted).toBe(false);
+    expect(transport.snapshot().playing).toBe(true);
+    expect(first.loadCalls).toBe(0);
+    transport.dispose();
+  });
+
+  it('times out a play promise that never settles and restores sound for retry', async () => {
+    vi.useFakeTimers();
+    const track = new FakeAudio(90, 0);
+    track.play = () => new Promise<void>(() => {});
+    const transport = new MusicTransport(elements(track), vi.fn(), {
+      startWithPlay: true,
+    });
+    const playback = transport.play();
+    await vi.advanceTimersByTimeAsync(30_000);
+    await playback;
+    expect(transport.snapshot().loading).toBe(false);
+    expect(transport.snapshot().error).toMatch(/did not start in time/);
+    expect(track.paused).toBe(true);
+    expect(track.muted).toBe(false);
+    expect(vi.getTimerCount()).toBe(0);
+    transport.dispose();
+  });
+
+  it('cancels pending iOS startup immediately and ignores late completion', async () => {
+    const track = new FakeAudio(90, 0);
+    let complete!: () => void;
+    track.play = () =>
+      new Promise<void>((resolve) => {
+        complete = resolve;
+      });
+    const transport = new MusicTransport(elements(track), vi.fn(), {
+      startWithPlay: true,
+    });
+    const playback = transport.play();
+    transport.stop();
+    await playback;
+    expect(track.muted).toBe(false);
+    complete();
+    await Promise.resolve();
+    expect(transport.snapshot().loading).toBe(false);
+    expect(transport.snapshot().playing).toBe(false);
+    expect(track.paused).toBe(true);
+    transport.dispose();
+  });
+
+  it('shows an explicit blocked-playback error on iOS and unmutes all stems', async () => {
+    const first = new FakeAudio(90, 0);
+    const second = new FakeAudio(90, 0);
+    first.play = () =>
+      Promise.reject(new DOMException('blocked', 'NotAllowedError'));
+    const transport = new MusicTransport(elements(first, second), vi.fn(), {
+      startWithPlay: true,
+    });
+    await transport.play();
+    expect(second.playCalls).toBe(1);
+    expect(transport.snapshot().error).toMatch(/browser blocked playback/);
+    expect(first.muted).toBe(false);
+    expect(second.muted).toBe(false);
+    expect(second.paused).toBe(true);
     transport.dispose();
   });
 

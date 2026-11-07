@@ -18,6 +18,7 @@ type MediaEvents =
 type TransportOptions = {
   readyTimeoutMs?: number;
   syncIntervalMs?: number;
+  startWithPlay?: boolean;
 };
 
 const READY_STATE_FUTURE_DATA = 3;
@@ -30,6 +31,8 @@ export class MusicTransport {
   private readonly onChange: (snapshot: MusicSnapshot) => void;
   private readonly readyTimeoutMs: number;
   private readonly syncIntervalMs: number;
+  private readonly startWithPlay: boolean;
+  private readonly startupMuted = new Map<HTMLAudioElement, boolean>();
   private readonly listenerCleanup: (() => void)[] = [];
   private state: MusicSnapshot = {
     playing: false,
@@ -54,6 +57,7 @@ export class MusicTransport {
     this.onChange = onChange;
     this.readyTimeoutMs = options.readyTimeoutMs ?? 30_000;
     this.syncIntervalMs = options.syncIntervalMs ?? 250;
+    this.startWithPlay = options.startWithPlay ?? false;
 
     const perStemVolume = media.length ? 1 / media.length : 1;
     for (const element of media) element.volume = perStemVolume;
@@ -224,22 +228,35 @@ export class MusicTransport {
         return;
       }
 
-      // Align before waiting: seeking after readiness can empty a stem's buffer.
-      // Finished short stems must not hold the rest of the composition hostage.
-      await Promise.all(
-        active.map((element) =>
-          this.waitUntilReady(element, token, reload, position),
-        ),
-      );
-      if (!this.isCurrent(token)) return;
-      await Promise.all(
-        active.map((element) => Promise.resolve(element.play())),
-      );
+      if (this.startWithPlay) {
+        // iOS may not preload audio until play() is called directly from a tap.
+        // Issue EVERY play request before the first await. Keep early starters
+        // silent until the slowest stem starts, then align the complete mix.
+        for (const element of active) {
+          element.preload = 'auto';
+          this.startupMuted.set(element, element.muted);
+          element.muted = true;
+        }
+        await this.waitForPlay(active, token);
+        if (!this.isCurrent(token)) return;
+        for (const element of active) this.safeSetTime(element, position);
+        await this.waitForPlay(active, token);
+      } else {
+        // Align before waiting: seeking after readiness can empty a stem's buffer.
+        await Promise.all(
+          active.map((element) =>
+            this.waitUntilReady(element, token, reload, position),
+          ),
+        );
+        if (!this.isCurrent(token)) return;
+        await this.waitForPlay(active, token);
+      }
       if (!this.isCurrent(token)) {
         // An old play promise must not pause a newer seek/restart operation.
         if (!this.state.playing && !this.state.loading) this.pauseAll();
         return;
       }
+      this.restoreStartupMute();
       this.state.playing = true;
       this.state.loading = false;
       this.emit();
@@ -251,7 +268,10 @@ export class MusicTransport {
           ? null
           : error instanceof Error && error.name === 'NotAllowedError'
             ? 'The browser blocked playback. Tap play to retry.'
-            : 'Unable to start all stems. Press play to retry.';
+            : error instanceof Error &&
+                error.message === 'Playback start timed out'
+              ? 'Audio did not start in time. Tap play to retry.'
+              : 'Unable to start all stems. Press play to retry.';
       if (message) this.fail(message);
       else {
         this.pauseAll();
@@ -261,6 +281,46 @@ export class MusicTransport {
         this.emit();
       }
     }
+  }
+
+  private waitForPlay(
+    elements: HTMLAudioElement[],
+    token: number,
+  ): Promise<void> {
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const finish = (error?: unknown) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeout);
+        const index = this.readinessCancels.indexOf(cancel);
+        if (index !== -1) this.readinessCancels.splice(index, 1);
+        error ? reject(error) : resolve();
+      };
+      const cancel = () => finish(new Error('Playback cancelled'));
+      const timeout = setTimeout(
+        () => finish(new Error('Playback start timed out')),
+        this.readyTimeoutMs,
+      );
+      this.readinessCancels.push(cancel);
+      // Catch synchronous failures per element so every stem gets the gesture.
+      const starts = elements.map((element) => {
+        try {
+          return Promise.resolve(element.play());
+        } catch (error) {
+          return Promise.reject(error);
+        }
+      });
+      Promise.all(starts).then(() => finish(), finish);
+      if (!this.isCurrent(token)) cancel();
+    });
+  }
+
+  private restoreStartupMute(): void {
+    this.startupMuted.forEach((muted, element) => {
+      element.muted = muted;
+    });
+    this.startupMuted.clear();
   }
 
   private waitUntilReady(
@@ -455,6 +515,7 @@ export class MusicTransport {
 
   private pauseAll(): void {
     for (const element of this.media) element.pause();
+    this.restoreStartupMute();
   }
 
   private safeSetTime(element: HTMLAudioElement, position: number): void {
