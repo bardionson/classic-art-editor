@@ -19,6 +19,7 @@ class FakeAudio extends EventTarget {
   }
   volume = 1;
   muted = false;
+  defaultMuted = false;
   ended = false;
   playCalls = 0;
   loadCalls = 0;
@@ -66,7 +67,10 @@ class FakeAudio extends EventTarget {
 const elements = (...tracks: FakeAudio[]) =>
   tracks.map((track) => track.asElement());
 
-afterEach(() => vi.useRealTimers());
+afterEach(() => {
+  vi.useRealTimers();
+  vi.unstubAllGlobals();
+});
 
 describe('MusicTransport', () => {
   it('allows initial waiting events until every play promise has settled', async () => {
@@ -446,8 +450,8 @@ describe('MusicTransport', () => {
     tapped = false;
     expect(first.playCalls).toBe(1);
     expect(second.playCalls).toBe(1);
-    expect(first.muted).toBe(true);
-    expect(second.muted).toBe(true);
+    expect(first.muted).toBe(false);
+    expect(second.muted).toBe(false);
     expect(transport.snapshot().loading).toBe(true);
     first.currentTime = 2;
     finishSecond();
@@ -461,7 +465,7 @@ describe('MusicTransport', () => {
     transport.dispose();
   });
 
-  it('times out a play promise that never settles and restores sound for retry', async () => {
+  it('times out a play promise that never settles and allows retry', async () => {
     vi.useFakeTimers();
     const track = new FakeAudio(90, 0);
     track.play = () => new Promise<void>(() => {});
@@ -515,6 +519,51 @@ describe('MusicTransport', () => {
     expect(first.muted).toBe(false);
     expect(second.muted).toBe(false);
     expect(second.paused).toBe(true);
+    transport.dispose();
+  });
+
+  it('starts iOS tracks audibly in the tap and requests the music audio session', async () => {
+    const session = { type: 'auto' };
+    vi.stubGlobal('navigator', { audioSession: session });
+    const track = new FakeAudio(90, 0);
+    track.muted = true;
+    track.defaultMuted = true;
+    const originalPlay = track.play.bind(track);
+    let insideTap = true;
+    track.play = () => {
+      expect(track.muted).toBe(false);
+      expect(track.defaultMuted).toBe(false);
+      expect(session.type).toBe('playback');
+      if (track.playCalls === 0) expect(insideTap).toBe(true);
+      return originalPlay();
+    };
+    const transport = new MusicTransport(elements(track), vi.fn(), {
+      startWithPlay: true,
+    });
+    const playback = transport.play();
+    insideTap = false;
+    expect(track.playCalls).toBe(1);
+    await playback;
+    expect(track.muted).toBe(false);
+    expect(transport.snapshot().playing).toBe(true);
+    transport.dispose();
+  });
+
+  it('continues audible playback if the optional audio session API throws', async () => {
+    vi.stubGlobal('navigator', {
+      audioSession: {
+        set type(_value: string) {
+          throw new Error('Unavailable');
+        },
+      },
+    });
+    const track = new FakeAudio(90, 0);
+    const transport = new MusicTransport(elements(track), vi.fn(), {
+      startWithPlay: true,
+    });
+    await transport.play();
+    expect(transport.snapshot().playing).toBe(true);
+    expect(track.muted).toBe(false);
     transport.dispose();
   });
 

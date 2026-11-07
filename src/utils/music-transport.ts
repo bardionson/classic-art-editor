@@ -32,7 +32,6 @@ export class MusicTransport {
   private readonly readyTimeoutMs: number;
   private readonly syncIntervalMs: number;
   private readonly startWithPlay: boolean;
-  private readonly startupMuted = new Map<HTMLAudioElement, boolean>();
   private readonly listenerCleanup: (() => void)[] = [];
   private state: MusicSnapshot = {
     playing: false,
@@ -106,6 +105,7 @@ export class MusicTransport {
       for (const element of this.media) this.safeSetTime(element, 0);
     }
 
+    if (this.startWithPlay) this.requestPlaybackSession();
     const token = ++this.generation;
     this.state.error = null;
     this.state.loading = true;
@@ -230,12 +230,13 @@ export class MusicTransport {
 
       if (this.startWithPlay) {
         // iOS may not preload audio until play() is called directly from a tap.
-        // Issue EVERY play request before the first await. Keep early starters
-        // silent until the slowest stem starts, then align the complete mix.
+        // Request audible playback directly from the tap. Starting muted and
+        // unmuting after an await can lose iOS's audible-playback authorization.
+        // Early starters may play briefly before the complete mix is aligned.
         for (const element of active) {
           element.preload = 'auto';
-          this.startupMuted.set(element, element.muted);
-          element.muted = true;
+          element.defaultMuted = false;
+          element.muted = false;
         }
         await this.waitForPlay(active, token);
         if (!this.isCurrent(token)) return;
@@ -256,7 +257,6 @@ export class MusicTransport {
         if (!this.state.playing && !this.state.loading) this.pauseAll();
         return;
       }
-      this.restoreStartupMute();
       this.state.playing = true;
       this.state.loading = false;
       this.emit();
@@ -280,6 +280,20 @@ export class MusicTransport {
         this.clearSyncTimer();
         this.emit();
       }
+    }
+  }
+
+  private requestPlaybackSession(): void {
+    // Optional on iOS; never let an unavailable/blocked session API stop audio.
+    try {
+      const session =
+        typeof navigator !== 'undefined'
+          ? (navigator as Navigator & { audioSession?: { type: string } })
+              .audioSession
+          : undefined;
+      if (session) session.type = 'playback';
+    } catch {
+      // Native audio still works without the experimental Audio Session API.
     }
   }
 
@@ -314,13 +328,6 @@ export class MusicTransport {
       Promise.all(starts).then(() => finish(), finish);
       if (!this.isCurrent(token)) cancel();
     });
-  }
-
-  private restoreStartupMute(): void {
-    this.startupMuted.forEach((muted, element) => {
-      element.muted = muted;
-    });
-    this.startupMuted.clear();
   }
 
   private waitUntilReady(
@@ -515,7 +522,6 @@ export class MusicTransport {
 
   private pauseAll(): void {
     for (const element of this.media) element.pause();
-    this.restoreStartupMute();
   }
 
   private safeSetTime(element: HTMLAudioElement, position: number): void {
