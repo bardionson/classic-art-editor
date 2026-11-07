@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   XCircle,
   Maximize,
@@ -64,6 +64,20 @@ export default function ArtworkViewer({
   >({});
   const [selectedLayer, setSelectedLayer] = useState<any>(null);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
+  const [playerHeight, setPlayerHeight] = useState(240);
+  const [artScale, setArtScale] = useState(1);
+  const musicPanelRef = useRef<HTMLDivElement>(null);
+  const artViewportRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 639px)');
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     if (externalControlOverrides) {
@@ -84,6 +98,48 @@ export default function ArtworkViewer({
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layersWithArtists = useLayersWithArtists(tokenAddress, tokenURI);
+  const mobileMusic = isMobile && !!metadata?.['audio-layout'] && !hideControls;
+  const compactMusic =
+    mobileMusic &&
+    !mobileDetailsOpen &&
+    !isFullscreen &&
+    isDescriptionPanelOpen;
+
+  useEffect(() => {
+    if (!compactMusic || !musicPanelRef.current) return;
+    const panel = musicPanelRef.current;
+    const measure = () => setPlayerHeight(panel.getBoundingClientRect().height);
+    const observer = new ResizeObserver(measure);
+    observer.observe(panel);
+    measure();
+    return () => observer.disconnect();
+  }, [compactMusic]);
+
+  useEffect(() => {
+    if (!compactMusic || !artViewportRef.current || !masterArtSize) {
+      setArtScale(1);
+      return;
+    }
+    const viewport = artViewportRef.current;
+    const measure = () => {
+      const { width, height, resizeToFitScreenRatio } = masterArtSize;
+      const rect = viewport.getBoundingClientRect();
+      setArtScale(
+        Math.max(
+          0,
+          Math.min(
+            1,
+            (rect.width - 16) / (width * resizeToFitScreenRatio),
+            (rect.height - 16) / (height * resizeToFitScreenRatio),
+          ),
+        ),
+      );
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(viewport);
+    measure();
+    return () => observer.disconnect();
+  }, [compactMusic, masterArtSize]);
 
   const handleDownload = async () => {
     if (!artElementRef.current || !masterArtSize) return;
@@ -116,7 +172,12 @@ export default function ArtworkViewer({
   return (
     <div className="fixed inset-0 bg-art-bed overflow-hidden">
       {/* Full-bleed art viewport */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div
+        ref={artViewportRef}
+        aria-label="Artwork display"
+        style={compactMusic ? { top: 72, bottom: playerHeight } : undefined}
+        className="absolute inset-0 flex items-center justify-center overflow-hidden"
+      >
         {statusMessage && (
           <>
             {statusMessage === ERROR_MESSAGE ? (
@@ -139,7 +200,8 @@ export default function ArtworkViewer({
         <div
           id={ART_ELEMENT_ID}
           ref={artElementRef}
-          className="relative mx-auto -z-20"
+          className={`relative mx-auto -z-20 shrink-0 ${compactMusic ? '!mt-0' : ''}`}
+          style={compactMusic ? { transform: `scale(${artScale})` } : undefined}
         />
       </div>
 
@@ -150,12 +212,15 @@ export default function ArtworkViewer({
           underneath the panel on both desktop (420px width) and mobile
           (full width). */}
       {!hideControls && (
-        <div className="absolute bottom-4 left-4 z-40 flex gap-1 bg-black/40 backdrop-blur-md rounded-full p-1">
+        <div
+          className={`${compactMusic ? 'hidden' : 'flex'} absolute bottom-4 left-4 z-40 gap-1 bg-black/40 backdrop-blur-md rounded-full p-1`}
+        >
           {metadata?.['audio-layout'] && (
             <button
               onClick={() => {
                 setIsFullscreen(false);
                 setIsDescriptionPanelOpen(true);
+                setMobileDetailsOpen(false);
               }}
               className="bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition border border-white/10"
               aria-label="Show music player"
@@ -198,7 +263,8 @@ export default function ArtworkViewer({
       {/* Description slide-in overlay */}
       {!hideControls && (
         <div
-          className={`${isFullscreen ? 'hidden' : ''} fixed inset-y-0 right-0 z-30 w-full sm:w-[420px] bg-surface-raised/75 backdrop-blur-xl border-l border-border overflow-y-auto pt-24 px-6 pb-24 transition-transform duration-300 ease-out ${
+          ref={musicPanelRef}
+          className={`${isFullscreen ? 'hidden' : ''} fixed ${compactMusic ? 'bottom-0 max-h-[48dvh] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]' : 'inset-y-0 pt-24 px-6 pb-24'} right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto transition-transform duration-300 ease-out ${
             isDescriptionPanelOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -220,7 +286,11 @@ export default function ArtworkViewer({
           <button
             onClick={() => setIsDescriptionPanelOpen(!isDescriptionPanelOpen)}
             className={`absolute top-1/2 -left-10 -translate-y-1/2 flex-col items-center gap-2 max-h-[70vh] bg-surface-raised/75 backdrop-blur-xl border border-border border-r-0 rounded-l-lg py-4 px-2 shadow-soft-drop ${
-              isDescriptionPanelOpen ? 'hidden sm:flex' : 'flex'
+              compactMusic
+                ? 'hidden'
+                : isDescriptionPanelOpen
+                  ? 'hidden sm:flex'
+                  : 'flex'
             }`}
             aria-label={
               isDescriptionPanelOpen
@@ -250,7 +320,7 @@ export default function ArtworkViewer({
               (visible near the right edge once the panel is closed, since
               -left-10 relative to an off-screen-right panel lands back
               inside the viewport). */}
-          {isDescriptionPanelOpen && (
+          {isDescriptionPanelOpen && !mobileMusic && (
             <button
               onClick={() => setIsDescriptionPanelOpen(false)}
               className="sm:hidden absolute top-20 right-4 z-10 bg-surface-sunken hover:bg-border rounded-full p-2 transition"
@@ -262,7 +332,27 @@ export default function ArtworkViewer({
 
           {metadata && (
             <>
-              {backLink && (
+              {mobileMusic && (
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <button
+                    className="text-sm text-accent underline py-1"
+                    onClick={() => setMobileDetailsOpen((value) => !value)}
+                  >
+                    {mobileDetailsOpen
+                      ? 'Back to art + player'
+                      : 'Stems & artwork details'}
+                  </button>
+                  {compactMusic && (
+                    <button
+                      className="text-sm text-accent underline py-1"
+                      onClick={() => setIsFullscreen(true)}
+                    >
+                      Full screen art
+                    </button>
+                  )}
+                </div>
+              )}
+              {backLink && !compactMusic && (
                 <Link
                   href={backLink}
                   className="flex items-center text-sm text-text-muted mb-4 hover:text-text transition-colors"
@@ -271,11 +361,16 @@ export default function ArtworkViewer({
                   {backLabel || 'Back'}
                 </Link>
               )}
-              <h1 className="text-2xl font-bold text-text">{metadata.name}</h1>
+              <h1
+                className={`${compactMusic ? 'text-lg truncate' : 'text-2xl'} font-bold text-text`}
+              >
+                {metadata.name}
+              </h1>
               {metadata['audio-layout'] && (
                 <MusicPlayer
                   key={`${tokenAddress}:${tokenId}`}
                   metadata={metadata}
+                  compact={compactMusic}
                   tokenId={tokenId}
                   overrides={controlOverrides}
                   onPreview={(values) =>
@@ -283,34 +378,36 @@ export default function ArtworkViewer({
                   }
                 />
               )}
-              <p className="mt-2 text-text-muted">{metadata.description}</p>
-              <h2 className="text-lg font-bold mt-4 text-text">Artists</h2>
-              <ul className="text-text-muted">
-                {artists.length > 0
-                  ? artists.map((artist) => <li key={artist}>{artist}</li>)
-                  : metadata['async-attributes']?.artists?.map((artist) => (
-                      <li key={artist}>{artist}</li>
-                    ))}
-              </ul>
-              <h2 className="text-lg font-bold mt-4 text-text">Collector</h2>
-              <p className="break-all text-text-muted">
-                {collector && <AddressWithEns address={collector} />}
-              </p>
-              <LayerControlList
-                layers={layersWithArtists}
-                onLayerClick={(layer) => setSelectedLayer(layer)}
-              />
-              <button
-                className="mt-6 w-full bg-danger hover:bg-danger/80 text-white font-bold py-2 px-4 rounded transition-colors"
-                onClick={() => {
-                  const url =
-                    'https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform?entry.1408621877=' +
-                    encodeURIComponent(window.location.href);
-                  window.open(url, '_blank');
-                }}
-              >
-                Report an Issue
-              </button>
+              <div className={compactMusic ? 'hidden' : ''}>
+                <p className="mt-2 text-text-muted">{metadata.description}</p>
+                <h2 className="text-lg font-bold mt-4 text-text">Artists</h2>
+                <ul className="text-text-muted">
+                  {artists.length > 0
+                    ? artists.map((artist) => <li key={artist}>{artist}</li>)
+                    : metadata['async-attributes']?.artists?.map((artist) => (
+                        <li key={artist}>{artist}</li>
+                      ))}
+                </ul>
+                <h2 className="text-lg font-bold mt-4 text-text">Collector</h2>
+                <p className="break-all text-text-muted">
+                  {collector && <AddressWithEns address={collector} />}
+                </p>
+                <LayerControlList
+                  layers={layersWithArtists}
+                  onLayerClick={(layer) => setSelectedLayer(layer)}
+                />
+                <button
+                  className="mt-6 w-full bg-danger hover:bg-danger/80 text-white font-bold py-2 px-4 rounded transition-colors"
+                  onClick={() => {
+                    const url =
+                      'https://docs.google.com/forms/d/e/1FAIpQLSdN7VReSnF3sqDN9blH3u7rS8d4cJEDObWpkb7AK-INUc2T9g/viewform?entry.1408621877=' +
+                      encodeURIComponent(window.location.href);
+                    window.open(url, '_blank');
+                  }}
+                >
+                  Report an Issue
+                </button>
+              </div>
             </>
           )}
         </div>

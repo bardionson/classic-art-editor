@@ -26,9 +26,11 @@ const button =
 function StemSession({
   stems,
   gateway,
+  compact,
 }: {
   stems: MusicStem[];
   gateway: string;
+  compact: boolean;
 }) {
   const media = useRef<(HTMLAudioElement | null)[]>([]);
   const transport = useRef<MusicTransport | null>(null);
@@ -105,7 +107,9 @@ function StemSession({
           }
         />
       </label>
-      <label className="flex items-center gap-3 text-xs">
+      <label
+        className={`${compact ? 'hidden' : 'flex'} items-center gap-3 text-xs`}
+      >
         Volume
         <input
           className="min-w-0 flex-1"
@@ -141,11 +145,13 @@ export default function MusicPlayer({
   tokenId,
   overrides,
   onPreview,
+  compact = false,
 }: {
   metadata: MasterArtNFTMetadata;
   tokenId: number;
   overrides: Record<string, number>;
   onPreview: (values: Record<string, number>) => void;
+  compact?: boolean;
 }) {
   const [stems, setStems] = useState<MusicStem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -181,13 +187,20 @@ export default function MusicPlayer({
   return (
     <section
       aria-label="Music player"
-      className="my-5 rounded-xl border border-border bg-surface-raised p-4 space-y-3 text-text"
+      className={`${compact ? 'mt-2 p-3' : 'my-5 p-4'} rounded-xl border border-border bg-surface-raised space-y-3 text-text`}
     >
-      <h2 className="text-lg font-bold">Listen & explore</h2>
-      <p className="text-xs text-text-muted">
+      <h2 className={compact ? 'sr-only' : 'text-lg font-bold'}>
+        Listen & explore
+      </h2>
+      <p className={`${compact ? 'hidden' : ''} text-xs text-text-muted`}>
         Original audio stems, mixed in your browser. Original server mastering
         is still being restored.
       </p>
+      {compact && (
+        <p className="text-xs text-text-muted">
+          Stem mix · original mastering restoration in progress
+        </p>
+      )}
       {!stems && !error && (
         <p role="status" className="text-sm">
           Reading music controls…
@@ -210,8 +223,9 @@ export default function MusicPlayer({
             key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
             stems={stems}
             gateway={gateway}
+            compact={compact}
           />
-          <details className="text-sm">
+          <details className={`${compact ? 'hidden' : ''} text-sm`}>
             <summary className="cursor-pointer py-2">
               Explore {stems.length} stems
             </summary>
@@ -244,7 +258,9 @@ export default function MusicPlayer({
           </details>
         </>
       )}
-      <label className="block text-xs text-text-muted">
+      <label
+        className={`${compact ? 'hidden' : 'block'} text-xs text-text-muted`}
+      >
         Audio gateway
         <select
           aria-label="Audio gateway"
