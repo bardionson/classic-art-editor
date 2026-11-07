@@ -22,6 +22,7 @@ type TransportOptions = {
 
 const READY_STATE_FUTURE_DATA = 3;
 const DRIFT_TOLERANCE_SECONDS = 0.12;
+const BUFFER_AHEAD_SECONDS = 3;
 
 /** Coordinates HTML audio elements that share one composition timeline. */
 export class MusicTransport {
@@ -68,7 +69,7 @@ export class MusicTransport {
       listen('durationchange', () => this.refreshDuration());
       listen('timeupdate', () => this.refreshPosition());
       listen('waiting', () => {
-        if (this.state.playing) void this.rebuffer();
+        if (this.state.playing && !element.ended) void this.rebuffer();
       });
       listen('error', () => {
         if (this.state.playing || this.state.loading) {
@@ -200,13 +201,6 @@ export class MusicTransport {
 
   private async startPlayback(token: number, reload = true): Promise<void> {
     try {
-      await Promise.all(
-        this.media.map((element) =>
-          this.waitUntilReady(element, token, reload),
-        ),
-      );
-      if (!this.isCurrent(token)) return;
-
       this.refreshDuration(false);
       this.selectLeader();
       const position = this.state.position;
@@ -228,6 +222,14 @@ export class MusicTransport {
         return;
       }
 
+      // Align before waiting: seeking after readiness can empty a stem's buffer.
+      // Finished short stems must not hold the rest of the composition hostage.
+      await Promise.all(
+        active.map((element) =>
+          this.waitUntilReady(element, token, reload, position),
+        ),
+      );
+      if (!this.isCurrent(token)) return;
       await Promise.all(
         active.map((element) => Promise.resolve(element.play())),
       );
@@ -262,22 +264,36 @@ export class MusicTransport {
     element: HTMLAudioElement,
     token: number,
     reload: boolean,
+    position: number,
   ): Promise<void> {
-    if (element.readyState >= READY_STATE_FUTURE_DATA) return Promise.resolve();
+    // Even an initially playable element may still be in metadata-only mode.
+    // Keep filling buffers while the mix pauses to wait for another stem.
+    element.preload = 'auto';
+    if (this.hasPlaybackBuffer(element)) return Promise.resolve();
     return new Promise((resolve, reject) => {
       let settled = false;
       const finish = (error?: Error) => {
         if (settled) return;
         settled = true;
         clearTimeout(timeout);
-        element.removeEventListener('canplay', onReady);
+        clearInterval(poll);
+        for (const event of readyEvents)
+          element.removeEventListener(event, onReady);
         element.removeEventListener('error', onError);
         const cancelIndex = this.readinessCancels.indexOf(cancel);
         if (cancelIndex !== -1) this.readinessCancels.splice(cancelIndex, 1);
         error ? reject(error) : resolve();
       };
+      const readyEvents = [
+        'canplay',
+        'canplaythrough',
+        'progress',
+        'loadedmetadata',
+        'seeked',
+      ];
       const onReady = () => {
-        if (element.readyState >= READY_STATE_FUTURE_DATA) finish();
+        if (element.readyState >= 1) this.safeSetTime(element, position);
+        if (this.hasPlaybackBuffer(element)) finish();
       };
       const onError = () => finish(new Error('A stem failed to load.'));
       const cancel = () => finish(new Error('Playback cancelled'));
@@ -285,17 +301,43 @@ export class MusicTransport {
         () => finish(new Error('Timed out waiting for a stem to load.')),
         this.readyTimeoutMs,
       );
+      const poll = setInterval(onReady, 250);
       this.readinessCancels.push(cancel);
-      element.addEventListener('canplay', onReady, { once: true });
+      for (const event of readyEvents) element.addEventListener(event, onReady);
       element.addEventListener('error', onError, { once: true });
       try {
-        element.preload = 'auto';
-        if (reload) element.load();
+        // Calling load() discards buffered bytes. Only reset failed/empty sources.
+        if (
+          reload &&
+          (element.error ||
+            element.networkState === 3 ||
+            (element.readyState === 0 && element.networkState !== 2))
+        )
+          element.load();
       } catch {
         finish(new Error('Unable to load a stem.'));
       }
       if (!this.isCurrent(token)) cancel();
     });
+  }
+
+  private hasPlaybackBuffer(element: HTMLAudioElement): boolean {
+    if (element.readyState < READY_STATE_FUTURE_DATA) return false;
+    const duration = this.validDuration(element.duration);
+    const required = Math.min(
+      BUFFER_AHEAD_SECONDS,
+      duration === null
+        ? BUFFER_AHEAD_SECONDS
+        : Math.max(0, duration - element.currentTime),
+    );
+    for (let i = 0; i < element.buffered.length; i++) {
+      if (
+        element.buffered.start(i) <= element.currentTime + 0.05 &&
+        element.buffered.end(i) - element.currentTime >= required - 0.05
+      )
+        return true;
+    }
+    return false;
   }
 
   private fail(message: string): void {

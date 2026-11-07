@@ -12,6 +12,11 @@ class FakeAudio extends EventTarget {
     if (value < this.duration) this.ended = false;
   }
   readyState: number;
+  preload = 'metadata';
+  bufferEnd: number;
+  get buffered() {
+    return { length: 1, start: () => 0, end: () => this.bufferEnd };
+  }
   volume = 1;
   ended = false;
   playCalls = 0;
@@ -23,6 +28,7 @@ class FakeAudio extends EventTarget {
   constructor(duration: number, readyState = 3) {
     super();
     this.duration = duration;
+    this.bufferEnd = duration;
     this.readyState = readyState;
   }
 
@@ -296,6 +302,67 @@ describe('MusicTransport', () => {
     expect(short.playCalls).toBe(1);
     expect(short.currentTime).toBe(10);
     expect(long.paused).toBe(false);
+    expect(transport.snapshot().playing).toBe(true);
+    transport.dispose();
+  });
+
+  it('fills a useful buffer before playing and keeps downloading initially ready stems', async () => {
+    const first = new FakeAudio(90);
+    const second = new FakeAudio(90);
+    second.bufferEnd = 0.9;
+    const transport = new MusicTransport(elements(first, second), vi.fn());
+    const playback = transport.play();
+    await Promise.resolve();
+    expect(first.preload).toBe('auto');
+    expect(second.preload).toBe('auto');
+    expect(first.playCalls).toBe(0);
+    second.canPlay(); // A canplay event alone does not promise enough buffer.
+    await Promise.resolve();
+    expect(second.playCalls).toBe(0);
+    second.bufferEnd = 4;
+    second.signal('progress');
+    await playback;
+    expect(transport.snapshot().playing).toBe(true);
+    expect(second.loadCalls).toBe(0);
+    transport.dispose();
+  });
+
+  it('accepts later readiness events after an early canplay is insufficient', async () => {
+    const track = new FakeAudio(20, 0);
+    const transport = new MusicTransport(elements(track), vi.fn());
+    const playback = transport.play();
+    track.readyState = 2;
+    track.signal('canplay');
+    track.canPlay();
+    await playback;
+    expect(transport.snapshot().playing).toBe(true);
+    transport.dispose();
+  });
+
+  it('resumes buffering without waiting for an already finished shorter stem', async () => {
+    const long = new FakeAudio(100);
+    const short = new FakeAudio(10);
+    const transport = new MusicTransport(elements(long, short), vi.fn());
+    await transport.play();
+    long.currentTime = 15;
+    short.currentTime = 10;
+    short.ended = true;
+    short.readyState = 2;
+    long.readyState = 2;
+    long.signal('waiting');
+    long.canPlay();
+    await transport.play();
+    expect(transport.snapshot().playing).toBe(true);
+    expect(long.playCalls).toBe(2);
+    expect(short.playCalls).toBe(1);
+    transport.dispose();
+  });
+
+  it('allows playback near the end with less than three seconds remaining', async () => {
+    const track = new FakeAudio(10);
+    const transport = new MusicTransport(elements(track), vi.fn());
+    transport.seek(9);
+    await transport.play();
     expect(transport.snapshot().playing).toBe(true);
     transport.dispose();
   });
