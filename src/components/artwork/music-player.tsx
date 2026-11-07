@@ -244,7 +244,7 @@ function PreparedStemSession({
       )}
       <p role="status" className="text-xs text-text-muted">
         {audio.message ||
-          'Press Play to stream. Download audio to save the selected stems in this browser for smoother repeat listening.'}
+          'Press Play to stream. Download audio saves the original selected stems in this browser for repeat listening.'}
       </p>
     </div>
   );
@@ -303,8 +303,8 @@ export default function MusicPlayer({
         Listen & explore
       </h2>
       <p className={`${compact ? 'hidden' : ''} text-xs text-text-muted`}>
-        Original audio stems, mixed in your browser. Original server mastering
-        is still being restored.
+        Archived stems mixed in your browser, with compressed streaming copies
+        where available. Original server mastering is still being restored.
       </p>
       {compact && (
         <p className="text-xs text-text-muted">
