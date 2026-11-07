@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { allowedAudio, resolveR2Audio } from '@/utils/r2-audio';
+import {
+  AudioDeliveryError,
+  allowedAudio,
+  resolveR2Audio,
+} from '@/utils/r2-audio';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -20,7 +24,15 @@ async function resolve(request: NextRequest, importMissing: boolean) {
       error instanceof Error ? error.name : 'Error',
     );
     return NextResponse.json(
-      { status: 'unavailable' },
+      {
+        status: 'unavailable',
+        stage:
+          error instanceof AudioDeliveryError ? error.stage : 'configuration',
+        upstreamStatus:
+          error instanceof AudioDeliveryError
+            ? error.upstreamStatus
+            : undefined,
+      },
       { status: 503, headers },
     );
   }

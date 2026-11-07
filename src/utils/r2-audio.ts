@@ -161,6 +161,15 @@ async function acquireImport(
     : null;
 }
 
+export class AudioDeliveryError extends Error {
+  constructor(
+    public stage: string,
+    public upstreamStatus?: number,
+  ) {
+    super('Archive audio unavailable');
+    this.name = 'AudioDeliveryError';
+  }
+}
 export type AudioDelivery =
   | { status: 'ready'; url: string }
   | { status: 'disabled' | 'missing' | 'busy' | 'unavailable' };
@@ -173,6 +182,7 @@ export async function resolveR2Audio(
   if (!r2) return { status: 'disabled' };
   const { client, bucket } = r2;
   const signal = AbortSignal.timeout(53000);
+  let stage = 'storage-read';
   try {
     let exists = false;
     try {
@@ -193,10 +203,13 @@ export async function resolveR2Audio(
     }
     if (!exists) {
       if (!importMissing) return { status: 'missing' };
+      stage = 'import-limiter';
       const release = await acquireImport(path);
       if (!release) return { status: 'busy' };
       try {
+        stage = 'ipfs-download';
         const { body, contentType } = await downloadOriginal(path, signal);
+        stage = 'storage-write';
         await client.send(
           new PutObjectCommand({
             Bucket: bucket,
@@ -216,12 +229,20 @@ export async function resolveR2Audio(
         await release().catch(() => undefined);
       }
     }
+    stage = 'signing';
     const url = await getSignedUrl(
       client,
       new GetObjectCommand({ Bucket: bucket, Key: key }),
       { expiresIn: 21600 },
     );
     return { status: 'ready', url };
+  } catch (error) {
+    throw new AudioDeliveryError(
+      stage,
+      (
+        error as { $metadata?: { httpStatusCode?: number } }
+      ).$metadata?.httpStatusCode,
+    );
   } finally {
     client.destroy();
   }
