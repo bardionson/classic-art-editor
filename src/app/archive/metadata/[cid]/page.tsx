@@ -37,7 +37,7 @@ export default function MetadataArtworkPage({
         large
       />
       <p className="text-sm text-text-muted my-6">
-        Original metadata preview. This image may represent an earlier or
+        Original metadata preview. This media may represent an earlier or
         unrevealed edition state.
         {record.family === 'dynamic-blueprints'
           ? ' Expansion previews are individual items; the evolving core composition is still being restored.'

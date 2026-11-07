@@ -1,8 +1,21 @@
 import { describe, expect, it } from 'vitest';
-import { imageCandidates, ipfsPath, metadataImage } from './archive-media';
+import {
+  imageCandidates,
+  ipfsPath,
+  metadataImage,
+  isArchiveVideo,
+} from './archive-media';
 
 const cid = 'QmYfy2qQBceBghoQGTsLUXpqZibbmoN11eTaDMPAkAAkUe';
 describe('original archive previews', () => {
+  it('recognizes confirmed video even when stored in the image field', () => {
+    const video = 'QmbherGdPvB6Q3zQfmhnKwm5ECwzLiuyV6A8PzbZeVwKRx';
+    expect(isArchiveVideo(`ipfs://${video}`)).toBe(true);
+    expect(isArchiveVideo(`https://ipfs.io/ipfs/${video}`)).toBe(true);
+    expect(isArchiveVideo(`ipfs://${video}/different.png`)).toBe(false);
+    expect(isArchiveVideo(`ipfs://${cid}`)).toBe(false);
+    expect(isArchiveVideo('javascript:alert(1)')).toBe(false);
+  });
   it('extracts image fields, never treating metadata documents or animation pages as images', () => {
     expect(metadataImage({ image: `ipfs://${cid}` })).toBe(`ipfs://${cid}`);
     expect(

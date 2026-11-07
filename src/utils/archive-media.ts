@@ -1,3 +1,5 @@
+import mediaTypes from '@/data/archive-media-types.json';
+
 // Only original image references are used as previews. Metadata CIDs themselves
 // are JSON documents, not images. Never inject inline HTML/SVG markup from metadata; referenced images use an img element.
 export const IPFS_CID = /^(?:Qm[1-9A-HJ-NP-Za-km-z]{44}|b[a-z2-7]{20,})$/;
@@ -64,4 +66,18 @@ export function metadataImage(data: unknown): string | null {
       return value;
   }
   return null;
+}
+
+// Format evidence applies to the exact immutable asset path, not its parent CID
+// or another file within a directory. Unknown media keeps the existing image path.
+export function isArchiveVideo(value: string): boolean {
+  const path = ipfsPath(value);
+  if (!path) return false;
+  const evidence = (mediaTypes as Record<string, { contentType: string }>)[
+    path
+  ];
+  return (
+    evidence?.contentType === 'video/mp4' ||
+    evidence?.contentType === 'video/webm'
+  );
 }

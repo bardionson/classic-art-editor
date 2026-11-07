@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { imageCandidates } from '@/utils/archive-media';
+import { imageCandidates, isArchiveVideo } from '@/utils/archive-media';
 
 // Bound simultaneous metadata lookups as cards enter the viewport.
 let active = 0;
@@ -57,6 +57,7 @@ export default function ArchivePreview({
   const [resolved, setResolved] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const video = isArchiveVideo(source);
   const candidates = imageCandidates(source);
   const url = candidates[attempt];
   useEffect(() => {
@@ -92,17 +93,40 @@ export default function ArchivePreview({
   }, [visible, url, resolved, cid, source]);
   // Some gateways hang without firing an image error. Move to another gateway.
   useEffect(() => {
-    if (!visible || !url || loaded) return;
+    if (!visible || !url || loaded || video) return;
     const timer = setTimeout(() => setAttempt((n) => n + 1), 15000);
     return () => clearTimeout(timer);
-  }, [visible, url, loaded]);
+  }, [visible, url, loaded, video]);
   return (
     <div>
       <div
         ref={host}
         className={`relative flex items-center justify-center bg-surface-sunken rounded-lg overflow-hidden ${large ? 'min-h-64' : 'aspect-square'}`}
       >
-        {visible && url ? (
+        {visible && url && video ? (
+          large ? (
+            <video
+              key={url}
+              src={url}
+              aria-label={name}
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full max-h-[75vh] min-h-64 object-contain bg-black"
+              onLoadedMetadata={() => setLoaded(true)}
+              onError={() => {
+                setLoaded(false);
+                setAttempt((n) => n + 1);
+              }}
+            >
+              Your browser cannot play this video.
+            </video>
+          ) : (
+            <p className="p-6 text-sm text-text-muted text-center">
+              Video artwork · open to play
+            </p>
+          )
+        ) : visible && url ? (
           // Unoptimized original images preserve animations and avoid gateway proxy limits.
           // eslint-disable-next-line @next/next/no-img-element
           <img

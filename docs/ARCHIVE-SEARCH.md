@@ -155,3 +155,15 @@ expansion token identities, core layout/draw order and current on-chain selectio
 still require verification before rendering a faithful changing composition.
 Collection titles, shared descriptions or folder names must not merge these cores.
 The metadata recovery does not claim that composition or automation is restored.
+
+
+### Video expansion previews
+
+Forever Supper Remix uses an MP4 asset in its `image` field. Its exact asset CID
+is recorded in `src/data/archive-media-types.json`, with gateway HEAD evidence
+(video/mp4, 92,194,518 bytes). The original metadata remains untouched. Confirmed
+videos use native controls and inline mobile playback on artwork pages, with no
+autoplay and metadata-only preload. Gallery cards link to playback without
+downloading videos. This format evidence is separate from metadata CID verification;
+the original video bytes have not been independently hashed in this release.
+Unknown assets still use the image preview path until their media type is checked.
