@@ -367,6 +367,16 @@ describe('MusicTransport', () => {
     transport.dispose();
   });
 
+  it('trusts can-play-through readiness when buffered ranges are not exposed', async () => {
+    const track = new FakeAudio(100, 4);
+    Object.defineProperty(track, 'buffered', { get: () => ({ length: 0 }) });
+    const transport = new MusicTransport(elements(track), vi.fn());
+    await transport.play();
+    expect(transport.snapshot().playing).toBe(true);
+    expect(track.preload).toBe('auto');
+    transport.dispose();
+  });
+
   it('clears active playback timers and listeners on dispose', async () => {
     vi.useFakeTimers();
     const track = new FakeAudio(50);

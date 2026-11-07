@@ -322,6 +322,9 @@ export class MusicTransport {
   }
 
   private hasPlaybackBuffer(element: HTMLAudioElement): boolean {
+    // HAVE_ENOUGH_DATA is the browser's can-play-through assessment. Some
+    // engines expose no buffered ranges until playback starts for these files.
+    if (element.readyState >= 4) return true;
     if (element.readyState < READY_STATE_FUTURE_DATA) return false;
     const duration = this.validDuration(element.duration);
     const required = Math.min(
