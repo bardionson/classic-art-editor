@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Address } from 'viem';
 import { useTokenMetadata } from '@/hooks/useTokenMetadata';
+import { watchArtworkTime } from '@/utils/artwork-time';
 import {
   createGetLayerControlTokenValueFn,
   getLayersFromMetadata,
@@ -21,6 +22,7 @@ export const useArtwork = (
   >('');
   const [layerHashes, setLayerHashes] = useState<Record<string, string>>({});
   const [layerError, setLayerError] = useState<string>();
+  const [timeRevision, setTimeRevision] = useState(0);
 
   const layerBlobUrlsRef = useRef<Record<string, string>>({});
   // Bumped at the start of every renderLayers() run. Layer image loads and
@@ -50,7 +52,17 @@ export const useArtwork = (
     };
   }, []);
 
-  // Render Layers (re-runs if metadata or overrides change)
+  useEffect(() => {
+    if (!metadata) return;
+    return watchArtworkTime(
+      metadata.layout.layers,
+      metadata['async-attributes']?.timezone?.default_utc_offset ?? 0,
+      () => setTimeRevision((revision) => revision + 1),
+      document,
+    );
+  }, [metadata]);
+
+  // Render Layers (re-runs when metadata, controls, or a timed state changes)
   useEffect(() => {
     const renderLayers = async () => {
       if (!metadata || !masterArtSize || !artElementRef.current) return;
@@ -74,6 +86,11 @@ export const useArtwork = (
         const layers = await getLayersFromMetadata(
           metadata.layout.layers,
           getLayerControlTokenValue,
+          {
+            now: new Date(),
+            utcOffsetSeconds:
+              metadata['async-attributes']?.timezone?.default_utc_offset ?? 0,
+          },
         );
 
         if (!isComponentMountedRef.current || isStale()) return;
@@ -179,7 +196,17 @@ export const useArtwork = (
     };
 
     renderLayers();
-  }, [metadata, masterArtSize, controlOverrides, tokenId, metadataError]); // metadataError (not layerError/combined error): re-check after a metadata fetch failure so we don't composite stale layers for what might be a new token; depending on layerError here would re-trigger this same effect every time it sets its own error
+    return () => {
+      renderGenerationRef.current += 1;
+    };
+  }, [
+    metadata,
+    masterArtSize,
+    controlOverrides,
+    tokenId,
+    metadataError,
+    timeRevision,
+  ]); // metadataError (not layerError/combined error): re-check after a metadata fetch failure so we don't composite stale layers for what might be a new token; depending on layerError here would re-trigger this same effect every time it sets its own error
 
   // error/statusMessage combine both metadata-fetch and layer-compositing outcomes — only one domain is ever active at a time given the guard above
   return {

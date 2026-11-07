@@ -8,6 +8,7 @@ import {
 import { fetchIpfs } from '@/utils/ipfs';
 import { publicClient } from '@/utils/rpcClient';
 import seedrandom from 'seedrandom';
+import { getTimeStateIndex } from '@/utils/artwork-time';
 import { getContract } from 'viem';
 
 export async function getMasterArtSize(uri: string) {
@@ -42,6 +43,10 @@ export async function getLayersFromMetadata(
   getLayerControlTokenValue: ReturnType<
     typeof createGetLayerControlTokenValueFn
   >,
+  timeContext: { now: Date; utcOffsetSeconds: number } = {
+    now: new Date(),
+    utcOffsetSeconds: 0,
+  },
 ) {
   const layers: {
     id: string;
@@ -60,6 +65,7 @@ export async function getLayersFromMetadata(
       const activeStateIndex = await getActiveStateIndex(
         state,
         getLayerControlTokenValue,
+        timeContext,
       );
 
       // @ts-ignore
@@ -95,6 +101,7 @@ async function getActiveStateIndex(
   getLayerControlTokenValue: ReturnType<
     typeof createGetLayerControlTokenValueFn
   >,
+  timeContext: { now: Date; utcOffsetSeconds: number },
 ): Promise<number> {
   if ('token-id' in layer.states) {
     return getLayerControlTokenValue(
@@ -137,25 +144,11 @@ async function getActiveStateIndex(
   }
 
   if ('time' in layer.states) {
-    const date = new Date();
-    const measureValue =
-      {
-        SECONDS: date.getTime() / 1000,
-        MONTH: date.getUTCMonth(),
-        HOUR_OF_DAY: date.getUTCHours(),
-        DAY_OF_MONTH: date.getUTCDate() - 1,
-        DAY_OF_YEAR:
-          (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
-            Date.UTC(date.getUTCFullYear(), 0, 0)) /
-          86_400_000,
-      }[layer.states.time.type] || 0;
-
-    const { handler } = layer.states.time;
-    return handler.type === 'MODULO'
-      ? measureValue % (handler.max_bound_inclusive + 1)
-      : handler.rules.find(
-          (ruleSet) => measureValue >= ruleSet[0] && measureValue <= ruleSet[1],
-        )?.[2] || 0;
+    return getTimeStateIndex(
+      layer.states.time,
+      timeContext.now,
+      timeContext.utcOffsetSeconds,
+    );
   }
 
   return 0;
@@ -172,9 +165,7 @@ export function createGetLayerControlTokenValueFn(
   return async (relativeLayerTokenId: number, leverId: number) => {
     const layerTokenId = masterTokenId + relativeLayerTokenId;
 
-    if (
-      controlOverrides[`${layerTokenId}-${leverId}`] !== undefined
-    ) {
+    if (controlOverrides[`${layerTokenId}-${leverId}`] !== undefined) {
       return controlOverrides[`${layerTokenId}-${leverId}`];
     }
 
