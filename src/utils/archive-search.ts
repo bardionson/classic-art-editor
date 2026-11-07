@@ -42,6 +42,9 @@ const normalize = (text: string) =>
     .replace(/\s+/g, ' ');
 const records = snapshot.records as ArchiveRecord[];
 const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
+export function getBlueprintRecords() {
+  return records.filter((r) => r.family === 'blueprints');
+}
 export function getArchiveRecordByCid(cid: string) {
   return byCid.get(cid);
 }
@@ -75,6 +78,7 @@ export function searchArchive(
   family = 'all',
   page = 1,
   status = 'all',
+  blueprintId?: string,
 ) {
   const raw = query.trim().slice(0, 300);
   const q = normalize(raw);
@@ -139,6 +143,7 @@ export function searchArchive(
     familyCounts[record.family] = (familyCounts[record.family] ?? 0) + 1;
   const filtered = hits.filter(
     ({ record }) =>
+      (!blueprintId || record.blueprintId === blueprintId) &&
       (family === 'all' || record.family === family) &&
       (status === 'all' || displayStatus(record) === status),
   );

@@ -15,9 +15,16 @@ export default function MetadataArtworkPage({
     <main className="container mx-auto px-4 py-8 max-w-5xl">
       <Link
         className="text-accent underline text-sm"
-        href={`/search?${new URLSearchParams({ family: record.family })}`}
+        href={
+          record.family === 'blueprints' && record.blueprintId
+            ? `/archive/blueprints/project/${record.blueprintId}`
+            : `/search?${new URLSearchParams({ family: record.family })}`
+        }
       >
-        Back to {familyTitle(record.family)}
+        Back to{' '}
+        {record.family === 'blueprints' && record.blueprintId
+          ? 'project editions'
+          : familyTitle(record.family)}
       </Link>
       <h1 className="text-3xl font-bold mt-6 mb-2 break-words">
         {record.name}

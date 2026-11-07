@@ -105,3 +105,21 @@ Metadata CID verification, reported token identity, image availability and dynam
 behavior are independent. Blueprint preview pages explain that unrevealed or
 historical images may survive and that Dynamic Blueprint expansion items are not
 the assembled core. No fabricated metadata, new minting or database is introduced.
+
+## Blueprint project browsing
+
+Blueprints opens a paginated project directory (201 reported project IDs covering
+9,065 indexed editions in the current snapshot). Grouping uses the manifest's
+blueprint ID, never a title or shared minting contract. Distinct project IDs remain
+separate even when their names match. Counts are indexed records, not minted supply.
+
+Project labels prefer recovered collection metadata; otherwise they use the most
+common edition title with a trailing edition number removed. The project information
+disclosure identifies this fallback. A representative edition with an indexed image
+is preferred for the project cover; otherwise original metadata is resolved on demand.
+
+The project directory supports artist/title search, largest-first or alphabetical
+sorting, and 24 projects per page. Each stable `/archive/blueprints/project/[projectId]`
+route has an edition gallery, scoped search, and 24 records per page. Global search
+still returns individual editions, now with links to their parent project. Preview
+pages return to the project gallery. Dynamic Blueprint expansion browsing is unchanged.

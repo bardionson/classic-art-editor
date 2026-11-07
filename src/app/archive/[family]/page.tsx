@@ -1,3 +1,4 @@
+import BlueprintProjectGallery from '@/components/blueprint-project-gallery';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -24,8 +25,10 @@ export function generateMetadata({
 }
 export default function ArchivePage({
   params,
+  searchParams,
 }: {
   params: { family: string };
+  searchParams: { q?: string; sort?: string; page?: string };
 }) {
   const family = archiveFamilies.find((f) => f.id === params.family);
   if (!family) notFound();
@@ -57,10 +60,22 @@ export default function ArchivePage({
         {family.description}
       </p>
       <ArchiveNavigation active={family.id} />
-      <div className="rounded-xl border border-border bg-surface-sunken p-5 mb-8">
-        <ArchiveSearchForm family={family.id} />
-      </div>
-      {family.id === 'classic' || isMusic ? (
+      {family.id !== 'blueprints' && (
+        <div className="rounded-xl border border-border bg-surface-sunken p-5 mb-8">
+          <ArchiveSearchForm family={family.id} />
+        </div>
+      )}
+      {family.id === 'blueprints' ? (
+        <BlueprintProjectGallery
+          query={typeof searchParams.q === 'string' ? searchParams.q : ''}
+          sort={searchParams.sort === 'name' ? 'name' : 'largest'}
+          page={
+            typeof searchParams.page === 'string'
+              ? Number(searchParams.page)
+              : 1
+          }
+        />
+      ) : family.id === 'classic' || isMusic ? (
         <>
           <p className="text-text-muted mb-8">
             {isMusic
@@ -77,9 +92,7 @@ export default function ArchivePage({
       ) : (
         <section>
           <h2 className="text-2xl font-semibold mb-3">
-            {family.id === 'blueprints'
-              ? 'Blueprint editions'
-              : 'Dynamic Blueprint expansion items'}
+            Dynamic Blueprint expansion items
           </h2>
           <p className="text-text-muted mb-6">
             {recovered.total.toLocaleString('en-US')} recovered records.
