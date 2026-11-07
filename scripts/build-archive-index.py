@@ -13,6 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT = Path(sys.argv[1])
+from importlib.util import spec_from_file_location, module_from_spec
+spec = spec_from_file_location('supper_import', ROOT / 'scripts/import-supper-zip.py')
+verifier = module_from_spec(spec)
+spec.loader.exec_module(verifier)
 records = []
 by_identity = {}
 by_cid = {}
@@ -112,8 +116,10 @@ with (AUDIT / 'sources/project_manifest.csv').open(encoding='utf-8-sig', newline
 # Enrich only from preserved original metadata bytes; retain reported identity.
 preview_report_path = AUDIT / 'preview-retrieval.json'
 preview_report = json.loads(preview_report_path.read_text()) if preview_report_path.exists() else {}
+zip_report_path = AUDIT / 'supper-zip-import.json'
+zip_report = json.loads(zip_report_path.read_text()).get('records', {}) if zip_report_path.exists() else {}
 cached_files = {}
-for directory in ('supper-metadata', 'preview-metadata'):
+for directory in ('supper-metadata', 'preview-metadata', 'supper-zip-metadata'):
     for path in (AUDIT / directory).glob('*.json'):
         cached_files[path.stem] = path
 for record in records:
@@ -121,9 +127,29 @@ for record in records:
     if not cid:
         continue
     for path in ([cached_files[cid]] if cid in cached_files else []):
+        if path.parent.name == 'supper-zip-metadata':
+            if not zip_report.get(cid, {}).get('cidVerified') or not verifier.verify(cid, path.read_bytes()):
+                raise ValueError('Unverified ZIP cache: ' + cid)
+            destination = ROOT / 'public/archive/metadata' / (cid + '.json')
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(path.read_bytes())
+            record['metadataLocal'] = True
+            record['metadataVerified'] = True
         data = json.loads(path.read_text())
         if not isinstance(data, dict):
             continue
+        if record.get('metadataLocal'):
+            async_data = data.get('async-attributes') or {}
+            core = async_data.get('dbpContractAddress')
+            if isinstance(core, str) and re.fullmatch(r'0x[0-9a-fA-F]{40}', core):
+                record['coreAddress'] = core.lower()
+            for attribute in data.get('attributes', []):
+                if not isinstance(attribute, dict) or not isinstance(attribute.get('value'), str):
+                    continue
+                if attribute.get('trait_type') == 'Artist' and not record['artist']:
+                    record['artist'] = attribute['value']
+                if attribute.get('trait_type') == 'Slot':
+                    record['slot'] = attribute['value']
         image = data.get('image') or data.get('image_url')
         if isinstance(image, str) and image.startswith(('ipfs://', 'https://', 'Qm', 'bafy')):
             record['image'] = image

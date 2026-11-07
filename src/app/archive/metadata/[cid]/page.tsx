@@ -53,6 +53,25 @@ export default function MetadataArtworkPage({
             <dd className="inline">{record.collection}</dd>
           </div>
         )}
+        {record.coreAddress && (
+          <div>
+            <dt className="font-semibold inline">Metadata core contract: </dt>
+            <dd className="inline">
+              <Link
+                className="text-accent underline"
+                href={`/search?${new URLSearchParams({ q: record.coreAddress, family: 'dynamic-blueprints' })}`}
+              >
+                {record.coreAddress}
+              </Link>
+            </dd>
+          </div>
+        )}
+        {record.slot && (
+          <div>
+            <dt className="font-semibold inline">Slot: </dt>
+            <dd className="inline">{record.slot}</dd>
+          </div>
+        )}
         {record.tokenId && (
           <div>
             <dt className="font-semibold inline">Reported token: </dt>
@@ -78,6 +97,16 @@ export default function MetadataArtworkPage({
       >
         View original metadata ↗
       </a>
+      {record.metadataLocal && (
+        <a
+          className="text-accent underline block mt-3"
+          href={`/archive/metadata/${record.cid}.json`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View preserved metadata copy ↗
+        </a>
+      )}
       {record.metadataVerified && (
         <p className="text-success text-sm mt-3">
           Original metadata CID verified

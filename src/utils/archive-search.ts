@@ -16,6 +16,8 @@ export interface ArchiveRecord {
   source: string;
   identityStatus: string;
   metadataVerified: boolean;
+  metadataLocal?: boolean;
+  slot?: string;
   image?: string;
   imageSource?: string;
   collection?: string;
@@ -58,6 +60,7 @@ const prepared = records.map((record) => ({
       record.artist,
       record.description,
       record.collection,
+      record.slot,
       record.blueprintId,
     ].join(' '),
   ),

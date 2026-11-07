@@ -123,3 +123,35 @@ sorting, and 24 projects per page. Each stable `/archive/blueprints/project/[pro
 route has an edition gallery, scoped search, and 24 records per page. Global search
 still returns individual editions, now with links to their parent project. Preview
 pages return to the project gallery. Dynamic Blueprint expansion browsing is unchanged.
+
+
+## Supplied Forever Supper ZIP recovery
+
+The supplied ZIP contains 1,418 CID-keyed JSON exports plus a duplicate path manifest
+and macOS bookkeeping. `scripts/import-supper-zip.py ZIP AUDIT_DIRECTORY` unwraps
+each JSON, reconstructs compact serialization, and accepts bytes only when the
+single-block UnixFS CIDv0 hash matches the original filename. All 1,418 passed;
+none required invented metadata. Original ZIP bytes, SHA-256 provenance, entry
+names and per-document encoding/hash records remain in `supper-zip-import.json`
+and the audit sources directory. ZIP paths are never extracted or executed.
+
+Rebuilding the index verifies the recovered bytes again and publishes exact copies
+under `public/archive/metadata/<CID>.json`. Artwork pages link these preserved
+copies, retain their original gateway links, and display the metadata-declared core
+contract and slot. Image references, collection names and slot text enter search.
+An indexed image reference does not establish current media availability.
+
+The metadata declares four separate cores:
+
+| Collection | Core contract | Records | Distinct slots |
+| --- | --- | ---: | ---: |
+| Forever Supper | 0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31 | 1,242 | 24 |
+| Forever Supper (ProdTest) | 0x3906a4f3d76b593a78081b2b059c32d2cb2bd26b | 26 | 9 |
+| Open Book | 0x7fa01ab463cd1e5e1de309c3da5144277449d670 | 63 | 6 |
+| Open Book Tester | 0x0b8425daec0153c04d8b29c11b5b8d953935a26c | 87 | 8 |
+
+The recovered objects reference 1,786 distinct asset CIDs. Asset availability,
+expansion token identities, core layout/draw order and current on-chain selections
+still require verification before rendering a faithful changing composition.
+Collection titles, shared descriptions or folder names must not merge these cores.
+The metadata recovery does not claim that composition or automation is restored.

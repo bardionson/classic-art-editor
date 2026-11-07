@@ -1,0 +1,2 @@
+# These files must retain exact CID-verified bytes, including whitespace.
+public/archive/metadata/**/*.json

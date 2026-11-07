@@ -35,6 +35,38 @@ describe('archive-wide recovery search', () => {
     });
     expect(searchArchive(cid.replace('ccdg', 'Ccdg')).total).toBe(0);
   });
+  it('separates recovered production and test core identities', () => {
+    const production = searchArchive(
+      '0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31',
+      'dynamic-blueprints',
+    );
+    const test = searchArchive(
+      '0x3906a4f3d76b593a78081b2b059c32d2cb2bd26b',
+      'dynamic-blueprints',
+    );
+    expect(production.total).toBe(1242);
+    expect(test.total).toBe(26);
+    expect(
+      production.results.every(
+        (r) =>
+          r.metadataVerified &&
+          r.metadataLocal &&
+          r.image &&
+          r.collection === 'Forever Supper',
+      ),
+    ).toBe(true);
+    expect(
+      test.results.every((r) => r.collection === 'Forever Supper (ProdTest)'),
+    ).toBe(true);
+  });
+  it('finds expansions by their recovered slot while retaining exact identities', () => {
+    const result = searchArchive('First Supper Forever', 'dynamic-blueprints')
+      .results[0];
+    expect(result.slot).toBe('Upper Wall (Left)');
+    expect(
+      searchArchive('Upper Wall Left', 'dynamic-blueprints').total,
+    ).toBeGreaterThan(0);
+  });
   it('indexes blueprint editions and searches reported contract/token pairs', () => {
     const result = searchArchive(
       '0x6da21c1c6d791670403b4d5d0e0747b38775a1d2:90',
