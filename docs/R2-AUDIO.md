@@ -39,3 +39,31 @@ node scripts/warm-audio.mjs --base=https://async.art --blueprints
 The script imports serially and reports readiness, MIME, HTTP byte-range support, and CORS without printing signed links. `--all` attempts the full allowlist, subject to the shared import budget; rerun later to retry unavailable objects. Optional `--report=/path/to/report.json` records results. Unknown archive paths cannot be imported through this service.
 
 This provides shared object storage and per-browser caching, not a shared CDN cache. Large files may need a separate offline uploader. Adding more recovered audio requires updating the allowlist with its original metadata provenance.
+
+## Mobile streaming copies
+
+LEAVING (#1605) has 22 preserved WAV variants. The player now prefers small
+AAC-LC 128 kbps stereo M4A listening copies with fast-start metadata. All six
+selected layers still play together; originals remain available through Download.
+`/api/audio/stream` redirects directly to the derivative in R2 when present,
+and falls back to the original if unavailable. `/api/audio` still serves originals.
+
+`src/data/archive-audio-optimized.json` records the exact SHA-256, size, duration,
+original SHA-256 and original size of each verified derivative. These files were
+encoded with FFmpeg 8.0.1 (`-map 0:a:0 -c:a aac -b:a 128k -ar 48000 -ac 2
+-movflags +faststart`), fully decoded to check integrity, and checked for duration
+differences below 0.1 seconds. Original files are never overwritten.
+
+After deploying the manifest, POST the matching binary file to
+`/api/audio/optimized?path=<original IPFS path>`. The endpoint accepts only exact
+committed hashes and lengths, caps bodies at 4 MiB, uses the shared import limiter,
+and writes conditionally to `archive-audio/stream/aac-v1/<sha256>.m4a`.
+GET only checks availability. This is a bounded archive import, not arbitrary
+public uploads. R2 credentials remain on the server. No audio binaries are in Git.
+Objects include original provenance and codec metadata; reads verify this metadata
+and size before signing a six-hour URL. R2 serves byte ranges directly for seeking.
+
+To add more pieces, prepare and verify their derivatives, review and commit the
+new manifest entries, deploy, upload the exact files, and test playback and ranges.
+Never assign a derivative the original file's CID or change archived metadata to
+claim that its bytes are original.

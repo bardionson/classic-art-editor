@@ -24,7 +24,7 @@ export function audioObjectKey(path: string): string {
   return PREFIX + path;
 }
 
-function connection() {
+export function audioStorageConnection() {
   const { R2_ENDPOINT, R2_BUCKET, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY } =
     process.env;
   if (!R2_ENDPOINT || !R2_BUCKET || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY)
@@ -139,7 +139,7 @@ export async function resolveR2Audio(
   importMissing = false,
 ): Promise<AudioDelivery> {
   const key = audioObjectKey(path);
-  const r2 = connection();
+  const r2 = audioStorageConnection();
   if (!r2) return { status: 'disabled' };
   const { client, bucket } = r2;
   const signal = AbortSignal.timeout(53000);
