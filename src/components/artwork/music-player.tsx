@@ -145,7 +145,7 @@ function StemSession({
   );
 }
 
-function CachedStemSession({
+function PreparedStemSession({
   stems,
   gateway,
   compact,
@@ -160,26 +160,26 @@ function CachedStemSession({
   );
   return (
     <div className="space-y-3">
-      {audio.urls ? (
-        <StemSession
-          stems={stems}
-          gateway={gateway}
-          compact={compact}
-          preparedUrls={audio.urls}
-        />
-      ) : (
+      <StemSession
+        key={audio.urls ? 'downloaded' : 'stream'}
+        stems={stems}
+        gateway={gateway}
+        compact={compact}
+        preparedUrls={audio.urls ?? undefined}
+      />
+      {!audio.urls && (
         <button
           className={button}
           onClick={() =>
             audio.loading ? audio.cancel() : void audio.prepare()
           }
         >
-          {audio.loading ? 'Cancel download' : 'Load music'}
+          {audio.loading ? 'Cancel download' : 'Download audio'}
         </button>
       )}
       <p role="status" className="text-xs text-text-muted">
         {audio.message ||
-          'Download the selected stems before playing to avoid network buffering. Repeat listens use this browser’s cache.'}
+          'Press Play to stream. Download audio to save the selected stems in this browser for smoother repeat listening.'}
       </p>
     </div>
   );
@@ -201,7 +201,6 @@ export default function MusicPlayer({
   const [stems, setStems] = useState<MusicStem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
-  const [delivery, setDelivery] = useState('download');
   const [gateway, setGateway] = useState(AUDIO_GATEWAYS[0].url);
   useEffect(() => {
     let cancelled = false;
@@ -265,33 +264,12 @@ export default function MusicPlayer({
       )}
       {stems && (
         <>
-          <label className="block text-xs text-text-muted">
-            Playback mode
-            <select
-              aria-label="Playback mode"
-              value={delivery}
-              onChange={(event) => setDelivery(event.target.value)}
-              className="block w-full mt-1 rounded border border-border bg-surface-sunken p-2 text-text"
-            >
-              <option value="download">Download first (recommended)</option>
-              <option value="stream">Stream directly</option>
-            </select>
-          </label>
-          {delivery === 'download' ? (
-            <CachedStemSession
-              key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
-              stems={stems}
-              gateway={gateway}
-              compact={compact}
-            />
-          ) : (
-            <StemSession
-              key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
-              stems={stems}
-              gateway={gateway}
-              compact={compact}
-            />
-          )}
+          <PreparedStemSession
+            key={`${gateway}:${stems.map((stem) => stem.uri).join(',')}`}
+            stems={stems}
+            gateway={gateway}
+            compact={compact}
+          />
           <details className={`${compact ? 'hidden' : ''} text-sm`}>
             <summary className="cursor-pointer py-2">
               Explore {stems.length} stems
