@@ -1,7 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { searchArchive, archiveCoverage } from './archive-search';
+import {
+  searchArchive,
+  archiveCoverage,
+  getArchiveRecords,
+  getArchiveRecordByCid,
+} from './archive-search';
 
 describe('archive-wide recovery search', () => {
+  it('hides the reviewed earlier master while preserving its archive metadata and replacement', () => {
+    expect(searchArchive('/v2/115').total).toBe(0);
+    expect(searchArchive('/v2/245').total).toBe(1);
+    const earlier =
+      getArchiveRecords(true).find((r) => r.link?.startsWith('/v2/115?')) ??
+      getArchiveRecords(true).find(
+        (r) => r.tokenId === '115' && r.family === 'classic',
+      );
+    expect(earlier).toBeDefined();
+    expect(getArchiveRecords()).not.toContain(earlier);
+    expect(getArchiveRecordByCid(earlier!.cid)).toBeDefined();
+  });
   it('deduplicates identities shared by the master and layer catalogs', () => {
     expect(searchArchive('/v2/1248').total).toBe(1);
     expect(searchArchive('/v2/1249').total).toBe(1);

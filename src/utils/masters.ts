@@ -1,3 +1,4 @@
+import { isArchiveVisible } from './archive-visibility';
 import { IPFS_PATH_GATEWAYS } from './ipfs-gateways';
 import mastersData from '@/masters.json';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
@@ -45,6 +46,8 @@ export function getMastersGalleryItems(): GalleryItem[] {
   Object.keys(data).forEach((contractAddress) => {
     const version = resolveVersion(contractAddress);
     data[contractAddress].forEach((master) => {
+      if (!isArchiveVisible({ contractAddress, tokenId: master.tokenId }))
+        return;
       items.push({
         id: `${contractAddress}-${master.tokenId}`,
         tokenId: master.tokenId,

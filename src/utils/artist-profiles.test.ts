@@ -36,7 +36,11 @@ describe('restored artist profiles', () => {
       expect(
         works.artworks.length +
           works.projects.reduce((n, project) => n + project.count, 0),
-      ).toBe(p.works.length);
+      ).toBe(
+        p.works.filter((w) =>
+          getArchiveRecords().some((r) => r.id === w.recordId),
+        ).length,
+      );
       expect(new Set(p.works.map((w) => w.recordId)).size).toBe(p.works.length);
     }
     expect(
@@ -75,7 +79,7 @@ describe('restored artist profiles', () => {
     ).toBe(true);
   });
   it('ships only historical creators, source-backed identity data, and valid local portrait bytes', async () => {
-    const records = new Map(getArchiveRecords().map((r) => [r.id, r]));
+    const records = new Map(getArchiveRecords(true).map((r) => [r.id, r]));
     expect(new Set(snapshot.profiles.map((p) => p.address)).size).toBe(
       snapshot.profiles.length,
     );

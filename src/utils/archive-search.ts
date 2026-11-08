@@ -1,3 +1,4 @@
+import { isArchiveVisible } from './archive-visibility';
 import snapshot from '@/data/archive-index.json';
 import { dreamRecorderRecords } from './dream-recorder';
 import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
@@ -56,7 +57,7 @@ const recoveredMetadata: Record<
   string,
   Partial<ArchiveRecord>
 > = musicBlueprintMetadata;
-const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[])
+const allRecords: ArchiveRecord[] = (snapshot.records as ArchiveRecord[])
   .map((record) => {
     const project =
       record.family === 'blueprints' && record.blueprintId
@@ -80,9 +81,12 @@ const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[])
       : record;
   })
   .concat(dreamRecorderRecords);
-const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
-export function getArchiveRecords(): readonly ArchiveRecord[] {
-  return records;
+const byCid = new Map(allRecords.filter((r) => r.cid).map((r) => [r.cid, r]));
+const records = allRecords.filter(isArchiveVisible);
+export function getArchiveRecords(
+  includeHidden = false,
+): readonly ArchiveRecord[] {
+  return includeHidden ? allRecords : records;
 }
 
 export function getBlueprintRecords() {
