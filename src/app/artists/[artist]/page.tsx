@@ -16,7 +16,10 @@ import {
 } from '@/utils/artist-profiles';
 import { familyTitle } from '@/utils/archive-families';
 
-type Props = { params: { artist: string }; searchParams: { page?: string } };
+type Props = {
+  params: { artist: string };
+  searchParams: { page?: string; view?: string };
+};
 export function generateMetadata({ params }: Pick<Props, 'params'>): Metadata {
   const profile = getArtistProfile(params.artist);
   return {
@@ -29,7 +32,10 @@ export function generateMetadata({ params }: Pick<Props, 'params'>): Metadata {
 export default function ArtistPage({ params, searchParams }: Props) {
   const profile = getArtistProfile(params.artist);
   if (!profile) notFound();
-  const works = artistWorks(profile);
+  const view = searchParams.view === 'all' ? 'all' : 'complete';
+  const works = artistWorks(profile, view);
+  const artworkHeading =
+    view === 'all' ? 'Artworks & layers' : 'Masters & singletons';
   const page = paginate(works.artworks, Number(searchParams.page) || 1);
   const links = (
     [
@@ -101,6 +107,35 @@ export default function ArtistPage({ params, searchParams }: Props) {
         </div>
       </section>
       {!!works.total && (
+        <div className="mb-6">
+          <nav
+            aria-label="Filter artist works"
+            className="flex flex-wrap gap-3"
+          >
+            {(
+              [
+                ['complete', 'Masters & singletons'],
+                ['all', 'All works & layers'],
+              ] as const
+            ).map(([value, label]) => (
+              <Link
+                key={value}
+                href={`${artistHref(profile)}?${new URLSearchParams({ view: value })}`}
+                aria-current={view === value ? 'page' : undefined}
+                className={`rounded-lg border px-4 py-3 text-sm font-semibold ${view === value ? 'border-accent bg-accent text-white' : 'border-border hover:border-accent'}`}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+          <p className="mt-3 text-sm text-text-muted">
+            {view === 'complete'
+              ? 'Complete artworks, with one card per Blueprint project.'
+              : 'Includes layers, music stems, expansion items, and records still being identified.'}
+          </p>
+        </div>
+      )}
+      {!!works.total && (
         <nav
           aria-label="Artist’s work"
           className="flex flex-wrap gap-5 border-y border-border py-4 mb-8 text-sm"
@@ -113,7 +148,7 @@ export default function ArtistPage({ params, searchParams }: Props) {
           )}
           {!!works.artworks.length && (
             <a href="#artworks" className="text-accent underline">
-              {works.artworks.length} artworks & layers
+              {works.artworks.length} {artworkHeading.toLowerCase()}
             </a>
           )}
         </nav>
@@ -151,7 +186,7 @@ export default function ArtistPage({ params, searchParams }: Props) {
       )}
       {!!works.artworks.length && (
         <section id="artworks" className="scroll-mt-28">
-          <h2 className="text-2xl font-semibold mb-5">Artworks & layers</h2>
+          <h2 className="text-2xl font-semibold mb-5">{artworkHeading}</h2>
           <ArchiveResults
             records={page.items}
             annotations={Object.fromEntries(
@@ -165,11 +200,18 @@ export default function ArtistPage({ params, searchParams }: Props) {
           />
           <ArchivePagination
             pathname={artistHref(profile)}
-            params={{}}
+            params={{ view }}
             page={page.page}
             totalPages={page.totalPages}
           />
         </section>
+      )}
+      {!!works.total && !works.projects.length && !works.artworks.length && (
+        <p className="rounded-xl border border-border p-6 text-text-muted">
+          No masters, singletons, or Blueprint projects have been linked yet.
+          Choose All works & layers to explore this artist’s recovered
+          contributions.
+        </p>
       )}
       {!works.total && (
         <section className="rounded-xl border border-border p-6">

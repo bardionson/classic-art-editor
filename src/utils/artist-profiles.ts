@@ -85,7 +85,11 @@ for (const profile of profiles) {
 export function artistsForRecord(id: string) {
   return artistsByRecord.get(id) ?? [];
 }
-export function artistWorks(profile: ArtistProfile) {
+export type ArtistWorkView = 'complete' | 'all';
+export function artistWorks(
+  profile: ArtistProfile,
+  view: ArtistWorkView = 'all',
+) {
   const linked = profile.works.flatMap((w) => {
     const record = recordsById.get(w.recordId);
     return record ? [{ record, basis: w.basis }] : [];
@@ -100,6 +104,12 @@ export function artistWorks(profile: ArtistProfile) {
         !record.blueprintId || !projectIds.has(record.blueprintId),
     )
     .map(({ record }) => record)
+    // The original catalog includes standalone classic works in its Master list.
+    // Unknown records stay available in All works until their type is recovered.
+    .filter(
+      (record) =>
+        view === 'all' || ['Master', 'Singleton'].includes(record.kind),
+    )
     .sort(
       (a, b) =>
         Number(a.kind === 'Layer') - Number(b.kind === 'Layer') ||

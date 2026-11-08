@@ -47,6 +47,32 @@ describe('restored artist profiles', () => {
       artistWorks(getArtistProfile('coldie')!).projects.length,
     ).toBeGreaterThan(0);
   });
+  it('shows complete works without layers, stems or expansion items and preserves Blueprint projects', () => {
+    let hidden = 0;
+    let completeCount = 0;
+    for (const profile of snapshot.profiles) {
+      const all = artistWorks(profile);
+      const complete = artistWorks(profile, 'complete');
+      expect(complete.projects).toEqual(all.projects);
+      expect(complete.total).toBe(all.total);
+      expect(complete.artworks).toEqual(
+        all.artworks.filter((r) => ['Master', 'Singleton'].includes(r.kind)),
+      );
+      hidden += all.artworks.length - complete.artworks.length;
+      completeCount += complete.artworks.length;
+    }
+    expect(hidden).toBeGreaterThan(0);
+    expect(completeCount).toBeGreaterThan(0);
+    const bard = getArtistProfile('bardionson')!;
+    expect(
+      artistWorks(bard, 'complete').artworks.some(
+        (r) => r.name === 'Resting Place',
+      ),
+    ).toBe(false);
+    expect(
+      artistWorks(bard, 'all').artworks.some((r) => r.name === 'Resting Place'),
+    ).toBe(true);
+  });
   it('ships only historical creators, source-backed identity data, and valid local portrait bytes', () => {
     const records = new Map(getArchiveRecords().map((r) => [r.id, r]));
     expect(new Set(snapshot.profiles.map((p) => p.address)).size).toBe(
