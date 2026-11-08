@@ -29,9 +29,20 @@ export default function BlueprintProjectGallery({
       </p>
       {family === 'music-blueprints' && (
         <p className="text-sm text-text-muted mb-6">
-          Music editions identified from original metadata and historical
-          sources. Open an edition to listen to its original mix alongside the
-          artwork. Some editions still need their metadata or audio recovered.
+          Browse by project and artist, then open an edition to hear its
+          original mix alongside the artwork. Multiple projects share the Async
+          Music Blueprints contract.{' '}
+          <a
+            href={musicBlueprintCatalog.sharedContract.collectionUrl}
+            className="text-accent underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OpenSea lists 4,002 items in that shared collection
+          </a>
+          ; the archive totals above count recovered editions across the
+          projects identified so far. Some editions still need their metadata or
+          audio recovered.
         </p>
       )}
       <form

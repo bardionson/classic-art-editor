@@ -24,7 +24,7 @@ describe('Music Blueprint edition playback', () => {
       });
       sources.add(row.animationUrl);
     }
-    expect(sources.size).toBe(11);
+    expect(sources.size).toBe(18);
   });
   it('serves preserved media while metadata gateways are offline', async () => {
     const fetcher = vi.fn();

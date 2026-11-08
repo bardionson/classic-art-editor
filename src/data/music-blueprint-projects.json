@@ -1,6 +1,6 @@
 {
   "reviewedOn": "2026-11-07",
-  "method": "Explicit project allowlist based on original descriptions, audio-variation traits and historical publisher sources. Animation URLs and artist names alone do not classify a project. Counts reflect available inventory, not supply.",
+  "method": "Reviewed projects identified from original metadata, historical publisher sources and the shared Async Music Blueprints contract. Counts reflect recovered inventory, not total minted supply.",
   "projects": [
     {
       "id": "6299ca161f3e98af7d976a6f",
@@ -85,6 +85,48 @@
       "name": "Danktone 003",
       "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVfsWbbJYQ9Hifrkzo21LiU464FNfPJvu1GY1kpPnVFzB",
       "basis": "Recovered music, host, guest and Stella sound variation traits identify generative audio editions."
+    },
+    {
+      "id": "6339b8621d95bb5f835cba4b",
+      "name": "Exo Orb",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmeCZv7vEvN12X1tsyW9FsvkMs3gtN2pZtiJsuhuBKdQxp",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "6311374d5796f778b920d372",
+      "name": "cr0 by G3ARZ",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmVwoyuZprJzoqrKtjrxJwcfixoVwZdRbz7WeArsPixGP2",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "631c8c13df536872b28161fb",
+      "name": "Better Way",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmUXZVcf9kCxnxKEz7heFqybgoXXebtam3sN4K6LKu9ndG",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "632dd72182410d94ac247b37",
+      "name": "Yoga & Music",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmNuGkoXn1AMPQaDQqm9LpVRbXCMYqbcW73T9KvxsNBiCv",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "62e76f1defb68bc2a42425a8",
+      "name": "Any body?",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmeFMK3yqUEELeA5CmrgJJLPPbYso7Bo2ZkFknUfT4LR3Y",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "63076923ff32ff94231b83f8",
+      "name": "The Syndicate",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmWKY6NYV3Ya8rCTZb56p9FmmTcsof2ZVw5NCYEyeZCJTX",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "6311454f489bfeffacbb1f07",
+      "name": "Slip Away",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQWikaQWP7BMF2LwVHSDPAeu4CRXp7mzyApqgXffy1pQ2",
+      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
     }
   ],
   "awaitingRecovery": [
@@ -103,5 +145,12 @@
       "artist": "Daniel Maszkowicz",
       "evidenceUrl": "https://maszkowicz.art/nfts/"
     }
-  ]
+  ],
+  "sharedContract": {
+    "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+    "name": "Async Music Blueprints",
+    "collectionUrl": "https://opensea.io/collection/async-music-blueprints",
+    "reportedItems": 4002,
+    "countBasis": "OpenSea collection listing observed 2026-11-07; not an independently enumerated on-chain supply."
+  }
 }

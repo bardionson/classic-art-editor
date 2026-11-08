@@ -20,8 +20,8 @@ describe('Music Blueprint archive category', () => {
   it('partitions every Blueprint edition once without changing identities or the total inventory', () => {
     const music = browseBlueprintProjects('', 'name', 1, 'music-blueprints');
     const visual = browseBlueprintProjects('', 'name', 1, 'blueprints');
-    expect(music.allProjects).toBe(14);
-    expect(music.editions).toBe(1666);
+    expect(music.allProjects).toBe(21);
+    expect(music.editions).toBe(1673);
     expect(music.allProjects + visual.allProjects).toBe(201);
     expect(music.editions + visual.editions).toBe(9065);
     expect(archiveCoverage.total).toBe(snapshot.records.length);
@@ -33,6 +33,27 @@ describe('Music Blueprint archive category', () => {
       music.projects.every((p) => !visual.projects.some((v) => v.id === p.id)),
     ).toBe(true);
     expect(new Set(getBlueprintRecords().map((r) => r.id)).size).toBe(9065);
+  });
+  it('includes every recovered edition on the shared music contract', () => {
+    const contractRecords = snapshot.records.filter(
+      (r) => r.contractAddress.toLowerCase() === catalog.sharedContract.address,
+    );
+    expect(contractRecords).toHaveLength(48);
+    for (const record of contractRecords) {
+      const resolved = getArchiveRecordByCid(record.cid)!;
+      expect(resolved.family).toBe('music-blueprints');
+      expect(resolved.tokenId).toBe(record.tokenId);
+      expect(resolved.contractAddress).toBe(record.contractAddress);
+    }
+    expect(getBlueprintProject('631c8c13df536872b28161fb')?.name).toBe(
+      'Better Way',
+    );
+    expect(getBlueprintProject('6311454f489bfeffacbb1f07')?.name).toBe(
+      'Slip Away',
+    );
+    expect(
+      searchArchive('Better Way', 'music-blueprints').results[0]?.tokenId,
+    ).toBe('13855');
   });
   it('finds original project names and keeps master music and ordinary Blueprints separate', () => {
     for (const [query, count] of [
@@ -107,7 +128,7 @@ describe('Music Blueprint archive category', () => {
     expect(element.results.every((r) => !r.metadataLocal)).toBe(true);
     const grouped = groupBlueprintProjects(getBlueprintRecords());
     expect(grouped.filter((p) => p.family === 'music-blueprints')).toHaveLength(
-      14,
+      21,
     );
   });
 });

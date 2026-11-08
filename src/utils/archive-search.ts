@@ -60,12 +60,16 @@ const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[]).map(
       record.family === 'blueprints' && record.blueprintId
         ? musicProjects.get(record.blueprintId)
         : undefined;
-    return project
+    const isMusicContract =
+      record.family === 'blueprints' &&
+      record.contractAddress.toLowerCase() ===
+        musicBlueprintCatalog.sharedContract.address;
+    return project || isMusicContract
       ? {
           ...record,
           ...recoveredMetadata[record.cid],
           family: 'music-blueprints',
-          collection: project.name,
+          collection: project?.name ?? record.collection,
         }
       : record;
   },
@@ -83,6 +87,7 @@ const prepared = records.map((record) => ({
   record,
   name: normalize(record.name),
   artist: normalize(record.artist),
+  collection: normalize(record.collection ?? ''),
   text: normalize(
     [
       record.name,
@@ -142,37 +147,41 @@ export function searchArchive(
       /(?:^|\/)((?:[Qq][Mm][a-zA-Z0-9]{44}|b[a-z2-7]{20,}))(?:$|[/?#])/,
     )?.[1] ?? ipfsPath(raw)?.split('/')[0];
   const terms = q.split(' ').filter(Boolean);
-  const hits = prepared.flatMap(({ record, name, artist, text, imageCid }) => {
-    let score = 0;
-    if (cid) {
-      if (record.cid !== cid && imageCid !== cid) return [];
-      score = record.cid === cid ? 120 : 115;
-    } else if (canonicalToken !== undefined) {
-      if (
-        record.tokenId !== canonicalToken ||
-        (contract && record.contractAddress.toLowerCase() !== contract)
-      )
-        return [];
-      score = 110;
-    } else if (isAddress) {
-      if (
-        record.contractAddress.toLowerCase() !== lower &&
-        record.coreAddress?.toLowerCase() !== lower
-      )
-        return [];
-      score = 100;
-    } else if (q) {
-      if (name === q) score = 90;
-      else if (artist === q) score = 85;
-      else if (name.includes(q)) score = 70;
-      else if (artist.includes(q)) score = 65;
-      else if (terms.every((term) => (name + ' ' + artist).includes(term)))
-        score = 50;
-      else if (terms.every((term) => text.includes(term))) score = 10;
-      else return [];
-    }
-    return [{ record, score }];
-  });
+  const hits = prepared.flatMap(
+    ({ record, name, artist, collection, text, imageCid }) => {
+      let score = 0;
+      if (cid) {
+        if (record.cid !== cid && imageCid !== cid) return [];
+        score = record.cid === cid ? 120 : 115;
+      } else if (canonicalToken !== undefined) {
+        if (
+          record.tokenId !== canonicalToken ||
+          (contract && record.contractAddress.toLowerCase() !== contract)
+        )
+          return [];
+        score = 110;
+      } else if (isAddress) {
+        if (
+          record.contractAddress.toLowerCase() !== lower &&
+          record.coreAddress?.toLowerCase() !== lower
+        )
+          return [];
+        score = 100;
+      } else if (q) {
+        if (name === q) score = 90;
+        else if (collection === q) score = 88;
+        else if (artist === q) score = 85;
+        else if (name.includes(q)) score = 70;
+        else if (collection.includes(q)) score = 68;
+        else if (artist.includes(q)) score = 65;
+        else if (terms.every((term) => (name + ' ' + artist).includes(term)))
+          score = 50;
+        else if (terms.every((term) => text.includes(term))) score = 10;
+        else return [];
+      }
+      return [{ record, score }];
+    },
+  );
   const familyCounts: Record<string, number> = {};
   for (const { record } of hits)
     familyCounts[record.family] = (familyCounts[record.family] ?? 0) + 1;
