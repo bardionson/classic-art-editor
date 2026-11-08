@@ -166,5 +166,12 @@
     "Original individual base PNGs remain pending retrieval.",
     "Collector item selections were signed off-chain and stored in the old database.",
     "Recovered expansion metadata counts are not minted supply."
-  ]
+  ],
+  "exactSourceFileSha256": {
+    "original-page-data.json": "c2a1a15c3247fcecc0bbaab2ff52f442a73fa4c404fd1ff95a33af81ead482b5",
+    "edition-14.json": "311d8fb44a3bbfbd62ac08af96b5bd73c2fcabe296e377d92e945d9d21bf7819",
+    "edition-95.json": "7f241d225e878b72a34220559d77cb546fed1a45dd708166732e07b9c3548608",
+    "edition-156.json": "d08ad915bacab80306618a9eb68e9be2bf1eac0ee00c9398aff3312a23376c25",
+    "edition-434.json": "9623203cfe1cbf6e4dc937512c175ab6a5317f94c8dc9da99c93ffb20401f233"
+  }
 }

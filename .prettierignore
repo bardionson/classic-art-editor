@@ -1,2 +1,6 @@
 # These files must retain exact CID-verified bytes, including whitespace.
 public/archive/metadata/**/*.json
+
+# Historical source captures retain the exact recovered bytes.
+public/archive/forever-supper/original-page-data.json
+public/archive/forever-supper/edition-*.json
