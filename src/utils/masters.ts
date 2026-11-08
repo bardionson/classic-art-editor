@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from './ipfs-gateways';
 import mastersData from '@/masters.json';
 import { V1_CONTRACT_ADDRESS, V2_CONTRACT_ADDRESS } from '@/config';
 import type { GalleryItem } from '@/components/gallery/Gallery';
@@ -33,7 +34,7 @@ export function resolveVersion(contractAddress: string): 'v1' | 'v2' {
 // silently broken thumbnails in prod), so normalize them to a gateway URL.
 export function normalizeImageUrl(imageUrl: string): string {
   if (!imageUrl || imageUrl.startsWith('http')) return imageUrl;
-  return `https://ipfs.io/ipfs/${imageUrl.replace(/^ipfs:\/\//, '')}`;
+  return `${IPFS_PATH_GATEWAYS[0]}${imageUrl.replace(/^ipfs:\/\//, '')}`;
 }
 
 export function getMastersGalleryItems(): GalleryItem[] {

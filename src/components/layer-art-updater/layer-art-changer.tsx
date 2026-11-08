@@ -128,7 +128,7 @@ function FormScreen({ onSubmit }: FormScreenProps) {
           id="ipfsGatewayURL"
           name="ipfsGatewayURL"
           className="mt-1"
-          placeholder="https://ipfs.io"
+          placeholder="https://ipfs.filebase.io"
           defaultValue={getCustomIPFSGateway()}
         />
       </div>

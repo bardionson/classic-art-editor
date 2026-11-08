@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   allowedArchiveImage,
@@ -25,7 +26,7 @@ export async function GET(request: NextRequest) {
   } catch {
     /* Keep the exact original IPFS fallback available. */
   }
-  return NextResponse.redirect('https://ipfs.filebase.io/ipfs/' + path, {
+  return NextResponse.redirect(IPFS_PATH_GATEWAYS[0] + path, {
     status: 307,
     headers,
   });

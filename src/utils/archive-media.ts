@@ -1,14 +1,11 @@
+import { IPFS_PATH_GATEWAYS } from './ipfs-gateways';
 import imageSources from '@/data/archive-image-sources.json';
 import mediaTypes from '@/data/archive-media-types.json';
 
 // Only original image references are used as previews. Metadata CIDs themselves
 // are JSON documents, not images. Never inject inline HTML/SVG markup from metadata; referenced images use an img element.
 export const IPFS_CID = /^(?:Qm[1-9A-HJ-NP-Za-km-z]{44}|b[a-z2-7]{20,})$/;
-export const MEDIA_GATEWAYS = [
-  'https://gateway.pinata.cloud/ipfs/',
-  'https://ipfs.io/ipfs/',
-  'https://alchemy.mypinata.cloud/ipfs/',
-];
+export const MEDIA_GATEWAYS = IPFS_PATH_GATEWAYS;
 
 export function ipfsPath(value: string): string | null {
   let path = value.trim().replace(/^ipfs:\/\/(?:ipfs\/)?/i, '');
@@ -124,7 +121,6 @@ export function archiveImageCandidates(value: string): string[] {
     ? [
         `/api/archive/image?path=${encodeURIComponent(path)}`,
         ...imageCandidates(value),
-        `https://ipfs.filebase.io/ipfs/${path}`,
       ]
     : imageCandidates(value);
 }

@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from './ipfs-gateways';
 import { createHash } from 'node:crypto';
 import {
   HeadObjectCommand,
@@ -16,12 +17,7 @@ import {
 
 export const MAX_IMAGE_BYTES = 128 * 1024 * 1024;
 const PREFIX = 'archive-images/v1/';
-const GATEWAYS = [
-  'https://ipfs.filebase.io/ipfs/',
-  'https://gateway.pinata.cloud/ipfs/',
-  'https://alchemy.mypinata.cloud/ipfs/',
-  'https://ipfs.io/ipfs/',
-];
+const GATEWAYS = IPFS_PATH_GATEWAYS;
 const allowed = new Set<string>(sources);
 export function allowedArchiveImage(path: string): boolean {
   return allowed.has(path);

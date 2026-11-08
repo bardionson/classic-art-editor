@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
 import { notFound } from 'next/navigation';
@@ -112,7 +113,7 @@ export default function MetadataArtworkPage({
       </dl>
       <a
         className="text-accent underline inline-block mt-5"
-        href={`https://gateway.pinata.cloud/ipfs/${record.cid}`}
+        href={`${IPFS_PATH_GATEWAYS[0]}${record.cid}`}
         target="_blank"
         rel="noopener noreferrer"
       >

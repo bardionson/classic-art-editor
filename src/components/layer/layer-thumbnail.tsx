@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { imageCandidates, ipfsPath } from '@/utils/archive-media';
+import { imageCandidates } from '@/utils/archive-media';
 
 export default function LayerThumbnail({
   imageUrl,
@@ -19,13 +19,7 @@ function Thumbnail({ imageUrl, name }: { imageUrl: string; name: string }) {
   const [visible, setVisible] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const candidates = imageCandidates(imageUrl).sort(
-    (a, b) =>
-      Number(b.startsWith('https://alchemy.mypinata.cloud/')) -
-      Number(a.startsWith('https://alchemy.mypinata.cloud/')),
-  );
-  const path = ipfsPath(imageUrl);
-  if (path) candidates.splice(1, 0, `https://ipfs.filebase.io/ipfs/${path}`);
+  const candidates = imageCandidates(imageUrl);
   const url = candidates[attempt];
 
   useEffect(() => {

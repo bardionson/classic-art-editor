@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from './ipfs-gateways';
 import { createHash } from 'node:crypto';
 import {
   S3Client,
@@ -11,11 +12,7 @@ import sources from '@/data/archive-audio-sources.json';
 
 export const MAX_AUDIO_BYTES = 96 * 1024 * 1024;
 const PREFIX = 'archive-audio/v1/';
-const GATEWAYS = [
-  'https://alchemy.mypinata.cloud/ipfs/',
-  'https://gateway.pinata.cloud/ipfs/',
-  'https://ipfs.io/ipfs/',
-];
+const GATEWAYS = IPFS_PATH_GATEWAYS;
 export function allowedAudio(path: string): boolean {
   return Object.prototype.hasOwnProperty.call(sources, path);
 }

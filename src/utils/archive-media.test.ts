@@ -30,9 +30,12 @@ describe('original archive previews', () => {
   });
   it('preserves CID casing and paths across gateway fallbacks', () => {
     expect(ipfsPath(`ipfs://ipfs/${cid}/cover.png`)).toBe(`${cid}/cover.png`);
-    expect(
-      imageCandidates(`https://ipfs.io/ipfs/${cid}/cover.png`),
-    ).toHaveLength(3);
+    expect(imageCandidates(`https://ipfs.io/ipfs/${cid}/cover.png`)).toEqual([
+      `https://ipfs.filebase.io/ipfs/${cid}/cover.png`,
+      `https://alchemy.mypinata.cloud/ipfs/${cid}/cover.png`,
+      `https://gateway.pinata.cloud/ipfs/${cid}/cover.png`,
+      `https://ipfs.io/ipfs/${cid}/cover.png`,
+    ]);
     expect(imageCandidates(cid).every((url) => url.endsWith(cid))).toBe(true);
   });
   it('rejects executable, local and malformed media references', () => {

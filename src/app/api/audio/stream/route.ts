@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
 import { NextRequest, NextResponse } from 'next/server';
 import { allowedAudio, resolveR2Audio } from '@/utils/r2-audio';
 
@@ -22,7 +23,7 @@ export async function GET(request: NextRequest) {
       /* Use the preserved original if the streaming copy is unavailable. */
     }
   }
-  let url = 'https://alchemy.mypinata.cloud/ipfs/' + path;
+  let url = IPFS_PATH_GATEWAYS[0] + path;
   try {
     const result = await resolveR2Audio(path);
     if (result.status === 'ready') url = result.url;

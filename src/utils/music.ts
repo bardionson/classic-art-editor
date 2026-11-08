@@ -1,11 +1,10 @@
+import { IPFS_GATEWAYS } from './ipfs-gateways';
 import { archiveAudioUrl } from './audio-delivery';
 import { MasterArtNFTMetadata } from '@/types/shared';
 
 export const AUDIO_GATEWAYS = [
   { name: 'Archive audio (R2)', url: 'archive' },
-  { name: 'Alchemy IPFS', url: 'https://alchemy.mypinata.cloud' },
-  { name: 'Pinata', url: 'https://gateway.pinata.cloud' },
-  { name: 'IPFS.io', url: 'https://ipfs.io' },
+  ...IPFS_GATEWAYS,
 ];
 
 /** Keep the archived CID unchanged when selecting a delivery gateway. */

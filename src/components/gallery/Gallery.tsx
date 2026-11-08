@@ -1,5 +1,6 @@
 'use client';
 
+import { ipfsPath } from '@/utils/archive-media';
 import ArtistName from '@/components/artist-name';
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
@@ -204,7 +205,7 @@ export default function Gallery({
                     aria-label={`View ${item.name}`}
                     className="block relative w-full h-full"
                   >
-                    {item.isLayer ? (
+                    {item.isLayer || ipfsPath(item.imageUrl) ? (
                       <LayerThumbnail
                         imageUrl={item.imageUrl}
                         name={item.name}

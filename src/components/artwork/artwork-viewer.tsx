@@ -1,5 +1,7 @@
 'use client';
 
+import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
+
 import ArtistName from '@/components/artist-name';
 import { useState, useEffect, useRef } from 'react';
 import {
@@ -447,7 +449,7 @@ export default function ArtworkViewer({
                 <li key={layer.id} className="break-all">
                   {layer.id}:{' '}
                   <a
-                    href={`https://ipfs.io/ipfs/${sanitizedHash}`}
+                    href={`${IPFS_PATH_GATEWAYS[0]}${sanitizedHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -1,3 +1,4 @@
+import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
 import ArchivePreview from '@/components/archive-preview';
@@ -130,7 +131,7 @@ export default function ArchiveResults({
               {record.cid && (
                 <a
                   className="text-accent underline inline-block mt-2"
-                  href={`https://gateway.pinata.cloud/ipfs/${record.cid}`}
+                  href={`${IPFS_PATH_GATEWAYS[0]}${record.cid}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

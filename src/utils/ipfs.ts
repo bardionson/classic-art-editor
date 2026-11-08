@@ -1,3 +1,5 @@
+import { IPFS_GATEWAYS } from './ipfs-gateways';
+
 const IPFS_GATEWAY_URL_LC_KEY = 'ipfsGatewayURL';
 
 export function getCustomIPFSGateway() {
@@ -17,9 +19,7 @@ export async function fetchIpfs(
   const gatewayURLs = customGateway
     ? [customGateway]
     : [
-        'https://ipfs.io',
-        'https://cloudflare-ipfs.com',
-        'https://gateway.pinata.cloud',
+        ...IPFS_GATEWAYS.map(({ url }) => url),
         'https://dweb.link',
         'https://hardbin.com',
       ];
