@@ -1,5 +1,6 @@
 'use client';
 
+import ArtistName from '@/components/artist-name';
 import LayerThumbnail from '@/components/layer/layer-thumbnail';
 import { Address } from 'viem';
 import Spinner from '@/components/common/spinner';
@@ -54,7 +55,7 @@ export default function LayerDetailContent({
       {data.artistName && (
         <p className="text-sm text-text">
           <span className="text-text-muted">Artist: </span>
-          {data.artistName}
+          <ArtistName credit={data.artistName} />
         </p>
       )}
 

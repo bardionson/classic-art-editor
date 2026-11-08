@@ -1,5 +1,6 @@
 'use client';
 
+import ArtistName from '@/components/artist-name';
 import { useState, useEffect, useRef } from 'react';
 import {
   XCircle,
@@ -392,9 +393,15 @@ export default function ArtworkViewer({
                 <h2 className="text-lg font-bold mt-4 text-text">Artists</h2>
                 <ul className="text-text-muted">
                   {artists.length > 0
-                    ? artists.map((artist) => <li key={artist}>{artist}</li>)
+                    ? artists.map((artist) => (
+                        <li key={artist}>
+                          <ArtistName credit={artist} />
+                        </li>
+                      ))
                     : metadata['async-attributes']?.artists?.map((artist) => (
-                        <li key={artist}>{artist}</li>
+                        <li key={artist}>
+                          <ArtistName credit={artist} />
+                        </li>
                       ))}
                 </ul>
                 <h2 className="text-lg font-bold mt-4 text-text">Collector</h2>

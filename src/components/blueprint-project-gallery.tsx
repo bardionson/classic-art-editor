@@ -1,3 +1,4 @@
+import ArtistName from '@/components/artist-name';
 import Link from 'next/link';
 import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
 import ArchivePreview from '@/components/archive-preview';
@@ -115,7 +116,7 @@ export default function BlueprintProjectGallery({
               </Link>
             </h3>
             <p className="text-sm text-text-muted mt-1 break-words">
-              {project.artists.join(', ')}
+              <ArtistName credit={project.artists.join(', ')} />
             </p>
             <p className="text-sm mt-3">
               {project.count.toLocaleString('en-US')} indexed{' '}
@@ -177,7 +178,7 @@ export default function BlueprintProjectGallery({
                 >
                   {project.name}
                 </a>{' '}
-                — {project.artist}
+                — <ArtistName credit={project.artist} />
               </li>
             ))}
           </ul>

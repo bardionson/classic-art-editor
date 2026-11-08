@@ -1,0 +1,1854 @@
+[
+  {
+    "address": "0x01cb023186cab05220554ee75b4d69921dd051f1",
+    "href": "/artists/bardionson",
+    "names": ["Bård Ionson", "bardionson", "BÃ¥rd Ionson"]
+  },
+  {
+    "address": "0x02575b52ccd918f841218aedac08b00154258784",
+    "href": "/artists/brokenpixels",
+    "names": ["BrokenPixels", "brokenpixels"]
+  },
+  {
+    "address": "0x036403fbfe5e7349f09cb1b2275e4a652ea565d4",
+    "href": "/artists/space-invasion",
+    "names": ["Space Invasion", "space-invasion"]
+  },
+  {
+    "address": "0x058a87ef96f6dc3cadd51a8c86cb6372506ad20e",
+    "href": "/artists/polyptech",
+    "names": ["Polyptech", "polyptech"]
+  },
+  {
+    "address": "0x06c00ec56c165da0ef0149bf3ed83385c59b5592",
+    "href": "/artists/love-from-gaia",
+    "names": ["Love From Gaia", "love-from-gaia"]
+  },
+  {
+    "address": "0x085f6968857291a29b37cad3ec8ff33f1fe76102",
+    "href": "/artists/ademc",
+    "names": ["Ade M. Campbell", "ademc"]
+  },
+  {
+    "address": "0x095d58cf4672f0dc05478111c1f7482dba22903e",
+    "href": "/artists/mzlotsky",
+    "names": ["Mark Zlotsky", "mzlotsky"]
+  },
+  {
+    "address": "0x098b160335b64f42a18460a21fa42cc1262a3b26",
+    "href": "/artists/kaiwan",
+    "names": ["Kaiwan Shaban", "kaiwan"]
+  },
+  {
+    "address": "0x09abfc7da3b956373fa9217ed05d033414a8cbe1",
+    "href": "/artists/blacknwhite",
+    "names": ["blacknwhite"]
+  },
+  {
+    "address": "0x0bcb637120b12e976e096a18e803c4e25b3ebe71",
+    "href": "/artists/kalkaman",
+    "names": ["Murat Kalkavan", "kalkaman"]
+  },
+  {
+    "address": "0x0bfbbd04e9265b28f047353c0678f895ff64ac17",
+    "href": "/artists/okin",
+    "names": ["Okin", "okin"]
+  },
+  {
+    "address": "0x0dd399a7ed92283e4983c2974fe377070d67f4eb",
+    "href": "/artists/greencross",
+    "names": ["greencross"]
+  },
+  {
+    "address": "0x0e7da23202b2981d3aaecd74900a27b996102034",
+    "href": "/artists/carolyn",
+    "names": ["Carolyn", "carolyn", "astralswim", "ASTRAL SWIM"]
+  },
+  {
+    "address": "0x0f0c6237cca0f11ae1b3639e5affd2a5be02f1a5",
+    "href": "/artists/frank-ape",
+    "names": ["Frank Ape", "frank-ape"]
+  },
+  {
+    "address": "0x0f506baf67afb82b3830dabef1e3a68dc29fc987",
+    "href": "/artists/fangjingjing",
+    "names": ["Fangjingjing", "fangjingjing"]
+  },
+  {
+    "address": "0x0f6a1e8cd1169fc477e1d337b6c4d3dc509ce7b6",
+    "href": "/artists/uweheinedebrodt",
+    "names": ["Uwe Heine Debrodt", "uweheinedebrodt"]
+  },
+  {
+    "address": "0x1028e34f2c628e364084c99f37e6260cf9db18d2",
+    "href": "/artists/biterrror",
+    "names": ["Bit Errror", "biterrror"]
+  },
+  {
+    "address": "0x10414b5ebe5bd23211d4629f0cfb4e3a3a56c5b7",
+    "href": "/artists/mons-24",
+    "names": ["Mons.24", "mons-24"]
+  },
+  {
+    "address": "0x10b54d8e8e7ea708e5c71915401261f92e03b376",
+    "href": "/artists/rubenalexander",
+    "names": ["Ruben Alexander", "rubenalexander"]
+  },
+  {
+    "address": "0x11142e97271d26febef714a117fea7d279f77378",
+    "href": "/artists/sam",
+    "names": ["SamJ", "sam"]
+  },
+  {
+    "address": "0x11a9583750806c3f521254c8e930991cd6139b30",
+    "href": "/artists/aussiecyberguru",
+    "names": ["AussieCyberGuru", "aussiecyberguru"]
+  },
+  {
+    "address": "0x12f9d54d6f0574f98009fbe971abe2360b2f579e",
+    "href": "/artists/patriciacosta",
+    "names": ["Patricia Costa", "patriciacosta"]
+  },
+  {
+    "address": "0x13591d9f20bfeccc5255e3e3fcdbd9b684f82011",
+    "href": "/artists/hmltd",
+    "names": ["HMLTD", "hmltd"]
+  },
+  {
+    "address": "0x14287e62b859a3a5e19b3c2d59ed1f12ac94ba4c",
+    "href": "/artists/giselxflorez",
+    "names": ["Gisel X", "giselxflorez"]
+  },
+  {
+    "address": "0x14e14a0a3ed42cb63747ec8c8d15661f00d68677",
+    "href": "/artists/tantan",
+    "names": ["TANTAN", "tantan"]
+  },
+  {
+    "address": "0x14e66025cbaaa8c86ba4fbddc10e5d7a0930b0d9",
+    "href": "/artists/ch3iron",
+    "names": ["Ch3iron", "ch3iron"]
+  },
+  {
+    "address": "0x15e43b025a909eed84a42212093488ebb3409714",
+    "href": "/artists/kittybast",
+    "names": ["Kitty Bast", "kittybast"]
+  },
+  {
+    "address": "0x16036142097c616f8066a0bbd3b4d1191843f7e2",
+    "href": "/artists/Jhanu",
+    "names": ["Jhanu", "jhanu"]
+  },
+  {
+    "address": "0x16bb2c6f1b28f115ba77330ccfc0e6df7c131bb0",
+    "href": "/artists/mehmet",
+    "names": ["Mehmet Kürşat Aydın", "mehmet"]
+  },
+  {
+    "address": "0x16fe0bc26f663ef574d786b8fccf26499c0acf6f",
+    "href": "/artists/skogrand",
+    "names": ["Trygve Skogrand", "skogrand"]
+  },
+  {
+    "address": "0x17c297b2f6b906bc185cca876310fe315c1ac4db",
+    "href": "/artists/reai-art",
+    "names": ["reAI_art", "reai-art"]
+  },
+  {
+    "address": "0x18218d55116b394918124837c512c9c7700ac725",
+    "href": "/artists/ryan",
+    "names": ["Ryan", "ryan"]
+  },
+  {
+    "address": "0x187dad1e0dd5e599091c2ec88e89afb4cde4b7a3",
+    "href": "/artists/skeenee",
+    "names": ["Skeenee", "skeenee"]
+  },
+  {
+    "address": "0x18b34f0991c256e1a5ba2258e3d41bc0aa1682d4",
+    "href": "/artists/tsugunai",
+    "names": ["tsugunai"]
+  },
+  {
+    "address": "0x18c6a47aca1c6a237e53ed2fc3a8fb392c97169b",
+    "href": "/artists/xbrucethegoose",
+    "names": ["BruceTheGoose", "xbrucethegoose"]
+  },
+  {
+    "address": "0x18db940a6693da9730beb375d232f2d8610da531",
+    "href": "/artists/artmaximus",
+    "names": ["Maksym", "artmaximus"]
+  },
+  {
+    "address": "0x19058b87cc3975b2dd7d01b6e95102ab9e1a2a72",
+    "href": "/artists/voke",
+    "names": ["VOKE", "voke", "Voke"]
+  },
+  {
+    "address": "0x1a4b0923b0f150b5fa8cdfb2138d0d78b1ec85fc",
+    "href": "/artists/rac",
+    "names": ["RAC", "rac"]
+  },
+  {
+    "address": "0x1a943b5762fe096dddd3545dee8d90543ce56ef1",
+    "href": "/artists/ernestoasch",
+    "names": ["Ernesto Asch", "ernestoasch"]
+  },
+  {
+    "address": "0x1aedc888738bbd5cc9b50ac09e4d8a6eb704599e",
+    "href": "/artists/pgervois",
+    "names": ["Pierre Gervois", "pgervois"]
+  },
+  {
+    "address": "0x1b21a4287cbfa8f81753de2a17028bf2fa231034",
+    "href": "/artists/popwonder",
+    "names": ["Pop Wonder", "popwonder"]
+  },
+  {
+    "address": "0x1b98b121240f2a1d8cecbb2d86eb616c443a8dc2",
+    "href": "/artists/lazercoffee",
+    "names": ["lazercoffee"]
+  },
+  {
+    "address": "0x1caa16bfad2bf70fd59f9cb063da4a3a873d3c5d",
+    "href": "/artists/copyplanetdotxyz",
+    "names": ["copyplanetdotxyz"]
+  },
+  {
+    "address": "0x1e8e749b2b578e181ca01962e9448006772b24a2",
+    "href": "/artists/brinkman",
+    "names": ["Bryan Brinkman", "brinkman"]
+  },
+  {
+    "address": "0x21316e6a4f0af45e5f1503984e83b10c53b177d8",
+    "href": "/artists/hackatao",
+    "names": ["Hackatao", "hackatao"]
+  },
+  {
+    "address": "0x223ebc38e6af5073872e2904a8bb72fabf6fc130",
+    "href": "/artists/kalachik",
+    "names": ["kalachik"]
+  },
+  {
+    "address": "0x23011f3c1909008edb822042bfaec3e0ec7c0d34",
+    "href": "/artists/joetamponi",
+    "names": ["Joe Tamponi", "joetamponi"]
+  },
+  {
+    "address": "0x240d9ee57c0b2a1a841683f446b8cbf528520e7b",
+    "href": "/artists/delaram",
+    "names": ["DELARAM", "delaram"]
+  },
+  {
+    "address": "0x24cca72b107a00beb64ef45e5052e66a26d4be6f",
+    "href": "/artists/tsoongd",
+    "names": ["Tsoong D", "tsoongd"]
+  },
+  {
+    "address": "0x24fb36bddee8faa59224b49cb4d842d3dbdd7e60",
+    "href": "/artists/36pm",
+    "names": ["36pm"]
+  },
+  {
+    "address": "0x2513b60b1da7c60fb3b13da4bb7f403453ab5168",
+    "href": "/artists/graphicshot",
+    "names": ["Graphicshot", "graphicshot"]
+  },
+  {
+    "address": "0x2546d0f2637ccd70a010048b8768fc6123e7fb9f",
+    "href": "/artists/dronen",
+    "names": ["Andrew Mergenew", "dronen"]
+  },
+  {
+    "address": "0x25981260dd48274abb39d48ed3cd96384522c217",
+    "href": "/artists/reinhard-schmid",
+    "names": ["reinhard-schmid"]
+  },
+  {
+    "address": "0x25a765834c56e5daa26ac110a671e54740129042",
+    "href": "/artists/mandelsage",
+    "names": ["Mandelsage", "mandelsage"]
+  },
+  {
+    "address": "0x262456d9a98537f4706324666b28bfa4e9d23446",
+    "href": "/artists/jenk",
+    "names": ["Jenk", "jenk"]
+  },
+  {
+    "address": "0x26a4eeedd4d09a766c77abc9107069f05d60a41c",
+    "href": "/artists/cami64",
+    "names": ["CARMEN RAMON CAMI", "cami64"]
+  },
+  {
+    "address": "0x271e581327bcfc44cc344af3179edffcd88cdba7",
+    "href": "/artists/salems",
+    "names": ["Salems", "salems"]
+  },
+  {
+    "address": "0x2727cef9efd211a2f51a0198a7eb1b832b73d262",
+    "href": "/artists/jovanportoart",
+    "names": ["Jovan Porto", "jovanportoart", "jovanporto"]
+  },
+  {
+    "address": "0x273a4c969ad5eec1626e06fde1883340b1559404",
+    "href": "/artists/stevenreman",
+    "names": ["StevenReman", "stevenreman"]
+  },
+  {
+    "address": "0x279398c07623aa564f6bba8a611893b50ce6f0bf",
+    "href": "/artists/erosika",
+    "names": ["erosika"]
+  },
+  {
+    "address": "0x2918ceda641716fd6bda3ccf691c3b54d4c87b6e",
+    "href": "/artists/jaen",
+    "names": ["Jæn", "jaen", "JÃ¦n"]
+  },
+  {
+    "address": "0x2c3ef1f3df0bf1409af53f8fc0bafdfe60318e01",
+    "href": "/artists/ooakosimo",
+    "names": ["ooakosimo.eth", "ooakosimo"]
+  },
+  {
+    "address": "0x2c4eb56db2c60da7bada915d7bb588c9eaef6823",
+    "href": "/artists/miroslaviv",
+    "names": ["Miroslav IV.", "miroslaviv"]
+  },
+  {
+    "address": "0x2ce780d7c743a57791b835a9d6f998b15bbba5a4",
+    "href": "/artists/pak",
+    "names": ["Pak", "pak"]
+  },
+  {
+    "address": "0x2df8063c53ebd6270acde4e996a925c531fcfdfe",
+    "href": "/artists/defiantsquid",
+    "names": ["defiantsquid"]
+  },
+  {
+    "address": "0x2edf8a01f636e086d5cbf34bc53e4e0d79fca5dc",
+    "href": "/artists/hussameissaa",
+    "names": ["Hussam Eissa", "hussameissaa", "heissaa", "H. Eissa"]
+  },
+  {
+    "address": "0x2f075618681d45458ae20e17ca3ccf1c797d6e1a",
+    "href": "/artists/inventive-raphael-6664",
+    "names": ["inventive-raphael-6664"]
+  },
+  {
+    "address": "0x2fdc5ec86b1744f8884d08fe404ac2f8612d3528",
+    "href": "/artists/phenom",
+    "names": ["KARL PHENOM", "phenom"]
+  },
+  {
+    "address": "0x30102c99981fa288f493b6b8e5c290e2a9f114a7",
+    "href": "/artists/manojyd",
+    "names": ["Manoj yd", "manojyd"]
+  },
+  {
+    "address": "0x30127117441ba6071ceb0c9dfa7181360ab27000",
+    "href": "/artists/sandroieva",
+    "names": ["Sandro Ieva", "sandroieva"]
+  },
+  {
+    "address": "0x30755d3e65c0cf46c35b72d11e52d941c5fc3a3e",
+    "href": "/artists/bevan",
+    "names": ["Bevòn", "bevan", "0x30755d3e65c0cf46c35b72d11e52d941c5fc3a3e"]
+  },
+  {
+    "address": "0x31457f65f4172e9af8247a6ca89f3776fb09ee07",
+    "href": "/artists/s1mo",
+    "names": ["s1mo"]
+  },
+  {
+    "address": "0x3311d6d155a6d30e01a628d4cd64f3212e87e12a",
+    "href": "/artists/gareth",
+    "names": ["Unrealcity", "gareth"]
+  },
+  {
+    "address": "0x339149a8e40b9c7c967b0238f7d7f0f7e114702b",
+    "href": "/artists/ronancollins",
+    "names": ["Ronan Collins", "ronancollins"]
+  },
+  {
+    "address": "0x3480d164ceba4eb8ea17e7f64810707a55e1f76b",
+    "href": "/artists/ra-in",
+    "names": ["Samira Ingold", "ra-in"]
+  },
+  {
+    "address": "0x36bd6221c2016371c3af00071726578b91acb007",
+    "href": "/artists/fabianospeziari",
+    "names": ["fabiano speziari", "fabianospeziari", "Fabiano Speziari"]
+  },
+  {
+    "address": "0x36d14e95fa697cd561ec6fa96d86c43ea7f4ee1e",
+    "href": "/artists/avishk",
+    "names": ["Abhishek Sinha", "avishk"]
+  },
+  {
+    "address": "0x37b7458c5f14822bf423965aed077a20269011c5",
+    "href": "/artists/izzy",
+    "names": ["izzy"]
+  },
+  {
+    "address": "0x389d43178ad6076521c7f2ca19beec806ef00d2a",
+    "href": "/artists/mablab",
+    "names": ["MABLAB", "mablab"]
+  },
+  {
+    "address": "0x38e170c0b585eed212eb7941e2dc59e28a562947",
+    "href": "/artists/aquakyd",
+    "names": ["AquaKyd", "aquakyd"]
+  },
+  {
+    "address": "0x39e2d6ed53f4866cbf9e12a21d05caa84d2d4dc2",
+    "href": "/artists/strayltd",
+    "names": ["@strayltd", "strayltd"]
+  },
+  {
+    "address": "0x3a2f2141668a93581946e8e9e6b829f565e5a536",
+    "href": "/artists/vincenzo-369",
+    "names": ["Aimane Amamri", "vincenzo-369"]
+  },
+  {
+    "address": "0x3a3355805181ba5752cb52cebe8c95c0f3ed3d61",
+    "href": "/artists/brucethegoose",
+    "names": ["brucethegoose"]
+  },
+  {
+    "address": "0x3b188b306ecb3a9c119f890b456598807971fb66",
+    "href": "/artists/kalyabka",
+    "names": ["Anastasia Kalyabina", "kalyabka"]
+  },
+  {
+    "address": "0x3c0946a77c9ea2c19283a5d8f9098f0e3022528b",
+    "href": "/artists/patfox",
+    "names": ["Pat Fox", "patfox"]
+  },
+  {
+    "address": "0x3c81ead5e6f234e1e7b13636ae6c195137c7c114",
+    "href": "/artists/hyperstasis",
+    "names": ["hyperstasis"]
+  },
+  {
+    "address": "0x3d36ef00cd2957fd30c1411cf3ee2df5d045f28d",
+    "href": "/artists/weaz",
+    "names": ["Weazwon", "weaz"]
+  },
+  {
+    "address": "0x3defb787d87a61bb73022c7ec8956794d426379b",
+    "href": "/artists/artistken",
+    "names": ["Artistken", "artistken"]
+  },
+  {
+    "address": "0x3e20b699d6c4ab3595e818e8cdae7eb4cb81bbf1",
+    "href": "/artists/cannythatlike",
+    "names": ["cannythatlike"]
+  },
+  {
+    "address": "0x3e7411e237666bda934f1a024a95cf11fb29a4d1",
+    "href": "/artists/wha",
+    "names": ["WHA", "wha"]
+  },
+  {
+    "address": "0x3efa1178a54f44db0c6d6afe0f7c0ee073e3c2e7",
+    "href": "/artists/queenalice",
+    "names": [
+      "Alice",
+      "queenalice",
+      "mitra",
+      "venus",
+      "youngmorpheus",
+      "Young Morpheus"
+    ]
+  },
+  {
+    "address": "0x405b9e157063c93b50d106b1b606bdc1f0ced0a8",
+    "href": "/artists/cryptoneart",
+    "names": ["CryptoneArt", "cryptoneart"]
+  },
+  {
+    "address": "0x408a13d8626320a2bae7faaa96d90c802708c56e",
+    "href": "/artists/axel-l-jenny",
+    "names": ["axel___l___jenny", "axel-l-jenny"]
+  },
+  {
+    "address": "0x40e79506989bf66f72c34f6507a2a74ee78fe3e9",
+    "href": "/artists/andac",
+    "names": ["Andac Liman", "andac"]
+  },
+  {
+    "address": "0x4147948b11ce851082f85fd7b56b76ae3a583560",
+    "href": "/artists/0xmj",
+    "names": ["0xMJ", "0xmj", "mehakjain", "Mehak Jain"]
+  },
+  {
+    "address": "0x41bd9ede67476deff711c1ddbd702b741dcc23d8",
+    "href": "/artists/ftrsaroth",
+    "names": ["FtrSaroth", "ftrsaroth", "FTRSAROTH"]
+  },
+  {
+    "address": "0x42189b841287654e93fc1b2363dc4cc6c066f9a8",
+    "href": "/artists/enfthusiast",
+    "names": ["eNFThusiast", "enfthusiast"]
+  },
+  {
+    "address": "0x4240d7fa6dbbbb2d7b042048bc6a9e66cf3a87e4",
+    "href": "/artists/moumu",
+    "names": ["MOUMU 矛木", "moumu", "MOUMU"]
+  },
+  {
+    "address": "0x4298e663517593284ad4fe199b21815bd48a9969",
+    "href": "/artists/gremplin",
+    "names": ["gremplin"]
+  },
+  {
+    "address": "0x429f13e4ec5e57c9ae2388c5020e372f73fe168a",
+    "href": "/artists/0x13blockbeats",
+    "names": ["Sleepy", "0x13blockbeats"]
+  },
+  {
+    "address": "0x4375e38ab575e63b5247b4330c4d9fe93172af2d",
+    "href": "/artists/breadbreaker",
+    "names": ["breadbreaker", "BreadBreaker"]
+  },
+  {
+    "address": "0x4410bb5accef3848bc7b64131ceb3d54740682e8",
+    "href": "/artists/reviiser-mint",
+    "names": ["REVIISER", "reviiser-mint", "mint.reviiser", "Reviiser"]
+  },
+  {
+    "address": "0x44c5e5ba251206cfb378de443e70c4959562206d",
+    "href": "/artists/rare-designer-archived",
+    "names": ["raredesigner-archived", "rare-designer-archived"]
+  },
+  {
+    "address": "0x45b4103dc79046b43e0d814efc007d578447dd76",
+    "href": "/artists/fotochad",
+    "names": ["Foto Chad", "fotochad"]
+  },
+  {
+    "address": "0x460cd1955810a11f65f391fa1f54396be5749a8b",
+    "href": "/artists/griffter",
+    "names": ["Griffter", "griffter"]
+  },
+  {
+    "address": "0x46515f152eaa86cc469330cf31e8a0ce1157d8cb",
+    "href": "/artists/greatjoy",
+    "names": ["Greatjoy", "greatjoy", "ngreatjoy1"]
+  },
+  {
+    "address": "0x4762b5ac03fc097a500b48cfefffc027e8b37227",
+    "href": "/artists/mrrichieth",
+    "names": ["mrrichieth"]
+  },
+  {
+    "address": "0x493e7c2e9cba0b80a9ce4b84e567ee6ae8501471",
+    "href": "/artists/gamzika",
+    "names": ["gamzika"]
+  },
+  {
+    "address": "0x49e5c693dc0cc586b6e29e2404b17dc0565ac12b",
+    "href": "/artists/ih0dl",
+    "names": ["iH0DL", "ih0dl"]
+  },
+  {
+    "address": "0x4b4bfa4cac2db875bfa1e1bf0172edd8465e32ca",
+    "href": "/artists/fabielloart",
+    "names": ["fabiello", "fabielloart", "Fabiello"]
+  },
+  {
+    "address": "0x4bd6fec69579745b9e1970bd280989a954340e11",
+    "href": "/artists/luvrworldwide",
+    "names": ["LUVRworldwide", "luvrworldwide"]
+  },
+  {
+    "address": "0x4c836b73ec1fe224e9f5aa586097050e34d0853a",
+    "href": "/artists/jgrayson",
+    "names": ["Julia.G", "jgrayson"]
+  },
+  {
+    "address": "0x4ca6ed614bab8e01ac1fb0f28fe4a4cc1c8e4ea6",
+    "href": "/artists/galamirissa_archived",
+    "names": ["GALA MIRISSA (archived)", "galamirissa_archived"]
+  },
+  {
+    "address": "0x4e39c4e4b05bb1502b4c2f09d1f694f1e490a249",
+    "href": "/artists/pacrimoon",
+    "names": ["Paolo Acri", "pacrimoon"]
+  },
+  {
+    "address": "0x4e621fb510f2d5c1d2fe62d2056fc54a8f8fc309",
+    "href": "/artists/weaselfamcc",
+    "names": ["Weasel Fam Camping Club", "weaselfamcc"]
+  },
+  {
+    "address": "0x4ef7b9a46456720ddb54a5bca254ebfebee39abd",
+    "href": "/artists/tandreades",
+    "names": ["Thaddaeus Andreades", "tandreades"]
+  },
+  {
+    "address": "0x52147e6ed81d421e5b4c6ae395ef854a9e78edaa",
+    "href": "/artists/slimewrld",
+    "names": ["Raphael", "slimewrld"]
+  },
+  {
+    "address": "0x52fc228959a904efbe127052face70373f8a8894",
+    "href": "/artists/kreaturekastle",
+    "names": ["Kreature Kastle", "kreaturekastle"]
+  },
+  {
+    "address": "0x5327bacfe0c2ff98750a7e882b944029b8315c85",
+    "href": "/artists/aleksys",
+    "names": ["aleksys"]
+  },
+  {
+    "address": "0x53ef5bb40fafd749fd3403f44ccc3d4972d1e8e3",
+    "href": "/artists/oneforall",
+    "names": ["OneForAll", "oneforall"]
+  },
+  {
+    "address": "0x552c2aac87d3de9e5637bf2493d089c7d92b69ac",
+    "href": "/artists/francescafini",
+    "names": ["Francesca Fini", "francescafini"]
+  },
+  {
+    "address": "0x5568863f74f6fcfc2478b303527dc2c801d616cb",
+    "href": "/artists/breathe",
+    "names": ["Breathe", "breathe"]
+  },
+  {
+    "address": "0x5a483c063b6b2b4f0baafbfe799a3504dd477dae",
+    "href": "/artists/mattkane",
+    "names": ["Matt Kane", "mattkane", "matt-kane"]
+  },
+  {
+    "address": "0x5a6abe2b4bd1e178d984afa8630cd6ac212b070b",
+    "href": "/artists/anamariacaballero",
+    "names": ["Ana Maria Caballero", "anamariacaballero"]
+  },
+  {
+    "address": "0x5c087d45f975cb190a33a40f130c9d4bbf0a3ae8",
+    "href": "/artists/galivex",
+    "names": ["Antonino", "galivex"]
+  },
+  {
+    "address": "0x5c2b25c2fd3bd98f6ed0628238077f84916ea74a",
+    "href": "/artists/ejthek",
+    "names": ["ejthek"]
+  },
+  {
+    "address": "0x5c746b61ed4c66fd444dacc7276c8928b607ddb7",
+    "href": "/artists/swayatra",
+    "names": ["SWAYATRA", "swayatra"]
+  },
+  {
+    "address": "0x5cd53a7c366b95e0ba100a67cd2f6ad77a767c4f",
+    "href": "/artists/francisftlp",
+    "names": ["Francis Torres", "francisftlp"]
+  },
+  {
+    "address": "0x5cf2aef3f503783f5ba85ebd3f72180b67e0a17f",
+    "href": "/artists/madolf",
+    "names": ["MADOLF D", "madolf"]
+  },
+  {
+    "address": "0x5e5bef864dec19db1971dbbd399f9e0ad6ef50d9",
+    "href": "/artists/karina-eibatova88",
+    "names": ["Karina Eibatova", "karina-eibatova88"]
+  },
+  {
+    "address": "0x5e84dabd2f486a84a6042d754fafa2c4f4a3b996",
+    "href": "/artists/kittybungalow",
+    "names": ["Kitty Bungalow", "kittybungalow"]
+  },
+  {
+    "address": "0x5ef298d387a9d09c2f6b894d2e82c073a9c3f6e9",
+    "href": "/artists/fre",
+    "names": ["fredrik f k", "fre"]
+  },
+  {
+    "address": "0x5f436bc20d07dca16ebabac33a34e32f706c91ad",
+    "href": "/artists/gabriele-genart",
+    "names": ["Gabriele GenArt", "gabriele-genart"]
+  },
+  {
+    "address": "0x60874f721a66a2b9018c7cacc46151708864f52d",
+    "href": "/artists/async",
+    "names": ["Async", "async", "0x60874f721a66a2b9018c7cacc46151708864f52d"]
+  },
+  {
+    "address": "0x61315007451e00451305f63c93af8cdd866f6bc9",
+    "href": "/artists/cristinaspinei",
+    "names": ["Cristina Spinei", "cristinaspinei"]
+  },
+  {
+    "address": "0x61c66a72a3f78707bed77f84cd180998ddc518b6",
+    "href": "/artists/siljethorn",
+    "names": ["Silje Thorn", "siljethorn"]
+  },
+  {
+    "address": "0x61f1d048323de4aa996290f63a1e2a29636a3d06",
+    "href": "/artists/yusaymon",
+    "names": ["yusaymon", "Yusaymon"]
+  },
+  {
+    "address": "0x6252a3d7c42d215fa473a378541bc41da7f09ec7",
+    "href": "/artists/rubensart",
+    "names": ["Rubén Sandoval", "rubensart", "RubÃ©n Sandoval"]
+  },
+  {
+    "address": "0x62e5f581db2d03928e5f318ec332368bf1bc7567",
+    "href": "/artists/blithe-michelangelo-1756",
+    "names": ["Igor Backstrom", "blithe-michelangelo-1756"]
+  },
+  {
+    "address": "0x65b9f15225cdb860e89f2ea5a41f443883194412",
+    "href": "/artists/high-art-low-life",
+    "names": ["high-art-low-life", "jw-photography"]
+  },
+  {
+    "address": "0x66f68e39fe28b548f03244fa549d105bc3779136",
+    "href": "/artists/vladivostoc",
+    "names": ["Vladivostoc", "vladivostoc"]
+  },
+  {
+    "address": "0x68799b81c7bfca8c661197645755ac33da8ef4ff",
+    "href": "/artists/inspector-spacetime",
+    "names": ["Inspector Spacetime", "inspector-spacetime"]
+  },
+  {
+    "address": "0x687d2220075b787fbce0ae2813f9030d3a7e3f08",
+    "href": "/artists/pr1mal-cypher",
+    "names": ["PR1MAL CYPHER", "pr1mal-cypher"]
+  },
+  {
+    "address": "0x68e1212938e491a5c3028c61e4e26042eaf16be9",
+    "href": "/artists/billcrystal",
+    "names": ["Bill Crystal", "billcrystal"]
+  },
+  {
+    "address": "0x690c5de8103499693fe9c6e1611e22150bb609a2",
+    "href": "/artists/sonical",
+    "names": ["Sonical", "sonical"]
+  },
+  {
+    "address": "0x6a4ec5c136cdee757531fcb2319f3c877a461b66",
+    "href": "/artists/areahey",
+    "names": ["Areahey", "areahey"]
+  },
+  {
+    "address": "0x6b38b2f7f357cf97bd58eb5d2f94e3cdc8a7e70c",
+    "href": "/artists/xwave",
+    "names": ["XWAVE", "xwave"]
+  },
+  {
+    "address": "0x6b85c6e03a939cb37942f882ee2310e5af3642bb",
+    "href": "/artists/anonymousfuckingnobody",
+    "names": ["anonymousfuckingnobody"]
+  },
+  {
+    "address": "0x6c62d0977621265fec87d4cf30fa05249a07539d",
+    "href": "/artists/erizojr",
+    "names": ["Erizojr", "erizojr"]
+  },
+  {
+    "address": "0x6c6e93874216112ef12a0d04e2679ecc6c3625cc",
+    "href": "/artists/trevorjonesart",
+    "names": ["Trevor", "trevorjonesart"]
+  },
+  {
+    "address": "0x6c74319a0bb067bcfc1c82baf946306885719c31",
+    "href": "/artists/pjartbasel",
+    "names": ["pjArtbasel", "pjartbasel"]
+  },
+  {
+    "address": "0x6e63a4caeccb4f341ee9c9175c9cc554bdb6d10b",
+    "href": "/artists/wgmeets",
+    "names": ["WGMeets", "wgmeets"]
+  },
+  {
+    "address": "0x708eb4755ef95291b4a955421b0cda4aca0456fd",
+    "href": "/artists/pravekha",
+    "names": ["Pravekha", "pravekha"]
+  },
+  {
+    "address": "0x7164d86577722cfedbcb16d3f2f92325fc3467b8",
+    "href": "/artists/jayndart",
+    "names": ["Jayndart", "jayndart"]
+  },
+  {
+    "address": "0x7330f16e318d56734c7a9bef9bbdfc457acd7ad7",
+    "href": "/artists/naturalwarp",
+    "names": ["Natural Warp", "naturalwarp"]
+  },
+  {
+    "address": "0x73be51e550030330e67da7c2379912304aa982a5",
+    "href": "/artists/montela",
+    "names": ["Erik Montela", "montela"]
+  },
+  {
+    "address": "0x744ffc19df14045bb6d6ab66220dabe04ffe4d5d",
+    "href": "/artists/nemesis",
+    "names": ["Nemesis", "nemesis"]
+  },
+  {
+    "address": "0x7495f8733b7a4b2bad3be74904b70b34a5a54fc7",
+    "href": "/artists/cmykrypto",
+    "names": ["CMYKrypto", "cmykrypto"]
+  },
+  {
+    "address": "0x74ec638d8e82ab4e7aacac77ef47a49e735ca7dd",
+    "href": "/artists/digital_archived",
+    "names": ["DiGiTAL", "digital_archived", "conniedigital"]
+  },
+  {
+    "address": "0x7512f4a461251f2294481a98aba6dd6dcbdf4760",
+    "href": "/artists/cnr",
+    "names": ["CNR", "cnr"]
+  },
+  {
+    "address": "0x7518115eeddd7e944ff894e08ec4874da5374e61",
+    "href": "/artists/baybaypras",
+    "names": ["baybaypras"]
+  },
+  {
+    "address": "0x767dc13b7c297b214489d7324652830570a5a108",
+    "href": "/artists/taptapkaboom",
+    "names": ["taptapkaboom"]
+  },
+  {
+    "address": "0x768c4d75b1e4b8ede81dbbd856b528c74b791f8f",
+    "href": "/artists/papros",
+    "names": ["PAPROS", "papros"]
+  },
+  {
+    "address": "0x778f9d0ebed435be9f0835f7bf8dff2321fbfa80",
+    "href": "/artists/olive",
+    "names": ["Olive Allen", "olive"]
+  },
+  {
+    "address": "0x7903e54d12fbb83f060e68cc31a483d71689b5ac",
+    "href": "/artists/merzmensch",
+    "names": ["Merzmensch", "merzmensch"]
+  },
+  {
+    "address": "0x791fad8329a0a56e2ce98380d6d6fda3302337da",
+    "href": "/artists/natural-warp",
+    "names": ["Natural Warp", "natural-warp"]
+  },
+  {
+    "address": "0x799fbcf016b50052df3338a3ead2eb5d2db1b09d",
+    "href": "/artists/replyanski",
+    "names": ["Nikita Replyanski", "replyanski"]
+  },
+  {
+    "address": "0x79ff435184674986312275a031999d689be9d104",
+    "href": "/artists/mariinksarts",
+    "names": ["Mariinksarts", "mariinksarts"]
+  },
+  {
+    "address": "0x7aaa95ee9fb4ec3bb8b9f95bdcb3eaf50342c40e",
+    "href": "/artists/limbomask",
+    "names": ["Limbo Mask", "limbomask"]
+  },
+  {
+    "address": "0x7af71d5e97bbd603607eeb4f7c4bda4cb43518f2",
+    "href": "/artists/folkmarley",
+    "names": ["Anthony Daasan", "folkmarley"]
+  },
+  {
+    "address": "0x7b002615ec34024dcad48857684dce33d6f659a8",
+    "href": "/artists/agy2121",
+    "names": ["agy2121"]
+  },
+  {
+    "address": "0x7b56b2aa52f28f081156a0ecb6a84a0b0e42b3ae",
+    "href": "/artists/kebajer",
+    "names": ["Keba Jeremiah Arul", "kebajer"]
+  },
+  {
+    "address": "0x7b714a777b72e97e8411d65277b1d2f06f400d13",
+    "href": "/artists/uczine",
+    "names": ["uczine"]
+  },
+  {
+    "address": "0x7c016b420e018b4ba6964a9a3e580805a390fb25",
+    "href": "/artists/reswobzil",
+    "names": ["NFT Creator", "reswobzil"]
+  },
+  {
+    "address": "0x7c840f6ae555d27ca4037f10ff6aba7c6871d795",
+    "href": "/artists/apsurd",
+    "names": ["Apsurd", "apsurd"]
+  },
+  {
+    "address": "0x7ce5c749540c141f99d23e13cf406028d6768d12",
+    "href": "/artists/bluefinger",
+    "names": ["Joacim Svedlund", "bluefinger"]
+  },
+  {
+    "address": "0x7d213164198040f9b665e2bd803692c2e7988d02",
+    "href": "/artists/verdigrisensemble",
+    "names": ["Verdigris Ensemble", "verdigrisensemble"]
+  },
+  {
+    "address": "0x7d42611012fdbe366bf4a0481fc0e1abf15e245a",
+    "href": "/artists/jeffgdavis",
+    "names": ["Jeff Davis", "jeffgdavis"]
+  },
+  {
+    "address": "0x7ebde55c4aba6b3b31e03306e833ff92187f984b",
+    "href": "/artists/roubzi",
+    "names": ["roubzi", "Roubzi"]
+  },
+  {
+    "address": "0x7fbe07268b3840822042066bb079bfc0a61dc14b",
+    "href": "/artists/consciousstudio",
+    "names": ["Conscious Studio", "consciousstudio"]
+  },
+  {
+    "address": "0x80aa4af1fb6e8a381b73809cbf06aed2666a7b64",
+    "href": "/artists/micahart",
+    "names": ["micahart.eth", "micahart"]
+  },
+  {
+    "address": "0x8122f9bcd4f39a84c5de0810389e4f2187dc9e77",
+    "href": "/artists/david-bianchi",
+    "names": ["DAVID BIANCHI", "david-bianchi"]
+  },
+  {
+    "address": "0x81594cc325ae1ef154332462499be3c06fd55268",
+    "href": "/artists/hysch",
+    "names": ["PePe SB - HYSCH", "hysch"]
+  },
+  {
+    "address": "0x81e5cd19323ce7f6b36c9511fbc98d477a188b13",
+    "href": "/artists/nftland",
+    "names": ["Rizzle", "nftland"]
+  },
+  {
+    "address": "0x8230a4cb486d9ae98710f4eff9d94bbc2f26e771",
+    "href": "/artists/visithra",
+    "names": ["Visithra Manikam", "visithra"]
+  },
+  {
+    "address": "0x8356f6edc55b0ea090e0c8e3442058deb0fb1001",
+    "href": "/artists/uzaycopu",
+    "names": ["Uzay Çöpü", "uzaycopu"]
+  },
+  {
+    "address": "0x83cfbf713e60b0dbb093eff8659284c23c20ff27",
+    "href": "/artists/theperfesser",
+    "names": ["The Perfesser", "theperfesser"]
+  },
+  {
+    "address": "0x84300dcc7ca9cf447e886fa17c11fa22557d1af0",
+    "href": "/artists/rutgervandertas",
+    "names": ["Rutger van der Tas", "rutgervandertas", "rutger van der tas"]
+  },
+  {
+    "address": "0x85a3d18afdeaae09f5a030cb74b5b47b56e8e67d",
+    "href": "/artists/susha",
+    "names": ["susha"]
+  },
+  {
+    "address": "0x85e4e6ef0d6357b48da6de546c2841851da886a2",
+    "href": "/artists/achon",
+    "names": ["ACHON", "achon"]
+  },
+  {
+    "address": "0x867a79e36c06d1778043f7923e1f9b15fd059ace",
+    "href": "/artists/breakingthebold",
+    "names": ["Breakingthebold", "breakingthebold"]
+  },
+  {
+    "address": "0x86a35e57968f0d6591b1886594c6b7721fc96943",
+    "href": "/artists/michellethompson",
+    "names": ["Michelle Thompson", "michellethompson"]
+  },
+  {
+    "address": "0x87085d8d22d688e7ac9da3384127169f83e059e6",
+    "href": "/artists/mr-monk",
+    "names": ["Mr. Monk", "mr-monk"]
+  },
+  {
+    "address": "0x8846e72803d0cecaeeac329ec0d566fbefa056f3",
+    "href": "/artists/civit",
+    "names": ["CIVIT", "civit"]
+  },
+  {
+    "address": "0x888fcea2289caad542e23bbb0b3570468949a44b",
+    "href": "/artists/awadoy",
+    "names": ["Awadoy", "awadoy"]
+  },
+  {
+    "address": "0x895df857cdd03106e82fa759cb881937aec8dd83",
+    "href": "/artists/plsandty",
+    "names": ["PLS&TY", "plsandty"]
+  },
+  {
+    "address": "0x89bcdb55904cacb4ed10f135397b027466f8b09b",
+    "href": "/artists/freshlyfe",
+    "names": ["Matoosh Dubrava", "freshlyfe"]
+  },
+  {
+    "address": "0x8b5b9295a03fbf5cd50a7cea7d77887e6332ecdb",
+    "href": "/artists/floborg",
+    "names": ["Flo Borg", "floborg"]
+  },
+  {
+    "address": "0x8c55d449d54b141eca0729da80e318d8a1445db3",
+    "href": "/artists/vivipoeminha",
+    "names": ["Vivv Scardovelli", "vivipoeminha"]
+  },
+  {
+    "address": "0x8da3b1fb79c3ef3bf1adf4a49fce20d350968424",
+    "href": "/artists/pazqal",
+    "names": ["PAZQAL", "pazqal"]
+  },
+  {
+    "address": "0x8ef9aebe80ce20e5590dd483f611c0c304bca161",
+    "href": "/artists/leeseomin",
+    "names": ["Lee Seomin", "leeseomin"]
+  },
+  {
+    "address": "0x9141569a92b3f6d3940f52f759b70c64a68fcd9b",
+    "href": "/artists/brightlight",
+    "names": ["BrightLight", "brightlight", "Brightlight"]
+  },
+  {
+    "address": "0x91ac79e22cfec58e586323eec052d4a19c74bdcc",
+    "href": "/artists/alan-aronica",
+    "names": ["Alan Aronica", "alan-aronica"]
+  },
+  {
+    "address": "0x92a7bd65c8b2a9c9d98be8eaa92de46d1fbdefaf",
+    "href": "/artists/threepanelcrimes",
+    "names": ["threepanelcrimes"]
+  },
+  {
+    "address": "0x92baffdd6cfb11a4e57a58ffec4833b4d1abd25d",
+    "href": "/artists/stinajones",
+    "names": ["Stina Jones", "stinajones"]
+  },
+  {
+    "address": "0x95623c30a50b562d88d1bb43382db7fe83b6184a",
+    "href": "/artists/genuinehumanart",
+    "names": ["Genuine Human Art", "genuinehumanart"]
+  },
+  {
+    "address": "0x95a4729f043a64f284d484cb5785e5a358c76962",
+    "href": "/artists/dejaquesuceda",
+    "names": ["Deja que Suceda", "dejaquesuceda"]
+  },
+  {
+    "address": "0x95aa6cf80aa61c3433215c7b8330c065ed29ce97",
+    "href": "/artists/pedrovictor",
+    "names": ["Pedro Victor Brandão", "pedrovictor", "Pedro Victor BrandÃ£o"]
+  },
+  {
+    "address": "0x9671a3fbbfb13d68e5770afed424f8915ea0ada3",
+    "href": "/artists/n0shot",
+    "names": ["n0shot"]
+  },
+  {
+    "address": "0x9694133f2bfc63c8630fe5bba54c73a76922fd07",
+    "href": "/artists/rukaveshka",
+    "names": ["Anatolij Zajaczkowski", "rukaveshka"]
+  },
+  {
+    "address": "0x97a3db16d88659cd3823323b6396dcf98b009306",
+    "href": "/artists/walt",
+    "names": ["Walt", "walt"]
+  },
+  {
+    "address": "0x97dc4320d83d6c5aaa29f45a8e28da2b36e882ce",
+    "href": "/artists/giurissevich",
+    "names": ["Giulio Iurissevich", "giurissevich"]
+  },
+  {
+    "address": "0x9951eca4d195b5185123cb3606949e2973bd90d8",
+    "href": "/artists/cutssss",
+    "names": ["Kevin Varian", "cutssss"]
+  },
+  {
+    "address": "0x99bb0d785bde25154e0c24aec381bbdd23aa8c3d",
+    "href": "/artists/alikov",
+    "names": ["Daniil Alikov", "alikov"]
+  },
+  {
+    "address": "0x99bbae611bc61cd18962bf8bbfacec87d6378d18",
+    "href": "/artists/cultbitz",
+    "names": ["Cult Bitz", "cultbitz", "CultBitz"]
+  },
+  {
+    "address": "0x9ab0b72ada5ac6ab3bf711a32bd8d8be26e2966f",
+    "href": "/artists/ngritsanchuk",
+    "names": ["Nikolai Gritsanchuk", "ngritsanchuk"]
+  },
+  {
+    "address": "0x9af481276b075e036bc23e887a8bd275e69ef74c",
+    "href": "/artists/conlan",
+    "names": ["conlan.eth", "conlan", "Conlan"]
+  },
+  {
+    "address": "0x9c12e3aa53346e8434a0ce086072e8600a684f1f",
+    "href": "/artists/tewz",
+    "names": ["TEWZ", "tewz"]
+  },
+  {
+    "address": "0x9dc0205878bf83044ad40f63e0956019109fbf40",
+    "href": "/artists/vidhyavijay",
+    "names": ["Vidhya Vijay", "vidhyavijay"]
+  },
+  {
+    "address": "0x9eec0b5bd8a48047f0dcc61e98b4b92951480f98",
+    "href": "/artists/mlibty",
+    "names": ["mlibty", "MLIBTY", "Mlibty"]
+  },
+  {
+    "address": "0x9f541aef30d8440f766d016d7af67b3f79d4189a",
+    "href": "/artists/primal-cypher",
+    "names": ["PR1MAL CYPHER", "primal-cypher"]
+  },
+  {
+    "address": "0x9fbc14032362d43f3cdfc89524a13e317d4a4788",
+    "href": "/artists/chaosconstruct",
+    "names": ["Chaosconstruct", "chaosconstruct", "arjitkapoor", "Arjit Kapoor"]
+  },
+  {
+    "address": "0xa0672272721a3b7334caff2ec4772a2f754b9bc6",
+    "href": "/artists/cryptoarg",
+    "names": ["CRYPTOARG", "cryptoarg"]
+  },
+  {
+    "address": "0xa088a6f3d678ce0baf05edb7f2ddf57b52009f24",
+    "href": "/artists/lojjjol",
+    "names": ["lojjjol"]
+  },
+  {
+    "address": "0xa0898715a42e4557076646909c0a998e99b40473",
+    "href": "/artists/sweetsaver",
+    "names": ["Mike Raymond", "sweetsaver"]
+  },
+  {
+    "address": "0xa12db9f88f096f527fbe87a752c6ec16d501a25f",
+    "href": "/artists/garycartlidge",
+    "names": ["Gary Cartlidge", "garycartlidge"]
+  },
+  {
+    "address": "0xa1acaddd259649d470b42c95738e5e89c8d8a233",
+    "href": "/artists/urben",
+    "names": ["urben"]
+  },
+  {
+    "address": "0xa267666de97575dda68f620d39a5fe10f39f32fd",
+    "href": "/artists/pxlq",
+    "names": ["pxlq"]
+  },
+  {
+    "address": "0xa2af28e6dda77dddd89eb43a1e8d31e9d323f67a",
+    "href": "/artists/untitledxyz",
+    "names": ["untitled, xyz", "untitledxyz"]
+  },
+  {
+    "address": "0xa31d98b1aa71a99565ec2564b81f834e90b1097b",
+    "href": "/artists/carlosmarcial",
+    "names": ["Carlos Marcial", "carlosmarcial", "carlosmarcialt"]
+  },
+  {
+    "address": "0xa3e51498579db0f7bb1ec9e3093b2f44158e25a5",
+    "href": "/artists/sgtsl8trmln",
+    "names": ["sgt_slaughtermelon", "sgtsl8trmln"]
+  },
+  {
+    "address": "0xa44a4e156ce0592b4faaa9a00062adec57eded64",
+    "href": "/artists/jfox",
+    "names": ["James Fox", "jfox"]
+  },
+  {
+    "address": "0xa5855f4f40a409ffde3a171eb616926aec5d7b9c",
+    "href": "/artists/danilpan",
+    "names": ["Danil Pan", "danilpan"]
+  },
+  {
+    "address": "0xa5a37c94c0127679052938bf80795c8452e9379f",
+    "href": "/artists/talos1337",
+    "names": ["Talos_MrBiteyTrashArt", "talos1337"]
+  },
+  {
+    "address": "0xa5e982ea48576ba81b3d6da10ae7435c15cacdd1",
+    "href": "/artists/jonathanwolfe",
+    "names": ["Jonathan Wolfe", "jonathanwolfe"]
+  },
+  {
+    "address": "0xa6ac67258dc6b1abcb091844250974d9f2fbe8b1",
+    "href": "/artists/tom-ink",
+    "names": ["Tom Abbink", "tom-ink"]
+  },
+  {
+    "address": "0xa90e0e2ff2991ab05895589bec1411e011828417",
+    "href": "/artists/toppyeton",
+    "names": ["Toppy Eton", "toppyeton"]
+  },
+  {
+    "address": "0xa91cf6960322e25b363faea1e50138057afbcf56",
+    "href": "/artists/codyseekins",
+    "names": ["Cody Seekins", "codyseekins"]
+  },
+  {
+    "address": "0xa93724c87709d84e1b2e6245cd283fd61fdc22c8",
+    "href": "/artists/ytjeveenstra",
+    "names": ["Ytje Veenstra", "ytjeveenstra"]
+  },
+  {
+    "address": "0xa9bd6caf5264c5a994e3bf029f6173823604c67b",
+    "href": "/artists/ekavibes",
+    "names": ["Eka", "ekavibes"]
+  },
+  {
+    "address": "0xaad3ea2770e44b0298ec634bd2e6f757c24383fc",
+    "href": "/artists/jaimeworks",
+    "names": ["Jaime.Works", "jaimeworks"]
+  },
+  {
+    "address": "0xaae23c742c7cdf248557d8afdcb3572c3db36733",
+    "href": "/artists/vivalareina",
+    "names": ["Reina Koyano", "vivalareina"]
+  },
+  {
+    "address": "0xac4c92639fa42ebf907036487c4d2f8a7dea5598",
+    "href": "/artists/dmoniz",
+    "names": ["Diogo Moniz", "dmoniz"]
+  },
+  {
+    "address": "0xac692a6a7a3fdc6fe60a256e02602ca3222859bc",
+    "href": "/artists/flat-arc",
+    "names": ["Flat Arc", "flat-arc"]
+  },
+  {
+    "address": "0xac98943b98ab07378b8460e2ccf1bfbc3ef3eb7a",
+    "href": "/artists/dianacoatu",
+    "names": ["Diana Coatu", "dianacoatu"]
+  },
+  {
+    "address": "0xad4f4852329443e8cadafb1b5f6362c0cfc1b639",
+    "href": "/artists/beetlb",
+    "names": ["Bassil Taleb", "beetlb"]
+  },
+  {
+    "address": "0xaf0a955d5807bd3f9153c1e51be5855a56c49077",
+    "href": "/artists/enak",
+    "names": ["enak"]
+  },
+  {
+    "address": "0xaf7c1f5faf53b58e333d28af3b548273c534d6dd",
+    "href": "/artists/king-debs",
+    "names": ["KING DEBS", "king-debs"]
+  },
+  {
+    "address": "0xb012a1bdca34e1d0c2267bb50e6c53c8042eb4b6",
+    "href": "/artists/inavare",
+    "names": ["INA VARE", "inavare"]
+  },
+  {
+    "address": "0xb0bba976737b16aa75e6eb9ad331d5effeca3c8f",
+    "href": "/artists/mpommella",
+    "names": ["Mauricio Pommella", "mpommella"]
+  },
+  {
+    "address": "0xb0efe2250fc2744c05cd739c93a43155d2e0876f",
+    "href": "/artists/galamirissa",
+    "names": ["GALA MIRISSA", "galamirissa"]
+  },
+  {
+    "address": "0xb2225441d8b19ef1fa914c46099ff550aa3454a9",
+    "href": "/artists/debbiehdigital",
+    "names": ["DebbieHDigital", "debbiehdigital"]
+  },
+  {
+    "address": "0xb25a2d4605ac6be241c70a7f4829026c19ad557e",
+    "href": "/artists/mhawtin",
+    "names": ["Matthew Hawtin", "mhawtin"]
+  },
+  {
+    "address": "0xb276a9a6e7414529873af8b149369602c3a6206c",
+    "href": "/artists/jetski",
+    "names": ["Jetski", "jetski"]
+  },
+  {
+    "address": "0xb3e7355d9535008c186636f946daf9ed0529e827",
+    "href": "/artists/greekfreak",
+    "names": ["greekfreak"]
+  },
+  {
+    "address": "0xb46c1096fc64b41de00267bb1b03afd760f981f0",
+    "href": "/artists/geomville",
+    "names": ["Geomville by Anna Natter", "geomville"]
+  },
+  {
+    "address": "0xb52fbad5b4366c2feccbdd9026024ae8c1ba397f",
+    "href": "/artists/sergei-bystrov",
+    "names": ["Sergei Bystrov", "sergei-bystrov"]
+  },
+  {
+    "address": "0xb74dd5a45490d29c18f63788aa3bbee573d3bcb0",
+    "href": "/artists/dreamonaut",
+    "names": ["Dreamonaut", "dreamonaut"]
+  },
+  {
+    "address": "0xb7dba4f235df448d6ad2f0953ec604c152998acd",
+    "href": "/artists/deep-and",
+    "names": ["Deep And", "deep-and"]
+  },
+  {
+    "address": "0xb7f73311a823fa70059cf6e22a842c3bd64c53c3",
+    "href": "/artists/jivinci",
+    "names": ["Jivinci", "jivinci"]
+  },
+  {
+    "address": "0xb8160ff9314ebaf496766a47bc76c5715478b016",
+    "href": "/artists/seearah",
+    "names": ["Seearah", "seearah"]
+  },
+  {
+    "address": "0xb91b64fd12c0116f765afc80f3b76c3490bdaa45",
+    "href": "/artists/nofoto",
+    "names": ["Let's Not Know Us", "nofoto"]
+  },
+  {
+    "address": "0xb9b8ad7149334131706be57c7f746b1a6f12ec87",
+    "href": "/artists/shenfunglin",
+    "names": ["Shen Fung Lin", "shenfunglin"]
+  },
+  {
+    "address": "0xb9c8e262f63cc33574b0dd1a7fc652c9ee7b12dc",
+    "href": "/artists/gentle-chagall-125",
+    "names": ["gentle-chagall-125"]
+  },
+  {
+    "address": "0xba0a90ada73959e08ede517e702c2f7460b5bb1e",
+    "href": "/artists/barbisa",
+    "names": ["BARBI S.A.", "barbisa"]
+  },
+  {
+    "address": "0xba0e42d5033bf2b74162e50fb920ddb378f24c35",
+    "href": "/artists/crom",
+    "names": ["CROM", "crom"]
+  },
+  {
+    "address": "0xbb23f67b88e149226fb67f6f116f00facf6af83f",
+    "href": "/artists/vfcc",
+    "names": ["VFCC", "vfcc"]
+  },
+  {
+    "address": "0xbbbf82421aeb8280e6a756f5e6411e8aaaf013a2",
+    "href": "/artists/gert-jan-akerboom",
+    "names": ["Gert-Jan Akerboom", "gert-jan-akerboom"]
+  },
+  {
+    "address": "0xbc2c67a59ec004d7127a63f0f99275e31b4883cf",
+    "href": "/artists/oculardelusion",
+    "names": ["oculardelusion", "OcularDelusion"]
+  },
+  {
+    "address": "0xbc701daa1ddbec022c4a1414ad9a8c7352889a65",
+    "href": "/artists/cowart",
+    "names": ["Jeremy Cowart", "cowart"]
+  },
+  {
+    "address": "0xbce629888807ba02dcdd42f62358e65b849d32d6",
+    "href": "/artists/formless",
+    "names": ["formless"]
+  },
+  {
+    "address": "0xbd395d7ce71aa2747673288119ce54ed03fc90ef",
+    "href": "/artists/kylegordonart",
+    "names": ["Kyle Gordon", "kylegordonart"]
+  },
+  {
+    "address": "0xbd72d021d3cb334deb3151db905ee073b8eee518",
+    "href": "/artists/mightymoose",
+    "names": ["mightymoose.eth", "mightymoose", "MightyMoose"]
+  },
+  {
+    "address": "0xbd9b7373aac15d9a93c810df3999343f4fe1ed88",
+    "href": "/artists/alottamoney",
+    "names": ["Alotta Money", "alottamoney", "alotta money"]
+  },
+  {
+    "address": "0xbdc127d849171735856074bb3044e9fa9c8e6276",
+    "href": "/artists/ccidgfx",
+    "names": ["Damon T Milstead", "ccidgfx"]
+  },
+  {
+    "address": "0xbe9f0fcaa8229f4bc918ceb5c5f89a3a84a6db3f",
+    "href": "/artists/isteef",
+    "names": ["Stephan Brusche", "isteef"]
+  },
+  {
+    "address": "0xbfbafecf8ff9e896b646485b2cd5eb7624ccfda5",
+    "href": "/artists/io01",
+    "names": ["i/o", "io01"]
+  },
+  {
+    "address": "0xc13b5eb52a64e737d7abe5665e4f9f1c87b90651",
+    "href": "/artists/indie",
+    "names": ["indie", "archindie", "Okan AlptÃ¼rk"]
+  },
+  {
+    "address": "0xc17c673d9afba81606f6394808d75309abd40ef9",
+    "href": "/artists/genzo",
+    "names": ["Genzo", "genzo"]
+  },
+  {
+    "address": "0xc20182a82eda68f18f9f412ebaada123aa5e7ab1",
+    "href": "/artists/ambitvore",
+    "names": ["Ambitvore", "ambitvore"]
+  },
+  {
+    "address": "0xc35c8905dba21e790919124907286f6d35248156",
+    "href": "/artists/pxlpet",
+    "names": ["pxlpet", "PXLPET", "PxlPet"]
+  },
+  {
+    "address": "0xc3a538864600c21fd57eb45cdaca0f1665dccd8f",
+    "href": "/artists/chaorld",
+    "names": ["Chaorld", "chaorld"]
+  },
+  {
+    "address": "0xc46a25d2b74d194c57513eae549a74c5b583ab24",
+    "href": "/artists/alaguir96",
+    "names": ["Alvaro Aguirre", "alaguir96", "Alaguir96"]
+  },
+  {
+    "address": "0xc47a1c7e852d2d6352a7454af016730576527312",
+    "href": "/artists/benza",
+    "names": ["Benza", "benza"]
+  },
+  {
+    "address": "0xc6832335247fe457423dca282a6825d624d6e07a",
+    "href": "/artists/roninkill",
+    "names": ["RoninKill", "roninkill"]
+  },
+  {
+    "address": "0xc7149e861a03454ccb66b552797a05c8d98994ba",
+    "href": "/artists/lawrenceleeart",
+    "names": ["NotoriousGangOfOne", "lawrenceleeart"]
+  },
+  {
+    "address": "0xc7d11133c3f84601a2f7ef7197ef83e6b2f57848",
+    "href": "/artists/bashiba",
+    "names": ["Roberto Vitalini", "bashiba"]
+  },
+  {
+    "address": "0xc90d0beea0c714cd8036182895c05830cb64e023",
+    "href": "/artists/voxelfish",
+    "names": ["Voxelfish", "voxelfish"]
+  },
+  {
+    "address": "0xca00b8c77353d00ee759f5cd47e76e882682cf2e",
+    "href": "/artists/xnlkx",
+    "names": ["NAMLEEKANG", "xnlkx"]
+  },
+  {
+    "address": "0xcbe9be4f72c2992e6fbb7c50639aa944f2ea2cb9",
+    "href": "/artists/cliff-falzon-invnt",
+    "names": ["INVNT-Cliff Falzon", "cliff-falzon-invnt"]
+  },
+  {
+    "address": "0xcca88b952976da313fb928111f2d5c390ee0d723",
+    "href": "/artists/woca",
+    "names": ["Women Of Crypto Art", "woca", "WOCA"]
+  },
+  {
+    "address": "0xccd4635a439565125e19a625b8c7171ac636b73a",
+    "href": "/artists/koymenart",
+    "names": ["koymenart"]
+  },
+  {
+    "address": "0xcd4145f2144ce300caed8c43d98f1f3c1ddbbdbc",
+    "href": "/artists/sabet",
+    "names": ["SABET", "sabet"]
+  },
+  {
+    "address": "0xce41b49d28800de3ba9925f68d82129dfc4b870b",
+    "href": "/artists/shaun-pryszlak",
+    "names": ["ShaunPryszlak", "shaun-pryszlak"]
+  },
+  {
+    "address": "0xce8f847e6448a31c3a8fe2477c3f1927b81d8048",
+    "href": "/artists/inesmerino",
+    "names": ["Inês Merino", "inesmerino"]
+  },
+  {
+    "address": "0xceae52c73db66e280f8d5be3db89dc69463c7d72",
+    "href": "/artists/neurocolor",
+    "names": ["neurocolor 神経色", "neurocolor"]
+  },
+  {
+    "address": "0xced2662fe30d876bef52f219eeac67e2b328effc",
+    "href": "/artists/mlodotart",
+    "names": ["MLO.art Martin Lukas Ostachowski", "mlodotart", "MLOdotArt"]
+  },
+  {
+    "address": "0xcf9741bbce8ba8ec2b0dc8f23399a0bcf5c019d5",
+    "href": "/artists/georgeboya",
+    "names": ["George Boya", "georgeboya"]
+  },
+  {
+    "address": "0xd0902a728cc6c7a3f49e51ea8561f2f15f9a0991",
+    "href": "/artists/oddlavox",
+    "names": ["Oddlavox", "oddlavox"]
+  },
+  {
+    "address": "0xd0c877b474cd51959931a7f70d7a6c60f50cdae7",
+    "href": "/artists/coldie",
+    "names": ["Coldie", "coldie"]
+  },
+  {
+    "address": "0xd1409fc95ff7e45db3e4a5aa7f48478e74665e86",
+    "href": "/artists/niftycre",
+    "names": ["Nifty Creative", "niftycre"]
+  },
+  {
+    "address": "0xd1898665a01a91ac10bd2c6cb1899336df34ac33",
+    "href": "/artists/blank",
+    "names": ["BLANK", "blank"]
+  },
+  {
+    "address": "0xd1a1d5547475707e25add28a261a14e290f9efa3",
+    "href": "/artists/kawaiikapsule",
+    "names": ["KAWAII KAPSULE", "kawaiikapsule"]
+  },
+  {
+    "address": "0xd3cb8e5740fcba07daff9cba563b3235b67b187c",
+    "href": "/artists/diniharistd",
+    "names": ["Iwan Harmaen", "diniharistd"]
+  },
+  {
+    "address": "0xd416e09795d24216a4548b70964c7f9d95a7293f",
+    "href": "/artists/hulkiokantabak",
+    "names": ["Hulki Okan Tabak", "hulkiokantabak"]
+  },
+  {
+    "address": "0xd5e55b446f56b54bb40f0fe44f1241c93e3a3461",
+    "href": "/artists/erikmatson",
+    "names": ["ErikMatson", "erikmatson"]
+  },
+  {
+    "address": "0xd605c7f2147707911abfbbe9ec6a7e2ab1ff7fcf",
+    "href": "/artists/neave",
+    "names": ["neave"]
+  },
+  {
+    "address": "0xd656f8d9cb8fa5aeb8b1576161d0488ee2c9c926",
+    "href": "/artists/giant-swan",
+    "names": ["Giant Swan", "giant-swan"]
+  },
+  {
+    "address": "0xd665afb9a4019a8c482352aaa862567257ed62cf",
+    "href": "/artists/archangel",
+    "names": ["Archangel", "archangel"]
+  },
+  {
+    "address": "0xd6ebd7b8e94fd8f36c99beed7976b9fa096e4a39",
+    "href": "/artists/kerb",
+    "names": ["kerb"]
+  },
+  {
+    "address": "0xd7ce4706f31606981dc35255c8ce27934f9a7624",
+    "href": "/artists/bassed",
+    "names": ["basseado", "bassed"]
+  },
+  {
+    "address": "0xd8c32880b6fd86ff7f060c4914eb1ca9a3897f2a",
+    "href": "/artists/kenarose",
+    "names": ["kena", "kenarose"]
+  },
+  {
+    "address": "0xd8d367dc2860f632956b5cb3cdd133ec392c7f9a",
+    "href": "/artists/the-fabricant",
+    "names": ["The Fabricant", "the-fabricant"]
+  },
+  {
+    "address": "0xd8f79981ffc4dc74d6617217d85045e4a640a7c5",
+    "href": "/artists/mathias-rusch-official",
+    "names": ["Mathias Rusch", "mathias-rusch-official"]
+  },
+  {
+    "address": "0xda22ecb2897040eb15da2a98765446ee07fdcc81",
+    "href": "/artists/studiodad",
+    "names": ["studio_dad", "studiodad"]
+  },
+  {
+    "address": "0xdac8c7594538e443e99b80eff250f8e59f494bb2",
+    "href": "/artists/theneimus",
+    "names": ["theNeimus", "theneimus"]
+  },
+  {
+    "address": "0xdb597741accba10f17d7cabd1694fe69f6a143a8",
+    "href": "/artists/aircocaravan",
+    "names": ["Airco Caravan", "aircocaravan"]
+  },
+  {
+    "address": "0xdbb0d9a62cb60567383120a2efbf98332c36d81f",
+    "href": "/artists/michaeljerry",
+    "names": ["MichaelJerrysCreations", "michaeljerry"]
+  },
+  {
+    "address": "0xdbc522931928f8ff7784c84e5fcec4ffdcd6e9eb",
+    "href": "/artists/frenetik-void",
+    "names": ["Frenetik Void", "frenetik-void"]
+  },
+  {
+    "address": "0xdc3529ae55d013ecb89d1a17b03a0949348ffbce",
+    "href": "/artists/mrbriandesign",
+    "names": ["Mr.Brian Design", "mrbriandesign"]
+  },
+  {
+    "address": "0xdc546f477f273bcf327297bf4adcb671b5f20be1",
+    "href": "/artists/blackboxdotart",
+    "names": ["Sparrow", "blackboxdotart", "BlackBoxDotArt"]
+  },
+  {
+    "address": "0xdc65c7c5ddbb7a3be14b4fffdea68079a6e0bdb7",
+    "href": "/artists/mikeford",
+    "names": ["Mike Ford", "mikeford", "paleh0rs3"]
+  },
+  {
+    "address": "0xdcd50efb4ccdc9c409b4a4d8eb919ed301c86abe",
+    "href": "/artists/eyesteethandflesh",
+    "names": ["EyesTeethFlesh", "eyesteethandflesh", "EyesTeethAndFlesh"]
+  },
+  {
+    "address": "0xde30fc3f733196527004af0b907b546513a3e01c",
+    "href": "/artists/sooxy-art",
+    "names": ["sooxy_art", "sooxy-art"]
+  },
+  {
+    "address": "0xde545ea984c2fc30e2b558e1c6233105e3abadee",
+    "href": "/artists/richardmasaart",
+    "names": ["Richard Masa", "richardmasaart"]
+  },
+  {
+    "address": "0xe13d4abee4b304b67c52a56871141cad1b833aa7",
+    "href": "/artists/shortcut",
+    "names": ["Shortcut", "shortcut", "SHORTCUT"]
+  },
+  {
+    "address": "0xe143537ff9ab74e3dcf07bb36a284a64dc38d1d6",
+    "href": "/artists/grdill",
+    "names": ["GrdIll", "grdill"]
+  },
+  {
+    "address": "0xe2bfafd7e5079ddbef176b611bab4f2aa2bd4e59",
+    "href": "/artists/jamessuret",
+    "names": ["James Suret", "jamessuret"]
+  },
+  {
+    "address": "0xe3293a736d2bbe183f5c0a90cdb0fe0518f8834e",
+    "href": "/artists/lrdmnd",
+    "names": ["lrdmnd"]
+  },
+  {
+    "address": "0xe330dc28b47d73884ad88837aecfee1f49ad7e7b",
+    "href": "/artists/thephilosopher",
+    "names": ["The Philosopher", "thephilosopher"]
+  },
+  {
+    "address": "0xe3475bf2ceea9ed2560d5f68118b9547819fdecf",
+    "href": "/artists/achilleas",
+    "names": ["achilleas"]
+  },
+  {
+    "address": "0xe3533c3491279e3f44cfa4a6bf624888f145787f",
+    "href": "/artists/toemoss-art",
+    "names": ["ToeMoss HiChic", "toemoss-art"]
+  },
+  {
+    "address": "0xe394104f0871b6f1fd46b2de688c3ea6f4cc84dd",
+    "href": "/artists/markcotton",
+    "names": ["Mark Cotton", "markcotton"]
+  },
+  {
+    "address": "0xe3cc26b9c823fd6499cb017cc0ffd881bf005db7",
+    "href": "/artists/irems",
+    "names": ["irem s.", "irems"]
+  },
+  {
+    "address": "0xe4c6c46645988bbafd8ef6b4d1b60d969cc857c3",
+    "href": "/artists/iuri",
+    "names": ["iuri"]
+  },
+  {
+    "address": "0xe628788c9b6f04ba82e175d45a390468f6f8af34",
+    "href": "/artists/fada95",
+    "names": ["fada95"]
+  },
+  {
+    "address": "0xe65fee5916cfbff4c54a8911fcf1a97187cd77d5",
+    "href": "/artists/adamakis",
+    "names": ["Adam Martinakis", "adamakis"]
+  },
+  {
+    "address": "0xe85f832d9f551cf445a6e8ceaaee73ef88a340d6",
+    "href": "/artists/griff",
+    "names": ["GRIFF", "griff"]
+  },
+  {
+    "address": "0xe9a98190215713a43585fa7c00d878be2aa032c1",
+    "href": "/artists/beccakennedy",
+    "names": ["Becca Kennedy", "beccakennedy"]
+  },
+  {
+    "address": "0xedd06c5afcb7d366cbfb681bacef102c44a95c26",
+    "href": "/artists/matas",
+    "names": ["Matas", "matas"]
+  },
+  {
+    "address": "0xef66692cb6f33ac6833d743283801ca8dcf656a9",
+    "href": "/artists/afterfuture",
+    "names": ["AFTERFUTURE", "afterfuture"]
+  },
+  {
+    "address": "0xefadeba046360342fc0db72db8409308fc7e4c40",
+    "href": "/artists/done",
+    "names": ["COLDICE", "done"]
+  },
+  {
+    "address": "0xefe2941dc33e8a114d009d932effe380dcf15e8c",
+    "href": "/artists/combugnera",
+    "names": ["Cristiana Vettor", "combugnera"]
+  },
+  {
+    "address": "0xf1a15477c766981c9169be9b911a34d33f311f83",
+    "href": "/artists/yusaymonj",
+    "names": ["YUSAYMONJ", "yusaymonj"]
+  },
+  {
+    "address": "0xf1f3a3429be7ed638e77240e43eb43e4551980c5",
+    "href": "/artists/kraitz",
+    "names": ["Kaitlyn Raitz", "kraitz"]
+  },
+  {
+    "address": "0xf2a841f4025159e5a845de3172384a7bca00ddde",
+    "href": "/artists/fabin",
+    "names": ["Fabin Rasheed", "fabin", "nurecas", "Fabin"]
+  },
+  {
+    "address": "0xf3726447b2184bc5d3df017438f644997dc71e79",
+    "href": "/artists/pulethewitchdr",
+    "names": ["Pule the witch_DR", "pulethewitchdr"]
+  },
+  {
+    "address": "0xf3e158ee02ed7375488d8f9c102a99a3096ed539",
+    "href": "/artists/fevralev",
+    "names": ["Fevralev", "fevralev"]
+  },
+  {
+    "address": "0xf46f4e1205f25e57ff646a714207a183e382e0e3",
+    "href": "/artists/hanne-maes",
+    "names": ["Hanne Maes", "hanne-maes"]
+  },
+  {
+    "address": "0xf58a81826f5bc67b4649ce9d985c666e090b177e",
+    "href": "/artists/immortal",
+    "names": ["M S Yeshwanth", "immortal"]
+  },
+  {
+    "address": "0xf58d4bcf9bf4d30334dfed66d5d4db63147979b1",
+    "href": "/artists/entter",
+    "names": ["Entter", "entter", "cryptopope", "VJ Entter", "VJ ENTTER"]
+  },
+  {
+    "address": "0xf62a3daaec32af965f44960004faca102d84e37c",
+    "href": "/artists/dformer",
+    "names": ["Dformer // Gabor Molnar", "dformer"]
+  },
+  {
+    "address": "0xf739b48e89ed4b7c2398cc4e2dcd54479b7bea50",
+    "href": "/artists/slava3ngl",
+    "names": ["Slava3ngl", "slava3ngl"]
+  },
+  {
+    "address": "0xf756bea54192eeff7ac69bfbaa063de113381881",
+    "href": "/artists/cesaryague",
+    "names": ["César Yagüe", "cesaryague", "CÃ©sar YagÃ¼e"]
+  },
+  {
+    "address": "0xf7e560cf02fc4cfd15f9965da5cad2d308f98846",
+    "href": "/artists/shantyboat",
+    "names": ["shantyboat"]
+  },
+  {
+    "address": "0xf8b32d30ac6ab3030595432533d7836fd76b078d",
+    "href": "/artists/hex6c",
+    "names": ["hex6c"]
+  },
+  {
+    "address": "0xf8d656e023838535f0765a56875b3111d15c294e",
+    "href": "/artists/forlenza",
+    "names": ["FORLENZA", "forlenza"]
+  },
+  {
+    "address": "0xf8fd6a5fa90940432e5c7921e332f0c5d33f2d38",
+    "href": "/artists/haru",
+    "names": ["Haru Komoda", "haru"]
+  },
+  {
+    "address": "0xf90f7778b630439f060405f32c3c91dc4faec05b",
+    "href": "/artists/metamaks",
+    "names": ["MetaMaks", "metamaks"]
+  },
+  {
+    "address": "0xf91ba1faf962b672a7ae12815afd2f432bc74186",
+    "href": "/artists/magusz",
+    "names": ["Magusz", "magusz"]
+  },
+  {
+    "address": "0xfab46f723fc1bcbbb74b471d8dbe9514943caee9",
+    "href": "/artists/aprilhartmanncreations",
+    "names": ["April Hartmann", "aprilhartmanncreations"]
+  },
+  {
+    "address": "0xfb5e93edceb333f391056dbf8d61af2e90d90861",
+    "href": "/artists/axo-k",
+    "names": ["Axo K", "axo-k"]
+  },
+  {
+    "address": "0xfbf7e572a63ca6a4e21a83720c0f23dd644e32e0",
+    "href": "/artists/lazaro",
+    "names": ["Lazaro", "lazaro"]
+  },
+  {
+    "address": "0xfc2ff3b4983298306895125d3ab01ad1cd143721",
+    "href": "/artists/mbsjq",
+    "names": ["mbsjq"]
+  },
+  {
+    "address": "0xfcad2eb79692c2aa0bcbaf3d3e29615dda94fe6d",
+    "href": "/artists/sturec",
+    "names": ["sturec"]
+  },
+  {
+    "address": "0xfcdb3b49d2c1e19f685320be83d8c276c0119374",
+    "href": "/artists/slick",
+    "names": ["slick"]
+  },
+  {
+    "address": "0xfde27a46d23bc8d39fc86af1eb1b797918bb662a",
+    "href": "/artists/pnkfdarts",
+    "names": ["Mikko Raima", "pnkfdarts"]
+  },
+  {
+    "address": "0xfe0186d804df3bd6a8d322b825c85aa5c6925a73",
+    "href": "/artists/ruizilhao",
+    "names": ["Rui Zilhão", "ruizilhao", "Rui ZilhÃ£o"]
+  },
+  {
+    "address": "0xffec85dde94004a6865fdca19045332f832adfff",
+    "href": "/artists/greytekin",
+    "names": ["Grey Tekin", "greytekin"]
+  }
+]

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import ArtistName from '@/components/artist-name';
+import { artistCreditParts } from '@/utils/artist-links';
 import {
   artistHref,
   artistName,
@@ -13,22 +15,27 @@ export default function ArtistCredit({
   credit: string;
 }) {
   const profiles = artistsForRecord(recordId);
-  if (!profiles.length) return <>{credit}</>;
-  // Preserve the complete original collaboration credit, even when only one
-  // collaborator's historical identity has been recovered.
+  const addresses = profiles.map((p) => p.address);
+  const linked = new Set(
+    artistCreditParts(credit, addresses).map((part) => part.href),
+  );
+  // Preserve source-backed contributor links when a group credit does not name them.
+  const additional = profiles.filter((p) => !linked.has(artistHref(p)));
   return (
     <>
-      {credit}
-      <span className="block mt-1 text-xs">
-        {profiles.map((p, index) => (
-          <span key={p.address}>
-            {index > 0 && ' · '}
-            <Link href={artistHref(p)} className="text-accent underline">
-              {artistName(p)} profile
-            </Link>
-          </span>
-        ))}
-      </span>
+      <ArtistName credit={credit} allowedAddresses={addresses} />
+      {additional.length > 0 && (
+        <span className="mt-1 block text-xs text-accent">
+          {additional.map((profile, index) => (
+            <span key={profile.address}>
+              {index > 0 && ' · '}
+              <Link href={artistHref(profile)} className="hover:underline">
+                {artistName(profile)} profile
+              </Link>
+            </span>
+          ))}
+        </span>
+      )}
     </>
   );
 }

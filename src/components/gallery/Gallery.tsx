@@ -1,5 +1,6 @@
 'use client';
 
+import ArtistName from '@/components/artist-name';
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -178,7 +179,7 @@ export default function Gallery({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {pagedItems.map((item) => (
-            <Link key={item.id} href={item.link} className="group">
+            <article key={item.id} className="group">
               <div className="bg-surface-raised border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                 <div className="aspect-square overflow-hidden bg-surface-sunken relative">
                   {item.isLayer && item.contractAddress && (
@@ -198,29 +199,38 @@ export default function Gallery({
                       <Info size={16} />
                     </button>
                   )}
-                  {item.isLayer ? (
-                    <LayerThumbnail imageUrl={item.imageUrl} name={item.name} />
-                  ) : item.imageUrl ? (
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.name}
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-text-muted text-sm">
-                      No image
-                    </div>
-                  )}
+                  <Link
+                    href={item.link}
+                    aria-label={`View ${item.name}`}
+                    className="block relative w-full h-full"
+                  >
+                    {item.isLayer ? (
+                      <LayerThumbnail
+                        imageUrl={item.imageUrl}
+                        name={item.name}
+                      />
+                    ) : item.imageUrl ? (
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-text-muted text-sm">
+                        No image
+                      </div>
+                    )}
+                  </Link>
                 </div>
                 <div className="p-4 flex-1 flex flex-col">
                   <h3 className="font-semibold text-lg text-text line-clamp-2 mb-1 group-hover:text-accent transition-colors">
-                    {item.name}
+                    <Link href={item.link}>{item.name}</Link>
                   </h3>
                   {item.artistName && (
                     <p className="text-sm text-text-muted mb-2">
-                      {item.artistName}
+                      <ArtistName credit={item.artistName} />
                     </p>
                   )}
                   {item.description && (
@@ -233,7 +243,7 @@ export default function Gallery({
                   </div>
                 </div>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       )}

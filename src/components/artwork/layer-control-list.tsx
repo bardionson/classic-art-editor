@@ -1,3 +1,4 @@
+import ArtistName from '@/components/artist-name';
 import LayerThumbnail from '@/components/layer/layer-thumbnail';
 import { ChevronRight, Info } from 'react-feather';
 import { Address } from 'viem';
@@ -58,7 +59,7 @@ export default function LayerControlList({
                     {layer.name}
                     {layer.artistName && (
                       <span className="text-sm text-text-muted font-normal ml-2">
-                        (by {layer.artistName})
+                        (by <ArtistName credit={layer.artistName} />)
                       </span>
                     )}
                   </h3>
