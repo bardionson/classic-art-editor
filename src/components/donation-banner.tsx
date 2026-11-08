@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Copy, Check } from 'react-feather';
 import { DONATION_ENS, DONATION_ADDRESS } from '@/utils/restoration-donations';
 
@@ -30,6 +31,17 @@ export default function DonationBanner() {
       aria-label="Donate to Digital Rescue Lab"
       className="border-b border-accent/20 bg-surface-sunken px-3 py-2 text-center"
     >
+      <p className="mb-1 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-text">
+        <span className="font-semibold">
+          Independently restored by Digital Rescue Lab
+        </span>
+        <Link
+          href="/about"
+          className="text-accent underline underline-offset-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        >
+          About this restoration
+        </Link>
+      </p>
       <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
         <a
           href="https://digitalrescuelab.xyz/"
@@ -39,7 +51,7 @@ export default function DonationBanner() {
         >
           Donate to keep Async art alive
         </a>
-        <span className="text-text-muted">Digital Rescue Lab · Ethereum</span>
+        <span className="text-text-muted">Ethereum donations</span>
         <button
           type="button"
           onClick={() => copy(DONATION_ENS)}
