@@ -19,9 +19,9 @@ const NAV_LINKS = [
   { href: '/gallery/layers', label: 'Layers Gallery' },
   { href: '/wallet', label: 'Async Wallet' },
   {
-    href: 'https://juicebox.money/v5/eth:70',
-    label: 'Donate',
-    external: true,
+    href: '/#support',
+    label: 'Support',
+    external: false,
   },
 ];
 

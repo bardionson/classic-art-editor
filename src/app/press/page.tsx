@@ -284,6 +284,14 @@ export default function PressPage({ searchParams }: { searchParams: Params }) {
           require a subscription or have no saved copy.
         </p>
         <div className="flex flex-wrap gap-5 mt-4 text-sm">
+          <a
+            href="https://digitalrescuelab.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline"
+          >
+            About Digital Rescue Lab
+          </a>
           <Link href="/artists" className="text-accent underline">
             Meet the artists
           </Link>

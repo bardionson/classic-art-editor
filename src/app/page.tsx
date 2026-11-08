@@ -26,7 +26,15 @@ export default function Home() {
     <main className="container mx-auto px-4 py-10 sm:py-16 max-w-6xl">
       <section className="mb-10">
         <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-4">
-          Digital Rescue Lab · Archive restoration
+          <a
+            href="https://digitalrescuelab.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            Digital Rescue Lab
+          </a>{' '}
+          · Archive restoration
         </p>
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl">
           Keep the art alive.
@@ -44,6 +52,29 @@ export default function Home() {
           Explore Music Blueprints
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
+        <aside
+          aria-labelledby="rescue-lab-heading"
+          className="mt-7 rounded-2xl border border-accent/30 bg-accent/5 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-5"
+        >
+          <div className="flex-1">
+            <h2 id="rescue-lab-heading" className="text-xl font-semibold">
+              Help Digital Rescue Lab keep the art alive.
+            </h2>
+            <p className="mt-2 text-sm text-text-muted leading-relaxed">
+              Meet the community restoring early blockchain artworks and follow
+              the work to preserve them.
+            </p>
+          </div>
+          <a
+            href="https://digitalrescuelab.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 shrink-0"
+          >
+            Visit Digital Rescue Lab
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
+        </aside>
         <div className="mt-8 rounded-2xl border border-border bg-surface-sunken p-5 sm:p-6">
           <ArchiveSearchForm />
         </div>
@@ -156,7 +187,7 @@ export default function Home() {
             Explore classic layers
           </Link>
         </div>
-        <div>
+        <div id="support" className="scroll-mt-28">
           <h2 className="text-xl font-semibold mb-3">
             Support the restoration
           </h2>
@@ -165,14 +196,19 @@ export default function Home() {
             cover hosting, asset preservation, and the work of bringing these
             pieces back.
           </p>
+          <p className="text-sm text-text-muted leading-relaxed mt-3">
+            Digital Rescue Lab’s website lists digitalrescuelab.eth and says a
+            new fundraising campaign is coming soon. Visit the Lab for current
+            donation information.
+          </p>
           <div className="flex flex-wrap gap-4 mt-4">
             <a
-              href="https://juicebox.money/v5/eth:70"
+              href="https://digitalrescuelab.xyz/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent underline"
             >
-              Support the archive ↗
+              Visit Digital Rescue Lab ↗
             </a>
             <a
               href="https://x.com/ArtRescueLab"
