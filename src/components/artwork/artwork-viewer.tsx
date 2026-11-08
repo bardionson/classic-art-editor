@@ -9,9 +9,6 @@ import {
   Maximize,
   X,
   Layers,
-  ChevronRight,
-  ChevronLeft,
-  Info,
   ArrowLeft,
   Cast,
   Download,
@@ -61,7 +58,7 @@ export default function ArtworkViewer({
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isMirrorDialogOpen, setIsMirrorDialogOpen] = useState(false);
-  const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(true);
+  const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(false);
   const [controlOverrides, setControlOverrides] = useState<
     Record<string, number>
   >({});
@@ -108,18 +105,21 @@ export default function ArtworkViewer({
     !isFullscreen &&
     isDescriptionPanelOpen;
 
+  const panelVisible = !hideControls && !isFullscreen && isDescriptionPanelOpen;
+  const mobilePanel = isMobile && panelVisible;
+
   useEffect(() => {
-    if (!compactMusic || !musicPanelRef.current) return;
+    if (!mobilePanel || !musicPanelRef.current) return;
     const panel = musicPanelRef.current;
     const measure = () => setPlayerHeight(panel.getBoundingClientRect().height);
     const observer = new ResizeObserver(measure);
     observer.observe(panel);
     measure();
     return () => observer.disconnect();
-  }, [compactMusic]);
+  }, [mobilePanel]);
 
   useEffect(() => {
-    if (!compactMusic || !artViewportRef.current || !masterArtSize) {
+    if (!artViewportRef.current || !masterArtSize) {
       setArtScale(1);
       return;
     }
@@ -142,7 +142,7 @@ export default function ArtworkViewer({
     observer.observe(viewport);
     measure();
     return () => observer.disconnect();
-  }, [compactMusic, masterArtSize]);
+  }, [masterArtSize]);
 
   const handleDownload = async () => {
     if (!artElementRef.current || !masterArtSize) return;
@@ -178,7 +178,15 @@ export default function ArtworkViewer({
       <div
         ref={artViewportRef}
         aria-label="Artwork display"
-        style={compactMusic ? { top: 72, bottom: playerHeight } : undefined}
+        style={{
+          top: isFullscreen || hideControls ? 0 : 136,
+          bottom: mobilePanel
+            ? playerHeight
+            : isFullscreen || hideControls
+              ? 0
+              : 72,
+          right: panelVisible && !isMobile ? 420 : 0,
+        }}
         className="absolute inset-0 flex items-center justify-center overflow-hidden"
       >
         {statusMessage && (
@@ -200,23 +208,41 @@ export default function ArtworkViewer({
             )}
           </>
         )}
-        <div
-          id={ART_ELEMENT_ID}
-          ref={artElementRef}
-          className={`relative mx-auto -z-20 shrink-0 ${compactMusic ? '!mt-0' : ''}`}
-          style={compactMusic ? { transform: `scale(${artScale})` } : undefined}
-        />
+        <div className="shrink-0" style={{ transform: `scale(${artScale})` }}>
+          <div
+            id={ART_ELEMENT_ID}
+            ref={artElementRef}
+            className="relative mx-auto -z-20 shrink-0 !mt-0"
+          />
+        </div>
       </div>
 
-      {/* Consolidated floating control pill. Anchored bottom-LEFT (not
-          right) and given a high z-index so it stays visible and clickable
-          even when the description panel (anchored right, z-30, default
-          open) is showing — a right-anchored pill previously sat entirely
-          underneath the panel on both desktop (420px width) and mobile
-          (full width). */}
+      {/* Keep the toggle outside the scrolling panel so it cannot be clipped. */}
+      {!hideControls && !isFullscreen && (
+        <button
+          type="button"
+          onClick={() => setIsDescriptionPanelOpen((open) => !open)}
+          aria-expanded={panelVisible}
+          aria-controls="artwork-controls"
+          className="fixed top-20 right-4 z-40 flex items-center gap-2 rounded-lg border border-border bg-surface-raised px-4 py-3 text-sm font-semibold text-text-primary shadow-soft-drop hover:bg-surface-sunken"
+        >
+          {panelVisible ? (
+            <X size={18} aria-hidden="true" />
+          ) : (
+            <Layers size={18} aria-hidden="true" />
+          )}
+          {panelVisible
+            ? 'Hide controls'
+            : metadata?.['audio-layout']
+              ? 'Music & layers'
+              : 'Layers & details'}
+        </button>
+      )}
+
+      {/* Floating artwork tools stay clear of the details panel. */}
       {!hideControls && (
         <div
-          className={`${compactMusic ? 'hidden' : 'flex'} absolute bottom-4 left-4 z-40 gap-1 bg-black/40 backdrop-blur-md rounded-full p-1`}
+          className={`${mobilePanel ? 'hidden' : 'flex'} absolute bottom-4 left-4 z-40 gap-1 bg-black/40 backdrop-blur-md rounded-full p-1`}
         >
           {metadata?.['audio-layout'] && (
             <button
@@ -263,76 +289,15 @@ export default function ArtworkViewer({
         </div>
       )}
 
-      {/* Description slide-in overlay */}
+      {/* Controls sit beside the art on desktop and below it on mobile. */}
       {!hideControls && (
         <div
+          id="artwork-controls"
           ref={musicPanelRef}
-          className={`${isFullscreen ? 'hidden' : ''} fixed ${compactMusic ? 'bottom-0 max-h-[48dvh] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]' : 'inset-y-0 pt-24 px-6 pb-24'} right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto transition-transform duration-300 ease-out ${
-            isDescriptionPanelOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          aria-label="Artwork controls and details"
+          style={{ display: panelVisible ? undefined : 'none' }}
+          className={`fixed ${mobilePanel ? 'bottom-0 max-h-[48dvh] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]' : 'inset-y-0 pt-36 px-6 pb-24'} right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto`}
         >
-          {/*
-            Pull tab, attached to the panel's left edge, moves with the panel's
-            transform. This works correctly on desktop for both open and closed
-            states (panel is a fixed 420px, so -left-10 always lands inside the
-            viewport), and on mobile for the CLOSED state (the panel's left edge
-            sits near the viewport's right edge once translated off-screen). But
-            on mobile the panel is w-full, so when OPEN its left edge is at the
-            viewport's own left edge — -left-10 would place the tab off-screen
-            and unreachable (verified: geometrically off-viewport and fails a
-            real click). So this tab hides itself on mobile only while open
-            (`hidden sm:flex` in that state); the separate close button below
-            (sm:hidden, only rendered while open) is the reachable close
-            affordance on mobile instead. Reopening on mobile still uses this
-            same tab, since its closed-state position is unaffected.
-          */}
-          <button
-            onClick={() => setIsDescriptionPanelOpen(!isDescriptionPanelOpen)}
-            className={`absolute top-1/2 -left-10 -translate-y-1/2 flex-col items-center gap-2 max-h-[70vh] bg-surface-raised/75 backdrop-blur-xl border border-border border-r-0 rounded-l-lg py-4 px-2 shadow-soft-drop ${
-              compactMusic
-                ? 'hidden'
-                : isDescriptionPanelOpen
-                  ? 'hidden sm:flex'
-                  : 'flex'
-            }`}
-            aria-label={
-              isDescriptionPanelOpen
-                ? 'Hide artwork details'
-                : 'Show artwork details'
-            }
-          >
-            {isDescriptionPanelOpen ? (
-              <ChevronRight size={18} className="text-text-muted shrink-0" />
-            ) : (
-              <>
-                <ChevronLeft size={16} className="text-text-muted shrink-0" />
-                {metadata?.name ? (
-                  <span className="[writing-mode:vertical-rl] rotate-180 text-xs font-medium text-text tracking-wide truncate max-h-48">
-                    {metadata.name}
-                  </span>
-                ) : (
-                  <Info size={16} className="text-text-muted shrink-0" />
-                )}
-              </>
-            )}
-          </button>
-
-          {/* Mobile-only close button: the edge tab above is unreachable when
-              the panel is full-width, so this is the only way to close it
-              on small screens. Reopening is still handled by the edge tab
-              (visible near the right edge once the panel is closed, since
-              -left-10 relative to an off-screen-right panel lands back
-              inside the viewport). */}
-          {isDescriptionPanelOpen && !mobileMusic && (
-            <button
-              onClick={() => setIsDescriptionPanelOpen(false)}
-              className="sm:hidden absolute top-20 right-4 z-10 bg-surface-sunken hover:bg-border rounded-full p-2 transition"
-              aria-label="Hide artwork details"
-            >
-              <ChevronRight size={20} className="text-text-muted" />
-            </button>
-          )}
-
           {metadata && (
             <>
               {mobileMusic && (
