@@ -3,6 +3,22 @@ import { readFileSync } from 'node:fs';
 import catalog from '@/data/music-blueprint-projects.json';
 import snapshot from '@/data/archive-index.json';
 import recovered from '@/data/music-blueprint-metadata.json';
+import { dreamRecorderRecords } from './dream-recorder';
+const musicContracts = [
+  catalog.sharedContract,
+  ...catalog.additionalContracts,
+].map((c) => c.address);
+const expectedMusic = [
+  ...snapshot.records.filter(
+    (r) =>
+      r.family === 'blueprints' &&
+      (catalog.projects.some((p) => p.id === r.blueprintId) ||
+        musicContracts.includes(r.contractAddress.toLowerCase())),
+  ),
+  ...dreamRecorderRecords,
+];
+const expectedMusicProjects = new Set(expectedMusic.map((r) => r.blueprintId))
+  .size;
 import {
   archiveCoverage,
   getArchiveRecordByCid,
@@ -20,20 +36,16 @@ describe('Music Blueprint archive category', () => {
   it('partitions every Blueprint edition once without changing identities or the total inventory', () => {
     const music = browseBlueprintProjects('', 'name', 1, 'music-blueprints');
     const visual = browseBlueprintProjects('', 'name', 1, 'blueprints');
-    expect(music.allProjects).toBe(catalog.projects.length);
-    expect(music.editions).toBe(
-      snapshot.records.filter((r) =>
-        catalog.projects.some((p) => p.id === r.blueprintId),
-      ).length,
-    );
+    expect(music.allProjects).toBe(expectedMusicProjects);
+    expect(music.editions).toBe(expectedMusic.length);
     expect(music.allProjects + visual.allProjects).toBe(
       new Set(getBlueprintRecords().map((r) => r.blueprintId)).size,
     );
     expect(music.editions + visual.editions).toBe(getBlueprintRecords().length);
-    expect(archiveCoverage.total).toBe(snapshot.records.length);
+    expect(archiveCoverage.total).toBe(snapshot.records.length + 3000);
     expect(
       Object.values(archiveCoverage.counts).reduce((a, b) => a + b, 0),
-    ).toBe(snapshot.records.length);
+    ).toBe(snapshot.records.length + 3000);
     expect(archiveCoverage.counts['music-blueprints']).toBe(music.editions);
     expect(
       music.projects.every((p) => !visual.projects.some((v) => v.id === p.id)),
@@ -43,8 +55,8 @@ describe('Music Blueprint archive category', () => {
     );
   });
   it('includes every recovered edition on the shared music contract', () => {
-    const contractRecords = snapshot.records.filter(
-      (r) => r.contractAddress.toLowerCase() === catalog.sharedContract.address,
+    const contractRecords = snapshot.records.filter((r) =>
+      musicContracts.includes(r.contractAddress.toLowerCase()),
     );
     expect(contractRecords.length).toBeGreaterThanOrEqual(49);
     for (const record of contractRecords) {
@@ -143,7 +155,7 @@ describe('Music Blueprint archive category', () => {
     expect(element.results.every((r) => r.metadataLocal)).toBe(true);
     const grouped = groupBlueprintProjects(getBlueprintRecords());
     expect(grouped.filter((p) => p.family === 'music-blueprints')).toHaveLength(
-      catalog.projects.length,
+      expectedMusicProjects,
     );
   });
 });

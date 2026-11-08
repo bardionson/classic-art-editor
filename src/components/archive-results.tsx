@@ -154,7 +154,8 @@ export default function ArchiveResults({
                 className="text-accent underline inline-block text-sm font-medium mt-4"
               >
                 {record.link
-                  ? record.family === 'music' && record.kind === 'Master'
+                  ? (record.family === 'music' && record.kind === 'Master') ||
+                    record.family === 'music-blueprints'
                     ? 'Listen & view artwork'
                     : 'Open artwork'
                   : record.family === 'music-blueprints'

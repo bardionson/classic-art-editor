@@ -15,14 +15,16 @@ export default function BlueprintPlayer({
   name,
   image,
   animationUrl,
+  audioUrl,
 }: {
   cid: string;
   name: string;
   image?: string;
   animationUrl?: string;
+  audioUrl?: string;
 }) {
   const [media, setMedia] = useState<ArchivePlayback | null>(() =>
-    metadataPlayback({ animation_url: animationUrl }),
+    metadataPlayback({ audio: audioUrl, animation_url: animationUrl }),
   );
   const [loading, setLoading] = useState(!media);
   const [lookupError, setLookupError] = useState(false);
@@ -45,7 +47,10 @@ export default function BlueprintPlayer({
   const url = audio.urls?.[0] ?? candidates[attempt];
 
   useEffect(() => {
-    if (metadataPlayback({ animation_url: animationUrl }) && retry === 0)
+    if (
+      metadataPlayback({ audio: audioUrl, animation_url: animationUrl }) &&
+      retry === 0
+    )
       return;
     const controller = new AbortController();
     const deadline = setTimeout(() => controller.abort(), 26000);
@@ -79,7 +84,7 @@ export default function BlueprintPlayer({
       controller.abort();
       clearTimeout(deadline);
     };
-  }, [cid, animationUrl, retry]);
+  }, [cid, animationUrl, audioUrl, retry]);
 
   // Bound an unresponsive gateway during startup, without interrupting a loaded track.
   useEffect(() => {

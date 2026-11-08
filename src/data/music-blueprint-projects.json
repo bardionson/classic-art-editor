@@ -133,6 +133,12 @@
       "name": "Horizons",
       "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU",
       "basis": "Original Collection and Artist traits identify Horizons by Genzo. Exact metadata bytes were recovered from token 14104 on the shared Music Blueprints contract and verified against their content-addressed CID."
+    },
+    {
+      "id": "637830825aad290ba157149d",
+      "name": "Dream Recorder",
+      "evidenceUrl": "https://www.async.art/archive/recovery/dream-recorder.json",
+      "basis": "Original signed project metadata, original edition URLs and all 3000 tokenURI calls identify Dream Recorder on Async Music Blueprints V2. Edition media and traits are preserved by The Guild Archive."
     }
   ],
   "awaitingRecovery": [
@@ -158,5 +164,12 @@
     "collectionUrl": "https://opensea.io/collection/async-music-blueprints",
     "reportedItems": 4002,
     "countBasis": "OpenSea collection listing observed 2026-11-07; not an independently enumerated on-chain supply."
-  }
+  },
+  "additionalContracts": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "name": "Async Music Blueprints V2",
+      "evidenceUrl": "https://etherscan.io/address/0xbc402bed62c90afd0e104be32bdee9447b5ccd0d"
+    }
+  ]
 }

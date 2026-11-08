@@ -1,4 +1,5 @@
 import snapshot from '@/data/archive-index.json';
+import { dreamRecorderRecords } from './dream-recorder';
 import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
 import musicBlueprintMetadata from '@/data/music-blueprint-metadata.json';
 import { ipfsPath } from '@/utils/archive-media';
@@ -19,6 +20,7 @@ export interface ArchiveRecord {
   identityStatus: string;
   metadataVerified: boolean;
   metadataLocal?: boolean;
+  metadataUri?: string;
   slot?: string;
   image?: string;
   animationUrl?: string;
@@ -54,16 +56,20 @@ const recoveredMetadata: Record<
   string,
   Partial<ArchiveRecord>
 > = musicBlueprintMetadata;
-const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[]).map(
-  (record) => {
+const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[])
+  .map((record) => {
     const project =
       record.family === 'blueprints' && record.blueprintId
         ? musicProjects.get(record.blueprintId)
         : undefined;
     const isMusicContract =
       record.family === 'blueprints' &&
-      record.contractAddress.toLowerCase() ===
-        musicBlueprintCatalog.sharedContract.address;
+      [
+        musicBlueprintCatalog.sharedContract,
+        ...musicBlueprintCatalog.additionalContracts,
+      ].some(
+        (contract) => contract.address === record.contractAddress.toLowerCase(),
+      );
     return project || isMusicContract
       ? {
           ...record,
@@ -72,8 +78,8 @@ const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[]).map(
           collection: project?.name ?? record.collection,
         }
       : record;
-  },
-);
+  })
+  .concat(dreamRecorderRecords);
 const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
 export function getArchiveRecords(): readonly ArchiveRecord[] {
   return records;

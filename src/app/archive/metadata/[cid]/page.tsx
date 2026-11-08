@@ -1,7 +1,8 @@
 import { IPFS_PATH_GATEWAYS } from '@/utils/ipfs-gateways';
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
+import { dreamRecorder, dreamProjectHref } from '@/utils/dream-recorder';
 import ArchivePreview from '@/components/archive-preview';
 import DynamicExpansionPreview from '@/components/dynamic-expansion-preview';
 import BlueprintPlayer from '@/components/blueprint-player';
@@ -21,6 +22,8 @@ export default function MetadataArtworkPage({
 }) {
   const record = getArchiveRecordByCid(params.cid);
   if (!record) notFound();
+  if (record.blueprintId === dreamRecorder.projectId && record.link)
+    redirect(record.link);
   const Preview =
     record.family === 'dynamic-blueprints'
       ? DynamicExpansionPreview
@@ -59,8 +62,10 @@ export default function MetadataArtworkPage({
             Explore Dream Recorder at The Guild Archive ↗
           </a>
           <p className="mt-2 text-sm text-text-muted">
-            Browse editions and listen to their music in The Guild’s dedicated
-            viewer while restoration on Async Art continues.
+            <Link href={dreamProjectHref} className="text-accent underline">
+              Browse all 3,000 Dream Recorder editions on Async Art
+            </Link>
+            .
           </p>
         </aside>
       )}

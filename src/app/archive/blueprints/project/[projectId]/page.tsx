@@ -1,3 +1,5 @@
+import DreamRecorderCredit from '@/components/dream-recorder-credit';
+import { dreamRecorder } from '@/utils/dream-recorder';
 import projectCoverage from '@/data/blueprint-project-coverage.json';
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
@@ -83,6 +85,40 @@ export default function BlueprintProjectPage({
         )}
         Each Blueprint edition is fixed once minted.
       </p>
+      {project.id === dreamRecorder.projectId && (
+        <>
+          <p className="text-text-muted">
+            3,000 token identities verified on Ethereum, with artwork and media
+            references preserved by The Guild. Includes 2,995 music editions and
+            5 legendary editions whose original video files still need recovery.
+          </p>
+          <DreamRecorderCredit />
+          <nav
+            aria-label="Dream Recorder music types"
+            className="flex flex-wrap gap-4 mb-6"
+          >
+            {[
+              'All editions',
+              'plutonic mind',
+              'Johnny Filter',
+              'Marcotic',
+              'Legendary Edition',
+            ].map((type) => (
+              <Link
+                key={type}
+                href={
+                  type === 'All editions'
+                    ? pathname
+                    : `${pathname}?${new URLSearchParams({ q: type })}`
+                }
+                className="text-accent underline"
+              >
+                {type}
+              </Link>
+            ))}
+          </nav>
+        </>
+      )}
       <form
         action={pathname}
         role="search"
