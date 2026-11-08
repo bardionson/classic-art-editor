@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "creators": [
+    {
+      "identity": "wallet:0x39cc9c86e67baf2129b80fe3414c397492ea8026",
+      "name": "XCOPY",
+      "profileSourceUrl": "https://web.archive.org/web/20230926185232/https://async.market/u/xcopy/collection",
+      "metadataCid": "QmYz15yhK6H9Z1u2kckSEHLq7Ynt6nKB9Aju7oqW9qRzhH",
+      "metadataSha256": "c2d389bea69e942b312aa3d2ceb06b549ed14ea03c1c44bbb43cf19cb47d93a8",
+      "reason": "Exact unique archived profile name matches the Artist credit in CID-verified Banksta metadata. This is historical credit attribution, not on-chain creator-wallet verification."
+    }
+  ]
+}

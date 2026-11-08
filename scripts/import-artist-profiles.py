@@ -24,6 +24,25 @@ def normalize(value):
     return unicodedata.normalize('NFKC', value).strip().casefold()
 all_profiles = load(source / 'profiles.json')['profiles']
 creators = set(load(source / 'artist-profile-candidates.json')['creatorIdentities'])
+# Reviewed historical credits can recover profiles whose archived collection
+# page omitted creation counts. Validate the exact source identity and original
+# metadata credit; never promote a profile using a fuzzy name match.
+reviewed = {}
+review_path = repo / 'src/data/reviewed-artist-creators.json'
+if review_path.exists():
+    for review in load(review_path)['creators']:
+        row = next(p for p in all_profiles if p['identity'] == review['identity'])
+        assert row['source']['waybackUrl'] == review['profileSourceUrl']
+        assert row['profile']['name'] == review['name']
+        raw = (repo / 'public/archive/metadata' / (review['metadataCid'] + '.json')).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == review['metadataSha256']
+        assert any(a.get('trait_type') == 'Artist' and a.get('value') == review['name']
+                   for a in json.loads(raw).get('attributes', []))
+        identities = {p['identity'] for p in all_profiles
+                      if normalize(p['profile'].get('name', '')) == normalize(review['name'])}
+        assert identities == {review['identity']}
+        reviewed[review['identity']] = review
+        creators.add(review['identity'])
 records = load(repo / 'src/data/archive-index.json')['records']
 masters = {(r['contractAddress'].lower(), r['cid']): r for r in records if r['kind'] == 'Master' and r['cid']}
 layer_masters = {}
@@ -64,7 +83,7 @@ for row in all_profiles:
     exported = {key: profile.get(key, '') for key in ('address', 'name', 'username', 'bio', 'website', 'twitter', 'instagram')}
     exported['address'] = address
     exported['aliases'] = row['aliases']
-    exported['classification'] = row['classification']
+    exported['classification'] = 'historical-creator' if row['identity'] in reviewed else row['classification']
     exported['captureTimestamp'] = row['source']['captureTimestamp']
     exported['sourceUrl'] = row['source']['waybackUrl']
     exported['sourceSha256'] = row['source']['htmlSha256']

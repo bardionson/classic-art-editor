@@ -1850,5 +1850,10 @@
     "address": "0xffec85dde94004a6865fdca19045332f832adfff",
     "href": "/artists/greytekin",
     "names": ["Grey Tekin", "greytekin"]
+  },
+  {
+    "address": "0x39cc9c86e67baf2129b80fe3414c397492ea8026",
+    "href": "/artists/xcopy",
+    "names": ["XCOPY", "xcopy"]
   }
 ]
