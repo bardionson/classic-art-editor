@@ -58,7 +58,11 @@ export default function ArtworkViewer({
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isMirrorDialogOpen, setIsMirrorDialogOpen] = useState(false);
-  const [isDescriptionPanelOpen, setIsDescriptionPanelOpen] = useState(false);
+  // Until the visitor chooses, music opens with its player visible. Derive
+  // this from loaded metadata so late loading cannot reopen a closed panel.
+  const [descriptionPanelChoice, setIsDescriptionPanelOpen] = useState<
+    boolean | null
+  >(null);
   const [controlOverrides, setControlOverrides] = useState<
     Record<string, number>
   >({});
@@ -98,7 +102,9 @@ export default function ArtworkViewer({
   } = useArtwork(tokenAddress, tokenId, controlOverrides);
 
   const layersWithArtists = useLayersWithArtists(tokenAddress, tokenURI);
-  const mobileMusic = isMobile && !!metadata?.['audio-layout'] && !hideControls;
+  const hasMusic = !!metadata?.['audio-layout'];
+  const isDescriptionPanelOpen = descriptionPanelChoice ?? hasMusic;
+  const mobileMusic = isMobile && hasMusic && !hideControls;
   const compactMusic =
     mobileMusic &&
     !mobileDetailsOpen &&
@@ -221,7 +227,7 @@ export default function ArtworkViewer({
       {!hideControls && !isFullscreen && (
         <button
           type="button"
-          onClick={() => setIsDescriptionPanelOpen((open) => !open)}
+          onClick={() => setIsDescriptionPanelOpen(!isDescriptionPanelOpen)}
           aria-expanded={panelVisible}
           aria-controls="artwork-controls"
           className="fixed top-20 right-4 z-40 flex items-center gap-2 rounded-lg border border-border bg-surface-raised px-4 py-3 text-sm font-semibold text-text-primary shadow-soft-drop hover:bg-surface-sunken"
