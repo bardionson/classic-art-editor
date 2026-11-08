@@ -8,6 +8,12 @@ import BlueprintPlayer from '@/components/blueprint-player';
 import { getArchiveRecordByCid } from '@/utils/archive-search';
 import { familyTitle } from '@/utils/archive-families';
 
+// Both recovered Dream Recorder project metadata records.
+const DREAM_RECORDER_CIDS = new Set([
+  'Qmc2XBajDKYWEszu3toTyM91Nmnis6UkpaGou6wE8ncZon',
+  'QmYzG9HekT7YFipUmyL7k5qUdGZyfHjS9m5L4gSQugfA6g',
+]);
+
 export default function MetadataArtworkPage({
   params,
 }: {
@@ -42,6 +48,22 @@ export default function MetadataArtworkPage({
       <p className="text-text-muted mb-6">
         <ArtistCredit recordId={record.id} credit={record.artist} />
       </p>
+      {DREAM_RECORDER_CIDS.has(record.cid) && (
+        <aside className="mb-6 rounded-xl border border-border bg-surface-sunken p-4">
+          <a
+            href="https://theguildarchive.eth.limo/projects/dreamrecorder/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-accent underline"
+          >
+            Explore Dream Recorder at The Guild Archive ↗
+          </a>
+          <p className="mt-2 text-sm text-text-muted">
+            Browse editions and listen to their music in The Guild’s dedicated
+            viewer while restoration on Async Art continues.
+          </p>
+        </aside>
+      )}
       {record.family === 'music-blueprints' ? (
         <BlueprintPlayer
           key={record.cid}
