@@ -119,6 +119,7 @@ export default function PressPage({ searchParams }: { searchParams: Params }) {
           Browse the press archive
         </h2>
         <form
+          key={JSON.stringify([q, publication, year, kind, topic])}
           action="/press"
           method="get"
           className="rounded-xl border border-border p-5 mb-8"
