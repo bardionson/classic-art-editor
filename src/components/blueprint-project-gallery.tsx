@@ -17,6 +17,15 @@ export default function BlueprintProjectGallery({
   family?: 'blueprints' | 'music-blueprints';
 }) {
   const result = browseBlueprintProjects(query, sort, page, family);
+  const previews = musicBlueprintCatalog.awaitingRecovery.filter((project) =>
+    query
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .every((term) =>
+        (project.name + ' ' + project.artist).toLowerCase().includes(term),
+      ),
+  );
   const pathname = `/archive/${family}`;
   const title = family === 'music-blueprints' ? 'Music Blueprint' : 'Blueprint';
   return (
@@ -31,19 +40,16 @@ export default function BlueprintProjectGallery({
       {family === 'music-blueprints' && (
         <p className="text-sm text-text-muted mb-6">
           Browse by project and artist, then open an edition to hear its
-          original mix alongside the artwork. Multiple projects share the Async
-          Music Blueprints contract.{' '}
+          original mix alongside the artwork. The two shared Music Blueprint
+          contracts contain 4,002 minted tokens across 54 projects.{' '}
           <a
-            href={musicBlueprintCatalog.sharedContract.collectionUrl}
+            href="/archive/recovery/music-shared-contracts.json"
             className="text-accent underline"
-            target="_blank"
-            rel="noopener noreferrer"
           >
-            OpenSea lists 4,002 items in that shared collection
+            View the recovery inventory
           </a>
-          ; the archive totals above count recovered editions across the
-          projects identified so far. Some editions still need their metadata or
-          audio recovered.
+          . The totals above also include collections on separate contracts.
+          Some editions still need their metadata or audio recovered.
         </p>
       )}
       <form
@@ -128,10 +134,13 @@ export default function BlueprintProjectGallery({
             >
               Browse editions
             </Link>
-            {family === 'music-blueprints' && (
+            {family === 'music-blueprints' && project.listen && (
               <Link
                 className="block mt-3 text-accent underline"
-                href={`/archive/metadata/${project.cover.cid}`}
+                href={
+                  project.listen.link ||
+                  `/archive/metadata/${project.listen.cid}`
+                }
               >
                 Listen to an edition
               </Link>
@@ -155,7 +164,7 @@ export default function BlueprintProjectGallery({
       >
         Search all {title} editions
       </Link>
-      {family === 'music-blueprints' && !query && (
+      {family === 'music-blueprints' && previews.length > 0 && (
         <section
           className="mt-10 border-t border-border pt-6"
           aria-labelledby="awaiting-music"
@@ -168,7 +177,7 @@ export default function BlueprintProjectGallery({
             the recovered inventory.
           </p>
           <ul className="space-y-3">
-            {musicBlueprintCatalog.awaitingRecovery.map((project) => (
+            {previews.map((project) => (
               <li key={project.name}>
                 <a
                   className="text-accent underline"
@@ -179,6 +188,12 @@ export default function BlueprintProjectGallery({
                   {project.name}
                 </a>{' '}
                 — <ArtistName credit={project.artist} />
+                <Link
+                  href={project.previewHref}
+                  className="block mt-1 text-accent underline"
+                >
+                  Listen to the original project preview
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "631b6648c965fe371753051e",
+  "name": "Sweet look in the 1902 universe",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [300],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x76d51556da52761be74fb60809e0d35bbb2c32cdc96811582a8e44cba0438b46",
+      "blockNumber": "0xed952d",
+      "blockTimestamp": "0x6328de97",
+      "data": "0x",
+      "logIndex": "0x78",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000a08b90aee50e0fef55cc379beeaa906076f541db",
+        "0x0000000000000000000000000000000000000000000000000000000000003371"
+      ],
+      "transactionHash": "0x1f73386a7adc6c89b1dc122ff733e720523dd2a9b58fcd2b5ca382c226206273",
+      "transactionIndex": "0x53"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x6096c069df0ed4ea3a550ecc7317e05b497db4572442cb49888ee69e2d0f0270",
+      "blockNumber": "0xede5a4",
+      "blockTimestamp": "0x632cb04f",
+      "data": "0x",
+      "logIndex": "0x5f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000049ebe1a572804f97ff4e01d872402ee1cf552dd6",
+        "0x0000000000000000000000000000000000000000000000000000000000003372"
+      ],
+      "transactionHash": "0xc369fe621c37f008a1591b9dd09620f670d4849fc3a999b9f1f803aff2f72d87",
+      "transactionIndex": "0x2c"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13169",
+      "tokenURI": "ipfs://Qme2UuuzDL4xsKKrPiL8xt1xYJMrJsV32QrCxaKtz9vLTV/13169/token.json",
+      "cid": "Qmakwukztb8PrSpTHF37NeRiDw6TEVa6Rt9NeknqMG9Bxq",
+      "sha256": "d2f3d7e8a56540a6ea426b2d4e3e3a5c85beefc1f852263e99f1f2aacca6f7ac",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qme2UuuzDL4xsKKrPiL8xt1xYJMrJsV32QrCxaKtz9vLTV",
+        "Qmcxrt4R7xqo4qQ3iPhnEmRF9oHE7RAQSKrYh1gSfZotBF",
+        "Qmakwukztb8PrSpTHF37NeRiDw6TEVa6Rt9NeknqMG9Bxq"
+      ],
+      "projectId": "631b6648c965fe371753051e",
+      "collection": "Sweet look in the 1902 universe",
+      "artist": "Deja que Suceda"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13170",
+      "tokenURI": "ipfs://Qme2UuuzDL4xsKKrPiL8xt1xYJMrJsV32QrCxaKtz9vLTV/13170/token.json",
+      "cid": "QmQDUec8MSminwBB1jy16DHTw9iFNnXV1caCJUKHB78pSe",
+      "sha256": "f1a75f4560a207c32e3beeabe05d8a1d6a348cf31cba1daeb715c6f6ea1f833f",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "Qme2UuuzDL4xsKKrPiL8xt1xYJMrJsV32QrCxaKtz9vLTV",
+        "QmVNTaTffAsnKTEVBWbSxMSr5jDdwaVooTk11RXxu58ctF",
+        "QmQDUec8MSminwBB1jy16DHTw9iFNnXV1caCJUKHB78pSe"
+      ],
+      "projectId": "631b6648c965fe371753051e",
+      "collection": "Sweet look in the 1902 universe",
+      "artist": "Deja que Suceda"
+    }
+  ]
+}

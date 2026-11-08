@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "6377c6d8ea9455bd7f047709",
+  "name": "Her Hair",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 3,
+  "declaredEditionCounts": [10],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x548a594d43805e5cc5df9ed116065d5fde6eb879d8e3e0a4c91fc161e345dd00",
+      "blockNumber": "0xf550fb",
+      "blockTimestamp": "0x63863d23",
+      "data": "0x",
+      "logIndex": "0x69",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000023e9"
+      ],
+      "transactionHash": "0xf51a6fa58c0ad8649715e765dfe66f43e7e387960aec4beb0409ebdb44e8e6c2",
+      "transactionIndex": "0x3d"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5427d00f87fdea0e27d2ac07ec88d818c178001f22aa455efbdce169dca44628",
+      "blockNumber": "0xf6a04d",
+      "blockTimestamp": "0x63960ffb",
+      "data": "0x",
+      "logIndex": "0x203",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x00000000000000000000000000000000000000000000000000000000000023ea"
+      ],
+      "transactionHash": "0x958e834fd2e4309ae945da45f37826203afe9f32d8f24f6353bf39583a41dfcd",
+      "transactionIndex": "0x7c"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x3dcc00492feef742218d9b7157435f747b87672e8bca6d984b6b9950a42af317",
+      "blockNumber": "0xf6b977",
+      "blockTimestamp": "0x63973fd3",
+      "data": "0x",
+      "logIndex": "0x98",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000096be3dfdf788b7078ef7514e076ccfd33acfd7cd",
+        "0x00000000000000000000000000000000000000000000000000000000000023eb"
+      ],
+      "transactionHash": "0xcdae57f93f53b60c3f0b2d7dd643fe9eafd24c0d2d68afd6a743589329a96003",
+      "transactionIndex": "0x74"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9193",
+      "tokenURI": "ipfs://QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f/9193/token.json",
+      "cid": "QmUBXPEjykrACsbbsKDZa3CKF8HryUqhKVom1hXKy3JQbg",
+      "sha256": "dbb299341bb02025dd449607e8597b4811486f565c4007c8fa93205c57eff7e9",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f",
+        "QmQWXGLqztmih4jQZpeFvHp6NpKm9tSEVicusSpWdnQAxb",
+        "QmUBXPEjykrACsbbsKDZa3CKF8HryUqhKVom1hXKy3JQbg"
+      ],
+      "projectId": "6377c6d8ea9455bd7f047709",
+      "collection": "Her Hair",
+      "artist": "Beats By LOR"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9194",
+      "tokenURI": "ipfs://QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f/9194/token.json",
+      "cid": "QmdToAf9aa4tB4Gddt67zxiqKWnuL1pqUaYHmZRtJpAPcY",
+      "sha256": "a5099ee3ec2992a028f19f68299b85547c4a08488522c01d21c428169eea4a1b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f",
+        "QmdXFCuvtLnHnFjhQ7UWdrx36RF66v98sDRSEeYBpXAWU2",
+        "QmdToAf9aa4tB4Gddt67zxiqKWnuL1pqUaYHmZRtJpAPcY"
+      ],
+      "projectId": "6377c6d8ea9455bd7f047709",
+      "collection": "Her Hair",
+      "artist": "Beats By LOR"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9195",
+      "tokenURI": "ipfs://QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f/9195/token.json",
+      "cid": "QmPHbaXpaCBWVubj5ga4DTN8M2aZG6WBV2HuPrQfzuyAxV",
+      "sha256": "6da17de71a6c9d8ae4caa12cff6161bde7e559c25755dc0beb9aa94c6205f72b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmbXsjDNbAbdcAT5J6ZLVVa9zgS7x9yuaLLxARTBv9L84f",
+        "Qmf8SXErs4FS5wSuyboxv3HdYqWwDjFuJBLsdTtgvh8qYN",
+        "QmPHbaXpaCBWVubj5ga4DTN8M2aZG6WBV2HuPrQfzuyAxV"
+      ],
+      "projectId": "6377c6d8ea9455bd7f047709",
+      "collection": "Her Hair",
+      "artist": "Beats By LOR"
+    }
+  ]
+}

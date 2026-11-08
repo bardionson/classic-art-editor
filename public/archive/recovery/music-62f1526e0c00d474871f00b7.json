@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62f1526e0c00d474871f00b7",
+  "name": "Reality Processing Ai",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [100],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x970716b1489ca2afa0e098f012f9235aec0456ebbb78e3214f97c141b13347c3",
+      "blockNumber": "0xeb9600",
+      "blockTimestamp": "0x630dcbcf",
+      "data": "0x",
+      "logIndex": "0x1c7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x0000000000000000000000000000000000000000000000000000000000000b52"
+      ],
+      "transactionHash": "0x5c06fdc64e0d3f3ea622f0626be928a1b08dd8259f7517e9cc3dd572e175ea6c",
+      "transactionIndex": "0xe0"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "2898",
+      "tokenURI": "ipfs://Qmamu1Dp9y46qKWKL4FUwBc7a4MtxpqLrdxA8ofcD6EV8o/2898/token.json",
+      "cid": "QmPJndw1W2UzNSiBLiBZnpqLRoUbUEvT8wEFhpynUqNF6v",
+      "sha256": "57fc0c18c4b0f7a977573b7739c6c55e632899830155f6f077a8c108df5c2418",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qmamu1Dp9y46qKWKL4FUwBc7a4MtxpqLrdxA8ofcD6EV8o",
+        "QmSYNSme3kLiDYD6ABUuPbJeVHr8KUEqL3sfSgT2osBKPX",
+        "QmPJndw1W2UzNSiBLiBZnpqLRoUbUEvT8wEFhpynUqNF6v"
+      ],
+      "projectId": "62f1526e0c00d474871f00b7",
+      "collection": "Reality Processing Ai",
+      "artist": "Mark Gray"
+    }
+  ]
+}

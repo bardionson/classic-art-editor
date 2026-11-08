@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "634d9b5b0861b9ef6baacad7",
+  "name": "Music Worm",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [1],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x60274ac06da96b768133e3f4e95406519f50ba3d97158d0ee6c9473d9e4c7052",
+      "blockNumber": "0xf0a0e2",
+      "blockTimestamp": "0x634da8b7",
+      "data": "0x",
+      "logIndex": "0x19f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e3475bf2ceea9ed2560d5f68118b9547819fdecf",
+        "0x0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "transactionHash": "0xa99e8c6aed75dd1fb0129a74ae3d05735225744bbfb327b8eac2271c1022abe1",
+      "transactionIndex": "0xb8"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "0",
+      "tokenURI": "ipfs://QmXyAvx6CMvj1NSukzptKcrM6XzgxTuEPBU5eKkL1Atx6U/0/token.json",
+      "cid": "QmVWdtqxzfWqxMCMEULveC68Np4rz8o7id4Ekfu5QZ8WiY",
+      "sha256": "c441a872a164321fd5b9abb1568e44ef9c0024881b4d5c0775928ebaf261b5dc",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmXyAvx6CMvj1NSukzptKcrM6XzgxTuEPBU5eKkL1Atx6U",
+        "QmQMAFjCT5gRc6d6gJkQ2CECiYtKNo5t2GGZ4qSUhFF7j7",
+        "QmVWdtqxzfWqxMCMEULveC68Np4rz8o7id4Ekfu5QZ8WiY"
+      ],
+      "projectId": "634d9b5b0861b9ef6baacad7",
+      "collection": "Music Worm",
+      "artist": "achilleas"
+    }
+  ]
+}

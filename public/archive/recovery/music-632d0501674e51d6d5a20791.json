@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "632d0501674e51d6d5a20791",
+  "name": "California Electric Child",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [1000],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7dbeecb09703ab3a17d7b6fff1efc2c2f2728ba0cdb92de6ac724a8e06320755",
+      "blockNumber": "0xef2cc3",
+      "blockTimestamp": "0x633c1d03",
+      "data": "0x",
+      "logIndex": "0x172",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ccc9e2d0bbc30d97bfd4a9d99f6509204e32fbe0",
+        "0x00000000000000000000000000000000000000000000000000000000000042d5"
+      ],
+      "transactionHash": "0x5b02d8364c03d0f8c573c352586d9dc1ba22e885af791b1c4526f504d44cb55c",
+      "transactionIndex": "0xa2"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "17109",
+      "tokenURI": "ipfs://QmdcbM2f3gehmmYC4cqXXjMhXPgVKGwVomftEP2gJuvaV7/17109/token.json",
+      "cid": "QmbocBcC45h8N84oei7p5yqH8Zwnsjq73UEg6YABF7K4ZX",
+      "sha256": "89bd0b5683a140817811331b31cb94adc7031370908c06237854b6092e1bf857",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmdcbM2f3gehmmYC4cqXXjMhXPgVKGwVomftEP2gJuvaV7",
+        "QmaHaiQq4gjaUFbDVi4AJMQH3TPtwMArebqKCQ8RizQoC7",
+        "QmbocBcC45h8N84oei7p5yqH8Zwnsjq73UEg6YABF7K4ZX"
+      ],
+      "projectId": "632d0501674e51d6d5a20791",
+      "collection": "California Electric Child",
+      "artist": "Arlin Skyes"
+    }
+  ]
+}

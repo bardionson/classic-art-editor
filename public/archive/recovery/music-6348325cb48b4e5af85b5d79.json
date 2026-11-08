@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "6348325cb48b4e5af85b5d79",
+  "name": "El Lissitzky",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 20,
+  "declaredEditionCounts": [3000],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xbb2014172ea683af8a20594b0901426a1e4ef48e614e2b7e772c637aa0728dbe",
+      "blockNumber": "0xf1691b",
+      "blockTimestamp": "0x6357198b",
+      "data": "0x",
+      "logIndex": "0x184",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000612c4e66f7c0200c757eb1f20930eb9d3a58c30d",
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "transactionHash": "0xb7b28a37847ff01f42ccb87846a08a4fa54b7d3cb308e4f57bbd1545bea2fb19",
+      "transactionIndex": "0x8d"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7c1b40534d58d5880522c23b2b2b759fb680358a600d6cc0d3da257c56d51759",
+      "blockNumber": "0xf1691d",
+      "blockTimestamp": "0x635719a3",
+      "data": "0x",
+      "logIndex": "0x4a",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000008cc481ba6c8dd07d4b06b727950eeec1a544416d",
+        "0x0000000000000000000000000000000000000000000000000000000000000003"
+      ],
+      "transactionHash": "0x4caaa8201fff0e1649002ffaef3198b240afa425cd532418ff7d426648ff93f4",
+      "transactionIndex": "0x27"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7c1b40534d58d5880522c23b2b2b759fb680358a600d6cc0d3da257c56d51759",
+      "blockNumber": "0xf1691d",
+      "blockTimestamp": "0x635719a3",
+      "data": "0x",
+      "logIndex": "0x4c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000008cc481ba6c8dd07d4b06b727950eeec1a544416d",
+        "0x0000000000000000000000000000000000000000000000000000000000000004"
+      ],
+      "transactionHash": "0x4caaa8201fff0e1649002ffaef3198b240afa425cd532418ff7d426648ff93f4",
+      "transactionIndex": "0x27"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xe9b58ebe137c0235e26ca33f4593416d949b499aec43f64a17ea7d78bb462760",
+      "blockNumber": "0xf1694c",
+      "blockTimestamp": "0x63571bd7",
+      "data": "0x",
+      "logIndex": "0x28",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c7182bb72e439d0dadd376b503408319461df71b",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ],
+      "transactionHash": "0xf38b34a8d32eb503510cd706cdd789e0cd83fff4eb16230a3197db9b3e45aee0",
+      "transactionIndex": "0x11"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x45811e3ca7f333e64aa7803cfe5a8bf2ab85e82f4df6b5d5aef1f3a62cdbf1d5",
+      "blockNumber": "0xf16e10",
+      "blockTimestamp": "0x6357552b",
+      "data": "0x",
+      "logIndex": "0x5c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f5793bf0b0010e661024b9d04cbd5ed7252a9d3f",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "transactionHash": "0xba7e295ac962af83fd5a4a36bfa308ecdaea571da33af125b3fb2ae19fffbc7d",
+      "transactionIndex": "0x20"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x8e7306b7256a7cc23fecf1626bf3a773fc6b30630e91109654c275510da61d92",
+      "blockNumber": "0xf1755b",
+      "blockTimestamp": "0x6357ad0f",
+      "data": "0x",
+      "logIndex": "0x65",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c7182bb72e439d0dadd376b503408319461df71b",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "transactionHash": "0x0bfdda45feba23847462dd0361aa8f43d8fee7ba76b2ea8e1b6e8f83a141605d",
+      "transactionIndex": "0x2d"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5759cb4bca9a581b073e5a14d36422c438be8f5973e14af1402cbd1f1f84824b",
+      "blockNumber": "0xf1831a",
+      "blockTimestamp": "0x6358535f",
+      "data": "0x",
+      "logIndex": "0x3c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ],
+      "transactionHash": "0x87e46a0b6a6b833cda794bfe872bd586d582a07fef1f9a3f8d9a1c948e284841",
+      "transactionIndex": "0x26"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x87002fb322048954ff77d61e03a366ded6458353958fb0e750ebf98011e8a9da",
+      "blockNumber": "0xf18361",
+      "blockTimestamp": "0x635856cb",
+      "data": "0x",
+      "logIndex": "0xe8",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ],
+      "transactionHash": "0x16778738a66fc2de9f0333fb3ce350fd6e0953e978b00a1420b040daab9c187b",
+      "transactionIndex": "0x68"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5b39048ca52ee572579f547e2511adc24be76ff8bf2898743f88361ff56d0f2d",
+      "blockNumber": "0xf1839e",
+      "blockTimestamp": "0x635859b3",
+      "data": "0x",
+      "logIndex": "0x2be",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000003f654d773b1f5e9dc256b95532c205823bae12c3",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ],
+      "transactionHash": "0x2ccc1a6cd849b64c4d3b14d0f6efd90ac109c49447de2a9dabf80db73a5c9226",
+      "transactionIndex": "0xb1"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5b39048ca52ee572579f547e2511adc24be76ff8bf2898743f88361ff56d0f2d",
+      "blockNumber": "0xf1839e",
+      "blockTimestamp": "0x635859b3",
+      "data": "0x",
+      "logIndex": "0x2c0",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000003f654d773b1f5e9dc256b95532c205823bae12c3",
+        "0x000000000000000000000000000000000000000000000000000000000000000b"
+      ],
+      "transactionHash": "0x2ccc1a6cd849b64c4d3b14d0f6efd90ac109c49447de2a9dabf80db73a5c9226",
+      "transactionIndex": "0xb1"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xfb961ba598d0b07d03f8c232987185a8b7f5c5c2f268de672fc87c4a620399c8",
+      "blockNumber": "0xf22b39",
+      "blockTimestamp": "0x6360408b",
+      "data": "0x",
+      "logIndex": "0x153",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000be6f21d859d8f0c83926fd22b933673ab0218e9a",
+        "0x000000000000000000000000000000000000000000000000000000000000000c"
+      ],
+      "transactionHash": "0x111050caee9152eb60e363df2dbedd7e6c0890db6b1ef19e309e7eee9b723e7e",
+      "transactionIndex": "0xbb"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x9f6f7a9cc0c3216508f15120def4d51c95f88d981beff719eff2aa573422495e",
+      "blockNumber": "0xf25491",
+      "blockTimestamp": "0x6362346b",
+      "data": "0x",
+      "logIndex": "0xe4",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d7ce4706f31606981dc35255c8ce27934f9a7624",
+        "0x000000000000000000000000000000000000000000000000000000000000000d"
+      ],
+      "transactionHash": "0x42abb994081f88dec38b7a18181974162fac0c6c45e7a8a4288014aeb5ae2265",
+      "transactionIndex": "0x77"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xabec72a56e049d6586be566a0fc1c404b55fbcf695908107028b6d9fa23bdbc5",
+      "blockNumber": "0xf2557b",
+      "blockTimestamp": "0x63623f63",
+      "data": "0x",
+      "logIndex": "0x79",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c7182bb72e439d0dadd376b503408319461df71b",
+        "0x000000000000000000000000000000000000000000000000000000000000000e"
+      ],
+      "transactionHash": "0x578a4408f675dee9d21f5a30e64e031adc80bec36ccac591049b9206c8370b4b",
+      "transactionIndex": "0x3e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x16aeedccf442bd15c28c5c8fe7dba2cf76d3c02cb8999b022f7236d3ab029a2c",
+      "blockNumber": "0xf25585",
+      "blockTimestamp": "0x63623fdb",
+      "data": "0x",
+      "logIndex": "0xcf",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c7182bb72e439d0dadd376b503408319461df71b",
+        "0x000000000000000000000000000000000000000000000000000000000000000f"
+      ],
+      "transactionHash": "0xa941fac21103c860a32fee2a8372874b3f0ce20055ff418b6d6c4a9af6169ce7",
+      "transactionIndex": "0x70"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x2ec70c51d77897c414bf1b4a30f41335035294f4960b712ef7a0778106987c8f",
+      "blockNumber": "0xf399e1",
+      "blockTimestamp": "0x63718937",
+      "data": "0x",
+      "logIndex": "0x7f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x0000000000000000000000000000000000000000000000000000000000000010"
+      ],
+      "transactionHash": "0x976486580b263ff6942622efdc29a5946ced40414c4977e6c829ac8fca8af0cb",
+      "transactionIndex": "0x39"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x9395ac6f324df612da1a95f4d20b00e35945a3fecae9312b8e3aca0ee31a2534",
+      "blockNumber": "0xf9af84",
+      "blockTimestamp": "0x63baf56f",
+      "data": "0x",
+      "logIndex": "0x8e",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x0000000000000000000000000000000000000000000000000000000000000011"
+      ],
+      "transactionHash": "0x93ecde393f87e462bd6b1de799a4760671293c56f213c43c84d739601343f79c",
+      "transactionIndex": "0xfa"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x3900af47c975f427d66a67b81bb3e50e8174848900a98790a6fed5d62fb74694",
+      "blockNumber": "0xf9b182",
+      "blockTimestamp": "0x63bb0d6f",
+      "data": "0x",
+      "logIndex": "0xa3",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000008572e09642c8c4941a774ee5a3534b9e3379851c",
+        "0x0000000000000000000000000000000000000000000000000000000000000012"
+      ],
+      "transactionHash": "0x84c39a92734f8977e5322f615f54cd00e7b800eb1cf45a105e3732ab7d7ddea0",
+      "transactionIndex": "0x5a"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xd232c0b523ce954d711f603ab1ca5e6cc374d0a2d181f4d135da6c0236649acf",
+      "blockNumber": "0xfa1f79",
+      "blockTimestamp": "0x63c03bff",
+      "data": "0x",
+      "logIndex": "0xe5",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ca9ba6a0974ba3a09c8fee76dfdd87ba1d6a2801",
+        "0x0000000000000000000000000000000000000000000000000000000000000013"
+      ],
+      "transactionHash": "0x73c3bee994da0f84aa622ff816bc1de112afd01665fc8fb2452815ff4fffd31d",
+      "transactionIndex": "0x68"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xd4abe6bba6c80753ac7832ef948b52fb10a3bb16136cffa890585ef369f06eb8",
+      "blockNumber": "0xfa3a05",
+      "blockTimestamp": "0x63c17cc3",
+      "data": "0x",
+      "logIndex": "0x111",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000099c588a66280e05ea05cb9763514df1bc84e9cf6",
+        "0x0000000000000000000000000000000000000000000000000000000000000014"
+      ],
+      "transactionHash": "0x73e4b9c52c0df3ba3918763e3cfd69225453080ce11fa9552bc5bbe4b7629d01",
+      "transactionIndex": "0x8c"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x81bd64407df226afe900798ba3c6427f18e333fe6387db1b8fa9cbf5195ab066",
+      "blockNumber": "0x11c0451",
+      "blockTimestamp": "0x655b605f",
+      "data": "0x",
+      "logIndex": "0x198",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000068bca5a8bdebe05fb8a6648c7316b4eb7e19a064",
+        "0x0000000000000000000000000000000000000000000000000000000000000015"
+      ],
+      "transactionHash": "0xde2b621059a8e2ace9185203ed58459f9b0f5cb00221a5d992d3c0de071c19ea",
+      "transactionIndex": "0x10b"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "2",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/2/token.json",
+      "cid": "Qmb7utTbgSJ9Lj67Qptwxt1Nyh2CxJUfwErFbbEyPYoWpU",
+      "sha256": "4b5d761e99d1d253ecb1554cc9d21064aafd96cbfcc61425df646d14fadbd05e",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "Qme8rnpGT6F89EJkeQVbnVwfnMmPkAxoMFMd8ncbz4Jz3e",
+        "Qmb7utTbgSJ9Lj67Qptwxt1Nyh2CxJUfwErFbbEyPYoWpU"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "ellissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/3/token.json",
+      "cid": "QmXDFntSdMot8MK63TExxYSKNhLt9vEcpFMzezscS1c3Gm",
+      "sha256": "3be3d36a2cdf56aae97156ae7a83a880872644de004e7fe24737a895ba3982ea",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmXd1Rq3bzoavAcWd9JBky4iaZvLSHzqjWuqL2AfYHPPBC",
+        "QmXDFntSdMot8MK63TExxYSKNhLt9vEcpFMzezscS1c3Gm"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "ellissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "4",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/4/token.json",
+      "cid": "QmSHafYqVQVWYBPbUWzZN473VPY43nDNin9teuRYkgCy8E",
+      "sha256": "8c5a1bfedc7c143eeaa932220697f750c1be043fe83087229a50102bd830777b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmQoyYr3Z77g88afq2jGu6dp3bAEuyRrEjs5YBwbShzmdi",
+        "QmSHafYqVQVWYBPbUWzZN473VPY43nDNin9teuRYkgCy8E"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "ellissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "5",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/5/token.json",
+      "cid": "QmSvJTi5vxitFNLZbuzhVgzUfg57TQu8iniAZxMBDrFxFZ",
+      "sha256": "7ac44277f9c22682ecfcde18b85cd485ba8f78adaf04053dbe715761c92d733d",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "Qmf9nLmXyxKvqzTPPdfPxtQonfYZgeqpke4YDm7rC3UoCH",
+        "QmSvJTi5vxitFNLZbuzhVgzUfg57TQu8iniAZxMBDrFxFZ"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "ellissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "6",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/6/token.json",
+      "cid": "QmdLWhKgsNNuW6CRYGBZFzSJ3CzEaUEwKeq2NcbruNcSJd",
+      "sha256": "d477ecb8f5daa92da8a5539a0ba2c155be96dbfa2d40429d52f9bb3a4f5c6aea",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmQrLse134nGMZWNTGx9HjDnRiHDBEF2amW2pg1QRYvxJn",
+        "QmdLWhKgsNNuW6CRYGBZFzSJ3CzEaUEwKeq2NcbruNcSJd"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "7",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/7/token.json",
+      "cid": "QmemrDGkUmt1Ww4LjpdsR3Wx7iyNC8f8G7fRmrXxNL7hDK",
+      "sha256": "7ceb99bf4f0ba9b78e3aee713c68dd6adcfcb0d208dfe75776a4e5cdec8ccfc2",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmT16usYeEMFmE9rVpKSy9Wf3viJwgGWH5ptzX1Gd5ZJ3v",
+        "QmemrDGkUmt1Ww4LjpdsR3Wx7iyNC8f8G7fRmrXxNL7hDK"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "8",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/8/token.json",
+      "cid": "QmXrjYm9jM6KmX7pynccxUPV8wkrggJyBpySnRjVsX54o5",
+      "sha256": "029b247221a7f300ebb2d7a9573ea1ee701eae1b1f5cf831a519ba5e487ce34f",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmQWYKCuKWZFgmNT9VAFkzNKtym7vjVgLUgFkNUfpdTQgX",
+        "QmXrjYm9jM6KmX7pynccxUPV8wkrggJyBpySnRjVsX54o5"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/9/token.json",
+      "cid": "QmZZNBmYhJav3HVQr6LjAhJkKuFY5zackTYYL8MEbuh1qT",
+      "sha256": "88cfba670aaa52045a1a5a96765309a090ed2680debabee625f687ebd9304223",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmcG4vebdVCohcTy8eFmhny8onPJuhrJuH5bnTsLHMfVtd",
+        "QmZZNBmYhJav3HVQr6LjAhJkKuFY5zackTYYL8MEbuh1qT"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/10/token.json",
+      "cid": "QmdXVCwYJBmbmVUC8rYWmmnu34a1Uu5LrveqhYUK8FYLD3",
+      "sha256": "6940d4883fc49c5bd0e5dcbb59010b35db93019adaae17e81c8802567d01faa1",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmY9h6U9aMHTAfUQDBvf7xfQDXrPz2EmpwwJWzPubjgb11",
+        "QmdXVCwYJBmbmVUC8rYWmmnu34a1Uu5LrveqhYUK8FYLD3"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "11",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/11/token.json",
+      "cid": "QmQ7Y37mizbXaAdG2K9MKP9EXBHzbQxhzeuryniXPdTtQs",
+      "sha256": "bbfd8a5962a599bb69ebb628101cd666579576365b8ffb31c5951866e5d76f75",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmQbjX6vZ8QozWcgkgUd3prPoCYSa9bP5YfdM7cHANurGE",
+        "QmQ7Y37mizbXaAdG2K9MKP9EXBHzbQxhzeuryniXPdTtQs"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "12",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/12/token.json",
+      "cid": "Qmc71q6CeifDkMMnGocqxLJr8FzzgNpNBKZ3C9pmb2KYbf",
+      "sha256": "c9a816a4bc2123078ba7d475ee08ee6f86f0b1be5d86d8b20346d8fcb0d5ebe8",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmSj8xTzXAyb7ezoaYJxrzum8gNwJ8CxcPpJ24XoQMydr5",
+        "Qmc71q6CeifDkMMnGocqxLJr8FzzgNpNBKZ3C9pmb2KYbf"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "13",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/13/token.json",
+      "cid": "QmbXhY1jjLuTkhdJy73YP7vzip8Q9AR9DZ6rvTu19qETsC",
+      "sha256": "e6dc271680d1537945c97d7c289dda621526356331da9271ea868b595142e277",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmVarkDgwmt4C8mQ8TgaTyGFY1BJG4vEj4gVmP9Nwju721",
+        "QmbXhY1jjLuTkhdJy73YP7vzip8Q9AR9DZ6rvTu19qETsC"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "14",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/14/token.json",
+      "cid": "QmeFWCCcnJfiTjpB6nxfzcxVk8cKW8P3v7RMn38GKb1k7m",
+      "sha256": "5ff8ee92c3e548629c56020250b39d2a13e6916b12ae9ba64dddbcf4a4a0f566",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmPzv6TzK7nNP4HzuWTFjhGFn3mo2pktnHZ1v8mnrNdNN2",
+        "QmeFWCCcnJfiTjpB6nxfzcxVk8cKW8P3v7RMn38GKb1k7m"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "15",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/15/token.json",
+      "cid": "QmQfH9WsCCrsWTEhDFap3nxT1UZAc29qwyieC35dAfyADi",
+      "sha256": "63f6094533440a5685396f42be3216ffc6900f65a2f40e33f818290c0940cb14",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmPLK7nH8ffZZqJrkbqDF1Y6WHrT1StARPKkaKcoqSizDC",
+        "QmQfH9WsCCrsWTEhDFap3nxT1UZAc29qwyieC35dAfyADi"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "16",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/16/token.json",
+      "cid": "QmVrZM1LYXhJEcFhoD5CF7Eu4HsCXs7Ntg4bnemeqvHzpb",
+      "sha256": "e8acdf8e87f96f099b7472e12caf7050b20972828152a8691899c59a62699e6b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmSuKyLRdCfpSLcfGxKiBrLjxpXq486fG6mbQyuwmKzocX",
+        "QmVrZM1LYXhJEcFhoD5CF7Eu4HsCXs7Ntg4bnemeqvHzpb"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "17",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/17/token.json",
+      "cid": "Qme8NEM6VmTEvNruGucYRn1e1XihTp2fqkVL1YEPdu8qHV",
+      "sha256": "f082a7273781845f91aa46558349f520ae521382d10e72c89135b6a54615a751",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmVGMFAxn6hJANaF94cajeLAoskYNSJniZbtSG6yrbXfFb",
+        "Qme8NEM6VmTEvNruGucYRn1e1XihTp2fqkVL1YEPdu8qHV"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "18",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/18/token.json",
+      "cid": "QmbSDiWT7YJ2qWND6QdymsgtWSxnJC5i1y67UtKhGXwQw2",
+      "sha256": "fc03383a9e764c4952037d7c76ab40e29b537ba0a08b0ecc3dbcf2a4a601f974",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmNV4erqrSTyC58ZWnNwMoSd1vEzS1VKbjBQzTiv8LcoZb",
+        "QmbSDiWT7YJ2qWND6QdymsgtWSxnJC5i1y67UtKhGXwQw2"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "19",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/19/token.json",
+      "cid": "QmUHdQX2bUWtuCbv841krxdMipgAxcLAioUTYgxuRcoafr",
+      "sha256": "6900d59fee63908f3e7937660d6ead5dccdf64c7e76d5469df6d189df754d73d",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmRNvnb85oB2Yv3rW9VoBoicasp7S73owatGggK2XVmbqn",
+        "QmUHdQX2bUWtuCbv841krxdMipgAxcLAioUTYgxuRcoafr"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "20",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/20/token.json",
+      "cid": "QmVq8VmxPjFayWE9AceFFdER5wtgvDRPTMbFXEnZv44ZfA",
+      "sha256": "3d3295992116283ec7fa4196e8f667cccb01424977fcc901c146dac3c7e69f1c",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmXLPhCU8QjmCg7hh5QHeJn8hCAzMoMGNRTjGVANrFQPw8",
+        "QmVq8VmxPjFayWE9AceFFdER5wtgvDRPTMbFXEnZv44ZfA"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "21",
+      "tokenURI": "ipfs://QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L/21/token.json",
+      "cid": "QmZVzDY1x1tQkwcrH118hUnEjauCTtfjeWgDHXurRMoim4",
+      "sha256": "05746b0dbd0912112b0241b88ac9dfa827a92896d27fde88c5c1b6754aa21ca5",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmU4jgUgbsD71KxdMVoT3qbxVX7ht6D3a7e5L2LASLTY4L",
+        "QmNiwNKiUhqGAniTMXWpqmadwgAiKzmCSbSQMvWE11eSkU",
+        "QmZVzDY1x1tQkwcrH118hUnEjauCTtfjeWgDHXurRMoim4"
+      ],
+      "projectId": "6348325cb48b4e5af85b5d79",
+      "collection": "El Lissitzky",
+      "artist": "El Lissitzky"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "6395950cca6ccc0b81b11127",
+  "name": "Journey through the worlds",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [40],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x9610db29990246a5fb08dd97c6f15eec5bf56469af7c0ca27c9c9093313a0825",
+      "blockNumber": "0xf865b1",
+      "blockTimestamp": "0x63ab6c83",
+      "data": "0x",
+      "logIndex": "0x105",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000025b2"
+      ],
+      "transactionHash": "0xe10f0cd62db9e14adc852d0a0db497484824eb2e4c8c4faab462ef9a47fd720f",
+      "transactionIndex": "0x6f"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x3556087cc8c8306bd33b7cbb2aa39e1c9360c9f115ea0b8b5ab42be5b41783a0",
+      "blockNumber": "0xf866fb",
+      "blockTimestamp": "0x63ab7c13",
+      "data": "0x",
+      "logIndex": "0x17c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000018db940a6693da9730beb375d232f2d8610da531",
+        "0x00000000000000000000000000000000000000000000000000000000000025b3"
+      ],
+      "transactionHash": "0x9ededd658583f814f85edb9fd4718fec863a99343faf8d6b3ffc7134b94e298a",
+      "transactionIndex": "0x41"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9650",
+      "tokenURI": "ipfs://QmSUayTRk7wD4jwi9B7C5oTT6Gzdous9RV1DjTXp3LoYDg/9650/token.json",
+      "cid": "QmYvz49tfjVg5S52EL324wso7pfFVKDd1DyY4UafBYHjHa",
+      "sha256": "cec9773ac339695fd5709052e999280e3da8606c3b0fb2503884edb5e744776c",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmSUayTRk7wD4jwi9B7C5oTT6Gzdous9RV1DjTXp3LoYDg",
+        "QmY7SHvRcR3CmM9uL5eR2ByECUWFo94TMgTeFZUGKZPvAF",
+        "QmYvz49tfjVg5S52EL324wso7pfFVKDd1DyY4UafBYHjHa"
+      ],
+      "projectId": "6395950cca6ccc0b81b11127",
+      "collection": "Journey through the worlds",
+      "artist": "Maksym"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9651",
+      "tokenURI": "ipfs://QmSUayTRk7wD4jwi9B7C5oTT6Gzdous9RV1DjTXp3LoYDg/9651/token.json",
+      "cid": "QmbeiRWcYk8UKBmjDy63LAwqYTyfKPKpBoLqReFKgZnvKs",
+      "sha256": "795c38d33a29d9a14b70e90e5449661424bd2a41eb56b4694290cdd428cf77ca",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmSUayTRk7wD4jwi9B7C5oTT6Gzdous9RV1DjTXp3LoYDg",
+        "QmbRQJ4dVzyQZyuXdL2uJyVEsjYJCa3F7VGCJ6foowPeBj",
+        "QmbeiRWcYk8UKBmjDy63LAwqYTyfKPKpBoLqReFKgZnvKs"
+      ],
+      "projectId": "6395950cca6ccc0b81b11127",
+      "collection": "Journey through the worlds",
+      "artist": "Maksym"
+    }
+  ]
+}

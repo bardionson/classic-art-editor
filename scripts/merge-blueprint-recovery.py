@@ -40,6 +40,8 @@ def main():
                 'source':'Ethereum mint events and CID-verified original IPFS metadata','identityStatus':'verified',
                 'metadataVerified':True,'metadataLocal':True,'blueprintId':project,'collection':attrs['Collection'],
                 'image':meta['image'],'imageSource':'Original metadata'})
+            if meta.get('animation_url'):record['animationUrl']=meta['animation_url']
+            record['metadataUri']=entry.get('tokenURI','ipfs://'+cid)
             if existing is None:records.append(record)
             by_cid[cid]=record;by_token[(contract,token)]=record
             for signature in meta.get('async-attributes',{}).get('signatures',[]):
@@ -48,6 +50,7 @@ def main():
                     profile['works'].append({'recordId':record['id'],'basis':'metadata-signature'})
             count+=1
     assert len({r['id'] for r in records})==len(records)
+    index['generatedOn']='2026-11-08'
     index['counts']=dict(Counter(r['family'] for r in records))
     index_path.write_text(json.dumps(index,ensure_ascii=False,indent=2)+'\n')
     profile_path.write_text(json.dumps(profiles,ensure_ascii=False,indent=2)+'\n')

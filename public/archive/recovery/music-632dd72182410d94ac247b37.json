@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "632dd72182410d94ac247b37",
+  "name": "Yoga & Music",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [10],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xf742f7b8d98873efab49e0ccb610f68da3bb91a4f7ad8df682bbc15ba31d1008",
+      "blockNumber": "0xf02fe9",
+      "blockTimestamp": "0x63485513",
+      "data": "0x",
+      "logIndex": "0xf7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000fb74e99caef7c9b095c6d5dfe8af1d62fe43cddc",
+        "0x00000000000000000000000000000000000000000000000000000000000046be"
+      ],
+      "transactionHash": "0x9db02e290c52fe6be0d4d80c180ffec7fdfe873bf8ef3ef026edb2b8dc00bb68",
+      "transactionIndex": "0x97"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7be2990cf668569c64f3239f66aa2c08abfddf69b11353af1e398597f6ab2240",
+      "blockNumber": "0x10f74b0",
+      "blockTimestamp": "0x64c37117",
+      "data": "0x",
+      "logIndex": "0x13f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f88f0343791260ed716de416c3bb03219ab54b90",
+        "0x00000000000000000000000000000000000000000000000000000000000046bf"
+      ],
+      "transactionHash": "0x8cc0e841b6f96e3ea948db81d76520efc8b57c9fd67f35d1f4df151cd78e6e0b",
+      "transactionIndex": "0x76"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "18110",
+      "tokenURI": "ipfs://QmYc6qHhzZpnQv1PpkbC4kW7zfQGf2rzgfWqERGHk6FCKC/18110/token.json",
+      "cid": "QmSYgMsuG6NN1kco9bf4o9JiKnDks7ViyV9AbZyASGgXpx",
+      "sha256": "44cd445444de63ad7ff84ca2a281bc500fa1459138bbba25693e7a689115fd1a",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmYc6qHhzZpnQv1PpkbC4kW7zfQGf2rzgfWqERGHk6FCKC",
+        "QmQXEk7q7KeCNSvaSYT6si91uYa5edbHDwXGcMGmqLxe7p",
+        "QmSYgMsuG6NN1kco9bf4o9JiKnDks7ViyV9AbZyASGgXpx"
+      ],
+      "projectId": "632dd72182410d94ac247b37",
+      "collection": "Yoga & Music",
+      "artist": "zhouleo.eth"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "18111",
+      "tokenURI": "ipfs://QmYc6qHhzZpnQv1PpkbC4kW7zfQGf2rzgfWqERGHk6FCKC/18111/token.json",
+      "cid": "QmNuGkoXn1AMPQaDQqm9LpVRbXCMYqbcW73T9KvxsNBiCv",
+      "sha256": "83c5065d0329bc3baac19c05b090cd52429f16506247d2f3a7d1768e602e9972",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmYc6qHhzZpnQv1PpkbC4kW7zfQGf2rzgfWqERGHk6FCKC",
+        "QmRzUM9QsJKic9oWJfmnotJ8mkuEL9dNZP5kr1qADrjzGi",
+        "QmNuGkoXn1AMPQaDQqm9LpVRbXCMYqbcW73T9KvxsNBiCv"
+      ],
+      "projectId": "632dd72182410d94ac247b37",
+      "collection": "Yoga & Music",
+      "artist": "zhouleo.eth"
+    }
+  ]
+}

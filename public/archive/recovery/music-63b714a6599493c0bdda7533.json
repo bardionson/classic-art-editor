@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63b714a6599493c0bdda7533",
+  "name": "Pangea Panthalassa",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 6,
+  "declaredEditionCounts": [100],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5018d621e66d7c87508f405b994598fa2465c0402c0914067e49419df86fd3fb",
+      "blockNumber": "0xfb3452",
+      "blockTimestamp": "0x63cd478f",
+      "data": "0x",
+      "logIndex": "0x1ec",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x000000000000000000000000000000000000000000000000000000000000274f"
+      ],
+      "transactionHash": "0xb72cc200384a25ef944ef30827f0637376513f34212e666a2f9b61c59d039ffb",
+      "transactionIndex": "0xb3"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x1774eca035c5ce4ec15f7f1028cbf7727d16639cc773ac2a35dd90004faedd15",
+      "blockNumber": "0xfb3468",
+      "blockTimestamp": "0x63cd4897",
+      "data": "0x",
+      "logIndex": "0xde",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x0000000000000000000000000000000000000000000000000000000000002750"
+      ],
+      "transactionHash": "0x82e4fe1c1d5bd9af80d0b4c53c9e70f251a959fe119fa13ecc0f66f4b88b86e5",
+      "transactionIndex": "0x5f"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x5e72765a1d8197e831c73ae85e03b71ef70fb1503a849b36b8c9c790ce98f223",
+      "blockNumber": "0xfb3472",
+      "blockTimestamp": "0x63cd490f",
+      "data": "0x",
+      "logIndex": "0x8c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x0000000000000000000000000000000000000000000000000000000000002751"
+      ],
+      "transactionHash": "0x3d56b490cf216cdcfae532e7a5f7b39778dc716ce53eaefc99847b309774e744",
+      "transactionIndex": "0x43"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x475a851563f6ef9a1463cabe5060af8f0afe7df34c21a8534bba111794d77637",
+      "blockNumber": "0xfbbd01",
+      "blockTimestamp": "0x63d3b887",
+      "data": "0x",
+      "logIndex": "0x68",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x0000000000000000000000000000000000000000000000000000000000002752"
+      ],
+      "transactionHash": "0xdc8461774df3ec5163e43dd9f803efb4b5b8d7fefdf80a53e91de1f85922d3d8",
+      "transactionIndex": "0x3e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x0c2ea47ef02f6071c46480f11d896c05d45bcd886669ef96c06f03fadcc41155",
+      "blockNumber": "0xfbbd0a",
+      "blockTimestamp": "0x63d3b8f3",
+      "data": "0x",
+      "logIndex": "0x77",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x0000000000000000000000000000000000000000000000000000000000002753"
+      ],
+      "transactionHash": "0xfa9c6213f4e93fb08290a8d51481cca1772f7f167362a045a5c4466d437a9eb9",
+      "transactionIndex": "0x34"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xc14a6c3934a1531296185d40748e32b91d10d6af44fb1db3e6207b302e456cdc",
+      "blockNumber": "0xfbbd0f",
+      "blockTimestamp": "0x63d3b92f",
+      "data": "0x",
+      "logIndex": "0xea",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b7b8fb1642a4e6905b5bc7d9adcaba1e24f1b235",
+        "0x0000000000000000000000000000000000000000000000000000000000002754"
+      ],
+      "transactionHash": "0xd492be48b5b20929f86797c74a8714e54f1116b91de5609172ab28c069f727f3",
+      "transactionIndex": "0x6b"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10063",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10063/token.json",
+      "cid": "QmVYTuHGznvv8R8AJCDLEbaNNGcSe4scQbqU74BV4qHBUV",
+      "sha256": "a24a431302187ea6a548533e30e55e6510f208474ecad7eadea61200b19ff35c",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmWLFPFmq9WDRfoWbjEcuUBsbF2btgvWwrtAQh4v1Hkzhg",
+        "QmVYTuHGznvv8R8AJCDLEbaNNGcSe4scQbqU74BV4qHBUV"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10064",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10064/token.json",
+      "cid": "QmQtxcgNdBwFxSYyLFGnipVfysShm1z6JBvhuyvwXCeuvw",
+      "sha256": "ab0aaa0a47f388b16dd2412adcdbed9802205114867f89d1f00ca642fd2769e3",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmVrdTeNYf7ADkD5TWvgaTvqrtuVMGJpZBkXhoxgKFyBMU",
+        "QmQtxcgNdBwFxSYyLFGnipVfysShm1z6JBvhuyvwXCeuvw"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10065",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10065/token.json",
+      "cid": "Qmb55BmqC7vNbgHoSZpZfWagxh6Pzc2PRgXW2HhRtuoNwY",
+      "sha256": "83db806325cb77fe9116b35efb6554678f77b640fb0f26e9589fa78f190a2378",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmSE4R5BgoioqEPw7CKcjXf3x8GNVHfPnutY8nRfgnUBkP",
+        "Qmb55BmqC7vNbgHoSZpZfWagxh6Pzc2PRgXW2HhRtuoNwY"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10066",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10066/token.json",
+      "cid": "QmYWL3aWibDXETB5ocSdhnMtX5YxhoEFzfrUH9HoXF3Uod",
+      "sha256": "30459577e0c65de6b423c4da743fb827423f51b2a88e6953ebeb57648c170481",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmbHapavkhqXhR4MqqZF4vDmvJ6rkXUYaCjkcswrpfU78E",
+        "QmYWL3aWibDXETB5ocSdhnMtX5YxhoEFzfrUH9HoXF3Uod"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10067",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10067/token.json",
+      "cid": "QmYpr5fybSaK896mLF5BBgNom2qQUwKjoFNNgMjkVGM3u8",
+      "sha256": "4c7c27201cf85f8588a7c71bdfaf5a3244b96aeee23e30d6721247e0984945a7",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmeUzZ6a1g5g9LaPo6FR8qzsvysCiH7MhErReN5oW1CvEZ",
+        "QmYpr5fybSaK896mLF5BBgNom2qQUwKjoFNNgMjkVGM3u8"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10068",
+      "tokenURI": "ipfs://Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ/10068/token.json",
+      "cid": "QmatWti37GJdwR4vaiXiAd4Z9fK2SnGBNigCjVTcQCqruS",
+      "sha256": "0e541a625244d90c2ede54e77c1016a7f94fc3c6ffebb6897d697ab1f194bb81",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qma5koxCu1chHsCCVQFZUeP1LcZfxg1oncb5oDaptbzVBZ",
+        "QmV8EJ4s2PRBREPTxNXg11NHNaqTspe56hhRX5KGvchY2F",
+        "QmatWti37GJdwR4vaiXiAd4Z9fK2SnGBNigCjVTcQCqruS"
+      ],
+      "projectId": "63b714a6599493c0bdda7533",
+      "collection": "Pangea Panthalassa",
+      "artist": "Roberto Musci"
+    }
+  ]
+}

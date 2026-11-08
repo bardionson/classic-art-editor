@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63555bfc648a5ddd44544f64",
+  "name": "She was a Dream",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 10,
+  "declaredEditionCounts": [10],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xf0323a89fc726340341e19accaae17570f7faef2ab90885138dd9da7d29f1f74",
+      "blockNumber": "0xf3c95e",
+      "blockTimestamp": "0x6373c613",
+      "data": "0x",
+      "logIndex": "0x1d7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000694e64d4ad77e0c234b7b1c55ac40302ad86ce3f",
+        "0x0000000000000000000000000000000000000000000000000000000000000c52"
+      ],
+      "transactionHash": "0x3990f0d9a91b497aa47437da71af3021aa68bcc41a43d45d9bbb8c935470812c",
+      "transactionIndex": "0x101"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x01fbb3a94cae7059571ede7f695c29430d4db646b474dfe2cb9e9b805d8d73bb",
+      "blockNumber": "0xf3c97c",
+      "blockTimestamp": "0x6373c787",
+      "data": "0x",
+      "logIndex": "0xb1",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000008e04f3f772b4250c060e1b87fd28e420999699e7",
+        "0x0000000000000000000000000000000000000000000000000000000000000c53"
+      ],
+      "transactionHash": "0xe09860fc63c761677c921acbb36da261db421a15c395280ceda13d469d81851a",
+      "transactionIndex": "0x59"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x1c35030c275850a1176234fb07b1e96f9766e3577d166d578d10d2aa41c713b8",
+      "blockNumber": "0xf3c9df",
+      "blockTimestamp": "0x6373cc5b",
+      "data": "0x",
+      "logIndex": "0x72",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d416e09795d24216a4548b70964c7f9d95a7293f",
+        "0x0000000000000000000000000000000000000000000000000000000000000c54"
+      ],
+      "transactionHash": "0xd1fcb114bb816815c387fcf6bc334086ecf4e12dea4e285edd64b091eb55796c",
+      "transactionIndex": "0x5f"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x01e422de378bca06f0c7b6204809eac332371855224bcd6c4e6e59408e282436",
+      "blockNumber": "0xf3ca45",
+      "blockTimestamp": "0x6373d12f",
+      "data": "0x",
+      "logIndex": "0xca",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d416e09795d24216a4548b70964c7f9d95a7293f",
+        "0x0000000000000000000000000000000000000000000000000000000000000c55"
+      ],
+      "transactionHash": "0xe1e393807650595a060772c58c880d9f70f356087434c04a5011b01dd92f8e55",
+      "transactionIndex": "0x93"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x03edd3bec9aca0a6a50c9bf9ee9a24291aeca4c42c55a5cdced745074e4b527f",
+      "blockNumber": "0xf535f0",
+      "blockTimestamp": "0x6384f69b",
+      "data": "0x",
+      "logIndex": "0x5b",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000007015853f4be641296f6c92690ff69fd36704dc2d",
+        "0x0000000000000000000000000000000000000000000000000000000000000c56"
+      ],
+      "transactionHash": "0x2cabebf300bc98480752174d1f5a4d2f9f8bc66c4349f227b438ed8494161d49",
+      "transactionIndex": "0x5d"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x4072e64765a93278b488f42b89ecf8a57d866444a9aa5a4a9a58aab4ec593a3d",
+      "blockNumber": "0xf53612",
+      "blockTimestamp": "0x6384f83f",
+      "data": "0x",
+      "logIndex": "0x6a",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x0000000000000000000000000000000000000000000000000000000000000c57"
+      ],
+      "transactionHash": "0x0f4fdd9f1e8d06efb9e5ce937714d52c3f38fa895df4de6a312b72c2a3744f05",
+      "transactionIndex": "0x46"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xb827c3c1795e9fdfabd2857ae191e5a48cb8f12e67dcf2ced0397edccbc18959",
+      "blockNumber": "0xf536c5",
+      "blockTimestamp": "0x638500bb",
+      "data": "0x",
+      "logIndex": "0x1f9",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000007015853f4be641296f6c92690ff69fd36704dc2d",
+        "0x0000000000000000000000000000000000000000000000000000000000000c58"
+      ],
+      "transactionHash": "0xf3af487d9048ef36eb642befe27ff33b4b6d017c3a10d681f088c84d1287785b",
+      "transactionIndex": "0xe7"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x380f3b2f80d6a69be16d3cbd16a43cde9e08bd54346f0ea12635ac6ac074fa50",
+      "blockNumber": "0xf589b9",
+      "blockTimestamp": "0x6388ea5b",
+      "data": "0x",
+      "logIndex": "0xb2",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000694e64d4ad77e0c234b7b1c55ac40302ad86ce3f",
+        "0x0000000000000000000000000000000000000000000000000000000000000c59"
+      ],
+      "transactionHash": "0x679141e5f6f4170a6c16969728f69788257e589b4b94485d4aa350580eba3275",
+      "transactionIndex": "0x65"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x95a750fc4b1b684af6765567f53cd3306c720fc819483497f31fc4de4872fbac",
+      "blockNumber": "0xf5c147",
+      "blockTimestamp": "0x638b8833",
+      "data": "0x",
+      "logIndex": "0x4f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000008e04f3f772b4250c060e1b87fd28e420999699e7",
+        "0x0000000000000000000000000000000000000000000000000000000000000c5a"
+      ],
+      "transactionHash": "0x9d2ec06d00e593daca15fd80f35f5e0aee7913e9ed3520cac84d073384decbb5",
+      "transactionIndex": "0x4a"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xd0d59fd7fcab1ded7f9301f3379689b6d23ecbc87d8d97176ba02188b0a3cb42",
+      "blockNumber": "0xf9f556",
+      "blockTimestamp": "0x63be3f1f",
+      "data": "0x",
+      "logIndex": "0xb7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d416e09795d24216a4548b70964c7f9d95a7293f",
+        "0x0000000000000000000000000000000000000000000000000000000000000c5b"
+      ],
+      "transactionHash": "0x3b626531d64377888c05a5464475161a9481998822d6149d72ab79fa9d792f5b",
+      "transactionIndex": "0x53"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3154",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3154/token.json",
+      "cid": "QmeXCixzEXBkQHJF5WwuKv2TgUADWrj1yxMm9WrEVHKepx",
+      "sha256": "a961349587d9721bdd27c6fc0e0c88723123c437ca1c2fbd3915575b59e0aa05",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmaBqKToZiWZ213Ty4DEtme3R83JpTtWkyVmHf4182YthR",
+        "QmeXCixzEXBkQHJF5WwuKv2TgUADWrj1yxMm9WrEVHKepx"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3155",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3155/token.json",
+      "cid": "QmSPHq4SVEZtp7jL47EjX4YcXLbTeX6dFvEt349obHHa9X",
+      "sha256": "da4a7042bfd6e9c91d53cde2fc6c1eb38426975b457e316119248f75fc42b998",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmXDsEUSiTWNQrLnVUjxEQoVT3WNsvFUejiWjoAeArNjsG",
+        "QmSPHq4SVEZtp7jL47EjX4YcXLbTeX6dFvEt349obHHa9X"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3156",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3156/token.json",
+      "cid": "QmW2bq88guKKRkcHLSkK2oR93ErYp26WwebhcuxFcRnm2B",
+      "sha256": "64d7507b0af84ad10c10cb52ba75ff016123cec7217d142e3eb698c19f2be475",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmRgFbAzwrDchgvGCkzKVmKJYC67riRVTUyFkjzPKSAv23",
+        "QmW2bq88guKKRkcHLSkK2oR93ErYp26WwebhcuxFcRnm2B"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3157",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3157/token.json",
+      "cid": "QmWUhHEp34bkNNc7HxraiGvJc6RhTi23HAX3JTZCzFkm8T",
+      "sha256": "55f529166091bf71d81f1b46bb2f322d6e69260b8c811d66a97c6279a95e7160",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "Qmarc7XL748h1W9KryF95kToNrJ2NGMB1ab5BKZg3DjBYX",
+        "QmWUhHEp34bkNNc7HxraiGvJc6RhTi23HAX3JTZCzFkm8T"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3158",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3158/token.json",
+      "cid": "QmTF1fLRHagLL5hrN9HYNaDRDn8rpyppW3f841UscoYxk8",
+      "sha256": "bae3694c18934dfb48d486b4f3301f9fb58b0f377e0a426a8586e35e0fc44163",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "Qmf8FbyeNS4gqVK6K5Dw2JUgM51ZuJsba4rqrR7bsPbWFk",
+        "QmTF1fLRHagLL5hrN9HYNaDRDn8rpyppW3f841UscoYxk8"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3159",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3159/token.json",
+      "cid": "QmX4xRc2ZBEcJgwNnFU28hpNgBtXHtF6kguW5CYNffzyDA",
+      "sha256": "d34c75955b7a1e7ebf68b58adea7254d34da524fa02755d42c12984c26e4d912",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "Qmev9o7tvNnZj5sm2C5RTCCwBERwuKjX3mRK5gLaJEn1NP",
+        "QmX4xRc2ZBEcJgwNnFU28hpNgBtXHtF6kguW5CYNffzyDA"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3160",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3160/token.json",
+      "cid": "QmWb2Zq2E1ohhGV3nZz4GNadKDrj9c3897QHnmfoxMziS1",
+      "sha256": "923787f06d3acfc2cfbefaee03ac9193e21694c74ffe8aef61badbb8d3ff7fce",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmXe9n3QDVpPmCu2xE49vYojRXixQQCiFuZANs8zydFfnj",
+        "QmWb2Zq2E1ohhGV3nZz4GNadKDrj9c3897QHnmfoxMziS1"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3161",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3161/token.json",
+      "cid": "QmYCdMxjsurjhoT88hSd1gexVurtpwRu6RitQeZu9BhDv1",
+      "sha256": "6d6789f808f4b59376ac257383be7c5dcff2587311d39f9fbeeab6aa0535920a",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmcWcgm12KiY7bicsARNnmMNdQDE7ptX1A2x5c2MkZscUL",
+        "QmYCdMxjsurjhoT88hSd1gexVurtpwRu6RitQeZu9BhDv1"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3162",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3162/token.json",
+      "cid": "QmNrxFCtEX6StFimMTiBLynSn9EmwemBa6BhXr4qtx2Mx4",
+      "sha256": "05285c5357be9c919b6d185febc955e98625384174ffc7032dc3f926f2691489",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmRBqh1s6BAojQXSVtWqMJb7TvDBdyd83KpMUntbG9b7wF",
+        "QmNrxFCtEX6StFimMTiBLynSn9EmwemBa6BhXr4qtx2Mx4"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3163",
+      "tokenURI": "ipfs://QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB/3163/token.json",
+      "cid": "QmSMooHWbvzLuofEoUYcqwdjZmwMseUdG1twLYwpHZx6jP",
+      "sha256": "0c53b9f4d2b23e27c3425e79be119a70299389cebf54daab00db7f37c6012fb6",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmfFAsDBK3yJurQrNFqFwQW6SYENS58D8reEuqkrUieukB",
+        "QmZ6hppXi7zzh94SP77G7AMtg4JRSXsB6LtXfCbuLiRwk4",
+        "QmSMooHWbvzLuofEoUYcqwdjZmwMseUdG1twLYwpHZx6jP"
+      ],
+      "projectId": "63555bfc648a5ddd44544f64",
+      "collection": "She was a Dream",
+      "artist": "Hulki Okan Tabak"
+    }
+  ]
+}

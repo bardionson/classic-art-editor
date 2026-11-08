@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62d6b07dc65c100eaa30efea",
+  "name": "Final Boss",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [200],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x1c67eb5505b16f01370a2bfb52f2c96d09921cadc627b6db3e1fa83f492f7d11",
+      "blockNumber": "0xe9cc9b",
+      "blockTimestamp": "0x62f54b52",
+      "data": "0x",
+      "logIndex": "0x54",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000004e5"
+      ],
+      "transactionHash": "0xb6f781e594062f73ab827721be38b82dbb316cb8160dbc1ce50678b5ce276ccb",
+      "transactionIndex": "0x31"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x50c33cb03ce482846e723cc2a44e8f64d3e4043b99c2d940cfb58030657625f8",
+      "blockNumber": "0xea5af2",
+      "blockTimestamp": "0x62fcddd6",
+      "data": "0x",
+      "logIndex": "0xc2",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x00000000000000000000000000000000000000000000000000000000000004e6"
+      ],
+      "transactionHash": "0xa88cf1992cacd31e9409625797c41e4af260b700efa08287c7230d269fc37316",
+      "transactionIndex": "0x64"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1253",
+      "tokenURI": "ipfs://QmQ8rL71ieAYMaqvcjp1CMBAVGMJxyYbEx6sTaayUJyntM/1253/token.json",
+      "cid": "QmaMagS2s3LM6uAp8MWKJAQVE2AGGgajeKitnGMLgWgNZP",
+      "sha256": "9a5c8061479ade4456f61a799163c258b4bb3b3cd2553a2b09573ff5c650427f",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQ8rL71ieAYMaqvcjp1CMBAVGMJxyYbEx6sTaayUJyntM",
+        "Qmdq61Q5FzieFD39jLizKDqq9T6fdfrBe1JeZpUx2VaPDe",
+        "QmaMagS2s3LM6uAp8MWKJAQVE2AGGgajeKitnGMLgWgNZP"
+      ],
+      "projectId": "62d6b07dc65c100eaa30efea",
+      "collection": "Final Boss",
+      "artist": "Leonardo Cruz"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1254",
+      "tokenURI": "ipfs://QmQ8rL71ieAYMaqvcjp1CMBAVGMJxyYbEx6sTaayUJyntM/1254/token.json",
+      "cid": "QmY4kV75jeGuHhRwGkvQiCAY4Xo5tTPMsNHRK4ZELgbQzA",
+      "sha256": "d6f1b8cec3a99343fa8e48a097f389209d8bfec6b187dbeb2820214c2a4c14eb",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmQ8rL71ieAYMaqvcjp1CMBAVGMJxyYbEx6sTaayUJyntM",
+        "QmUSpqNNaFmvQ7c6ed2ubwKNEfDwfbx5h4CKYeP7Hxx8bD",
+        "QmY4kV75jeGuHhRwGkvQiCAY4Xo5tTPMsNHRK4ZELgbQzA"
+      ],
+      "projectId": "62d6b07dc65c100eaa30efea",
+      "collection": "Final Boss",
+      "artist": "Leonardo Cruz"
+    }
+  ]
+}

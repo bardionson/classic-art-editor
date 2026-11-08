@@ -9,7 +9,7 @@ import { getBlueprintRecords, searchArchive } from '@/utils/archive-search';
 describe('Blueprint project discovery', () => {
   it('accounts for every indexed edition once, using project identity', () => {
     const result = browseBlueprintProjects();
-    expect(result.allProjects).toBe(203);
+    expect(result.allProjects).toBe(234);
     expect(result.editions).toBe(getBlueprintRecords().length);
     expect(result.projects[0].count).toBe(3000);
   });

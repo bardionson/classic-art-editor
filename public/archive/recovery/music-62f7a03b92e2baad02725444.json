@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62f7a03b92e2baad02725444",
+  "name": "Summer Garden",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [199],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xeddd1abb63925e0a67927f7e1d3efaa9767b02dafd023371501573c06e5cb6af",
+      "blockNumber": "0xeb11c2",
+      "blockTimestamp": "0x6306a3a1",
+      "data": "0x",
+      "logIndex": "0x78",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000039ce83a2f5756e1c73dba5904ed12c833910ffc",
+        "0x0000000000000000000000000000000000000000000000000000000000000c26"
+      ],
+      "transactionHash": "0xaf82d1859d36c3d369a5456d1df0d8cf78ce11442310701aa5532ba88ab1c4a6",
+      "transactionIndex": "0x2c"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "3110",
+      "tokenURI": "ipfs://QmSdQNzFv6yFngcoJ4VbkJUHUaw9zeyQi6xvuW9hyYZmK6/3110/token.json",
+      "cid": "QmSCEFgCz1FCtAucdMbYCQzviJr9961o99a4GJere6S9KJ",
+      "sha256": "dceda3359c35e36fbc0b6679f2cf59694f5456ed8cb7384304b608a461a97d22",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmSdQNzFv6yFngcoJ4VbkJUHUaw9zeyQi6xvuW9hyYZmK6",
+        "QmXNsjh1SZekDijzjgZSmaorkTtWdygpQi77AVfzC7Sfcn",
+        "QmSCEFgCz1FCtAucdMbYCQzviJr9961o99a4GJere6S9KJ"
+      ],
+      "projectId": "62f7a03b92e2baad02725444",
+      "collection": "Summer Garden",
+      "artist": "Emil G Music"
+    }
+  ]
+}

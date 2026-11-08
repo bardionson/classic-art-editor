@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63483248b48b4e5af85b5cda",
+  "name": "SEA_BREEZE.WAV",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 4,
+  "declaredEditionCounts": [150],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xe501da81fcd7bed7a0bca1e681c0b07074d00d3e0fabea4d9be4a7cb80904089",
+      "blockNumber": "0xf1f712",
+      "blockTimestamp": "0x635dcb87",
+      "data": "0x",
+      "logIndex": "0x81",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x0000000000000000000000000000000000000000000000000000000000000bba"
+      ],
+      "transactionHash": "0x96d3183d6ad031cc641cf4dda3bc39919376c8755f847b0808b8be169668fd05",
+      "transactionIndex": "0x2f"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x18953a46d0650341126784ee4b040447675af4e99cd5426e78ac3eb01b5b14cb",
+      "blockNumber": "0xf2395a",
+      "blockTimestamp": "0x6360ebbb",
+      "data": "0x",
+      "logIndex": "0x8a",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f88f0343791260ed716de416c3bb03219ab54b90",
+        "0x0000000000000000000000000000000000000000000000000000000000000bbb"
+      ],
+      "transactionHash": "0xf92b2ab38c596db870edd4f383f7b2b66df810c609ead2f3086a2835abe67c3a",
+      "transactionIndex": "0x3b"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x0727317a3521529cfad4b0991e4fb91a8956a543a8b80ab7aa26d9c2013b534c",
+      "blockNumber": "0xf58985",
+      "blockTimestamp": "0x6388e7eb",
+      "data": "0x",
+      "logIndex": "0x106",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x0000000000000000000000000000000000000000000000000000000000000bbc"
+      ],
+      "transactionHash": "0x0a160ed4a9a244aa6da7635118875994be66a9735b88ece056557a4f6d3c2cb8",
+      "transactionIndex": "0x74"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x0727317a3521529cfad4b0991e4fb91a8956a543a8b80ab7aa26d9c2013b534c",
+      "blockNumber": "0xf58985",
+      "blockTimestamp": "0x6388e7eb",
+      "data": "0x",
+      "logIndex": "0x108",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x0000000000000000000000000000000000000000000000000000000000000bbd"
+      ],
+      "transactionHash": "0x0a160ed4a9a244aa6da7635118875994be66a9735b88ece056557a4f6d3c2cb8",
+      "transactionIndex": "0x74"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3002",
+      "tokenURI": "ipfs://QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju/3002/token.json",
+      "cid": "QmYknxP3VpUx7LUWrGBQo3jhkwqMCD2SBL3AWiFzi5ktFb",
+      "sha256": "279a20939cdb9dbc60f795846ec9d029748ce38f8f75c64844bcd07d05f4572a",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju",
+        "QmWZ91pqAmTukzKX4hDUJWv7og6eE2Si4iUVAbe9GqTQtj",
+        "QmYknxP3VpUx7LUWrGBQo3jhkwqMCD2SBL3AWiFzi5ktFb"
+      ],
+      "projectId": "63483248b48b4e5af85b5cda",
+      "collection": "SEA_BREEZE.WAV",
+      "artist": "GOMA"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3003",
+      "tokenURI": "ipfs://QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju/3003/token.json",
+      "cid": "QmYjsC9D4xx7TAGpJLrx9jWqrMi73unXXHNXqHbgwi2DNf",
+      "sha256": "d9f681f99be6ffb1b74faab8f0eb107a23800d83dae07256119aa3999de091d1",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju",
+        "QmUZJFXeMuvZr9n1JVgJUNCT5ntXe6ssngLJKYjw7SCS4Z",
+        "QmYjsC9D4xx7TAGpJLrx9jWqrMi73unXXHNXqHbgwi2DNf"
+      ],
+      "projectId": "63483248b48b4e5af85b5cda",
+      "collection": "SEA_BREEZE.WAV",
+      "artist": "GOMA"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3004",
+      "tokenURI": "ipfs://QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju/3004/token.json",
+      "cid": "QmeauicdmXXZBEJQz4v5HGZBwbBkfjkcjGoGhQktLCKL8j",
+      "sha256": "5867cd52b1fc9b5444ef3584f758e176daf6714603a5ef6539a98e4d196c20c8",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju",
+        "QmYAbxnawVdawGcETwM1tuGpMkvS2hov7o8XQALTY5vLz8",
+        "QmeauicdmXXZBEJQz4v5HGZBwbBkfjkcjGoGhQktLCKL8j"
+      ],
+      "projectId": "63483248b48b4e5af85b5cda",
+      "collection": "SEA_BREEZE.WAV",
+      "artist": "GOMA"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "3005",
+      "tokenURI": "ipfs://QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju/3005/token.json",
+      "cid": "Qmf1SG85pQNgEv3rTpLd8bE4Li5jzBSbKsFc931GnFM5yK",
+      "sha256": "1a03f760b8f5bcc0cde5ca90d8ad77c22974e8b5f0e3f57ae449a3c161f9c893",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmTyBMCff5Dit3pWHbMtAeRhSXfFYaALwCsELcjP4AEAju",
+        "QmUp4WzcNfQv1YJeDDKvZT2QXkEXx2EZqBep4LnvjxKcGk",
+        "Qmf1SG85pQNgEv3rTpLd8bE4Li5jzBSbKsFc931GnFM5yK"
+      ],
+      "projectId": "63483248b48b4e5af85b5cda",
+      "collection": "SEA_BREEZE.WAV",
+      "artist": "GOMA"
+    }
+  ]
+}

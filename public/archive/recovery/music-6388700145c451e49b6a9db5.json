@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "6388700145c451e49b6a9db5",
+  "name": "Humans Part 2",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 3,
+  "declaredEditionCounts": [70],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xbda63ee34e00eecf743f81d598d04f373fdfc9faed4d45795917caba548ed1f7",
+      "blockNumber": "0xf7c25e",
+      "blockTimestamp": "0x63a3bbf3",
+      "data": "0x",
+      "logIndex": "0x105",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000024e2"
+      ],
+      "transactionHash": "0x94b564565e7af16825063ea61ea1e5417668d3820fd57af51f20816647ebbba1",
+      "transactionIndex": "0x61"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x66c96ce306b2355f9a67524537f8755abdce99908c303748467536c007568f24",
+      "blockNumber": "0xf7dc82",
+      "blockTimestamp": "0x63a4f693",
+      "data": "0x",
+      "logIndex": "0xdf",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009b64106187f1456cbe5feae563f2c869927e1d34",
+        "0x00000000000000000000000000000000000000000000000000000000000024e3"
+      ],
+      "transactionHash": "0x0269f053a1f906cd6391b6a98f51da4d70f09666a601e7eeac2dacf3be516588",
+      "transactionIndex": "0xe7"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x21f35062879e058126e1230a0d4bc6bfb5bdecbe317799e4b66a5542acd6751f",
+      "blockNumber": "0x1035406",
+      "blockTimestamp": "0x642fcee7",
+      "data": "0x",
+      "logIndex": "0xa7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ad7b8db21c3da37a6496c04b1c2b4d57407c3c1d",
+        "0x00000000000000000000000000000000000000000000000000000000000024e4"
+      ],
+      "transactionHash": "0x635b46cbcc093be7c5c545351b37394dc33b8a0d42927e2b9d5e1f6a9bc08cca",
+      "transactionIndex": "0x90"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9442",
+      "tokenURI": "ipfs://QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP/9442/token.json",
+      "cid": "QmaDbGyYwfBctRyahBFBAuZ3Qma7YBy3EucCbifiPDgQyR",
+      "sha256": "2840f260da641d978a5640e1a8bfcf56ba441780c6c123ba2416bd0751ea846e",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP",
+        "QmYN18kRS52hQ4kprFt9wCsrzYXrX9neUHeGHb4K8LyzLU",
+        "QmaDbGyYwfBctRyahBFBAuZ3Qma7YBy3EucCbifiPDgQyR"
+      ],
+      "projectId": "6388700145c451e49b6a9db5",
+      "collection": "Humans Part 2",
+      "artist": "RenaKuk"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9443",
+      "tokenURI": "ipfs://QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP/9443/token.json",
+      "cid": "QmVMsjHTYMATcsaB49s9kougSUxRSgypqZzSshcZ9QLDbe",
+      "sha256": "6b5742c734ee666c87b87ecdfea7cfb6aa0402dc5c0b281c79191c78ff322916",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP",
+        "QmVQ39pHEBKtjppdpYxkxZHqcbQeV1nCTLvxRKeVM9nA9F",
+        "QmVMsjHTYMATcsaB49s9kougSUxRSgypqZzSshcZ9QLDbe"
+      ],
+      "projectId": "6388700145c451e49b6a9db5",
+      "collection": "Humans Part 2",
+      "artist": "RenaKuk"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9444",
+      "tokenURI": "ipfs://QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP/9444/token.json",
+      "cid": "QmeKXgUY7inbq1sQYG6bCZP72LcN8L1bkptb4Dzbkv6HGm",
+      "sha256": "8b0fb601ee82c796a2e63b0680cd12452dcd33d1981678f6453e6ed640829d54",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmeDBM2YGaTP1C3Qv1HpBYpFqqRXW6UkqaWwZH3EA2EHRP",
+        "QmNgRYiHDysjCQYm1KjNNScLFcaTDWcvg4B6M68xZeG8wg",
+        "QmeKXgUY7inbq1sQYG6bCZP72LcN8L1bkptb4Dzbkv6HGm"
+      ],
+      "projectId": "6388700145c451e49b6a9db5",
+      "collection": "Humans Part 2",
+      "artist": "RenaKuk"
+    }
+  ]
+}

@@ -16,12 +16,14 @@ export default function BlueprintPlayer({
   image,
   animationUrl,
   audioUrl,
+  projectPreview = false,
 }: {
   cid: string;
   name: string;
   image?: string;
   animationUrl?: string;
   audioUrl?: string;
+  projectPreview?: boolean;
 }) {
   const [media, setMedia] = useState<ArchivePlayback | null>(() =>
     metadataPlayback({ audio: audioUrl, animation_url: animationUrl }),
@@ -143,9 +145,9 @@ export default function BlueprintPlayer({
           large
         />
         <div className="min-w-0 rounded-xl border border-border bg-surface-raised p-4">
-          <h2 className="text-xl font-semibold mb-2">Listen to this edition</h2>
+          <h2 className="text-xl font-semibold mb-2">{projectPreview ? 'Listen to the project preview' : 'Listen to this edition'}</h2>
           <p className="text-sm text-text-muted mb-4">
-            The original minted mix, with its artwork. No wallet required.
+            {projectPreview ? 'Original project preview audio and artwork. No wallet required.' : 'The original minted mix, with its artwork. No wallet required.'}
           </p>
           {loading ? (
             <p role="status">Finding this edition’s audio…</p>

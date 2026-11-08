@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63907204fb5dd4dea1b3a841",
+  "name": "Dream About You",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [12],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x9d36c289b64c386169f5f0c4c45f8e0ce5d7585a993cdfc3af60f33f5311c93b",
+      "blockNumber": "0xf79c62",
+      "blockTimestamp": "0x63a1f1ef",
+      "data": "0x",
+      "logIndex": "0x9c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000004375e38ab575e63b5247b4330c4d9fe93172af2d",
+        "0x00000000000000000000000000000000000000000000000000000000000024d5"
+      ],
+      "transactionHash": "0x51442573f47b657f96739a995c8ac0ef6804eeb74ee1b2fb3792e30b46773ea2",
+      "transactionIndex": "0x43"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9429",
+      "tokenURI": "ipfs://Qmd1Uu2HBmR5ozw2s8KKphyPwMF4mUsP8LbTmArvu2wjNU/9429/token.json",
+      "cid": "QmaQHSy6sVFBnVfQEr2KidmTzbdtMuS3F7pMfhddBift44",
+      "sha256": "f9ebd4013ef2109817566d57ad99297c08809f196cfcf0217677199dc099bfb1",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "Qmd1Uu2HBmR5ozw2s8KKphyPwMF4mUsP8LbTmArvu2wjNU",
+        "QmPmqzmpaR26tGkEFJkU6aQLWjiVz9yYDhyYdnFN8NSDsy",
+        "QmaQHSy6sVFBnVfQEr2KidmTzbdtMuS3F7pMfhddBift44"
+      ],
+      "projectId": "63907204fb5dd4dea1b3a841",
+      "collection": "Dream About You",
+      "artist": "Hossein Taheri"
+    }
+  ]
+}

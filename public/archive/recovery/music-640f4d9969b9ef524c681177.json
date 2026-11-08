@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "640f4d9969b9ef524c681177",
+  "name": "Funhouse",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 11,
+  "declaredEditionCounts": [99],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x36bb3bb3ba9c8778c77612efd63e6471c856024f0976828eaccef8f2ef6e2ee9",
+      "blockNumber": "0x103cb67",
+      "blockTimestamp": "0x64358447",
+      "data": "0x",
+      "logIndex": "0xc6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000001adef8b7253c43caaf50500913d422ae688367bd",
+        "0x0000000000000000000000000000000000000000000000000000000000002a90"
+      ],
+      "transactionHash": "0xbbad9ccf28c22d04fcca556aef271e7190fc502bae54bf480bbd8dbb1502cc49",
+      "transactionIndex": "0xfa"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xc6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a91"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xc8",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a92"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xca",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a93"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xcc",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a94"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xce",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a95"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xd0",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a96"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xd2",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a97"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xd4",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a98"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xd6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a99"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x7f4b42c2ff03210cab33477496a5920619c20a03ad459fcf0903873c5ecd8f69",
+      "blockNumber": "0x103cc9f",
+      "blockTimestamp": "0x6435935f",
+      "data": "0x",
+      "logIndex": "0xd8",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x0000000000000000000000000000000000000000000000000000000000002a9a"
+      ],
+      "transactionHash": "0x58db932750947a1709f5bb3e49a8d8777c3965cb6e181d4fb7c85e4c907eb949",
+      "transactionIndex": "0x7e"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10896",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10896/token.json",
+      "cid": "QmTzJSjACnJ7KBdpQgjTXzhzRriuBsZFgwKk66hUXmcmVm",
+      "sha256": "1f5bb618ad8d8905b1b088e59d33b999997ca1801ee342b3f9909791a5e6c5b3",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "Qmc9gyKmMff29cgDEmVEm4SPR9g2iocVteUziAM6CSH9eu",
+        "QmTzJSjACnJ7KBdpQgjTXzhzRriuBsZFgwKk66hUXmcmVm"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10897",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10897/token.json",
+      "cid": "QmaobFppprQT9XG3KTUrt3fM7R8rSnzzHHd5WAdDp1mzKP",
+      "sha256": "8a48604bb2d065343a3d73c6c8e35b581eada4d23de96ca7d8c408b9255f7714",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmPZJCcDSEXubU41JmxFFvQAYATSXW65T2q2cw7dUtK2vU",
+        "QmaobFppprQT9XG3KTUrt3fM7R8rSnzzHHd5WAdDp1mzKP"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10898",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10898/token.json",
+      "cid": "QmT611XaryMzDyC8icC45BeBPDRBL63fQzME1Xm5iq3pQh",
+      "sha256": "5a78530174e473bf817ea7332acb10f32aae10c1fd2d431b2864c270f51fc4de",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmXEbgNVceJyVJkGdhv3U4YcVdCtiZwNjmQJPRHXcZKBe9",
+        "QmT611XaryMzDyC8icC45BeBPDRBL63fQzME1Xm5iq3pQh"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10899",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10899/token.json",
+      "cid": "QmUPVnTndbnZCgeujNuTecT78Ti9Xhshiwt8q2htr6KFkB",
+      "sha256": "05c89a756807c7925adbbddc6e756d00d88e2789f652b00e7c80d411b41c6c41",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmToLvLke5UuiXUoeQSbcriNQD2rFEuGvaUiscCwokdzBV",
+        "QmUPVnTndbnZCgeujNuTecT78Ti9Xhshiwt8q2htr6KFkB"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10900",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10900/token.json",
+      "cid": "QmXJLyoCk1SBQwgE5sCUPKTrxaN8Q3QZUFm36rBapz4zJB",
+      "sha256": "13c4e6f373d895d003d1237ef2b1e84737f765e6ec96314faa68b5d870a1090b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmU8Kz5onJyS7h9NpiSD7VfogzWei9YA7LENfvPrkMDNn4",
+        "QmXJLyoCk1SBQwgE5sCUPKTrxaN8Q3QZUFm36rBapz4zJB"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10901",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10901/token.json",
+      "cid": "QmTPGbKy5dVXxCUhsXebexqBbDCCAAhn26cxXUZdMzG22r",
+      "sha256": "377118acfd559d1e5eab5919fd0b6da6d31fd2c5c27995fa814723522c1361c3",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmWjPyBPFSAPUnbzcduexUvgBnVfCPDjY2vMBrzzuxzJ1Z",
+        "QmTPGbKy5dVXxCUhsXebexqBbDCCAAhn26cxXUZdMzG22r"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10902",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10902/token.json",
+      "cid": "QmRQjxed2VR44WBH1oNUMYFkpEw6397SKFUaV1cV12pmf7",
+      "sha256": "f1965ffb506a234c30ce31c1a0c2d55f99d88c1e80269a6cf4b2f92539857704",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmbvvGXt2JaTzaNZo8rwmREAbKK2aBP9rYahxSFmS2CkWA",
+        "QmRQjxed2VR44WBH1oNUMYFkpEw6397SKFUaV1cV12pmf7"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10903",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10903/token.json",
+      "cid": "QmRXPFpTQvShREkDBzR9EoCai8pVuo9c7SkD6Hmi8jgFwJ",
+      "sha256": "6f854b4e529ead95160820bc07c6d92ac67ed7d7f79459555d4472b5eb43d0e5",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmXbhb5aZfqbeBPa41dRT2BdATs3hcrB2go5b9W37VCqe5",
+        "QmRXPFpTQvShREkDBzR9EoCai8pVuo9c7SkD6Hmi8jgFwJ"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10904",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10904/token.json",
+      "cid": "QmT764UaXPp918Zcojmn4zYte9wsXfiMwS3H4GFaqTM812",
+      "sha256": "c79ecdd9b4f42daa86f3a24e75dadb381bca7bcf0ff2d4233a1ab58292252ff1",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmZZ1LqRFNNWAqYkWTUo2BTuZtEwayTfnRJLsDzUj79y3g",
+        "QmT764UaXPp918Zcojmn4zYte9wsXfiMwS3H4GFaqTM812"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10905",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10905/token.json",
+      "cid": "QmS6wsoKFjrfnjCXeUg981JRoTz64fRnXfAPUvyWqA2vFo",
+      "sha256": "d849579a6b844094dbf7a4e9ef3501b222d795db06f291fad6a0dffbe20f03b7",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "Qmax8ZxPc8ipustUv4gFMwVDDAwMtRxvtt9bcoFjVLRNiU",
+        "QmS6wsoKFjrfnjCXeUg981JRoTz64fRnXfAPUvyWqA2vFo"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10906",
+      "tokenURI": "ipfs://QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV/10906/token.json",
+      "cid": "QmeBJ9snHwaiGjB8UgtE47vYsJkpLhkpB99JS4DmMMXp5L",
+      "sha256": "02ae19289e54ad754e2949e68155b01ac5bbbb3490849feb2d271e89a4ca9f9c",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVwfoGiyuuvd5cYoGz5c6V1WveuQAR4GNK4PFS7sHGoCV",
+        "QmQkgsV42JvBGcJykMXCsKvFMiaAo1oPv2FKWe39rLUHjL",
+        "QmeBJ9snHwaiGjB8UgtE47vYsJkpLhkpB99JS4DmMMXp5L"
+      ],
+      "projectId": "640f4d9969b9ef524c681177",
+      "collection": "Funhouse",
+      "artist": "Emil G Music"
+    }
+  ]
+}

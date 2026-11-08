@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62e76e34b34669d69b4a7772",
+  "name": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 4,
+  "declaredEditionCounts": [512],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x0635f52de0dee3411d53c52ebbab30865588df0d42870bebfb7b6104f1ba2416",
+      "blockNumber": "0xea2d47",
+      "blockTimestamp": "0x62fa71ba",
+      "data": "0x",
+      "logIndex": "0x4b",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000006fa"
+      ],
+      "transactionHash": "0xe98035f8242e151920df59e42e32adf0c58e3889b0490dab88f7ad29f49c81f8",
+      "transactionIndex": "0x45"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x3bc290c0c7f4d1879a5d548041c42bbb4fd81a4dc0dfb48a282ec6ee67d06eaa",
+      "blockNumber": "0xea31f0",
+      "blockTimestamp": "0x62fab163",
+      "data": "0x",
+      "logIndex": "0xc0",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000010ac1c3de2f5cf9fe22b5bd5a976e03e996cfa20",
+        "0x00000000000000000000000000000000000000000000000000000000000006fb"
+      ],
+      "transactionHash": "0x8a2be67c0533de3799b9a3e65ac5846e685128c4f56bd6bf20fb3cb0cd524a9b",
+      "transactionIndex": "0x4a"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x2710491a7e9f251d579c17ca3e1f6f722a238737985e91f7aa7dadcfd3435f4b",
+      "blockNumber": "0xea4b72",
+      "blockTimestamp": "0x62fc0abc",
+      "data": "0x",
+      "logIndex": "0x111",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f88f0343791260ed716de416c3bb03219ab54b90",
+        "0x00000000000000000000000000000000000000000000000000000000000006fc"
+      ],
+      "transactionHash": "0xf8325fb7ced778f602ac7743f66c8c5b08d14706d4f66e9813f71098034432cd",
+      "transactionIndex": "0x56"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xd0a76326bf1ba472183ec9592378f973616166c58d806dffad0d331a9a8e638b",
+      "blockNumber": "0xfb96b0",
+      "blockTimestamp": "0x63d1ea4b",
+      "data": "0x",
+      "logIndex": "0xb2",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x00000000000000000000000000000000000000000000000000000000000006fd"
+      ],
+      "transactionHash": "0x232a22ed4f801c659b2369719de4c7e5b7ef3507dc405f03923faf69f39d673e",
+      "transactionIndex": "0x45"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1786",
+      "tokenURI": "ipfs://QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc/1786/token.json",
+      "cid": "QmXDHa2dgoy94GqLU1gkWp5pC3UHgPbhAv3w5BZnTHrQpB",
+      "sha256": "9bf0fa0c85d3b2edf3711d5f4bf2937a2302077f9f90d32edbc59d06b4442ca1",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc",
+        "QmVc7ugLZLSVP2wWeECEQD3ep9htu2UZ9GCwyZHLyXt9QS",
+        "QmXDHa2dgoy94GqLU1gkWp5pC3UHgPbhAv3w5BZnTHrQpB"
+      ],
+      "projectId": "62e76e34b34669d69b4a7772",
+      "collection": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+      "artist": "Jonny Selimovic"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1787",
+      "tokenURI": "ipfs://QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc/1787/token.json",
+      "cid": "QmcjsTnoa7j7Vot553Jhy27wE1CzzjQW9Ev1CMeujWjbzk",
+      "sha256": "635f0d7289c90f56d8702b3a2e5c6ae98d62406c76e3a2b7537cac86ff686175",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc",
+        "QmRWSKFWiDXe1fgBs34KUcQevrGMWzhnUqikBo6KqBfFzk",
+        "QmcjsTnoa7j7Vot553Jhy27wE1CzzjQW9Ev1CMeujWjbzk"
+      ],
+      "projectId": "62e76e34b34669d69b4a7772",
+      "collection": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+      "artist": "Jonny Selimovic"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1788",
+      "tokenURI": "ipfs://QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc/1788/token.json",
+      "cid": "QmdMt23CC9w87Hy9uta9mn3NtXSVvgCC5QzSRwRvpUK7cf",
+      "sha256": "c4939b717644b9a796531f469cbc539ac47a84419ce66fbe48655e38a7616e50",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc",
+        "QmXvCBz3nUyk9qjj2JgSH3tTXWitNEuFUHqxTudnRkcHCk",
+        "QmdMt23CC9w87Hy9uta9mn3NtXSVvgCC5QzSRwRvpUK7cf"
+      ],
+      "projectId": "62e76e34b34669d69b4a7772",
+      "collection": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+      "artist": "Jonny Selimovic"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "1789",
+      "tokenURI": "ipfs://QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc/1789/token.json",
+      "cid": "QmeHGzR7vBMcNtWeQydKatYDtV6gJ5sqQ6eJbCLzoSjZhS",
+      "sha256": "a97e64dd56a423dbf080f361477eacab8ab013f0d62a0ea1f2856ead72aaf8c3",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmStMfSakY8TmVbQrUq1uc5StDetcDyqrMxARLyWCNxzyc",
+        "QmWKc8qzHJRoz6kE7shZGLN6zu5beToUUa8Anxx1mAgJHf",
+        "QmeHGzR7vBMcNtWeQydKatYDtV6gJ5sqQ6eJbCLzoSjZhS"
+      ],
+      "projectId": "62e76e34b34669d69b4a7772",
+      "collection": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
+      "artist": "Jonny Selimovic"
+    }
+  ]
+}

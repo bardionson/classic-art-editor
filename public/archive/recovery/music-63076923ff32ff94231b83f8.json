@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63076923ff32ff94231b83f8",
+  "name": "The Syndicate",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 13,
+  "declaredEditionCounts": [260],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xae4e27ef9c4adfc634896ea1b364157208d436ab391308c2dc205da772eb8d58",
+      "blockNumber": "0xec3052",
+      "blockTimestamp": "0x6316241a",
+      "data": "0x",
+      "logIndex": "0x80",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000039ce83a2f5756e1c73dba5904ed12c833910ffc",
+        "0x000000000000000000000000000000000000000000000000000000000000108d"
+      ],
+      "transactionHash": "0x898c61716a2b0d7c4bd7198dce7e1bac304d555893c6ece32833bfb4d51b1b31",
+      "transactionIndex": "0x36"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xe28f1bbad64f7c2ca14bddca0d3b08fb3b9f4350779beb50f0132c99abc3321d",
+      "blockNumber": "0xec323d",
+      "blockTimestamp": "0x63163dec",
+      "data": "0x",
+      "logIndex": "0x82",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e29b7fb40150ea4b7cbc2f22e3acfa67a8da021a",
+        "0x000000000000000000000000000000000000000000000000000000000000108e"
+      ],
+      "transactionHash": "0xa2a44395f8fd352f00cdc5084bc73b26a59e3da36226c11fc42e64c137ad5fbe",
+      "transactionIndex": "0x43"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7b5dd8d0dc08e358cf903b672ed67f9bdf8d915f103c3bd4b5d11461e5a2e40a",
+      "blockNumber": "0xec339f",
+      "blockTimestamp": "0x63165117",
+      "data": "0x",
+      "logIndex": "0xea",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x000000000000000000000000000000000000000000000000000000000000108f"
+      ],
+      "transactionHash": "0x8b8ac2f76403b05db6b74bb7b30dcc38967f55a11ca2fc018b560e6eb18bf8f6",
+      "transactionIndex": "0x6c"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x812fb581cea25125c9ea0b9bd515f66b324766b39e1257f4480771e6fd718a95",
+      "blockNumber": "0xec35b0",
+      "blockTimestamp": "0x63166e4c",
+      "data": "0x",
+      "logIndex": "0x128",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e9f1c3cf268e67d2bad6c410156afc2d063ad4e7",
+        "0x0000000000000000000000000000000000000000000000000000000000001090"
+      ],
+      "transactionHash": "0x6d19ee2dd6c52514f1f8c5999961a3ce9ffbd607233569aa22032e0661de4ca7",
+      "transactionIndex": "0x103"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x1ea9ec3f38e92ec37ba5c6cf1bf08d14455a3e376af6f0d9bbaf89f290eaa03f",
+      "blockNumber": "0xec393d",
+      "blockTimestamp": "0x6316a07f",
+      "data": "0x",
+      "logIndex": "0x183",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000dcf3956d6b1c586036049bd228255d616bc7194d",
+        "0x0000000000000000000000000000000000000000000000000000000000001091"
+      ],
+      "transactionHash": "0x06f257e44b6902ab8ce8798662c9da8770900de505039a54a6c207239b49ba39",
+      "transactionIndex": "0xd1"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xd571db904ea13b8a42c00920fc15e00628d7484dfcd6e422ee41ca89d10ce6ae",
+      "blockNumber": "0xec401f",
+      "blockTimestamp": "0x63170019",
+      "data": "0x",
+      "logIndex": "0xde",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000001efed205caede27da1135cd37a4192861a51100e",
+        "0x0000000000000000000000000000000000000000000000000000000000001092"
+      ],
+      "transactionHash": "0x7c46ce7880163c18d4e08aab6cce7de73e2dcfdd50424d852fa9215566a96ebe",
+      "transactionIndex": "0xa8"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x48e596d576d20d7a7b85490f359227f1cdaae53c7ba26bf6f9c8cf2c97aac6d7",
+      "blockNumber": "0xec9ab7",
+      "blockTimestamp": "0x631bec7d",
+      "data": "0x",
+      "logIndex": "0x160",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d56d02912a09da72883bb4e9ccfabcd3b9acaf51",
+        "0x0000000000000000000000000000000000000000000000000000000000001093"
+      ],
+      "transactionHash": "0xc08aec11b39368a40060ace9bfe04ff60d9c2ea9c0dc5c34fe2290f86da7da8e",
+      "transactionIndex": "0xeb"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x06fd6dbb7ff757b19fdcb66ac498712a79e80cdfc9add58da35cdcb1793fa874",
+      "blockNumber": "0xeccc62",
+      "blockTimestamp": "0x631eb14f",
+      "data": "0x",
+      "logIndex": "0x11a",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c8539c0754dceea57a5615e20d8c4188d9082848",
+        "0x0000000000000000000000000000000000000000000000000000000000001094"
+      ],
+      "transactionHash": "0xab20b1cce34304acc59c0ee4a8d080e108fc490c23491b5d4f2feddc0b16cc2b",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x67d8a3e4838774f82e97376039363b3cc6c52103529ab049f5364f25b4ff0e6b",
+      "blockNumber": "0xeccdb2",
+      "blockTimestamp": "0x631ec3bd",
+      "data": "0x",
+      "logIndex": "0x16f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000dc554b245f09cd35cf97d6c453b73263ceaf11ac",
+        "0x0000000000000000000000000000000000000000000000000000000000001095"
+      ],
+      "transactionHash": "0x3290668d99222a6afef2eb28c8fccfa156e143fa809afa89178e6c03480f8cbc",
+      "transactionIndex": "0xae"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xa585c8f1f706396f8ac4a606add29d20ae42f6ba7fa99ac1b940e912a8d41176",
+      "blockNumber": "0xed0908",
+      "blockTimestamp": "0x63221651",
+      "data": "0x",
+      "logIndex": "0x16e",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000004375e38ab575e63b5247b4330c4d9fe93172af2d",
+        "0x0000000000000000000000000000000000000000000000000000000000001096"
+      ],
+      "transactionHash": "0xab5be533e1bd84efd2d3c7f878914e188b1e08624dee76fcd3089a54bd868c83",
+      "transactionIndex": "0xdb"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x1be32656fd096a7f3fca7b3904db8010becb1f4518903e0f5d753f94fda5d1cf",
+      "blockNumber": "0xedb8e7",
+      "blockTimestamp": "0x632a8ebb",
+      "data": "0x",
+      "logIndex": "0x94",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x0000000000000000000000000000000000000000000000000000000000001097"
+      ],
+      "transactionHash": "0xdc36a8dda96908650d0c58d76f8e2871ad49f07a9412a939a15c106b2278657c",
+      "transactionIndex": "0x81"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xb1b0a7f3a2624e47a3887d6c68570296d3c9a8983bd16ab5bb4dc4eb5a879e1a",
+      "blockNumber": "0xf0a190",
+      "blockTimestamp": "0x634db0f7",
+      "data": "0x",
+      "logIndex": "0x19d",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f88f0343791260ed716de416c3bb03219ab54b90",
+        "0x0000000000000000000000000000000000000000000000000000000000001098"
+      ],
+      "transactionHash": "0xea54230f53117d774f483966effbf6d171cdcaad444878e6ed9b0bbf6ffece44",
+      "transactionIndex": "0x7e"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xafee974bc74b69be113a42a75ff33a894ea2a3cfa6ed913d418e47870f247a3c",
+      "blockNumber": "0x11c0446",
+      "blockTimestamp": "0x655b5fdb",
+      "data": "0x",
+      "logIndex": "0xa3",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000068bca5a8bdebe05fb8a6648c7316b4eb7e19a064",
+        "0x0000000000000000000000000000000000000000000000000000000000001099"
+      ],
+      "transactionHash": "0xb81570aede379130ed9c4a7f7958ba1f8dac96b2f3df77b8139113e082e790b8",
+      "transactionIndex": "0x79"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4237",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4237/token.json",
+      "cid": "QmVdwdWmQSRyABuTBuzhqRsaWTW4UETxNPrdeWqAgrgs3r",
+      "sha256": "456b1fa0fd6e098eeb092a481d4dd71fb3380fec0f31ffd251f71d4a97a34a09",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmYGGsQpBnFnShZYkPCt7zUGyFh7RQVS21opx218vzu34E",
+        "QmVdwdWmQSRyABuTBuzhqRsaWTW4UETxNPrdeWqAgrgs3r"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4238",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4238/token.json",
+      "cid": "QmZobtVLzcEedHijyq22GrYNeXZ6bgEnqNJH4wwQjxtiRg",
+      "sha256": "d65c8b62d566602fbfd1827c42b9733719272002efef619c200aa88547a528e5",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "Qmf9269HXfRPXX8rzBEoc87D5on33Uo4arhBgVXdmdTrXt",
+        "QmZobtVLzcEedHijyq22GrYNeXZ6bgEnqNJH4wwQjxtiRg"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4239",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4239/token.json",
+      "cid": "QmZ6sGQKH7EfCXZrBPKbydygxHYHz9TwN7DoBat2Uw5dUA",
+      "sha256": "e1fdfc23dd58046ee381e74f6bb246df750724ff98185eeae8f979804d868950",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmbKx4kxs8LT5UanP5ck1HUnYcyo7rMquXqkpjD48J2g4V",
+        "QmZ6sGQKH7EfCXZrBPKbydygxHYHz9TwN7DoBat2Uw5dUA"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4240",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4240/token.json",
+      "cid": "QmS1fWesCRRA1jFEUrTAb7fqjwpgZBtCinKh7CicYc8yUr",
+      "sha256": "7e3dacda056d4d6c56abba77edf4ef658721ea40e1aca9750c869c89743c0df3",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmQj1L2UJ2aCsTGTvPrDinLmLgE6vt4uTU6kNQhjFPAZdY",
+        "QmS1fWesCRRA1jFEUrTAb7fqjwpgZBtCinKh7CicYc8yUr"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4241",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4241/token.json",
+      "cid": "QmR3L3GYLBAkMUD4owTx7m1Ejqrm3nrrnkwt9ABctfVWfH",
+      "sha256": "0763104e990dd92b37f9a4ea859566f07ac5ab0e28b201ad85b5d9f4624ca8df",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmVvVMSi7PJHQCyRwbEVLjKC8GsR21VGS2BhfheDy1qgfM",
+        "QmR3L3GYLBAkMUD4owTx7m1Ejqrm3nrrnkwt9ABctfVWfH"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4242",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4242/token.json",
+      "cid": "QmbVvENtnJkvQrYRDkRebeWrww8Kmb2BUMLZjmC8Qk4qCR",
+      "sha256": "0a3ff5d1ac4195c9f215d728a7b432fd4314785c2f75df4709503352d15946b4",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "Qmf126vb3UQ9JLPogHwMmg168WwT9R6mMHfjXPo7Qeywa1",
+        "QmbVvENtnJkvQrYRDkRebeWrww8Kmb2BUMLZjmC8Qk4qCR"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4243",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4243/token.json",
+      "cid": "QmekqgopPwMu4rUfzJqKcxSqZTC6vcoB7WdGQqUWGTk4jP",
+      "sha256": "60edeb244ed2f2e039bf4952a0221e9bc26df2e4b3f633882b1da48d840e2dea",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmRYdEaQcLTq56sEeAbm1NyzDSgKV1QDjByNusVYrAKQsc",
+        "QmekqgopPwMu4rUfzJqKcxSqZTC6vcoB7WdGQqUWGTk4jP"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4244",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4244/token.json",
+      "cid": "QmSoXcStSU1Hux9WoqDbXsyuqp1vnvd9j7PN8kELv8nnAz",
+      "sha256": "e9a73e302c8de72b0500e47b85957f611c7abd27ea726d44cfd70b843298321b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmZgAQY3MffhMwrc1gLmHEouCvy6UppMjJxzd72xX34chg",
+        "QmSoXcStSU1Hux9WoqDbXsyuqp1vnvd9j7PN8kELv8nnAz"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4245",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4245/token.json",
+      "cid": "QmbCPsakGxFzp5fMvNCnw2drtu9V9YwcPxaoCjyEmUZhfC",
+      "sha256": "ef0ad9fbe0af9dfd376292cbb17fab5910f6cb872eff66fbb5a5be354408a8ec",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmTuitzQ4wjkXYaYTmXcdtMS4KNTt4qxAxH8y8QvK4ZWx4",
+        "QmbCPsakGxFzp5fMvNCnw2drtu9V9YwcPxaoCjyEmUZhfC"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4246",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4246/token.json",
+      "cid": "QmSJJJDwUT9urgxNJGcwcGJyeQSdUtBpQwM6AzZiomfjah",
+      "sha256": "60c2e05638ef5883fafb3bbb7ff544655c5c475287b5602417eae81d0f17e12d",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmWJ4eLt8YHKzxwTh5N4yGvA4yXfBY7X4oT3Fu27Qkksyq",
+        "QmSJJJDwUT9urgxNJGcwcGJyeQSdUtBpQwM6AzZiomfjah"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4247",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4247/token.json",
+      "cid": "QmQZe4ufQRSutQ1DucDA7Y9ed1xEeukPzYDLrRXaLjzJjU",
+      "sha256": "916c5f3a59030d10f9fbd5eb8720093082962a3137998ff89c034b0f6fa79927",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmQmK9YqgLMdS9MscsjNJ8nWpDGEwvvhNBezPs3N4y77em",
+        "QmQZe4ufQRSutQ1DucDA7Y9ed1xEeukPzYDLrRXaLjzJjU"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4248",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4248/token.json",
+      "cid": "Qme1HQmSgyQPRfRmNgFf2pVSiiGbiCs95PS1vJVeAkZrzu",
+      "sha256": "955266fafe0520b5d45675e9a0b0b6c3d2f3d5d0c50060e922829b895ff8f2d5",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmNtSv4J3Wbqdd9BHmE8B9ZRKuZckadhnEMKnhZ1NHu6kd",
+        "Qme1HQmSgyQPRfRmNgFf2pVSiiGbiCs95PS1vJVeAkZrzu"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4249",
+      "tokenURI": "ipfs://QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6/4249/token.json",
+      "cid": "QmWKY6NYV3Ya8rCTZb56p9FmmTcsof2ZVw5NCYEyeZCJTX",
+      "sha256": "7690e3cf7f8de783f036af378e1243e2e6fb89338d649d6a9a9fcdc3d2dd61c4",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmRb77ZNgwa7LsJsbrtFyNmSzD9VQ5pPxGajDPzhMTsiP6",
+        "QmZCfyqvhngzUmW1DNM9YVVru8Kf31te2JJChvKq32HCep",
+        "QmWKY6NYV3Ya8rCTZb56p9FmmTcsof2ZVw5NCYEyeZCJTX"
+      ],
+      "projectId": "63076923ff32ff94231b83f8",
+      "collection": "The Syndicate",
+      "artist": "Mister Reborn"
+    }
+  ]
+}

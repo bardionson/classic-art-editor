@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "6304f948ec11c529860d6160",
+  "name": "8bit-Robots' beatbox",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 3,
+  "declaredEditionCounts": [27],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x74cd6453269186ae6b820145d11862f3fa32d09010acf1d8a12a39853a819d21",
+      "blockNumber": "0xec7c27",
+      "blockTimestamp": "0x631a3b04",
+      "data": "0x",
+      "logIndex": "0xeb",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d0077e74d178520c12d74c4f638d43b8d2cef296",
+        "0x00000000000000000000000000000000000000000000000000000000000011fd"
+      ],
+      "transactionHash": "0xdb70d7beab8d6bbc3145f97b9a48d81437c6f951ff9775c7ecfd6370c1e913ca",
+      "transactionIndex": "0x6e"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xb461beeb725c71575b0d9276ef87cc2c07828e0aaa127d40bd57f5e198079a70",
+      "blockNumber": "0xec8031",
+      "blockTimestamp": "0x631a7364",
+      "data": "0x",
+      "logIndex": "0x126",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000dc35737d885a114769a8846b57ea321c870bc827",
+        "0x00000000000000000000000000000000000000000000000000000000000011fe"
+      ],
+      "transactionHash": "0x08f544d8e3dff4f84c4a5e695a10d68d55d0071bf61be56fa0232bf0b2b75947",
+      "transactionIndex": "0xba"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x6a53397170c903baebd627512028e0a80c7e59452dc4cf1923bd3b5169c8c1a4",
+      "blockNumber": "0xec8268",
+      "blockTimestamp": "0x631a92b4",
+      "data": "0x",
+      "logIndex": "0x1a3",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e733b65ef1fffa734c7cea6e8463506fff83855a",
+        "0x00000000000000000000000000000000000000000000000000000000000011ff"
+      ],
+      "transactionHash": "0x5308a4c2a27bee6b2857f4937dcc9e02ca58a31df7a275b131740a9eab4fcb2d",
+      "transactionIndex": "0x98"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4605",
+      "tokenURI": "ipfs://QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3/4605/token.json",
+      "cid": "QmZopyEk6Ccn3YEf4yST6cr6Gazrb2CRjJJepKwa13ZfwN",
+      "sha256": "9f1b43fa73862eab86624549c3c16ba0082c8f52fff3586f2ae5c4acbd314641",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3",
+        "QmeAcGs6GRoXe3BcWmsKvfVmJz2LjBos7Sr1ByRrqNpxRr",
+        "QmZopyEk6Ccn3YEf4yST6cr6Gazrb2CRjJJepKwa13ZfwN"
+      ],
+      "projectId": "6304f948ec11c529860d6160",
+      "collection": "8bit-Robots' beatbox",
+      "artist": "8bit-acid-lab"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4606",
+      "tokenURI": "ipfs://QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3/4606/token.json",
+      "cid": "QmRnZ5g6UG3qycdsDyXm4kLMiQS3ao7eHgmseiTi4WGasK",
+      "sha256": "86c60d9b21155b49b4048d2d0a3f044b543934895ac4884148f7054239fb629f",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3",
+        "QmQ3xzCzxnXA1pqdG191faQW3wLbA7n12Em7sMjR4DoYga",
+        "QmRnZ5g6UG3qycdsDyXm4kLMiQS3ao7eHgmseiTi4WGasK"
+      ],
+      "projectId": "6304f948ec11c529860d6160",
+      "collection": "8bit-Robots' beatbox",
+      "artist": "8bit-acid-lab"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "4607",
+      "tokenURI": "ipfs://QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3/4607/token.json",
+      "cid": "Qme1aPUcDwKfMXfZpBAGxRB6osGQfvFweTRUukmqb6SvRR",
+      "sha256": "8a67d35593d0aef6970f753c90f40893afa575c8b595cd49a61440942fac3abe",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmPbcg1GFn4ZPuo6CMZ51HGfWKL1PU8BAScQko8xR54Vy3",
+        "QmaFEhodbANhhtY1WkbBCN81UKVt6i7yz8EJQcqJCAGY16",
+        "Qme1aPUcDwKfMXfZpBAGxRB6osGQfvFweTRUukmqb6SvRR"
+      ],
+      "projectId": "6304f948ec11c529860d6160",
+      "collection": "8bit-Robots' beatbox",
+      "artist": "8bit-acid-lab"
+    }
+  ]
+}

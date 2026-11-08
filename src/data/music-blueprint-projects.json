@@ -1,48 +1,48 @@
 {
-  "reviewedOn": "2026-11-07",
-  "method": "Reviewed projects identified from original metadata, historical publisher sources and the shared Async Music Blueprints contract. Counts reflect recovered inventory, not total minted supply.",
+  "reviewedOn": "2026-11-08",
+  "method": "Original metadata and historical publisher evidence identify music collections. Both shared contracts were enumerated from mint events through Ethereum block 26371661; custom-contract inventories remain separately qualified.",
   "projects": [
     {
       "id": "6299ca161f3e98af7d976a6f",
-      "name": "H0m3w0rk",
-      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html",
-      "basis": "Async Art launch announcement identifies H0m3w0rk as a Music Blueprint; project ID is from the recovery manifest."
+      "name": "h0m3w0rk",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
     },
     {
       "id": "62ac565ab276182be80cd7cf",
       "name": "WHATEVER",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmSCGrX2QtJpAD1ZCoB8fmqoGusfJ8w1Y5vGkJ7f5VqhYW",
-      "basis": "Preserved Forever Supper item metadata names Kena Rose’s Music Blueprint and links this exact project ID."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62ac565ab276182be80cd7cf.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "62c77539c679226473b4dd29",
       "name": "Element",
-      "evidenceUrl": "https://www.linkedin.com/pulse/happy-international-womens-day-async-art",
-      "basis": "Async Art identifies Element and links this exact project ID; the artist description documents generative string arrangements."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62c77539c679226473b4dd29.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "62e76e34b34669d69b4a7772",
       "name": "Revolutionary Étude (F. Chopin) Organ Cover (Async version)",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmeHGzR7vBMcNtWeQydKatYDtV6gJ5sqQ6eJbCLzoSjZhS",
-      "basis": "Original description and traits preserve independently selected organ performance variants."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62e76e34b34669d69b4a7772.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "62f568a93a7b05c8c6d5e2f3",
       "name": "INTERMINABLE",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmTaaFij9BbQakSTKWLdkwzKzwF9qU6hBvUpmz5SHD4w3n",
-      "basis": "Original description specifies three genres, eight layers and 26 stems combined by Async Blueprints."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62f568a93a7b05c8c6d5e2f3.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "62fa1f8880395302c7c31bf2",
       "name": "Victims Of The Global Financial Crisis (2036-1999)",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVrBZr1W58vBY1AGqVv7JnNGchpLhvnUSwHEeipfYCQme",
-      "basis": "Original description specifies four audio layers with five states and generated unique audio loops."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62fa1f8880395302c7c31bf2.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "6311453f489bfeffacbb0b30",
       "name": "New Dawn",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/Qmd2WVD7ysHLFmNdRxz1yGvJvtHDz9Noh4aVcioymc5sQj",
-      "basis": "Original metadata preserves melody, percussion and pad variants for this musical collection."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6311453f489bfeffacbb0b30.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "6385af01473c10451e42712a",
@@ -59,8 +59,8 @@
     {
       "id": "63b714a6599493c0bdda7533",
       "name": "Pangea Panthalassa",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/Qmb55BmqC7vNbgHoSZpZfWagxh6Pzc2PRgXW2HhRtuoNwY",
-      "basis": "Original description identifies generated musical combinations; traits preserve instrument selections."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63b714a6599493c0bdda7533.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "63bbe0ae601a6248ac031387",
@@ -83,79 +83,334 @@
     {
       "id": "63d6f5db3c0cbf340f528699",
       "name": "Danktone 003",
-      "evidenceUrl": "https://gateway.pinata.cloud/ipfs/QmVfsWbbJYQ9Hifrkzo21LiU464FNfPJvu1GY1kpPnVFzB",
-      "basis": "Recovered music, host, guest and Stella sound variation traits identify generative audio editions."
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
     },
     {
       "id": "6339b8621d95bb5f835cba4b",
       "name": "Exo Orb",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmeCZv7vEvN12X1tsyW9FsvkMs3gtN2pZtiJsuhuBKdQxp",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6339b8621d95bb5f835cba4b.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "6311374d5796f778b920d372",
       "name": "cr0 by G3ARZ",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmVwoyuZprJzoqrKtjrxJwcfixoVwZdRbz7WeArsPixGP2",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6311374d5796f778b920d372.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "631c8c13df536872b28161fb",
       "name": "Better Way",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmUXZVcf9kCxnxKEz7heFqybgoXXebtam3sN4K6LKu9ndG",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631c8c13df536872b28161fb.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "632dd72182410d94ac247b37",
       "name": "Yoga & Music",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmNuGkoXn1AMPQaDQqm9LpVRbXCMYqbcW73T9KvxsNBiCv",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-632dd72182410d94ac247b37.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "62e76f1defb68bc2a42425a8",
       "name": "Any body?",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmeFMK3yqUEELeA5CmrgJJLPPbYso7Bo2ZkFknUfT4LR3Y",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62e76f1defb68bc2a42425a8.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "63076923ff32ff94231b83f8",
       "name": "The Syndicate",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmWKY6NYV3Ya8rCTZb56p9FmmTcsof2ZVw5NCYEyeZCJTX",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63076923ff32ff94231b83f8.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "6311454f489bfeffacbb1f07",
       "name": "Slip Away",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQWikaQWP7BMF2LwVHSDPAeu4CRXp7mzyApqgXffy1pQ2",
-      "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6311454f489bfeffacbb1f07.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "631a241d6ec7383141d725e4",
       "name": "Horizons",
-      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU",
-      "basis": "Original Collection and Artist traits identify Horizons by Genzo. Exact metadata bytes were recovered from token 14104 on the shared Music Blueprints contract and verified against their content-addressed CID."
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631a241d6ec7383141d725e4.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
     },
     {
       "id": "637830825aad290ba157149d",
       "name": "Dream Recorder",
       "evidenceUrl": "https://www.async.art/archive/recovery/dream-recorder.json",
       "basis": "Original signed project metadata, original edition URLs and all 3000 tokenURI calls identify Dream Recorder on Async Music Blueprints V2. Edition media and traits are preserved by The Guild Archive."
+    },
+    {
+      "id": "62ac86c95d65e221db3027f2",
+      "name": "Digital CD.v1",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62ac86c95d65e221db3027f2.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62b3374daa4da235dcee6b86",
+      "name": "Lil' Sonic Postcards",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62b3374daa4da235dcee6b86.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62b4bf48aa4da235dcef873c",
+      "name": "1Zhuayo",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62b4bf48aa4da235dcef873c.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62d6b07dc65c100eaa30efea",
+      "name": "Final Boss",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62d6b07dc65c100eaa30efea.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62ee19b9610528ac00540778",
+      "name": "Crockett´s Theme Cover",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62ee19b9610528ac00540778.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62f1526e0c00d474871f00b7",
+      "name": "Reality Processing Ai",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62f1526e0c00d474871f00b7.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62f7a03b92e2baad02725444",
+      "name": "Summer Garden",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62f7a03b92e2baad02725444.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "62fd26eddca9e9c1c58fbfc2",
+      "name": "SOUNDS OF JPG ALBUM VOL.1",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-62fd26eddca9e9c1c58fbfc2.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6304f948ec11c529860d6160",
+      "name": "8bit-Robots' beatbox",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6304f948ec11c529860d6160.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "630a25cdd0ca64f84b56eb0a",
+      "name": "Epic Invasion",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-630a25cdd0ca64f84b56eb0a.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "630fe9bc997ab8802a93768d",
+      "name": "Martian Crypto Bros",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-630fe9bc997ab8802a93768d.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "631607b84b70bc76bfad35dc",
+      "name": "BUGIEX",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631607b84b70bc76bfad35dc.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "631a7108d5248531ef9b0aa6",
+      "name": "Acid",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631a7108d5248531ef9b0aa6.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "631b6648c965fe371753051e",
+      "name": "Sweet look in the 1902 universe",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631b6648c965fe371753051e.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "631739cf1efc44d6c226205a",
+      "name": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631739cf1efc44d6c226205a.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "630b6a340f1dbbe8ed8e5a13",
+      "name": "Ring-Tunes",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-630b6a340f1dbbe8ed8e5a13.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "632d0501674e51d6d5a20791",
+      "name": "California Electric Child",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-632d0501674e51d6d5a20791.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "631b32594445ba40dfe65a46",
+      "name": "Psychic Mythos",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-631b32594445ba40dfe65a46.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63380ed5dfbac37bdae212c9",
+      "name": "n0sfrtu",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63380ed5dfbac37bdae212c9.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "634d9b5b0861b9ef6baacad7",
+      "name": "Music Worm",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-634d9b5b0861b9ef6baacad7.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6348325cb48b4e5af85b5d79",
+      "name": "El Lissitzky",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6348325cb48b4e5af85b5d79.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63483248b48b4e5af85b5cda",
+      "name": "SEA_BREEZE.WAV",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63483248b48b4e5af85b5cda.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63555bfc648a5ddd44544f64",
+      "name": "She was a Dream",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63555bfc648a5ddd44544f64.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6356ad6a0705a2dd9f46c78b",
+      "name": "Little Rocket Man: The Rough Beginning",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6356ad6a0705a2dd9f46c78b.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6371cf4d63a45b33fbb2d8d2",
+      "name": "Binaural BrainWave Machine",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6371cf4d63a45b33fbb2d8d2.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6377c6d8ea9455bd7f047709",
+      "name": "Her Hair",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6377c6d8ea9455bd7f047709.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63795d9efd15ec7b76b8f3dd",
+      "name": "Bubble",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63795d9efd15ec7b76b8f3dd.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "633634b6b85b45e77d4f8ed1",
+      "name": "A Gift of Worms",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-633634b6b85b45e77d4f8ed1.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "638fa914b4df5208167fea4f",
+      "name": "Waterside Cinema",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-638fa914b4df5208167fea4f.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63907204fb5dd4dea1b3a841",
+      "name": "Dream About You",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63907204fb5dd4dea1b3a841.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6388700145c451e49b6a9db5",
+      "name": "Humans Part 2",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6388700145c451e49b6a9db5.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6396ef1559c44f9c9feddc1c",
+      "name": "CREDO IN METAVERSUM",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6396ef1559c44f9c9feddc1c.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6395950cca6ccc0b81b11127",
+      "name": "Journey through the worlds",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6395950cca6ccc0b81b11127.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63a05b2a8602c4ca4826449c",
+      "name": "An0ther Chr1stmas",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63a05b2a8602c4ca4826449c.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63e15ae4510e39329d343bcb",
+      "name": "FRUGZ",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63e15ae4510e39329d343bcb.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63d7cee820f6fe773c50c269",
+      "name": "Golden Gate",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-63d7cee820f6fe773c50c269.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "6419ea5fdac276e6bcd1931d",
+      "name": "Humans Part 3 ♪",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-6419ea5fdac276e6bcd1931d.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "640f4d9969b9ef524c681177",
+      "name": "Funhouse",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-640f4d9969b9ef524c681177.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "629f959b98bb125d8871aa7f",
+      "name": "Senses",
+      "evidenceUrl": "https://www.async.art/archive/recovery/music-629f959b98bb125d8871aa7f.json",
+      "basis": "Original Collection and Artist traits, exact CID-verified metadata, on-chain tokenURI and mint events identify this project and its minted editions."
+    },
+    {
+      "id": "63bf30d6874e8e6af40f1c31",
+      "name": "Danktone 000",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
+    },
+    {
+      "id": "63ed56a882b726f72c1b3c95",
+      "name": "Danktone 004",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
+    },
+    {
+      "id": "6421c2008973a69687b3d75b",
+      "name": "Danktone 005",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
+    },
+    {
+      "id": "64d288613d7854eb2846447b",
+      "name": "Danktone 006",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
+    },
+    {
+      "id": "64f8d28b6763d160c98ed504",
+      "name": "Danktone 007",
+      "evidenceUrl": "https://www.async.art/archive/recovery/danktone-metadata.json",
+      "basis": "Original Collection/Artist traits and CID-verified metadata from the Danktone recovery."
     }
   ],
   "awaitingRecovery": [
     {
       "name": "JANUS",
       "artist": "Maelstrom & Ipno",
-      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html"
-    },
-    {
-      "name": "Senses",
-      "artist": "David Bianchi, PLS&TY & Dogan Demir",
-      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html"
-    },
-    {
-      "name": "Binaural BrainWave Machine",
-      "artist": "Daniel Maszkowicz",
-      "evidenceUrl": "https://maszkowicz.art/nfts/"
+      "evidenceUrl": "https://www.prnewswire.com/news-releases/async-art-redefines-music-nfts-by-launching-music-blueprints-301560382.html",
+      "previewHref": "/archive/metadata/QmNiPZtSWxiD3ZT1vaKiRuTxXgFG35dfhtkBDKRnU8smkT"
     }
   ],
   "sharedContract": {
@@ -163,13 +418,15 @@
     "name": "Async Music Blueprints",
     "collectionUrl": "https://opensea.io/collection/async-music-blueprints",
     "reportedItems": 4002,
-    "countBasis": "OpenSea collection listing observed 2026-11-07; not an independently enumerated on-chain supply."
+    "countBasis": "621 distinct tokens in mint events through block 26371661. The OpenSea collection reports 4002 items across V1 and V2 combined, not on V1 alone.",
+    "mintedCount": 621
   },
   "additionalContracts": [
     {
       "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
       "name": "Async Music Blueprints V2",
-      "evidenceUrl": "https://etherscan.io/address/0xbc402bed62c90afd0e104be32bdee9447b5ccd0d"
+      "evidenceUrl": "https://etherscan.io/address/0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "mintedCount": 3381
     }
   ]
 }

@@ -58,7 +58,7 @@ describe('Music Blueprint archive category', () => {
     const contractRecords = snapshot.records.filter((r) =>
       musicContracts.includes(r.contractAddress.toLowerCase()),
     );
-    expect(contractRecords.length).toBeGreaterThanOrEqual(49);
+    expect(contractRecords.length).toBe(1002);
     for (const record of contractRecords) {
       const resolved = getArchiveRecordByCid(record.cid)!;
       expect(resolved.family).toBe('music-blueprints');
@@ -79,19 +79,25 @@ describe('Music Blueprint archive category', () => {
       'Slip Away',
     );
     expect(
-      searchArchive('Better Way', 'music-blueprints').results[0]?.tokenId,
+      searchArchive('0x71925638b9998ab631c83873d9ed19ef9b70ecf0:13855', 'music-blueprints').results[0]?.tokenId,
     ).toBe('13855');
   });
   it('finds original project names and keeps master music and ordinary Blueprints separate', () => {
     for (const [query, count] of [
-      ['WHATEVER', 2],
-      ['Element', 5],
+      ['WHATEVER', 127],
+      ['Element', 65],
       ['H0m3w0rk', 12],
     ] as const) {
-      const result = searchArchive(query, 'music-blueprints');
-      expect(result.results.filter((r) => r.collection === query)).toHaveLength(
-        count,
-      );
+      const project = catalog.projects.find(
+        (p) => p.name.toLocaleLowerCase() === query.toLocaleLowerCase(),
+      )!;
+      const result = searchArchive(query, 'music-blueprints', 1, 'all', project.id);
+      expect(result.total).toBe(count);
+      expect(
+        result.results.every(
+          (r) => r.collection?.toLocaleLowerCase() === project.name.toLocaleLowerCase(),
+        ),
+      ).toBe(true);
       expect(result.results.every((r) => r.family === 'music-blueprints')).toBe(
         true,
       );
@@ -113,7 +119,7 @@ describe('Music Blueprint archive category', () => {
     const project = getBlueprintProject('63d6f5db3c0cbf340f528699')!;
     const first = searchArchive('', project.family, 1, 'all', project.id);
     const second = searchArchive('', project.family, 2, 'all', project.id);
-    expect(first.total).toBe(1453);
+    expect(first.total).toBe(1478);
     expect(first.results).toHaveLength(24);
     expect(
       second.results.every(

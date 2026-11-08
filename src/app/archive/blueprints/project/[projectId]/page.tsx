@@ -38,7 +38,7 @@ export default function BlueprintProjectPage({
       string,
       {
         mintedCount: number;
-        declaredEditionCount: number;
+        declaredEditionCount?: number;
         checkedOn: string;
         throughBlock: number;
         evidenceUrl: string;
@@ -70,11 +70,11 @@ export default function BlueprintProjectPage({
       <p className="text-text-muted mb-6">
         {coverage ? (
           <>
-            {project.count.toLocaleString('en-US')} editions restored. The chain
+            {project.count.toLocaleString('en-US')} edition records recovered. The chain
             audit found {coverage.mintedCount.toLocaleString('en-US')} minted
-            editions as of {coverage.checkedOn}. The original metadata declares{' '}
-            {coverage.declaredEditionCount.toLocaleString('en-US')} editions;
-            that declaration is not the number minted.{' '}
+            editions as of {coverage.checkedOn}.{' '}
+            {coverage.declaredEditionCount != null && (<>The original metadata declares{' '}
+              {coverage.declaredEditionCount.toLocaleString('en-US')} editions.{' '}</>)}
           </>
         ) : (
           <>

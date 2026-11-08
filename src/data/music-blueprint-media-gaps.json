@@ -1,0 +1,178 @@
+{
+  "Qmcu4yh62FiV6DpKWLUcQp5f6qN6qEHbs7UKC1oMUURiPN": {
+    "status": "missing-reference",
+    "message": "The original metadata contains artwork but no audio or video link. Playback is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmZp7Vp6NndsKVDB3sahTc4CxTgyhmaXpyKzSvyUHGLh1y": {
+    "status": "missing-reference",
+    "message": "The original metadata contains artwork but no audio or video link. Playback is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "Qma544PyT1xRoejyQutZwa2tqf2pP8XiT9VsLAFTpwUukt": {
+    "status": "gateway-unavailable",
+    "source": "ipfs://QmbcQfYfQ7we54MJWqgxzH6tk6TjoUeMRH547hHjaUiMCX",
+    "message": "This edition’s original media is not responding on the IPFS gateways checked. You can retry playback; its artwork is available.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmTHsUwZZBTRAWGFrG6ZjuBJE67E8XSMtJBDbynHToW1Li": {
+    "status": "source-not-found",
+    "source": "https://asynchronous-art-inc-res.cloudinary.com/video/upload/v1678986021/0xf9e283149154f4f257dd13914c403b1682864ec6/63ea0b5f11fbc6410677fd01/legendaryEdition/64134afa35b9f93487d8256c/Comp_1_1_jvfigt.mp4",
+    "message": "This edition’s original video link returns “not found.” Its artwork is available; the video is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmYpr5fybSaK896mLF5BBgNom2qQUwKjoFNNgMjkVGM3u8": {
+    "status": "source-not-found",
+    "source": "https://asynchronous-art-inc-res.cloudinary.com/video/upload/v1672909961/0x457ca4b7dea62b1527d613a9df78a5f1164f283d/63b2aef95268a2f44b8d5355/legendaryEdition/63b69465249d43f22cd532f2/Nimbus_clouds_rll5fx.mp4",
+    "message": "This edition’s original video link returns “not found.” Its artwork is available; the video is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmejNfoFoLu18K9FPRCqGwnb1qvdfEXRGR4bgGmqgJR3AE": {
+    "status": "source-not-found",
+    "source": "https://asynchronous-art-inc-res.cloudinary.com/video/upload/v1659625640/0xd7ce4706f31606981dc35255c8ce27934f9a7624/62afa24da31b31b8a3499855/legendaryEdition/62ebe08768841ff0c9e07ea2/04_VHS_220802_yaqhhv.mp4",
+    "message": "This edition’s original video link returns “not found.” Its artwork is available; the video is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmPdvSwJ23oti9J6Nsk6DpEZWYZ9MUEgJBdfpLW3qmpHz2": {
+    "status": "source-not-found",
+    "source": "https://asynchronous-art-inc-res.cloudinary.com/video/upload/v1659625265/0xd7ce4706f31606981dc35255c8ce27934f9a7624/62afa24da31b31b8a3499855/legendaryEdition/62ebdbba68841ff0c9e07190/01DANCE_220801-100mb_fjfern.mp4",
+    "message": "This edition’s original video link returns “not found.” Its artwork is available; the video is awaiting recovery.",
+    "checkedOn": "2026-11-08"
+  },
+  "QmWQCtjJUVYNNbJrWWEAXPTyNCxKc8i1xvqfSeHJcpxbF9": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmT4Rcxp7QwixYL31H2dA1S4cZgps3yCX9YW3TB4Z9NjDj": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmY61w7mKoaSi4axMJ4QN1teQj7jxv4E5AwiFbFdSQYh1R": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmS8s5n3QEz7ox7z8dQ2tN2rheekkCWY2nWijSYbDV2M9Z": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmTT6AyRvmjQ4EkKk1S2GTh37gzU97SBgiRKDxSvYzS5xW": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmeSRxyLvHwddmAnhK1uAvCz6RBFPc8GF88QViamVBFeyY": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "Qma78tyhc6mHYNhx3rkKn2RKEFVfbKkH72pbMSjHvhNDLS": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmPMWimqzvNF6UQQYzHQCUrtyJPJYs2pNge4WNaHdXo6tp": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmVoVRFtkDnzi2VrjY15G2Q5B4phmSkvgvMFZGnYowVgYm": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "Qmc9zfmyEdzebfX7Q2DBCTTbPjEdHCzXYrZSwnYUbgDeAb": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmYTyiuUx6eWC1NCH7GnWTFPSFffVDkoP3jMtjYdfqZ1jo": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmYoQrmZFwQ1ydybNFhJwWuuqTuouRVvra7qzj6q3s4w44": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmW8hWK7Uswgv27e52Fan4h46UsCRijVzXtFnJ8hw2YLdz": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmP5vsiZk952zC95b6nmFLK77PqN77fp3ZJLTNXn5BaugH": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmaMMjWYbzhWHzGPFhc3oHY3VcGQVDzFiDLf2yycPijZDz": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmSKpinih5A9ngrdB6VxT8Z8Nt3nPnVw7JqZfHNjJHboHi": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmQBcq3jbZUZmQwodFTQr6hLC1CM4bmEEuzn3NGcMgppyi": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmeR4EZ2oKmJLrNgYUDfCC1wcXWSHhe7xrsohkV38zVRKp": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmZ6X4vbFRzK2brc27eE4xXEoufdwKf5RvkLMc6Zt1Zkcz": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmSEVYNNgf3BTgNHdMWQodpW764VjnJX6S4de1Wsk16dwB": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmYVggTg6iktLZJTt4wXeUGG2z4JaJy9DrDpL4LbP1ep15": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "Qmf39dnsr3dfgcwRtzfY6DNu4HnPeCQrW68U36E9MWYnse": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "Qmep1jCYMg1FAnw9gCW4MLAysPToZq5knZjN2zNBAZ293z": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmYofMByBYtPryvjeCTBZsqPYbKVjcD5ektnRaBNucqmR2": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmcAPuxTDQH6DRe9ksyDzCneArCYvvBHBPcws9k9FVy2BC": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmcnvJg5eHSv7gQn3mkygcs96mN7eEwF3TYgtrjnCR94VA": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmYS8Gff88yPdf1n2fidschEcvNhkVcp9oxViTcrJSqfyg": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmU9aft5pSeTshRS38ozNQ2eLuCfSzRDS1EMK4VwysmaSB": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmfPkaqNx6rNK3jhZWw2hSwtRsKzQkBpjeVvnE6RpE9N4W": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmY7sq4EWAf6JbRcqUStiPWy4fB6QVhVvUFEu1mjVHNqyF": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmNTyJjrak6JffqzVSUbyHk7vnGKeFcAejd87AKoQb5Jpf": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmbVL6dr63eJsVzqSxA2R2i6cgUXpGycabK1uTiR2weikd": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "QmbPmUsDFZBNHHHBvqdUqM8CugWudTxu7fEiSsYScvxPnh": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  },
+  "Qmb7mvdXMKxisexEJ5Ch2bwXHBYt7yDUaDBH6f4ZxBkevf": {
+    "status": "not-found",
+    "message": "The original media host returns not found for this edition. Its metadata and artwork are preserved; audio recovery is still needed."
+  }
+}

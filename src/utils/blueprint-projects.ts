@@ -1,3 +1,4 @@
+import musicMediaGaps from '@/data/music-blueprint-media-gaps.json';
 import musicBlueprintCatalog from '@/data/music-blueprint-projects.json';
 import {
   getBlueprintRecords,
@@ -60,6 +61,10 @@ export function groupBlueprintProjects(records: ArchiveRecord[]) {
       artists,
       count: editions.length,
       nameSource: collection ? 'metadata' : ('edition' as string),
+      listen: ordered.find(
+        (r) =>
+          r.animationUrl && !(musicMediaGaps as Record<string, unknown>)[r.cid],
+      ),
       cover: ordered.find((r) => r.image) ?? ordered[0],
       searchText: text(
         [name, id, ...artists, ...editions.map((r) => r.name)].join(' '),

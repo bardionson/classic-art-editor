@@ -1,0 +1,34 @@
+{
+  "checkedOn": "2026-11-08",
+  "method": "Exact original project-layout bytes verified against their UnixFS CID. Project previews are not collector-edition mixes. Senses editions are recovered separately; JANUS edition identities remain unresolved.",
+  "records": [
+    {
+      "cid": "QmNiPZtSWxiD3ZT1vaKiRuTxXgFG35dfhtkBDKRnU8smkT",
+      "name": "JANUS",
+      "sha256": "fbcb248023155c3b032a48c3ec68083beb0d97b521be49f166c93b7c1bca9c44",
+      "kind": "project-layout",
+      "source": "https://ipfs.filebase.io/ipfs/QmNiPZtSWxiD3ZT1vaKiRuTxXgFG35dfhtkBDKRnU8smkT"
+    },
+    {
+      "cid": "QmNz67AdRYFcfQL8rmaZTL2EVqdCt45BrkxeDkiSrcGQba",
+      "name": "Senses",
+      "sha256": "6f4c5f8f4ea486e9a8654086e1009fa188c0c3e46a75eb771189c7a276a1f8f1",
+      "kind": "project-layout",
+      "source": "https://ipfs.filebase.io/ipfs/QmNz67AdRYFcfQL8rmaZTL2EVqdCt45BrkxeDkiSrcGQba"
+    },
+    {
+      "cid": "Qmcx5Cxqm3Tdqr5862nsmi9A716uhfqbHrjxCfm8Mc4AP4",
+      "name": "JANUS",
+      "sha256": "244f436681bf0fcf43a898d751aa688e70c193a81fe345faa27c680272806d93",
+      "kind": "project-layout",
+      "source": "https://ipfs.filebase.io/ipfs/Qmcx5Cxqm3Tdqr5862nsmi9A716uhfqbHrjxCfm8Mc4AP4"
+    },
+    {
+      "cid": "QmfXP7YWCrpuDqfj7kUetwLyD1CvxbG7tyaJrfvEiyX7Fh",
+      "name": "Senses",
+      "sha256": "b79c2ec9d936315b7db8941ad4ef7defbf1740b81857a92fccc6cc40ecbea3a7",
+      "kind": "project-layout",
+      "source": "https://ipfs.filebase.io/ipfs/QmfXP7YWCrpuDqfj7kUetwLyD1CvxbG7tyaJrfvEiyX7Fh"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63a05b2a8602c4ca4826449c",
+  "name": "An0ther Chr1stmas",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [365],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x63993d829aad154d3f81d2cd7cbf3d6fa6573c0a581767792e99b1b3125f63c8",
+      "blockNumber": "0xf91f98",
+      "blockTimestamp": "0x63b42d3b",
+      "data": "0x",
+      "logIndex": "0x117",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000137bcbd129b568ab2b42203c9cc8407e02fe035c",
+        "0x00000000000000000000000000000000000000000000000000000000000025db"
+      ],
+      "transactionHash": "0xb1aedcfd02ba54f8d320b95436694161f7bb05b718f68a4c26e88b15b8ea3630",
+      "transactionIndex": "0x55"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9691",
+      "tokenURI": "ipfs://QmbxoH9U1a5yf9LyvSEgdepy8xP1iygisAspDKDAU8RMaX/9691/token.json",
+      "cid": "QmPjByZ7su7kBpUaP2kuCRvT4KDewhxTP48DS2aN48ZEn3",
+      "sha256": "7cc13abbb138862b12db6556780d632a44805937c2b6956e26737aca6c2758d0",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmbxoH9U1a5yf9LyvSEgdepy8xP1iygisAspDKDAU8RMaX",
+        "QmNYQjUUUD2H1hUmhUvtWmiw7gz4PduTTmB5QZBeXB5eRE",
+        "QmPjByZ7su7kBpUaP2kuCRvT4KDewhxTP48DS2aN48ZEn3"
+      ],
+      "projectId": "63a05b2a8602c4ca4826449c",
+      "collection": "An0ther Chr1stmas",
+      "artist": "Finn Ambers"
+    }
+  ]
+}

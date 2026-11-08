@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "631739cf1efc44d6c226205a",
+  "name": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 5,
+  "declaredEditionCounts": [130],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x3a8852709fb15334846695ae6433e5a1a6298d2dcf91a5d7656d26bb5c4bfc6d",
+      "blockNumber": "0xeda784",
+      "blockTimestamp": "0x6329bca3",
+      "data": "0x",
+      "logIndex": "0x1b",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e330dc28b47d73884ad88837aecfee1f49ad7e7b",
+        "0x000000000000000000000000000000000000000000000000000000000000349d"
+      ],
+      "transactionHash": "0x08d8f8de2e44c05be10ccebab8bb3b87e0a92df4175068e9c4bec17f0988c4c8",
+      "transactionIndex": "0xf"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x3a8852709fb15334846695ae6433e5a1a6298d2dcf91a5d7656d26bb5c4bfc6d",
+      "blockNumber": "0xeda784",
+      "blockTimestamp": "0x6329bca3",
+      "data": "0x",
+      "logIndex": "0x1d",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e330dc28b47d73884ad88837aecfee1f49ad7e7b",
+        "0x000000000000000000000000000000000000000000000000000000000000349e"
+      ],
+      "transactionHash": "0x08d8f8de2e44c05be10ccebab8bb3b87e0a92df4175068e9c4bec17f0988c4c8",
+      "transactionIndex": "0xf"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xb62bc899c70f726c5f527d8a03628a0cba847b002acec917bae19ae25da06ee7",
+      "blockNumber": "0xedb156",
+      "blockTimestamp": "0x632a3377",
+      "data": "0x",
+      "logIndex": "0x2a1",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000002450bbd3577f17c0e2f7359e5369260bf32c4a46",
+        "0x000000000000000000000000000000000000000000000000000000000000349f"
+      ],
+      "transactionHash": "0xe5d6e8382e72da165538f738c92bd02abbc8ed8dd716222d8ef61ae4ca2e455b",
+      "transactionIndex": "0xe0"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7e46bdd95951826bff06476d882f7080634c35d8cdc80d4dc85b5a2bde889c78",
+      "blockNumber": "0xedb8c4",
+      "blockTimestamp": "0x632a8d17",
+      "data": "0x",
+      "logIndex": "0x93",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000cd4fec10c8ad4873e209062b31defb684ff8cb7c",
+        "0x00000000000000000000000000000000000000000000000000000000000034a0"
+      ],
+      "transactionHash": "0x52e2c92af485825599f0ac6a0f573b813bf0757d54b7128a5f2600e314970d36",
+      "transactionIndex": "0x4f"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xc7240b48f5979d90c00d5ea2da95e92ded48a17d5d6c052bb48ba654852dae3a",
+      "blockNumber": "0xedd5b2",
+      "blockTimestamp": "0x632befcb",
+      "data": "0x",
+      "logIndex": "0x99",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000002450bbd3577f17c0e2f7359e5369260bf32c4a46",
+        "0x00000000000000000000000000000000000000000000000000000000000034a1"
+      ],
+      "transactionHash": "0xb901178a62af64dd9796f419923b95601a18e72df725eebf97135c0612625c9b",
+      "transactionIndex": "0x70"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13469",
+      "tokenURI": "ipfs://QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g/13469/token.json",
+      "cid": "QmQfe9ZhnMKFDFwJcDoag8ZB1yQKERo85xGNsykwKsPbvo",
+      "sha256": "7ecaeb1e38c9f5ebd5fb2d9c6fa887666245cd06af5da35077c703f0a090a9ab",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g",
+        "QmW4Bz7v5MNKy22P92SxxCCdoaiDgvcHygiQ6mcPQ4R7S4",
+        "QmQfe9ZhnMKFDFwJcDoag8ZB1yQKERo85xGNsykwKsPbvo"
+      ],
+      "projectId": "631739cf1efc44d6c226205a",
+      "collection": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "artist": "TEWZ"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13470",
+      "tokenURI": "ipfs://QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g/13470/token.json",
+      "cid": "QmYHBovnty39diHx69st9n7kWw8NF7kw9Ho9xMyDcbb4vs",
+      "sha256": "080742f5f70ab739c7285dcca37c99cdb2eefcc41e0922e114e44b74bf1ecf1c",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g",
+        "QmQuJqvKg98wr86LtDaLVVY8nBLjwRv1FiuiVziSJde9pf",
+        "QmYHBovnty39diHx69st9n7kWw8NF7kw9Ho9xMyDcbb4vs"
+      ],
+      "projectId": "631739cf1efc44d6c226205a",
+      "collection": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "artist": "TEWZ"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13471",
+      "tokenURI": "ipfs://QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g/13471/token.json",
+      "cid": "QmWooJTypJmtvx4cNBQL77gQsGgH5UrVjSqHjP9pVhUsx2",
+      "sha256": "f98a69635001302b52ece4f0a584c28aaf9b7bb777c3dcf1f1e2d2804551f317",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g",
+        "QmThskgJB7vsivyDH82ASd2zAJpnpfr66npXHndWSKaxdK",
+        "QmWooJTypJmtvx4cNBQL77gQsGgH5UrVjSqHjP9pVhUsx2"
+      ],
+      "projectId": "631739cf1efc44d6c226205a",
+      "collection": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "artist": "TEWZ"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13472",
+      "tokenURI": "ipfs://QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g/13472/token.json",
+      "cid": "QmW9f7kYUi7F43Nu5T2TKvyjV7axz3UVaMLSMdjjGA2bNN",
+      "sha256": "60f0de94a3230e871ce18cac50952991d2711195af9eb4e895f842a364047d41",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g",
+        "QmTCigK5wunPfWyq7eew4GvMgWmxZFHJfkVXU5SgXiQWj3",
+        "QmW9f7kYUi7F43Nu5T2TKvyjV7axz3UVaMLSMdjjGA2bNN"
+      ],
+      "projectId": "631739cf1efc44d6c226205a",
+      "collection": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "artist": "TEWZ"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13473",
+      "tokenURI": "ipfs://QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g/13473/token.json",
+      "cid": "QmYHZWskCMZfGtogo2m78kM24HePbepm8LtY5wRJdy2D8q",
+      "sha256": "86866786d2225fc16da79d73b37fda403a4d6d66a17591ccec0b48d97ff5c2f1",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmWyXsn7D8xYek8Uzp6ofA2D851p693ysquk1EcZwZuf6g",
+        "QmWAnPZz7JxubAhGjSCXCPV3qxsMnU9iCy1mNeifM7TkAZ",
+        "QmYHZWskCMZfGtogo2m78kM24HePbepm8LtY5wRJdy2D8q"
+      ],
+      "projectId": "631739cf1efc44d6c226205a",
+      "collection": "Enik the Altrusian LOTL - Tewz Rock x Sucklord",
+      "artist": "TEWZ"
+    }
+  ]
+}

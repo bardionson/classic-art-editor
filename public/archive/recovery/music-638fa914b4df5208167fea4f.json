@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "638fa914b4df5208167fea4f",
+  "name": "Waterside Cinema",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [10],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0x6f35cd77de5b16a34cb24a4492052f716b1bd5fd5e7eab9b6b3fe001d681fc0b",
+      "blockNumber": "0xf8f58b",
+      "blockTimestamp": "0x63b23277",
+      "data": "0x",
+      "logIndex": "0x5d",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000024cb"
+      ],
+      "transactionHash": "0x906144773382544bdd2c6ec85a8353f81b30d405eafebddf4fa1a659a06a72b1",
+      "transactionIndex": "0x32"
+    },
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xc94fd9b9382fc4fbd09ddf99e9ca66c228546bc4bc3f508c8322786630ad7147",
+      "blockNumber": "0xf90b10",
+      "blockTimestamp": "0x63b335df",
+      "data": "0x",
+      "logIndex": "0x6a",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000004375e38ab575e63b5247b4330c4d9fe93172af2d",
+        "0x00000000000000000000000000000000000000000000000000000000000024cc"
+      ],
+      "transactionHash": "0x0fbea77d329bc6700fcaba6d1f4289d322ff389a7323c27dbe6e82aeb08bad86",
+      "transactionIndex": "0x35"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9419",
+      "tokenURI": "ipfs://QmWat72NzoWn6Wqcs6HAXKdPVbKER1AnFQ8WioCTjmpYzR/9419/token.json",
+      "cid": "QmXf5bfWCbJftKdjaZpjTGryxgVxcbdGFfa1JADawohfBc",
+      "sha256": "15d3c14856e07dc868d08188d23573d2ad5ac9c359620f577d2b9f50fde4efa4",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmWat72NzoWn6Wqcs6HAXKdPVbKER1AnFQ8WioCTjmpYzR",
+        "QmUvw9JGfGKnzjA2A12AUsSdjgJayQ4Hfneqtps8yVp4DD",
+        "QmXf5bfWCbJftKdjaZpjTGryxgVxcbdGFfa1JADawohfBc"
+      ],
+      "projectId": "638fa914b4df5208167fea4f",
+      "collection": "Waterside Cinema",
+      "artist": "Beats By LOR"
+    },
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "9420",
+      "tokenURI": "ipfs://QmWat72NzoWn6Wqcs6HAXKdPVbKER1AnFQ8WioCTjmpYzR/9420/token.json",
+      "cid": "QmZkfYeMAfHobnsGD4joFfUogsuEpe2MYyraL9ykD6uobu",
+      "sha256": "08ce379987f838ea858ddb5ad37c391be23f1b17d2042e1f83dc7d28ffbff226",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmWat72NzoWn6Wqcs6HAXKdPVbKER1AnFQ8WioCTjmpYzR",
+        "QmSA2LSDaWJMCx8u7kkANDsBYr8VTSrK4dUXnwBWtnoWaY",
+        "QmZkfYeMAfHobnsGD4joFfUogsuEpe2MYyraL9ykD6uobu"
+      ],
+      "projectId": "638fa914b4df5208167fea4f",
+      "collection": "Waterside Cinema",
+      "artist": "Beats By LOR"
+    }
+  ]
+}

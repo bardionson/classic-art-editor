@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "630a25cdd0ca64f84b56eb0a",
+  "name": "Epic Invasion",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [3000],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xb8f7ea91907d75951a6dad850a5db3b66627643b612f9c6559dc49e3e0127142",
+      "blockNumber": "0xf1155f",
+      "blockTimestamp": "0x635325a7",
+      "data": "0x",
+      "logIndex": "0x1a7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000334dd7bdd05a68492c5eb52a9cb96808b53e49cd",
+        "0x0000000000000000000000000000000000000000000000000000000000001dd0"
+      ],
+      "transactionHash": "0xaa12f683113ef12cb3c6db58c9f1ca7c768dcd031d205545e438427d992b59d9",
+      "transactionIndex": "0x9f"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xe7262338c8c89c4f2a9f5a642d54cfd384b047235659b4f43c2a49b2fefa18ea",
+      "blockNumber": "0xf17ab8",
+      "blockTimestamp": "0x6357edb3",
+      "data": "0x",
+      "logIndex": "0xcf",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000334dd7bdd05a68492c5eb52a9cb96808b53e49cd",
+        "0x0000000000000000000000000000000000000000000000000000000000001dd1"
+      ],
+      "transactionHash": "0xf07a280bdf701a5e54efdbafd2cf0025c1d84cfa9455b235d94d0efc835c37b3",
+      "transactionIndex": "0x78"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "7632",
+      "tokenURI": "ipfs://QmaX6VQw89rBJeRQaugDBSxzkHEdGyhe1S2QRRA7ZTXkJm/7632/token.json",
+      "cid": "QmRkVhzWJQg1q58a1Ksy48PoaiKUyaurfKwKqPqU7hZrEZ",
+      "sha256": "475887b50c1067fb45a310034a3152be0d4328dbb95e77ebf46d52bc5366473c",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmaX6VQw89rBJeRQaugDBSxzkHEdGyhe1S2QRRA7ZTXkJm",
+        "QmXcyfoTShoEdjdP7182msRbtu9F85y8QibvJMCLBcPiS8",
+        "QmRkVhzWJQg1q58a1Ksy48PoaiKUyaurfKwKqPqU7hZrEZ"
+      ],
+      "projectId": "630a25cdd0ca64f84b56eb0a",
+      "collection": "Epic Invasion",
+      "artist": "Emil G Music"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "7633",
+      "tokenURI": "ipfs://QmaX6VQw89rBJeRQaugDBSxzkHEdGyhe1S2QRRA7ZTXkJm/7633/token.json",
+      "cid": "QmYSkDMU3YT2o4Y17AdgWvHWNLUsr7okc3RvKQVsjBWDNy",
+      "sha256": "0dafa4b9e9aff50b047e6a8a87c3e852086d0fc2a3de54eb116b5d6ed993144f",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmaX6VQw89rBJeRQaugDBSxzkHEdGyhe1S2QRRA7ZTXkJm",
+        "QmXkRShiNtrvaHvAzgpkvuZoVHzRUa85VEDXzmtifSZ3MJ",
+        "QmYSkDMU3YT2o4Y17AdgWvHWNLUsr7okc3RvKQVsjBWDNy"
+      ],
+      "projectId": "630a25cdd0ca64f84b56eb0a",
+      "collection": "Epic Invasion",
+      "artist": "Emil G Music"
+    }
+  ]
+}

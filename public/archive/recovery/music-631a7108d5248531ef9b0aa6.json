@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "631a7108d5248531ef9b0aa6",
+  "name": "Acid",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [133],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xbde71c5e6bed0174ee1f9ed50bddc40fdc232179622f99f942621f87a65866a3",
+      "blockNumber": "0xed923a",
+      "blockTimestamp": "0x6328bac7",
+      "data": "0x",
+      "logIndex": "0x120",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000039ce83a2f5756e1c73dba5904ed12c833910ffc",
+        "0x00000000000000000000000000000000000000000000000000000000000032ec"
+      ],
+      "transactionHash": "0x4c2614bd7690834ed17e669d9de188c7e4b557085c40b3da2716907875b8cf87",
+      "transactionIndex": "0x6d"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13036",
+      "tokenURI": "ipfs://QmeJDmGpZNFrHG1kPyxmBBgEqYg6mGNXoLSrmVcmrAQUdT/13036/token.json",
+      "cid": "QmdUMmUvo7fq53w1ndGc6fzXLEQLAnnDx5WjuQrfkrRCYB",
+      "sha256": "b23aeccbfffee04b50b261939ee4078db8de439d6d0958ef5ec8907972b78905",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmeJDmGpZNFrHG1kPyxmBBgEqYg6mGNXoLSrmVcmrAQUdT",
+        "QmYM3gSZ9hEiRhur9gHZCNp6xqx34iaeQsnRGx3pfPXiqs",
+        "QmdUMmUvo7fq53w1ndGc6fzXLEQLAnnDx5WjuQrfkrRCYB"
+      ],
+      "projectId": "631a7108d5248531ef9b0aa6",
+      "collection": "Acid",
+      "artist": "akasatki"
+    }
+  ]
+}

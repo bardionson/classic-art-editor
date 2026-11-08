@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62ee19b9610528ac00540778",
+  "name": "Crockett´s Theme Cover",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 2,
+  "declaredEditionCounts": [300],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xcb96a1afccee6b5109387b3bfd3954bc2ba0d611ecbd246adc288e41d865d559",
+      "blockNumber": "0xeb95f6",
+      "blockTimestamp": "0x630dcaf2",
+      "data": "0x",
+      "logIndex": "0x165",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x0000000000000000000000000000000000000000000000000000000000000a26"
+      ],
+      "transactionHash": "0xa79946a67b9ddebe8fe02f56c45df59ef5167cafeba9b9b21320e2b707da03e2",
+      "transactionIndex": "0xfa"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x3131bbce0dac138ca1802878c700b47d133fc7ea638653d26cf31e7901c31407",
+      "blockNumber": "0xede434",
+      "blockTimestamp": "0x632c9f03",
+      "data": "0x",
+      "logIndex": "0x3b",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000876b670d5db288585b0f463165ed5b7a7f0ea323",
+        "0x0000000000000000000000000000000000000000000000000000000000000a27"
+      ],
+      "transactionHash": "0xb94d090e04bbf85e9248df90be5880043a24f88ab81bd4b1f180ad0e394bc123",
+      "transactionIndex": "0x41"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "2598",
+      "tokenURI": "ipfs://QmYaTqh5D7zJuwP4Z17SFDkWr4bCpr8CscqD89ehMHtBij/2598/token.json",
+      "cid": "QmWHoRei8dSAJy9mMt1W8JdVwMfVAk7gpYaM5TMMRQosia",
+      "sha256": "f4b14383705b6547524de646ed8b4317294dffda835b575747a7ae23b296ca03",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmYaTqh5D7zJuwP4Z17SFDkWr4bCpr8CscqD89ehMHtBij",
+        "QmSVVA2RBrXpCKPntEpnCxExVeTkwFptTfYccj8kRjeLJF",
+        "QmWHoRei8dSAJy9mMt1W8JdVwMfVAk7gpYaM5TMMRQosia"
+      ],
+      "projectId": "62ee19b9610528ac00540778",
+      "collection": "Crockett´s Theme Cover",
+      "artist": "ZYFU"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "2599",
+      "tokenURI": "ipfs://QmYaTqh5D7zJuwP4Z17SFDkWr4bCpr8CscqD89ehMHtBij/2599/token.json",
+      "cid": "QmTKz91Zvyj5VfrSP1K6Pqgs1UWrgyzBPwzer3ThxWJoWe",
+      "sha256": "192b0ac0b69670cbc3db82b6cd184c9f39018b2d644a4d60f69b1a2405eb0970",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmYaTqh5D7zJuwP4Z17SFDkWr4bCpr8CscqD89ehMHtBij",
+        "QmVmsBKzrkWC42F6AWPgBpXYRERZqv7zAufYNDpixX27a2",
+        "QmTKz91Zvyj5VfrSP1K6Pqgs1UWrgyzBPwzer3ThxWJoWe"
+      ],
+      "projectId": "62ee19b9610528ac00540778",
+      "collection": "Crockett´s Theme Cover",
+      "artist": "ZYFU"
+    }
+  ]
+}

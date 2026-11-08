@@ -400,6 +400,11 @@
     "names": ["AquaKyd", "aquakyd"]
   },
   {
+    "address": "0x39cc9c86e67baf2129b80fe3414c397492ea8026",
+    "href": "/artists/xcopy",
+    "names": ["XCOPY", "xcopy"]
+  },
+  {
     "address": "0x39e2d6ed53f4866cbf9e12a21d05caa84d2d4dc2",
     "href": "/artists/strayltd",
     "names": ["@strayltd", "strayltd"]
@@ -1850,10 +1855,5 @@
     "address": "0xffec85dde94004a6865fdca19045332f832adfff",
     "href": "/artists/greytekin",
     "names": ["Grey Tekin", "greytekin"]
-  },
-  {
-    "address": "0x39cc9c86e67baf2129b80fe3414c397492ea8026",
-    "href": "/artists/xcopy",
-    "names": ["XCOPY", "xcopy"]
   }
 ]

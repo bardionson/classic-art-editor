@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "631c8c13df536872b28161fb",
+  "name": "Better Way",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 9,
+  "declaredEditionCounts": [137],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xe73d6c6db005c3312e1dfe5c3a23dfde9ea4463f08e5e6cadb1ee23d20a7f9a1",
+      "blockNumber": "0xede449",
+      "blockTimestamp": "0x632c9fff",
+      "data": "0x",
+      "logIndex": "0x1f9",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000039ce83a2f5756e1c73dba5904ed12c833910ffc",
+        "0x0000000000000000000000000000000000000000000000000000000000003617"
+      ],
+      "transactionHash": "0x63d06010c9382e4504ad0432faaa27165cd60fafaf5aae1de165b5ae99e76755",
+      "transactionIndex": "0x106"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xa5f456ba82d4ca32cc9d3beefef62bb95b61246b58d71a0fefa15754413cbdde",
+      "blockNumber": "0xede521",
+      "blockTimestamp": "0x632caa2b",
+      "data": "0x",
+      "logIndex": "0x60",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x0000000000000000000000000000000000000000000000000000000000003618"
+      ],
+      "transactionHash": "0xaf79f42c8bbf8bbffc1f66b63ce97bb66a2e9626e3d631a1e8c57745fad6d202",
+      "transactionIndex": "0x3a"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x719aaa727167f98cf6c5ff3bf9d66de121ea7e34304911c57674d1ec4002dfbe",
+      "blockNumber": "0xede861",
+      "blockTimestamp": "0x632cd137",
+      "data": "0x",
+      "logIndex": "0x197",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000419090a6ebfa48e2b0be7118c5b8ab643808e710",
+        "0x0000000000000000000000000000000000000000000000000000000000003619"
+      ],
+      "transactionHash": "0xa9bdc372bbe1a1d0775ab967da434af4af521c6a3cc1af4b65638caf2152ea62",
+      "transactionIndex": "0xb7"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x884a6ef8e88d09e9c3af1448c3fbb322eb62c26927e62b3853069719de728b0a",
+      "blockNumber": "0xeee4fb",
+      "blockTimestamp": "0x6338bacf",
+      "data": "0x",
+      "logIndex": "0xf5",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000035224c95aa3e53a30cc3f6f64540618892a568d7",
+        "0x000000000000000000000000000000000000000000000000000000000000361a"
+      ],
+      "transactionHash": "0x1763afd8c6109054b2eb11cb57daec51e47a6b2bf457791a0670e9fe0346e3f3",
+      "transactionIndex": "0xa9"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7540b003baab415e77c1a5acc7eddf124c27856f86b3cd4440bb50ca7393d9ad",
+      "blockNumber": "0xeef0c2",
+      "blockTimestamp": "0x633948b3",
+      "data": "0x",
+      "logIndex": "0x155",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000c1202b2da243467882439944885339f9fd71279c",
+        "0x000000000000000000000000000000000000000000000000000000000000361b"
+      ],
+      "transactionHash": "0xa4236b2f88f4be7c9cea2741ff1dc0313b67c84f20a5f791fc17d89cf33770dc",
+      "transactionIndex": "0x9c"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x03ca2a830eac3b53fea6d30957a358138b1d34241439111cbee63c6467f49942",
+      "blockNumber": "0xef850f",
+      "blockTimestamp": "0x6340482b",
+      "data": "0x",
+      "logIndex": "0x6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x000000000000000000000000000000000000000000000000000000000000361c"
+      ],
+      "transactionHash": "0x58405c70de70b307361dc023f1b002f7ed5adb5189d3376c3e8b286c4ee74e8b",
+      "transactionIndex": "0xb"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xfe4cb05838f80543f8aaa26c265ca3d3bc849a53d5b6d3fc25da5329b517036d",
+      "blockNumber": "0xef8518",
+      "blockTimestamp": "0x63404897",
+      "data": "0x",
+      "logIndex": "0x7e",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x000000000000000000000000000000000000000000000000000000000000361d"
+      ],
+      "transactionHash": "0x7edfdbcb6782ced0f5d145d0bb392dc8d7ff9ad21bcc3701dbaa97007f39037f",
+      "transactionIndex": "0x5e"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x0802be3801c65d80129641775a05605e8a9c0bca49b5bce84bc99153dd534bea",
+      "blockNumber": "0xf35cc3",
+      "blockTimestamp": "0x636ea8c3",
+      "data": "0x",
+      "logIndex": "0xb6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x000000000000000000000000000000000000000000000000000000000000361e"
+      ],
+      "transactionHash": "0xc42dd44636df382d2254864cfbcf2dbb0f448c37872e898764bb248bdc00f6e5",
+      "transactionIndex": "0x82"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x6dd4bca53d808e7a86475dd190eaee2c26a941988b322634758cc91c6513c329",
+      "blockNumber": "0x102a414",
+      "blockTimestamp": "0x6427653b",
+      "data": "0x",
+      "logIndex": "0xbb",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f7fd060688da22b6884f1ce90e246ff7574984ae",
+        "0x000000000000000000000000000000000000000000000000000000000000361f"
+      ],
+      "transactionHash": "0x9d8e33b6c42fcb116ba6e5ff9b3c9a42e6b108fff4cc79a5e1eed9443bbca532",
+      "transactionIndex": "0x50"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13847",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13847/token.json",
+      "cid": "QmY5knhBemmotWiy5BYLbkz5Anm8LEMRgKvSzqQ4wsDoLf",
+      "sha256": "6e765e52bcde7009afaa5193603ff79cbe9acef287b5937845e62218aeb3a9ca",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmeYt3aUTR5W3Q9pgxZbUKvAkLJVeQGd58RRBSZqfBxqdm",
+        "QmY5knhBemmotWiy5BYLbkz5Anm8LEMRgKvSzqQ4wsDoLf"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13848",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13848/token.json",
+      "cid": "QmTNzRZ7UteUjh5z7bynaAgNjzUw55RzB2VveAkqgMLpM3",
+      "sha256": "af3cd6ddd685ecc1e6d9036d9eda7a5589981c5c2492542f6d813cea38afb3a8",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmUwYoUTn88osnvsNWqS7qUg627WMECaai4mH8V34796Sd",
+        "QmTNzRZ7UteUjh5z7bynaAgNjzUw55RzB2VveAkqgMLpM3"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13849",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13849/token.json",
+      "cid": "QmVB8hpPrgTpVQYm1sxrwFRkYZvTByprVogQqt4pzhSPHd",
+      "sha256": "444154e2ec424e0990bc85473b93be74eeb593f89442f7948c8a2a7b1b928854",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmTbXC6wr7mFWWL2ZgNS1Eaz9shSPWSsBrQrXd6iW4mJw7",
+        "QmVB8hpPrgTpVQYm1sxrwFRkYZvTByprVogQqt4pzhSPHd"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13850",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13850/token.json",
+      "cid": "QmdzdFRmN8w9mQdLqWtcpdvNaJKk3E6kWjUHJbyMeNAdkB",
+      "sha256": "3b20f9c883abd973074409f2f7e7641421ff1b48090e45326b90f4cebc2440f0",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmPMnUQvQJ2zZED3PsNB44uyhiXJwthNyXffEKPVVuG52S",
+        "QmdzdFRmN8w9mQdLqWtcpdvNaJKk3E6kWjUHJbyMeNAdkB"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13851",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13851/token.json",
+      "cid": "QmYqL2v1hT8aRCWMLbe6cXyDZRkeQbXkEQ6f9vLwyDRCPg",
+      "sha256": "7e7de07d469d6e8a2e7cd00afad925468ebb2c65b8de1f9c4167936c6b7d8fe2",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmVcposC1H5YLuSWsyVdi8hmBmk3tQf4obJFLNauympE3G",
+        "QmYqL2v1hT8aRCWMLbe6cXyDZRkeQbXkEQ6f9vLwyDRCPg"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13852",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13852/token.json",
+      "cid": "Qmbt9ofG3e9Q7ARZ3ktw9EhQ2K4Nkfaoj5SgRHdzaQ7Nec",
+      "sha256": "289a2803c5f719964a82f6da41c2acc90fa1e52eb90b1adc9e62275009005a35",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmSLkAxgchXEWJbJmL8nmGpLZk7SaSiDR1Nscn5RntKvZs",
+        "Qmbt9ofG3e9Q7ARZ3ktw9EhQ2K4Nkfaoj5SgRHdzaQ7Nec"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13853",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13853/token.json",
+      "cid": "QmPvz4pU7zSmfnerJ4NNuwJA5zGtFHQJ1YM4NcWzf89Dnh",
+      "sha256": "b76b728cfca9ead265d6aa2f6d3efc63ad29587b9d6e2d90486f23781aa93ca0",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmdzRsePaVURjRivd2gaf1YJB5miUHKfT5ECJbDrjeQe6P",
+        "QmPvz4pU7zSmfnerJ4NNuwJA5zGtFHQJ1YM4NcWzf89Dnh"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13854",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13854/token.json",
+      "cid": "QmQ4b4kDauuyCZwfSe2ek8uG75yxd5K3kLdJ4MWpcNCAun",
+      "sha256": "4e69285aef115dbdce4784c79f368513e156d1fa4bf61d84b8b30c35e5fb1438",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmQYJMUExgENnFmdnS38aEfZKrupNtwCd8HYanG3kVjFMB",
+        "QmQ4b4kDauuyCZwfSe2ek8uG75yxd5K3kLdJ4MWpcNCAun"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "13855",
+      "tokenURI": "ipfs://QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x/13855/token.json",
+      "cid": "QmUXZVcf9kCxnxKEz7heFqybgoXXebtam3sN4K6LKu9ndG",
+      "sha256": "60bbdd332b858cd37530ff84c8878b2468cea0e8524018fa9a0692818f6395a5",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZSuWNxHXVYoEevBKh9yaq4Kk16MtBVxSkKFE7yyLLS6x",
+        "QmQdLuig7qJ2NQ81R84Kq2MXGGJkhzCfbsiovAhgoCnBjT",
+        "QmUXZVcf9kCxnxKEz7heFqybgoXXebtam3sN4K6LKu9ndG"
+      ],
+      "projectId": "631c8c13df536872b28161fb",
+      "collection": "Better Way",
+      "artist": "Griffter"
+    }
+  ]
+}

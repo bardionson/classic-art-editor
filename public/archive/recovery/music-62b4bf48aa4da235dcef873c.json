@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "62b4bf48aa4da235dcef873c",
+  "name": "1Zhuayo",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 8,
+  "declaredEditionCounts": [8],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x67f4da204f3519ce768feefbf8156297b9fdbfffe7e724bcfa74f0f466c24a49",
+      "blockNumber": "0xe6606d",
+      "blockTimestamp": "0x62c757d1",
+      "data": "0x",
+      "logIndex": "0xb6",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x00000000000000000000000000000000000000000000000000000000000003b1"
+      ],
+      "transactionHash": "0x673b7a23ab0e32614a1d7306fe12115f98ed6bf1fc3c0246e6be6c1f91c48d2c",
+      "transactionIndex": "0x90"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xd56c0150ed2102556b3b29194260ecfbbe6850daefed1af5d6bca487578bd64f",
+      "blockNumber": "0xe66091",
+      "blockTimestamp": "0x62c7596a",
+      "data": "0x",
+      "logIndex": "0x22d",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000612c4e66f7c0200c757eb1f20930eb9d3a58c30d",
+        "0x00000000000000000000000000000000000000000000000000000000000003b2"
+      ],
+      "transactionHash": "0x5c4c5071a6fe3015b8cc1e2f88e3a3e250feebd55db831307faa5db5786ac54d",
+      "transactionIndex": "0x124"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x739a926788c8baa50b746820a2ff7796ebff2e30993038f31b0c6c8cce511249",
+      "blockNumber": "0xe670b9",
+      "blockTimestamp": "0x62c82ed5",
+      "data": "0x",
+      "logIndex": "0x17c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000e3475bf2ceea9ed2560d5f68118b9547819fdecf",
+        "0x00000000000000000000000000000000000000000000000000000000000003b3"
+      ],
+      "transactionHash": "0x8d07a3abab1bb8d67377a03fe495c5fff45392a41afbd259f6dab2abf04583da",
+      "transactionIndex": "0xf1"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x8de3df95d9939085d4b6013e13049c6b8b4455841741e6e05bfbfe1bd5a058a5",
+      "blockNumber": "0xe6c401",
+      "blockTimestamp": "0x62cc85ab",
+      "data": "0x",
+      "logIndex": "0xa7",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000005cdf83942423da2591498251da7513d0b54af3e1",
+        "0x00000000000000000000000000000000000000000000000000000000000003b4"
+      ],
+      "transactionHash": "0x8ed5d9d6dea589104389bc4bbf39326b62c1c53290739ffd1dd2c96524a1c376",
+      "transactionIndex": "0xcf"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x3bbfc51a0d1a71b69765d16bdc1328890aedcf8ca2ffa248c1d8cd574932e02d",
+      "blockNumber": "0xe70ea5",
+      "blockTimestamp": "0x62d06891",
+      "data": "0x",
+      "logIndex": "0x2fc",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000762da606029d3120735aa1eec15464e265db7a3c",
+        "0x00000000000000000000000000000000000000000000000000000000000003b5"
+      ],
+      "transactionHash": "0x015a8dbc32275691ca5ad314b5eed9d45162d0740a09217ac642b2aabf961370",
+      "transactionIndex": "0xa2"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x05cb006aaa97a78a23d975dd025aed0714b7eea9e4df821a2021e3a5d104b9ee",
+      "blockNumber": "0xe89781",
+      "blockTimestamp": "0x62e50226",
+      "data": "0x",
+      "logIndex": "0x32",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x00000000000000000000000068bca5a8bdebe05fb8a6648c7316b4eb7e19a064",
+        "0x00000000000000000000000000000000000000000000000000000000000003b6"
+      ],
+      "transactionHash": "0x4d75033f1840eef6b5f3f669adff161951d17f6584a86f7b050cc860e9360f60",
+      "transactionIndex": "0x15"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x67226a4ba3a537ef1b5979c319d6b57e00ad2222970c20a4eb590a54f3dfdc9d",
+      "blockNumber": "0xf1298e",
+      "blockTimestamp": "0x635418e3",
+      "data": "0x",
+      "logIndex": "0x80",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f88f0343791260ed716de416c3bb03219ab54b90",
+        "0x00000000000000000000000000000000000000000000000000000000000003b7"
+      ],
+      "transactionHash": "0x8eea18ce273470807c03ba5d704194dd4c5390487fcad1cc0d5210eebdd1dd81",
+      "transactionIndex": "0x48"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x7071aa8d72d0843a4f5184ea38ad6de2147d5c8fb427b2852391b5d8cf76ee25",
+      "blockNumber": "0xf3385e",
+      "blockTimestamp": "0x636cf11f",
+      "data": "0x",
+      "logIndex": "0x69",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000b40075d67daf09fc5679a4048789a8108f6b283f",
+        "0x00000000000000000000000000000000000000000000000000000000000003b8"
+      ],
+      "transactionHash": "0x02d52abb5bbb5ec5b94040c12702bd98598623618bb435c345427cb2e4b1a460",
+      "transactionIndex": "0x3a"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "945",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/945/token.json",
+      "cid": "Qma544PyT1xRoejyQutZwa2tqf2pP8XiT9VsLAFTpwUukt",
+      "sha256": "1424adb099d6b0d4c95071f2bb97c25b88c94466e9005ae7dfd3268a8653aedb",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmVK61qWgfgk9YofqCEGgyMRA17hEwdjZMs2iG7KsbFknN",
+        "Qma544PyT1xRoejyQutZwa2tqf2pP8XiT9VsLAFTpwUukt"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "946",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/946/token.json",
+      "cid": "Qmd9dPP2C8g7b4tiqDVDuDZLeJmdX5LYB2oPesdxKWWYk6",
+      "sha256": "cd58de8acd6414524b50e9baa824219f36320a1dbbc73a89177c4753bae937dc",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmX2faBjZtumVPGha5bR81WSf5XKGFCj369UrBVNDuweLz",
+        "Qmd9dPP2C8g7b4tiqDVDuDZLeJmdX5LYB2oPesdxKWWYk6"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "947",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/947/token.json",
+      "cid": "QmUAmctzxsVXLbaaFZDv556visNcJqMGADPGJGaYUCXyAu",
+      "sha256": "d77092f1d207423d7d364f2c022e6cbb0d994b45562ab9de9fe626a9e83d63c0",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "Qma7xosVCzey9R8wK41jdEUGFP1Xcqt7VuHR5WR8ndy2TM",
+        "QmUAmctzxsVXLbaaFZDv556visNcJqMGADPGJGaYUCXyAu"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "948",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/948/token.json",
+      "cid": "QmdZ39Xo3m2oa4VhBUuHfaNvdb6RMcRhcVxj4opQo7oY1B",
+      "sha256": "00ebb9e6d16a892742059735e353b041856771471e3e4c741aee0716315596a4",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmRuYDG2wrjvP4ws4r3MKPAeSdNFQacyj1vbSLxqBECNN1",
+        "QmdZ39Xo3m2oa4VhBUuHfaNvdb6RMcRhcVxj4opQo7oY1B"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "949",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/949/token.json",
+      "cid": "QmXdXXTGuF3UxCdZM1s1mVFArYrvntQCPep8mq8hs8d2so",
+      "sha256": "2f1b1bff8db01b1b03e4239d4e081e7a1c551bf665df86e10cb363505f31ae56",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmPxdhCqbTcW7fEEaDkmhFXBFj4KtkXiDF58bixwUqoVTu",
+        "QmXdXXTGuF3UxCdZM1s1mVFArYrvntQCPep8mq8hs8d2so"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "950",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/950/token.json",
+      "cid": "QmPcSPwDXD4FjBJWCGKMLEBDNmwBNDxCzdtw9tqiUho9y7",
+      "sha256": "bdd93a05d4a885041c71b45ed5f8c5b57b5e7189d965422a3cfe40a7de62f2be",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmTK6boECKoPnvvKUXRYqRoFAFsSehVKSRy69KLEaEe233",
+        "QmPcSPwDXD4FjBJWCGKMLEBDNmwBNDxCzdtw9tqiUho9y7"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "951",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/951/token.json",
+      "cid": "QmYQdytX2Ky6EAc324LSMGvADUEPpakSRbddpAz3DK4wBD",
+      "sha256": "98f3fe9dc138be9dc21610b8b3608923c7bf7868244d7d53131638c6b2669f9d",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmNrUUD8nkSKRzTjhporMdQSDga79WnBWUvZtM9dJ6tJ93",
+        "QmYQdytX2Ky6EAc324LSMGvADUEPpakSRbddpAz3DK4wBD"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "952",
+      "tokenURI": "ipfs://QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh/952/token.json",
+      "cid": "QmV5R2SL8JYZF2mjpo424oppFmgVBAeB9Ndwxp6U1vFUvp",
+      "sha256": "ee8ae4404cccf7061648890360eae4d12ba83b2b5f6d44a6801bee3ff4cf862b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmVm1yQ2bNVM9cJg8ZP8UkrGBrccgYnUskHtmBsZp5tuTh",
+        "QmQ6Nj5Y1AV9B4JVhqkCBtL5xPU6fCBMR6WtGhyy8ghZFZ",
+        "QmV5R2SL8JYZF2mjpo424oppFmgVBAeB9Ndwxp6U1vFUvp"
+      ],
+      "projectId": "62b4bf48aa4da235dcef873c",
+      "collection": "1Zhuayo",
+      "artist": "Cristian Vogel"
+    }
+  ]
+}

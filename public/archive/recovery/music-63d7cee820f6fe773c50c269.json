@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "63d7cee820f6fe773c50c269",
+  "name": "Golden Gate",
+  "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+  "throughBlock": 26371661,
+  "mintedCount": 1,
+  "declaredEditionCounts": [19],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "blockHash": "0xc98b5561d2efa0055d021c8d4d39008a93249cb2ddf8392df373fa6d97f5dd44",
+      "blockNumber": "0x10103b2",
+      "blockTimestamp": "0x6413a75b",
+      "data": "0x",
+      "logIndex": "0xc0",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009f7064dfe6ca5856b3afd7a3b3974686a35bdab5",
+        "0x00000000000000000000000000000000000000000000000000000000000029f7"
+      ],
+      "transactionHash": "0x2dc04ce2ca3b4a5032fd2857e9e248ef72ba7bdc0cd1d21547c2fe155c1d2e1c",
+      "transactionIndex": "0x61"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0xbc402bed62c90afd0e104be32bdee9447b5ccd0d",
+      "tokenId": "10743",
+      "tokenURI": "ipfs://QmUgUitYhWe6QSEX5xFqnc8RW3gGU97mGRsatXhgmjf5z3/10743/token.json",
+      "cid": "QmYU2Sn4JctcwZ1i7v2QX7QaCcF7F2si22SWUb5PBxEkiF",
+      "sha256": "45efbe2172c791d2899c0efcbe872d8a996b7e1ef0a13a1ffef7eeb331151406",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmUgUitYhWe6QSEX5xFqnc8RW3gGU97mGRsatXhgmjf5z3",
+        "QmZFHTt82PE57pmj38baZHwky9GhJ1E62h4QnTEPUsjXxg",
+        "QmYU2Sn4JctcwZ1i7v2QX7QaCcF7F2si22SWUb5PBxEkiF"
+      ],
+      "projectId": "63d7cee820f6fe773c50c269",
+      "collection": "Golden Gate",
+      "artist": "Emil G Music"
+    }
+  ]
+}

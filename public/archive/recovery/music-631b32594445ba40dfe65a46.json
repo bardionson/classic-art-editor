@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "631b32594445ba40dfe65a46",
+  "name": "Psychic Mythos",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 3,
+  "declaredEditionCounts": [243],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x798f2f95c269b33a6297f9961df417b2d57675115b965934ae15d11797bdb94d",
+      "blockNumber": "0xf02a7b",
+      "blockTimestamp": "0x63481367",
+      "data": "0x",
+      "logIndex": "0x11c",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000d7ce4706f31606981dc35255c8ce27934f9a7624",
+        "0x00000000000000000000000000000000000000000000000000000000000046c8"
+      ],
+      "transactionHash": "0xa6d281d4298bfd1eb606d0fa204c7b194491e60ff5aa6a638b6fb8e3b221c0a2",
+      "transactionIndex": "0xa6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xc2d894acb04ce45ab3fa54648f734dcd817f3dab7a5b027f7be57608fa9b3aed",
+      "blockNumber": "0xf02e7e",
+      "blockTimestamp": "0x634843f7",
+      "data": "0x",
+      "logIndex": "0x154",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000009af481276b075e036bc23e887a8bd275e69ef74c",
+        "0x00000000000000000000000000000000000000000000000000000000000046c9"
+      ],
+      "transactionHash": "0x0f78699f2ad1aa78be68baa251fb37f627e5a1ea90da3e51284ed44f9478296e",
+      "transactionIndex": "0xb0"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0xc1b7e6501607cf83260922df146c3739cdb6ab2d1c12a5113f57109332c2bd88",
+      "blockNumber": "0xf0b45c",
+      "blockTimestamp": "0x634e938f",
+      "data": "0x",
+      "logIndex": "0x4f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000f2a841f4025159e5a845de3172384a7bca00ddde",
+        "0x00000000000000000000000000000000000000000000000000000000000046ca"
+      ],
+      "transactionHash": "0xf56395207508bd301098bda81f7b412176b90ef83e23728b1dffdad4644cded0",
+      "transactionIndex": "0x22"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "18120",
+      "tokenURI": "ipfs://QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm/18120/token.json",
+      "cid": "QmUicVmcDRPyhskAjvr1JuNPL1TnCmNgyyPCRhHYCc7NDS",
+      "sha256": "80a6f931b7bacf49ca4337c56528ed1762045e2e6f887bafd7a2cfb09173df7d",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm",
+        "QmY3De3g29oXr72MDjweWUTfXxq7Xd7csN8JwksEToFmef",
+        "QmUicVmcDRPyhskAjvr1JuNPL1TnCmNgyyPCRhHYCc7NDS"
+      ],
+      "projectId": "631b32594445ba40dfe65a46",
+      "collection": "Psychic Mythos",
+      "artist": "Shivansh Rawat"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "18121",
+      "tokenURI": "ipfs://QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm/18121/token.json",
+      "cid": "QmWdPUe1xniYDv6auk6zhfJhhmyi18DNm8wnuZ9iNgArk4",
+      "sha256": "6ae015f770b9abeb8b89ec756b4c46296d2c5740bbab33c30d3c980c0b4af582",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm",
+        "QmU73GLzyssu1n4nXrNTqoZLC1vjdJBy19nfnDcVzRpW8z",
+        "QmWdPUe1xniYDv6auk6zhfJhhmyi18DNm8wnuZ9iNgArk4"
+      ],
+      "projectId": "631b32594445ba40dfe65a46",
+      "collection": "Psychic Mythos",
+      "artist": "Shivansh Rawat"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "18122",
+      "tokenURI": "ipfs://QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm/18122/token.json",
+      "cid": "QmPAQG9UMyxcGMLoBZyM4Dq8unXc9crBWUnRSCkYjLTAgL",
+      "sha256": "92fe981126efa9bf8ed7eafe712b53464dac0aae68728599afdc684f46b8153b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmZsdVetdncE9rR9XNr3GAEwEDWEpaMsnohZvhDJm6DaQm",
+        "QmURbehBhAjqbnWBdNcnhjjqc4J4Hae8z2TzPdNpfaDA7F",
+        "QmPAQG9UMyxcGMLoBZyM4Dq8unXc9crBWUnRSCkYjLTAgL"
+      ],
+      "projectId": "631b32594445ba40dfe65a46",
+      "collection": "Psychic Mythos",
+      "artist": "Shivansh Rawat"
+    }
+  ]
+}

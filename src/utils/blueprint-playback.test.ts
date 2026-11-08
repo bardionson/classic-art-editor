@@ -1,16 +1,33 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { NextRequest } from 'next/server';
+import * as archiveSearch from '@/utils/archive-search';
 import { metadataPlayback } from '@/utils/archive-media';
 import { GET } from '@/app/api/archive/preview/route';
 import recovered from '@/data/music-blueprint-metadata.json';
 import audioSources from '@/data/archive-audio-sources.json';
 import mediaTypes from '@/data/archive-media-types.json';
+import mediaGaps from '@/data/music-blueprint-media-gaps.json';
 
 const cid = 'QmXbUf3Zpaa8RBBQABhaTXwHmyLp9TzPqTxc89ac1D4o46';
 const request = (value: string) =>
   new NextRequest(`https://async.art/api/archive/preview?cid=${value}`);
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.restoreAllMocks();
+});
+
+// This edition is now recovered. Model the pre-recovery state explicitly so
+// fallback tests remain independent of a growing production archive.
+function unrecoveredFixture() {
+  const record = archiveSearch.getArchiveRecordByCid(
+    'QmRuwNf91D6hdDBNXs1PQr7aCGK4xCx5iV2yvXsK4xhg79',
+  )!;
+  vi.spyOn(archiveSearch, 'getArchiveRecordByCid').mockReturnValue({
+    ...record,
+    animationUrl: undefined,
+  });
+}
 
 describe('Music Blueprint edition playback', () => {
   it('preserves the exact audio of each recovered edition, rather than sharing a project mix', () => {
@@ -19,10 +36,27 @@ describe('Music Blueprint edition playback', () => {
       const original = JSON.parse(
         readFileSync(`public/archive/metadata/${key}.json`, 'utf8'),
       );
-      expect(row.animationUrl).toBe(original.animation_url);
+      expect(row.animationUrl).toBe(original.animation_url ?? '');
+      if (!row.animationUrl) {
+        expect(metadataPlayback(original)).toBeNull();
+        continue;
+      }
+      const gap = (mediaGaps as Record<string, { status: string }>)[key];
+      if (gap?.status === 'gateway-unavailable') {
+        // Preserve the original URI without claiming its unobserved media format.
+        expect(metadataPlayback(original)?.source).toBe(row.animationUrl);
+        sources.add(row.animationUrl);
+        continue;
+      }
       expect(metadataPlayback(original)).toEqual({
         source: row.animationUrl,
-        kind: row.animationUrl.endsWith('.mp4') ? 'video' : 'audio',
+        kind:
+          row.animationUrl.endsWith('.mp4') ||
+          (mediaTypes as Record<string, { contentType: string }>)[
+            row.animationUrl.replace('ipfs://', '')
+          ]?.contentType.startsWith('video/')
+            ? 'video'
+            : 'audio',
       });
       if (row.animationUrl.startsWith('ipfs://')) {
         const path = row.animationUrl.slice(7);
@@ -35,12 +69,16 @@ describe('Music Blueprint edition playback', () => {
         expect(
           (mediaTypes as Record<string, { contentType: string }>)[path]
             ?.contentType,
-        ).toMatch(/^audio\//);
+        ).toMatch(/^(audio|video)\//);
       }
       sources.add(row.animationUrl);
     }
     expect(sources.size).toBe(
-      new Set(Object.values(recovered).map((r) => r.animationUrl)).size,
+      new Set(
+        Object.values(recovered)
+          .map((r) => r.animationUrl)
+          .filter(Boolean),
+      ).size,
     );
     expect(sources.size).toBeGreaterThan(200);
   });
@@ -58,6 +96,7 @@ describe('Music Blueprint edition playback', () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
   it('resolves another edition’s original mix on demand, with gateway fallback', async () => {
+    unrecoveredFixture();
     const fetcher = vi
       .fn()
       .mockResolvedValueOnce(new Response('Busy', { status: 429 }))
@@ -109,6 +148,7 @@ describe('Music Blueprint edition playback', () => {
     ).toBeNull();
   });
   it('reports missing audio rather than substituting another edition', async () => {
+    unrecoveredFixture();
     vi.stubGlobal(
       'fetch',
       vi

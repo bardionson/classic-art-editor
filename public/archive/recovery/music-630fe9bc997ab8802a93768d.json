@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-08",
+  "projectId": "630fe9bc997ab8802a93768d",
+  "name": "Martian Crypto Bros",
+  "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+  "throughBlock": 26371661,
+  "mintedCount": 10,
+  "declaredEditionCounts": [1000],
+  "method": "Transfer events from zero from block 14000000, with tokenURI read at throughBlock; original metadata bytes verified against their UnixFS CID. Minted count is the number of distinct tokens ever minted, not a count of tokens currently unburned.",
+  "mintLogs": [
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x13f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x0000000000000000000000000000000000000000000000000000000000002988"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x141",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x0000000000000000000000000000000000000000000000000000000000002989"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x143",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298a"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x145",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298b"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x147",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298c"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x149",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298d"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x14b",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298e"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x14d",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x000000000000000000000000000000000000000000000000000000000000298f"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x14f",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x0000000000000000000000000000000000000000000000000000000000002990"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    },
+    {
+      "address": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "blockHash": "0x778bffdd024fffd46d9fdeceaecda0fea70150c0ecc465735619b8f29fdd3215",
+      "blockNumber": "0xecd8d3",
+      "blockTimestamp": "0x631f65f7",
+      "data": "0x",
+      "logIndex": "0x151",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000ab7762fbf4ea572f248fe59d92afe84ce41bb14f",
+        "0x0000000000000000000000000000000000000000000000000000000000002991"
+      ],
+      "transactionHash": "0x20933928a526c658930ef3f6859e9305f4c6cdcfe28474cecfa8516ec84a1388",
+      "transactionIndex": "0xb6"
+    }
+  ],
+  "records": [
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10632",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10632/token.json",
+      "cid": "QmSjXscd5iRfK19SAR19YumJREsfkKkgN6augKVehwjZsq",
+      "sha256": "5ee01a784be621229f2ab88cf9e44867b321839fcae2843ab4bfc49890a7d289",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmaZTazn38ynRr2TDAjHsVggnh4iJhQS4TgyCGqb8eLh7B",
+        "QmSjXscd5iRfK19SAR19YumJREsfkKkgN6augKVehwjZsq"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10633",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10633/token.json",
+      "cid": "QmVxCsGNMzqwV6hGgXd4PkqKVpMCdMeyEzvwqX5YVHCRSk",
+      "sha256": "38d5215b402a3505fbcab1610014d4519899dd1be347afe5f407b5a417c3f93b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmSxZD2NE4VAG4BmX9nqt9mUvVmMknQ9v4rrZMyg6Mkqqi",
+        "QmVxCsGNMzqwV6hGgXd4PkqKVpMCdMeyEzvwqX5YVHCRSk"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10634",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10634/token.json",
+      "cid": "QmS9n4QjA4orGaZjo65eiXuBL7R5mviFEceARaRdYRPAhM",
+      "sha256": "dc227bae9e923466354ad7c5070b40df302661ff042fc9daac12da6a52911add",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmeNWVD91JK4sg6W9uw85JBAcjcmdhJF4Pu7Y72Ff2Yaj1",
+        "QmS9n4QjA4orGaZjo65eiXuBL7R5mviFEceARaRdYRPAhM"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10635",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10635/token.json",
+      "cid": "QmUPXXaMLcCoSRWcWsm4Zh17D4vQLJJyANJpgbVn5rLFCr",
+      "sha256": "aee1975766f7ed5dc055110d05809de8b35a2d0e61e5a3c525c26ff428686566",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmX3Y5RooQcy7tERdt9JM3EjCtgzTtUMhrmteLHyMMdSYP",
+        "QmUPXXaMLcCoSRWcWsm4Zh17D4vQLJJyANJpgbVn5rLFCr"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10636",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10636/token.json",
+      "cid": "QmUgopXLbwCn1jTuQTLSQcNbcRi1qEEnAKqCCWXrRrSQuq",
+      "sha256": "94362894df28eb42bb29860550507ffcc62c13fae94fdeb2f0f2474d2e9a8277",
+      "gateway": "https://gateway.pinata.cloud/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmSA64QHuFBTPcyJPBEhUJj9XeMcavgGWqYkyTpuESBm7s",
+        "QmUgopXLbwCn1jTuQTLSQcNbcRi1qEEnAKqCCWXrRrSQuq"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10637",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10637/token.json",
+      "cid": "QmTJwLbdE7aNHurZi7PHNGZ4UwnQpDhgJyD76rRW48dT69",
+      "sha256": "d96e07972e8ace9d22ede9937d464b0d7bade9352703655b3c961b5c358ec658",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmRp7qbVGnyjkxRZ7pB7ZXgnqurB1MkKSVyX384q116zeg",
+        "QmTJwLbdE7aNHurZi7PHNGZ4UwnQpDhgJyD76rRW48dT69"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10638",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10638/token.json",
+      "cid": "QmYKLWCGVE5r2S5Z2q8wSVyVWDWrfdT8yaLgMJrinVR9sn",
+      "sha256": "c33724adeb134f359ab83b2bd00988eac29c8a5a78e7b6c5c61339f05ea6bc9b",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmYJ2GU6NVDq9numnsfkwMoreeNQUQ4GkGPtfxnZyYSHx6",
+        "QmYKLWCGVE5r2S5Z2q8wSVyVWDWrfdT8yaLgMJrinVR9sn"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10639",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10639/token.json",
+      "cid": "QmbMiX7SBETGcj7p5iEHNDtoK3pNoxNqHcPGiuThufp8ah",
+      "sha256": "d9ce61d75574356d71d3163632687fa07798dadcfce059037c206cfb405539ba",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmNaegKgDwc89SCB9pgZKQVPTn4w9auYeFnDtPJ1BNoyaP",
+        "QmbMiX7SBETGcj7p5iEHNDtoK3pNoxNqHcPGiuThufp8ah"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10640",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10640/token.json",
+      "cid": "QmPj3yrcTAcKrsiyrwWvAfeLCu3ZNXRCEY5Jf3vkWUezpW",
+      "sha256": "ee2e38cb3ce70984b720b23e89869873cfed580ae4db370bf52a83b8c389fe60",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmamXGuECFDoiZxuNsz2y2kDY1jb3tDaB2LEStV3j1Rsei",
+        "QmPj3yrcTAcKrsiyrwWvAfeLCu3ZNXRCEY5Jf3vkWUezpW"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    },
+    {
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "tokenId": "10641",
+      "tokenURI": "ipfs://QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H/10641/token.json",
+      "cid": "QmYiyHianxfLsDBHsXTE3zc2kfeFhH1yYtUjiKUR4eu4W5",
+      "sha256": "3d92fb82bfc8ae590905904ba1e6ccaab8cd92557ecea4e7966c4922f38037ad",
+      "gateway": "https://ipfs.filebase.io/ipfs/",
+      "ipfsRoots": [
+        "QmQsgMX9iBnJV68s1n9eGrBJfJB26uu1spM9YtGK1nsN7H",
+        "QmaBhaP5KQcCtRCv5w2b4iDy2XbeXG1SRHem5mAYBcVj1P",
+        "QmYiyHianxfLsDBHsXTE3zc2kfeFhH1yYtUjiKUR4eu4W5"
+      ],
+      "projectId": "630fe9bc997ab8802a93768d",
+      "collection": "Martian Crypto Bros",
+      "artist": "ematta"
+    }
+  ]
+}
