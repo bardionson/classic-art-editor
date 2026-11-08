@@ -144,10 +144,11 @@ export default function ArtworkPriceChecker() {
               ETH Boy: calculated next step
             </h2>
             <p className="mt-3 text-text-muted">
-              One application of the recovered rules to this price window. This
-              does not replay missed days or change the artwork. Its final
-              position also needs the previous state; butterfly position and
-              appearance include randomness.
+              One hourly step from the recovered rules. ETH Boy’s viewer now
+              applies these price rules automatically, with a shared saved
+              position. Its butterfly appearance and horizontal position retain
+              their recorded settings. This checker shows calculations; the
+              viewer shows the saved hourly restoration.
             </p>
             <dl className="grid sm:grid-cols-2 gap-4 mt-5">
               <div>
@@ -190,7 +191,7 @@ export default function ArtworkPriceChecker() {
             )}
             <div className="flex flex-wrap gap-5 mt-5">
               <Link href="/v2/807" className="text-accent underline">
-                View archived ETH Boy
+                View hourly ETH Boy
               </Link>
               <a
                 href="https://www.trevorjonesart.com/work_collection/ethboy/"
@@ -205,10 +206,10 @@ export default function ArtworkPriceChecker() {
               Right Place &amp; Right Time: Bitcoin layer calculations
             </h2>
             <p className="mt-3 text-text-muted">
-              24 hourly changes drive the recovered scale, rotation and position
-              formulas. These are calculated values, not saved collector
-              settings. Milestone graphics and artist-controlled styling are
-              outside this check.
+              The artwork now applies these 24 hourly scale, rotation and
+              position calculations automatically. Artist-controlled styling and
+              milestone graphics retain their recorded settings. You can switch
+              back to the recorded on-chain view at any time.
             </p>
             <details className="mt-5">
               <summary className="cursor-pointer text-accent">
@@ -250,10 +251,10 @@ export default function ArtworkPriceChecker() {
               </div>
             </details>
             <Link
-              href="/search?q=Right%20Place%20%26%20Right%20Time"
+              href="/v2/245"
               className="inline-block mt-5 text-accent underline"
             >
-              Find the artwork in the archive
+              View hourly Right Place & Right Time
             </Link>
           </section>
           <details className="rounded-2xl border border-border p-5">
@@ -277,9 +278,13 @@ export default function ArtworkPriceChecker() {
               </p>
               <p>
                 No transactions are submitted and no gas-tank funding is needed.
-                A reading is cached for up to five minutes; download it to keep
-                the exact inputs and outputs. This is not a permanent daily
-                history or a background scheduler.
+                This checker refreshes every five minutes. The artwork viewers
+                use completed hourly prices and refresh automatically while
+                open. ETH Boy saves its position in R2 and catches up skipped
+                hours when someone returns. No always-on scheduler or PNG
+                caching is required. This independent hourly interpretation
+                starts from a recorded position; it does not reconstruct the
+                missing years.
               </p>
               <a
                 className="text-accent underline"

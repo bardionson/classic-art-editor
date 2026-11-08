@@ -15,6 +15,7 @@ import {
   Music,
 } from 'react-feather';
 import { Address } from 'viem';
+import { useHourlyArtwork } from '@/hooks/useHourlyArtwork';
 import { useArtwork } from '@/hooks/useArtwork';
 import { useLayersWithArtists } from '@/hooks/useLayersWithArtists';
 import MusicPlayer from '@/components/artwork/music-player';
@@ -89,6 +90,8 @@ export default function ArtworkViewer({
     }
   }, [externalControlOverrides]);
 
+  const hourlyArt = useHourlyArtwork(tokenAddress, tokenId, controlOverrides);
+
   const {
     artElementRef,
     statusMessage,
@@ -99,7 +102,7 @@ export default function ArtworkViewer({
     tokenURI,
     masterArtSize,
     artists,
-  } = useArtwork(tokenAddress, tokenId, controlOverrides);
+  } = useArtwork(tokenAddress, tokenId, hourlyArt.overrides);
 
   const layersWithArtists = useLayersWithArtists(tokenAddress, tokenURI);
   const hasMusic = !!metadata?.['audio-layout'];
@@ -193,7 +196,9 @@ export default function ArtworkViewer({
             ? playerHeight
             : isFullscreen || hideControls
               ? 0
-              : 72,
+              : hourlyArt.id
+                ? 112
+                : 72,
           right: panelVisible && !isMobile ? 420 : 0,
         }}
         className="absolute inset-0 flex items-center justify-center overflow-hidden"
@@ -225,6 +230,62 @@ export default function ArtworkViewer({
           />
         </div>
       </div>
+
+      {hourlyArt.id && !hideControls && !isFullscreen && (
+        <div
+          className="absolute bottom-[68px] left-4 z-40 max-w-[calc(100%-2rem)] rounded-lg bg-surface-raised/95 border border-border px-3 py-2 text-xs text-text shadow-soft-drop"
+          role="status"
+        >
+          <div>
+            {hourlyArt.enabled
+              ? 'Hourly price restoration'
+              : 'Recorded on-chain settings'}
+            {hourlyArt.snapshot && (
+              <>
+                {' '}
+                ·{' '}
+                {new Date(hourlyArt.snapshot.hour).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </>
+            )}
+            {hourlyArt.enabled && (hourlyArt.error || hourlyArt.stale) && (
+              <>
+                {' '}
+                ·{' '}
+                {hourlyArt.snapshot
+                  ? 'Showing last saved hour; retrying'
+                  : 'Price update pending; showing recorded settings'}
+              </>
+            )}
+            {hourlyArt.enabled && !hourlyArt.snapshot && !hourlyArt.error && (
+              <> · Checking prices…</>
+            )}
+            {Object.keys(controlOverrides).length > 0 && <> · Local preview</>}
+          </div>
+          <button
+            className="underline text-accent mt-1"
+            onClick={() => hourlyArt.setEnabled(!hourlyArt.enabled)}
+          >
+            {hourlyArt.enabled ? 'View recorded settings' : 'Use hourly prices'}
+          </button>
+          <Link
+            className="underline text-accent ml-3"
+            href="/archive/price-check"
+          >
+            How it changes
+          </Link>
+          {Object.keys(controlOverrides).length > 0 && (
+            <button
+              className="underline text-accent ml-3"
+              onClick={() => setControlOverrides({})}
+            >
+              Clear local preview
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Keep the toggle outside the scrolling panel so it cannot be clipped. */}
       {!hideControls && !isFullscreen && (

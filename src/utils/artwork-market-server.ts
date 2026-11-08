@@ -10,7 +10,7 @@ import {
   bitcoinTransforms,
 } from './artwork-market';
 
-async function readJson(url: string) {
+export async function readJson(url: string) {
   const response = await fetch(url, {
     cache: 'no-store',
     signal: AbortSignal.timeout(8000),
@@ -18,6 +18,37 @@ async function readJson(url: string) {
   });
   if (!response.ok) throw new Error('Price provider unavailable');
   return response.json();
+}
+
+export async function readMarketGas(now: number): Promise<MarketReport['gas']> {
+  if (!process.env.ALCHEMY_KEY) return null;
+  try {
+    const rpc = createPublicClient({
+      chain: mainnet,
+      transport: http(
+        `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`,
+        { timeout: 8000, retryCount: 0 },
+      ),
+    });
+    const [wei, block] = await Promise.all([rpc.getGasPrice(), rpc.getBlock()]);
+    const blockTime = Number(block.timestamp) * 1000;
+    const gwei = Number(wei) / 1e9;
+    if (
+      !Number.isFinite(gwei) ||
+      gwei < 0 ||
+      now - blockTime > 600_000 ||
+      blockTime > now + 60_000
+    )
+      return null;
+    return {
+      gwei,
+      block: String(block.number),
+      blockTime: new Date(blockTime).toISOString(),
+      source: 'Ethereum eth_gasPrice',
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function collectMarketReport(
@@ -35,43 +66,10 @@ export async function collectMarketReport(
     ]);
     return parseMarketPrice(symbol, ticker, candles, now);
   }
-  async function gas(): Promise<MarketReport['gas']> {
-    if (!process.env.ALCHEMY_KEY) return null;
-    try {
-      const rpc = createPublicClient({
-        chain: mainnet,
-        transport: http(
-          `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`,
-          { timeout: 8000, retryCount: 0 },
-        ),
-      });
-      const [wei, block] = await Promise.all([
-        rpc.getGasPrice(),
-        rpc.getBlock(),
-      ]);
-      const blockTime = Number(block.timestamp) * 1000;
-      const gwei = Number(wei) / 1e9;
-      if (
-        !Number.isFinite(gwei) ||
-        gwei < 0 ||
-        now - blockTime > 600_000 ||
-        blockTime > now + 60_000
-      )
-        return null;
-      return {
-        gwei,
-        block: String(block.number),
-        blockTime: new Date(blockTime).toISOString(),
-        source: 'Ethereum eth_gasPrice',
-      };
-    } catch {
-      return null;
-    }
-  }
   const [ETH, BTC, gasReading] = await Promise.all([
     price('ETH'),
     price('BTC'),
-    gas(),
+    readMarketGas(now),
   ]);
   return {
     version: 1,
