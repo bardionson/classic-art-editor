@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import DonationBanner from '@/components/donation-banner';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -71,86 +72,109 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
   const pathname = usePathname();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  if (pathname && MIRROR_DISPLAY_ROUTE.test(pathname)) {
-    return null;
-  }
+  const headerRef = useRef<HTMLElement>(null);
+  const mirrorDisplay = Boolean(
+    pathname && MIRROR_DISPLAY_ROUTE.test(pathname),
+  );
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const measure = () =>
+      document.documentElement.style.setProperty(
+        '--site-header-height',
+        `${header.getBoundingClientRect().height}px`,
+      );
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    measure();
+    return () => observer.disconnect();
+  }, []);
 
   const compressed = Boolean(title);
 
   return (
-    <header className="sticky top-0 z-40 bg-surface-raised/90 backdrop-blur border-b border-border">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-        {compressed ? (
-          <Link
-            href={backHref || '/'}
-            className="flex items-center gap-2 min-w-0 text-text hover:text-text-muted transition"
-          >
-            <ArrowLeft size={20} className="shrink-0" />
-            <span className="truncate max-w-[240px] sm:max-w-none font-semibold text-text">
-              {title}
-            </span>
-          </Link>
-        ) : (
-          <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center shrink-0">
-              <Image
-                src={logo.src}
-                width={logo.width}
-                height={logo.height}
-                alt="Async Art Logo"
-                className="h-6 md:h-7 w-auto dark:invert"
-              />
-            </Link>
-            <nav className="hidden xl:flex items-center gap-5">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 bg-surface-raised/90 backdrop-blur border-b border-border"
+    >
+      <DonationBanner />
+      {!mirrorDisplay && (
+        <>
+          <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            {compressed ? (
+              <Link
+                href={backHref || '/'}
+                className="flex items-center gap-2 min-w-0 text-text hover:text-text-muted transition"
+              >
+                <ArrowLeft size={20} className="shrink-0" />
+                <span className="truncate max-w-[240px] sm:max-w-none font-semibold text-text">
+                  {title}
+                </span>
+              </Link>
+            ) : (
+              <div className="flex items-center gap-6">
+                <Link href="/" className="flex items-center shrink-0">
+                  <Image
+                    src={logo.src}
+                    width={logo.width}
+                    height={logo.height}
+                    alt="Async Art Logo"
+                    className="h-6 md:h-7 w-auto dark:invert"
+                  />
+                </Link>
+                <nav className="hidden xl:flex items-center gap-5">
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      className="text-sm font-medium text-text-muted hover:text-text transition"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            )}
+
+            <div className="flex items-center gap-2">
+              {!compressed && (
+                <button
+                  type="button"
+                  onClick={() => setMobileNavOpen((open) => !open)}
+                  aria-label="Toggle navigation menu"
+                  aria-expanded={mobileNavOpen}
+                  className="xl:hidden inline-flex items-center justify-center w-9 h-9 rounded-md text-text-muted hover:text-text hover:bg-surface-sunken transition"
+                >
+                  {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+              )}
+              <ThemeToggle />
+              <WalletProvider>
+                <ConnectButton accountStatus="address" showBalance={false} />
+              </WalletProvider>
+            </div>
+          </div>
+
+          {!compressed && mobileNavOpen && (
+            <nav className="xl:hidden border-t border-border bg-surface-raised px-4 py-3 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
+                  onClick={() => setMobileNavOpen(false)}
                   className="text-sm font-medium text-text-muted hover:text-text transition"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
-          </div>
-        )}
-
-        <div className="flex items-center gap-2">
-          {!compressed && (
-            <button
-              type="button"
-              onClick={() => setMobileNavOpen((open) => !open)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileNavOpen}
-              className="xl:hidden inline-flex items-center justify-center w-9 h-9 rounded-md text-text-muted hover:text-text hover:bg-surface-sunken transition"
-            >
-              {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
           )}
-          <ThemeToggle />
-          <WalletProvider>
-            <ConnectButton accountStatus="address" showBalance={false} />
-          </WalletProvider>
-        </div>
-      </div>
-
-      {!compressed && mobileNavOpen && (
-        <nav className="xl:hidden border-t border-border bg-surface-raised px-4 py-3 flex flex-col gap-3">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
-              onClick={() => setMobileNavOpen(false)}
-              className="text-sm font-medium text-text-muted hover:text-text transition"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        </>
       )}
     </header>
   );

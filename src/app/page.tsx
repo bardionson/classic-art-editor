@@ -198,8 +198,8 @@ export default function Home() {
           </p>
           <p className="text-sm text-text-muted leading-relaxed mt-3">
             Digital Rescue Lab’s website lists digitalrescuelab.eth and says a
-            new fundraising campaign is coming soon. Visit the Lab for current
-            donation information.
+            new fundraising campaign is coming soon. You can donate directly
+            using the Ethereum address in the banner above.
           </p>
           <div className="flex flex-wrap gap-4 mt-4">
             <a

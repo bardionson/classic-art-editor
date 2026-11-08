@@ -185,7 +185,10 @@ export default function ArtworkViewer({
         ref={artViewportRef}
         aria-label="Artwork display"
         style={{
-          top: isFullscreen || hideControls ? 0 : 136,
+          top:
+            isFullscreen || hideControls
+              ? 'var(--site-header-height, 72px)'
+              : 'calc(var(--site-header-height, 72px) + 64px)',
           bottom: mobilePanel
             ? playerHeight
             : isFullscreen || hideControls
@@ -230,7 +233,8 @@ export default function ArtworkViewer({
           onClick={() => setIsDescriptionPanelOpen(!isDescriptionPanelOpen)}
           aria-expanded={panelVisible}
           aria-controls="artwork-controls"
-          className="fixed top-20 right-4 z-40 flex items-center gap-2 rounded-lg border border-border bg-surface-raised px-4 py-3 text-sm font-semibold text-text-primary shadow-soft-drop hover:bg-surface-sunken"
+          style={{ top: 'calc(var(--site-header-height, 72px) + 8px)' }}
+          className="fixed right-4 z-40 flex items-center gap-2 rounded-lg border border-border bg-surface-raised px-4 py-3 text-sm font-semibold text-text-primary shadow-soft-drop hover:bg-surface-sunken"
         >
           {panelVisible ? (
             <X size={18} aria-hidden="true" />
@@ -301,8 +305,13 @@ export default function ArtworkViewer({
           id="artwork-controls"
           ref={musicPanelRef}
           aria-label="Artwork controls and details"
-          style={{ display: panelVisible ? undefined : 'none' }}
-          className={`fixed ${mobilePanel ? 'bottom-0 max-h-[48dvh] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]' : 'inset-y-0 pt-36 px-6 pb-24'} right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto`}
+          style={{
+            display: panelVisible ? undefined : 'none',
+            paddingTop: mobilePanel
+              ? undefined
+              : 'calc(var(--site-header-height, 72px) + 72px)',
+          }}
+          className={`fixed ${mobilePanel ? 'bottom-0 max-h-[48dvh] px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]' : 'inset-y-0 px-6 pb-24'} right-0 z-30 w-full sm:w-[420px] bg-surface-raised/95 backdrop-blur-xl border-l border-border overflow-y-auto`}
         >
           {metadata && (
             <>
