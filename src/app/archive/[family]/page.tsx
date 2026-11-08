@@ -102,6 +102,30 @@ export default function ArchivePage({
         </>
       ) : (
         <section>
+          <Link
+            href="/archive/dynamic-blueprints/forever-supper"
+            className="block rounded-xl border border-border p-5 mb-8 hover:border-accent"
+          >
+            <div className="grid sm:grid-cols-[220px_1fr] gap-5 items-center">
+              <img
+                src="/archive/forever-supper/base.jpg"
+                alt="Forever Supper’s original room"
+                width={4800}
+                height={3840}
+                className="w-full h-auto rounded-lg"
+              />
+              <div>
+                <h2 className="text-2xl font-semibold mb-2">Forever Supper</h2>
+                <p className="text-text-muted">
+                  Explore the recovered room and 1,242 expansion items,
+                  organized by their place in the artwork.
+                </p>
+                <span className="text-accent underline inline-block mt-3">
+                  Explore Forever Supper →
+                </span>
+              </div>
+            </div>
+          </Link>
           <h2 className="text-2xl font-semibold mb-3">
             Dynamic Blueprint expansion items
           </h2>

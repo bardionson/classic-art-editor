@@ -78,6 +78,15 @@ export default function ArchiveResults({
                   Browse this project
                 </Link>
               )}
+            {record.coreAddress?.toLowerCase() ===
+              '0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31' && (
+              <Link
+                className="inline-block mt-2 text-xs text-accent underline"
+                href="/archive/dynamic-blueprints/forever-supper"
+              >
+                Explore Forever Supper
+              </Link>
+            )}
             {record.collection && (
               <p className="text-xs text-text-muted mt-1">
                 {record.collection}

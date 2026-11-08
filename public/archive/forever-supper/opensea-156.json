@@ -1,0 +1,192 @@
+{
+  "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/bfe8e1e0c4ad8f8dbc74b94bf018144b.png?w=1000",
+  "name": "Supper #156",
+  "traits": [
+    {
+      "trait_type": "Artist",
+      "value": "Async"
+    },
+    {
+      "trait_type": "Asset Type",
+      "value": "Edition"
+    },
+    {
+      "trait_type": "Async Case : 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 4",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Back Left Screen",
+      "value": "Durt"
+    },
+    {
+      "trait_type": "Back Right Screen",
+      "value": "Scurt"
+    },
+    {
+      "trait_type": "Center Seat",
+      "value": "Champ"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Forever Supper"
+    },
+    {
+      "trait_type": "Filter",
+      "value": "None"
+    },
+    {
+      "trait_type": "Foreground (Left)",
+      "value": "Meatball Mountain"
+    },
+    {
+      "trait_type": "Foreground (Right)",
+      "value": "Meatball Mound"
+    },
+    {
+      "trait_type": "Frames",
+      "value": "OG Gold Frames"
+    },
+    {
+      "trait_type": "Left Seat 1",
+      "value": "Gwilda"
+    },
+    {
+      "trait_type": "Left Seat 2",
+      "value": "Vampire II"
+    },
+    {
+      "trait_type": "Left Seat 3",
+      "value": "Meatball"
+    },
+    {
+      "trait_type": "Outside",
+      "value": "Twin Moon Skies"
+    },
+    {
+      "trait_type": "Right Seat 1",
+      "value": "Dolphin"
+    },
+    {
+      "trait_type": "Right Seat 2",
+      "value": "Ghost"
+    },
+    {
+      "trait_type": "Right Seat 3",
+      "value": "Rataur"
+    },
+    {
+      "trait_type": "Room",
+      "value": "Crusty Room"
+    },
+    {
+      "trait_type": "Table",
+      "value": "Crooked Legs"
+    },
+    {
+      "trait_type": "Table Top",
+      "value": "Sloppy Feast"
+    },
+    {
+      "trait_type": "Trophy Case : 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 4",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Left)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Right)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Wires",
+      "value": "Default"
+    }
+  ],
+  "tokenId": "156",
+  "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/156",
+  "observedAt": "2026-11-08T15:00:42.835Z",
+  "dimensions": [500, 400],
+  "format": "PNG",
+  "imageSha256": "9e49ac5c9a925816cae4d65b77b748432fc9341465373ff4870a8290ce6118c8",
+  "imageBytes": 173017,
+  "selections": {
+    "Back Left Screen": "QmWRG38ziXTW7U7W2U91brWaP8ASodqVB27GqhNnjHPFeW",
+    "Back Right Screen": "QmVxjH9qHPr6Q1HRLvtzQxWQH9DcFxU2TJiJSpb8KdAw96",
+    "Center Seat": "QmYD7E7XFQ8oHLQt31fUZmj4LZYwbZLxXmFG53La2k52ku",
+    "Foreground (Left)": "QmUgxU2KZMDvS8akkDncR34ypEJ3aNig83NeuT6arovU1U",
+    "Foreground (Right)": "QmTpgVnh4J54n8ZjpUTeYbkhzA1JCMNFA1HUGku1VTbFMr",
+    "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR",
+    "Left Seat 1": "QmWNcLNbHzEA4Yyt1NXjMwZkCYvXaAG3WbdTvrzxEugmhF",
+    "Left Seat 2": "QmSHoKEBYWrJxpk2NEQaLcgeYqX7Ki1na2gFXbJ8iN1APh",
+    "Left Seat 3": "QmS7buAMxUsnTjjScHZ7d8hsZVujKjmFPfUNcodUqA9GK1",
+    "Outside": "QmWZTAvYRMs7jbS9okJzmfB2FavSA7gwUj3rz8RpE8Fhh3",
+    "Right Seat 1": "QmdVKTnSH4RpMf4WS8c7pCXPj4wmzF2XHGX9pbq7Py213S",
+    "Right Seat 2": "QmZoDX6vmpAq5Kvi51bs56fALHS9Srv869T9HPwAeZBiSL",
+    "Right Seat 3": "QmcFKNKr79ervbEQbKVRmuC1ByLd8K5z7T7RXxxBCrvLCD",
+    "Room": "QmWzS744NqaLVchAi2S4WtdSJ9RmNuABZHriUZisBxhwoy",
+    "Table": "QmPrkiFwvkhuT1YJvC7qxsuWwaaH91z6nfVoXRrxHxXe3Y",
+    "Table Top": "QmXCwmSUwUiU62N4xwzEpzBfVkGZNwUPYq1xnMXzcGG6rS"
+  },
+  "unresolved": [],
+  "defaults": [
+    "Async Case : 1",
+    "Async Case : 2",
+    "Async Case : 3",
+    "Async Case : 4",
+    "Async Case : 5",
+    "Async Case : 6",
+    "Filter",
+    "Trophy Case : 1",
+    "Trophy Case : 2",
+    "Trophy Case : 3",
+    "Trophy Case : 4",
+    "Trophy Case : 5",
+    "Trophy Case : 6",
+    "Upper Wall (Left)",
+    "Upper Wall (Right)",
+    "Wires"
+  ],
+  "changedTraitsSinceWayback": [],
+  "localImage": "/archive/forever-supper/opensea-156.png"
+}

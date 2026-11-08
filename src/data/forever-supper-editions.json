@@ -1,0 +1,982 @@
+[
+  {
+    "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/01520ab5b64cdb77f3bdc213039f9eff.png?w=1000",
+    "name": "Supper #1",
+    "traits": [
+      {
+        "trait_type": "Artist",
+        "value": "Async"
+      },
+      {
+        "trait_type": "Asset Type",
+        "value": "Edition"
+      },
+      {
+        "trait_type": "Async Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Back Left Screen",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Back Right Screen",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Center Seat",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Collection",
+        "value": "Forever Supper"
+      },
+      {
+        "trait_type": "Filter",
+        "value": "None"
+      },
+      {
+        "trait_type": "Foreground (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Foreground (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Frames",
+        "value": "OG Gold Frames"
+      },
+      {
+        "trait_type": "Left Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Outside",
+        "value": "Async World"
+      },
+      {
+        "trait_type": "Right Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Room",
+        "value": "Async Purple Room"
+      },
+      {
+        "trait_type": "Table",
+        "value": "Async Purple Table"
+      },
+      {
+        "trait_type": "Table Top",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Wires",
+        "value": "Async Purple Wires"
+      }
+    ],
+    "tokenId": "1",
+    "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/1",
+    "observedAt": "2026-11-08T14:58:50.596Z",
+    "dimensions": [500, 400],
+    "format": "PNG",
+    "imageSha256": "2af16b7389b3f0358125c06c1a13955be9085a460ca32aa6463feb71cd78997c",
+    "imageBytes": 68367,
+    "selections": {
+      "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR",
+      "Outside": "QmYfqQNW2QVLmzCaL8FufhTdzRAeBmFgqooPs48SEZtCXT",
+      "Room": "QmZHB1LW6t4HbZaYPhVWjYyPmPwqZtQYpBS6CYR3f9gHsk",
+      "Table": "QmchCnQ4H89xVpP2ykBdLK3AzWbr6Nfqn6qCcokViZ3oXR",
+      "Wires": "QmeXfvgxBHZiUqZNDwBCU5mGo6J5aNi69rfDe1UB1dnrnX"
+    },
+    "unresolved": [],
+    "defaults": [
+      "Async Case : 1",
+      "Async Case : 2",
+      "Async Case : 3",
+      "Async Case : 4",
+      "Async Case : 5",
+      "Async Case : 6",
+      "Back Left Screen",
+      "Back Right Screen",
+      "Center Seat",
+      "Filter",
+      "Foreground (Left)",
+      "Foreground (Right)",
+      "Left Seat 1",
+      "Left Seat 2",
+      "Left Seat 3",
+      "Right Seat 1",
+      "Right Seat 2",
+      "Right Seat 3",
+      "Table Top",
+      "Trophy Case : 1",
+      "Trophy Case : 2",
+      "Trophy Case : 3",
+      "Trophy Case : 4",
+      "Trophy Case : 5",
+      "Trophy Case : 6",
+      "Upper Wall (Left)",
+      "Upper Wall (Right)"
+    ],
+    "changedTraitsSinceWayback": [],
+    "localImage": "/archive/forever-supper/opensea-1.png"
+  },
+  {
+    "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/9974f15b62bb011577184c04ce99e492.png?w=1000",
+    "name": "FREE UPDATE FRIDAY! :D :D :D",
+    "traits": [
+      {
+        "trait_type": "Artist",
+        "value": "Async"
+      },
+      {
+        "trait_type": "Asset Type",
+        "value": "Edition"
+      },
+      {
+        "trait_type": "Async Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Back Left Screen",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Back Right Screen",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Center Seat",
+        "value": "NG86 Grifter"
+      },
+      {
+        "trait_type": "Collection",
+        "value": "Forever Supper"
+      },
+      {
+        "trait_type": "Filter",
+        "value": "Strawberry-Kiwi"
+      },
+      {
+        "trait_type": "Foreground (Left)",
+        "value": "NFT'S R DEAD"
+      },
+      {
+        "trait_type": "Foreground (Right)",
+        "value": "DEAD MIDDLEMAN"
+      },
+      {
+        "trait_type": "Frames",
+        "value": "OG Gold Frames"
+      },
+      {
+        "trait_type": "Left Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 2",
+        "value": "Default Cube asking 2 questions"
+      },
+      {
+        "trait_type": "Left Seat 3",
+        "value": "Crypto Cult Member 04"
+      },
+      {
+        "trait_type": "Outside",
+        "value": "TOXIC GLITCH VERSE"
+      },
+      {
+        "trait_type": "Right Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 3",
+        "value": "NG86 Beastmode"
+      },
+      {
+        "trait_type": "Room",
+        "value": "NG86 Room"
+      },
+      {
+        "trait_type": "Table",
+        "value": "OG Gold Table"
+      },
+      {
+        "trait_type": "Table Top",
+        "value": "TOXIC GLOW JUST EATTIN TABLE TOP"
+      },
+      {
+        "trait_type": "Trophy Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Left)",
+        "value": "REKT VERSE UPPER WALL LEFT"
+      },
+      {
+        "trait_type": "Upper Wall (Right)",
+        "value": "Painting Studies #2"
+      },
+      {
+        "trait_type": "Wires",
+        "value": "Default"
+      }
+    ],
+    "tokenId": "14",
+    "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/14",
+    "observedAt": "2026-11-08T15:00:08.954Z",
+    "dimensions": [500, 400],
+    "format": "PNG",
+    "imageSha256": "68a3d75594c755c23a8420b0e5d7e7f1f93373f2d8a7296c0f292b9101ebb34e",
+    "imageBytes": 142014,
+    "selections": {
+      "Center Seat": "QmW2T7Ja7WVdxp8L6JhckL54u5aRrKx7GymQiMh8dGAX2d",
+      "Filter": "QmPogPBye23m4Tc7q5sibqVWQzLfRiQwwG8h8yWwgZhuiv",
+      "Foreground (Left)": "QmQBwVFLENG5CD9tKT3ME6PZFUCCLjw8Xitweq2xAvu9BJ",
+      "Foreground (Right)": "QmY72w2aCxTLdg6wqSLGiNzytBCP28zGJXaNvsfBXzkXfD",
+      "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR",
+      "Left Seat 2": "QmRayZjKJgkU2hS1aoENR8QHjMKDPDqYtpQZV5Xh5C8sRS",
+      "Left Seat 3": "QmYGVYzszcdxNTbWQpcYmJpD8tdLJmSx9h8df3BPr4X3hE",
+      "Outside": "QmeWVbYrY1eam7yXXTCBSCGvX6ijbMAhh6ywNLgvYSBMBD",
+      "Right Seat 3": "QmP9rnaqEv2xaNTVReoYDRgmgaZdmaNq1ECdAcc95npujY",
+      "Room": "QmNfUNMpPjuphr9t5V65uV9yojS99dhhQhyA3AtSE1T38y",
+      "Table": "QmfK5tsBv45QhgRHmzrrs2aaNchrmwor6zvAKGs7FGM9WJ",
+      "Table Top": "QmYdBSNJ42UkoeStQaDzsbqfqYdvdyng71RNEjuQbxdG8L",
+      "Upper Wall (Left)": "QmPnjcg5CciyyG6GbGvVuLeDT7LAJ6iQLYPfg1Ap6pwL2c",
+      "Upper Wall (Right)": "QmSH2mMtcMJpeFx5mRiUpcJ3dJm8iZt9QghfPEFuAQED4E"
+    },
+    "unresolved": [],
+    "defaults": [
+      "Async Case : 1",
+      "Async Case : 2",
+      "Async Case : 3",
+      "Async Case : 4",
+      "Async Case : 5",
+      "Async Case : 6",
+      "Back Left Screen",
+      "Back Right Screen",
+      "Left Seat 1",
+      "Right Seat 1",
+      "Right Seat 2",
+      "Trophy Case : 1",
+      "Trophy Case : 2",
+      "Trophy Case : 3",
+      "Trophy Case : 4",
+      "Trophy Case : 5",
+      "Trophy Case : 6",
+      "Wires"
+    ],
+    "changedTraitsSinceWayback": [
+      "Back Left Screen",
+      "Center Seat",
+      "Filter",
+      "Foreground (Left)",
+      "Foreground (Right)",
+      "Left Seat 1",
+      "Left Seat 3",
+      "Outside",
+      "Right Seat 1",
+      "Right Seat 3",
+      "Room",
+      "Table",
+      "Table Top",
+      "Upper Wall (Left)",
+      "Upper Wall (Right)"
+    ],
+    "localImage": "/archive/forever-supper/opensea-14.png"
+  },
+  {
+    "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/e4b96f311469fa1c0418cc88ce54e266.png?w=1000",
+    "name": "In Frog We Trust",
+    "traits": [
+      {
+        "trait_type": "Artist",
+        "value": "Async"
+      },
+      {
+        "trait_type": "Asset Type",
+        "value": "Edition"
+      },
+      {
+        "trait_type": "Async Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Back Left Screen",
+        "value": "rizzle frog 7"
+      },
+      {
+        "trait_type": "Back Right Screen",
+        "value": "rizzle avocado 6"
+      },
+      {
+        "trait_type": "Center Seat",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Collection",
+        "value": "Forever Supper"
+      },
+      {
+        "trait_type": "Filter",
+        "value": "None"
+      },
+      {
+        "trait_type": "Foreground (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Foreground (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Frames",
+        "value": "OG Gold Frames"
+      },
+      {
+        "trait_type": "Left Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Outside",
+        "value": "rizzle glass 5"
+      },
+      {
+        "trait_type": "Right Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Room",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Table",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Table Top",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Wires",
+        "value": "Default"
+      }
+    ],
+    "tokenId": "95",
+    "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/95",
+    "observedAt": "2026-11-08T15:00:23.537Z",
+    "dimensions": [500, 400],
+    "format": "PNG",
+    "imageSha256": "bc8134014018103dbd400d9afe519cf69102c39a6d303a0a9e5e755b08dfb349",
+    "imageBytes": 94063,
+    "selections": {
+      "Back Left Screen": "QmYVQdbC3pShbhCq5UKLi7EWozUdjjT9htkKN8fbyLJnaa",
+      "Back Right Screen": "QmSYR9ACoxj54rJwtfzFLYBQeVqVNqEhoiAgkL3ofti9xz",
+      "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR"
+    },
+    "unresolved": [
+      {
+        "trait_type": "Outside",
+        "value": "rizzle glass 5"
+      }
+    ],
+    "defaults": [
+      "Async Case : 1",
+      "Async Case : 2",
+      "Async Case : 3",
+      "Async Case : 4",
+      "Async Case : 5",
+      "Async Case : 6",
+      "Center Seat",
+      "Filter",
+      "Foreground (Left)",
+      "Foreground (Right)",
+      "Left Seat 1",
+      "Left Seat 2",
+      "Left Seat 3",
+      "Right Seat 1",
+      "Right Seat 2",
+      "Right Seat 3",
+      "Room",
+      "Table",
+      "Table Top",
+      "Trophy Case : 1",
+      "Trophy Case : 2",
+      "Trophy Case : 3",
+      "Trophy Case : 4",
+      "Trophy Case : 5",
+      "Trophy Case : 6",
+      "Upper Wall (Left)",
+      "Upper Wall (Right)",
+      "Wires"
+    ],
+    "changedTraitsSinceWayback": [],
+    "localImage": "/archive/forever-supper/opensea-95.png"
+  },
+  {
+    "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/bfe8e1e0c4ad8f8dbc74b94bf018144b.png?w=1000",
+    "name": "Supper #156",
+    "traits": [
+      {
+        "trait_type": "Artist",
+        "value": "Async"
+      },
+      {
+        "trait_type": "Asset Type",
+        "value": "Edition"
+      },
+      {
+        "trait_type": "Async Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Back Left Screen",
+        "value": "Durt"
+      },
+      {
+        "trait_type": "Back Right Screen",
+        "value": "Scurt"
+      },
+      {
+        "trait_type": "Center Seat",
+        "value": "Champ"
+      },
+      {
+        "trait_type": "Collection",
+        "value": "Forever Supper"
+      },
+      {
+        "trait_type": "Filter",
+        "value": "None"
+      },
+      {
+        "trait_type": "Foreground (Left)",
+        "value": "Meatball Mountain"
+      },
+      {
+        "trait_type": "Foreground (Right)",
+        "value": "Meatball Mound"
+      },
+      {
+        "trait_type": "Frames",
+        "value": "OG Gold Frames"
+      },
+      {
+        "trait_type": "Left Seat 1",
+        "value": "Gwilda"
+      },
+      {
+        "trait_type": "Left Seat 2",
+        "value": "Vampire II"
+      },
+      {
+        "trait_type": "Left Seat 3",
+        "value": "Meatball"
+      },
+      {
+        "trait_type": "Outside",
+        "value": "Twin Moon Skies"
+      },
+      {
+        "trait_type": "Right Seat 1",
+        "value": "Dolphin"
+      },
+      {
+        "trait_type": "Right Seat 2",
+        "value": "Ghost"
+      },
+      {
+        "trait_type": "Right Seat 3",
+        "value": "Rataur"
+      },
+      {
+        "trait_type": "Room",
+        "value": "Crusty Room"
+      },
+      {
+        "trait_type": "Table",
+        "value": "Crooked Legs"
+      },
+      {
+        "trait_type": "Table Top",
+        "value": "Sloppy Feast"
+      },
+      {
+        "trait_type": "Trophy Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Wires",
+        "value": "Default"
+      }
+    ],
+    "tokenId": "156",
+    "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/156",
+    "observedAt": "2026-11-08T15:00:42.835Z",
+    "dimensions": [500, 400],
+    "format": "PNG",
+    "imageSha256": "9e49ac5c9a925816cae4d65b77b748432fc9341465373ff4870a8290ce6118c8",
+    "imageBytes": 173017,
+    "selections": {
+      "Back Left Screen": "QmWRG38ziXTW7U7W2U91brWaP8ASodqVB27GqhNnjHPFeW",
+      "Back Right Screen": "QmVxjH9qHPr6Q1HRLvtzQxWQH9DcFxU2TJiJSpb8KdAw96",
+      "Center Seat": "QmYD7E7XFQ8oHLQt31fUZmj4LZYwbZLxXmFG53La2k52ku",
+      "Foreground (Left)": "QmUgxU2KZMDvS8akkDncR34ypEJ3aNig83NeuT6arovU1U",
+      "Foreground (Right)": "QmTpgVnh4J54n8ZjpUTeYbkhzA1JCMNFA1HUGku1VTbFMr",
+      "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR",
+      "Left Seat 1": "QmWNcLNbHzEA4Yyt1NXjMwZkCYvXaAG3WbdTvrzxEugmhF",
+      "Left Seat 2": "QmSHoKEBYWrJxpk2NEQaLcgeYqX7Ki1na2gFXbJ8iN1APh",
+      "Left Seat 3": "QmS7buAMxUsnTjjScHZ7d8hsZVujKjmFPfUNcodUqA9GK1",
+      "Outside": "QmWZTAvYRMs7jbS9okJzmfB2FavSA7gwUj3rz8RpE8Fhh3",
+      "Right Seat 1": "QmdVKTnSH4RpMf4WS8c7pCXPj4wmzF2XHGX9pbq7Py213S",
+      "Right Seat 2": "QmZoDX6vmpAq5Kvi51bs56fALHS9Srv869T9HPwAeZBiSL",
+      "Right Seat 3": "QmcFKNKr79ervbEQbKVRmuC1ByLd8K5z7T7RXxxBCrvLCD",
+      "Room": "QmWzS744NqaLVchAi2S4WtdSJ9RmNuABZHriUZisBxhwoy",
+      "Table": "QmPrkiFwvkhuT1YJvC7qxsuWwaaH91z6nfVoXRrxHxXe3Y",
+      "Table Top": "QmXCwmSUwUiU62N4xwzEpzBfVkGZNwUPYq1xnMXzcGG6rS"
+    },
+    "unresolved": [],
+    "defaults": [
+      "Async Case : 1",
+      "Async Case : 2",
+      "Async Case : 3",
+      "Async Case : 4",
+      "Async Case : 5",
+      "Async Case : 6",
+      "Filter",
+      "Trophy Case : 1",
+      "Trophy Case : 2",
+      "Trophy Case : 3",
+      "Trophy Case : 4",
+      "Trophy Case : 5",
+      "Trophy Case : 6",
+      "Upper Wall (Left)",
+      "Upper Wall (Right)",
+      "Wires"
+    ],
+    "changedTraitsSinceWayback": [],
+    "localImage": "/archive/forever-supper/opensea-156.png"
+  },
+  {
+    "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/32798f52e79655d67d2ab7132f0e1e40.png?w=1000",
+    "name": "Supper #434",
+    "traits": [
+      {
+        "trait_type": "Artist",
+        "value": "Async"
+      },
+      {
+        "trait_type": "Asset Type",
+        "value": "Edition"
+      },
+      {
+        "trait_type": "Async Case : 1",
+        "value": "Day 1 Badge"
+      },
+      {
+        "trait_type": "Async Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 3",
+        "value": "Novice Hunter"
+      },
+      {
+        "trait_type": "Async Case : 4",
+        "value": "Change Apprentice"
+      },
+      {
+        "trait_type": "Async Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Async Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Back Left Screen",
+        "value": "Yes Chef"
+      },
+      {
+        "trait_type": "Back Right Screen",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Center Seat",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Collection",
+        "value": "Forever Supper"
+      },
+      {
+        "trait_type": "Filter",
+        "value": "Retro Filer"
+      },
+      {
+        "trait_type": "Foreground (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Foreground (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Frames",
+        "value": "BitBoy 2000"
+      },
+      {
+        "trait_type": "Left Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Left Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Outside",
+        "value": "Metaverse Prototype '92"
+      },
+      {
+        "trait_type": "Right Seat 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Right Seat 2",
+        "value": "ANON GLITCH 3"
+      },
+      {
+        "trait_type": "Right Seat 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Room",
+        "value": "Midas Touch Golden Room"
+      },
+      {
+        "trait_type": "Table",
+        "value": "Default"
+      },
+      {
+        "trait_type": "Table Top",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 1",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 2",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 3",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 4",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 5",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Trophy Case : 6",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Left)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Upper Wall (Right)",
+        "value": "Empty"
+      },
+      {
+        "trait_type": "Wires",
+        "value": "BitBoy Charger"
+      }
+    ],
+    "tokenId": "434",
+    "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/434",
+    "observedAt": "2026-11-08T15:00:50.323Z",
+    "dimensions": [500, 400],
+    "format": "PNG",
+    "imageSha256": "ef90f9fce463c9ea4e42d314c8b6069868cefec8e19f2b5e30e981587e68cce2",
+    "imageBytes": 124647,
+    "selections": {
+      "Async Case : 1": "QmZjNx7VZZ3gxgoq6BAPi9rRLN6qeNUVH6uPHAVsWuvR8Z",
+      "Async Case : 3": "QmTgSbYCRYSPBX237Jrsuyo4AnKC4Sw6eSuEQwbyCjzQgm",
+      "Async Case : 4": "QmWG3STMpchgYafj9ewXHQNyRSCkJWnuzE3wDCUJoddEqu",
+      "Back Left Screen": "QmXgTeryygzS9HdLkxLLdhbpUN7NnXVn1GhQP7FkyaDZJB",
+      "Filter": "QmUGHk9YAdRpei9NjB8vKUJZCZgFsHG6yqBUvY8htXrx9r",
+      "Frames": "QmYvyTM9h77Wz8uv1oEsJ8CLNG9NsFu4uWyztKjBrDKvdP",
+      "Outside": "QmWKpJbjMGnubZbY43GUxZZjg5qS2grNiWCHyaAhoAH7jv",
+      "Right Seat 2": "QmXHg77BXqnhvb1hMYv5Jw3jmGE5wWevAU2fP7eVmJjZcz",
+      "Room": "QmaCSv9AP8gyGrG9iDaGr6BX4N8hi6pwnD7eBJ3m4KmDYw",
+      "Wires": "QmWN4TWnGa8uuWo5PoxhQT7gXMm1esPCK9RVNyMtDBFRrg"
+    },
+    "unresolved": [],
+    "defaults": [
+      "Async Case : 2",
+      "Async Case : 5",
+      "Async Case : 6",
+      "Back Right Screen",
+      "Center Seat",
+      "Foreground (Left)",
+      "Foreground (Right)",
+      "Left Seat 1",
+      "Left Seat 2",
+      "Left Seat 3",
+      "Right Seat 1",
+      "Right Seat 3",
+      "Table",
+      "Table Top",
+      "Trophy Case : 1",
+      "Trophy Case : 2",
+      "Trophy Case : 3",
+      "Trophy Case : 4",
+      "Trophy Case : 5",
+      "Trophy Case : 6",
+      "Upper Wall (Left)",
+      "Upper Wall (Right)"
+    ],
+    "changedTraitsSinceWayback": ["Room"],
+    "localImage": "/archive/forever-supper/opensea-434.png"
+  }
+]

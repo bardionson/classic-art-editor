@@ -1,0 +1,196 @@
+{
+  "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/e4b96f311469fa1c0418cc88ce54e266.png?w=1000",
+  "name": "In Frog We Trust",
+  "traits": [
+    {
+      "trait_type": "Artist",
+      "value": "Async"
+    },
+    {
+      "trait_type": "Asset Type",
+      "value": "Edition"
+    },
+    {
+      "trait_type": "Async Case : 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 4",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Back Left Screen",
+      "value": "rizzle frog 7"
+    },
+    {
+      "trait_type": "Back Right Screen",
+      "value": "rizzle avocado 6"
+    },
+    {
+      "trait_type": "Center Seat",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Forever Supper"
+    },
+    {
+      "trait_type": "Filter",
+      "value": "None"
+    },
+    {
+      "trait_type": "Foreground (Left)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Foreground (Right)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Frames",
+      "value": "OG Gold Frames"
+    },
+    {
+      "trait_type": "Left Seat 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Left Seat 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Left Seat 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Outside",
+      "value": "rizzle glass 5"
+    },
+    {
+      "trait_type": "Right Seat 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Right Seat 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Right Seat 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Room",
+      "value": "Default"
+    },
+    {
+      "trait_type": "Table",
+      "value": "Default"
+    },
+    {
+      "trait_type": "Table Top",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 4",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Left)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Right)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Wires",
+      "value": "Default"
+    }
+  ],
+  "tokenId": "95",
+  "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/95",
+  "observedAt": "2026-11-08T15:00:23.537Z",
+  "dimensions": [500, 400],
+  "format": "PNG",
+  "imageSha256": "bc8134014018103dbd400d9afe519cf69102c39a6d303a0a9e5e755b08dfb349",
+  "imageBytes": 94063,
+  "selections": {
+    "Back Left Screen": "QmYVQdbC3pShbhCq5UKLi7EWozUdjjT9htkKN8fbyLJnaa",
+    "Back Right Screen": "QmSYR9ACoxj54rJwtfzFLYBQeVqVNqEhoiAgkL3ofti9xz",
+    "Frames": "QmdsWfXaCCnEPKs5j58LYqbB3vpw9Yi5uaNGGAPiQ1McSR"
+  },
+  "unresolved": [
+    {
+      "trait_type": "Outside",
+      "value": "rizzle glass 5"
+    }
+  ],
+  "defaults": [
+    "Async Case : 1",
+    "Async Case : 2",
+    "Async Case : 3",
+    "Async Case : 4",
+    "Async Case : 5",
+    "Async Case : 6",
+    "Center Seat",
+    "Filter",
+    "Foreground (Left)",
+    "Foreground (Right)",
+    "Left Seat 1",
+    "Left Seat 2",
+    "Left Seat 3",
+    "Right Seat 1",
+    "Right Seat 2",
+    "Right Seat 3",
+    "Room",
+    "Table",
+    "Table Top",
+    "Trophy Case : 1",
+    "Trophy Case : 2",
+    "Trophy Case : 3",
+    "Trophy Case : 4",
+    "Trophy Case : 5",
+    "Trophy Case : 6",
+    "Upper Wall (Left)",
+    "Upper Wall (Right)",
+    "Wires"
+  ],
+  "changedTraitsSinceWayback": [],
+  "localImage": "/archive/forever-supper/opensea-95.png"
+}

@@ -1,0 +1,192 @@
+{
+  "image": "https://i2c.seadn.io/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/32798f52e79655d67d2ab7132f0e1e40.png?w=1000",
+  "name": "Supper #434",
+  "traits": [
+    {
+      "trait_type": "Artist",
+      "value": "Async"
+    },
+    {
+      "trait_type": "Asset Type",
+      "value": "Edition"
+    },
+    {
+      "trait_type": "Async Case : 1",
+      "value": "Day 1 Badge"
+    },
+    {
+      "trait_type": "Async Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 3",
+      "value": "Novice Hunter"
+    },
+    {
+      "trait_type": "Async Case : 4",
+      "value": "Change Apprentice"
+    },
+    {
+      "trait_type": "Async Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Async Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Back Left Screen",
+      "value": "Yes Chef"
+    },
+    {
+      "trait_type": "Back Right Screen",
+      "value": "Default"
+    },
+    {
+      "trait_type": "Center Seat",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Forever Supper"
+    },
+    {
+      "trait_type": "Filter",
+      "value": "Retro Filer"
+    },
+    {
+      "trait_type": "Foreground (Left)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Foreground (Right)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Frames",
+      "value": "BitBoy 2000"
+    },
+    {
+      "trait_type": "Left Seat 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Left Seat 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Left Seat 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Outside",
+      "value": "Metaverse Prototype '92"
+    },
+    {
+      "trait_type": "Right Seat 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Right Seat 2",
+      "value": "ANON GLITCH 3"
+    },
+    {
+      "trait_type": "Right Seat 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Room",
+      "value": "Midas Touch Golden Room"
+    },
+    {
+      "trait_type": "Table",
+      "value": "Default"
+    },
+    {
+      "trait_type": "Table Top",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 1",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 2",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 3",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 4",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 5",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Trophy Case : 6",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Left)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Upper Wall (Right)",
+      "value": "Empty"
+    },
+    {
+      "trait_type": "Wires",
+      "value": "BitBoy Charger"
+    }
+  ],
+  "tokenId": "434",
+  "source": "https://opensea.io/item/ethereum/0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31/434",
+  "observedAt": "2026-11-08T15:00:50.323Z",
+  "dimensions": [500, 400],
+  "format": "PNG",
+  "imageSha256": "ef90f9fce463c9ea4e42d314c8b6069868cefec8e19f2b5e30e981587e68cce2",
+  "imageBytes": 124647,
+  "selections": {
+    "Async Case : 1": "QmZjNx7VZZ3gxgoq6BAPi9rRLN6qeNUVH6uPHAVsWuvR8Z",
+    "Async Case : 3": "QmTgSbYCRYSPBX237Jrsuyo4AnKC4Sw6eSuEQwbyCjzQgm",
+    "Async Case : 4": "QmWG3STMpchgYafj9ewXHQNyRSCkJWnuzE3wDCUJoddEqu",
+    "Back Left Screen": "QmXgTeryygzS9HdLkxLLdhbpUN7NnXVn1GhQP7FkyaDZJB",
+    "Filter": "QmUGHk9YAdRpei9NjB8vKUJZCZgFsHG6yqBUvY8htXrx9r",
+    "Frames": "QmYvyTM9h77Wz8uv1oEsJ8CLNG9NsFu4uWyztKjBrDKvdP",
+    "Outside": "QmWKpJbjMGnubZbY43GUxZZjg5qS2grNiWCHyaAhoAH7jv",
+    "Right Seat 2": "QmXHg77BXqnhvb1hMYv5Jw3jmGE5wWevAU2fP7eVmJjZcz",
+    "Room": "QmaCSv9AP8gyGrG9iDaGr6BX4N8hi6pwnD7eBJ3m4KmDYw",
+    "Wires": "QmWN4TWnGa8uuWo5PoxhQT7gXMm1esPCK9RVNyMtDBFRrg"
+  },
+  "unresolved": [],
+  "defaults": [
+    "Async Case : 2",
+    "Async Case : 5",
+    "Async Case : 6",
+    "Back Right Screen",
+    "Center Seat",
+    "Foreground (Left)",
+    "Foreground (Right)",
+    "Left Seat 1",
+    "Left Seat 2",
+    "Left Seat 3",
+    "Right Seat 1",
+    "Right Seat 3",
+    "Table",
+    "Table Top",
+    "Trophy Case : 1",
+    "Trophy Case : 2",
+    "Trophy Case : 3",
+    "Trophy Case : 4",
+    "Trophy Case : 5",
+    "Trophy Case : 6",
+    "Upper Wall (Left)",
+    "Upper Wall (Right)"
+  ],
+  "changedTraitsSinceWayback": ["Room"],
+  "localImage": "/archive/forever-supper/opensea-434.png"
+}

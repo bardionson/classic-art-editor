@@ -1,0 +1,14 @@
+{
+  "zipSha256": "712b791bba50d5c4cee33664ba3fb7e4263cd7d6741449c5809d2abac1f6dc33",
+  "metadataRecords": 1418,
+  "byCore": {
+    "0x3906a4f3d76b593a78081b2b059c32d2cb2bd26b": 26,
+    "0xf62d291a22886fa0b81e5b13c7b6dab2d4c33f31": 1242,
+    "0x7fa01ab463cd1e5e1de309c3da5144277449d670": 63,
+    "0x0b8425daec0153c04d8b29c11b5b8d953935a26c": 87
+  },
+  "missingFromImport": [],
+  "differentFromImport": [],
+  "imageFiles": 0,
+  "baseCidsReferenced": 0
+}
