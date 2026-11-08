@@ -255,6 +255,8 @@ export default function MusicPlayer({
   tokenId,
   overrides,
   onPreview,
+  controlLayers = [],
+  onOpenLayer,
   compact = false,
 }: {
   metadata: MasterArtNFTMetadata;
@@ -262,6 +264,12 @@ export default function MusicPlayer({
   overrides: Record<string, number>;
   onPreview: (values: Record<string, number>) => void;
   compact?: boolean;
+  controlLayers?: {
+    tokenId: number;
+    name: string;
+    controls: { stateLabels?: string[] }[];
+  }[];
+  onOpenLayer?: (layer: any) => void;
 }) {
   const [stems, setStems] = useState<MusicStem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -343,28 +351,43 @@ export default function MusicPlayer({
               Variants are local previews. Changing a variant pauses music;
               press Play to listen to the new mix.
             </p>
-            {stems.map((stem) => (
-              <label key={stem.id} className="block mb-3 text-xs">
-                {stem.id.replace(/_/g, ' ')}
-                <select
-                  className="block w-full mt-1 rounded border border-border bg-surface-sunken p-2"
-                  aria-label={`${stem.id} variant`}
-                  value={stem.stateIndex}
-                  onChange={(event) =>
-                    onPreview({
-                      [`${tokenId + stem.relativeTokenId}-${stem.leverId}`]:
-                        Number(event.target.value),
-                    })
-                  }
-                >
-                  {stem.options.map((_, index) => (
-                    <option key={index} value={index}>
-                      Variant {index + 1}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ))}
+            {stems.map((stem) => {
+              const layer = controlLayers.find(
+                (item) => item.tokenId === tokenId + stem.relativeTokenId,
+              );
+              return (
+                <div key={stem.id} className="block mb-3 text-xs">
+                  {layer?.name || stem.id.replace(/_/g, ' ')}
+                  <select
+                    className="block w-full mt-1 rounded border border-border bg-surface-sunken p-2"
+                    aria-label={`${stem.id} variant`}
+                    value={stem.stateIndex}
+                    onChange={(event) =>
+                      onPreview({
+                        [`${tokenId + stem.relativeTokenId}-${stem.leverId}`]:
+                          Number(event.target.value),
+                      })
+                    }
+                  >
+                    {stem.options.map((_, index) => (
+                      <option key={index} value={index}>
+                        {layer?.controls[stem.leverId]?.stateLabels?.[index] ||
+                          `Variant ${index + 1}`}
+                      </option>
+                    ))}
+                  </select>
+                  {layer && onOpenLayer && (
+                    <button
+                      type="button"
+                      className="mt-2 text-accent underline"
+                      onClick={() => onOpenLayer(layer)}
+                    >
+                      Layer controls · {layer.name}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </details>
         </>
       )}

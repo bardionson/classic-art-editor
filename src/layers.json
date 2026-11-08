@@ -31,11 +31,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Blue/Red",
-            "Green/Purple",
-            "Fiat"
-          ],
+          "stateLabels": ["Blue/Red", "Green/Purple", "Fiat"],
           "controlType": "STATE",
           "label": "Picture",
           "minValue": 0,
@@ -44,11 +40,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Red/Blue",
-            "Gold",
-            "Green/Purple"
-          ],
+          "stateLabels": ["Red/Blue", "Gold", "Green/Purple"],
           "controlType": "STATE",
           "label": "Frame"
         }
@@ -85,13 +77,7 @@
           "maxValue": 13
         },
         {
-          "stateLabels": [
-            "Turquoise",
-            "Blue",
-            "Gold",
-            "Green",
-            "Purple"
-          ],
+          "stateLabels": ["Turquoise", "Blue", "Gold", "Green", "Purple"],
           "controlType": "STATE",
           "label": "Frame",
           "minValue": 0,
@@ -108,10 +94,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Meat",
-            "Async"
-          ],
+          "stateLabels": ["Meat", "Async"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -128,10 +111,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Drinks",
-            "Culture"
-          ],
+          "stateLabels": ["Drinks", "Culture"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -148,10 +128,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Staff Only",
-            "Void"
-          ],
+          "stateLabels": ["Staff Only", "Void"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -168,12 +145,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Flesh & Blood ATM",
-            "Jesus",
-            "BTC",
-            "Outside"
-          ],
+          "stateLabels": ["Flesh & Blood ATM", "Jesus", "BTC", "Outside"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -190,11 +162,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Checkerboard",
-            "Pattern 2",
-            "Space"
-          ],
+          "stateLabels": ["Checkerboard", "Pattern 2", "Space"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -213,11 +181,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Cat",
-            "Space + Pointer",
-            "Space + Metal"
-          ],
+          "stateLabels": ["Cat", "Space + Pointer", "Space + Metal"],
           "controlType": "STATE",
           "label": "State"
         },
@@ -244,11 +208,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Saint",
-            "VR",
-            "Voxel"
-          ],
+          "stateLabels": ["Saint", "VR", "Voxel"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -279,10 +239,7 @@
         {
           "minValue": 0,
           "maxValue": 1,
-          "stateLabels": [
-            "Day",
-            "Night"
-          ],
+          "stateLabels": ["Day", "Night"],
           "controlType": "STATE",
           "label": "State"
         }
@@ -297,12 +254,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Demon",
-            "Robot",
-            "Soldier",
-            "Surfer"
-          ],
+          "stateLabels": ["Demon", "Robot", "Soldier", "Surfer"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -354,11 +306,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Accusing",
-            "Calm",
-            "Miner"
-          ],
+          "stateLabels": ["Accusing", "Calm", "Miner"],
           "controlType": "STATE",
           "label": "Pose"
         }
@@ -373,21 +321,14 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Lizard Man",
-            "Anonymous",
-            "Magician"
-          ],
+          "stateLabels": ["Lizard Man", "Anonymous", "Magician"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
           "maxValue": 1
         },
         {
-          "stateLabels": [
-            "Blue",
-            "Green"
-          ],
+          "stateLabels": ["Blue", "Green"],
           "controlType": "STATE",
           "label": "Feet",
           "minValue": 0,
@@ -410,11 +351,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "I solve",
-            "I believe",
-            "I rule"
-          ],
+          "stateLabels": ["I solve", "I believe", "I rule"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -431,11 +368,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Early Doors",
-            "Getting Heavy",
-            "Exit Strategy"
-          ],
+          "stateLabels": ["Early Doors", "Getting Heavy", "Exit Strategy"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -455,11 +388,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "After DaVinci",
-            "Blue Diamonds",
-            "Maggots"
-          ],
+          "stateLabels": ["After DaVinci", "Blue Diamonds", "Maggots"],
           "controlType": "STATE",
           "label": "State"
         }
@@ -474,11 +403,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Both",
-            "TNT",
-            "Apple"
-          ],
+          "stateLabels": ["Both", "TNT", "Apple"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -546,11 +471,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "State1",
-            "State2",
-            "State3"
-          ],
+          "stateLabels": ["State1", "State2", "State3"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -567,10 +488,7 @@
       "masterTokenId": "Qmaje8byBxmFTHDjCvDYLy1NPZkUX1Etx1agDw5HxNqtef",
       "controls": [
         {
-          "stateLabels": [
-            "Color",
-            "Greyscale"
-          ],
+          "stateLabels": ["Color", "Greyscale"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -633,12 +551,7 @@
       "masterTokenId": "QmUVaaE39kcdnU5G91xFQEyfeMcW8qYSjLyXoiru14q6mH",
       "controls": [
         {
-          "stateLabels": [
-            "Normal",
-            "Smoking",
-            "Third Eye",
-            "Alien"
-          ],
+          "stateLabels": ["Normal", "Smoking", "Third Eye", "Alien"],
           "controlType": "STATE",
           "label": "Expression",
           "minValue": "0",
@@ -677,11 +590,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Human",
-            "Demon",
-            "Skull"
-          ],
+          "stateLabels": ["Human", "Demon", "Skull"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -698,10 +607,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Coat Off",
-            "Coat On"
-          ],
+          "stateLabels": ["Coat Off", "Coat On"],
           "controlType": "STATE",
           "label": "Coat",
           "minValue": 0,
@@ -710,11 +616,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Casual",
-            "Green Tie",
-            "Pink Tie"
-          ],
+          "stateLabels": ["Casual", "Green Tie", "Pink Tie"],
           "controlType": "STATE",
           "label": "Shirt"
         }
@@ -729,10 +631,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Bonus",
-            "Bottle of Fizz"
-          ],
+          "stateLabels": ["Bonus", "Bottle of Fizz"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -749,10 +648,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Bird Flip",
-            "Cane"
-          ],
+          "stateLabels": ["Bird Flip", "Cane"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -769,10 +665,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Black",
-            "Casual"
-          ],
+          "stateLabels": ["Black", "Casual"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -789,11 +682,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Checker",
-            "Ethereum",
-            "Bitcoin"
-          ],
+          "stateLabels": ["Checker", "Ethereum", "Bitcoin"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -810,11 +699,7 @@
       "masterTokenId": "QmTVzAwcnWVbxPzD1mgvEJe4jLRuTGdgYddeRKVFWEPh7d",
       "controls": [
         {
-          "stateLabels": [
-            "Money",
-            "Mo Money",
-            "Drugs"
-          ],
+          "stateLabels": ["Money", "Mo Money", "Drugs"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -839,11 +724,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Normal",
-            "Green",
-            "Red"
-          ],
+          "stateLabels": ["Normal", "Green", "Red"],
           "controlType": "STATE",
           "label": "BTC Logo"
         },
@@ -1032,12 +913,7 @@
       "masterTokenId": "QmX8wHz7wJjtgqi1D1fwYwX3nLQwHaPFWDCg9q7CFSLtvc",
       "controls": [
         {
-          "stateLabels": [
-            "Clock",
-            "Digital",
-            "Hourglass",
-            "Metronome"
-          ],
+          "stateLabels": ["Clock", "Digital", "Hourglass", "Metronome"],
           "controlType": "STATE",
           "label": "State",
           "minValue": 0,
@@ -1054,11 +930,7 @@
       "masterTokenId": "QmUcaGGikg2g74ER5hAubuB516THZGu68LFfUUpxHaQzQH",
       "controls": [
         {
-          "stateLabels": [
-            "Normal",
-            "Greyscale",
-            "Wireframe"
-          ],
+          "stateLabels": ["Normal", "Greyscale", "Wireframe"],
           "controlType": "STATE",
           "label": "Background",
           "minValue": 0,
@@ -1101,11 +973,7 @@
         {
           "minValue": 0,
           "maxValue": 2,
-          "stateLabels": [
-            "Normal",
-            "Greyscale",
-            "Wireframe"
-          ],
+          "stateLabels": ["Normal", "Greyscale", "Wireframe"],
           "controlType": "STATE",
           "label": "Mask"
         },
@@ -1144,11 +1012,7 @@
       "masterTokenId": "QmUcaGGikg2g74ER5hAubuB516THZGu68LFfUUpxHaQzQH",
       "controls": [
         {
-          "stateLabels": [
-            "Normal",
-            "Greyscale",
-            "Wireframe"
-          ],
+          "stateLabels": ["Normal", "Greyscale", "Wireframe"],
           "controlType": "STATE",
           "label": "Blazer",
           "minValue": 0,
@@ -1190,11 +1054,7 @@
       "controls": [
         {
           "label": "Sky Color",
-          "stateLabels": [
-            "Blue",
-            "Purple",
-            "Yellow"
-          ],
+          "stateLabels": ["Blue", "Purple", "Yellow"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -1204,22 +1064,14 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Room",
-          "stateLabels": [
-            "Pink",
-            "Turquoise",
-            "White",
-            "Yellow"
-          ],
+          "stateLabels": ["Pink", "Turquoise", "White", "Yellow"],
           "maxValue": 3,
           "minValue": 0
         },
         {
           "startValue": 0,
           "label": "Burn the House",
-          "stateLabels": [
-            "Burn the House",
-            "Hidden"
-          ],
+          "stateLabels": ["Burn the House", "Hidden"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE"
@@ -1237,11 +1089,7 @@
         {
           "startValue": 0,
           "label": "Sky",
-          "stateLabels": [
-            "Alien Attack",
-            "Black Magic",
-            "Sad Sky"
-          ],
+          "stateLabels": ["Alien Attack", "Black Magic", "Sad Sky"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -1259,11 +1107,7 @@
         {
           "startValue": 0,
           "label": "Yard",
-          "stateLabels": [
-            "Grass",
-            "Ice Glass",
-            "Pink Lava"
-          ],
+          "stateLabels": ["Grass", "Ice Glass", "Pink Lava"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -1273,11 +1117,7 @@
           "minValue": 0,
           "controlType": "STATE",
           "startValue": 0,
-          "stateLabels": [
-            "Checker Board",
-            "Magma",
-            "Water"
-          ],
+          "stateLabels": ["Checker Board", "Magma", "Water"],
           "label": "Pool"
         }
       ]
@@ -1291,11 +1131,7 @@
       "masterTokenId": "QmfX25VZeA1Xo45YRE5pWPjyhat1gEkPVDxLCHp4zFyzfe",
       "controls": [
         {
-          "stateLabels": [
-            "Forms of Love",
-            "Violin",
-            "Hidden"
-          ],
+          "stateLabels": ["Forms of Love", "Violin", "Hidden"],
           "label": "Left Front Hand",
           "maxValue": 2,
           "minValue": 0,
@@ -1306,11 +1142,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Right Front Hand",
-          "stateLabels": [
-            "Poisonous Hand",
-            "Tempura bowl",
-            "Hidden"
-          ],
+          "stateLabels": ["Poisonous Hand", "Tempura bowl", "Hidden"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -1325,11 +1157,7 @@
       "masterTokenId": "QmfX25VZeA1Xo45YRE5pWPjyhat1gEkPVDxLCHp4zFyzfe",
       "controls": [
         {
-          "stateLabels": [
-            "Orange Clothes",
-            "Pink Clothes",
-            "Red Clothes"
-          ],
+          "stateLabels": ["Orange Clothes", "Pink Clothes", "Red Clothes"],
           "label": "Body",
           "maxValue": 2,
           "minValue": 0,
@@ -1338,10 +1166,7 @@
         },
         {
           "label": "Left Back Hand",
-          "stateLabels": [
-            "Normal Hand",
-            "Trisula"
-          ],
+          "stateLabels": ["Normal Hand", "Trisula"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -1360,21 +1185,14 @@
         {
           "startValue": 0,
           "label": "Head Circle",
-          "stateLabels": [
-            "Dark Arts Knowledge",
-            "Sun Wisdom",
-            "Hidden"
-          ],
+          "stateLabels": ["Dark Arts Knowledge", "Sun Wisdom", "Hidden"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
         },
         {
           "label": "Head",
-          "stateLabels": [
-            "Normal Head",
-            "Tongue On"
-          ],
+          "stateLabels": ["Normal Head", "Tongue On"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -1382,11 +1200,7 @@
         },
         {
           "label": "Accessories",
-          "stateLabels": [
-            "Crown",
-            "Demonic Call",
-            "Tiara"
-          ],
+          "stateLabels": ["Crown", "Demonic Call", "Tiara"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -1403,11 +1217,7 @@
       "masterTokenId": "QmfX25VZeA1Xo45YRE5pWPjyhat1gEkPVDxLCHp4zFyzfe",
       "controls": [
         {
-          "stateLabels": [
-            "Death",
-            "Dice Roll",
-            "Glory"
-          ],
+          "stateLabels": ["Death", "Dice Roll", "Glory"],
           "label": "Box",
           "maxValue": 2,
           "minValue": 0,
@@ -1415,11 +1225,7 @@
           "startValue": 0
         },
         {
-          "stateLabels": [
-            "Dying Plastic Tree",
-            "Plastic Tree",
-            "Shark Head"
-          ],
+          "stateLabels": ["Dying Plastic Tree", "Plastic Tree", "Shark Head"],
           "label": "Tree",
           "maxValue": 2,
           "minValue": 0,
@@ -1442,11 +1248,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Paintings",
-          "stateLabels": [
-            "Art Of Letting Go",
-            "Djinn Apparition",
-            "Volcano"
-          ]
+          "stateLabels": ["Art Of Letting Go", "Djinn Apparition", "Volcano"]
         }
       ]
     },
@@ -1461,11 +1263,7 @@
         {
           "controlType": "STATE",
           "startValue": 0,
-          "stateLabels": [
-            "Lovelorn",
-            "Mother",
-            "Puja"
-          ],
+          "stateLabels": ["Lovelorn", "Mother", "Puja"],
           "label": "Structure",
           "maxValue": 2,
           "minValue": 0
@@ -1486,12 +1284,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Background",
-          "stateLabels": [
-            "Golden Sun",
-            "Red-Blue",
-            "Bronze",
-            "Mono"
-          ]
+          "stateLabels": ["Golden Sun", "Red-Blue", "Bronze", "Mono"]
         }
       ]
     },
@@ -1630,12 +1423,7 @@
       "controls": [
         {
           "label": "Dress",
-          "stateLabels": [
-            "Base",
-            "Inverted",
-            "Dark",
-            "Scratched"
-          ],
+          "stateLabels": ["Base", "Inverted", "Dark", "Scratched"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE",
@@ -1653,11 +1441,7 @@
       "controls": [
         {
           "startValue": 0,
-          "stateLabels": [
-            "Ethereum",
-            "Bitcoin",
-            "Skull"
-          ],
+          "stateLabels": ["Ethereum", "Bitcoin", "Skull"],
           "label": "Staff",
           "maxValue": 2,
           "minValue": 0,
@@ -1726,11 +1510,7 @@
         {
           "controlType": "STATE",
           "startValue": 0,
-          "stateLabels": [
-            "Long Beard",
-            "Half Beard",
-            "Short Beard"
-          ],
+          "stateLabels": ["Long Beard", "Half Beard", "Short Beard"],
           "label": "Beard",
           "maxValue": 2,
           "minValue": 0
@@ -1767,11 +1547,7 @@
       "masterTokenId": "Qmd84riUv6pCM1G3YiNqyJ8j4WvU1p6cH9q9cvRn9FhK3J",
       "controls": [
         {
-          "stateLabels": [
-            "Closed Mouth",
-            "Happy Mouth",
-            "Large Mouth"
-          ],
+          "stateLabels": ["Closed Mouth", "Happy Mouth", "Large Mouth"],
           "label": "Mouth",
           "maxValue": 2,
           "minValue": 0,
@@ -1794,10 +1570,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Day/Night",
-          "stateLabels": [
-            "Day",
-            "Night"
-          ]
+          "stateLabels": ["Day", "Night"]
         }
       ]
     },
@@ -2146,10 +1919,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Wall",
-          "stateLabels": [
-            "Color",
-            "Gray"
-          ],
+          "stateLabels": ["Color", "Gray"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -2167,10 +1937,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Lettering",
-          "stateLabels": [
-            "Limited 21 Million",
-            "Unlimited Fed"
-          ],
+          "stateLabels": ["Limited 21 Million", "Unlimited Fed"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -2186,10 +1953,7 @@
       "controls": [
         {
           "label": "Character",
-          "stateLabels": [
-            "Bitcoin Girl",
-            "Fed Monkey"
-          ],
+          "stateLabels": ["Bitcoin Girl", "Fed Monkey"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -2209,10 +1973,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Mask On/Off",
-          "stateLabels": [
-            "Off",
-            "On"
-          ],
+          "stateLabels": ["Off", "On"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -2229,11 +1990,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Void Circle",
-            "Void Hexa",
-            "Void Square"
-          ],
+          "stateLabels": ["Void Circle", "Void Hexa", "Void Square"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -2250,10 +2007,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "NESW",
-            "Degrees"
-          ],
+          "stateLabels": ["NESW", "Degrees"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -2280,12 +2034,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Fan",
-            "Loading",
-            "Rings-W",
-            "Rings-R"
-          ],
+          "stateLabels": ["Fan", "Loading", "Rings-W", "Rings-R"],
           "maxValue": 3,
           "minValue": 0
         }
@@ -2302,12 +2051,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Stripes",
-            "Cubes",
-            "Crosses",
-            "Pills"
-          ],
+          "stateLabels": ["Stripes", "Cubes", "Crosses", "Pills"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE"
@@ -2332,12 +2076,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Waves",
-            "Barcode",
-            "Flags",
-            "Flags-Mixed"
-          ],
+          "stateLabels": ["Waves", "Barcode", "Flags", "Flags-Mixed"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE"
@@ -2356,12 +2095,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Body-W",
-            "Body-R",
-            "Body-B",
-            "Body-S"
-          ],
+          "stateLabels": ["Body-W", "Body-R", "Body-B", "Body-S"],
           "maxValue": 3,
           "minValue": 0
         }
@@ -2378,12 +2112,7 @@
         {
           "controlType": "STATE",
           "startValue": 0,
-          "stateLabels": [
-            "xxx",
-            "smileys",
-            "NSFW",
-            "LD+R"
-          ],
+          "stateLabels": ["xxx", "smileys", "NSFW", "LD+R"],
           "label": "State",
           "maxValue": 3,
           "minValue": 0
@@ -2459,10 +2188,7 @@
         {
           "startValue": 1,
           "label": "AGV Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE"
@@ -2471,10 +2197,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "BPL Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0
         },
@@ -2494,10 +2217,7 @@
         },
         {
           "label": "HMB Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -2519,10 +2239,7 @@
         },
         {
           "label": "PLO Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE",
@@ -2545,10 +2262,7 @@
         {
           "startValue": 1,
           "label": "PLT Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE"
@@ -2573,10 +2287,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "PRT Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ]
+          "stateLabels": ["Visible", "Hidden"]
         },
         {
           "minValue": -255,
@@ -2603,10 +2314,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "PLM Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0
         },
@@ -2628,10 +2336,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "SKL Visible",
-          "stateLabels": [
-            "Visible",
-            "Hidden"
-          ],
+          "stateLabels": ["Visible", "Hidden"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -2651,13 +2356,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "BSE",
-          "stateLabels": [
-            "ERH",
-            "OVM",
-            "RBB",
-            "SKE",
-            "SNK"
-          ]
+          "stateLabels": ["ERH", "OVM", "RBB", "SKE", "SNK"]
         }
       ]
     },
@@ -2671,13 +2370,7 @@
       "controls": [
         {
           "label": "RNG",
-          "stateLabels": [
-            "FOX",
-            "HEN",
-            "IDL",
-            "MNK",
-            "WTR"
-          ],
+          "stateLabels": ["FOX", "HEN", "IDL", "MNK", "WTR"],
           "maxValue": 4,
           "minValue": 0,
           "controlType": "STATE",
@@ -2695,13 +2388,7 @@
       "controls": [
         {
           "label": "HZN",
-          "stateLabels": [
-            "FIR",
-            "FRL",
-            "GDS",
-            "LPS",
-            "SPD"
-          ],
+          "stateLabels": ["FIR", "FRL", "GDS", "LPS", "SPD"],
           "maxValue": 4,
           "minValue": 0,
           "controlType": "STATE",
@@ -2719,13 +2406,7 @@
       "controls": [
         {
           "label": "HED",
-          "stateLabels": [
-            "CRW",
-            "NGR",
-            "SKL",
-            "SOL",
-            "WND"
-          ],
+          "stateLabels": ["CRW", "NGR", "SKL", "SOL", "WND"],
           "maxValue": 4,
           "minValue": 0,
           "controlType": "STATE",
@@ -2837,11 +2518,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Pink",
-            "Red and Black"
-          ],
+          "stateLabels": ["Normal", "Pink", "Red and Black"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -2860,11 +2537,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -2882,11 +2555,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -2904,11 +2573,7 @@
         {
           "controlType": "STATE",
           "startValue": 0,
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "label": "State",
           "maxValue": 2,
           "minValue": 0
@@ -2927,11 +2592,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -2948,11 +2609,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -2972,11 +2629,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -2994,11 +2647,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3016,11 +2665,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3038,11 +2683,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3060,11 +2701,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3082,11 +2719,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3104,11 +2737,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3126,11 +2755,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3147,11 +2772,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -3168,11 +2789,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3192,11 +2809,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3214,11 +2827,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3234,11 +2843,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3258,11 +2863,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3278,11 +2879,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3302,11 +2899,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3324,11 +2917,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3345,11 +2934,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -3368,11 +2953,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3388,11 +2969,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3410,11 +2987,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3434,11 +3007,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3455,11 +3024,7 @@
         {
           "startValue": 0,
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -3476,11 +3041,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3498,11 +3059,7 @@
       "controls": [
         {
           "label": "State",
-          "stateLabels": [
-            "Normal",
-            "Dyed Hair",
-            "Silhouette"
-          ],
+          "stateLabels": ["Normal", "Dyed Hair", "Silhouette"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE",
@@ -3533,12 +3090,7 @@
         },
         {
           "label": "The Anchor",
-          "stateLabels": [
-            "The Column",
-            "Foundation",
-            "The Seed",
-            "The Hive"
-          ],
+          "stateLabels": ["The Column", "Foundation", "The Seed", "The Hive"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE",
@@ -3558,11 +3110,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Transition and Time",
-          "stateLabels": [
-            "Unravel",
-            "Fragment",
-            "Release"
-          ],
+          "stateLabels": ["Unravel", "Fragment", "Release"],
           "maxValue": 2,
           "minValue": 0
         },
@@ -3570,13 +3118,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Ribbon",
-          "stateLabels": [
-            "Some",
-            "Things",
-            "Will",
-            "Remain",
-            "Nameless"
-          ],
+          "stateLabels": ["Some", "Things", "Will", "Remain", "Nameless"],
           "maxValue": 4,
           "minValue": 0
         }
@@ -3596,11 +3138,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Wavelength",
-          "stateLabels": [
-            "Harmony",
-            "The Observer",
-            "Chatter"
-          ]
+          "stateLabels": ["Harmony", "The Observer", "Chatter"]
         },
         {
           "maxValue": 4,
@@ -3680,11 +3218,7 @@
         {
           "startValue": 0,
           "label": "base",
-          "stateLabels": [
-            "White",
-            "Dark",
-            "Blue"
-          ],
+          "stateLabels": ["White", "Dark", "Blue"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -3693,23 +3227,14 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "The Censor",
-          "stateLabels": [
-            "Censored",
-            "Hidden"
-          ],
+          "stateLabels": ["Censored", "Hidden"],
           "maxValue": 1,
           "minValue": 0
         },
         {
           "startValue": 4,
           "label": "Shadows",
-          "stateLabels": [
-            "Dusty",
-            "Deep",
-            "Ancient",
-            "Neu",
-            "Hidden"
-          ],
+          "stateLabels": ["Dusty", "Deep", "Ancient", "Neu", "Hidden"],
           "maxValue": 4,
           "minValue": 0,
           "controlType": "STATE"
@@ -3724,12 +3249,7 @@
         {
           "startValue": 3,
           "label": "Tone",
-          "stateLabels": [
-            "Natural",
-            "Cool",
-            "Warm",
-            "Hidden"
-          ],
+          "stateLabels": ["Natural", "Cool", "Warm", "Hidden"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE"
@@ -3757,10 +3277,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "WWWorld Form",
-          "stateLabels": [
-            "6",
-            "12"
-          ]
+          "stateLabels": ["6", "12"]
         }
       ]
     },
@@ -3775,14 +3292,7 @@
         {
           "startValue": 5,
           "label": "WWWorld",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE"
@@ -3801,11 +3311,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "WWWide Form",
-          "stateLabels": [
-            "4",
-            "6",
-            "12"
-          ],
+          "stateLabels": ["4", "6", "12"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -3825,14 +3331,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "WWWide",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ]
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"]
         }
       ]
     },
@@ -3847,10 +3346,7 @@
         {
           "startValue": 0,
           "label": "WWWeb Form",
-          "stateLabels": [
-            "3",
-            "6"
-          ],
+          "stateLabels": ["3", "6"],
           "maxValue": 1,
           "minValue": 0,
           "controlType": "STATE"
@@ -3868,14 +3364,7 @@
         {
           "startValue": 5,
           "label": "WWWeb",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE"
@@ -3893,14 +3382,7 @@
         {
           "startValue": 5,
           "label": "Ethereum",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE"
@@ -3917,14 +3399,7 @@
       "controls": [
         {
           "label": "Halving",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE",
@@ -3943,14 +3418,7 @@
         {
           "startValue": 5,
           "label": "Dots",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE"
@@ -3967,12 +3435,7 @@
       "controls": [
         {
           "label": "Ticks Form",
-          "stateLabels": [
-            "Three",
-            "Four",
-            "Six",
-            "Twelve"
-          ],
+          "stateLabels": ["Three", "Four", "Six", "Twelve"],
           "maxValue": 3,
           "minValue": 0,
           "controlType": "STATE",
@@ -3992,14 +3455,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "Ticks",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0
         }
@@ -4016,11 +3472,7 @@
         {
           "startValue": 1,
           "label": "Guards Form",
-          "stateLabels": [
-            "III",
-            "IV",
-            "VI"
-          ],
+          "stateLabels": ["III", "IV", "VI"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4041,14 +3493,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "Guards",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ]
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"]
         }
       ]
     },
@@ -4086,14 +3531,7 @@
       "controls": [
         {
           "label": "Spikes",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0,
           "controlType": "STATE",
@@ -4113,14 +3551,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "Pawns",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0
         }
@@ -4138,14 +3569,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "Miners",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0
         }
@@ -4163,14 +3587,7 @@
           "controlType": "STATE",
           "startValue": 5,
           "label": "Whales",
-          "stateLabels": [
-            "Blue",
-            "Dark",
-            "Gold",
-            "Pearl",
-            "Titanium",
-            "White"
-          ],
+          "stateLabels": ["Blue", "Dark", "Gold", "Pearl", "Titanium", "White"],
           "maxValue": 5,
           "minValue": 0
         }
@@ -4188,11 +3605,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "The Ether Form",
-          "stateLabels": [
-            "ETH",
-            "Genesis",
-            "The Bug"
-          ],
+          "stateLabels": ["ETH", "Genesis", "The Bug"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -4287,11 +3700,7 @@
         {
           "startValue": 0,
           "label": "The Sultan Form",
-          "stateLabels": [
-            "The Prime",
-            "The Skull King",
-            "The Vendetta"
-          ],
+          "stateLabels": ["The Prime", "The Skull King", "The Vendetta"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4336,11 +3745,7 @@
           "controlType": "STATE",
           "startValue": 2,
           "label": "The Eye",
-          "stateLabels": [
-            "White",
-            "Crimson",
-            "Hidden"
-          ],
+          "stateLabels": ["White", "Crimson", "Hidden"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -4358,10 +3763,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Base",
-          "stateLabels": [
-            "Photographer",
-            "Copper"
-          ],
+          "stateLabels": ["Photographer", "Copper"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -4473,11 +3875,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "Participant 9 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ]
+          "stateLabels": ["alive", "alternate", "dreams"]
         }
       ]
     },
@@ -4495,11 +3893,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "Participant 8 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ]
+          "stateLabels": ["alive", "alternate", "dreams"]
         }
       ]
     },
@@ -4514,11 +3908,7 @@
         {
           "startValue": 0,
           "label": "Participant 7 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4536,11 +3926,7 @@
         {
           "startValue": 2,
           "label": "Participant 6 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4559,11 +3945,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "Participant 5 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -4581,11 +3963,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "Participant 4 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0
         }
@@ -4602,11 +3980,7 @@
         {
           "startValue": 0,
           "label": "Participant 3 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4624,11 +3998,7 @@
         {
           "startValue": 1,
           "label": "Participant 2 (STATE)",
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "maxValue": 2,
           "minValue": 0,
           "controlType": "STATE"
@@ -4644,11 +4014,7 @@
       "masterTokenId": "QmSKyoSSGxWzZiEmBEwQS7g8GKHp4HMz4bvyULd811AydZ",
       "controls": [
         {
-          "stateLabels": [
-            "alive",
-            "alternate",
-            "dreams"
-          ],
+          "stateLabels": ["alive", "alternate", "dreams"],
           "label": "Participant 1 (STATE)",
           "maxValue": 2,
           "minValue": 0,
@@ -4704,10 +4070,7 @@
           "controlType": "STATE",
           "startValue": 1,
           "label": "Death_s Device (STATE)",
-          "stateLabels": [
-            "99 percent",
-            "Low Battery"
-          ],
+          "stateLabels": ["99 percent", "Low Battery"],
           "maxValue": 1,
           "minValue": 0
         }
@@ -4727,10 +4090,7 @@
           "controlType": "STATE",
           "startValue": 0,
           "label": "XCOPY (STATE)",
-          "stateLabels": [
-            "1",
-            "2"
-          ]
+          "stateLabels": ["1", "2"]
         },
         {
           "controlType": "VISIBILITY",
@@ -4947,10 +4307,7 @@
           "startValue": 0,
           "label": "ETH market (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "ETH in green",
-            "ETH in red"
-          ]
+          "stateLabels": ["ETH in green", "ETH in red"]
         }
       ]
     },
@@ -5077,10 +4434,7 @@
           "startValue": 0,
           "label": "Background (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Neon Circle",
-            "Neon Triangle"
-          ]
+          "stateLabels": ["Neon Circle", "Neon Triangle"]
         }
       ]
     },
@@ -5098,11 +4452,7 @@
           "startValue": 1,
           "label": "Legs (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Spider",
-            "Android",
-            "Cyborg"
-          ]
+          "stateLabels": ["Spider", "Android", "Cyborg"]
         }
       ]
     },
@@ -5120,12 +4470,7 @@
           "startValue": 2,
           "label": "Shoulder-Arms (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Atlas",
-            "Skull",
-            "Venom",
-            "Ancient"
-          ]
+          "stateLabels": ["Atlas", "Skull", "Venom", "Ancient"]
         }
       ]
     },
@@ -5143,12 +4488,7 @@
           "startValue": 0,
           "label": "Torso-Body (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Humanoid",
-            "Commander",
-            "Vyper",
-            "Kaizer"
-          ]
+          "stateLabels": ["Humanoid", "Commander", "Vyper", "Kaizer"]
         }
       ]
     },
@@ -5190,12 +4530,7 @@
           "startValue": 0,
           "label": "Accessories (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Medallion",
-            "Aurora",
-            "Emblem",
-            "Neon Cross"
-          ]
+          "stateLabels": ["Medallion", "Aurora", "Emblem", "Neon Cross"]
         }
       ]
     },
@@ -5237,11 +4572,7 @@
           "startValue": 0,
           "label": "BACKGROUND (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Background1",
-            "Background2",
-            "Background3"
-          ]
+          "stateLabels": ["Background1", "Background2", "Background3"]
         }
       ]
     },
@@ -5282,11 +4613,7 @@
           "startValue": 2,
           "label": "ROBO (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "BODY",
-            "BODY2",
-            "BODY3"
-          ]
+          "stateLabels": ["BODY", "BODY2", "BODY3"]
         }
       ]
     },
@@ -5304,10 +4631,7 @@
           "startValue": 1,
           "label": "MONEY (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "MONEY",
-            "MONEY"
-          ]
+          "stateLabels": ["MONEY", "MONEY"]
         }
       ]
     },
@@ -5325,11 +4649,7 @@
           "startValue": 0,
           "label": "Landscape (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Blue",
-            "Pink",
-            "Violet"
-          ]
+          "stateLabels": ["Blue", "Pink", "Violet"]
         }
       ]
     },
@@ -5347,10 +4667,7 @@
           "startValue": 0,
           "label": "Tomato_hits (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Hits01",
-            "Hits02"
-          ]
+          "stateLabels": ["Hits01", "Hits02"]
         },
         {
           "minValue": -150,
@@ -6340,10 +5657,7 @@
           "startValue": 1,
           "label": "background (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "bg1",
-            "bg2"
-          ]
+          "stateLabels": ["bg1", "bg2"]
         }
       ]
     },
@@ -6361,10 +5675,7 @@
           "startValue": 1,
           "label": "me_and_noor (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Hug",
-            "Boredom"
-          ]
+          "stateLabels": ["Hug", "Boredom"]
         }
       ]
     },
@@ -6382,10 +5693,7 @@
           "startValue": 1,
           "label": "street_dog (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Frightened",
-            "Angry"
-          ]
+          "stateLabels": ["Frightened", "Angry"]
         }
       ]
     },
@@ -6485,13 +5793,7 @@
           "startValue": 3,
           "label": "Palette (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Royal",
-            "Vibrant",
-            "Luscious",
-            "Nature",
-            "East"
-          ]
+          "stateLabels": ["Royal", "Vibrant", "Luscious", "Nature", "East"]
         }
       ]
     },
@@ -6585,11 +5887,7 @@
           "startValue": 2,
           "label": "BrushSize (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Small",
-            "Medium",
-            "Large"
-          ]
+          "stateLabels": ["Small", "Medium", "Large"]
         }
       ]
     },
@@ -6635,10 +5933,7 @@
           "startValue": 0,
           "label": "Leaf_02 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Positive Spider",
-            "Negative Turtle"
-          ]
+          "stateLabels": ["Positive Spider", "Negative Turtle"]
         },
         {
           "minValue": 0,
@@ -6663,10 +5958,7 @@
           "startValue": 0,
           "label": "Leaf_04 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Negative Cat",
-            "Positive Bee"
-          ]
+          "stateLabels": ["Negative Cat", "Positive Bee"]
         },
         {
           "minValue": 0,
@@ -6691,10 +5983,7 @@
           "startValue": 0,
           "label": "Leaf_05 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Positive Goat",
-            "Negative Moth"
-          ]
+          "stateLabels": ["Positive Goat", "Negative Moth"]
         },
         {
           "minValue": 0,
@@ -6719,10 +6008,7 @@
           "startValue": 0,
           "label": "Leaf_06 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Positive Mouse",
-            "Negative Cicada"
-          ]
+          "stateLabels": ["Positive Mouse", "Negative Cicada"]
         },
         {
           "minValue": 0,
@@ -6934,12 +6220,7 @@
           "startValue": 0,
           "label": "PEJ_CATS (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Chance",
-            "Flynn",
-            "Dusty",
-            "Pumpkin"
-          ]
+          "stateLabels": ["Chance", "Flynn", "Dusty", "Pumpkin"]
         }
       ]
     },
@@ -7043,10 +6324,7 @@
           "startValue": 1,
           "label": "MetaKitty (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "dance",
-            "sleep"
-          ]
+          "stateLabels": ["dance", "sleep"]
         },
         {
           "minValue": -800,
@@ -7115,12 +6393,7 @@
           "startValue": 3,
           "label": "QT_The_Curious (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Ready",
-            "Wait",
-            "Sniff",
-            "Bop"
-          ]
+          "stateLabels": ["Ready", "Wait", "Sniff", "Bop"]
         },
         {
           "minValue": -800,
@@ -7403,10 +6676,7 @@
           "startValue": 1,
           "label": "Pepito_Accessories (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Deal With It",
-            "Stay Safe"
-          ]
+          "stateLabels": ["Deal With It", "Stay Safe"]
         },
         {
           "minValue": 0,
@@ -7715,10 +6985,7 @@
           "startValue": 0,
           "label": "pr1mal_cypher cat_A (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Normal A",
-            "Normal B"
-          ]
+          "stateLabels": ["Normal A", "Normal B"]
         }
       ]
     },
@@ -7765,10 +7032,7 @@
           "startValue": 1,
           "label": "ruben_alexander_A (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Classic A",
-            "Classic B"
-          ]
+          "stateLabels": ["Classic A", "Classic B"]
         }
       ]
     },
@@ -7812,11 +7076,7 @@
           "startValue": 1,
           "label": "Heads (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Human head",
-            "Humanoid head",
-            "Robot head"
-          ]
+          "stateLabels": ["Human head", "Humanoid head", "Robot head"]
         }
       ]
     },
@@ -7834,12 +7094,7 @@
           "startValue": 1,
           "label": "Body+Clothes (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Body",
-            "Clothing",
-            "Cyborg body",
-            "Space suit"
-          ]
+          "stateLabels": ["Body", "Clothing", "Cyborg body", "Space suit"]
         }
       ]
     },
@@ -7884,10 +7139,7 @@
           "startValue": 1,
           "label": "VR_glasses (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Vr Glass 1.0",
-            "Futuristic vr headset"
-          ]
+          "stateLabels": ["Vr Glass 1.0", "Futuristic vr headset"]
         },
         {
           "minValue": 0,
@@ -8156,12 +7408,7 @@
           "startValue": 2,
           "label": "Trees (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Aralias",
-            "Acers",
-            "Albizias",
-            "Aspens"
-          ]
+          "stateLabels": ["Aralias", "Acers", "Albizias", "Aspens"]
         }
       ]
     },
@@ -8347,11 +7594,7 @@
           "startValue": 0,
           "label": "Background (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Day",
-            "Night",
-            "Sunset"
-          ]
+          "stateLabels": ["Day", "Night", "Sunset"]
         }
       ]
     },
@@ -8369,11 +7612,7 @@
           "startValue": 0,
           "label": "Stage (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Day",
-            "Night",
-            "Sunset"
-          ]
+          "stateLabels": ["Day", "Night", "Sunset"]
         }
       ]
     },
@@ -8391,11 +7630,7 @@
           "startValue": 1,
           "label": "MasterControl (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Day",
-            "Night",
-            "Sunset"
-          ]
+          "stateLabels": ["Day", "Night", "Sunset"]
         }
       ]
     },
@@ -8413,11 +7648,7 @@
           "startValue": 2,
           "label": "TheController (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Day",
-            "Night",
-            "Sunset"
-          ]
+          "stateLabels": ["Day", "Night", "Sunset"]
         }
       ]
     },
@@ -8435,11 +7666,7 @@
           "startValue": 1,
           "label": "Citizens (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Day",
-            "Night",
-            "Sunset"
-          ]
+          "stateLabels": ["Day", "Night", "Sunset"]
         },
         {
           "minValue": 0,
@@ -8567,11 +7794,7 @@
           "startValue": 1,
           "label": "pillars  (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Pillars",
-            "Pillars surreal",
-            "Pillars red"
-          ]
+          "stateLabels": ["Pillars", "Pillars surreal", "Pillars red"]
         }
       ]
     },
@@ -8637,12 +7860,7 @@
           "startValue": 3,
           "label": "tv_laptop_breakfast_painting (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "TV",
-            "LAPTOP",
-            "breakfast",
-            "painting and cup"
-          ]
+          "stateLabels": ["TV", "LAPTOP", "breakfast", "painting and cup"]
         }
       ]
     },
@@ -8660,11 +7878,7 @@
           "startValue": 0,
           "label": "Background  (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "background1",
-            "background2",
-            "background3"
-          ]
+          "stateLabels": ["background1", "background2", "background3"]
         }
       ]
     },
@@ -8776,11 +7990,7 @@
           "startValue": 0,
           "label": "extrasweaterandbeams (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "sweater1",
-            "sweater2",
-            "sweater3"
-          ]
+          "stateLabels": ["sweater1", "sweater2", "sweater3"]
         },
         {
           "minValue": -359,
@@ -8952,11 +8162,7 @@
           "startValue": 0,
           "label": "Centerpeople (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Nakamoto-Antonopoulos",
-            "Song-Shin",
-            "Dai-Stark"
-          ]
+          "stateLabels": ["Nakamoto-Antonopoulos", "Song-Shin", "Dai-Stark"]
         }
       ]
     },
@@ -9046,11 +8252,7 @@
           "startValue": 2,
           "label": "Satoshi_sPoster2 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Cypherpunkskull",
-            "C++",
-            "killthemiddleman"
-          ]
+          "stateLabels": ["Cypherpunkskull", "C++", "killthemiddleman"]
         }
       ]
     },
@@ -9068,12 +8270,7 @@
           "startValue": 2,
           "label": "Deskitems1 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "NEWSPAPER",
-            "BMONEY",
-            "BITGOLD",
-            "HASHCASH"
-          ]
+          "stateLabels": ["NEWSPAPER", "BMONEY", "BITGOLD", "HASHCASH"]
         }
       ]
     },
@@ -9091,10 +8288,7 @@
           "startValue": 0,
           "label": "Deskitems2 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "WhitePaper",
-            "HoneyBadger"
-          ]
+          "stateLabels": ["WhitePaper", "HoneyBadger"]
         }
       ]
     },
@@ -9112,10 +8306,7 @@
           "startValue": 1,
           "label": "deskitems3 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Fiattrashandtape",
-            "Mask"
-          ]
+          "stateLabels": ["Fiattrashandtape", "Mask"]
         }
       ]
     },
@@ -9133,13 +8324,7 @@
           "startValue": 2,
           "label": "Theme (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Home",
-            "North",
-            "Custard",
-            "Green",
-            "Cocoa"
-          ]
+          "stateLabels": ["Home", "North", "Custard", "Green", "Cocoa"]
         }
       ]
     },
@@ -9157,12 +8342,7 @@
           "startValue": 1,
           "label": "Expression (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Drop",
-            "Swirl",
-            "Angles",
-            "Blocks"
-          ]
+          "stateLabels": ["Drop", "Swirl", "Angles", "Blocks"]
         }
       ]
     },
@@ -9300,11 +8480,7 @@
           "startValue": 2,
           "label": "Trunk (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Watercolor",
-            "MSPaint",
-            "Tilt Brush"
-          ]
+          "stateLabels": ["Watercolor", "MSPaint", "Tilt Brush"]
         }
       ]
     },
@@ -9322,11 +8498,7 @@
           "startValue": 0,
           "label": "Pot (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Watercolor",
-            "Ceramic",
-            "Painter"
-          ]
+          "stateLabels": ["Watercolor", "Ceramic", "Painter"]
         }
       ]
     },
@@ -9794,10 +8966,7 @@
           "startValue": 0,
           "label": "PRIVATE_OLD_MAN (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "old man cables",
-            "old man cables lightmode"
-          ]
+          "stateLabels": ["old man cables", "old man cables lightmode"]
         },
         {
           "minValue": 0,
@@ -9845,10 +9014,7 @@
           "startValue": 0,
           "label": "PRIVATE_WOMAN (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "woman cables",
-            "woman cables lightmode"
-          ]
+          "stateLabels": ["woman cables", "woman cables lightmode"]
         },
         {
           "minValue": 0,
@@ -9918,11 +9084,7 @@
           "startValue": 1,
           "label": "CAMERA (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "cam normal",
-            "cam lunaris",
-            "cam solaris"
-          ]
+          "stateLabels": ["cam normal", "cam lunaris", "cam solaris"]
         },
         {
           "minValue": 0,
@@ -9979,11 +9141,7 @@
           "startValue": 0,
           "label": "Mountains (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Grid",
-            "Stone",
-            "Bone"
-          ]
+          "stateLabels": ["Grid", "Stone", "Bone"]
         }
       ]
     },
@@ -10077,11 +9235,7 @@
           "startValue": 1,
           "label": "Ground (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Metaverse",
-            "Mars",
-            "Sky"
-          ]
+          "stateLabels": ["Metaverse", "Mars", "Sky"]
         }
       ]
     },
@@ -10124,11 +9278,7 @@
           "startValue": 2,
           "label": "Structure (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Stuck in the Loop",
-            "Ascending",
-            "Devolving"
-          ]
+          "stateLabels": ["Stuck in the Loop", "Ascending", "Devolving"]
         }
       ]
     },
@@ -10183,14 +9333,7 @@
           "startValue": 5,
           "label": "Coldie (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Black",
-            "Green",
-            "Blue",
-            "Red",
-            "White",
-            "Gold"
-          ]
+          "stateLabels": ["Black", "Green", "Blue", "Red", "White", "Gold"]
         }
       ]
     },
@@ -11447,10 +10590,7 @@
           "startValue": 1,
           "label": "signature (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "sigLeft",
-            "sigRight"
-          ],
+          "stateLabels": ["sigLeft", "sigRight"],
           "maxValue": 1
         },
         {
@@ -11729,12 +10869,7 @@
           "startValue": 1,
           "label": "foregroundComputer (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "console",
-            "submit",
-            "mind",
-            "holy"
-          ],
+          "stateLabels": ["console", "submit", "mind", "holy"],
           "maxValue": 3
         },
         {
@@ -11768,12 +10903,7 @@
           "startValue": 0,
           "label": "Background",
           "controlType": "STATE",
-          "stateLabels": [
-            "Self-love",
-            "History",
-            "Sea",
-            "Stain"
-          ]
+          "stateLabels": ["Self-love", "History", "Sea", "Stain"]
         }
       ]
     },
@@ -11792,12 +10922,7 @@
           "startValue": 0,
           "label": "Pedestal",
           "controlType": "STATE",
-          "stateLabels": [
-            "The US",
-            "The UK",
-            "China",
-            "India"
-          ]
+          "stateLabels": ["The US", "The UK", "China", "India"]
         }
       ]
     },
@@ -11840,12 +10965,7 @@
           "startValue": 0,
           "label": "Bandana",
           "controlType": "STATE",
-          "stateLabels": [
-            "Water",
-            "Earth",
-            "Air",
-            "Fire"
-          ]
+          "stateLabels": ["Water", "Earth", "Air", "Fire"]
         }
       ]
     },
@@ -11864,12 +10984,7 @@
           "startValue": 0,
           "label": "Tapes",
           "controlType": "STATE",
-          "stateLabels": [
-            "Crime Scene",
-            "Caution",
-            "Danger",
-            "Warning"
-          ]
+          "stateLabels": ["Crime Scene", "Caution", "Danger", "Warning"]
         }
       ]
     },
@@ -11888,10 +11003,7 @@
           "startValue": 0,
           "label": "Puzzle9 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -11917,10 +11029,7 @@
           "startValue": 0,
           "label": "Puzzle8 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -11946,10 +11055,7 @@
           "startValue": 0,
           "label": "Puzzle7 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -11975,10 +11081,7 @@
           "startValue": 0,
           "label": "Puzzle6 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12004,10 +11107,7 @@
           "startValue": 0,
           "label": "Puzzle5 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12033,10 +11133,7 @@
           "startValue": 0,
           "label": "Puzzle4 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12062,10 +11159,7 @@
           "startValue": 0,
           "label": "Puzzle3 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12091,10 +11185,7 @@
           "startValue": 0,
           "label": "Puzzle2 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12120,10 +11211,7 @@
           "startValue": 0,
           "label": "Puzzle1 (STATE)",
           "controlType": "STATE",
-          "stateLabels": [
-            "Standard",
-            "Outline"
-          ]
+          "stateLabels": ["Standard", "Outline"]
         },
         {
           "minValue": -359,
@@ -12167,11 +11255,7 @@
           "startValue": 0,
           "label": "Tablecloth",
           "controlType": "STATE",
-          "stateLabels": [
-            "Patterned Lace",
-            "Fabric",
-            "Lace"
-          ]
+          "stateLabels": ["Patterned Lace", "Fabric", "Lace"]
         }
       ]
     },
@@ -12236,11 +11320,7 @@
           "startValue": 0,
           "label": "Tech Stack",
           "controlType": "STATE",
-          "stateLabels": [
-            "Memory",
-            "Capture",
-            "Listen"
-          ]
+          "stateLabels": ["Memory", "Capture", "Listen"]
         }
       ]
     },
@@ -12259,11 +11339,7 @@
           "startValue": 0,
           "label": "Fruit Stack",
           "controlType": "STATE",
-          "stateLabels": [
-            "Tropical Fruits",
-            "Citrus Fruits",
-            "Avocados"
-          ]
+          "stateLabels": ["Tropical Fruits", "Citrus Fruits", "Avocados"]
         }
       ]
     },
@@ -12282,12 +11358,7 @@
           "startValue": 0,
           "label": "Background",
           "controlType": "STATE",
-          "stateLabels": [
-            "Green BG",
-            "Orange BG",
-            "Yellow BG",
-            "Purple BG"
-          ]
+          "stateLabels": ["Green BG", "Orange BG", "Yellow BG", "Purple BG"]
         }
       ]
     },
@@ -12425,12 +11496,7 @@
           "startValue": 0,
           "label": "Happy Bug",
           "controlType": "STATE",
-          "stateLabels": [
-            "Big Mouth",
-            "Bug Gone",
-            "Closed",
-            "Small Mouth"
-          ]
+          "stateLabels": ["Big Mouth", "Bug Gone", "Closed", "Small Mouth"]
         }
       ]
     },
@@ -12475,11 +11541,7 @@
           "startValue": 0,
           "label": "Walking Away From Omelas",
           "controlType": "STATE",
-          "stateLabels": [
-            "Beldene",
-            "Athshe",
-            "Gde"
-          ]
+          "stateLabels": ["Beldene", "Athshe", "Gde"]
         }
       ]
     },
@@ -12498,11 +11560,7 @@
           "startValue": 0,
           "label": "Walled in",
           "controlType": "STATE",
-          "stateLabels": [
-            "Hands",
-            "Dragon vs Sea Serpent",
-            "Northern Lights"
-          ]
+          "stateLabels": ["Hands", "Dragon vs Sea Serpent", "Northern Lights"]
         }
       ]
     },
@@ -12521,11 +11579,7 @@
           "startValue": 0,
           "label": "The Realms",
           "controlType": "STATE",
-          "stateLabels": [
-            "01_NORMAL",
-            "02_NORMAL",
-            "03_NORMAL"
-          ]
+          "stateLabels": ["01_NORMAL", "02_NORMAL", "03_NORMAL"]
         }
       ]
     },
@@ -12544,11 +11598,7 @@
           "startValue": 0,
           "label": "Sometimes",
           "controlType": "STATE",
-          "stateLabels": [
-            "The Look",
-            "The Scene",
-            "The Smile"
-          ]
+          "stateLabels": ["The Look", "The Scene", "The Smile"]
         }
       ]
     },
@@ -12590,11 +11640,7 @@
           "startValue": 0,
           "label": "A study of group and structure.",
           "controlType": "STATE",
-          "stateLabels": [
-            "01_NORMAL",
-            "02_NORMAL",
-            "03_NORMAL"
-          ]
+          "stateLabels": ["01_NORMAL", "02_NORMAL", "03_NORMAL"]
         }
       ]
     },
@@ -12613,11 +11659,7 @@
           "startValue": 0,
           "label": "Les Nachtamouilles",
           "controlType": "STATE",
-          "stateLabels": [
-            "Nachtamo",
-            "Nachtamy",
-            "Nachtamouille"
-          ]
+          "stateLabels": ["Nachtamo", "Nachtamy", "Nachtamouille"]
         }
       ]
     },
@@ -12636,11 +11678,7 @@
           "startValue": 0,
           "label": "Human behind the Code",
           "controlType": "STATE",
-          "stateLabels": [
-            "Made By Humans",
-            "Made By Satoshi",
-            "Fear me Humans"
-          ]
+          "stateLabels": ["Made By Humans", "Made By Satoshi", "Fear me Humans"]
         }
       ]
     },
@@ -12682,11 +11720,7 @@
           "startValue": 0,
           "label": "My work is Mr Bitey Art",
           "controlType": "STATE",
-          "stateLabels": [
-            "01_NORMAL",
-            "02_NORMAL",
-            "03_NORMAL"
-          ]
+          "stateLabels": ["01_NORMAL", "02_NORMAL", "03_NORMAL"]
         }
       ]
     },
@@ -12705,11 +11739,7 @@
           "startValue": 0,
           "label": "Furies",
           "controlType": "STATE",
-          "stateLabels": [
-            "Allecto",
-            "Megaera",
-            "Tisiphone"
-          ]
+          "stateLabels": ["Allecto", "Megaera", "Tisiphone"]
         }
       ]
     },
@@ -12728,10 +11758,7 @@
           "startValue": 0,
           "label": "Essence Within",
           "controlType": "STATE",
-          "stateLabels": [
-            "1",
-            "2"
-          ]
+          "stateLabels": ["1", "2"]
         }
       ]
     },
@@ -12750,10 +11777,7 @@
           "startValue": 0,
           "label": "Hidden Struggle",
           "controlType": "STATE",
-          "stateLabels": [
-            "Angel",
-            "Devil"
-          ]
+          "stateLabels": ["Angel", "Devil"]
         }
       ]
     },
@@ -12772,11 +11796,7 @@
           "startValue": 0,
           "label": "Aliens",
           "controlType": "STATE",
-          "stateLabels": [
-            "Alien #1",
-            "Alien #2",
-            "Alien #3"
-          ]
+          "stateLabels": ["Alien #1", "Alien #2", "Alien #3"]
         }
       ]
     },
@@ -12795,10 +11815,7 @@
           "startValue": 0,
           "label": "Duo layer by ejthek and Benza",
           "controlType": "STATE",
-          "stateLabels": [
-            "Cogitatio-Sapiens",
-            "Wedgiewoman"
-          ]
+          "stateLabels": ["Cogitatio-Sapiens", "Wedgiewoman"]
         }
       ]
     },
@@ -12817,12 +11834,7 @@
           "startValue": 0,
           "label": "Chao",
           "controlType": "STATE",
-          "stateLabels": [
-            "New Moon",
-            "Abnormal",
-            "Transparency",
-            "New Normal"
-          ]
+          "stateLabels": ["New Moon", "Abnormal", "Transparency", "New Normal"]
         }
       ]
     },
@@ -12841,11 +11853,7 @@
           "startValue": 0,
           "label": "The Art of War",
           "controlType": "STATE",
-          "stateLabels": [
-            "Pop",
-            "Reflection",
-            "Observer"
-          ]
+          "stateLabels": ["Pop", "Reflection", "Observer"]
         }
       ]
     },
@@ -12888,10 +11896,7 @@
           "startValue": 0,
           "label": "Duo layer by Benza and ejthek",
           "controlType": "STATE",
-          "stateLabels": [
-            "Wedgieman ",
-            "Actio-Statim"
-          ]
+          "stateLabels": ["Wedgieman ", "Actio-Statim"]
         }
       ]
     },
@@ -12910,11 +11915,7 @@
           "startValue": 0,
           "label": "Warrior",
           "controlType": "STATE",
-          "stateLabels": [
-            "Warrior 1",
-            "Warrior 2",
-            "Warrior 3"
-          ]
+          "stateLabels": ["Warrior 1", "Warrior 2", "Warrior 3"]
         }
       ]
     },
@@ -12933,11 +11934,7 @@
           "startValue": 0,
           "label": "Freedom is a constant struggle.",
           "controlType": "STATE",
-          "stateLabels": [
-            "Angela Davis",
-            "Rosa Parks",
-            "Harriet Tubman"
-          ]
+          "stateLabels": ["Angela Davis", "Rosa Parks", "Harriet Tubman"]
         }
       ]
     },
@@ -12956,11 +11953,7 @@
           "startValue": 0,
           "label": "Nyx",
           "controlType": "STATE",
-          "stateLabels": [
-            "1",
-            "2",
-            "3"
-          ]
+          "stateLabels": ["1", "2", "3"]
         }
       ]
     },
@@ -12979,11 +11972,7 @@
           "startValue": 0,
           "label": "Being",
           "controlType": "STATE",
-          "stateLabels": [
-            "Fab1",
-            "Fab2",
-            "Fab3"
-          ]
+          "stateLabels": ["Fab1", "Fab2", "Fab3"]
         }
       ]
     },
@@ -13025,11 +12014,7 @@
           "startValue": 0,
           "label": "Monsters",
           "controlType": "STATE",
-          "stateLabels": [
-            "$GME",
-            "Monsters",
-            "Egg Layer"
-          ]
+          "stateLabels": ["$GME", "Monsters", "Egg Layer"]
         }
       ]
     },
@@ -13081,10 +12066,7 @@
           "startValue": 0,
           "label": "Windows to the Soul",
           "controlType": "STATE",
-          "stateLabels": [
-            "Clouds",
-            "Lines"
-          ]
+          "stateLabels": ["Clouds", "Lines"]
         }
       ]
     },
@@ -13103,11 +12085,7 @@
           "startValue": 0,
           "label": "Cohesion",
           "controlType": "STATE",
-          "stateLabels": [
-            "Samuryze",
-            "Sakura",
-            "Unravelling"
-          ]
+          "stateLabels": ["Samuryze", "Sakura", "Unravelling"]
         }
       ]
     },
@@ -13149,10 +12127,7 @@
           "startValue": 0,
           "label": "Two Ladies",
           "controlType": "STATE",
-          "stateLabels": [
-            "Urani Oni",
-            "Lady Coq"
-          ]
+          "stateLabels": ["Urani Oni", "Lady Coq"]
         }
       ]
     },
@@ -13171,11 +12146,7 @@
           "startValue": 0,
           "label": "The Objects of Enlightenment",
           "controlType": "STATE",
-          "stateLabels": [
-            "Harmony",
-            "Tranquility",
-            "Solace"
-          ]
+          "stateLabels": ["Harmony", "Tranquility", "Solace"]
         }
       ]
     },
@@ -13240,11 +12211,7 @@
           "startValue": 0,
           "label": "Workwear, Regal, Tron",
           "controlType": "STATE",
-          "stateLabels": [
-            "Workwear",
-            "Regal",
-            "Tron"
-          ]
+          "stateLabels": ["Workwear", "Regal", "Tron"]
         }
       ]
     },
@@ -13267,6 +12234,1784 @@
       "artistName": "Natacha Einat",
       "masterTokenId": "QmfADJc5WD8T5Ttb7NNdYbF6hCxDkJrqGUqyA1WjPt5jgg",
       "controls": []
+    },
+    {
+      "tokenId": "1593",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "The Choir",
+      "description": "The Choir represents Amelia Earhart and sings her alleged final distress calls. The owner of this Stem will control the acoustic quality of the choir.\n\nVariant 0: Studio\nVariant 1: Concert Hall\nVariant 2: Directional",
+      "imageUrl": "https://ipfs.io/ipfs/QmfZvBUgEQDWxpgbGkpj33dRZrgz8sh9ViDQmZocPJAQJ5",
+      "masterTokenId": "QmY9dfJHH8Q5S2uLbKVspY4rFNCvUdxmnnSQG7q1vWWfGs",
+      "metadataUri": "QmPAgr5Kt7kV46dH3n3Hr7nWfscAnW1ZCvB2BB6umjZiiy",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Stem_Mix_0 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Studio", "Concert Hall", "Directional"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Verdigris Ensemble"
+    },
+    {
+      "tokenId": "1594",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Betty's Voice",
+      "description": "In her own words, Betty's Voice gives the first-hand account of what she heard as a teenager in 1937. The owner of Betty’s Voice Layer will provide different perspectives of the experience.\n\nVariant 0: Klenck's interpretation\nVariant 1: Earhart's Struggle\nVariant 2: Noonan's Mindset",
+      "imageUrl": "https://ipfs.io/ipfs/QmSf3jeamEdpXDmhBk1VjVYnQE6RsdA4uk5T4Gfb7JdXcN",
+      "masterTokenId": "QmY9dfJHH8Q5S2uLbKVspY4rFNCvUdxmnnSQG7q1vWWfGs",
+      "metadataUri": "QmdPTaxzzFVmnnhYGmrvMR7NAE7tGkXNdYcMZ9fCY3LGwS",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Stem_Mix_1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Klenck's Interpretation",
+            "Earhart's Struggle",
+            "Noonan's Mindset"
+          ]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Verdigris Ensemble"
+    },
+    {
+      "tokenId": "1595",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Betty's Choir",
+      "description": "Betty's Choir is the voice of Betty Klenck stretched out into singing notes.The owner of Betty’s Choir Layer will control the overall emotional state of the music.\n\nVariant 0: Reminiscence\nVariant 1: Distress\nVariant 2: Cry",
+      "imageUrl": "https://ipfs.io/ipfs/QmTqkdZmVHrhXqysHyxtyWXFeb7FgTCxMYwKAHQY7jXgUP",
+      "masterTokenId": "QmY9dfJHH8Q5S2uLbKVspY4rFNCvUdxmnnSQG7q1vWWfGs",
+      "metadataUri": "QmZBcBF3qBGJT5jRzhcDnWPHJAETJmprwKEdqitbiAGca3",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Stem_Mix_2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Reminiscence", "Distress", "Cry"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Verdigris Ensemble"
+    },
+    {
+      "tokenId": "1596",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Betty's Radio",
+      "description": "Betty's Radio is a series of jazz standards that seamlessly weave in and out of the music. The owner of Betty’s Radio will control which five unique Jazz standards of the time period will appear throughout the work. Jazz Standards are adaptations of what would have been heard on the radio during that time. They may include the following songs:\n\nBetty's Radio is a series of jazz standards that seamlessly weave in and out of the music. The owner of Betty’s Radio will control which five unique Jazz standards of the time period will appear throughout the work. Jazz Standards are adaptations of what would have been heard on the radio during that time. They may include the following songs:\n\nThe ABCs of Love\nOn A Starry Night\nI'm Green When I'm Blue\nI Like Music When You Swing It\nFor One Day\n\nVariant 0: Jazz #1\nVariant 1: Jazz #2\nVariant 2: Jazz #3",
+      "imageUrl": "https://ipfs.io/ipfs/QmNLiDyohQuoxQobmNDVApb6m8Go6rupJRdjhPRMRBGJDJ",
+      "masterTokenId": "QmY9dfJHH8Q5S2uLbKVspY4rFNCvUdxmnnSQG7q1vWWfGs",
+      "metadataUri": "QmfPmu2nQJcwPxSvoHZurGz11PeHCvdt8j2ZdacAZrSyHb",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Stem_Mix_3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Jazz #1", "Jazz #2", "Jazz #3"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Verdigris Ensemble"
+    },
+    {
+      "tokenId": "1598",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Piano",
+      "description": "The backbone of the song. A two chord structure that grounds the song in repetition while allowing your mind to wander to other details. It includes two possible arrangements, one piano and one electric piano. ",
+      "imageUrl": "https://ipfs.io/ipfs/QmU6Ek23V3V9qYZ1XNYcVEkTc5bPVEzt12XCtAaV5JLJ2v",
+      "masterTokenId": "QmcfAF1uQLy43ykPvH6gtBL6ECCZNSXoU1XN2aK4tsVPxZ",
+      "metadataUri": "QmXzgVZQY7Drq6Kt4sQDUxLonMkcDiTZ1iq3eaNvqYuT3e",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Stem_Mix_0 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Variant 0", "Variant 1"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RAC"
+    },
+    {
+      "tokenId": "1599",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Guitar",
+      "description": "The star of the song. Pulling from folk music influences, heavily layered but with one cohesive voice. It includes two possible arrangement options. ",
+      "imageUrl": "https://ipfs.io/ipfs/QmXDPvrXAs6kZWtKPa4TGCh6xvFUy1hyYKzVRUTAsr5EZH",
+      "masterTokenId": "QmcfAF1uQLy43ykPvH6gtBL6ECCZNSXoU1XN2aK4tsVPxZ",
+      "metadataUri": "Qme5ETtQYAiLewHpKZGieBwWyd5M8WjvEBdRZBjWGLf9qG",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Stem_Mix_1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Variant 0", "Variant 1"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RAC"
+    },
+    {
+      "tokenId": "1600",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Drone",
+      "description": "Similar to how the piano gives this a backbone, this layer gives it all the texture and ambiance to let the other elements shine. It includes three different layers which vary in intensity.",
+      "imageUrl": "https://ipfs.io/ipfs/QmP9kgoWkj98s5zxRj4gqqRN6QfQzYkSHviFyrYGttfeti",
+      "masterTokenId": "QmcfAF1uQLy43ykPvH6gtBL6ECCZNSXoU1XN2aK4tsVPxZ",
+      "metadataUri": "QmbjiqKLMpyv68r3SPuPm9H7mogmiKVgaUmy5v3BgWCMo8",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Stem_Mix_2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Variant 0", "Variant 1", "Variant 2"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RAC"
+    },
+    {
+      "tokenId": "1601",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Synth",
+      "description": "The melody. It's important to keep this simple and memorable. Played by two vintage synthesizers characterized by their slightly detuned sound. Like an old friend struggling to keep up. It includes two different iterations with different synths. Roland Juno-60 and Roland Jupiter-8",
+      "imageUrl": "https://ipfs.io/ipfs/QmaumgJ24ZQcC7EuqeMjMsJymJALoRMw8mDxcTuTVx6zUo",
+      "masterTokenId": "QmcfAF1uQLy43ykPvH6gtBL6ECCZNSXoU1XN2aK4tsVPxZ",
+      "metadataUri": "QmdNTvtJD2uRVwbfkGnLooadB3cDTZcUZuPL5885NGYniY",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Stem_Mix_3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Variant 0", "Variant 1"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RAC"
+    },
+    {
+      "tokenId": "1603",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Beats and Variations",
+      "description": "Seven centuries after its creation comes the blockchain implementation of the 'theme and variations' musical structure. Kindly and rightly inspired by the intricate magic of our times.",
+      "imageUrl": "https://ipfs.io/ipfs/QmRp4i2xxdYiFa1KxzcCHDLuBCRb42wgDjqtpMj8dp9Np8",
+      "masterTokenId": "QmWHjFafuzt8KXMK2Mxq2jXVh6PuEKgjxbJkGyetZuhK4k",
+      "metadataUri": "QmWyZyXTPMXr6jet6EAZJMuRaZEHnLgeywrjnwWGrhcNeY",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["B1", "B2", "B3"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Mighty33, DIGITAL"
+    },
+    {
+      "tokenId": "1604",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Composable Vocals",
+      "description": "Three verses inspired by the Beats and Variations, guided by love and self-empowerment, and written for composability.",
+      "imageUrl": "https://ipfs.io/ipfs/QmfL897MKUPrphZCUDTvCXR2zy1s9DvDoE2FJvjsyF38Bk",
+      "masterTokenId": "QmWHjFafuzt8KXMK2Mxq2jXVh6PuEKgjxbJkGyetZuhK4k",
+      "metadataUri": "Qma9Hz5Y5daqJRzzwzF9fRrRSSzhdN9cwojTXETCBPMmEn",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["V1", "V2", "V3"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "DIGITAL, Mighty33"
+    },
+    {
+      "tokenId": "1606",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Vocals",
+      "description": "This stem controls the vocals of Leaving, as well as the positioning of the characters in the corresponding visual artwork. There is a choice amongst 5 different states sang by 3 different singers (Henry Spychalski, Tallulah Eden and Seth Evans), each with a different set of lyrics, emotions and perspective.",
+      "imageUrl": "https://ipfs.io/ipfs/QmSGsKmWgjZQa2hfCRAje37S3qsTXKE16YuXjwKfwn2R7Q",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmVWYdZKqPXaaRFNAyAn1S7VAXetSBz5EDcsjhcEtYiQnf",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Container1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Bargaining",
+            "Denial",
+            "Reintegration",
+            "Resistance",
+            "Resignation"
+          ]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1607",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Lead",
+      "description": "This stem controls the lead melodic instrument of Leaving, as well as the clothing of the characters in the corresponding visual artwork. There is a choice amongst 4 different states, each corresponding to a different instrument, melody and emotion (or absence thereof).",
+      "imageUrl": "https://ipfs.io/ipfs/QmenQcGuNM1eHq8VH3x1mtUAC3ZxxCGmuvX4376uN6wiSp",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmXtqJyuSmcZJL8szTpAzf3sroN7Wr4N1L8EDHfZeBrkzP",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Container2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Absence", "Guilt", "Mania", "Melancholy"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1608",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Chords",
+      "description": "This stem controls the backing musical instrument of Leaving, as well as the state of the flora in the corresponding visual artwork. There is a choice amongst 5 different states, each corresponding to a different instrument, timbre and emotion (or lack thereof).",
+      "imageUrl": "https://ipfs.io/ipfs/QmfQaGhsK7idnesoNc1ApREjsBSvAq9omJYVbWscXm8cjo",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmUA7Tt7hRbTR7RxQkHcjvgU1zx8L3r5bEw3yddFaUdCT7",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Container3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Acceptance", "Catharsis", "Hope", "Lack", "Longing"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1609",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Bass",
+      "description": "This stem controls the lower pitches of Leaving, as well as the state of the trees in the corresponding visual artwork. There is a choice amongst 4 different states, each corresponding to a different bass, rhythm and emotion (or lack thereof).",
+      "imageUrl": "https://ipfs.io/ipfs/QmPJ5AD1Up6xA5B2xJELrA9ntahVasRjXVjhitkiMGw7Ku",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmeSXwLDr9dg73DgpqUbSj9874SZazrKMzuApKq5ttwuvz",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Container4 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Despair", "Emptiness", "Forgiveness", "Lust"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1610",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Drums",
+      "description": "This stem controls the rhythm and drums of Leaving, as well as the background in the corresponding visual artwork. There is a choice amongst 4 different states, each corresponding to a different drum pattern, instrument and emotion (or loss thereof).",
+      "imageUrl": "https://ipfs.io/ipfs/QmaWq9NmEqPG3EwhGqaAbhS5esdvpHv7mtV1RVdWTzbZMz",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmbguF7Y5Km495qDB4Ezh4Gj7yDrHGQUawT2uFZA38ud7K",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Container5 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Affection", "Grief", "Inertia", "Limerance"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1611",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "FX",
+      "description": "This stem controls the musical effects of Leaving, as well as the band and song logo in the corresponding visual artwork. There is a choice amongst 4 different states, each corresponding to a different set of effects, sounds and feelings (or non-existence thereof).",
+      "imageUrl": "https://ipfs.io/ipfs/QmU5SDx6cpbPW9bmzpptqJ4fmEDSpSLxhVxj1b1TBsBwks",
+      "masterTokenId": "QmY6uZQZfxuTvFcjD6DE6ZzvNwhbrookMRp9asWAPMVUWT",
+      "metadataUri": "QmZ7ZU1C2Auv5BZ5EPdHWhQHUg6BTYn5RBcNNfxngLRZeu",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Container6 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Loss", "Paranoia", "Relief", "Dejection"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "HMLTD"
+    },
+    {
+      "tokenId": "1697",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Money ₿adger Music",
+      "description": "The three stems represent different moods. One eerie, one more soulful, and one that is an actual melody pulled from ₿itcoin block #683792 by ₿itcoin Audio. He sent me a few fragments of the sounds and then it was formed into the synthetic sounds you hear when the layer is selected. Long time collaborator and friend, Mister Wise, gave the stems a final mix down and lended some sound to the ₿itcoin audio as well. ",
+      "imageUrl": "https://ipfs.io/ipfs/QmW3eYW9bUEYoWqwfXbxGiBmRth1hQPA8CSD7ZNmRucw1z",
+      "masterTokenId": "QmZ1qsSbpdFXa4xCcYLRYZs3Ps1RbtVsCa2AEK66XPGqcQ",
+      "metadataUri": "Qmf5Hp9AgYJ7hEAXGvnyFDoBx77GA1eUmdH1U9pgZBurz3",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Music 1", "Music 2", "Music 3"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RARE SCRILLA"
+    },
+    {
+      "tokenId": "1698",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Money ₿adger ₿eats",
+      "description": "The beats are all represented visually by different analog drum machines. The MPC 2000XL, SP404, and ₿oss DR- 550 beat machines are all legendary production boxes. I crafted the drums to be tight, looser and loosest. ",
+      "imageUrl": "https://ipfs.io/ipfs/QmYJ5sS5ZmrB96HzPRGAV1B6SZDVC1JBifuHZPNTcypM35",
+      "masterTokenId": "QmZ1qsSbpdFXa4xCcYLRYZs3Ps1RbtVsCa2AEK66XPGqcQ",
+      "metadataUri": "QmRpoN1rywo6tQyi4osspecRomgx7gP2StCNHJSuUY2Wmx",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Drum 1", "Drum 2", "Drum 3"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RARE SCRILLA"
+    },
+    {
+      "tokenId": "1699",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Money ₿adger Raps",
+      "description": "Each MC was given a theme, one “grimy”, one “rug pull” and one “have fun staying poor.” ₿orn Unique and Kaimbr throw darts all over the \"Proof Of Work (Potomac Kings)\" track, Willie Waze breaks down crypto scams on \"Rug Pull,\" and Kane Mayfield steals all yer $SUSHI, & collects weak- handed ₿itcoin UTXOs on \"Cryptnology.\"",
+      "imageUrl": "https://ipfs.io/ipfs/QmaXxi7TGj1cyomq4AsTuWebS9FHfFHZpAawtzspDb3AHR",
+      "masterTokenId": "QmZ1qsSbpdFXa4xCcYLRYZs3Ps1RbtVsCa2AEK66XPGqcQ",
+      "metadataUri": "QmWC4M4suY2tiHM9v9HJ3xTpMDWazcQVAz7ETvjHsHbFnD",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["BU and Kaimbr", "Kane", "Waze"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "RARE SCRILLA"
+    },
+    {
+      "tokenId": "1701",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "One",
+      "description": "(I)\nShow me the way.\n47''- 2'34''",
+      "imageUrl": "https://ipfs.io/ipfs/QmYKfb1nFd5WkNAyTiXhGSqxJpwxgNdFSHLVw1s5AMYiN3",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmWM3JK9qREzKUgwfd4mcywQpwF3xBgRnd6htx8ccbkehy",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1702",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Two",
+      "description": "(II)\nI do follow.\n47''- 2'34''",
+      "imageUrl": "https://ipfs.io/ipfs/QmfRYFEycbJgLpQ4CbnA5dJ8sE4btR3gvnDN2e9ynXc29g",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmaiupZm6dYW9vgM1sz9Wne8PKfwk3S8iCYiAYQgC8LHNg",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1703",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Three",
+      "description": "(III)\nCan you see me?\n58'' - 2'17''",
+      "imageUrl": "https://ipfs.io/ipfs/QmQ8irp5MkEgV76cbqtmPotwv9TqVhfkfEZzhyaUDt7yys",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmNNr39V8eQZ5D1hU3rFVWchbTNez3p5NUSQcvK5WpJPyV",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1704",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Four",
+      "description": "(IV)\nPatiently waiting.\n59'' - 2'43''",
+      "imageUrl": "https://ipfs.io/ipfs/Qma1D5PvsqjEUhPv4LuDyMFQEU9YVf3FMV77jwjh6y6rWj",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmPzfFwmuUo3EPJiTVeVsxB4BGQ8xUW71icFTwucpqioYo",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container4 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1705",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Five",
+      "description": "(V)\nWhispers in the night.\n0''- 50'', 2'41''- 2'58''",
+      "imageUrl": "https://ipfs.io/ipfs/QmRguFMg8PaV2EAF5kvp8EkLzJrhbE2NyQFbxG8P9sTbLg",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmWX14E9atCUz3k5qX4aLPxKvJF5L2UyY9X1GHMkYnAHLt",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container5 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1706",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Six",
+      "description": "(VI)\nSouls are flying up in the sky.\n26''- 48'', 2'36''- 2'58''",
+      "imageUrl": "https://ipfs.io/ipfs/QmaHKafyFouthXGRAhGuM1uny3Bk5vjfmiZQftsgkARCPu",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmREUPQjYrAXGAhC5mj4RYXy1qGu92yLJcQ7hYxeshtUhX",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container6 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1707",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Seven",
+      "description": "(VII)\nWaiting.\n2'21''",
+      "imageUrl": "https://ipfs.io/ipfs/QmR4ivXVPSf48FRyBdNcpak5KK77XwzroqKf2s48gRVMre",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmW5tLxohy9HrKvFk1orLDAALr749bJBW72rdyBsFg1uV6",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container7 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1708",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Eight",
+      "description": "(VIII)\nI can not define it.\n2'21'' - 2'55''",
+      "imageUrl": "https://ipfs.io/ipfs/QmbubgbBWUjDfxfJPRAzkgckghQVFdF1DZLVGLFJ5XSyqt",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmZsWN2qAm6LdYG2ikQbvMKz1v49x4voMcGZMTt49HDQhL",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container8 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1709",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Nine",
+      "description": "(IX)\nOne last word.\n2'17'' - 2'55''",
+      "imageUrl": "https://ipfs.io/ipfs/QmXXmHih2xPCpRe27VkGkcfsYUCpQsSn6WxVL9bpjXd5L4",
+      "masterTokenId": "QmcncAQaeG61qrtr87c2ER52HjPkq5TDN9epDyhD5ZVMbY",
+      "metadataUri": "QmWmTmeoq2UEs8Aw9TMB46Vgks2UEejjUV8LzpX74vhoR6",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 8,
+          "startValue": 0,
+          "label": "Container9 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Lee Gaito"
+    },
+    {
+      "tokenId": "1711",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Polysynth #662D91",
+      "description": "This layer is the fundamental layer of the work grounded by low frequencies and a pure solid color. This layer has two states, On or Off.",
+      "imageUrl": "https://ipfs.io/ipfs/Qmf15RTcdsLWNXLCNowQrpmaRHZpn5wnLVsciMyqeQFCz9",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmdAYtVcHm8KgcTYR2ixG1hqc7TKKriiNadaFXxum5DMN1",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Container1 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Richie Hawtin, Matthew Hawtin"
+    },
+    {
+      "tokenId": "1712",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Phoscyon #1B1464",
+      "description": "This layer includes a rhythmic bassline and strong dark blue verticals which combine with the [Bassline] to provide the works stability.  This layer has two states, On or Off.",
+      "imageUrl": "https://ipfs.io/ipfs/QmdMTWjRFmvjZ16Wwb8oJPoGrmvV2g7BBb28pK1KCvN5EH",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmbtQTXDkSLQix86Tf35zvA8MxPv4ptkqamyEkFPsAiZfi",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Container2 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Richie Hawtin, Matthew Hawtin"
+    },
+    {
+      "tokenId": "1713",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Polymer #29ABE2",
+      "description": "This middle layer features a deep vibrating analog swell and light blue rectangles adding warmth and dimension to the work.  This layer has three states.  On, Off and an Effects only state which pushes the layer deeper into the composition.",
+      "imageUrl": "https://ipfs.io/ipfs/QmduabnXupwYxStqYAb1Nfwpvkurz4aUyKMtX7s89fVKFp",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmRyzGsVtPwjJuj14E1Q9tcn4Q78Yz4mUPYz2mFJywfQQ1",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container3 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On", "EFX Only"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Richie Hawtin, Matthew Hawtin"
+    },
+    {
+      "tokenId": "1714",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "D50 #0071BC",
+      "description": "This emotive layer features uplifting chords and strong blue angles to the work. This layer has three states.  On, Off and an Effects only state which pushes the layer deeper into the composition.",
+      "imageUrl": "https://ipfs.io/ipfs/QmbPHcLHBEYZYThQw6okvZh3f7o2cY94sEMyAY8PXhR7UM",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmYAbem8vMB3vjqEQedTu2T53NgRh3uACmxquK4wS8GZ5r",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Container4 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On", "EFX Only"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Richie Hawtin, Matthew Hawtin"
+    },
+    {
+      "tokenId": "1715",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Phoscyon A #FFF100",
+      "description": "Each of the polyrhythmic melodic layers interact which each other creating varying different melodic outcomes and are each represented by energetic yellow squares.  Melody A = Square Left, Melody B = Square Middle Left, Melody C = Square Middle Right, Melody D = Square Right.  Each Melody layer has two states, On or Off.",
+      "imageUrl": "https://ipfs.io/ipfs/QmZBXvzet5hrsuZt4mTbHom2tr7neUVwhoEGoK6whabqMq",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmPhdfACr4WYgANP6Fa9dz2WV2TyvCMrfqKGUGPcLyciBz",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Container5 (STATE)",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "original-stem-metadata",
+      "artistName": "Richie Hawtin, Matthew Hawtin"
+    },
+    {
+      "tokenId": "1716",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "0",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmYEJuJqme4HmKGkQe6HhKHghCEj7eJupgmYSWRJFoVMXM",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmQQWYD1LHc18SLcohjLeDLS3rWXb3fXZLDdoWjUUbSxWx",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1717",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "0",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmYEJuJqme4HmKGkQe6HhKHghCEj7eJupgmYSWRJFoVMXM",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "Qma1QaaAvUYpVRZ5DYzkwUVhZHXY9sThKToZLRYtjUMytL",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1718",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "0",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmYEJuJqme4HmKGkQe6HhKHghCEj7eJupgmYSWRJFoVMXM",
+      "masterTokenId": "QmVawhrQLyqXfbpzrFLHgo23yRRhSFNtzRizgMqVHbBB7o",
+      "metadataUri": "QmQhFkuTEeNVYpNzsMULGjgekF2BsHEaNCP9wVTV4txkmM",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Off", "On"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1720",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Background",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQvdro9hwU62GVmtH6qpSgAuTavVtRh8kYhHdcEqozqNo",
+      "masterTokenId": "QmQDmZdqVGxjNhJRVA8Gvp7rM247gF2Nd6eEEdNckMx2ov",
+      "metadataUri": "QmcKahfjMHp5dLJJSKSAXfoC6LQEJwJtWSjX5YA51pFBML",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Pattern", "Yellow", "Mirror"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1721",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Border",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmZyswrke2jtSuHHtb2ZHb7CmhMPgJhjTS4UMf4zcfKP3G",
+      "masterTokenId": "QmQDmZdqVGxjNhJRVA8Gvp7rM247gF2Nd6eEEdNckMx2ov",
+      "metadataUri": "QmP85us2qADFpVcy4eij9a5Yx3z2715MA6wagSoXDVRHZi",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Butterfly", "Flying Machines", "Circles"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1722",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Dancer",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmcJHmnmNxRNvdDk2SasCz4cnqDToCrm3nM3KAAnWW1TAm",
+      "masterTokenId": "QmQDmZdqVGxjNhJRVA8Gvp7rM247gF2Nd6eEEdNckMx2ov",
+      "metadataUri": "QmNsLxeSVLmaLLBuP8PUqGe4Bz2ryHuTyBXcQhJPY9Qo1b",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Zoe", "Pixie", "May"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1746",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Base",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQtaL4KXcGchEZYJXfGoknJL9mWUSC6VTjgQFKjXarXh6",
+      "masterTokenId": "QmNhamNBhzkvRCY3EGf9i1iWPdL4hQbpj7muQtChmtSH5c",
+      "metadataUri": "QmUtDMN1CawkaUWfVABVnawHNTCQGU2qZuCc86RWbDGF8V",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["A", "B", "C"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1747",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Stem1",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmW9p5yy7ZVfVWwJJCD2CqAiZu1tjeP8fMTzBFn8eAdFra",
+      "masterTokenId": "QmNhamNBhzkvRCY3EGf9i1iWPdL4hQbpj7muQtChmtSH5c",
+      "metadataUri": "QmNbRRcSFq8b6qKc1ubt686eskpwGF9vWrduKzYMDsvCJM",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["A", "B", "C"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1748",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Stem2",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmZjqtnmnJQyPknKDLYZNeEUGuaZH36Jk841bKGboBo1xR",
+      "masterTokenId": "QmNhamNBhzkvRCY3EGf9i1iWPdL4hQbpj7muQtChmtSH5c",
+      "metadataUri": "QmdNd14TJo9SBj3tQ4RGhsTKRfdYWi3S9SoiqUcnwsij3F",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["A", "B", "C"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "1749",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Stem3",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmaSG4AqRDjLJYzBceX4VDchsfdsVUTtMiWEurBTXxLbPQ",
+      "masterTokenId": "QmNhamNBhzkvRCY3EGf9i1iWPdL4hQbpj7muQtChmtSH5c",
+      "metadataUri": "Qmf44y89A4hVq91oegYE3YCdaqomkZpaw2bST2PbCEsK6g",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["A", "B", "C"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2270",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "LEAD",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmUnRFDx8NcrotMoqtGhWQMFonWVkaAck2UZzBwBq4zSXM",
+      "masterTokenId": "QmbbFGP5HmWPNQyrJhAbfR3SuaVQWK4MdEqarTe1n59WCW",
+      "metadataUri": "QmVxngyzGK2VXy7ZzCE4gESeUhjUnUFwRczqzmTqzsuctp",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Summer", "Transition", "Winter"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2271",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "BASE",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmWYQs3oGaPTCYDuiPUBq8ukFGE2oNLiDQCFrFN9Aof8BS",
+      "masterTokenId": "QmbbFGP5HmWPNQyrJhAbfR3SuaVQWK4MdEqarTe1n59WCW",
+      "metadataUri": "QmcdcUkARizy8CNW1Afh8UkTE5tK3zaYtfamynNR8vdySW",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Summer", "Transition", "Winter"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2272",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "VOCAL",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmbkMHxzEewhXVdQuiVXboTXngypUq33SD6mAQMFDAtgLt",
+      "masterTokenId": "QmbbFGP5HmWPNQyrJhAbfR3SuaVQWK4MdEqarTe1n59WCW",
+      "metadataUri": "QmUy5mp7ytKLqpU3uqLiWHahqCZtDPwdCYZxsxoq3viMin",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Summer", "Transition", "Winter"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2273",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "AMBIENCE ",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQM5ok9quXQTYjYRyY2rAro9QFfCmiNm626V9ebCKFhtZ",
+      "masterTokenId": "QmbbFGP5HmWPNQyrJhAbfR3SuaVQWK4MdEqarTe1n59WCW",
+      "metadataUri": "QmRuobEyhpmR5YwE4UBwyUbiCkZqWAyXP7WJRysDYjKyXc",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Summer", "Transition", "Winter"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2274",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "ENVIRONMENT",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmdDdctfNqv23BGC1tZGAaTsZ5MVG6k6jEvuFF8uT2YFJi",
+      "masterTokenId": "QmbbFGP5HmWPNQyrJhAbfR3SuaVQWK4MdEqarTe1n59WCW",
+      "metadataUri": "QmYavZVEW3MNsifsDuV5eAnaknfNzcH8C3CRDWskzdzvcV",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Summer", "Transition", "Winter"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2276",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "SYNTHWAVE CHANNEL",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQYA47gFRhGoWmk4YgAzUDQ6XyyMn9o7fJQMVpvSM9hbe",
+      "masterTokenId": "QmZ5g599mSLjY66rqc6AyZHeTXJWAWX39nZfnRe4bDYnXC",
+      "metadataUri": "QmSxLYKCyaHMY6QssZWQjrdpn85APjbAyTKxkCdu8kXgnn",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2277",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "ELECTRO CHANNEL",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmNNsfvkUCRUdrMGi5rhmwTpYeewseor3PWMgQdLrC3Zy5",
+      "masterTokenId": "QmZ5g599mSLjY66rqc6AyZHeTXJWAWX39nZfnRe4bDYnXC",
+      "metadataUri": "QmWwvj6jb2dCMqNbmXGJNGhSN844CV8aW75e46n2rhdGB6",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2278",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "TECHNO CHANNEL",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmR4xFFL15C7ZLT2RABpuJAqHigTJE2YXzyEitaFSSMMUu",
+      "masterTokenId": "QmZ5g599mSLjY66rqc6AyZHeTXJWAWX39nZfnRe4bDYnXC",
+      "metadataUri": "QmNWpx8doVNDdBf5oayRDZvkQEkRZnq3tKEPhtJEs7SRFi",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2279",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "BREAKS CHANNEL",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmS1AAJzHPdC5G4QxCf7ckGUxTRrQK1cMJKwg2nh99SBR6",
+      "masterTokenId": "QmZ5g599mSLjY66rqc6AyZHeTXJWAWX39nZfnRe4bDYnXC",
+      "metadataUri": "QmPcfFbCyfjAdZpFzPnf16iSe542ZWPoHWPbCm7SdkQJri",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2281",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Violin1",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmUA4X2Lb9EL9pwS4rTXbHTh5h5RLQMGDDYR6LGKMNE1yK",
+      "masterTokenId": "QmS28U2KbHrU8AEsqLq4nD7XXULxkfby3c6TyXVyWuihj1",
+      "metadataUri": "QmQEyDwwxYzx9MQCT6uik7SUPPU3mXLimmZwztakmGqtpB",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2282",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Violin2",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmSL9J57Pq6U3B2AfCS7bYPdZRDtdEpFjojgGjPxvJx3DV",
+      "masterTokenId": "QmS28U2KbHrU8AEsqLq4nD7XXULxkfby3c6TyXVyWuihj1",
+      "metadataUri": "QmTjWbQ8AA117XgxScbB7KSULbGHXCAqCoV2PNi1UiNm8K",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2283",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Viola",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmPkfyGBrpLRQL6f9YKuZ3vuGJUsTR2PNzktykhZzxkhjD",
+      "masterTokenId": "QmS28U2KbHrU8AEsqLq4nD7XXULxkfby3c6TyXVyWuihj1",
+      "metadataUri": "QmeJyc3LvyX6ntkKRRPv2Vm4eSp5t6NP9v4fd5qvJpiJex",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2284",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Cello",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmU2AdP59dtgHKfpLCxDbcBueGwGVCUvKZu8BSWANqm3T5",
+      "masterTokenId": "QmS28U2KbHrU8AEsqLq4nD7XXULxkfby3c6TyXVyWuihj1",
+      "metadataUri": "QmTkgy2b7MinpyjLF1JbCv7mehB9oViRXdp93rdWNEFaAo",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2286",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Bass Strings",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQYBaWA8YLAiNgqaCAcEdFbdekn81PQQTLXDqHQAZcjbi",
+      "masterTokenId": "QmcG7r1oBgWaLrRKzWDDQh9amU4VCRjpSADLJWDGjL4txe",
+      "metadataUri": "QmY8QaArU5bYSpnEhqzjPFBLK92vySAsfXRVE3PvjX7sAj",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2287",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Guitar",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qmf6kdZRqbMLBX4HHdHtbqeMGMTwoif4zpnx1tYyDU2fKN",
+      "masterTokenId": "QmcG7r1oBgWaLrRKzWDDQh9amU4VCRjpSADLJWDGjL4txe",
+      "metadataUri": "QmNkb8A6NN9ny9mZbxYpmcZxmFof66QxCKDGGGzoSgV55P",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2288",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Drums Percussion",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qmbr2egDj8CLqSzMPyCymafdBUSYCC4sMRY3SN3tVpxhJe",
+      "masterTokenId": "QmcG7r1oBgWaLrRKzWDDQh9amU4VCRjpSADLJWDGjL4txe",
+      "metadataUri": "QmegyrzBGBoPth5f3YNFBem8fwqCU79rKA9ow6tYgUmtzN",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3", "Variant4"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2289",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Bells Keys",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmUjeTL6TjsFko13sdarosJMEfKY1i9xs9NkLMScknLiJa",
+      "masterTokenId": "QmcG7r1oBgWaLrRKzWDDQh9amU4VCRjpSADLJWDGjL4txe",
+      "metadataUri": "QmYASv2trsbhtYSfognG4na8jDkH9ugkPh9mCauY2DWR3m",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Variant1",
+            "Variant2",
+            "Variant3",
+            "Variant4",
+            "Variant5"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2290",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Vocals",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmXz61LAJPY8RV7wnghpoiTNByjijkbyeTfJ416GHjguPL",
+      "masterTokenId": "QmcG7r1oBgWaLrRKzWDDQh9amU4VCRjpSADLJWDGjL4txe",
+      "metadataUri": "QmPcDckGMHjt3MGVy5Kpa3ZHKYQ31QBuzPKg8WcZNfGxTr",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Variant1", "Variant2", "Variant3"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2292",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Piano",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmPN9abTYrn3ThxosDdwsmKdvRcbcAfd3XdDuAuKj8qURe",
+      "masterTokenId": "QmTiLJtDPz1NsmREku1VAR717MzamavZJBnm5EpDsBY6YB",
+      "metadataUri": "QmbmtqGkFj5TjRbs69veKtnandbBwEjXCPzTKor3JH9wu6",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Base", "Variant"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2293",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Drums",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmWsixxVyBJJuhizzhszonWhdqX7Gh8r5Emp8W94r8koc3",
+      "masterTokenId": "QmTiLJtDPz1NsmREku1VAR717MzamavZJBnm5EpDsBY6YB",
+      "metadataUri": "QmWwPxxAfen5KyBCa6aGsypygNymhbX7CDsuNUMUrMEbaG",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Base", "Variant"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2294",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Vocal",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmVW3odEAckSqiRakwREgKqAxwTtqfKjxcoNPoaRhakvE5",
+      "masterTokenId": "QmTiLJtDPz1NsmREku1VAR717MzamavZJBnm5EpDsBY6YB",
+      "metadataUri": "QmZEaFBzWjx5QzwWNTPNGdrRGTUMaBKAq368ZBntWiQT5n",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Base", "Variant"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "2295",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Synths",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmQLtKe399oEE5tkhW4vb3ydrt1REUcy75CZ8KeQct9TXJ",
+      "masterTokenId": "QmTiLJtDPz1NsmREku1VAR717MzamavZJBnm5EpDsBY6YB",
+      "metadataUri": "QmYi3omFK4NtricsT9CMhyjS7zbXGERUg311qfvKbKJmCC",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Base", "Variant1", "Variant2"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "3774",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Violin 1",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmcLwabgdm32HLUYYKZ95mmbgCiPKSsx2tocUP3NQ2qrX3",
+      "masterTokenId": "Qmeb6GEfTZ5cvFkD9ztuYyb9oUdmkRNg7EHxDnEigRaiXK",
+      "metadataUri": "QmdBTCWFWzRwWGeKCCrGzPmQ14gCJ58d4T19pZScrbDcZW",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Variant A",
+            "Variant B",
+            "Variant C",
+            "Variant D",
+            "Variant E"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "3775",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Violin 2",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmcLwabgdm32HLUYYKZ95mmbgCiPKSsx2tocUP3NQ2qrX3",
+      "masterTokenId": "Qmeb6GEfTZ5cvFkD9ztuYyb9oUdmkRNg7EHxDnEigRaiXK",
+      "metadataUri": "QmRmwdtdkeckCAQeNN2mcjfmGG2n2G15MXPiXpYcgv6Avs",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Variant A",
+            "Variant B",
+            "Variant C",
+            "Variant D",
+            "Variant E"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "3776",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Viola",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmcLwabgdm32HLUYYKZ95mmbgCiPKSsx2tocUP3NQ2qrX3",
+      "masterTokenId": "Qmeb6GEfTZ5cvFkD9ztuYyb9oUdmkRNg7EHxDnEigRaiXK",
+      "metadataUri": "QmXwAiaCUYCupGT4Wgun8gtKy1c5zXQZdC3SUx6tCpXVQZ",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Variant A",
+            "Variant B",
+            "Variant C",
+            "Variant D",
+            "Variant E"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "3777",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Cello",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmcLwabgdm32HLUYYKZ95mmbgCiPKSsx2tocUP3NQ2qrX3",
+      "masterTokenId": "Qmeb6GEfTZ5cvFkD9ztuYyb9oUdmkRNg7EHxDnEigRaiXK",
+      "metadataUri": "QmZtHi5eyfWbsb7ySbHev2zaVYVGYEJ9k8YtgrfvgMCtFS",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Variant A",
+            "Variant B",
+            "Variant C",
+            "Variant D",
+            "Variant E"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4285",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Strings",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmbmRmMToTbS6NQRC2BNEjVHHp9P6yNRJGzwD62QnqFP7Y",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmTLxj6yKUKNww9UzwhHuZeMMWtkjHenFE9iEMDZyo2LKH",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Bright", "Dark", "Ambient"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4286",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Winds",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qmb3CLHtFbbQbpiZ5jebxjVPbv5bC6UFnezpqrpApSKmAL",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmaNzJQKWqfPkuihHCV97qMdoWktWsk4TAGuaiSHQJx4iL",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 3,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": [
+            "Bamboo Flute",
+            "Penny Whistle",
+            "Melodica",
+            "Nadaswaram"
+          ]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4287",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Ambience",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmXzwiB3BK5wUfpTtYQ4RfC9Dw2i1VDsLVnyYSXPnfg3xt",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmSKMKY78KDQW3FQSZdmjmwLpPHsjfhgzR288JH5m1MmqL",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Kurinji", "Mullai", "Marutham", "Neidhal", "Paalai"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4288",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Rhythm",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmaKqFEEQ2C4ygmHQAHFoN1aTH1t55Hofh5hZtCSkq99WF",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmbrKDaTqRvpc9P12HUVvh8a4gSqxoBMS82eGSWexpgqsp",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Mridangam & Latin", "Acoustic Drums", "Folk"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4289",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Traditional",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmU19EK7gmy4wo8zaCZyfbabWrkxEgj15LowkZZszAJk7Y",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "Qmd6f1wVe7V5TceZhT1QCcArqsTrexJzCLc6G4tJW85ZCg",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Sarangi", "Veena", "Slide Guitar - Live"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4290",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Voices",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qmadsy39UVhtsR9V5TUTqFpLpZLWfRvTUBApMdwQv7xyTq",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmYbUjYgtLnfWmRvhnrBXhzRxv8MHHKVBWrcV1PaY2omfx",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Solo", "Folk voice", "Choir"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4291",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Guitars",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmaJSSmhtY5tjx1eQPR5d4ZCdCiMxevzHAhsqwUE9z3FbS",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmbwFY6jVM4W82wywqjpnAuPvPyDKUDth8cGYUFvdR8iAU",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Acoustic", "Electric"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4292",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Keys",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qme2Ykbfp8YaFq6A3U1BciXafZW6wsHPAuDhSfCWAiETUC",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmZkFBaAmcpYXbEoiYwJQ1Qmxj9WtCPXnXyJxsxVSh6MNv",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 1,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Piano", "Mallet - Live"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4293",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Electronic",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmSfv4ZcHqjS38zWErJaZfZMBKCCYxamXqkeih4GNVuaTu",
+      "masterTokenId": "QmepLNcj9mCDaTjVvmCM6ocr9xtjvMbWNTmaCSoaYVmqgq",
+      "metadataUri": "QmfVWD1pUmif9VxKLJYjX6dHFR2KJzh5cCQCHRbbWchjsF",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 2,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["Synth & Bass", "Modular", "Live reactive layer"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4956",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 1",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qme4ivM38jMJqGe4phdLqZsDzLHByW4obVcD2wVM14dhPq",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "QmXzFPvWBYcTU7ak1b8Wk21h1S7vFS1TP9H4WCU4WKPeDj",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4957",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 2",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmPes3TwA2gwRo8rPTK8BS9Lm1zbyk4DpF2xyjiTMW2E1o",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "QmbuuBxmppyvACsecXMZYFxPhLYbWUepUvfSMZznHZMkdF",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4958",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 3",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmewZQEYPX7Ejz47jrXH2C2B9yb4qoFDX7W5u2egk7SLDJ",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "QmRUt7xLoF1XVEtCneGWSX2AnZmjpMkQEaPnhy2A3ry5e7",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4959",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 4",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmUJWYfJopj65efVVBwud4LPErh5BH6Rz2eEjgrS9gSwYx",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "Qmdp5qVGAR554qJXd9H46KV3exoaEk58RGCJx8BWF9CRrY",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4960",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 5",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/Qme4iB9Lji2x7MeunD87xgg9rTJKcAWjhF9bLiJXocrZ6Z",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "QmbyiZrN3CSDJUDevqbVtN31atSMXkerNmr1hYk7iVP9Cg",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4961",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 6",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmfZivssYnXYRDqgpHzYe5CWJpk3hTiqk7WKDeGGihVQjX",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "Qmd9EyX868ztV2QKRmpeyczAGi7DGsxXYH58uCKRQLiQci",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
+    },
+    {
+      "tokenId": "4962",
+      "contractAddress": "0xb6dae651468e9593e4581705a09c10a76ac1e0c8",
+      "name": "Layer 7",
+      "description": "",
+      "imageUrl": "https://ipfs.io/ipfs/QmdUkgqB67hc95hcaqBSqgkEQ4T9d9AcRTxuJkDZ5LUYjF",
+      "masterTokenId": "QmTc9DuGmxDmeJH8vZNTScZ5ussMaktj9TEEmUgWEz5CSX",
+      "metadataUri": "QmdD8bmjfHKehYWgp9ELH7hsSv44iBF5GNdYvdwTiBDdHs",
+      "controls": [
+        {
+          "minValue": 0,
+          "maxValue": 4,
+          "startValue": 0,
+          "label": "Variant",
+          "controlType": "STATE",
+          "stateLabels": ["PULSE", "BREATH", "MASS", "TRANSMUTE", "ANTI-MATTER"]
+        }
+      ],
+      "controlSource": "master-layout-and-chain"
     }
   ]
 }

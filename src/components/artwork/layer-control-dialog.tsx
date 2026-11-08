@@ -6,6 +6,13 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
 } from 'wagmi';
+import { ACTIVE_NETWORK } from '@/config';
+import {
+  initialControlValues,
+  readControlValues,
+  changedControlValues,
+  ownsControl,
+} from '@/utils/layer-controls';
 import { publicClient } from '@/utils/rpcClient';
 import { getAbiForAddress } from '@/utils/contract-helpers';
 import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
@@ -26,6 +33,7 @@ type LayerControlDialogProps = {
   onPreview: (controlTokenId: string, values: Record<string, number>) => void;
   currentValues: Record<string, number>;
   contractAddress?: Address;
+  isMusic?: boolean;
 };
 
 export default function LayerControlDialog({
@@ -35,8 +43,9 @@ export default function LayerControlDialog({
   onPreview,
   currentValues,
   contractAddress,
+  isMusic = false,
 }: LayerControlDialogProps) {
-  const { address } = useAccount();
+  const { address, chainId } = useAccount();
   const { openLayer } = useLayerDetailModal();
   const {
     writeContract,
@@ -67,29 +76,86 @@ export default function LayerControlDialog({
     values: Record<string, number>;
   } | null>(null);
 
-  // Check ownership
-  useEffect(() => {
-    async function checkOwnership() {
-      if (!address || !layer?.tokenId || !contractAddress) return;
-      setOwnerCheckFailed(false);
-      try {
-        const contract = getContract({
-          address: contractAddress,
-          abi: getAbiForAddress(contractAddress),
-          client: publicClient,
-        });
+  const [chainControls, setChainControls] = useState<ReturnType<
+    typeof readControlValues
+  > | null>(null);
+  const [controlsLoading, setControlsLoading] = useState(false);
+  const [controlsError, setControlsError] = useState<string | null>(null);
+  const [verifiedIdentity, setVerifiedIdentity] = useState('');
+  const identity = `${contractAddress}:${layer?.tokenId}:${address}`;
+  const canUpdate =
+    isOwner &&
+    verifiedIdentity === identity &&
+    !!chainControls &&
+    chainId === ACTIVE_NETWORK;
 
-        const owner = await contract.read.ownerOf([BigInt(layer.tokenId)]);
-        // @ts-ignore
-        setIsOwner(owner === address);
-      } catch (e) {
-        console.error('Error checking ownership', e);
-        setIsOwner(false);
-        setOwnerCheckFailed(true);
-      }
-    }
-    checkOwnership();
-  }, [address, layer, contractAddress]);
+  // Read current values when opening a layer; mint-time defaults may be years old.
+  useEffect(() => {
+    let cancelled = false;
+    setChainControls(null);
+    setControlsError(null);
+    if (!isOpen || !layer || !contractAddress) return;
+    setControlsLoading(true);
+    const contract = getContract({
+      address: contractAddress,
+      abi: getAbiForAddress(contractAddress),
+      client: publicClient,
+    });
+    contract.read
+      .getControlToken([BigInt(layer.tokenId)])
+      .then((raw) => {
+        if (cancelled) return;
+        const current = readControlValues(raw, layer.controls.length);
+        setChainControls(current);
+        setLocalValues(
+          initialControlValues(
+            layer.tokenId,
+            layer.controls,
+            currentValues,
+            current,
+          ),
+        );
+      })
+      .catch(() => {
+        if (!cancelled)
+          setControlsError(
+            'Could not read current layer settings. Reopen to retry. Saving is unavailable until they load.',
+          );
+      })
+      .finally(() => {
+        if (!cancelled) setControlsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen, layer, contractAddress, currentValues]);
+
+  // Clear stale ownership on wallet/layer changes and ignore late responses.
+  useEffect(() => {
+    let cancelled = false;
+    setIsOwner(false);
+    setVerifiedIdentity('');
+    setOwnerCheckFailed(false);
+    if (!isOpen || !address || !layer || !contractAddress) return;
+    const contract = getContract({
+      address: contractAddress,
+      abi: getAbiForAddress(contractAddress),
+      client: publicClient,
+    });
+    contract.read
+      .ownerOf([BigInt(layer.tokenId)])
+      .then((owner) => {
+        if (cancelled) return;
+        setIsOwner(ownsControl(address, owner));
+        setVerifiedIdentity(identity);
+      })
+      .catch(() => {
+        if (!cancelled) setOwnerCheckFailed(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen, address, layer, contractAddress, identity]);
 
   // Once the on-chain write is actually confirmed (not just submitted to the
   // mempool), apply the same values the user just wrote on-chain to the
@@ -108,15 +174,9 @@ export default function LayerControlDialog({
 
   useEffect(() => {
     if (layer?.controls) {
-      const defaults: Record<number, number> = {};
-      layer.controls.forEach((c: any, i: number) => {
-        const key = `${layer.tokenId}-${i}`;
-        defaults[i] =
-          currentValues[key] !== undefined
-            ? currentValues[key]
-            : c.startValue || c.minValue;
-      });
-      setLocalValues(defaults);
+      setLocalValues(
+        initialControlValues(layer.tokenId, layer.controls, currentValues),
+      );
     }
   }, [layer, currentValues]);
 
@@ -137,15 +197,25 @@ export default function LayerControlDialog({
   };
 
   const handleUpdateChain = () => {
-    if (!writeContract || !layer?.tokenId || !contractAddress) return;
+    if (
+      !writeContract ||
+      !layer ||
+      !contractAddress ||
+      !canUpdate ||
+      !chainControls ||
+      controlsLoading
+    )
+      return;
 
     resetWrite();
-    const leverIds = Object.keys(localValues).map((k) => BigInt(k));
-    const newValues = Object.values(localValues).map((v) => BigInt(v));
+    const { leverIds, values: newValues } = changedControlValues(
+      localValues,
+      chainControls,
+    );
+    if (!leverIds.length) return;
 
     const confirmedValues: Record<string, number> = {};
-    Object.keys(localValues).forEach((k) => {
-      // @ts-ignore
+    leverIds.map(String).forEach((k) => {
       confirmedValues[`${layer.tokenId}-${k}`] = localValues[k];
     });
     pendingUpdateRef.current = {
@@ -156,6 +226,7 @@ export default function LayerControlDialog({
     writeContract({
       address: contractAddress,
       abi: getAbiForAddress(contractAddress),
+      chainId: ACTIVE_NETWORK,
       functionName: 'useControlToken',
       args: [BigInt(layer.tokenId), leverIds, newValues],
     });
@@ -171,7 +242,23 @@ export default function LayerControlDialog({
 
   return (
     <Modal title={layer.name} onClose={onClose}>
-      <div className="p-4 space-y-6">
+      <div className="p-4 space-y-6 max-h-[75dvh] overflow-y-auto">
+        <p className="text-sm text-text-muted">
+          Preview changes locally. The layer owner can save changes on-chain to
+          update the master for everyone.{' '}
+          {isMusic &&
+            'Music previews update the linked artwork too; press Play to hear the new mix.'}
+        </p>
+        {controlsLoading && (
+          <p role="status" className="text-sm">
+            Reading current layer settings…
+          </p>
+        )}
+        {controlsError && (
+          <p role="alert" className="text-sm text-danger">
+            {controlsError}
+          </p>
+        )}
         <div className="space-y-4">
           {layer.controls?.map((control: Control, index: number) => {
             const value = localValues[index];
@@ -179,30 +266,38 @@ export default function LayerControlDialog({
             // ("maxVaue") instead of "maxValue" on a BLUE control - fall
             // back to a sane default (255, this collection's common max)
             // rather than rendering that one slider with an undefined max.
-            const maxValue = control.maxValue ?? 255;
+            const maxValue =
+              chainControls?.[index]?.max ?? control.maxValue ?? 255;
+            const minValue = chainControls?.[index]?.min ?? control.minValue;
             const fillPercent =
               control.controlType === 'STATE'
                 ? 0
-                : ((value - control.minValue) /
-                    (maxValue - control.minValue || 1)) *
-                  100;
+                : ((value - minValue) / (maxValue - minValue || 1)) * 100;
 
             return (
               <div key={index} className="space-y-2">
                 <label className="block text-sm font-medium text-text-muted">
-                  {control.label}
+                  {isMusic
+                    ? 'Variant'
+                    : control.label.replace(/ \(STATE\)$/, '')}
                 </label>
 
                 {control.controlType === 'STATE' && control.stateLabels ? (
                   <select
-                    value={value}
+                    aria-label={
+                      isMusic
+                        ? 'Variant'
+                        : control.label.replace(/ \(STATE\)$/, '')
+                    }
+                    disabled={controlsLoading || isPending || isConfirming}
+                    value={value ?? minValue}
                     onChange={(e) =>
                       handleChange(index, parseInt(e.target.value))
                     }
-                    className="mt-1 pl-3 pr-10 py-2 text-base border-border focus:outline-none focus:ring-accent focus:border-accent sm:text-sm"
+                    className="w-full mt-1 pl-3 pr-10 py-2 text-base border border-border rounded bg-surface-sunken text-text focus:outline-none focus:ring-accent focus:border-accent sm:text-sm"
                   >
                     {control.stateLabels.map((label, i) => (
-                      <option key={i} value={i}>
+                      <option key={i} value={minValue + i}>
                         {label}
                       </option>
                     ))}
@@ -211,9 +306,10 @@ export default function LayerControlDialog({
                   <div className="flex items-center space-x-4">
                     <input
                       type="range"
-                      min={control.minValue}
+                      min={minValue}
                       max={maxValue}
-                      value={value}
+                      disabled={controlsLoading || isPending || isConfirming}
+                      value={value ?? minValue}
                       onChange={(e) =>
                         handleChange(index, parseInt(e.target.value))
                       }
@@ -232,7 +328,7 @@ export default function LayerControlDialog({
           })}
         </div>
 
-        <div className="flex justify-end space-x-3 pt-4 border-t border-border">
+        <div className="flex flex-wrap items-center justify-end gap-2 pt-4 border-t border-border">
           {contractAddress && (
             <button
               onClick={() => openLayer(contractAddress, String(layer.tokenId))}
@@ -244,19 +340,34 @@ export default function LayerControlDialog({
           <button onClick={onClose} className="btn-secondary">
             Close
           </button>
-          <button onClick={handlePreview} className="btn-secondary">
+          <button
+            onClick={handlePreview}
+            disabled={controlsLoading || isPending || isConfirming}
+            className="btn-secondary"
+          >
             Preview
           </button>
-          {isOwner ? (
+          {isOwner && verifiedIdentity === identity ? (
             <button
               onClick={handleUpdateChain}
-              disabled={isPending || isConfirming}
+              disabled={
+                !canUpdate ||
+                controlsLoading ||
+                isPending ||
+                isConfirming ||
+                !chainControls ||
+                !Object.entries(localValues).some(
+                  ([k, v]) => v !== chainControls[Number(k)]?.value,
+                )
+              }
               className="btn-primary"
             >
-              {updateChainLabel}
+              {chainId !== ACTIVE_NETWORK
+                ? 'Switch wallet to Ethereum'
+                : updateChainLabel}
             </button>
           ) : (
-            <div className="text-xs text-text-muted flex items-center">
+            <div className="w-full text-xs text-text-muted">
               {ownerCheckFailed
                 ? "Couldn't verify ownership — check your connection and reopen this dialog to retry."
                 : 'Only owner can update on-chain'}

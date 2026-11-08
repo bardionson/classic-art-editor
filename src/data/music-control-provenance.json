@@ -1,0 +1,512 @@
+[
+  {
+    "tokenId": 1593,
+    "masterTokenId": "1592",
+    "metadataCid": "QmPAgr5Kt7kV46dH3n3Hr7nWfscAnW1ZCvB2BB6umjZiiy",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1594,
+    "masterTokenId": "1592",
+    "metadataCid": "QmdPTaxzzFVmnnhYGmrvMR7NAE7tGkXNdYcMZ9fCY3LGwS",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1595,
+    "masterTokenId": "1592",
+    "metadataCid": "QmZBcBF3qBGJT5jRzhcDnWPHJAETJmprwKEdqitbiAGca3",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1596,
+    "masterTokenId": "1592",
+    "metadataCid": "QmfPmu2nQJcwPxSvoHZurGz11PeHCvdt8j2ZdacAZrSyHb",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1598,
+    "masterTokenId": "1597",
+    "metadataCid": "QmXzgVZQY7Drq6Kt4sQDUxLonMkcDiTZ1iq3eaNvqYuT3e",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1599,
+    "masterTokenId": "1597",
+    "metadataCid": "Qme5ETtQYAiLewHpKZGieBwWyd5M8WjvEBdRZBjWGLf9qG",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1600,
+    "masterTokenId": "1597",
+    "metadataCid": "QmbjiqKLMpyv68r3SPuPm9H7mogmiKVgaUmy5v3BgWCMo8",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1601,
+    "masterTokenId": "1597",
+    "metadataCid": "QmdNTvtJD2uRVwbfkGnLooadB3cDTZcUZuPL5885NGYniY",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1603,
+    "masterTokenId": "1602",
+    "metadataCid": "QmWyZyXTPMXr6jet6EAZJMuRaZEHnLgeywrjnwWGrhcNeY",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1604,
+    "masterTokenId": "1602",
+    "metadataCid": "Qma9Hz5Y5daqJRzzwzF9fRrRSSzhdN9cwojTXETCBPMmEn",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1606,
+    "masterTokenId": "1605",
+    "metadataCid": "QmVWYdZKqPXaaRFNAyAn1S7VAXetSBz5EDcsjhcEtYiQnf",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1607,
+    "masterTokenId": "1605",
+    "metadataCid": "QmXtqJyuSmcZJL8szTpAzf3sroN7Wr4N1L8EDHfZeBrkzP",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1608,
+    "masterTokenId": "1605",
+    "metadataCid": "QmUA7Tt7hRbTR7RxQkHcjvgU1zx8L3r5bEw3yddFaUdCT7",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1609,
+    "masterTokenId": "1605",
+    "metadataCid": "QmeSXwLDr9dg73DgpqUbSj9874SZazrKMzuApKq5ttwuvz",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1610,
+    "masterTokenId": "1605",
+    "metadataCid": "QmbguF7Y5Km495qDB4Ezh4Gj7yDrHGQUawT2uFZA38ud7K",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1611,
+    "masterTokenId": "1605",
+    "metadataCid": "QmZ7ZU1C2Auv5BZ5EPdHWhQHUg6BTYn5RBcNNfxngLRZeu",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1697,
+    "masterTokenId": "1696",
+    "metadataCid": "Qmf5Hp9AgYJ7hEAXGvnyFDoBx77GA1eUmdH1U9pgZBurz3",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1698,
+    "masterTokenId": "1696",
+    "metadataCid": "QmRpoN1rywo6tQyi4osspecRomgx7gP2StCNHJSuUY2Wmx",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1699,
+    "masterTokenId": "1696",
+    "metadataCid": "QmWC4M4suY2tiHM9v9HJ3xTpMDWazcQVAz7ETvjHsHbFnD",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1701,
+    "masterTokenId": "1700",
+    "metadataCid": "QmWM3JK9qREzKUgwfd4mcywQpwF3xBgRnd6htx8ccbkehy",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1702,
+    "masterTokenId": "1700",
+    "metadataCid": "QmaiupZm6dYW9vgM1sz9Wne8PKfwk3S8iCYiAYQgC8LHNg",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1703,
+    "masterTokenId": "1700",
+    "metadataCid": "QmNNr39V8eQZ5D1hU3rFVWchbTNez3p5NUSQcvK5WpJPyV",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1704,
+    "masterTokenId": "1700",
+    "metadataCid": "QmPzfFwmuUo3EPJiTVeVsxB4BGQ8xUW71icFTwucpqioYo",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1705,
+    "masterTokenId": "1700",
+    "metadataCid": "QmWX14E9atCUz3k5qX4aLPxKvJF5L2UyY9X1GHMkYnAHLt",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1706,
+    "masterTokenId": "1700",
+    "metadataCid": "QmREUPQjYrAXGAhC5mj4RYXy1qGu92yLJcQ7hYxeshtUhX",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1707,
+    "masterTokenId": "1700",
+    "metadataCid": "QmW5tLxohy9HrKvFk1orLDAALr749bJBW72rdyBsFg1uV6",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1708,
+    "masterTokenId": "1700",
+    "metadataCid": "QmZsWN2qAm6LdYG2ikQbvMKz1v49x4voMcGZMTt49HDQhL",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1709,
+    "masterTokenId": "1700",
+    "metadataCid": "QmWmTmeoq2UEs8Aw9TMB46Vgks2UEejjUV8LzpX74vhoR6",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1711,
+    "masterTokenId": "1710",
+    "metadataCid": "QmdAYtVcHm8KgcTYR2ixG1hqc7TKKriiNadaFXxum5DMN1",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1712,
+    "masterTokenId": "1710",
+    "metadataCid": "QmbtQTXDkSLQix86Tf35zvA8MxPv4ptkqamyEkFPsAiZfi",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1713,
+    "masterTokenId": "1710",
+    "metadataCid": "QmRyzGsVtPwjJuj14E1Q9tcn4Q78Yz4mUPYz2mFJywfQQ1",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1714,
+    "masterTokenId": "1710",
+    "metadataCid": "QmYAbem8vMB3vjqEQedTu2T53NgRh3uACmxquK4wS8GZ5r",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1715,
+    "masterTokenId": "1710",
+    "metadataCid": "QmPhdfACr4WYgANP6Fa9dz2WV2TyvCMrfqKGUGPcLyciBz",
+    "controlSource": "original-stem-metadata"
+  },
+  {
+    "tokenId": 1716,
+    "masterTokenId": "1710",
+    "metadataCid": "QmQQWYD1LHc18SLcohjLeDLS3rWXb3fXZLDdoWjUUbSxWx",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1717,
+    "masterTokenId": "1710",
+    "metadataCid": "Qma1QaaAvUYpVRZ5DYzkwUVhZHXY9sThKToZLRYtjUMytL",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1718,
+    "masterTokenId": "1710",
+    "metadataCid": "QmQhFkuTEeNVYpNzsMULGjgekF2BsHEaNCP9wVTV4txkmM",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1720,
+    "masterTokenId": "1719",
+    "metadataCid": "QmcKahfjMHp5dLJJSKSAXfoC6LQEJwJtWSjX5YA51pFBML",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1721,
+    "masterTokenId": "1719",
+    "metadataCid": "QmP85us2qADFpVcy4eij9a5Yx3z2715MA6wagSoXDVRHZi",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1722,
+    "masterTokenId": "1719",
+    "metadataCid": "QmNsLxeSVLmaLLBuP8PUqGe4Bz2ryHuTyBXcQhJPY9Qo1b",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1746,
+    "masterTokenId": "1745",
+    "metadataCid": "QmUtDMN1CawkaUWfVABVnawHNTCQGU2qZuCc86RWbDGF8V",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1747,
+    "masterTokenId": "1745",
+    "metadataCid": "QmNbRRcSFq8b6qKc1ubt686eskpwGF9vWrduKzYMDsvCJM",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1748,
+    "masterTokenId": "1745",
+    "metadataCid": "QmdNd14TJo9SBj3tQ4RGhsTKRfdYWi3S9SoiqUcnwsij3F",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 1749,
+    "masterTokenId": "1745",
+    "metadataCid": "Qmf44y89A4hVq91oegYE3YCdaqomkZpaw2bST2PbCEsK6g",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2270,
+    "masterTokenId": "2269",
+    "metadataCid": "QmVxngyzGK2VXy7ZzCE4gESeUhjUnUFwRczqzmTqzsuctp",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2271,
+    "masterTokenId": "2269",
+    "metadataCid": "QmcdcUkARizy8CNW1Afh8UkTE5tK3zaYtfamynNR8vdySW",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2272,
+    "masterTokenId": "2269",
+    "metadataCid": "QmUy5mp7ytKLqpU3uqLiWHahqCZtDPwdCYZxsxoq3viMin",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2273,
+    "masterTokenId": "2269",
+    "metadataCid": "QmRuobEyhpmR5YwE4UBwyUbiCkZqWAyXP7WJRysDYjKyXc",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2274,
+    "masterTokenId": "2269",
+    "metadataCid": "QmYavZVEW3MNsifsDuV5eAnaknfNzcH8C3CRDWskzdzvcV",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2276,
+    "masterTokenId": "2275",
+    "metadataCid": "QmSxLYKCyaHMY6QssZWQjrdpn85APjbAyTKxkCdu8kXgnn",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2277,
+    "masterTokenId": "2275",
+    "metadataCid": "QmWwvj6jb2dCMqNbmXGJNGhSN844CV8aW75e46n2rhdGB6",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2278,
+    "masterTokenId": "2275",
+    "metadataCid": "QmNWpx8doVNDdBf5oayRDZvkQEkRZnq3tKEPhtJEs7SRFi",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2279,
+    "masterTokenId": "2275",
+    "metadataCid": "QmPcfFbCyfjAdZpFzPnf16iSe542ZWPoHWPbCm7SdkQJri",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2281,
+    "masterTokenId": "2280",
+    "metadataCid": "QmQEyDwwxYzx9MQCT6uik7SUPPU3mXLimmZwztakmGqtpB",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2282,
+    "masterTokenId": "2280",
+    "metadataCid": "QmTjWbQ8AA117XgxScbB7KSULbGHXCAqCoV2PNi1UiNm8K",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2283,
+    "masterTokenId": "2280",
+    "metadataCid": "QmeJyc3LvyX6ntkKRRPv2Vm4eSp5t6NP9v4fd5qvJpiJex",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2284,
+    "masterTokenId": "2280",
+    "metadataCid": "QmTkgy2b7MinpyjLF1JbCv7mehB9oViRXdp93rdWNEFaAo",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2286,
+    "masterTokenId": "2285",
+    "metadataCid": "QmY8QaArU5bYSpnEhqzjPFBLK92vySAsfXRVE3PvjX7sAj",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2287,
+    "masterTokenId": "2285",
+    "metadataCid": "QmNkb8A6NN9ny9mZbxYpmcZxmFof66QxCKDGGGzoSgV55P",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2288,
+    "masterTokenId": "2285",
+    "metadataCid": "QmegyrzBGBoPth5f3YNFBem8fwqCU79rKA9ow6tYgUmtzN",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2289,
+    "masterTokenId": "2285",
+    "metadataCid": "QmYASv2trsbhtYSfognG4na8jDkH9ugkPh9mCauY2DWR3m",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2290,
+    "masterTokenId": "2285",
+    "metadataCid": "QmPcDckGMHjt3MGVy5Kpa3ZHKYQ31QBuzPKg8WcZNfGxTr",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2292,
+    "masterTokenId": "2291",
+    "metadataCid": "QmbmtqGkFj5TjRbs69veKtnandbBwEjXCPzTKor3JH9wu6",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2293,
+    "masterTokenId": "2291",
+    "metadataCid": "QmWwPxxAfen5KyBCa6aGsypygNymhbX7CDsuNUMUrMEbaG",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2294,
+    "masterTokenId": "2291",
+    "metadataCid": "QmZEaFBzWjx5QzwWNTPNGdrRGTUMaBKAq368ZBntWiQT5n",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 2295,
+    "masterTokenId": "2291",
+    "metadataCid": "QmYi3omFK4NtricsT9CMhyjS7zbXGERUg311qfvKbKJmCC",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 3774,
+    "masterTokenId": "3773",
+    "metadataCid": "QmdBTCWFWzRwWGeKCCrGzPmQ14gCJ58d4T19pZScrbDcZW",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 3775,
+    "masterTokenId": "3773",
+    "metadataCid": "QmRmwdtdkeckCAQeNN2mcjfmGG2n2G15MXPiXpYcgv6Avs",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 3776,
+    "masterTokenId": "3773",
+    "metadataCid": "QmXwAiaCUYCupGT4Wgun8gtKy1c5zXQZdC3SUx6tCpXVQZ",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 3777,
+    "masterTokenId": "3773",
+    "metadataCid": "QmZtHi5eyfWbsb7ySbHev2zaVYVGYEJ9k8YtgrfvgMCtFS",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4285,
+    "masterTokenId": "4284",
+    "metadataCid": "QmTLxj6yKUKNww9UzwhHuZeMMWtkjHenFE9iEMDZyo2LKH",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4286,
+    "masterTokenId": "4284",
+    "metadataCid": "QmaNzJQKWqfPkuihHCV97qMdoWktWsk4TAGuaiSHQJx4iL",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4287,
+    "masterTokenId": "4284",
+    "metadataCid": "QmSKMKY78KDQW3FQSZdmjmwLpPHsjfhgzR288JH5m1MmqL",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4288,
+    "masterTokenId": "4284",
+    "metadataCid": "QmbrKDaTqRvpc9P12HUVvh8a4gSqxoBMS82eGSWexpgqsp",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4289,
+    "masterTokenId": "4284",
+    "metadataCid": "Qmd6f1wVe7V5TceZhT1QCcArqsTrexJzCLc6G4tJW85ZCg",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4290,
+    "masterTokenId": "4284",
+    "metadataCid": "QmYbUjYgtLnfWmRvhnrBXhzRxv8MHHKVBWrcV1PaY2omfx",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4291,
+    "masterTokenId": "4284",
+    "metadataCid": "QmbwFY6jVM4W82wywqjpnAuPvPyDKUDth8cGYUFvdR8iAU",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4292,
+    "masterTokenId": "4284",
+    "metadataCid": "QmZkFBaAmcpYXbEoiYwJQ1Qmxj9WtCPXnXyJxsxVSh6MNv",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4293,
+    "masterTokenId": "4284",
+    "metadataCid": "QmfVWD1pUmif9VxKLJYjX6dHFR2KJzh5cCQCHRbbWchjsF",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4956,
+    "masterTokenId": "4955",
+    "metadataCid": "QmXzFPvWBYcTU7ak1b8Wk21h1S7vFS1TP9H4WCU4WKPeDj",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4957,
+    "masterTokenId": "4955",
+    "metadataCid": "QmbuuBxmppyvACsecXMZYFxPhLYbWUepUvfSMZznHZMkdF",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4958,
+    "masterTokenId": "4955",
+    "metadataCid": "QmRUt7xLoF1XVEtCneGWSX2AnZmjpMkQEaPnhy2A3ry5e7",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4959,
+    "masterTokenId": "4955",
+    "metadataCid": "Qmdp5qVGAR554qJXd9H46KV3exoaEk58RGCJx8BWF9CRrY",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4960,
+    "masterTokenId": "4955",
+    "metadataCid": "QmbyiZrN3CSDJUDevqbVtN31atSMXkerNmr1hYk7iVP9Cg",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4961,
+    "masterTokenId": "4955",
+    "metadataCid": "Qmd9EyX868ztV2QKRmpeyczAGi7DGsxXYH58uCKRQLiQci",
+    "controlSource": "master-layout-and-chain"
+  },
+  {
+    "tokenId": 4962,
+    "masterTokenId": "4955",
+    "metadataCid": "QmdD8bmjfHKehYWgp9ELH7hsSv44iBF5GNdYvdwTiBDdHs",
+    "controlSource": "master-layout-and-chain"
+  }
+]

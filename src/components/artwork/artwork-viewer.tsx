@@ -370,6 +370,8 @@ export default function ArtworkViewer({
                 <MusicPlayer
                   key={`${tokenAddress}:${tokenId}`}
                   metadata={metadata}
+                  controlLayers={layersWithArtists}
+                  onOpenLayer={setSelectedLayer}
                   compact={compactMusic}
                   tokenId={tokenId}
                   overrides={controlOverrides}
@@ -379,6 +381,13 @@ export default function ArtworkViewer({
                 />
               )}
               <div className={compactMusic ? 'hidden' : ''}>
+                {metadata['audio-layout'] && (
+                  <LayerControlList
+                    title="Music layers"
+                    layers={layersWithArtists}
+                    onLayerClick={setSelectedLayer}
+                  />
+                )}
                 <p className="mt-2 text-text-muted">{metadata.description}</p>
                 <h2 className="text-lg font-bold mt-4 text-text">Artists</h2>
                 <ul className="text-text-muted">
@@ -392,10 +401,12 @@ export default function ArtworkViewer({
                 <p className="break-all text-text-muted">
                   {collector && <AddressWithEns address={collector} />}
                 </p>
-                <LayerControlList
-                  layers={layersWithArtists}
-                  onLayerClick={(layer) => setSelectedLayer(layer)}
-                />
+                {!metadata['audio-layout'] && (
+                  <LayerControlList
+                    layers={layersWithArtists}
+                    onLayerClick={setSelectedLayer}
+                  />
+                )}
                 <button
                   className="mt-6 w-full bg-danger hover:bg-danger/80 text-white font-bold py-2 px-4 rounded transition-colors"
                   onClick={() => {
@@ -451,6 +462,7 @@ export default function ArtworkViewer({
       {!hideControls && (
         <LayerControlDialog
           layer={selectedLayer}
+          isMusic={!!metadata?.['audio-layout']}
           isOpen={!!selectedLayer}
           onClose={() => setSelectedLayer(null)}
           onPreview={(controlTokenId, values) =>

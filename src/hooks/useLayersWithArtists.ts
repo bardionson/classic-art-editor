@@ -34,7 +34,12 @@ export const useLayersWithArtists = (
       const newLayerContracts: Record<string, Address> = {};
 
       const promises = layers.map(async (layer) => {
-        if (layerArtists[layer.tokenId]) return;
+        if (
+          layer.artistName ||
+          layerArtists[layer.tokenId] ||
+          (layer as any).controlSource === 'master-layout-and-chain'
+        )
+          return;
 
         try {
           let metadataUri = (layer as any).metadataUri;
