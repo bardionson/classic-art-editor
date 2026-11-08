@@ -36,9 +36,10 @@ export default function ForeverSupper({
         Forever Supper
       </h1>
       <p className="text-text-muted max-w-3xl mb-6">
-        A shared room, made personal through art. Explore the backgrounds,
-        characters, furniture and objects created for Async’s first Dynamic
-        Blueprint collection.
+        Each collector creates their own Supper by arranging expansion items
+        from NFT packs in their personal room. Backgrounds, characters,
+        furniture and objects belong to individual compositions; there is no
+        single shared master artwork.
       </p>
       <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(260px,1fr)] gap-6 items-start mb-10">
         <figure className="min-w-0">
@@ -46,25 +47,26 @@ export default function ForeverSupper({
             href="/archive/forever-supper/base.jpg"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open original empty room artwork"
+            aria-label="Open default room template"
           >
             <img
               src="/archive/forever-supper/base.jpg"
-              alt="Forever Supper’s original empty room, with a table and wall displays"
+              alt="Forever Supper default room template, one starting arrangement for collector editions"
               width={4800}
               height={3840}
               className="w-full h-auto rounded-xl"
             />
           </a>
           <figcaption className="text-sm text-text-muted mt-2">
-            Original empty-room render · preserved in April 2023
+            Default room template · one starting arrangement, preserved in April
+            2023
           </figcaption>
         </figure>
         <aside className="rounded-xl border border-border p-5 space-y-4">
           <h2 className="text-xl font-semibold">Restoration in progress</h2>
           <p>
-            The original room image, 32-slot layout and 1,242 expansion metadata
-            records have been recovered.
+            The default room template, 32-slot layout and 1,242 expansion
+            metadata records have been recovered.
           </p>
           <p className="text-sm text-text-muted">
             Interactive assembly is awaiting the separate base-layer images.

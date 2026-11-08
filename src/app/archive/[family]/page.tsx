@@ -109,7 +109,7 @@ export default function ArchivePage({
             <div className="grid sm:grid-cols-[220px_1fr] gap-5 items-center">
               <img
                 src="/archive/forever-supper/base.jpg"
-                alt="Forever Supper’s original room"
+                alt="Forever Supper default room template"
                 width={4800}
                 height={3840}
                 className="w-full h-auto rounded-lg"
@@ -117,8 +117,8 @@ export default function ArchivePage({
               <div>
                 <h2 className="text-2xl font-semibold mb-2">Forever Supper</h2>
                 <p className="text-text-muted">
-                  Explore the recovered room and 1,242 expansion items,
-                  organized by their place in the artwork.
+                  Explore individual collector compositions and 1,242 expansion
+                  items from NFT packs, organized by their place in each room.
                 </p>
                 <span className="text-accent underline inline-block mt-3">
                   Explore Forever Supper →

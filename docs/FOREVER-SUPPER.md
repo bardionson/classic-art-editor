@@ -47,3 +47,14 @@ original layers or verified current collector selections.
 Matching uses slot plus label against production-core expansion records. If
 multiple records imply different source layers, the selection remains unresolved.
 Historical and OpenSea records are preserved separately rather than overwritten.
+
+## Collection model
+
+Forever Supper has individual collector-owned core editions, not one shared
+master composition. Collectors obtain expansion items from NFT packs and arrange
+them in their own core room, including changing the background. The recovered
+default empty-room render is a starting template, not a definitive collection
+artwork. Restoration should recover each edition's arrangement separately and
+eventually allow its owner to apply eligible owned items to that core. Keep local
+previews separate from persisted collector choices and never overwrite one
+edition with another collector's composition.
