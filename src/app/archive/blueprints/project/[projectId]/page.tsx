@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ArtistCredit from '@/components/artist-credit';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ArchiveResults from '@/components/archive-results';
@@ -46,7 +47,10 @@ export default function BlueprintProjectPage({
         {project.name}
       </h1>
       <p className="text-lg text-text-muted mb-3">
-        {project.artists.join(', ')}
+        <ArtistCredit
+          recordId={project.cover.id}
+          credit={project.artists.join(', ')}
+        />
       </p>
       <p className="text-text-muted mb-6">
         {project.count.toLocaleString('en-US')} indexed editions in this

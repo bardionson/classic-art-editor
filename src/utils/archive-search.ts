@@ -75,6 +75,10 @@ const records: ArchiveRecord[] = (snapshot.records as ArchiveRecord[]).map(
   },
 );
 const byCid = new Map(records.filter((r) => r.cid).map((r) => [r.cid, r]));
+export function getArchiveRecords(): readonly ArchiveRecord[] {
+  return records;
+}
+
 export function getBlueprintRecords() {
   return records.filter(
     (r) => r.family === 'blueprints' || r.family === 'music-blueprints',

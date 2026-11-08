@@ -4,6 +4,8 @@ import { NextRequest } from 'next/server';
 import { metadataPlayback } from '@/utils/archive-media';
 import { GET } from '@/app/api/archive/preview/route';
 import recovered from '@/data/music-blueprint-metadata.json';
+import audioSources from '@/data/archive-audio-sources.json';
+import mediaTypes from '@/data/archive-media-types.json';
 
 const cid = 'QmXbUf3Zpaa8RBBQABhaTXwHmyLp9TzPqTxc89ac1D4o46';
 const request = (value: string) =>
@@ -20,11 +22,27 @@ describe('Music Blueprint edition playback', () => {
       expect(row.animationUrl).toBe(original.animation_url);
       expect(metadataPlayback(original)).toEqual({
         source: row.animationUrl,
-        kind: 'audio',
+        kind: row.animationUrl.endsWith('.mp4') ? 'video' : 'audio',
       });
+      if (row.animationUrl.startsWith('ipfs://')) {
+        const path = row.animationUrl.slice(7);
+        expect(
+          (audioSources as Record<string, { metadata: string }[]>)[path],
+        ).toContainEqual({
+          metadata: `ipfs://${key}`,
+          family: 'music-blueprints',
+        });
+        expect(
+          (mediaTypes as Record<string, { contentType: string }>)[path]
+            ?.contentType,
+        ).toMatch(/^audio\//);
+      }
       sources.add(row.animationUrl);
     }
-    expect(sources.size).toBe(18);
+    expect(sources.size).toBe(
+      new Set(Object.values(recovered).map((r) => r.animationUrl)).size,
+    );
+    expect(sources.size).toBeGreaterThan(200);
   });
   it('serves preserved media while metadata gateways are offline', async () => {
     const fetcher = vi.fn();
@@ -53,7 +71,7 @@ describe('Music Blueprint edition playback', () => {
       );
     vi.stubGlobal('fetch', fetcher);
     const response = await GET(
-      request('QmWsuchvuTBZZx2fPKvLiT5YJuohF3dBnQ2zjWALew3vMd'),
+      request('QmRuwNf91D6hdDBNXs1PQr7aCGK4xCx5iV2yvXsK4xhg79'),
     );
     expect(await response.json()).toEqual({
       image: 'https://example.com/edition-60.png',
@@ -100,7 +118,7 @@ describe('Music Blueprint edition playback', () => {
         ),
     );
     const response = await GET(
-      request('QmWsuchvuTBZZx2fPKvLiT5YJuohF3dBnQ2zjWALew3vMd'),
+      request('QmRuwNf91D6hdDBNXs1PQr7aCGK4xCx5iV2yvXsK4xhg79'),
     );
     expect((await response.json()).media).toBeNull();
   });

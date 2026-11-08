@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ArtistCredit from '@/components/artist-credit';
 import ArchivePreview from '@/components/archive-preview';
 import { familyTitle } from '@/utils/archive-families';
 import {
@@ -9,8 +10,10 @@ import {
 
 export default function ArchiveResults({
   records,
+  annotations = {},
 }: {
   records: ArchiveRecord[];
+  annotations?: Record<string, string>;
 }) {
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -52,7 +55,12 @@ export default function ArchiveResults({
             </h2>
             {record.artist && (
               <p className="mt-1 text-sm text-text-muted break-words">
-                {record.artist}
+                <ArtistCredit recordId={record.id} credit={record.artist} />
+              </p>
+            )}
+            {annotations[record.id] && (
+              <p className="mt-2 text-sm text-text-muted">
+                {annotations[record.id]}
               </p>
             )}
             {['blueprints', 'music-blueprints'].includes(record.family) &&

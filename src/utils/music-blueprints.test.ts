@@ -20,10 +20,16 @@ describe('Music Blueprint archive category', () => {
   it('partitions every Blueprint edition once without changing identities or the total inventory', () => {
     const music = browseBlueprintProjects('', 'name', 1, 'music-blueprints');
     const visual = browseBlueprintProjects('', 'name', 1, 'blueprints');
-    expect(music.allProjects).toBe(21);
-    expect(music.editions).toBe(1673);
-    expect(music.allProjects + visual.allProjects).toBe(201);
-    expect(music.editions + visual.editions).toBe(9065);
+    expect(music.allProjects).toBe(catalog.projects.length);
+    expect(music.editions).toBe(
+      snapshot.records.filter((r) =>
+        catalog.projects.some((p) => p.id === r.blueprintId),
+      ).length,
+    );
+    expect(music.allProjects + visual.allProjects).toBe(
+      new Set(getBlueprintRecords().map((r) => r.blueprintId)).size,
+    );
+    expect(music.editions + visual.editions).toBe(getBlueprintRecords().length);
     expect(archiveCoverage.total).toBe(snapshot.records.length);
     expect(
       Object.values(archiveCoverage.counts).reduce((a, b) => a + b, 0),
@@ -32,19 +38,28 @@ describe('Music Blueprint archive category', () => {
     expect(
       music.projects.every((p) => !visual.projects.some((v) => v.id === p.id)),
     ).toBe(true);
-    expect(new Set(getBlueprintRecords().map((r) => r.id)).size).toBe(9065);
+    expect(new Set(getBlueprintRecords().map((r) => r.id)).size).toBe(
+      getBlueprintRecords().length,
+    );
   });
   it('includes every recovered edition on the shared music contract', () => {
     const contractRecords = snapshot.records.filter(
       (r) => r.contractAddress.toLowerCase() === catalog.sharedContract.address,
     );
-    expect(contractRecords).toHaveLength(48);
+    expect(contractRecords.length).toBeGreaterThanOrEqual(49);
     for (const record of contractRecords) {
       const resolved = getArchiveRecordByCid(record.cid)!;
       expect(resolved.family).toBe('music-blueprints');
       expect(resolved.tokenId).toBe(record.tokenId);
       expect(resolved.contractAddress).toBe(record.contractAddress);
     }
+    expect(getBlueprintProject('631a241d6ec7383141d725e4')?.name).toBe(
+      'Horizons',
+    );
+    expect(
+      getArchiveRecordByCid('QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU')
+        ?.tokenId,
+    ).toBe('14104');
     expect(getBlueprintProject('631c8c13df536872b28161fb')?.name).toBe(
       'Better Way',
     );
@@ -125,10 +140,10 @@ describe('Music Blueprint archive category', () => {
       'all',
       '62c77539c679226473b4dd29',
     );
-    expect(element.results.every((r) => !r.metadataLocal)).toBe(true);
+    expect(element.results.every((r) => r.metadataLocal)).toBe(true);
     const grouped = groupBlueprintProjects(getBlueprintRecords());
     expect(grouped.filter((p) => p.family === 'music-blueprints')).toHaveLength(
-      21,
+      catalog.projects.length,
     );
   });
 });

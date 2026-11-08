@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ArtistCredit from '@/components/artist-credit';
 import { notFound } from 'next/navigation';
 import ArchivePreview from '@/components/archive-preview';
 import BlueprintPlayer from '@/components/blueprint-player';
@@ -32,7 +33,9 @@ export default function MetadataArtworkPage({
       <h1 className="text-3xl font-bold mt-6 mb-2 break-words">
         {record.name}
       </h1>
-      <p className="text-text-muted mb-6">{record.artist}</p>
+      <p className="text-text-muted mb-6">
+        <ArtistCredit recordId={record.id} credit={record.artist} />
+      </p>
       {record.family === 'music-blueprints' ? (
         <BlueprintPlayer
           key={record.cid}

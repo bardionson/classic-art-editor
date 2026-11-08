@@ -7,6 +7,7 @@ import {
   Grid,
   Sliders,
   Disc,
+  Users,
 } from 'react-feather';
 import firstSupperHero from '../../public/first-supper-0.jpg';
 import ArchiveSearchForm from '@/components/archive-search-form';
@@ -79,6 +80,27 @@ export default function Home() {
               </Link>
             );
           })}
+          <Link
+            href="/artists"
+            className="group rounded-2xl border border-border bg-surface-raised p-5 flex flex-col hover:border-accent transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            <div className="flex justify-between items-center mb-7">
+              <Users className="text-accent" size={25} aria-hidden="true" />
+              <ArrowUpRight
+                size={20}
+                className="text-text-muted group-hover:text-accent"
+                aria-hidden="true"
+              />
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Artists</h3>
+            <p className="text-sm text-text-muted leading-relaxed flex-1">
+              Meet the artists and musicians behind Async. Explore restored
+              profiles, artworks, and projects.
+            </p>
+            <p className="text-xs text-accent mt-6 pt-4 border-t border-border">
+              Biographies and portraits from the original archive
+            </p>
+          </Link>
         </div>
       </section>
       <section className="mb-12">

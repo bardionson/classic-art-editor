@@ -36,3 +36,23 @@ NFT index; reconcile by chain + contract + token ID and metadata CID; retrieve
 tokenURIs and original media; group by metadata project ID/Collection; deduplicate
 aliases without overwriting archival provenance; verify audio through completion.
 Keep editions on other music contracts and historical project evidence in scope.
+
+## Additional edition recovery
+
+The follow-up batch recovered all 203 missing original metadata files among the
+220 inventory records outside Danktone 003. Exact bytes match their CIDv0 UnixFS
+hashes. Horizons by Genzo was independently recovered from shared-contract token
+14104: on-chain tokenURI directory file `QmQQA5qci4BVGmXPdrjZ7RtLSF8yyepPSHS9woKc73YUML/14104/token.json`,
+with exact metadata file CID `QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU`.
+The collection now groups 1,674 inventory records in 22 projects; 222 have
+preserved original metadata, including the existing Danktone 003 sample.
+
+The batch adds 193 exact IPFS audio source checks, including Horizons. All
+returned recognized MP3 headers; shared audio assets retain every metadata
+reference. Three legendary editions instead reference original Cloudinary MP4
+URLs that currently return HTTP 404; their exact URLs are preserved without
+replacement. Header checks do not establish complete playback.
+
+Detailed per-CID hashes, chain provenance, source checks and outstanding failures
+are in `MUSIC-BLUEPRINT-BATCH-RECOVERY.json`. Remaining metadata work includes
+1,452 inventory records in Danktone 003 and editions beyond the local inventory.

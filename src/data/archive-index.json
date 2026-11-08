@@ -352841,6 +352841,23 @@
       "identityStatus": "reported",
       "metadataVerified": false,
       "blueprintId": ""
+    },
+    {
+      "id": "cid:QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU",
+      "name": "Horizon #19",
+      "artist": "Genzo",
+      "description": "Horizons\n\nNever have I shifted my focus so much in such a short time. Web3 and NFTs have opened my mind to so many creative possibilities I’ve never experienced before. Some days I only feel excitement, and other days I feel uncertainty as we all embark on this new adventure — but I am all in. Horizons was inspired by Async’s #AsyncNewDawn contest. There are two musical compositions, both hopeful in the end, each reflecting one of those conflicting feelings. The colors and overlays in the original art are also tied to the moods. Both musical pieces make perfect soundscapes for photo collages, YouTube or Instagram videos, etc. As with all creations by me or my family, being a holder grants you early access to future drops and future token-gated experiences.\n\n*LICENSE:\nHolder has the right to use the version(s) of the copyrighted work worldwide for non-commercial purposes (without modification) including, but not limited to, syncing the music to visual images, with credit and social media links listed whenever possible. The visual artwork may be used for non-commercial purposes, display or publication with credit. Genzo retains full copyright to the underlying IP/song/artwork and all originally created assets.",
+      "family": "blueprints",
+      "kind": "Edition",
+      "tokenId": "14104",
+      "contractAddress": "0x71925638b9998ab631c83873d9ed19ef9b70ecf0",
+      "coreAddress": "",
+      "cid": "QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU",
+      "link": null,
+      "source": "Original on-chain tokenURI; CID-verified IPFS metadata",
+      "identityStatus": "verified",
+      "metadataVerified": true,
+      "blueprintId": "631a241d6ec7383141d725e4"
     }
   ],
   "counts": {
@@ -352848,7 +352865,7 @@
     "music": 102,
     "unclassified": 5531,
     "dynamic-blueprints": 1418,
-    "blueprints": 9065
+    "blueprints": 9066
   },
   "coverage": "Known local catalogs and supplied recovery inventories; not a complete on-chain census."
 }

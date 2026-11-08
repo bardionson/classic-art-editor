@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { artistHref, artistName, browseArtists } from '@/utils/artist-profiles';
 import type { Metadata } from 'next';
 import ArchiveSearchForm from '@/components/archive-search-form';
 import ArchiveNavigation from '@/components/archive-navigation';
@@ -18,6 +19,7 @@ const first = (value: string | string[] | undefined) =>
 
 export default function SearchPage({ searchParams }: { searchParams: Params }) {
   const query = first(searchParams.q).slice(0, 300);
+  const matchingArtists = query ? browseArtists(query).items.slice(0, 6) : [];
   const requested = first(searchParams.family);
   const family = [...archiveFamilies.map((f) => f.id), 'unclassified'].includes(
     requested,
@@ -50,6 +52,31 @@ export default function SearchPage({ searchParams }: { searchParams: Params }) {
       </p>
       <ArchiveNavigation />
       <ArchiveSearchForm query={query} family={family} status={status} />
+      {!!matchingArtists.length && (
+        <section
+          aria-label="Matching artists"
+          className="mt-6 p-5 rounded-xl border border-border"
+        >
+          <h2 className="font-semibold mb-3">Artists</h2>
+          <div className="flex flex-wrap gap-4">
+            {matchingArtists.map((artist) => (
+              <Link
+                key={artist.address}
+                href={artistHref(artist)}
+                className="text-accent underline"
+              >
+                {artistName(artist)}
+              </Link>
+            ))}
+          </div>
+          <Link
+            href={`/artists?${new URLSearchParams({ q: query })}`}
+            className="inline-block mt-3 text-sm text-accent underline"
+          >
+            See all matching artist profiles →
+          </Link>
+        </section>
+      )}
       {query && (
         <nav
           aria-label="Matching collections"

@@ -127,6 +127,12 @@
       "name": "Slip Away",
       "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQWikaQWP7BMF2LwVHSDPAeu4CRXp7mzyApqgXffy1pQ2",
       "basis": "Original Collection and Artist traits identify this music project. Recovered metadata matches the current on-chain token URI on the shared Async Music Blueprints contract."
+    },
+    {
+      "id": "631a241d6ec7383141d725e4",
+      "name": "Horizons",
+      "evidenceUrl": "https://ipfs.filebase.io/ipfs/QmQ2o4LoGsUy6qPkxMwFMZqXdNb4ePLpWaxQsdZXpdGwMU",
+      "basis": "Original Collection and Artist traits identify Horizons by Genzo. Exact metadata bytes were recovered from token 14104 on the shared Music Blueprints contract and verified against their content-addressed CID."
     }
   ],
   "awaitingRecovery": [
