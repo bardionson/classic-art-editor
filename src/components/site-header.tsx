@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { href: '/#collections', label: 'Collections' },
   { href: '/search', label: 'Search archive' },
   { href: '/artists', label: 'Artists' },
+  { href: '/press', label: 'Press' },
   { href: '/gallery/layers', label: 'Layers Gallery' },
   { href: '/wallet', label: 'Async Wallet' },
   {
@@ -100,7 +101,7 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
                 className="h-6 md:h-7 w-auto dark:invert"
               />
             </Link>
-            <nav className="hidden lg:flex items-center gap-5">
+            <nav className="hidden xl:flex items-center gap-5">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -123,7 +124,7 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
               onClick={() => setMobileNavOpen((open) => !open)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileNavOpen}
-              className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-md text-text-muted hover:text-text hover:bg-surface-sunken transition"
+              className="xl:hidden inline-flex items-center justify-center w-9 h-9 rounded-md text-text-muted hover:text-text hover:bg-surface-sunken transition"
             >
               {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -136,7 +137,7 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
       </div>
 
       {!compressed && mobileNavOpen && (
-        <nav className="lg:hidden border-t border-border bg-surface-raised px-4 py-3 flex flex-col gap-3">
+        <nav className="xl:hidden border-t border-border bg-surface-raised px-4 py-3 flex flex-col gap-3">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
