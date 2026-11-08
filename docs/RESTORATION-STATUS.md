@@ -1,6 +1,6 @@
 # Async Art restoration checklist
 
-Updated November 8, 2026, with hourly price restoration implementation. Deployment verification is recorded below.
+Updated November 8, 2026, after deployed hourly restoration commit `9104281`.
 
 This is the current summary checklist for Digital Rescue Lab's independent restoration. Detailed reports remain in the app's `docs` folder. A restored page, recovered metadata, working media, and faithful interactive behavior are separate milestones. Counts below describe recorded recovery checks, not a new exhaustive audit.
 
@@ -8,7 +8,7 @@ This is the current summary checklist for Digital Rescue Lab's independent resto
 
 | ID | Priority | Work | Current status | Finish when |
 | --- | --- | --- | --- | --- |
-| AUTO-01 | 1 | ETH Boy and Right Place & Right Time #245 | Hourly rendering implemented for #807/#245 with recorded-state switch and R2 checkpoint/replay for ETH Boy. Deployment verification pending. | Verify live deployment and hourly transitions; restore Bitcoin milestone graphics and establish remaining historical/provider fidelity. Collector styling and wallet forms are preserved. |
+| AUTO-01 | 1 | ETH Boy and Right Place & Right Time #245 | Hourly rendering implemented for #807/#245 with recorded-state switch and R2 checkpoint/replay for ETH Boy. Deployed and live APIs verified at 22:39 UTC; first ETH Boy R2 checkpoint saved and repeat request stable. | Milestone rules now implemented and original-script parity tested; verify deployment and observe an actual next-hour transition. Establish remaining historical/provider fidelity. Collector styling and wallet forms are preserved. |
 | AUTO-02 | 1 | Other automated art and Tarot | Shared time-rule repairs shipped. Whole-catalog coverage and custom behavior remain incomplete. | Complete a resumable inventory, verify every identified rule type, audit calendar pieces #566/#1139, currency #1076, combo #1148, and seeded Tarot #1497/#1524. Recheck the reported revival-site Tarot gallery separately. |
 | SUPPER-01 | 2 | Forever Supper original layers | Original 32-slot layout and expansion metadata recovered; base image retrieval remains incomplete. | Retrieve and decode original base layers and expansion images; validate dimensions, blend modes, and multi-slot behavior. |
 | SUPPER-02 | 2 | Forever Supper individual collector arrangements | Five cached collector renders recovered. Expansion contract roster and 169 broadcast batch references found; batch contents still unresolved. | Retrieve broadcast records, establish item contract/token identities and each recoverable signed arrangement, then enable a faithful local composer. Wallet persistence is a later step. |
@@ -21,6 +21,8 @@ This is the current summary checklist for Digital Rescue Lab's independent resto
 | OPS-01 | 3 | Repeatable collection-wide health reporting | Tests and recovery reports exist, but there is no complete live health dashboard. | Report per-work metadata/media/rendering/automation/playback status and last verification time; track failures without marking untested work restored. |
 
 ## Recently completed / deployed
+
+- [x] Hourly price rendering for ETH Boy #807 and Right Place & Right Time #245. Commit `9104281`; 50 targeted tests, TypeScript and production build passed. Vercel success verified. Production APIs returned 6 ETH Boy price/date/gas overrides and 96 Bitcoin transforms at hour 2026-11-08T22:00Z. ETH Boy anchor block 26373200; repeat request retained positions 7092 / -772. Bitcoin rendering and recorded-state switch checked in desktop and phone layouts. R2 replay covers missed hours since this new anchor, not missing historical years.
 
 - [x] Price-check page and API: current ETH/BTC prices, completed-hour inputs, original-script calculations, stale-data handling and downloadable evidence. The inspector remains calculation-only; the new viewer integration is described in AUTO-01. Commit `f44d54b`; 35 relevant tests passed; public API and page verified.
 - [x] Hide Right Place & Right Time #115 from classic browsing, search and artist profile; retain #245. Preserve #115 direct page and metadata. Commit `54c5967`; 25 relevant tests passed; production links checked.
@@ -52,3 +54,7 @@ These are planning records, not legal clearance or finalized agreements.
 - Initial automation audit read only 52 of 2,555 attempted catalog records, finding 41 automated records; 2,503 were deferred after rate limits. This is not the final count of automated artworks.
 
 For each future repair: update its row, link the evidence and deployed commit, and move it to completed only when its acceptance conditions are met. This file is the current checklist; the dated changelog remains historical.
+
+### Bitcoin milestones — November 8
+
+Implemented the original threshold badges, five numeric glyphs and drop behavior for #245. Shared conditional R2 checkpoints retain sparse milestone changes and replay missed hours. Token #247 artist controls remain recorded. All 31 unique image CIDs returned PNG headers through Filebase. 128 targeted tests pass (64 original milestone script comparisons), TypeScript and production build pass. Halvening/dead/flippening have no automatic trigger in the recovered script. Live deployment verification pending.

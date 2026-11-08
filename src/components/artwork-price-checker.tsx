@@ -207,9 +207,10 @@ export default function ArtworkPriceChecker() {
             </h2>
             <p className="mt-3 text-text-muted">
               The artwork now applies these 24 hourly scale, rotation and
-              position calculations automatically. Artist-controlled styling and
-              milestone graphics retain their recorded settings. You can switch
-              back to the recorded on-chain view at any time.
+              position calculations automatically. Price milestones and number
+              graphics also follow the recovered rules. Artist-controlled
+              styling retains its recorded settings. You can switch back to the
+              recorded on-chain view at any time.
             </p>
             <details className="mt-5">
               <summary className="cursor-pointer text-accent">

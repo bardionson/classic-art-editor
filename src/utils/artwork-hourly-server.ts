@@ -2,6 +2,12 @@ import { unstable_cache } from 'next/cache';
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { createPublicClient, http } from 'viem';
 import { mainnet } from 'viem/chains';
+import v1Abi from '@/abis/v1Abi';
+import {
+  BitcoinCheckpoint,
+  bitcoinMilestoneChanges,
+  validMilestones,
+} from './bitcoin-milestones';
 import v2Abi from '@/abis/v2Abi';
 import { audioStorageConnection } from './r2-audio';
 import { MarketPrice, parseHourlyPrices, Symbol } from './artwork-market';
@@ -9,6 +15,7 @@ import { readJson, readMarketGas } from './artwork-market-server';
 import {
   bitcoinOverrides,
   CLASSIC_V2,
+  CLASSIC_V1,
   EthCheckpoint,
   ethOverrides,
   HOUR_MS,
@@ -192,36 +199,147 @@ export async function restoreEthBoy(
   }
 }
 
-export async function collectHourlyArtwork(
-  tokenId: 807 | 245,
-  now = Date.now(),
-): Promise<HourlyArtwork> {
-  const target = Math.floor(now / HOUR_MS) * HOUR_MS;
-  if (tokenId === 245) {
-    const [price] = await hourlyWindows('BTC', target, target);
-    return {
+async function readBitcoinAnchor(): Promise<BitcoinCheckpoint['anchor']> {
+  const key = process.env.ALCHEMY_KEY;
+  if (!key) throw new Error('Chain anchor unavailable');
+  const rpc = createPublicClient({
+    chain: mainnet,
+    transport: http(`https://eth-mainnet.g.alchemy.com/v2/${key}`, {
+      timeout: 8000,
+      retryCount: 0,
+    }),
+  });
+  const block = await rpc.getBlock();
+  // #246 is a V1 token, also exposed by V2. Match the renderer's original contract.
+  const values = await rpc.readContract({
+    address: CLASSIC_V1,
+    abi: v1Abi,
+    functionName: 'getControlToken',
+    args: [BigInt(246)],
+    blockNumber: block.number,
+  });
+  const milestones = Object.fromEntries(
+    Array.from({ length: 6 }, (_, i) => [
+      '246-' + (96 + i),
+      Number(values[(96 + i) * 3 + 2]),
+    ]),
+  );
+  if (!validMilestones(milestones))
+    throw new Error('Invalid recorded milestone controls');
+  return {
+    contract: CLASSIC_V1,
+    block: String(block.number),
+    observedAt: new Date(Number(block.timestamp) * 1000).toISOString(),
+    milestones,
+  };
+}
+export function validateBitcoinCheckpoint(raw: unknown): BitcoinCheckpoint {
+  const state = raw as BitcoinCheckpoint;
+  const hour = Date.parse(state?.hour);
+  if (
+    state?.version !== 1 ||
+    state.tokenId !== 245 ||
+    state.mode !== base.mode ||
+    state.source !== base.source ||
+    !Number.isFinite(hour) ||
+    hour % HOUR_MS !== 0 ||
+    state.anchor?.contract !== CLASSIC_V1 ||
+    !state.anchor.block ||
+    !Number.isFinite(Date.parse(state.anchor.observedAt)) ||
+    !validMilestones(state.anchor.milestones) ||
+    state.inputs?.BTC?.symbol !== 'BTC' ||
+    !validMilestones(state.overrides) ||
+    Object.keys(state.overrides).length !== 102 ||
+    Array.from({ length: 102 }, (_, i) => i).some(
+      (i) => !Number.isSafeInteger(state.overrides['246-' + i]),
+    ) ||
+    Object.entries(state.overrides).some(
+      ([key, value]) =>
+        !/^246-(\d+)$/.test(key) ||
+        Number(key.slice(4)) > 101 ||
+        !Number.isSafeInteger(value),
+    )
+  )
+    throw new Error('Invalid Bitcoin restoration checkpoint');
+  return state;
+}
+export async function restoreBitcoin(
+  target: number,
+  deps: {
+    load: () => Promise<{ state: BitcoinCheckpoint; etag: string } | null>;
+    save: (state: BitcoinCheckpoint, etag?: string) => Promise<void>;
+    anchor: typeof readBitcoinAnchor;
+    windows: typeof hourlyWindows;
+  },
+): Promise<BitcoinCheckpoint> {
+  const prior = await deps.load();
+  if (prior && Date.parse(prior.state.hour) > target)
+    throw new Error('Checkpoint is in the future');
+  if (prior && Date.parse(prior.state.hour) === target) return prior.state;
+  try {
+    const first = prior ? Date.parse(prior.state.hour) + HOUR_MS : target;
+    const last = Math.min(target, first + (MAX_REPLAY_HOURS - 1) * HOUR_MS);
+    const [prices, anchor] = await Promise.all([
+      deps.windows('BTC', first, last),
+      prior ? Promise.resolve(prior.state.anchor) : deps.anchor(),
+    ]);
+    const count = (last - first) / HOUR_MS + 1;
+    if (prices.length !== count) throw new Error('Incomplete milestone replay');
+    let overrides = prior?.state.overrides ?? anchor.milestones;
+    for (let i = 0; i < count; i++) {
+      if (Date.parse(prices[i].hourly[24].closedAt) !== first + i * HOUR_MS)
+        throw new Error('Out-of-order milestone replay');
+      overrides = {
+        ...overrides,
+        ...bitcoinMilestoneChanges(prices[i].hourly),
+      };
+    }
+    const state: BitcoinCheckpoint = {
       ...base,
-      tokenId,
-      hour: new Date(target).toISOString(),
-      overrides: bitcoinOverrides(price),
+      tokenId: 245,
+      hour: new Date(last).toISOString(),
+      anchor,
+      overrides: { ...overrides, ...bitcoinOverrides(prices[count - 1]) },
+      inputs: { BTC: prices[count - 1] },
     };
+    validateBitcoinCheckpoint(state);
+    await deps.save(state, prior?.etag);
+    return state;
+  } catch (error) {
+    const status = (error as { $metadata?: { httpStatusCode?: number } })
+      ?.$metadata?.httpStatusCode;
+    if (status === 409 || status === 412) {
+      const winner = await deps.load();
+      if (
+        winner &&
+        Date.parse(winner.state.hour) >=
+          (prior ? Date.parse(prior.state.hour) : target)
+      )
+        return winner.state;
+    }
+    if (prior)
+      return {
+        ...prior.state,
+        warning: 'Price update delayed; showing the last saved hour.',
+      };
+    throw error;
   }
+}
+function checkpointStorage<T>(key: string, validate: (raw: unknown) => T) {
   const storage = audioStorageConnection();
   if (!storage) throw new Error('Restoration storage unavailable');
   const { client, bucket } = storage;
-  return restoreEthBoy(target, {
+  return {
     load: async () => {
       try {
         const result = await client.send(
-          new GetObjectCommand({ Bucket: bucket, Key: KEY }),
+          new GetObjectCommand({ Bucket: bucket, Key: key }),
           { abortSignal: AbortSignal.timeout(8000) },
         );
         if (!result.Body || !result.ETag)
           throw new Error('Incomplete checkpoint');
         return {
-          state: validateCheckpoint(
-            JSON.parse(await result.Body.transformToString()),
-          ),
+          state: validate(JSON.parse(await result.Body.transformToString())),
           etag: result.ETag,
         };
       } catch (error) {
@@ -229,11 +347,11 @@ export async function collectHourlyArtwork(
         throw error;
       }
     },
-    save: async (state, etag) => {
+    save: async (state: T, etag?: string) => {
       await client.send(
         new PutObjectCommand({
           Bucket: bucket,
-          Key: KEY,
+          Key: key,
           Body: JSON.stringify(state),
           ContentType: 'application/json',
           ...(etag ? { IfMatch: etag } : { IfNoneMatch: '*' }),
@@ -241,24 +359,35 @@ export async function collectHourlyArtwork(
         { abortSignal: AbortSignal.timeout(8000) },
       );
     },
+  };
+}
+export async function collectHourlyArtwork(
+  tokenId: 807 | 245,
+  now = Date.now(),
+): Promise<HourlyArtwork> {
+  const target = Math.floor(now / HOUR_MS) * HOUR_MS;
+  if (tokenId === 245)
+    return restoreBitcoin(target, {
+      ...checkpointStorage(
+        'archive-automation/v1/bitcoin-hourly.json',
+        validateBitcoinCheckpoint,
+      ),
+      anchor: readBitcoinAnchor,
+      windows: hourlyWindows,
+    });
+  return restoreEthBoy(target, {
+    ...checkpointStorage(KEY, validateCheckpoint),
     anchor: readAnchor,
     windows: hourlyWindows,
     gas: async () => (await readMarketGas(now))?.gwei ?? null,
   });
 }
-// A minute allows provider/storage recovery and bounded catch-up without per-visitor fetches.
+// Minute cache permits provider recovery and bounded catch-up; R2 prevents repeat writes.
 const cachedArtwork = unstable_cache(
   async (id: 807 | 245, _minute: number) => collectHourlyArtwork(id),
-  ['hourly-artwork-v1'],
+  ['hourly-artwork-v2'],
   { revalidate: 60 },
 );
-const cachedBitcoin = unstable_cache(
-  async (hour: number) => collectHourlyArtwork(245, hour),
-  ['hourly-bitcoin-artwork-v1'],
-  { revalidate: 3600 },
-);
 export function getHourlyArtwork(id: 807 | 245) {
-  if (id === 245)
-    return cachedBitcoin(Math.floor(Date.now() / HOUR_MS) * HOUR_MS);
   return cachedArtwork(id, Math.floor(Date.now() / 60_000));
 }
