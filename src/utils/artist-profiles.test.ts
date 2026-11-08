@@ -1,3 +1,4 @@
+import { recoverMessageAddress } from 'viem';
 import { describe, expect, it } from 'vitest';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -73,7 +74,7 @@ describe('restored artist profiles', () => {
       artistWorks(bard, 'all').artworks.some((r) => r.name === 'Resting Place'),
     ).toBe(true);
   });
-  it('ships only historical creators, source-backed identity data, and valid local portrait bytes', () => {
+  it('ships only historical creators, source-backed identity data, and valid local portrait bytes', async () => {
     const records = new Map(getArchiveRecords().map((r) => [r.id, r]));
     expect(new Set(snapshot.profiles.map((p) => p.address)).size).toBe(
       snapshot.profiles.length,
@@ -112,6 +113,22 @@ describe('restored artist profiles', () => {
               a.toLowerCase(),
             ),
           ).toContain(p.address);
+        } else if (w.basis === 'metadata-signature') {
+          const meta = JSON.parse(
+            readFileSync(`public/archive/metadata/${r.cid}.json`, 'utf8'),
+          );
+          const signed = meta['async-attributes'].signatures.find(
+            (s: { address: string }) => s.address.toLowerCase() === p.address,
+          );
+          expect(signed).toBeDefined();
+          expect(
+            (
+              await recoverMessageAddress({
+                message: signed.message,
+                signature: signed.signature,
+              })
+            ).toLowerCase(),
+          ).toBe(p.address);
         } else if (w.basis === 'layer-contribution') {
           const layerRecordId = (w as { layerRecordId?: string }).layerRecordId;
           expect(

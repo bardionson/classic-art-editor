@@ -1,3 +1,4 @@
+import projectCoverage from '@/data/blueprint-project-coverage.json';
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
 import { notFound } from 'next/navigation';
@@ -30,6 +31,18 @@ export default function BlueprintProjectPage({
   const page =
     typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
   const result = searchArchive(query, project.family, page, 'all', project.id);
+  const coverage = (
+    projectCoverage as Record<
+      string,
+      {
+        mintedCount: number;
+        declaredEditionCount: number;
+        checkedOn: string;
+        throughBlock: number;
+        evidenceUrl: string;
+      }
+    >
+  )[project.id];
   const pathname = `/archive/blueprints/project/${project.id}`;
   return (
     <main className="container mx-auto px-4 py-10 max-w-6xl">
@@ -53,9 +66,22 @@ export default function BlueprintProjectPage({
         />
       </p>
       <p className="text-text-muted mb-6">
-        {project.count.toLocaleString('en-US')} indexed editions in this
-        project. This is the recovered inventory, not total minted supply. Each
-        Blueprint edition is fixed once minted.
+        {coverage ? (
+          <>
+            {project.count.toLocaleString('en-US')} editions restored. The chain
+            audit found {coverage.mintedCount.toLocaleString('en-US')} minted
+            editions as of {coverage.checkedOn}. The original metadata declares{' '}
+            {coverage.declaredEditionCount.toLocaleString('en-US')} editions;
+            that declaration is not the number minted.{' '}
+          </>
+        ) : (
+          <>
+            {project.count.toLocaleString('en-US')} indexed editions in this
+            project. This is the recovered inventory, not total minted
+            supply.{' '}
+          </>
+        )}
+        Each Blueprint edition is fixed once minted.
       </p>
       <form
         action={pathname}
@@ -106,6 +132,15 @@ export default function BlueprintProjectPage({
               rel="noopener noreferrer"
             >
               Classification source
+            </a>
+          </p>
+        )}
+        {coverage && (
+          <p className="mt-2">
+            Mint history checked through Ethereum block{' '}
+            {coverage.throughBlock.toLocaleString('en-US')}.{' '}
+            <a href={coverage.evidenceUrl} className="text-accent underline">
+              Recovery evidence and original metadata identifiers
             </a>
           </p>
         )}

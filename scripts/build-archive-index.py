@@ -173,3 +173,7 @@ out.mkdir(exist_ok=True)
 (out / 'music-identities.json').write_text(json.dumps(music_identities, indent=2), encoding='utf-8')
 assert len({r['id'] for r in records}) == len(records)
 print(json.dumps({'records':len(records), 'families':dict(Counter(r['family'] for r in records)), 'musicMasters':len(music_identities), 'catalogConflicts':catalog_conflicts}))
+
+# Reapply independently preserved on-chain edition recoveries after the source import.
+import subprocess
+subprocess.run([sys.executable, str(ROOT / 'scripts/merge-blueprint-recovery.py')], check=True)
