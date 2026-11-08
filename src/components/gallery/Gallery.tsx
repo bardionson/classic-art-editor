@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import LayerThumbnail from '@/components/layer/layer-thumbnail';
 import { Search, ArrowDown, ArrowUp, Info } from 'react-feather';
 import { gallerySearchScore } from '@/utils/gallery-search';
 import { Address } from 'viem';
@@ -197,7 +198,9 @@ export default function Gallery({
                       <Info size={16} />
                     </button>
                   )}
-                  {item.imageUrl ? (
+                  {item.isLayer ? (
+                    <LayerThumbnail imageUrl={item.imageUrl} name={item.name} />
+                  ) : item.imageUrl ? (
                     <Image
                       src={item.imageUrl}
                       alt={item.name}

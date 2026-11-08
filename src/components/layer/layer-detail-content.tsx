@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import LayerThumbnail from '@/components/layer/layer-thumbnail';
 import { Address } from 'viem';
 import Spinner from '@/components/common/spinner';
 import AddressWithEns from '@/components/common/address-with-ens';
@@ -44,19 +44,7 @@ export default function LayerDetailContent({
       <h1 className="text-2xl font-bold text-text">{data.name}</h1>
 
       <div className="aspect-square w-full max-w-sm overflow-hidden rounded-lg bg-surface-sunken relative mx-auto">
-        {data.imageUrl ? (
-          <Image
-            src={data.imageUrl}
-            alt={data.name}
-            className="object-cover"
-            fill
-            sizes="(max-width: 768px) 100vw, 384px"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-text-muted text-sm">
-            No image
-          </div>
-        )}
+        <LayerThumbnail imageUrl={data.imageUrl} name={data.name} />
       </div>
 
       {data.description && (

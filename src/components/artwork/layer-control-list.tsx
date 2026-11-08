@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import LayerThumbnail from '@/components/layer/layer-thumbnail';
 import { ChevronRight, Info } from 'react-feather';
 import { Address } from 'viem';
 import { useLayerDetailModal } from '@/components/layer/layer-detail-provider';
@@ -47,15 +47,12 @@ export default function LayerControlList({
                 {index + 1}
               </div>
               <div>
-                {layer.imageUrl ? (
-                  <img
-                    src={layer.imageUrl}
-                    alt={layer.name}
-                    className="w-12 h-12 object-cover rounded-md inline-block mr-4"
+                <div className="w-12 h-12 rounded-md overflow-hidden inline-block align-middle mr-4">
+                  <LayerThumbnail
+                    imageUrl={layer.imageUrl || ''}
+                    name={layer.name}
                   />
-                ) : (
-                  <div className="w-12 h-12 bg-border rounded-md inline-block mr-4"></div>
-                )}
+                </div>
                 <div className="inline-block align-middle">
                   <h3 className="text-lg font-medium text-text">
                     {layer.name}
