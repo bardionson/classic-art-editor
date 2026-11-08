@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { imageCandidates, isArchiveVideo } from '@/utils/archive-media';
+import {
+  archiveImageCandidates,
+  archiveImageCachePath,
+  isArchiveVideo,
+} from '@/utils/archive-media';
 
 // Bound simultaneous metadata lookups as cards enter the viewport.
 let active = 0;
@@ -39,6 +43,46 @@ function lookup(cid: string) {
   return request;
 }
 
+// Warm each exact original at most once per tab; failures do not trigger loops.
+let warming = 0;
+const warmQueue: (() => void)[] = [];
+const warmRequests = new Map<
+  string,
+  Promise<{ contentType?: string; ready: boolean }>
+>();
+function warmImage(path: string) {
+  let request = warmRequests.get(path);
+  if (!request) {
+    request = new Promise<{ contentType?: string; ready: boolean }>(
+      (resolve) => {
+        const run = () => {
+          warming++;
+          fetch(`/api/archive/image?path=${encodeURIComponent(path)}`, {
+            method: 'POST',
+            signal: AbortSignal.timeout(58000),
+          })
+            .then((r) => (r.ok ? r.json() : null))
+            .then((r) =>
+              resolve({
+                ready: r?.status === 'ready',
+                contentType: r?.contentType,
+              }),
+            )
+            .catch(() => resolve({ ready: false }))
+            .finally(() => {
+              warming--;
+              warmQueue.shift()?.();
+            });
+        };
+        if (warming < 2) run();
+        else warmQueue.push(run);
+      },
+    );
+    warmRequests.set(path, request);
+  }
+  return request;
+}
+
 export default function ArchivePreview({
   name,
   cid,
@@ -57,9 +101,33 @@ export default function ArchivePreview({
   const [resolved, setResolved] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const video = isArchiveVideo(source);
-  const candidates = imageCandidates(source);
-  const url = candidates[attempt];
+  const [cachedType, setCachedType] = useState('');
+  const [cacheReady, setCacheReady] = useState(false);
+  const video = isArchiveVideo(source) || cachedType.startsWith('video/');
+  const candidates = archiveImageCandidates(source);
+  const candidate = candidates[attempt];
+  const url =
+    candidate &&
+    attempt === 0 &&
+    cacheReady &&
+    candidate.startsWith('/api/archive/image?')
+      ? candidate + '&ready=1'
+      : candidate;
+  useEffect(() => {
+    const path = archiveImageCachePath(source);
+    if (!visible || !path) return;
+    let cancelled = false;
+    warmImage(path).then((result) => {
+      if (cancelled || !result.ready) return;
+      setCachedType(result.contentType ?? '');
+      setCacheReady(true);
+      setAttempt(0);
+      setLoaded(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [visible, source]);
   useEffect(() => {
     if (!host.current) return;
     const observer = new IntersectionObserver(
@@ -127,7 +195,7 @@ export default function ArchivePreview({
             </p>
           )
         ) : visible && url ? (
-          // Unoptimized original images preserve animations and avoid gateway proxy limits.
+          // Serve cached browsing copies or original media without Next image proxy limits.
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={url}
@@ -156,7 +224,11 @@ export default function ArchivePreview({
       {large && loaded && url && (
         <a
           className="inline-block text-accent underline mt-3 text-sm"
-          href={url}
+          href={
+            archiveImageCachePath(source)
+              ? `/api/archive/image?path=${encodeURIComponent(archiveImageCachePath(source)!)}&original=1`
+              : url
+          }
           target="_blank"
           rel="noopener noreferrer"
         >

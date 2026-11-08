@@ -1,13 +1,27 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 import { GET } from './route';
+import { getArchiveRecords } from '@/utils/archive-search';
 const cid = 'QmccdgxmwtQDbajm6oAeofRAbz4PV6g2upACwA7qjqUm8w';
-const request = (value = cid) =>
+const pending = getArchiveRecords().find(
+  (r) => r.family === 'blueprints' && !r.metadataVerified && r.cid,
+)!;
+const request = (value = pending.cid) =>
   new NextRequest(
     `https://async.art/api/archive/preview?cid=${encodeURIComponent(value)}`,
   );
 afterEach(() => vi.unstubAllGlobals());
 describe('archive preview metadata route', () => {
+  it('uses preserved verified metadata without another gateway request', async () => {
+    const fetcher = vi.fn();
+    vi.stubGlobal('fetch', fetcher);
+    const response = await GET(request(cid));
+    expect(response.status).toBe(200);
+    expect((await response.json()).image).toBe(
+      'ipfs://QmYfy2qQBceBghoQGTsLUXpqZibbmoN11eTaDMPAkAAkUe',
+    );
+    expect(fetcher).not.toHaveBeenCalled();
+  });
   it('rejects unindexed IDs without making network requests', async () => {
     const fetcher = vi.fn();
     vi.stubGlobal('fetch', fetcher);

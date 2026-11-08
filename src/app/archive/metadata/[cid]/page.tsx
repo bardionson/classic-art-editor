@@ -2,6 +2,7 @@ import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
 import { notFound } from 'next/navigation';
 import ArchivePreview from '@/components/archive-preview';
+import DynamicExpansionPreview from '@/components/dynamic-expansion-preview';
 import BlueprintPlayer from '@/components/blueprint-player';
 import { getArchiveRecordByCid } from '@/utils/archive-search';
 import { familyTitle } from '@/utils/archive-families';
@@ -13,6 +14,10 @@ export default function MetadataArtworkPage({
 }) {
   const record = getArchiveRecordByCid(params.cid);
   if (!record) notFound();
+  const Preview =
+    record.family === 'dynamic-blueprints'
+      ? DynamicExpansionPreview
+      : ArchivePreview;
   return (
     <main className="container mx-auto px-4 py-8 max-w-5xl">
       <Link
@@ -45,7 +50,7 @@ export default function MetadataArtworkPage({
           animationUrl={record.animationUrl}
         />
       ) : (
-        <ArchivePreview
+        <Preview
           name={record.name}
           cid={record.cid}
           image={record.image}

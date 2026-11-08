@@ -1,3 +1,4 @@
+import imageSources from '@/data/archive-image-sources.json';
 import mediaTypes from '@/data/archive-media-types.json';
 
 // Only original image references are used as previews. Metadata CIDs themselves
@@ -110,4 +111,24 @@ export function metadataPlayback(data: unknown): ArchivePlayback | null {
     return { source, kind: audio ? 'audio' : 'video' };
   }
   return null;
+}
+
+const cachedImagePaths = new Set<string>(imageSources);
+export function archiveImageCachePath(value: string): string | null {
+  const path = ipfsPath(value);
+  return path && cachedImagePaths.has(path) ? path : null;
+}
+export function archiveImageCandidates(value: string): string[] {
+  const path = archiveImageCachePath(value);
+  return path
+    ? [
+        `/api/archive/image?path=${encodeURIComponent(path)}`,
+        ...imageCandidates(value),
+        `https://ipfs.filebase.io/ipfs/${path}`,
+      ]
+    : imageCandidates(value);
+}
+
+export function isCachedArchiveImage(value: string): boolean {
+  return archiveImageCachePath(value) !== null;
 }

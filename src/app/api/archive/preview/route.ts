@@ -23,8 +23,21 @@ export async function GET(request: NextRequest) {
   const preserved = music
     ? metadataPlayback({ animation_url: record.animationUrl })
     : null;
-  if (preserved) {
-    return NextResponse.json({ image: record.image ?? null, media: preserved });
+  // Exact recovered metadata is already indexed; do not depend on an IPFS
+  // metadata gateway again when only its image needs retrieval.
+  if (preserved || (!music && record.metadataVerified && record.image)) {
+    return NextResponse.json(
+      {
+        image: record.image ?? null,
+        ...(preserved ? { media: preserved } : {}),
+      },
+      {
+        headers: {
+          'Cache-Control':
+            'public, s-maxage=86400, stale-while-revalidate=604800',
+        },
+      },
+    );
   }
   for (const gateway of MEDIA_GATEWAYS) {
     try {

@@ -106,10 +106,10 @@ export default function ArchivePage({
             Dynamic Blueprint expansion items
           </h2>
           <p className="text-text-muted mb-6">
-            {recovered.total.toLocaleString('en-US')} recovered records.
-            Previews load from original metadata as you browse. These are
-            individual expansion items; restoring the changing core compositions
-            is the next step.
+            {recovered.total.toLocaleString('en-US')} recovered records. Images
+            use each item’s original expansion layer from IPFS, with shared
+            archive caching. These are individual expansion items; restoring the
+            changing core compositions is the next step.
           </p>
           <ArchiveResults records={recovered.results} />
           <Link

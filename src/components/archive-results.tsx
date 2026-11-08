@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ArtistCredit from '@/components/artist-credit';
 import ArchivePreview from '@/components/archive-preview';
+import DynamicExpansionPreview from '@/components/dynamic-expansion-preview';
 import { familyTitle } from '@/utils/archive-families';
 import {
   displayStatus,
@@ -18,6 +19,10 @@ export default function ArchiveResults({
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {records.map((record) => {
+        const Preview =
+          record.family === 'dynamic-blueprints'
+            ? DynamicExpansionPreview
+            : ArchivePreview;
         const href =
           record.link ||
           (record.cid ? `/archive/metadata/${record.cid}` : null);
@@ -28,14 +33,14 @@ export default function ArchiveResults({
           >
             {href ? (
               <Link href={href} aria-label={`View ${record.name}`}>
-                <ArchivePreview
+                <Preview
                   name={record.name}
                   cid={record.cid}
                   image={record.image}
                 />
               </Link>
             ) : (
-              <ArchivePreview
+              <Preview
                 name={record.name}
                 cid={record.cid}
                 image={record.image}
