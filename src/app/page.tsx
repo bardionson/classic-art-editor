@@ -36,6 +36,14 @@ export default function Home() {
           music, layers, and changing compositions so they can be experienced
           again.
         </p>
+        <Link
+          href="/archive/music-blueprints"
+          className="inline-flex items-center gap-2 text-accent underline mt-5"
+        >
+          <Disc size={18} aria-hidden="true" />
+          Explore Music Blueprints
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
         <div className="mt-8 rounded-2xl border border-border bg-surface-sunken p-5 sm:p-6">
           <ArchiveSearchForm />
         </div>
