@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import LayerThumbnail from '@/components/layer/layer-thumbnail';
+import { getLayerStatePreviews } from '@/utils/layer-state-previews';
+import type { MasterArtNFTMetadata } from '@/types/shared';
 import { Modal } from '@/components/common/modal';
 import { Address, getContract } from 'viem';
 import {
@@ -34,6 +37,8 @@ type LayerControlDialogProps = {
   currentValues: Record<string, number>;
   contractAddress?: Address;
   isMusic?: boolean;
+  masterTokenId?: number;
+  metadataLayers?: MasterArtNFTMetadata['layout']['layers'];
 };
 
 export default function LayerControlDialog({
@@ -44,6 +49,8 @@ export default function LayerControlDialog({
   currentValues,
   contractAddress,
   isMusic = false,
+  masterTokenId,
+  metadataLayers,
 }: LayerControlDialogProps) {
   const { address, chainId } = useAccount();
   const { openLayer } = useLayerDetailModal();
@@ -262,6 +269,17 @@ export default function LayerControlDialog({
         <div className="space-y-4">
           {layer.controls?.map((control: Control, index: number) => {
             const value = localValues[index];
+            const previews =
+              control.controlType === 'STATE'
+                ? getLayerStatePreviews(
+                    metadataLayers,
+                    masterTokenId,
+                    Number(layer.tokenId),
+                    index,
+                    control.label,
+                    isMusic,
+                  )
+                : [];
             // One real layer-controls.json entry has a typo'd key
             // ("maxVaue") instead of "maxValue" on a BLUE control - fall
             // back to a sane default (255, this collection's common max)
@@ -323,6 +341,44 @@ export default function LayerControlDialog({
                     </span>
                   </div>
                 )}
+                {control.controlType === 'STATE' &&
+                  control.stateLabels &&
+                  previews.some(Boolean) && (
+                    <div
+                      role="group"
+                      aria-label={`${isMusic ? 'Variant' : control.label} previews`}
+                      className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2"
+                    >
+                      {control.stateLabels.map((label, i) => {
+                        const optionValue = Number(minValue) + i;
+                        const selected = (value ?? minValue) === optionValue;
+                        return (
+                          <button
+                            key={optionValue}
+                            type="button"
+                            aria-label={`Select ${label}`}
+                            aria-pressed={selected}
+                            disabled={
+                              controlsLoading || isPending || isConfirming
+                            }
+                            onClick={() => handleChange(index, optionValue)}
+                            className={`min-w-0 overflow-hidden rounded-lg border-2 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-50 ${selected ? 'border-accent bg-surface-raised' : 'border-border'}`}
+                          >
+                            <div className="aspect-square w-full">
+                              <LayerThumbnail
+                                imageUrl={previews[optionValue] || ''}
+                                name={`${label} artwork`}
+                              />
+                            </div>
+                            <span className="block px-2 py-2 text-sm break-words">
+                              {label}
+                              {selected && <span aria-hidden="true"> ✓</span>}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
               </div>
             );
           })}

@@ -462,6 +462,8 @@ export default function ArtworkViewer({
       {!hideControls && (
         <LayerControlDialog
           layer={selectedLayer}
+          metadataLayers={metadata?.layout.layers}
+          masterTokenId={tokenId}
           isMusic={!!metadata?.['audio-layout']}
           isOpen={!!selectedLayer}
           onClose={() => setSelectedLayer(null)}
