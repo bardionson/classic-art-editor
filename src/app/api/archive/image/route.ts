@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { allowedArchiveImage, resolveR2Image } from '@/utils/r2-archive-images';
+import {
+  allowedArchiveImage,
+  resolveR2Image,
+  ImageDeliveryError,
+} from '@/utils/r2-archive-images';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -32,9 +36,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ status: 'unknown' }, { status: 404, headers });
   try {
     return NextResponse.json(await resolveR2Image(path, true), { headers });
-  } catch {
+  } catch (error) {
     return NextResponse.json(
-      { status: 'unavailable' },
+      {
+        status: 'unavailable',
+        stage:
+          error instanceof ImageDeliveryError ? error.stage : 'configuration',
+        upstreamStatus:
+          error instanceof ImageDeliveryError
+            ? error.upstreamStatus
+            : undefined,
+      },
       { status: 503, headers },
     );
   }

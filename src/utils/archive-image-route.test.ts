@@ -6,6 +6,7 @@ vi.mock('@/utils/r2-archive-images', async (original) => ({
   ...(await original<typeof import('./r2-archive-images')>()),
   resolveR2Image: mocks.resolve,
 }));
+import { ImageDeliveryError } from './r2-archive-images';
 import { GET, POST } from '@/app/api/archive/image/route';
 const path = sources[0];
 const request = (value = path) =>
@@ -62,7 +63,10 @@ it('returns a generic failure without exposing SDK errors or credentials', async
   mocks.resolve.mockRejectedValue(new Error('sensitive SDK context'));
   const response = await POST(request());
   expect(response.status).toBe(503);
-  expect(await response.json()).toEqual({ status: 'unavailable' });
+  expect(await response.json()).toEqual({
+    status: 'unavailable',
+    stage: 'configuration',
+  });
 });
 
 it('honors the explicit original download flag', async () => {
@@ -73,4 +77,14 @@ it('honors the explicit original download flag', async () => {
   const response = await GET(new NextRequest(request().url + '&original=1'));
   expect(response.status).toBe(307);
   expect(mocks.resolve).toHaveBeenCalledWith(path, false, true);
+});
+
+it('reports only sanitized delivery stage and upstream status', async () => {
+  mocks.resolve.mockRejectedValue(new ImageDeliveryError('storage-write', 403));
+  const response = await POST(request());
+  expect(await response.json()).toEqual({
+    status: 'unavailable',
+    stage: 'storage-write',
+    upstreamStatus: 403,
+  });
 });
