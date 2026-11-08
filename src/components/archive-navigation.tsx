@@ -15,6 +15,12 @@ export default function ArchiveNavigation({ active }: { active?: string }) {
         </Link>
       ))}
       <Link
+        href="/archive/price-check"
+        className="rounded-full border border-border px-4 py-2 text-sm hover:border-accent"
+      >
+        Price-driven art
+      </Link>
+      <Link
         href="/search"
         className="rounded-full border border-border px-4 py-2 text-sm hover:border-accent"
       >

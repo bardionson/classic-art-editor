@@ -349,6 +349,18 @@ export default function ArtworkViewer({
               >
                 {metadata.name}
               </h1>
+              {[
+                '0xb6dae651468e9593e4581705a09c10a76ac1e0c8',
+                '0x6c424c25e9f1fff9642cb5b7750b0db7312c29ad',
+              ].includes(tokenAddress.toLowerCase()) &&
+                /ethboy|right place.*right time/i.test(metadata.name) && (
+                  <Link
+                    href="/archive/price-check"
+                    className="inline-block mt-3 text-sm text-accent underline"
+                  >
+                    Check the price-driven changes
+                  </Link>
+                )}
               {metadata['audio-layout'] && (
                 <MusicPlayer
                   key={`${tokenAddress}:${tokenId}`}

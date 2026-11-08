@@ -52,6 +52,11 @@ export default function Home() {
           Explore Music Blueprints
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
+        <p className="mt-4">
+          <Link href="/archive/price-check" className="text-accent underline">
+            Follow price-driven art restoration
+          </Link>
+        </p>
         <aside
           aria-labelledby="rescue-lab-heading"
           className="mt-7 rounded-2xl border border-accent/30 bg-accent/5 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-5"
