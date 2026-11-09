@@ -39,3 +39,7 @@ Production npm audit changed from 49 flagged package entries (1 critical, 27 hig
 - Real Upstash execution and live Vercel deployment verification remain outstanding.
 
 References: [Next 15 migration](https://nextjs.org/docs/app/guides/upgrading/version-15), [Vercel Node runtimes](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions), [Vercel request headers](https://vercel.com/docs/headers/request-headers), [Zod advisory](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5).
+
+## Preview Redis diagnostics — 9 November 2026
+
+503 responses now include a fixed READ_BUDGET_* code distinguishing missing configuration, timeout, authentication/permissions, invalid response and other connection/service failures. Logs contain only that category, never upstream messages or credentials. Saving Vercel environment variables requires a new deployment; enable the variables for Preview before building the preview branch. Production remains gated on successful live Redis and artwork reads.

@@ -55,4 +55,42 @@ describe('shared Alchemy budget', () => {
     vi.stubEnv('KV_REST_API_URL', '');
     expect((await reserveAlchemyBudget(request, 1))?.status).toBe(503);
   });
+  it.each([
+    [new DOMException('private-url', 'TimeoutError'), 'TIMEOUT'],
+    [new Error('WRONGPASS private-token'), 'AUTHENTICATION_OR_PERMISSIONS'],
+    [new Error('fetch failed private-url'), 'CONNECTION_OR_SERVICE'],
+  ])('reports only a safe category for %s', async (error, code) => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    evaluate.mockRejectedValue(error);
+    const response = await reserveAlchemyBudget(request, 1);
+    expect(response?.status).toBe(503);
+    const body = await response!.json();
+    expect(body.code).toBe(`READ_BUDGET_${code}`);
+    expect(JSON.stringify(body)).not.toContain('private-');
+    expect(JSON.stringify(log.mock.calls)).not.toContain('private-');
+  });
+  it('distinguishes missing configuration from an unexpected Redis result', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    evaluate.mockResolvedValue(null);
+    expect(
+      await (await reserveAlchemyBudget(request, 1))!.json(),
+    ).toMatchObject({
+      code: 'READ_BUDGET_INVALID_RESPONSE',
+    });
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', '');
+    vi.stubEnv('KV_REST_API_URL', '');
+    expect(
+      await (await reserveAlchemyBudget(request, 1))!.json(),
+    ).toMatchObject({
+      code: 'READ_BUDGET_CONFIGURATION_MISSING',
+    });
+  });
+  it('accepts the Vercel KV aliases without Upstash-named variables', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', '');
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
+    vi.stubEnv('KV_REST_API_URL', 'https://redis.invalid');
+    vi.stubEnv('KV_REST_API_TOKEN', 'secret');
+    expect(await reserveAlchemyBudget(request, 1)).toBeNull();
+    expect(evaluate).toHaveBeenCalledOnce();
+  });
 });

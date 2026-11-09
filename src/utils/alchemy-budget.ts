@@ -40,7 +40,7 @@ export async function reserveAlchemyBudget(
     // memory on Vercel (a cold start would silently reset the quota).
     if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL)
       return null;
-    return unavailable();
+    return unavailable('configuration_missing');
   }
   // Trust Vercel's protected edge header, not a client-selected address/header.
   // Off Vercel all clients share one bucket until a trusted proxy is configured.
@@ -75,7 +75,7 @@ export async function reserveAlchemyBudget(
       !Number.isFinite(retryAfter) ||
       retryAfter < 0
     )
-      return unavailable();
+      return unavailable('invalid_response');
     if (retryAfter > 0)
       return NextResponse.json(
         { error: 'Request limit reached. Please try again later.' },
@@ -88,16 +88,37 @@ export async function reserveAlchemyBudget(
         },
       );
     return null;
-  } catch {
-    // Never log upstream errors or URLs: Redis/Alchemy credentials can occur in them.
-    console.error('Alchemy request budget unavailable');
-    return unavailable();
+  } catch (error) {
+    // Classify locally, but never echo/log upstream messages or credentials.
+    const message = error instanceof Error ? error.message : '';
+    const reason =
+      error instanceof Error &&
+      (error.name === 'TimeoutError' || error.name === 'AbortError')
+        ? 'timeout'
+        : /unauthorized|wrongpass|noperm|invalid token|read.?only/i.test(
+              message,
+            )
+          ? 'authentication_or_permissions'
+          : 'connection_or_service';
+    return unavailable(reason);
   }
 }
 
-function unavailable() {
+type BudgetFailure =
+  | 'configuration_missing'
+  | 'invalid_response'
+  | 'timeout'
+  | 'authentication_or_permissions'
+  | 'connection_or_service';
+
+function unavailable(reason: BudgetFailure) {
+  // Only this fixed enum is exposed; never environment values or error messages.
+  console.error('Alchemy request budget unavailable:', reason);
   return NextResponse.json(
-    { error: 'Chain reads temporarily unavailable. Please retry shortly.' },
+    {
+      error: 'Chain reads temporarily unavailable. Please retry shortly.',
+      code: `READ_BUDGET_${reason.toUpperCase()}`,
+    },
     {
       status: 503,
       headers: { 'Retry-After': '30', 'Cache-Control': 'no-store' },
