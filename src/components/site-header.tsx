@@ -95,6 +95,7 @@ export default function SiteHeader({ backHref, title }: SiteHeaderProps) {
 
   return (
     <header
+      data-site-header
       ref={headerRef}
       className="sticky top-0 z-40 bg-surface-raised/90 backdrop-blur border-b border-border"
     >

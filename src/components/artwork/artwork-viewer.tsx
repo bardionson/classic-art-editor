@@ -57,6 +57,8 @@ export default function ArtworkViewer({
   hideControls = false,
 }: ArtworkViewerProps) {
   const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
+  const [displayToolsVisible, setDisplayToolsVisible] = useState(false);
+  const displayToolsTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isLayersModalOpen, setIsLayersModalOpen] = useState(false);
   const [isMirrorDialogOpen, setIsMirrorDialogOpen] = useState(false);
   // Until the visitor chooses, music opens with its player visible. Derive
@@ -75,6 +77,28 @@ export default function ArtworkViewer({
   const [artScale, setArtScale] = useState(1);
   const musicPanelRef = useRef<HTMLDivElement>(null);
   const artViewportRef = useRef<HTMLDivElement>(null);
+
+  const revealDisplayTools = () => {
+    if (!isFullscreen) return;
+    setDisplayToolsVisible(true);
+    if (displayToolsTimer.current) clearTimeout(displayToolsTimer.current);
+    displayToolsTimer.current = setTimeout(
+      () => setDisplayToolsVisible(false),
+      3000,
+    );
+  };
+
+  useEffect(() => {
+    setDisplayToolsVisible(false);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsFullscreen(false);
+    };
+    if (isFullscreen) window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      if (displayToolsTimer.current) clearTimeout(displayToolsTimer.current);
+    };
+  }, [isFullscreen]);
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 639px)');
@@ -140,9 +164,8 @@ export default function ArtworkViewer({
         Math.max(
           0,
           Math.min(
-            1,
-            (rect.width - 16) / (width * resizeToFitScreenRatio),
-            (rect.height - 16) / (height * resizeToFitScreenRatio),
+            rect.width / (width * resizeToFitScreenRatio),
+            rect.height / (height * resizeToFitScreenRatio),
           ),
         ),
       );
@@ -182,7 +205,13 @@ export default function ArtworkViewer({
   }
 
   return (
-    <div className="fixed inset-0 bg-art-bed overflow-hidden">
+    <div
+      data-artwork-fullscreen={isFullscreen || hideControls}
+      onPointerMove={revealDisplayTools}
+      onPointerDown={revealDisplayTools}
+      onFocusCapture={revealDisplayTools}
+      className={`fixed inset-0 bg-art-bed overflow-hidden ${isFullscreen && !displayToolsVisible ? 'cursor-none' : ''}`}
+    >
       {/* Full-bleed art viewport */}
       <div
         ref={artViewportRef}
@@ -190,15 +219,9 @@ export default function ArtworkViewer({
         style={{
           top:
             isFullscreen || hideControls
-              ? 'var(--site-header-height, 72px)'
-              : 'calc(var(--site-header-height, 72px) + 64px)',
-          bottom: mobilePanel
-            ? playerHeight
-            : isFullscreen || hideControls
               ? 0
-              : hourlyArt.id
-                ? 112
-                : 72,
+              : 'var(--site-header-height, 72px)',
+          bottom: mobilePanel ? playerHeight : 0,
           right: panelVisible && !isMobile ? 420 : 0,
         }}
         className="absolute inset-0 flex items-center justify-center overflow-hidden"
@@ -313,7 +336,8 @@ export default function ArtworkViewer({
       {/* Floating artwork tools stay clear of the details panel. */}
       {!hideControls && (
         <div
-          className={`${mobilePanel ? 'hidden' : 'flex'} absolute bottom-4 left-4 z-40 gap-1 bg-black/40 backdrop-blur-md rounded-full p-1`}
+          className={`${mobilePanel ? 'hidden' : 'flex'} absolute bottom-4 left-4 z-40 gap-1 bg-black/40 backdrop-blur-md rounded-full p-1 transition-opacity focus-within:opacity-100 focus-within:pointer-events-auto focus-within:cursor-auto ${isFullscreen && !displayToolsVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          aria-label="Artwork tools"
         >
           {metadata?.['audio-layout'] && (
             <button
@@ -336,9 +360,20 @@ export default function ArtworkViewer({
             <Layers size={20} />
           </button>
           <button
-            onClick={() => setIsFullscreen(!isFullscreen)}
+            onClick={(event) => {
+              // A pointer click must not keep the idle toolbar focus-visible.
+              if (event.detail > 0) event.currentTarget.blur();
+              setIsFullscreen(!isFullscreen);
+            }}
             className="bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition border border-white/10"
-            aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+            aria-label={
+              isFullscreen ? 'Exit exhibition view' : 'Enter exhibition view'
+            }
+            title={
+              isFullscreen
+                ? 'Exit exhibition view (Escape)'
+                : 'Exhibition view — hide menus'
+            }
           >
             {isFullscreen ? <X size={20} /> : <Maximize size={20} />}
           </button>

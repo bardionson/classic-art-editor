@@ -1,6 +1,6 @@
 # Wallet/API security hardening — 8 November 2026
 
-Implemented in the WSL checkout `/home/bardionson/projects/classic-art-editor-800-fix`. Not deployed: shared Redis configuration must be verified before publishing. Existing work in README.md and FOREVER-SUPPER.md is unrelated and preserved.
+Implemented in the WSL checkout `/home/bardionson/projects/classic-art-editor-800-fix`. Deployed to production on 9 November 2026 at commit 720a7bc after successful preview verification. Existing work in README.md and FOREVER-SUPPER.md is unrelated and preserved.
 
 ## Changes
 
@@ -36,7 +36,7 @@ Production npm audit changed from 49 flagged package entries (1 critical, 27 hig
 - Full tests: 399 passed, 8 skipped; the skipped tests include live external-service checks. New security tests cover permitted/forbidden RPC calls, bounded bodies/batches, sanitized errors, shared budget arguments, protected IP identity and fail-closed behavior.
 - Corrected an existing inventory test to explicitly account for the intentionally hidden #115 record while retaining its original raw metadata.
 - Local production HTTP checks passed for the home page, wallet, #1605, artists/XCOPY, Blueprint project and search pages. Unsupported RPC calls returned 400; missing production Redis returned 503 without exposing credentials. The wallet page hydrated and its chooser opened without console errors. No wallet was connected or transaction signed.
-- Real Upstash execution and live Vercel deployment verification remain outstanding.
+- Production verification passed on 9 November 2026: chain ID, #800 tokenURI, NFT ownership lookup, and wallet/music/visual/artist pages returned 200; forbidden trace and transaction relay calls and oversized batches returned 400. The user also verified artwork/layers in preview. No wallet transaction was submitted.
 
 References: [Next 15 migration](https://nextjs.org/docs/app/guides/upgrading/version-15), [Vercel Node runtimes](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions), [Vercel request headers](https://vercel.com/docs/headers/request-headers), [Zod advisory](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5).
 
@@ -47,3 +47,5 @@ References: [Next 15 migration](https://nextjs.org/docs/app/guides/upgrading/ver
 Follow-up: select complete Upstash or KV URL/token pairs instead of independently mixing aliases. Validate HTTPS REST endpoint and token formatting before invoking the SDK. Diagnostics identify which variable pair was selected (names only) and categorize DNS/TLS/connectivity, quota, database, script, counter-type and response-format failures. The actual deployment failure remains unconfirmed; the user reports Redis Available. Validation: 23 targeted tests passed, including real SDK serialization/response handling with HTTP mocked, and TypeScript passed. No live Redis success claimed.
 
 Confirmed preview diagnosis: READ_BUDGET_NETWORK_DNS with configuration=upstash. The selected legacy Upstash hostname failed DNS resolution even though the user had connected an Available Vercel KV database. Prioritize the complete KV integration pair; do not switch databases following request failure (that would split budget accounting). Added dual-configuration regression coverage, including the installed SDK transport. Live KV success still requires verification in the new preview.
+
+Production follow-up: the KV-first fix (720a7bc) is live. Preview and production reads succeeded with the connected KV database. The earlier diagnostic notes above describe the resolved rollout failure.

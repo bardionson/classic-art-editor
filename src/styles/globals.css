@@ -90,3 +90,9 @@ details summary::marker {
   background: rgba(255, 255, 255, 0.6);
   animation: artwork-loader-progress 1.6s ease-in-out infinite;
 }
+
+/* The URL-rendered marker hides all site chrome before hydration as well.
+   The artwork viewport uses its full bounds; leaving restores the header. */
+body:has([data-artwork-fullscreen='true']) [data-site-header] {
+  display: none;
+}
