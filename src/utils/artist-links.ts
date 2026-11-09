@@ -28,6 +28,8 @@ export function buildArtistLinks(entries: ArtistLinkIdentity[]) {
 }
 export const findArtistLink = buildArtistLinks(identities);
 export function artistCreditParts(credit: string, allowedAddresses?: string[]) {
+  // Repair the known legacy UTF-8 decoding error without altering source metadata.
+  credit = credit.replace(/B\u00c3\u00a5rd/g, 'B\u00e5rd');
   const resolve = (text: string) => {
     const artist = findArtistLink(text);
     return artist &&

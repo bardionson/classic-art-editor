@@ -162,6 +162,12 @@ for record in records:
         record['metadataVerified'] = record['metadataVerified'] or bool(preview_report.get(cid, {}).get('cidVerified'))
         break
 
+# Correct a known legacy decoding error in discovery text only.
+for record in records:
+    for field in ('artist', 'name'):
+        if isinstance(record.get(field), str):
+            record[field] = record[field].replace('B\u00c3\u00a5rd', 'B\u00e5rd')
+
 # Compact immutable discovery snapshot; original source bytes stay in the recovery archive.
 out = ROOT / 'src/data'
 out.mkdir(exist_ok=True)
