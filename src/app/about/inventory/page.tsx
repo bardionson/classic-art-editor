@@ -5,7 +5,7 @@ import ProgrammableChecklist from '@/components/programmable-checklist';
 export const metadata: Metadata = {
   title: 'Programmable art inventory | Async Art',
   description:
-    'Timers, price-driven art, collector controls and restoration checks across the Async archive.',
+    'Timers, calendars, price-driven art and automatic event-driven restoration checks across the Async archive.',
 };
 export default function ProgrammablePage() {
   return (
@@ -23,8 +23,9 @@ export default function ProgrammablePage() {
         Programmable art inventory
       </h1>
       <p className="mt-5 text-lg text-text-muted max-w-3xl">
-        Find time-based pieces, price-driven art and collector-controlled works.
-        Open a piece, check its behavior, and keep your own review list.
+        Find pieces that change automatically with time, calendar dates, prices
+        or external events. Open a piece, check its behavior, and keep your own
+        review list.
       </p>
       <ProgrammableChecklist />
     </main>

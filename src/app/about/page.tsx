@@ -55,9 +55,9 @@ export default function AboutPage() {
           </Link>
         </h2>
         <p className="mt-3 text-text-muted">
-          Explore the mechanics behind time-based art, price-driven pieces,
-          collector controls and Forever Supper. See what has been tested, what
-          still needs restoration, and keep a personal review checklist.
+          Explore the mechanics behind timers, calendars, price-driven art and
+          other automatic changes. See what has been tested, what still needs
+          restoration, and keep a personal review checklist.
         </p>
       </section>
       <div className="mt-8 flex flex-wrap gap-4">

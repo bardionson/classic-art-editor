@@ -22,7 +22,7 @@ This is the current summary checklist for Digital Rescue Lab's independent resto
 
 ## Latest audit and changes
 
-- Added About → Programmable art inventory, searchable mechanics, evidence, filters, browser-local visual review marks and export. Current catalog scope, not a complete on-chain census.
+- Added About → Programmable art inventory, searchable mechanics, evidence, filters, browser-local visual review marks and export. Scope corrected to 2,126 automatic works: time/calendar, price, seeded daily changes and external-data automation. Ordinary collector-only controls, music playback, collector-triggered interactions and Forever Supper compositions are excluded. Timers appear first; calendar/anniversary filtering is available. Current catalog scope, not a complete on-chain census.
 - Production timer simulations: 115,570 state-selection cases and 50,616 hourly watcher checks. 129 targeted regression tests, TypeScript and production build passed.
 - Fixed #567 timed opacity without replacing collector variants; fixed #571 legacy GMT-06:00 offset.
 - 15,197/15,197 timer image signatures available through public gateways after retries. No paid image-cache writes; signature checks do not certify full image integrity.

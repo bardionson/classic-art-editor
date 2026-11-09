@@ -32,6 +32,7 @@ type Report = {
     metadataRead: number;
     metadataUnavailable: number;
     timerWorks: number;
+    calendarWorks: number;
     stateCases: number;
     watcherChecks: number;
     timerChecksPassed: number;
@@ -47,15 +48,11 @@ type Report = {
 };
 const storageKey = 'async-programmable-review-v1';
 const labels: Record<string, string> = {
-  timer: 'Timers',
+  timer: 'Metadata timers',
+  calendar: 'Calendars / anniversaries',
   price: 'Prices',
   external: 'External automation',
   random: 'Random / Tarot',
-  combined: 'Combined controls',
-  collector: 'Collector controls',
-  music: 'Music',
-  dynamic: 'Dynamic Blueprints',
-  unknown: 'Metadata unverified',
 };
 const statuses: Record<string, string> = {
   'timer-checks-passed': 'Timer checks passed',
@@ -198,10 +195,10 @@ export default function ProgrammableChecklist() {
     <section className="mt-8">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          [s.timerWorks, 'Timer pieces'],
+          [s.timerWorks, 'Metadata timer pieces'],
           [s.timerChecksPassed, 'Timer checks passed'],
-          [s.metadataUnavailable, 'Metadata not retrieved'],
-          [s.listedWorks, 'Works and groups listed'],
+          [s.calendarWorks, 'Calendar / anniversary pieces'],
+          [s.listedWorks, 'Automatic works listed'],
         ].map(([number, title]) => (
           <div key={title} className="border border-border rounded-xl p-4">
             <p className="text-3xl font-bold">
@@ -229,13 +226,15 @@ export default function ProgrammableChecklist() {
           <strong>
             A passed timer check is not a complete restoration certificate.
           </strong>{' '}
-          Image checks read only file signatures. Full images, composition,
-          collector settings and live external inputs still need visual review.
+          Image checks read only file signatures. Full images, composition, live
+          transitions and external inputs still need visual review.
         </p>
         <p>
-          Blueprint and Music Blueprint editions are fixed after minting. They
-          are not included in the automation count. Forever Supper has its own
-          entry.
+          This inventory covers automatic changes triggered by time, dates,
+          prices and external data. Pieces with only manual collector controls,
+          music playback or collector-arranged compositions are excluded. There
+          are {s.metadataUnavailable} unread metadata records remain
+          unclassified.
         </p>
         <details>
           <summary className="cursor-pointer underline">
@@ -292,7 +291,7 @@ export default function ProgrammableChecklist() {
               setPage(0);
             }}
           >
-            <option value="all">All programmable works</option>
+            <option value="all">All automatic works</option>
             {Object.entries(labels).map(([key, title]) => (
               <option key={key} value={key}>
                 {title} (
@@ -379,7 +378,7 @@ export default function ProgrammableChecklist() {
               <p className="mt-1 text-sm text-text-muted">
                 {w.media.total
                   ? `Image signatures: ${w.media.available}/${w.media.total} verified; ${w.media.unverified} unverified after a retrieval attempt; ${w.media.total - w.media.checked} not checked.`
-                  : 'Media and collector behavior were not validated in this audit.'}
+                  : 'Automatic behavior has not been fully validated in this audit.'}
               </p>
               {!!w.notes.length && (
                 <ul className="list-disc pl-5 mt-3 text-sm space-y-1">
