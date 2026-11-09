@@ -31,17 +31,18 @@ export async function reserveAlchemyBudget(
 ): Promise<NextResponse | null> {
   if (!Number.isSafeInteger(cost) || cost < 1 || cost > 100)
     throw new Error('Invalid budget cost');
-  // Select a complete pair; never mix credentials from different databases.
+  // Prefer the connected Vercel KV integration over legacy Upstash settings.
+  // Select one complete pair; never mix credentials or switch stores on failure.
   const pairs = [
-    {
-      source: 'upstash',
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
-    },
     {
       source: 'kv',
       url: process.env.KV_REST_API_URL,
       token: process.env.KV_REST_API_TOKEN,
+    },
+    {
+      source: 'upstash',
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
     },
   ];
   const config = pairs.find(({ url, token }) => url?.trim() && token?.trim());

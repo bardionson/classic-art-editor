@@ -7,8 +7,8 @@ describe('Alchemy budget Redis SDK transport', () => {
   beforeEach(() => {
     vi.stubEnv('NODE_ENV', 'production');
     vi.stubEnv('VERCEL', '1');
-    vi.stubEnv('UPSTASH_REDIS_REST_URL', '');
-    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', 'https://legacy-redis.invalid');
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', 'legacy-secret');
     vi.stubEnv('KV_REST_API_URL', 'https://redis.invalid');
     vi.stubEnv('KV_REST_API_TOKEN', 'test-secret');
     vi.spyOn(console, 'error').mockImplementation(() => {});

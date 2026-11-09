@@ -157,4 +157,32 @@ describe('shared Alchemy budget', () => {
     expect(JSON.stringify(log.mock.calls)).not.toContain('private-host');
     expect(evaluate).not.toHaveBeenCalled();
   });
+  it('prefers Vercel KV when both complete pairs exist', async () => {
+    vi.stubEnv('KV_REST_API_URL', 'https://kv.invalid');
+    vi.stubEnv('KV_REST_API_TOKEN', 'kv-secret');
+    expect(await reserveAlchemyBudget(request, 1)).toBeNull();
+    expect(construct).toHaveBeenCalledOnce();
+    expect(construct).toHaveBeenCalledWith(
+      expect.objectContaining({
+        url: 'https://kv.invalid',
+        token: 'kv-secret',
+      }),
+    );
+  });
+  it('does not bypass the chosen KV budget by trying another store after failure', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.stubEnv('KV_REST_API_URL', 'https://kv.invalid');
+    vi.stubEnv('KV_REST_API_TOKEN', 'kv-secret');
+    evaluate.mockRejectedValue(
+      new Error('fetch failed', { cause: { code: 'ENOTFOUND' } }),
+    );
+    const response = await reserveAlchemyBudget(request, 1);
+    expect(response?.status).toBe(503);
+    expect(await response!.json()).toMatchObject({
+      code: 'READ_BUDGET_NETWORK_DNS',
+      configuration: 'kv',
+    });
+    expect(construct).toHaveBeenCalledOnce();
+    expect(evaluate).toHaveBeenCalledOnce();
+  });
 });
