@@ -31,16 +31,41 @@ export async function reserveAlchemyBudget(
 ): Promise<NextResponse | null> {
   if (!Number.isSafeInteger(cost) || cost < 1 || cost > 100)
     throw new Error('Invalid budget cost');
-  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-  const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
-  if (!url || !token) {
-    // Local development can run without Redis; every deployed production or
-    // preview instance must have shared limits. Never fall back to per-instance
-    // memory on Vercel (a cold start would silently reset the quota).
+  // Select a complete pair; never mix credentials from different databases.
+  const pairs = [
+    {
+      source: 'upstash',
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    },
+    {
+      source: 'kv',
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    },
+  ];
+  const config = pairs.find(({ url, token }) => url?.trim() && token?.trim());
+  if (!config) {
     if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL)
       return null;
     return unavailable('configuration_missing');
+  }
+  const url = config.url!.trim();
+  const token = config.token!.trim();
+  try {
+    const endpoint = new URL(url);
+    if (
+      endpoint.protocol !== 'https:' ||
+      endpoint.username ||
+      endpoint.password ||
+      endpoint.search ||
+      endpoint.hash ||
+      !['', '/'].includes(endpoint.pathname) ||
+      /[\s"']/.test(token)
+    )
+      return unavailable('configuration_invalid', config.source);
+  } catch {
+    return unavailable('configuration_invalid', config.source);
   }
   // Trust Vercel's protected edge header, not a client-selected address/header.
   // Off Vercel all clients share one bucket until a trusted proxy is configured.
@@ -75,7 +100,7 @@ export async function reserveAlchemyBudget(
       !Number.isFinite(retryAfter) ||
       retryAfter < 0
     )
-      return unavailable('invalid_response');
+      return unavailable('invalid_response', config.source);
     if (retryAfter > 0)
       return NextResponse.json(
         { error: 'Request limit reached. Please try again later.' },
@@ -89,18 +114,7 @@ export async function reserveAlchemyBudget(
       );
     return null;
   } catch (error) {
-    // Classify locally, but never echo/log upstream messages or credentials.
-    const message = error instanceof Error ? error.message : '';
-    const reason =
-      error instanceof Error &&
-      (error.name === 'TimeoutError' || error.name === 'AbortError')
-        ? 'timeout'
-        : /unauthorized|wrongpass|noperm|invalid token|read.?only/i.test(
-              message,
-            )
-          ? 'authentication_or_permissions'
-          : 'connection_or_service';
-    return unavailable(reason);
+    return unavailable(classifyBudgetFailure(error), config.source);
   }
 }
 
@@ -109,15 +123,80 @@ type BudgetFailure =
   | 'invalid_response'
   | 'timeout'
   | 'authentication_or_permissions'
-  | 'connection_or_service';
+  | 'connection_or_service'
+  | 'configuration_invalid'
+  | 'network_dns'
+  | 'network_tls'
+  | 'network_connect'
+  | 'service_limit'
+  | 'database_unavailable'
+  | 'script_error'
+  | 'counter_type'
+  | 'service_response_invalid';
 
-function unavailable(reason: BudgetFailure) {
+function classifyBudgetFailure(error: unknown): BudgetFailure {
+  if (!(error instanceof Error)) return 'connection_or_service';
+  // Upstash can append the full command; classify only the preceding message.
+  const message = error.message.split(', command was:')[0];
+  const cause = error.cause as { code?: unknown } | undefined;
+  const code = typeof cause?.code === 'string' ? cause.code : '';
+  if (
+    ['TimeoutError', 'AbortError'].includes(error.name) ||
+    [
+      'ETIMEDOUT',
+      'UND_ERR_CONNECT_TIMEOUT',
+      'UND_ERR_HEADERS_TIMEOUT',
+    ].includes(code)
+  )
+    return 'timeout';
+  if (['ENOTFOUND', 'EAI_AGAIN'].includes(code)) return 'network_dns';
+  if (/CERT|TLS|SSL/.test(code)) return 'network_tls';
+  if (
+    ['ECONNREFUSED', 'ECONNRESET', 'ENETUNREACH', 'EHOSTUNREACH'].includes(code)
+  )
+    return 'network_connect';
+  if (
+    /unauthori[sz]ed|wrongpass|noperm|invalid (token|password)|read.?only|no permission|not (allowed|authori[sz]ed)|authentication/i.test(
+      message,
+    )
+  )
+    return 'authentication_or_permissions';
+  if (
+    /quota|limit exceeded|exceeded.*limit|max.*(request|command|bandwidth)|too many requests/i.test(
+      message,
+    )
+  )
+    return 'service_limit';
+  if (
+    /database.*(not found|not exist|paused|disabled)|database is.*(unavailable|inactive)/i.test(
+      message,
+    )
+  )
+    return 'database_unavailable';
+  if (/WRONGTYPE|not an integer/i.test(message)) return 'counter_type';
+  if (
+    /error (compiling|running) script|user_script|lua.*error|unknown.*command|CROSSSLOT/i.test(
+      message,
+    )
+  )
+    return 'script_error';
+  if (error.name === 'UpstashJSONParseError' || error instanceof SyntaxError)
+    return 'service_response_invalid';
+  return 'connection_or_service';
+}
+
+function unavailable(reason: BudgetFailure, source?: string) {
   // Only this fixed enum is exposed; never environment values or error messages.
-  console.error('Alchemy request budget unavailable:', reason);
+  console.error(
+    'Alchemy request budget unavailable:',
+    reason,
+    source ?? 'none',
+  );
   return NextResponse.json(
     {
       error: 'Chain reads temporarily unavailable. Please retry shortly.',
       code: `READ_BUDGET_${reason.toUpperCase()}`,
+      ...(source ? { configuration: source } : {}),
     },
     {
       status: 503,

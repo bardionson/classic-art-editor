@@ -1,7 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-const evaluate = vi.hoisted(() => vi.fn());
+const { evaluate, construct } = vi.hoisted(() => ({
+  evaluate: vi.fn(),
+  construct: vi.fn(),
+}));
 vi.mock('@upstash/redis', () => ({
   Redis: class {
+    constructor(config: unknown) {
+      construct(config);
+    }
     eval = evaluate;
   },
 }));
@@ -19,6 +25,9 @@ describe('shared Alchemy budget', () => {
     vi.stubEnv('UPSTASH_REDIS_REST_URL', 'https://redis.invalid');
     vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', 'secret');
     evaluate.mockReset().mockResolvedValue(0);
+    construct.mockReset();
+    vi.stubEnv('KV_REST_API_URL', '');
+    vi.stubEnv('KV_REST_API_TOKEN', '');
   });
   afterEach(() => {
     vi.unstubAllEnvs();
@@ -59,6 +68,25 @@ describe('shared Alchemy budget', () => {
     [new DOMException('private-url', 'TimeoutError'), 'TIMEOUT'],
     [new Error('WRONGPASS private-token'), 'AUTHENTICATION_OR_PERMISSIONS'],
     [new Error('fetch failed private-url'), 'CONNECTION_OR_SERVICE'],
+    [
+      new Error('fetch failed private-url', { cause: { code: 'ENOTFOUND' } }),
+      'NETWORK_DNS',
+    ],
+    [
+      new Error('fetch failed private-url', {
+        cause: { code: 'CERT_HAS_EXPIRED' },
+      }),
+      'NETWORK_TLS',
+    ],
+    [
+      new Error('ERR this token has no permissions private-token'),
+      'AUTHENTICATION_OR_PERMISSIONS',
+    ],
+    [new Error('ERR max requests limit exceeded private-url'), 'SERVICE_LIMIT'],
+    [new Error('ERR database is paused private-url'), 'DATABASE_UNAVAILABLE'],
+    [new Error('ERR Error running script private-url'), 'SCRIPT_ERROR'],
+    [new Error('WRONGTYPE private-url'), 'COUNTER_TYPE'],
+    [new SyntaxError('private-response'), 'SERVICE_RESPONSE_INVALID'],
   ])('reports only a safe category for %s', async (error, code) => {
     const log = vi.spyOn(console, 'error').mockImplementation(() => {});
     evaluate.mockRejectedValue(error);
@@ -92,5 +120,41 @@ describe('shared Alchemy budget', () => {
     vi.stubEnv('KV_REST_API_TOKEN', 'secret');
     expect(await reserveAlchemyBudget(request, 1)).toBeNull();
     expect(evaluate).toHaveBeenCalledOnce();
+  });
+  it('uses a complete KV pair when the Upstash pair is incomplete', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
+    vi.stubEnv('KV_REST_API_URL', 'https://kv.invalid');
+    vi.stubEnv('KV_REST_API_TOKEN', 'kv-secret');
+    expect(await reserveAlchemyBudget(request, 1)).toBeNull();
+    expect(construct).toHaveBeenCalledWith(
+      expect.objectContaining({
+        url: 'https://kv.invalid',
+        token: 'kv-secret',
+      }),
+    );
+  });
+  it('does not combine two incomplete pairs', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '');
+    vi.stubEnv('KV_REST_API_TOKEN', 'kv-secret');
+    const response = await reserveAlchemyBudget(request, 1);
+    expect((await response!.json()).code).toBe(
+      'READ_BUDGET_CONFIGURATION_MISSING',
+    );
+    expect(construct).not.toHaveBeenCalled();
+  });
+  it.each([
+    'redis://private-host',
+    '"https://private-host"',
+    'https://private-host/path',
+  ])('rejects malformed REST URLs without exposing them', async (url) => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', url);
+    const response = await reserveAlchemyBudget(request, 1);
+    const body = await response!.json();
+    expect(body.code).toBe('READ_BUDGET_CONFIGURATION_INVALID');
+    expect(JSON.stringify(body)).not.toContain('private-host');
+    expect(JSON.stringify(log.mock.calls)).not.toContain('private-host');
+    expect(evaluate).not.toHaveBeenCalled();
   });
 });
