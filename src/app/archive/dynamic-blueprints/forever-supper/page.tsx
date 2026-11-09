@@ -3,11 +3,10 @@ import editions from '@/data/forever-supper-editions.json';
 import ArchiveResults from '@/components/archive-results';
 import { supperCore as core, supperItems } from '@/utils/forever-supper';
 export const metadata = { title: 'Forever Supper | Async Art' };
-export default function ForeverSupper({
-  searchParams,
-}: {
-  searchParams: { slot?: string; q?: string; page?: string };
+export default async function ForeverSupper(props: {
+  searchParams: Promise<{ slot?: string; q?: string; page?: string }>;
 }) {
+  const searchParams = await props.searchParams;
   const slot =
     typeof searchParams.slot === 'string' &&
     core.slots.some((s) => s.id === searchParams.slot)

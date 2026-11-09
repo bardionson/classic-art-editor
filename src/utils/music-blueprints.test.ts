@@ -4,6 +4,7 @@ import catalog from '@/data/music-blueprint-projects.json';
 import snapshot from '@/data/archive-index.json';
 import recovered from '@/data/music-blueprint-metadata.json';
 import { dreamRecorderRecords } from './dream-recorder';
+import { isArchiveVisible } from './archive-visibility';
 const musicContracts = [
   catalog.sharedContract,
   ...catalog.additionalContracts,
@@ -42,10 +43,15 @@ describe('Music Blueprint archive category', () => {
       new Set(getBlueprintRecords().map((r) => r.blueprintId)).size,
     );
     expect(music.editions + visual.editions).toBe(getBlueprintRecords().length);
-    expect(archiveCoverage.total).toBe(snapshot.records.length + 3000);
+    // #115 was intentionally hidden from discovery; preserve its raw record.
+    const hidden = snapshot.records.filter((r) => !isArchiveVisible(r));
+    expect(hidden.map((r) => r.tokenId)).toEqual(['115']);
+    const expectedVisible =
+      snapshot.records.length + dreamRecorderRecords.length - hidden.length;
+    expect(archiveCoverage.total).toBe(expectedVisible);
     expect(
       Object.values(archiveCoverage.counts).reduce((a, b) => a + b, 0),
-    ).toBe(snapshot.records.length + 3000);
+    ).toBe(expectedVisible);
     expect(archiveCoverage.counts['music-blueprints']).toBe(music.editions);
     expect(
       music.projects.every((p) => !visual.projects.some((v) => v.id === p.id)),
@@ -79,7 +85,10 @@ describe('Music Blueprint archive category', () => {
       'Slip Away',
     );
     expect(
-      searchArchive('0x71925638b9998ab631c83873d9ed19ef9b70ecf0:13855', 'music-blueprints').results[0]?.tokenId,
+      searchArchive(
+        '0x71925638b9998ab631c83873d9ed19ef9b70ecf0:13855',
+        'music-blueprints',
+      ).results[0]?.tokenId,
     ).toBe('13855');
   });
   it('finds original project names and keeps master music and ordinary Blueprints separate', () => {
@@ -91,11 +100,19 @@ describe('Music Blueprint archive category', () => {
       const project = catalog.projects.find(
         (p) => p.name.toLocaleLowerCase() === query.toLocaleLowerCase(),
       )!;
-      const result = searchArchive(query, 'music-blueprints', 1, 'all', project.id);
+      const result = searchArchive(
+        query,
+        'music-blueprints',
+        1,
+        'all',
+        project.id,
+      );
       expect(result.total).toBe(count);
       expect(
         result.results.every(
-          (r) => r.collection?.toLocaleLowerCase() === project.name.toLocaleLowerCase(),
+          (r) =>
+            r.collection?.toLocaleLowerCase() ===
+            project.name.toLocaleLowerCase(),
         ),
       ).toBe(true);
       expect(result.results.every((r) => r.family === 'music-blueprints')).toBe(

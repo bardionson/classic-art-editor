@@ -9,8 +9,9 @@ import {
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { code: string } },
+  props: { params: Promise<{ code: string }> },
 ) {
+  const params = await props.params;
   const { tokenAddress, tokenId } = await req.json();
 
   if (!tokenAddress || typeof tokenId !== 'number') {
@@ -39,8 +40,9 @@ export async function POST(
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { code: string } },
+  props: { params: Promise<{ code: string }> },
 ) {
+  const params = await props.params;
   const role = req.nextUrl.searchParams.get('role');
   if (role !== 'display' && role !== 'control') {
     return NextResponse.json(
@@ -59,8 +61,9 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { code: string } },
+  props: { params: Promise<{ code: string }> },
 ) {
+  const params = await props.params;
   const overrides = await req.json();
 
   const session = await patchMirrorControlOverrides(params.code, overrides);
@@ -73,8 +76,9 @@ export async function PATCH(
 
 export async function DELETE(
   _req: NextRequest,
-  { params }: { params: { code: string } },
+  props: { params: Promise<{ code: string }> },
 ) {
+  const params = await props.params;
   const deleted = await deleteMirrorSession(params.code);
   if (!deleted) {
     return NextResponse.json({ error: 'Session not found' }, { status: 404 });

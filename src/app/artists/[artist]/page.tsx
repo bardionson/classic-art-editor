@@ -17,10 +17,13 @@ import {
 import { familyTitle } from '@/utils/archive-families';
 
 type Props = {
-  params: { artist: string };
-  searchParams: { page?: string; view?: string };
+  params: Promise<{ artist: string }>;
+  searchParams: Promise<{ page?: string; view?: string }>;
 };
-export function generateMetadata({ params }: Pick<Props, 'params'>): Metadata {
+export async function generateMetadata(
+  props: Pick<Props, 'params'>,
+): Promise<Metadata> {
+  const params = await props.params;
   const profile = getArtistProfile(params.artist);
   return {
     title: `${profile ? artistName(profile) : 'Artist'} | Async Art`,
@@ -29,7 +32,9 @@ export function generateMetadata({ params }: Pick<Props, 'params'>): Metadata {
       : undefined,
   };
 }
-export default function ArtistPage({ params, searchParams }: Props) {
+export default async function ArtistPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const profile = getArtistProfile(params.artist);
   if (!profile) notFound();
   const view = searchParams.view === 'all' ? 'all' : 'complete';

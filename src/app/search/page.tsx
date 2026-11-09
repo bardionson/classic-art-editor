@@ -17,7 +17,10 @@ type Params = Record<string, string | string[] | undefined>;
 const first = (value: string | string[] | undefined) =>
   Array.isArray(value) ? value[0] : (value ?? '');
 
-export default function SearchPage({ searchParams }: { searchParams: Params }) {
+export default async function SearchPage(props: {
+  searchParams: Promise<Params>;
+}) {
+  const searchParams = await props.searchParams;
   const query = first(searchParams.q).slice(0, 300);
   const matchingArtists = query ? browseArtists(query).items.slice(0, 6) : [];
   const requested = first(searchParams.family);

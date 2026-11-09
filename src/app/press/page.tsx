@@ -34,7 +34,10 @@ function dateLabel(date: string) {
 const field =
   'mt-2 w-full rounded-lg border border-border bg-surface-raised px-3 py-3 text-text';
 
-export default function PressPage({ searchParams }: { searchParams: Params }) {
+export default async function PressPage(props: {
+  searchParams: Promise<Params>;
+}) {
+  const searchParams = await props.searchParams;
   const q = value(searchParams, 'q').trim();
   const publication = value(searchParams, 'publication');
   const year = value(searchParams, 'year');

@@ -4,11 +4,10 @@ import LayerDetailContent from '@/components/layer/layer-detail-content';
 
 export const dynamic = 'force-dynamic';
 
-export default function LayerDetailPage({
-  params,
-}: {
-  params: { contract: string; tokenId: string };
+export default async function LayerDetailPage(props: {
+  params: Promise<{ contract: string; tokenId: string }>;
 }) {
+  const params = await props.params;
   const { contract, tokenId } = params;
 
   return (

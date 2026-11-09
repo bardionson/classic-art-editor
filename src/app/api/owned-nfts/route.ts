@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { reserveAlchemyBudget } from '@/utils/alchemy-budget';
+export const runtime = 'nodejs';
+export const maxDuration = 60;
 import {
   ACTIVE_NETWORK,
   V1_CONTRACT_ADDRESS,
@@ -59,11 +62,15 @@ export async function GET(req: NextRequest) {
     );
   }
 
+  const limited = await reserveAlchemyBudget(req, MAX_PAGES);
+  if (limited) return limited;
+
   try {
     // ACTIVE_NETWORK: 1 = Mainnet, 5 = Goerli
     const network = ACTIVE_NETWORK === 5 ? 'eth-goerli' : 'eth-mainnet';
     const baseUrl = `https://${network}.g.alchemy.com/nft/v3/${ALCHEMY_KEY}/getNFTsForOwner`;
 
+    const signal = AbortSignal.timeout(25000);
     const ownedNfts: AlchemyOwnedNft[] = [];
     let pageKey: string | undefined;
     let pageCount = 0;
@@ -80,18 +87,13 @@ export async function GET(req: NextRequest) {
         params.set('pageKey', pageKey);
       }
 
-      const response = await fetch(`${baseUrl}?${params.toString()}`);
+      const response = await fetch(`${baseUrl}?${params.toString()}`, {
+        signal,
+        cache: 'no-store',
+      });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        // Log the full upstream error server-side only - never echo it to
-        // the client. Alchemy embeds the API key in the request URL/path,
-        // and some upstream error bodies (or gateway/WAF pages) can include
-        // the requested URI verbatim, which would leak the key into the
-        // browser's network tab if forwarded.
-        console.error(
-          `Alchemy NFT API Error: ${response.status} ${response.statusText} - ${errorText}`,
-        );
+        console.error('Alchemy NFT request failed', response.status);
         return NextResponse.json(
           { error: 'Failed to fetch owned NFTs from indexer' },
           { status: response.status },
@@ -127,12 +129,15 @@ export async function GET(req: NextRequest) {
           item !== null,
       );
 
-    return NextResponse.json({ items });
-  } catch (error: any) {
+    return NextResponse.json(
+      { items, truncated: Boolean(pageKey) },
+      { headers: { 'Cache-Control': 'no-store' } },
+    );
+  } catch {
     // Same reasoning as above: log server-side only, don't forward
     // error.message to the client (it can embed the request URL, which
     // contains the Alchemy key).
-    console.error('Owned NFTs Proxy Error:', error);
+    console.error('Owned NFTs request failed');
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 },

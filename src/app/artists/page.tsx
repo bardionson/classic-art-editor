@@ -14,11 +14,10 @@ export const metadata: Metadata = {
   description:
     'Explore restored Async artist profiles and their art, music, and Blueprint projects.',
 };
-export default function ArtistsPage({
-  searchParams,
-}: {
-  searchParams: { q?: string; page?: string };
+export default async function ArtistsPage(props: {
+  searchParams: Promise<{ q?: string; page?: string }>;
 }) {
+  const searchParams = await props.searchParams;
   const query =
     typeof searchParams.q === 'string' ? searchParams.q.slice(0, 300) : '';
   const found = browseArtists(query, Number(searchParams.page) || 1);

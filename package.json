@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20.x",
+    "node": "22.x",
     "npm": ">=9.x"
   },
   "scripts": {
@@ -17,34 +17,40 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1164.0",
     "@aws-sdk/s3-request-presigner": "^3.1164.0",
-    "@rainbow-me/rainbowkit": "^2.2.9",
+    "@rainbow-me/rainbowkit": "^2.2.11",
     "@tanstack/react-query": "^5.90.10",
     "@upstash/redis": "^1.38.0",
     "@vercel/analytics": "^1.6.1",
     "classnames": "^2.5.1",
     "html-to-image": "^1.11.11",
-    "next": "^14.2.33",
+    "next": "15.5.29",
     "react": "^18.3.1",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
     "seedrandom": "^3.0.5",
     "sharp": "^0.35.5",
-    "viem": "^2.40.2",
+    "viem": "^2.57.17",
     "wagmi": "^2.19.5"
   },
   "devDependencies": {
-    "@types/node": "^20.19.25",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
     "@types/seedrandom": "^3.0.8",
     "autoprefixer": "^10.4.22",
     "lefthook": "^1.13.6",
-    "next-bundle-analyzer": "^0.6.8",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.32",
     "prettier": "^3.6.2",
     "tailwindcss": "^3.4.18",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11",
+    "@next/bundle-analyzer": "15.5.29"
+  },
+  "overrides": {
+    "ws@8": "^8.21.0",
+    "@walletconnect/ethereum-provider": "2.26.0",
+    "postcss": "$postcss",
+    "@coinbase/cdp-sdk": "1.38.6"
   }
 }

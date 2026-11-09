@@ -5,13 +5,12 @@ import artworkOverrides from '@/artwork-overrides.json';
 
 export const dynamic = 'force-dynamic';
 
-export default function ArtworkPage({
-  params,
-  searchParams,
-}: {
-  params: { version: string; id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+export default async function ArtworkPage(props: {
+  params: Promise<{ version: string; id: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const { version, id } = params;
   const tokenId = Number(id);
   const tokenAddress =

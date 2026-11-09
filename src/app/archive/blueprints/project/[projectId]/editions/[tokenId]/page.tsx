@@ -14,8 +14,8 @@ import {
   dreamMediaUri,
 } from '@/utils/dream-recorder';
 
-type Props = { params: { projectId: string; tokenId: string } };
-function edition({ projectId, tokenId }: Props['params']) {
+type Props = { params: Promise<{ projectId: string; tokenId: string }> };
+function edition({ projectId, tokenId }: Awaited<Props['params']>) {
   if (
     projectId !== dreamRecorder.projectId ||
     !Object.hasOwn(dreamEditions, tokenId)
@@ -23,11 +23,13 @@ function edition({ projectId, tokenId }: Props['params']) {
     notFound();
   return dreamEditions[tokenId];
 }
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const e = edition(params);
   return { title: `${e.name} · Dream Recorder | Async Art` };
 }
-export default function DreamEditionPage({ params }: Props) {
+export default async function DreamEditionPage(props: Props) {
+  const params = await props.params;
   const e = edition(params);
   const token = Number(params.tokenId);
   const audio = e.animation.startsWith('Qm');

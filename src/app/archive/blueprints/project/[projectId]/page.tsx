@@ -10,22 +10,20 @@ import ArchivePagination from '@/components/archive-pagination';
 import { getBlueprintProject } from '@/utils/blueprint-projects';
 import { searchArchive } from '@/utils/archive-search';
 
-export function generateMetadata({
-  params,
-}: {
-  params: { projectId: string };
-}): Metadata {
+export async function generateMetadata(props: {
+  params: Promise<{ projectId: string }>;
+}): Promise<Metadata> {
+  const params = await props.params;
   return {
     title: `${getBlueprintProject(params.projectId)?.name ?? 'Blueprint project'} | Async Art`,
   };
 }
-export default function BlueprintProjectPage({
-  params,
-  searchParams,
-}: {
-  params: { projectId: string };
-  searchParams: { q?: string; page?: string };
+export default async function BlueprintProjectPage(props: {
+  params: Promise<{ projectId: string }>;
+  searchParams: Promise<{ q?: string; page?: string }>;
 }) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const project = getBlueprintProject(params.projectId);
   if (!project) notFound();
   const query =
@@ -70,11 +68,16 @@ export default function BlueprintProjectPage({
       <p className="text-text-muted mb-6">
         {coverage ? (
           <>
-            {project.count.toLocaleString('en-US')} edition records recovered. The chain
-            audit found {coverage.mintedCount.toLocaleString('en-US')} minted
-            editions as of {coverage.checkedOn}.{' '}
-            {coverage.declaredEditionCount != null && (<>The original metadata declares{' '}
-              {coverage.declaredEditionCount.toLocaleString('en-US')} editions.{' '}</>)}
+            {project.count.toLocaleString('en-US')} edition records recovered.
+            The chain audit found {coverage.mintedCount.toLocaleString('en-US')}{' '}
+            minted editions as of {coverage.checkedOn}.{' '}
+            {coverage.declaredEditionCount != null && (
+              <>
+                The original metadata declares{' '}
+                {coverage.declaredEditionCount.toLocaleString('en-US')}{' '}
+                editions.{' '}
+              </>
+            )}
           </>
         ) : (
           <>

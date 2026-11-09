@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { reserveAlchemyBudget } from '@/utils/alchemy-budget';
 import { createPublicClient, http } from 'viem';
 import { mainnet } from 'viem/chains';
 
@@ -25,6 +26,9 @@ export async function GET(req: NextRequest) {
     );
   }
 
+  const limited = await reserveAlchemyBudget(req, 4);
+  if (limited) return limited;
+
   try {
     // ENS only exists on mainnet, regardless of which network this app is
     // otherwise active on (e.g. Goerli in dev/preview) - always resolve
@@ -32,7 +36,10 @@ export async function GET(req: NextRequest) {
     // /api/rpc proxy.
     const client = createPublicClient({
       chain: mainnet,
-      transport: http(`https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`),
+      transport: http(`https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`, {
+        retryCount: 0,
+        timeout: 10000,
+      }),
     });
 
     const ensName = await client.getEnsName({
@@ -40,11 +47,11 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json({ ensName });
-  } catch (error: any) {
+  } catch {
     // Log server-side only - same reasoning as the other Alchemy-backed
     // routes in this app: don't forward error details that could embed the
     // request URL (which contains the Alchemy key) to the client.
-    console.error('ENS Lookup Error:', error);
+    console.error('ENS lookup failed');
     return NextResponse.json({ ensName: null });
   }
 }

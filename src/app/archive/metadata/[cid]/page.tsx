@@ -17,17 +17,23 @@ const DREAM_RECORDER_CIDS = new Set([
   'QmYzG9HekT7YFipUmyL7k5qUdGZyfHjS9m5L4gSQugfA6g',
 ]);
 
-export default function MetadataArtworkPage({
-  params,
-}: {
-  params: { cid: string };
+export default async function MetadataArtworkPage(props: {
+  params: Promise<{ cid: string }>;
 }) {
+  const params = await props.params;
   const record = getArchiveRecordByCid(params.cid);
   if (!record) notFound();
   if (record.blueprintId === dreamRecorder.projectId && record.link)
     redirect(record.link);
-  const projectPreview = (projectPreviews as Record<string, {name:string; audio:string; image:string; projectId?:string}>)[record.cid];
-  const mediaGap = (musicMediaGaps as Record<string, {status:string;message:string}>)[record.cid];
+  const projectPreview = (
+    projectPreviews as Record<
+      string,
+      { name: string; audio: string; image: string; projectId?: string }
+    >
+  )[record.cid];
+  const mediaGap = (
+    musicMediaGaps as Record<string, { status: string; message: string }>
+  )[record.cid];
   const Preview =
     record.family === 'dynamic-blueprints'
       ? DynamicExpansionPreview
@@ -37,17 +43,21 @@ export default function MetadataArtworkPage({
       <Link
         className="text-accent underline text-sm"
         href={
-          projectPreview ? '/archive/music-blueprints' : ['blueprints', 'music-blueprints'].includes(record.family) &&
-          record.blueprintId
-            ? `/archive/blueprints/project/${record.blueprintId}`
-            : `/search?${new URLSearchParams({ family: record.family })}`
+          projectPreview
+            ? '/archive/music-blueprints'
+            : ['blueprints', 'music-blueprints'].includes(record.family) &&
+                record.blueprintId
+              ? `/archive/blueprints/project/${record.blueprintId}`
+              : `/search?${new URLSearchParams({ family: record.family })}`
         }
       >
         Back to{' '}
-        {projectPreview ? 'Music Blueprints' : ['blueprints', 'music-blueprints'].includes(record.family) &&
-        record.blueprintId
-          ? 'project editions'
-          : familyTitle(record.family)}
+        {projectPreview
+          ? 'Music Blueprints'
+          : ['blueprints', 'music-blueprints'].includes(record.family) &&
+              record.blueprintId
+            ? 'project editions'
+            : familyTitle(record.family)}
       </Link>
       <h1 className="text-3xl font-bold mt-6 mb-2 break-words">
         {record.name}
@@ -73,13 +83,28 @@ export default function MetadataArtworkPage({
           </p>
         </aside>
       )}
-      {projectPreview && (<aside className="mb-4 rounded-xl border border-border bg-surface-sunken p-4 text-sm">Original project preview. {projectPreview.projectId ? <Link className="text-accent underline" href={`/archive/blueprints/project/${projectPreview.projectId}`}>Browse the collector editions and hear their individual mixes.</Link> : "Collector editions and their individual mixes are still being recovered."}</aside>)}
+      {projectPreview && (
+        <aside className="mb-4 rounded-xl border border-border bg-surface-sunken p-4 text-sm">
+          Original project preview.{' '}
+          {projectPreview.projectId ? (
+            <Link
+              className="text-accent underline"
+              href={`/archive/blueprints/project/${projectPreview.projectId}`}
+            >
+              Browse the collector editions and hear their individual mixes.
+            </Link>
+          ) : (
+            'Collector editions and their individual mixes are still being recovered.'
+          )}
+        </aside>
+      )}
       {mediaGap && (
         <aside className="mb-4 rounded-xl border border-border bg-surface-sunken p-4 text-sm">
           <p>{mediaGap.message}</p>
         </aside>
       )}
-      {(projectPreview || record.family === 'music-blueprints') && (!mediaGap || mediaGap.status === 'gateway-unavailable') ? (
+      {(projectPreview || record.family === 'music-blueprints') &&
+      (!mediaGap || mediaGap.status === 'gateway-unavailable') ? (
         <BlueprintPlayer
           key={record.cid}
           name={record.name}
@@ -98,11 +123,13 @@ export default function MetadataArtworkPage({
         />
       )}
       <p className="text-sm text-text-muted my-6">
-        {projectPreview ? 'Artwork and preview audio from the original project files.' : ['blueprints', 'music-blueprints'].includes(record.family)
-          ? 'Artwork from the edition’s original metadata. Blueprint editions are fixed once minted.'
-          : record.family === 'dynamic-blueprints'
-            ? 'Original expansion item media. The changing core composition is still being restored.'
-            : 'Artwork media from the original metadata.'}
+        {projectPreview
+          ? 'Artwork and preview audio from the original project files.'
+          : ['blueprints', 'music-blueprints'].includes(record.family)
+            ? 'Artwork from the edition’s original metadata. Blueprint editions are fixed once minted.'
+            : record.family === 'dynamic-blueprints'
+              ? 'Original expansion item media. The changing core composition is still being restored.'
+              : 'Artwork media from the original metadata.'}
       </p>
       {record.description && (
         <p className="whitespace-pre-line mb-6">{record.description}</p>

@@ -14,22 +14,20 @@ import musicIdentities from '@/data/music-identities.json';
 export function generateStaticParams() {
   return archiveFamilies.map((f) => ({ family: f.id }));
 }
-export function generateMetadata({
-  params,
-}: {
-  params: { family: string };
-}): Metadata {
+export async function generateMetadata(props: {
+  params: Promise<{ family: string }>;
+}): Promise<Metadata> {
+  const params = await props.params;
   return {
     title: `${archiveFamilies.find((f) => f.id === params.family)?.title ?? 'Archive'} | Async Art`,
   };
 }
-export default function ArchivePage({
-  params,
-  searchParams,
-}: {
-  params: { family: string };
-  searchParams: { q?: string; sort?: string; page?: string };
+export default async function ArchivePage(props: {
+  params: Promise<{ family: string }>;
+  searchParams: Promise<{ q?: string; sort?: string; page?: string }>;
 }) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const family = archiveFamilies.find((f) => f.id === params.family);
   if (!family) notFound();
   const recovered = searchArchive('', family.id);

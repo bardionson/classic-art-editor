@@ -1,54 +1,77 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ACTIVE_NETWORK } from '@/config';
+import { readRpcBody, RpcInputError, validateRpc } from '@/utils/rpc-policy';
+import { reserveAlchemyBudget } from '@/utils/alchemy-budget';
 
-// Ensure this environment variable is set
-const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
+export const runtime = 'nodejs';
+export const maxDuration = 30;
 
 export async function POST(req: NextRequest) {
-  // We can't use ACTIVE_NETWORK directly here because it relies on NEXT_PUBLIC_ACTIVE_NETWORK
-  // being available at runtime, which it should be.
-  // But let's double check if we need to guard against undefined.
-  if (!ALCHEMY_KEY) {
-      console.error('Missing ALCHEMY_KEY in server environment variables.');
-      return NextResponse.json(
-        { error: 'Server configuration error: Missing ALCHEMY_KEY' },
-        { status: 500 }
-      );
-  }
-
+  let body: unknown;
   try {
-    const body = await req.json();
-
-    // Determine the Alchemy URL based on the active network
-    // ACTIVE_NETWORK: 1 = Mainnet, 5 = Goerli
-    // Default to mainnet if undefined to be safe, but log a warning if needed
-    const network = ACTIVE_NETWORK === 5 ? 'eth-goerli' : 'eth-mainnet';
-    const alchemyUrl = `https://${network}.g.alchemy.com/v2/${ALCHEMY_KEY}`;
-
-    const response = await fetch(alchemyUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Alchemy API Error: ${response.status} ${response.statusText} - ${errorText}`);
-      return NextResponse.json(
-        { error: `Alchemy Error: ${response.statusText}`, details: errorText },
-        { status: response.status },
-      );
-    }
-
-    const data = await response.json();
-    return NextResponse.json(data);
-  } catch (error: any) {
-    console.error('RPC Proxy Error:', error);
+    body = await readRpcBody(req);
+  } catch (error) {
     return NextResponse.json(
-      { error: 'Internal Server Error', details: error.message },
-      { status: 500 },
+      { error: 'Invalid RPC request' },
+      { status: error instanceof RpcInputError ? error.status : 400 },
+    );
+  }
+  const calls = validateRpc(body);
+  if (!calls)
+    return NextResponse.json(
+      {
+        jsonrpc: '2.0',
+        id: null,
+        error: {
+          code: -32600,
+          message: 'Only supported archive reads are allowed',
+        },
+      },
+      { status: 400 },
+    );
+  const key = process.env.ALCHEMY_KEY;
+  if (!key)
+    return NextResponse.json(
+      { error: 'Chain reads unavailable' },
+      { status: 503 },
+    );
+  const limited = await reserveAlchemyBudget(req, calls.length);
+  if (limited) return limited;
+  try {
+    const network = ACTIVE_NETWORK === 5 ? 'eth-goerli' : 'eth-mainnet';
+    const response = await fetch(`https://${network}.g.alchemy.com/v2/${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Array.isArray(body) ? calls : calls[0]),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!response.ok) throw new Error('Upstream unavailable');
+    const data = await response.json();
+    const entries = Array.isArray(body) ? data : [data];
+    if (!Array.isArray(entries) || entries.length !== calls.length)
+      throw new Error('Invalid upstream response');
+    const results = calls.map((call) => {
+      const entry = entries.find((x) => x?.id === call.id);
+      if (!entry) throw new Error('Missing upstream response');
+      // Preserve JSON-RPC failure semantics without echoing provider messages,
+      // error.data, URLs or exception details into the browser.
+      return entry.error || !Object.hasOwn(entry, 'result')
+        ? {
+            jsonrpc: '2.0',
+            id: call.id,
+            error: { code: -32000, message: 'Contract read failed' },
+          }
+        : { jsonrpc: '2.0', id: call.id, result: entry.result };
+    });
+    return NextResponse.json(Array.isArray(body) ? results : results[0], {
+      headers: { 'Cache-Control': 'no-store' },
+    });
+  } catch {
+    console.error('Archive RPC upstream request failed');
+    return NextResponse.json(
+      { error: 'Chain reads temporarily unavailable' },
+      { status: 502, headers: { 'Cache-Control': 'no-store' } },
     );
   }
 }

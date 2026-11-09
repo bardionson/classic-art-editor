@@ -3,17 +3,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Address } from 'viem';
 import ArtworkViewer from '@/components/artwork/artwork-viewer';
 import { MirrorSession } from '@/types/mirror';
 
 const POLL_INTERVAL_MS = 1000;
 
-export default function MirrorDisplayPage({
-  params,
-}: {
-  params: { code: string };
-}) {
+export default function MirrorDisplayPage() {
+  const params = useParams<{ code: string }>();
   // tokenAddress/tokenId are set once and never change for the life of a
   // session, so they're kept separate from `overrides`. Only `overrides`
   // needs to become a new object reference on every poll tick that actually
