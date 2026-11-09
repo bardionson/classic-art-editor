@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   getTimeStateIndex,
+  getArtworkUtcOffset,
   watchArtworkTime,
   type ArtworkTimeRule,
 } from './artwork-time';
@@ -120,4 +121,75 @@ describe('master 800 metadata clock', () => {
       1,
     );
   });
+});
+
+it('honors #571 legacy GMT-06:00 without guessing daylight saving', () => {
+  expect(
+    getArtworkUtcOffset({
+      'async-attributes': {
+        timezone: '(GMT-06:00) Central Time (US & Canada)',
+      },
+    }),
+  ).toBe(-21600);
+  expect(
+    getArtworkUtcOffset({
+      'async-attributes': { timezone: { default_utc_offset: 20700 } },
+    }),
+  ).toBe(20700);
+  expect(
+    getArtworkUtcOffset({ 'async-attributes': { timezone: 'Unknown' } }),
+  ).toBe(0);
+});
+
+it('changes timed opacity while preserving the selected collector variant and metadata', async () => {
+  const opacity = {
+    time: {
+      type: 'HOUR_OF_DAY',
+      handler: {
+        type: 'CUSTOM',
+        rules: [
+          [0, 5, 80],
+          [6, 6, 65],
+          [7, 18, 55],
+          [19, 23, 80],
+        ],
+      },
+    },
+  };
+  const variants: any = [
+    {
+      id: 'Sign',
+      states: {
+        'token-id': 1,
+        'lever-id': 0,
+        options: [
+          { uri: 'first', color: { alpha: opacity } },
+          { uri: 'second', color: { alpha: opacity } },
+        ],
+      },
+    },
+  ];
+  const original = JSON.stringify(variants);
+  for (const [hour, alpha] of [
+    [5, 80],
+    [6, 65],
+    [7, 55],
+    [18, 55],
+    [19, 80],
+  ]) {
+    const selected = await getLayersFromMetadata(variants, async () => 1, {
+      now: new Date(Date.UTC(2026, 10, 8, hour + 8)),
+      utcOffsetSeconds: -28800,
+    });
+    expect(selected[0].activeStateURI).toBe('second');
+    expect(selected[0].transformationProperties.color?.alpha).toBe(alpha);
+  }
+  expect(JSON.stringify(variants)).toBe(original);
+  vi.useFakeTimers();
+  vi.setSystemTime(new Date('2026-11-08T14:59:59Z'));
+  const changed = vi.fn();
+  const stop = watchArtworkTime(variants, -28800, changed);
+  vi.advanceTimersByTime(1000);
+  expect(changed).toHaveBeenCalledOnce();
+  stop();
 });

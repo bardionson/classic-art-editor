@@ -48,6 +48,18 @@ export default function AboutPage() {
           payments to the original Async company.
         </p>
       </div>
+      <section className="mt-8 rounded-xl border border-border p-5">
+        <h2 className="text-xl font-bold">
+          <Link href="/about/inventory" className="text-accent underline">
+            Programmable art inventory
+          </Link>
+        </h2>
+        <p className="mt-3 text-text-muted">
+          Explore the mechanics behind time-based art, price-driven pieces,
+          collector controls and Forever Supper. See what has been tested, what
+          still needs restoration, and keep a personal review checklist.
+        </p>
+      </section>
       <div className="mt-8 flex flex-wrap gap-4">
         <a
           href="https://digitalrescuelab.xyz/"

@@ -8,7 +8,10 @@ import {
 import { fetchIpfs } from '@/utils/ipfs';
 import { publicClient } from '@/utils/rpcClient';
 import seedrandom from 'seedrandom';
-import { getTimeStateIndex } from '@/utils/artwork-time';
+import {
+  getTimeStateIndex,
+  resolveTimedProperties,
+} from '@/utils/artwork-time';
 import { getContract } from 'viem';
 
 export async function getMasterArtSize(uri: string) {
@@ -106,7 +109,11 @@ export async function getLayersFromMetadata(
       id: layer.id,
       anchor,
       activeStateURI: uri,
-      transformationProperties,
+      transformationProperties: resolveTimedProperties(
+        transformationProperties,
+        timeContext.now,
+        timeContext.utcOffsetSeconds,
+      ) as LayerTransformationProperties,
     });
   }
 

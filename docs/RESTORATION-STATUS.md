@@ -1,6 +1,6 @@
 # Async Art restoration checklist
 
-Updated November 8, 2026, after deployed hourly restoration commit `9104281`.
+Updated November 8, 2026, with the programmable-art inventory audit (November 9 UTC).
 
 This is the current summary checklist for Digital Rescue Lab's independent restoration. Detailed reports remain in the app's `docs` folder. A restored page, recovered metadata, working media, and faithful interactive behavior are separate milestones. Counts below describe recorded recovery checks, not a new exhaustive audit.
 
@@ -8,8 +8,8 @@ This is the current summary checklist for Digital Rescue Lab's independent resto
 
 | ID | Priority | Work | Current status | Finish when |
 | --- | --- | --- | --- | --- |
-| AUTO-01 | 1 | ETH Boy and Right Place & Right Time #245 | Hourly rendering implemented for #807/#245 with recorded-state switch and R2 checkpoint/replay for ETH Boy. Deployed and live APIs verified at 22:39 UTC; first ETH Boy R2 checkpoint saved and repeat request stable. | Milestone rules now implemented and original-script parity tested; verify deployment and observe an actual next-hour transition. Establish remaining historical/provider fidelity. Collector styling and wallet forms are preserved. |
-| AUTO-02 | 1 | Other automated art and Tarot | Shared time-rule repairs shipped. Whole-catalog coverage and custom behavior remain incomplete. | Complete a resumable inventory, verify every identified rule type, audit calendar pieces #566/#1139, currency #1076, combo #1148, and seeded Tarot #1497/#1524. Recheck the reported revival-site Tarot gallery separately. |
+| AUTO-01 | 1 | ETH Boy and Right Place & Right Time #245 | Hourly rendering implemented for #807/#245 with recorded-state switch and R2 checkpoint/replay for ETH Boy. Deployed and live APIs verified at 22:39 UTC; first ETH Boy R2 checkpoint saved and repeat request stable. | Milestone rules deployed in `faeb219`; BTC checkpoint and ETH Boy next-hour advancement verified at 23:00 UTC. Observe a future qualifying live milestone event. Establish remaining historical/provider fidelity. Collector styling and wallet forms are preserved. |
+| AUTO-02 | 1 | Other automated art and Tarot | Current-catalog census: 2,552/2,561 master metadata files read; 2,115 timer works tested. 2,114 pass timer logic; #786 needs original anniversary-date review. #567 timed opacity and #571 legacy timezone repaired. All 15,197 timer image references returned valid signatures; full decoding/composition remains unverified. | Use [About inventory](/about/inventory) for per-work mechanics and manual checks. Restore external updaters #83/#108/#154/#157/#196/#261/#280/#293; verify MLIBTY source mapping. Repair currency #1076, validate combo #1148 and Tarot #1497/#1524. Recover nine unread metadata files and correct malformed catalog identity #3207. Separate revival-site behavior remains unverified. |
 | SUPPER-01 | 2 | Forever Supper original layers | Original 32-slot layout and expansion metadata recovered; base image retrieval remains incomplete. | Retrieve and decode original base layers and expansion images; validate dimensions, blend modes, and multi-slot behavior. |
 | SUPPER-02 | 2 | Forever Supper individual collector arrangements | Five cached collector renders recovered. Expansion contract roster and 169 broadcast batch references found; batch contents still unresolved. | Retrieve broadcast records, establish item contract/token identities and each recoverable signed arrangement, then enable a faithful local composer. Wallet persistence is a later step. |
 | MUSIC-01 | 2 | Missing Music Blueprint media | Recorded audit flags 41 affected edition entries, including 33 Senses recordings and five Dream Recorder legendary videos. | Recover original media from archives, IPFS replicas or artist backups; verify full file integrity and playback. Preserve honest unavailable status where recovery fails. |
@@ -19,6 +19,14 @@ This is the current summary checklist for Digital Rescue Lab's independent resto
 | DATA-01 | 3 | Missing metadata, media and preservation | Original files recovered where available; provenance recorded for reconstructed controls. Filebase-first / Alchemy fallback and optional R2 image cache implemented. | Complete dependency/availability coverage, recover exact original bytes where possible, label reconstructions separately, and track storage usage. Gateway timeout or 429 is not proof of lost IPFS content. |
 | DISCOVERY-01 | 3 | Search, artist profiles and catalog cleanup | Search, project grouping, profiles and artist links shipped. #115 hidden; #245 retained. | Continue resolving missing credits, project identities, duplicate/retired versions and incomplete edition coverage as evidence arrives. |
 | OPS-01 | 3 | Repeatable collection-wide health reporting | Tests and recovery reports exist, but there is no complete live health dashboard. | Report per-work metadata/media/rendering/automation/playback status and last verification time; track failures without marking untested work restored. |
+
+## Latest audit and changes
+
+- Added About → Programmable art inventory, searchable mechanics, evidence, filters, browser-local visual review marks and export. Current catalog scope, not a complete on-chain census.
+- Production timer simulations: 115,570 state-selection cases and 50,616 hourly watcher checks. 129 targeted regression tests, TypeScript and production build passed.
+- Fixed #567 timed opacity without replacing collector variants; fixed #571 legacy GMT-06:00 offset.
+- 15,197/15,197 timer image signatures available through public gateways after retries. No paid image-cache writes; signature checks do not certify full image integrity.
+- Detailed evidence: `docs/PROGRAMMABLE-ART-AUDIT.md` and `public/archive/programmable-audit.json`.
 
 ## Recently completed / deployed
 
@@ -57,4 +65,4 @@ For each future repair: update its row, link the evidence and deployed commit, a
 
 ### Bitcoin milestones — November 8
 
-Implemented the original threshold badges, five numeric glyphs and drop behavior for #245. Shared conditional R2 checkpoints retain sparse milestone changes and replay missed hours. Token #247 artist controls remain recorded. All 31 unique image CIDs returned PNG headers through Filebase. 128 targeted tests pass (64 original milestone script comparisons), TypeScript and production build pass. Halvening/dead/flippening have no automatic trigger in the recovered script. Live deployment verification pending.
+Implemented the original threshold badges, five numeric glyphs and drop behavior for #245. Shared conditional R2 checkpoints retain sparse milestone changes and replay missed hours. Token #247 artist controls remain recorded. All 31 unique image CIDs returned PNG headers through Filebase. 128 targeted tests pass (64 original milestone script comparisons), TypeScript and production build pass. Halvening/dead/flippening have no automatic trigger in the recovered script. Deployed in `faeb219` (Vercel success). Production #245 returned all 102 controls, a saved V1 anchor and no warning; repeat reads reused identical state. ETH Boy advanced from 22:00 to 23:00 UTC while retaining its original anchor. Browser preview confirmed the original $100K badge decodes and renders. The current window triggers no milestone, so its badge and digits correctly remain hidden.

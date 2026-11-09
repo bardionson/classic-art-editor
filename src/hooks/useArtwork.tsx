@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Address } from 'viem';
 import { useTokenMetadata } from '@/hooks/useTokenMetadata';
-import { watchArtworkTime } from '@/utils/artwork-time';
+import { watchArtworkTime, getArtworkUtcOffset } from '@/utils/artwork-time';
 import {
   createGetLayerControlTokenValueFn,
   getLayersFromMetadata,
@@ -56,7 +56,7 @@ export const useArtwork = (
     if (!metadata) return;
     return watchArtworkTime(
       metadata.layout.layers,
-      metadata['async-attributes']?.timezone?.default_utc_offset ?? 0,
+      getArtworkUtcOffset(metadata),
       () => setTimeRevision((revision) => revision + 1),
       document,
     );
@@ -88,8 +88,7 @@ export const useArtwork = (
           getLayerControlTokenValue,
           {
             now: new Date(),
-            utcOffsetSeconds:
-              metadata['async-attributes']?.timezone?.default_utc_offset ?? 0,
+            utcOffsetSeconds: getArtworkUtcOffset(metadata),
           },
         );
 

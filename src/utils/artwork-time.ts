@@ -34,16 +34,57 @@ export function getTimeStateIndex(
       );
 }
 
+// Earlier metadata stored the explicit GMT offset in a label rather than an object.
+export function getArtworkUtcOffset(metadata: unknown): number {
+  const timezone = (
+    metadata as { 'async-attributes'?: { timezone?: unknown } }
+  )?.['async-attributes']?.timezone;
+  if (timezone && typeof timezone === 'object') {
+    const offset = (timezone as { default_utc_offset?: unknown })
+      .default_utc_offset;
+    if (typeof offset === 'number' && Number.isFinite(offset)) return offset;
+  }
+  if (typeof timezone === 'string') {
+    const match = timezone.match(/^\(GMT([+-])(\d{2}):(\d{2})\)/);
+    if (match && Number(match[2]) <= 14 && Number(match[3]) < 60)
+      return (
+        (match[1] === '-' ? -1 : 1) *
+        (Number(match[2]) * 3600 + Number(match[3]) * 60)
+      );
+  }
+  return 0;
+}
+
+// Timed values also occur in transformation properties (e.g. #567's opacity).
+// Resolve a fresh copy so the immutable metadata and collector controls survive.
+export function resolveTimedProperties(
+  value: unknown,
+  now: Date,
+  offset: number,
+): unknown {
+  if (!value || typeof value !== 'object') return value;
+  if (Array.isArray(value))
+    return value.map((v) => resolveTimedProperties(v, now, offset));
+  const object = value as Record<string, unknown>;
+  if (object.time && Object.keys(object).length === 1)
+    return getTimeStateIndex(object.time as ArtworkTimeRule, now, offset);
+  return Object.fromEntries(
+    Object.entries(object).map(([key, child]) => [
+      key,
+      resolveTimedProperties(child, now, offset),
+    ]),
+  );
+}
+
 function collectTimeRules(node: unknown): ArtworkTimeRule[] {
   if (!node || typeof node !== 'object') return [];
   if (Array.isArray(node)) return node.flatMap(collectTimeRules);
-  const states = (
-    node as { states?: { time?: ArtworkTimeRule; options?: unknown[] } }
-  ).states;
-  if (!states) return [];
+  const object = node as Record<string, unknown>;
   return [
-    ...(states.time ? [states.time] : []),
-    ...collectTimeRules(states.options),
+    ...(object.time ? [object.time as ArtworkTimeRule] : []),
+    ...Object.entries(object)
+      .filter(([key]) => key !== 'time')
+      .flatMap(([, child]) => collectTimeRules(child)),
   ];
 }
 

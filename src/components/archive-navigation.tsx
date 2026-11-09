@@ -15,6 +15,13 @@ export default function ArchiveNavigation({ active }: { active?: string }) {
         </Link>
       ))}
       <Link
+        href="/about/inventory"
+        aria-current={active === 'programmable' ? 'page' : undefined}
+        className="rounded-full border border-border px-4 py-2 text-sm hover:border-accent"
+      >
+        Programmable art inventory
+      </Link>
+      <Link
         href="/archive/price-check"
         className="rounded-full border border-border px-4 py-2 text-sm hover:border-accent"
       >
