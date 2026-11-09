@@ -233,8 +233,8 @@ export default function ProgrammableChecklist() {
           This inventory covers automatic changes triggered by time, dates,
           prices and external data. Pieces with only manual collector controls,
           music playback or collector-arranged compositions are excluded. There
-          are {s.metadataUnavailable} unread metadata records remain
-          unclassified.
+          are {s.metadataUnavailable} unread metadata records awaiting
+          classification.
         </p>
         <details>
           <summary className="cursor-pointer underline">
